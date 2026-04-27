@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Олег Агапэ — Врач-остеопат | Москва</title>
+    <meta name="description" content="Олег Агапэ — врач-остеопат в Москве. Приём в 7 минутах от метро Пушкинская/Маяковская. Запись на сеанс остеопатии.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container header__inner">
+        <a href="#top" class="logo">
+            <span class="logo__mark"><img src="images/logo.png" alt="Олег Агапэ"></span>
+            <span class="logo__text">Олег Агапэ<small>врач-остеопат</small></span>
+        </a>
+
+        <nav class="nav" id="nav">
+            <a href="#about" class="nav__link">О враче</a>
+            <a href="#services" class="nav__link">Услуги</a>
+            <a href="#how" class="nav__link">Как проходит сеанс</a>
+            <a href="#reviews" class="nav__link">Отзывы</a>
+            <a href="#prices" class="nav__link">Стоимость</a>
+            <a href="#education" class="nav__link">Обучение</a>
+            <a href="#contacts" class="nav__link">Контакты</a>
+        </nav>
+
+        <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--primary header__cta">Записаться</a>
+
+        <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero__inner">
+            <div class="hero__media">
+                <img src="images/oleg.jpg" alt="Олег Агапэ — врач-остеопат" class="hero__photo" onerror="this.parentElement.classList.add('hero__media--placeholder'); this.style.display='none'">
+                <div class="hero__placeholder">
+                    <span>Фото<br>Олега Агапэ</span>
+                </div>
+            </div>
+            <div class="hero__content">
+                <p class="hero__eyebrow">Врач-остеопат · Москва</p>
+                <h1 class="hero__title">Олег Агапэ</h1>
+                <p class="hero__sub">Возвращаю телу лёгкость, подвижность и свободу.<br>Приём в 7 минутах от метро Пушкинская / Маяковская.</p>
+                <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Записаться на сеанс</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="container">
+            <p class="eyebrow">01 — О враче</p>
+            <h2 class="section__title">Образование и опыт</h2>
+            <ul class="about__list">
+                <li>Врач-остеопат</li>
+                <li>Окончил Медицинский Институт РУДН</li>
+                <li>Окончил Институт Остеопатии</li>
+                <li>Обучался в Международной Академии Остеопатии (Чешская ассоциация)</li>
+                <li>Ординатура по остеопатии (Первый МГМУ им. И.М. Сеченова)</li>
+                <li>Преподаю фундаментальные дисциплины (анатомия, физиология, биомеханика) и остеопатический подход студентам</li>
+                <li>8 лет принимаю пациентов с разными запросами — от эстетики до сложных кейсов после операций и травм</li>
+                <li>В 90–95% случаев довожу людей до положительного результата</li>
+            </ul>
+
+            <div class="diplomas">
+                <h3 class="diplomas__title">Дипломы и сертификаты</h3>
+                <div class="diplomas__grid">
+                    <button type="button" class="diploma" data-diploma-index="0">
+                        <span class="diploma__img"><img src="images/diplomas/01-sechenov-residency.jpg" alt="Диплом об окончании ординатуры, Первый МГМУ им. И.М. Сеченова" loading="lazy"></span>
+                        <span class="diploma__caption">Ординатура по остеопатии,<br>Первый МГМУ им. И.М. Сеченова</span>
+                    </button>
+                    <button type="button" class="diploma" data-diploma-index="3">
+                        <span class="diploma__img"><img src="images/diplomas/03-rudn.jpg" alt="Диплом Медицинского Института РУДН" loading="lazy"></span>
+                        <span class="diploma__caption">Медицинский Институт РУДН</span>
+                    </button>
+                    <button type="button" class="diploma" data-diploma-index="9">
+                        <span class="diploma__img"><img src="images/diplomas/04-metavitonika-diploma.png" alt="Диплом Института Остеопатии" loading="lazy"></span>
+                        <span class="diploma__caption">Институт Остеопатии</span>
+                    </button>
+                    <button type="button" class="diploma" data-diploma-index="18">
+                        <span class="diploma__img"><img src="images/diplomas/06-vignon-poumons.jpg" alt="Сертификат повышения квалификации — Ostéopathie, Nicolas Vignon" loading="lazy"></span>
+                        <span class="diploma__caption">Свежие сертификаты<br>повышения квалификации</span>
+                    </button>
+                </div>
+                <button type="button" class="link-arrow link-arrow--btn" id="diplomasAll">Смотреть все дипломы →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES + PRICES -->
+    <section class="section section--alt" id="services">
+        <div class="container">
+            <p class="eyebrow">02 — Услуги</p>
+            <h2 class="section__title">Запись и стоимость</h2>
+            <p class="section__lead">Принимаю в 7 минутах от метро Пушкинская / Маяковская.<br>Запись через сервис YCLIENTS.</p>
+
+            <div class="prices" id="prices">
+                <article class="price-card">
+                    <h3 class="price-card__title">Сеанс</h3>
+                    <p class="price-card__meta">Москва · 1 час</p>
+                    <p class="price-card__amount">20 000 ₽</p>
+                    <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--ghost">Записаться</a>
+                </article>
+                <article class="price-card price-card--accent">
+                    <h3 class="price-card__title">Курс из 3 сеансов</h3>
+                    <p class="price-card__meta">Москва · 1 час</p>
+                    <p class="price-card__amount">55 000 ₽</p>
+                    <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--primary">Записаться</a>
+                </article>
+                <article class="price-card">
+                    <h3 class="price-card__title">Сеанс + психотерапия</h3>
+                    <p class="price-card__meta">1 час 30 минут</p>
+                    <p class="price-card__amount">30 000 ₽</p>
+                    <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--ghost">Записаться</a>
+                </article>
+            </div>
+
+            <h3 class="subhead">С чем можно обратиться</h3>
+            <ul class="tags">
+                <li>Костно-мышечные заболевания</li>
+                <li>Неврологические заболевания (головные боли, нейропатия и др.)</li>
+                <li>Заболевания пищеварительной системы</li>
+                <li>Гинекологические заболевания</li>
+                <li>Урологические заболевания</li>
+                <li>Детские заболевания</li>
+                <li>Пульмонология</li>
+                <li>ЛОР-заболевания</li>
+                <li>Сердечно-сосудистые заболевания</li>
+                <li>Стоматологические нарушения</li>
+                <li>Психосоматические заболевания</li>
+                <li>И другие запросы на сеанс</li>
+            </ul>
+
+            <div class="cta-band">
+                <div class="cta-band__text">
+                    <p>Не уверены, подойдёт ли остеопатия в вашем случае? Задайте свои вопросы ассистенту или запишитесь на сеанс.</p>
+                    <div class="cta-band__links">
+                        <a href="https://t.me/agapeassist" target="_blank" rel="noopener" class="cta-band__link">Telegram</a>
+                        <a href="https://wa.me/79852518818" target="_blank" rel="noopener" class="cta-band__link">WhatsApp</a>
+                        <a href="tel:+79932487900" class="cta-band__link">+7 993 248 7900</a>
+                    </div>
+                </div>
+                <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Записаться на приём</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT GOES -->
+    <section class="section" id="how">
+        <div class="container">
+            <p class="eyebrow">03 — Приём</p>
+            <h2 class="section__title">Как проходит сеанс</h2>
+            <ol class="steps">
+                <li>
+                    <span class="steps__num">01</span>
+                    <h3>Сбор анамнеза</h3>
+                    <p>Разбираем жалобы, историю дисфункций, образ жизни. Определяем задачу на сеанс.</p>
+                </li>
+                <li>
+                    <span class="steps__num">02</span>
+                    <h3>Диагностика</h3>
+                    <p>Остеопатическое тестирование: выявляем первопричины, оцениваем подвижность тканей, источники напряжения и компенсации.</p>
+                </li>
+                <li>
+                    <span class="steps__num">03</span>
+                    <h3>Работа с запросом</h3>
+                    <p>Мягкие техники: биомеханические, краниосакральные, висцеральные. Без боли и резких манипуляций. При необходимости работаем с психоэмоциональным состоянием.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section section--alt" id="reviews">
+        <div class="container">
+            <p class="eyebrow">04 — Отзывы</p>
+            <h2 class="section__title">Что говорят пациенты</h2>
+            <div class="reviews">
+                <figure class="review">
+                    <blockquote>«После двух сеансов ушла головная боль, с которой я жила полтора года. Олег очень внимательный, объясняет каждое движение.»</blockquote>
+                    <figcaption>— Мария, 34 года</figcaption>
+                </figure>
+                <figure class="review">
+                    <blockquote>«Обратилась после операции, восстановление шло тяжело. Уже через курс почувствовала, что тело снова моё.»</blockquote>
+                    <figcaption>— Анна, 41 год</figcaption>
+                </figure>
+                <figure class="review">
+                    <blockquote>«Привёл сына — у него были проблемы с осанкой и сном. Спокойный, мягкий приём, ребёнок не боялся.»</blockquote>
+                    <figcaption>— Дмитрий, отец пациента</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section education" id="education">
+        <div class="container">
+            <p class="eyebrow">05 — Обучение</p>
+            <div class="education__inner">
+                <div class="education__text">
+                    <h2 class="section__title">Хотите учиться<br>у меня?</h2>
+                    <p class="education__lead">Хотите владеть теми же методами, углубить свою практику или освоить навыки самокоррекции — переходите на мой обучающий сайт и записывайтесь на курс.</p>
+                    <ul class="education__tracks">
+                        <li>
+                            <span class="education__track-label">Для специалистов</span>
+                            <p>Углубите практику, освойте остеопатические и метавитонические техники, которые я использую на приёме</p>
+                        </li>
+                        <li>
+                            <span class="education__track-label">Для себя</span>
+                            <p>Навыки самокоррекции: как понимать сигналы тела, снимать напряжение и поддерживать здоровье самостоятельно</p>
+                        </li>
+                    </ul>
+                    <a href="https://dr-agape.ru/index.html" target="_blank" rel="noopener" class="btn btn--primary btn--lg education__cta">Перейти на сайт обучения →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="section" id="articles">
+        <div class="container">
+            <p class="eyebrow">06 — Публикации</p>
+            <h2 class="section__title">Тексты СМИ обо мне</h2>
+            <ul class="articles">
+                <li>
+                    <span class="articles__source">Газета.ру</span>
+                    <a href="https://www.gazeta.ru/social/news/2026/01/21/27673045.shtml" target="_blank" rel="noopener" class="articles__link">Читать статью →</a>
+                </li>
+                <li>
+                    <span class="articles__source">RT на русском</span>
+                    <a href="https://russian.rt.com/nopolitics/news/1574619-osteopat-bol-sheya" target="_blank" rel="noopener" class="articles__link">Читать статью →</a>
+                </li>
+                <li>
+                    <span class="articles__source">RIA Press</span>
+                    <a href="https://rianpress.ru/releases/2166" target="_blank" rel="noopener" class="articles__link">Читать статью →</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="section section--alt" id="contacts">
+        <div class="container">
+            <p class="eyebrow">07 — Контакты</p>
+            <h2 class="section__title">Записаться на приём</h2>
+
+            <div class="contacts">
+                <div class="contacts__media">
+                    <img src="images/oleg.jpg" alt="Олег Агапэ" class="contacts__photo" onerror="this.parentElement.classList.add('contacts__media--placeholder'); this.style.display='none'">
+                    <div class="contacts__placeholder"><span>Фото</span></div>
+                </div>
+                <div class="contacts__info">
+                    <p class="contacts__lead">Записаться ко мне на приём в Москве можно через сервис записи или связаться с ассистентом.</p>
+
+                    <ul class="contacts__list">
+                        <li>
+                            <span class="contacts__label">Онлайн-запись</span>
+                            <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="contacts__value">n133416.yclients.com →</a>
+                        </li>
+                        <li>
+                            <span class="contacts__label">Telegram-ассистент</span>
+                            <a href="https://t.me/agapeassist" target="_blank" rel="noopener" class="contacts__value">@agapeassist →</a>
+                        </li>
+                        <li>
+                            <span class="contacts__label">Телефон ассистента</span>
+                            <a href="tel:+79932487900" class="contacts__value">+7 993 248 7900 →</a>
+                        </li>
+                        <li>
+                            <span class="contacts__label">Адрес приёма</span>
+                            <span class="contacts__value">Москва, 7 минут от метро<br>Пушкинская / Маяковская</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://n133416.yclients.com/" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Записаться сейчас</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__col">
+            <span class="logo logo--footer">
+                <span class="logo__mark"><img src="images/logo.png" alt="Олег Агапэ"></span>
+                <span class="logo__text">Олег Агапэ<small>врач-остеопат</small></span>
+            </span>
+        </div>
+        <div class="footer__col">
+            <p>Москва, 7 минут от метро Пушкинская / Маяковская</p>
+            <p><a href="tel:+79932487900">+7 993 248 7900</a> · <a href="https://t.me/agapeassist" target="_blank" rel="noopener">@agapeassist</a></p>
+        </div>
+        <div class="footer__col footer__col--right">
+            <a href="offer.html" target="_blank" rel="noopener">Публичная оферта</a>
+            <p class="footer__copy">© <span id="year"></span> Олег Агапэ. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Diplomas lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Дипломы и сертификаты">
+    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Закрыть">×</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Предыдущий">‹</button>
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Следующий">›</button>
+    <figure class="lightbox__stage">
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
+    </figure>
+    <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
