@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p images)",
+      "Bash(curl -sL -o images/oleg.jpg \"https://s434vla.storage.yandex.net/rdisk/98db372b62fc0c264035dff504778f15fea075b9cd882e08eda6b52b5ff3c977/69dbc9c8/oS83rWlt0yp9vtfDBITGI_dRLApYNgwHjiZC1BfTTB3Qt9W5O1W7ibltrOt0jYoAlWadYhFuGrulTHB2pApavQ==?uid=114369751&filename=%D0%9E%D0%BB%D0%B5%D0%B31398.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=114369751&fsize=8759265&hid=bc1d5534460ba413e51ececd43c6e02a&media_type=image&tknv=v3&etag=574b86c735cd7830b4b81144eaa761e7&ts=64f45f3b00200&s=bdfb5adf814cac4f9adbef8e8f87856d6ae9d51d509e86f44a7d4b691715445c&pb=U2FsdGVkX1-ZE0r0E9g4A2aB3KC4NhEsSWALrpxayL2ePrzkaFlBe5tRpX0RgTr6wG6rPxq_mbAOnaUNECPs9o8GPAR2RRmowZfd01iRCMo\")",
+      "Bash(mkdir -p images/diplomas)",
+      "Bash(cp \"Дипломы Олег/IMG_5396.JPG\" images/diplomas/01-sechenov-residency.jpg)",
+      "Bash(cp \"Дипломы Олег/IMG_5398.JPG\" images/diplomas/02-sechenov-certificate.jpg)",
+      "Bash(cp \"Дипломы Олег/IMG_5372.JPG\" images/diplomas/03-rudn.jpg)",
+      "Bash(cp \"Дипломы Олег/IMG_5371.png\" images/diplomas/04-metavitonika-diploma.png)",
+      "Bash(xargs ls:*)",
+      "Bash(sips -Z 1600 -s format jpeg -s formatOptions 85 ~/Downloads/Олег1253.jpg --out images/oleg.jpg)",
+      "Bash(python3)",
+      "Bash(gh auth:*)",
+      "Bash(brew --version)",
+      "Bash(pandoc --track-changes=all \"/Users/fartyginalidia/Downloads/audio1789869272.m4a \\(1\\).docx\" -o /tmp/liliya.md)",
+      "Read(//tmp/**)",
+      "Read(//Users/fartyginalidia/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/9a01292d-b074-4083-8ec1-0d5d0032d845/8569ecdc-7a76-41c8-a128-5f4190ceeaa6/skills/docx/**)",
+      "Bash(python scripts/office/unpack.py \"/Users/fartyginalidia/Downloads/audio1789869272.m4a \\(1\\).docx\" /tmp/liliya_unpacked/)",
+      "Bash(mkdir -p /tmp/liliya_unpacked)",
+      "Bash(unzip -o \"/Users/fartyginalidia/Downloads/audio1789869272.m4a \\(1\\).docx\" -d /tmp/liliya_unpacked/)",
+      "Bash(magick -version)",
+      "Bash(sips -g all \"/Users/fartyginalidia/Downloads/photo_5379838905437328391_y.jpg\")",
+      "Bash(python3 -c \"from PIL import Image, ImageEnhance, ImageFilter; print\\('PIL OK'\\)\")",
+      "Bash(python3 -m pip install --user --quiet Pillow)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL ready'\\)\")",
+      "Bash(python3 /tmp/edit_liliya.py)"
+    ]
+  }
+}
