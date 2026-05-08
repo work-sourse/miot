@@ -1041,10 +1041,28 @@
   loadVideo('youtube');
 })();
 
-// ====== GETCOURSE — модальное окно ======
+
+</script>
+
+<!-- ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ -->
+<div id="gcModal" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись на семинар">
+  <div id="gcModalOverlay" class="gc-modal__overlay"></div>
+  <div class="gc-modal__box">
+    <button id="gcModalClose" class="gc-modal__close" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Предзапись на семинар</div>
+    <div class="gc-modal__body">
+      <script id="10966ce6f14560d719330c4e287434b14980d3c1"
+              src="https://online.agape-course.ru/pl/lite/widget/script?id=1601449"
+              onload="typeof startWidget10966ce6f14560d719330c4e287434b14980d3c1==='function'&&startWidget10966ce6f14560d719330c4e287434b14980d3c1()"></script>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== GETCOURSE — открытие/закрытие модалки ======
 (function () {
-  var modal   = document.getElementById('gcModal');
-  var overlay = document.getElementById('gcModalOverlay');
+  var modal    = document.getElementById('gcModal');
+  var overlay  = document.getElementById('gcModalOverlay');
   var closeBtn = document.getElementById('gcModalClose');
 
   function openModal() {
@@ -1067,18 +1085,6 @@
   });
 })();
 </script>
-
-<!-- ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ -->
-<div id="gcModal" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись на семинар">
-  <div id="gcModalOverlay" class="gc-modal__overlay"></div>
-  <div class="gc-modal__box">
-    <button id="gcModalClose" class="gc-modal__close" aria-label="Закрыть">✕</button>
-    <div class="gc-modal__title">Предзапись на семинар</div>
-    <div class="gc-modal__body">
-      <script id="10966ce6f14560d719330c4e287434b14980d3c1" src="https://online.agape-course.ru/pl/lite/widget/script?id=1601449"></script>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
