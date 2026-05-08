@@ -685,6 +685,64 @@
     .wrap { padding: 0 16px; }
     .video-toggle__btn { font-size: 13px; padding: 9px 14px; }
   }
+
+  /* ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ */
+  .gc-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+  }
+  .gc-modal.is-open { display: flex; }
+  .gc-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 20, 40, 0.70);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  .gc-modal__box {
+    position: relative;
+    z-index: 1;
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 40px 32px 32px;
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: 16px;
+    box-shadow: 0 32px 64px -16px rgba(10,30,80,0.40);
+  }
+  @media (max-width: 600px) {
+    .gc-modal__box { padding: 36px 16px 24px; }
+  }
+  .gc-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--ink-mute);
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color .15s, background .15s;
+  }
+  .gc-modal__close:hover { color: var(--ink); background: var(--bg); }
+  .gc-modal__title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 20px;
+    line-height: 1.3;
+  }
+  .gc-modal__body { min-height: 80px; }
 </style>
 </head>
 <body>
@@ -983,12 +1041,44 @@
   loadVideo('youtube');
 })();
 
-// ====== GETCOURSE — вставьте скрипт формы сюда ======
-// Все кнопки имеют класс .gc-button
-// Пример подключения:
-// document.querySelectorAll('.gc-button').forEach(btn => {
-//   btn.addEventListener('click', () => { /* открыть форму GetCourse */ });
-// });
+// ====== GETCOURSE — модальное окно ======
+(function () {
+  var modal   = document.getElementById('gcModal');
+  var overlay = document.getElementById('gcModalOverlay');
+  var closeBtn = document.getElementById('gcModalClose');
+
+  function openModal() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gc-button').forEach(function(btn) {
+    btn.addEventListener('click', openModal);
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
 </script>
+
+<!-- ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ -->
+<div id="gcModal" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись на семинар">
+  <div id="gcModalOverlay" class="gc-modal__overlay"></div>
+  <div class="gc-modal__box">
+    <button id="gcModalClose" class="gc-modal__close" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Предзапись на семинар</div>
+    <div class="gc-modal__body">
+      <script id="10966ce6f14560d719330c4e287434b14980d3c1" src="https://online.agape-course.ru/pl/lite/widget/script?id=1601449"></script>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
