@@ -116,7 +116,7 @@
     letter-spacing: -0.01em;
   }
   .course-nav__link:hover { color: var(--warm); }
-  .course-nav__link[href="#psycho"] { color: var(--warm); border-bottom-color: var(--warm); }
+  .course-nav__link[href="#bio"] { color: var(--warm); border-bottom-color: var(--warm); }
   @media (max-width: 600px) {
     .course-nav__link { padding: 12px 18px; font-size: 12px; }
   }
@@ -887,8 +887,8 @@
 <nav class="course-nav" aria-label="Курсы">
   <div class="wrap">
     <div class="course-nav__inner">
-      <a class="course-nav__link" href="#psycho">Психосоматика</a>
       <a class="course-nav__link" href="#bio">Биодинамика</a>
+      <a class="course-nav__link" href="#psycho">Психосоматика</a>
     </div>
   </div>
 </nav>
@@ -897,279 +897,14 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__eyebrow">Видео · Ответы на вопросы</div>
-    <h1 class="hero__title h-display">Психосоматика и <em>Биодинамика</em> — смотрите видео и узнайте, что вам даст каждый курс</h1>
+    <h1 class="hero__title h-display">Биодинамика и <em>Психосоматика</em> — смотрите видео и узнайте, что вам даст каждый курс</h1>
     <p class="hero__hint">Олег Агапэ отвечает честно и без воды — перед тем, как вы примете решение</p>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     КУРС 1: ПСИХОСОМАТИКА
-══════════════════════════════════════════ -->
-<section class="course-section" id="psycho">
-
-  <!-- Шапка курса -->
-  <div class="course-hero">
-    <div class="wrap" style="text-align:center">
-      <div class="course-eyebrow">Психосоматика · 24–26 июля 2026 · Москва + онлайн</div>
-      <h2 class="course-title h-display">Психосоматика — <em>как читать тело</em> и работать с эмоциональными причинами симптомов</h2>
-      <p class="course-hint">Олег Агапэ отвечает на вопросы специалистов перед семинаром</p>
-
-      <div class="video-wrap">
-        <div class="video-toggle" role="tablist" aria-label="Выбор плеера психосоматика">
-          <button class="video-toggle__btn is-active" data-player="youtube" data-course="psycho" type="button">YouTube</button>
-          <button class="video-toggle__btn" data-player="vk" data-course="psycho" type="button">ВКонтакте</button>
-        </div>
-        <div class="video-player" id="playerPsycho">
-          <div class="video-player__placeholder">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-              <path d="M26 20 L48 32 L26 44 Z" fill="rgba(255,255,255,0.7)"/>
-            </svg>
-            <span>Вставьте ссылку на видео в коде</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA top -->
-  <div class="cta-block">
-    <button class="cta gc-button" type="button">Попасть в предзапись</button>
-    <span class="cta__hint">24–26 июля 2026 · Москва + онлайн</span>
-  </div>
-
-  <!-- БОЛЬ -->
-  <section class="pain">
-    <div class="wrap">
-      <div class="pain__inner">
-        <h2 class="pain__title h-section">Симптом снимается — <em>и возвращается снова</em></h2>
-        <p class="pain__sub">Вы работаете с телом и получаете результаты. Но некоторые клиенты приходят снова и снова — потому что в основе симптома лежит не структура, а непрожитый эмоциональный конфликт.</p>
-
-        <div class="pain__quote">
-          <span class="pain__quote-mark">«»</span>
-          <p class="pain__quote-text">90% людей сталкиваются с психосоматическими нарушениями в той или иной форме. Чем сложнее устроена психика — тем выше вероятность, что эмоции не выражаются напрямую, а <strong>фиксируются в теле через мышцы, фасции, дыхание, работу органов.</strong> Хроническое напряжение, спазмы, боли, расстройства сна, скачки давления — часто это не патология органов, а функциональные изменения, вызванные психоэмоциональными конфликтами.</p>
-          <div class="pain__quote-author">Из описания семинара</div>
-        </div>
-
-        <div class="pain__conclusion">
-          Если не работать с причиной — <em>симптом возвращается.</em> Психосоматика даёт инструмент для работы на уровне первопричины
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- О ЧЁМ ВИДЕО -->
-  <section class="about-webinar">
-    <div class="wrap">
-      <h2 class="about-webinar__title h-section">Это видео — для телесников, <em>которые хотят видеть глубже симптома</em></h2>
-      <div class="about-webinar__body">
-        <p>Вы уже умеете снимать напряжение, восстанавливать движение, улучшать функции. Но если в основе симптома — непрожитый эмоциональный конфликт, тело <strong>будет возвращаться к напряжению снова.</strong></p>
-        <p>Олег Агапэ отвечает на <strong>12 самых частых вопросов</strong> перед семинаром по психосоматике — честно про формат, границы, механику и что конкретно меняется в практике.</p>
-      </div>
-      <div class="about-webinar__result">
-        <span class="about-webinar__result-label">После просмотра</span>
-        <p class="about-webinar__result-text">Вы поймёте, <em>где проходит граница</em> между структурной работой и психосоматикой — и как объединить оба подхода в одну сессию</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ВОПРОСЫ -->
-  <section class="questions">
-    <div class="wrap">
-      <h2 class="questions__title h-section">В видео вы найдёте <em>ответы на эти вопросы</em></h2>
-      <div class="q-slider" id="sliderPsycho">
-        <div class="q-slider__viewport">
-          <ul class="q-slider__track" id="trackPsycho">
-
-            <!-- Слайд 1 -->
-            <li class="q-slide">
-              <div class="q-item">
-                <div class="q-num">01</div>
-                <p class="q-text">Сейчас везде говорят про психосоматику, но у всех своё понимание. <strong>На что вы опираетесь в своём подходе?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">02</div>
-                <p class="q-text"><strong>Где грань между реальной психосоматикой</strong> и просто «притягиванием смыслов»?</p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">03</div>
-                <p class="q-text">В каких случаях без учёта психосоматики <strong>телесная работа даёт слабый или временный эффект?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">04</div>
-                <p class="q-text">Как психоэмоциональное состояние клиента <strong>реально влияет на результат телесной работы?</strong></p>
-              </div>
-            </li>
-
-            <!-- Слайд 2 -->
-            <li class="q-slide">
-              <div class="q-item">
-                <div class="q-num">05</div>
-                <p class="q-text">Есть ли <strong>чёткие критерии,</strong> по которым можно понять, что симптом связан с психосоматикой?</p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">06</div>
-                <p class="q-text">С какими запросами вы чаще всего <strong>видите психосоматический компонент</strong> в практике?</p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">07</div>
-                <p class="q-text">Что меняется в работе специалиста, когда он <strong>начинает учитывать психосоматику?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">08</div>
-                <p class="q-text">Как это влияет на результаты, <strong>возврат клиентов и уровень доверия?</strong></p>
-              </div>
-            </li>
-
-            <!-- Слайд 3 -->
-            <li class="q-slide">
-              <div class="q-item">
-                <div class="q-num">09</div>
-                <p class="q-text">Как работать с психосоматикой через тело, <strong>не заходя в полноценную психотерапию?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">10</div>
-                <p class="q-text">Какие инструменты вы даёте специалисту, чтобы он мог <strong>экологично работать с эмоциями клиента?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">11</div>
-                <p class="q-text">Можно ли выстроить <strong>чёткий алгоритм</strong> работы с психосоматическими проявлениями или это всегда индивидуально?</p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">12</div>
-                <p class="q-text">Как <strong>не «додумывать» за клиента</strong> и не навязывать свои интерпретации?</p>
-              </div>
-            </li>
-
-            <!-- Слайд 4 -->
-            <li class="q-slide">
-              <div class="q-item">
-                <div class="q-num">13</div>
-                <p class="q-text">Что делать, если в процессе работы у клиента поднимаются <strong>сильные реакции — слёзы, тревога, агрессия?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">14</div>
-                <p class="q-text">Как оценить результат своей работы — <strong>есть ли объективные критерии эффективности?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">15</div>
-                <p class="q-text">Как встроить психосоматику в свою практику, <strong>не ломая текущий подход?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">16</div>
-                <p class="q-text">Как объяснять это клиенту, чтобы это выглядело <strong>профессионально, а не как «что-то из головы»?</strong></p>
-              </div>
-            </li>
-
-            <!-- Слайд 5 -->
-            <li class="q-slide">
-              <div class="q-item">
-                <div class="q-num">17</div>
-                <p class="q-text">Как проходит обучение на семинаре? <strong>Это больше теория или практика?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">18</div>
-                <p class="q-text">Как отрабатываются навыки, если речь идёт о <strong>таких тонких процессах?</strong></p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">19</div>
-                <p class="q-text"><strong>Где границы компетенции специалиста</strong> — что я могу брать в работу, а что лучше не трогать?</p>
-              </div>
-              <div class="q-item">
-                <div class="q-num">20</div>
-                <p class="q-text">У меня нет психологического образования — <strong>смогу ли я это применять в своей практике?</strong></p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-        <div class="q-slider__arrows">
-          <button class="q-arrow" id="prevPsycho" aria-label="Назад">&#8592;</button>
-          <div class="q-dots" id="dotsPsycho"></div>
-          <button class="q-arrow" id="nextPsycho" aria-label="Вперёд">&#8594;</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ПОЧЕМУ СТОИТ ПРИЙТИ -->
-  <section class="why">
-    <div class="wrap">
-      <h2 class="why__title h-section">После семинара <em>вы сможете</em></h2>
-      <ul class="why__list">
-        <li class="why__item">
-          <div class="why__num">01</div>
-          <p class="why__text"><strong>Видеть причину, а не только симптом</strong> — диагностировать, где в теле зафиксирована эмоция и что за ней стоит</p>
-        </li>
-        <li class="why__item">
-          <div class="why__num">02</div>
-          <p class="why__text"><strong>Давать устойчивый результат</strong> — симптом уходит и не возвращается, потому что снята первопричина</p>
-        </li>
-        <li class="why__item">
-          <div class="why__num">03</div>
-          <p class="why__text"><strong>Работать с психоэмоциональными запросами</strong> через тело — без психотерапии, анализа и «копаний»</p>
-        </li>
-        <li class="why__item">
-          <div class="why__num">04</div>
-          <p class="why__text"><strong>Объединить телесную и эмоциональную работу</strong> в одну сессию — целостный подход, который выделяет вас среди коллег</p>
-        </li>
-        <li class="why__item is-wide">
-          <div class="why__num">05</div>
-          <p class="why__text">Получить <strong>систему диагностики и алгоритм коррекции</strong> — карту психосоматических зон, техники высвобождения, протоколы работы с тревогой, депрессией, аутоиммунными состояниями</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- СЕМИНАР -->
-  <section class="seminar">
-    <div class="wrap">
-      <div class="seminar__inner">
-        <span class="seminar__label">Семинар</span>
-        <h2 class="seminar__title h-section">Психосоматика</h2>
-        <div class="seminar__details">
-          <div class="detail">
-            <div class="detail__label">Даты</div>
-            <div class="detail__val">24–26 июля 2026</div>
-          </div>
-          <div class="detail">
-            <div class="detail__label">Место</div>
-            <div class="detail__val">Москва + онлайн</div>
-          </div>
-          <div class="detail">
-            <div class="detail__label">Длительность</div>
-            <div class="detail__val">3 дня практики</div>
-          </div>
-          <div class="detail">
-            <div class="detail__label">Формат</div>
-            <div class="detail__val">Очно / Онлайн</div>
-          </div>
-        </div>
-        <div class="seminar__note">
-          Группа до 20 человек. Практика на телесных моделях — очно и онлайн.
-        </div>
-        <div class="cta-block" style="margin-top:0">
-          <button class="cta gc-button" type="button">Попасть в предзапись</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</section><!-- /ПСИХОСОМАТИКА -->
-
-
-<!-- ══════ РАЗДЕЛИТЕЛЬ ══════ -->
-<div class="course-divider">
-  <div class="wrap">
-    <div class="course-divider__line"></div>
-    <span class="course-divider__label">Второй курс</span>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     КУРС 2: БИОДИНАМИКА
+     КУРС 1: БИОДИНАМИКА
 ══════════════════════════════════════════ -->
 <section class="course-section" id="bio">
 
@@ -1450,6 +1185,271 @@
   </section>
 
 </section><!-- /БИОДИНАМИКА -->
+
+
+<!-- ══════ РАЗДЕЛИТЕЛЬ ══════ -->
+<div class="course-divider">
+  <div class="wrap">
+    <div class="course-divider__line"></div>
+    <span class="course-divider__label">Второй курс</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     КУРС 2: ПСИХОСОМАТИКА
+══════════════════════════════════════════ -->
+<section class="course-section" id="psycho">
+
+  <!-- Шапка курса -->
+  <div class="course-hero">
+    <div class="wrap" style="text-align:center">
+      <div class="course-eyebrow">Психосоматика · 24–26 июля 2026 · Москва + онлайн</div>
+      <h2 class="course-title h-display">Психосоматика — <em>как читать тело</em> и работать с эмоциональными причинами симптомов</h2>
+      <p class="course-hint">Олег Агапэ отвечает на вопросы специалистов перед семинаром</p>
+
+      <div class="video-wrap">
+        <div class="video-toggle" role="tablist" aria-label="Выбор плеера психосоматика">
+          <button class="video-toggle__btn is-active" data-player="youtube" data-course="psycho" type="button">YouTube</button>
+          <button class="video-toggle__btn" data-player="vk" data-course="psycho" type="button">ВКонтакте</button>
+        </div>
+        <div class="video-player" id="playerPsycho">
+          <div class="video-player__placeholder">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <path d="M26 20 L48 32 L26 44 Z" fill="rgba(255,255,255,0.7)"/>
+            </svg>
+            <span>Вставьте ссылку на видео в коде</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA top -->
+  <div class="cta-block">
+    <button class="cta gc-button" type="button">Попасть в предзапись</button>
+    <span class="cta__hint">24–26 июля 2026 · Москва + онлайн</span>
+  </div>
+
+  <!-- БОЛЬ -->
+  <section class="pain">
+    <div class="wrap">
+      <div class="pain__inner">
+        <h2 class="pain__title h-section">Симптом снимается — <em>и возвращается снова</em></h2>
+        <p class="pain__sub">Вы работаете с телом и получаете результаты. Но некоторые клиенты приходят снова и снова — потому что в основе симптома лежит не структура, а непрожитый эмоциональный конфликт.</p>
+
+        <div class="pain__quote">
+          <span class="pain__quote-mark">«»</span>
+          <p class="pain__quote-text">90% людей сталкиваются с психосоматическими нарушениями в той или иной форме. Чем сложнее устроена психика — тем выше вероятность, что эмоции не выражаются напрямую, а <strong>фиксируются в теле через мышцы, фасции, дыхание, работу органов.</strong> Хроническое напряжение, спазмы, боли, расстройства сна, скачки давления — часто это не патология органов, а функциональные изменения, вызванные психоэмоциональными конфликтами.</p>
+          <div class="pain__quote-author">Из описания семинара</div>
+        </div>
+
+        <div class="pain__conclusion">
+          Если не работать с причиной — <em>симптом возвращается.</em> Психосоматика даёт инструмент для работы на уровне первопричины
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- О ЧЁМ ВИДЕО -->
+  <section class="about-webinar">
+    <div class="wrap">
+      <h2 class="about-webinar__title h-section">Это видео — для телесников, <em>которые хотят видеть глубже симптома</em></h2>
+      <div class="about-webinar__body">
+        <p>Вы уже умеете снимать напряжение, восстанавливать движение, улучшать функции. Но если в основе симптома — непрожитый эмоциональный конфликт, тело <strong>будет возвращаться к напряжению снова.</strong></p>
+        <p>Олег Агапэ отвечает на <strong>12 самых частых вопросов</strong> перед семинаром по психосоматике — честно про формат, границы, механику и что конкретно меняется в практике.</p>
+      </div>
+      <div class="about-webinar__result">
+        <span class="about-webinar__result-label">После просмотра</span>
+        <p class="about-webinar__result-text">Вы поймёте, <em>где проходит граница</em> между структурной работой и психосоматикой — и как объединить оба подхода в одну сессию</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВОПРОСЫ -->
+  <section class="questions">
+    <div class="wrap">
+      <h2 class="questions__title h-section">В видео вы найдёте <em>ответы на эти вопросы</em></h2>
+      <div class="q-slider" id="sliderPsycho">
+        <div class="q-slider__viewport">
+          <ul class="q-slider__track" id="trackPsycho">
+
+            <!-- Слайд 1 -->
+            <li class="q-slide">
+              <div class="q-item">
+                <div class="q-num">01</div>
+                <p class="q-text">Сейчас везде говорят про психосоматику, но у всех своё понимание. <strong>На что вы опираетесь в своём подходе?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">02</div>
+                <p class="q-text"><strong>Где грань между реальной психосоматикой</strong> и просто «притягиванием смыслов»?</p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">03</div>
+                <p class="q-text">В каких случаях без учёта психосоматики <strong>телесная работа даёт слабый или временный эффект?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">04</div>
+                <p class="q-text">Как психоэмоциональное состояние клиента <strong>реально влияет на результат телесной работы?</strong></p>
+              </div>
+            </li>
+
+            <!-- Слайд 2 -->
+            <li class="q-slide">
+              <div class="q-item">
+                <div class="q-num">05</div>
+                <p class="q-text">Есть ли <strong>чёткие критерии,</strong> по которым можно понять, что симптом связан с психосоматикой?</p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">06</div>
+                <p class="q-text">С какими запросами вы чаще всего <strong>видите психосоматический компонент</strong> в практике?</p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">07</div>
+                <p class="q-text">Что меняется в работе специалиста, когда он <strong>начинает учитывать психосоматику?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">08</div>
+                <p class="q-text">Как это влияет на результаты, <strong>возврат клиентов и уровень доверия?</strong></p>
+              </div>
+            </li>
+
+            <!-- Слайд 3 -->
+            <li class="q-slide">
+              <div class="q-item">
+                <div class="q-num">09</div>
+                <p class="q-text">Как работать с психосоматикой через тело, <strong>не заходя в полноценную психотерапию?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">10</div>
+                <p class="q-text">Какие инструменты вы даёте специалисту, чтобы он мог <strong>экологично работать с эмоциями клиента?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">11</div>
+                <p class="q-text">Можно ли выстроить <strong>чёткий алгоритм</strong> работы с психосоматическими проявлениями или это всегда индивидуально?</p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">12</div>
+                <p class="q-text">Как <strong>не «додумывать» за клиента</strong> и не навязывать свои интерпретации?</p>
+              </div>
+            </li>
+
+            <!-- Слайд 4 -->
+            <li class="q-slide">
+              <div class="q-item">
+                <div class="q-num">13</div>
+                <p class="q-text">Что делать, если в процессе работы у клиента поднимаются <strong>сильные реакции — слёзы, тревога, агрессия?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">14</div>
+                <p class="q-text">Как оценить результат своей работы — <strong>есть ли объективные критерии эффективности?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">15</div>
+                <p class="q-text">Как встроить психосоматику в свою практику, <strong>не ломая текущий подход?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">16</div>
+                <p class="q-text">Как объяснять это клиенту, чтобы это выглядело <strong>профессионально, а не как «что-то из головы»?</strong></p>
+              </div>
+            </li>
+
+            <!-- Слайд 5 -->
+            <li class="q-slide">
+              <div class="q-item">
+                <div class="q-num">17</div>
+                <p class="q-text">Как проходит обучение на семинаре? <strong>Это больше теория или практика?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">18</div>
+                <p class="q-text">Как отрабатываются навыки, если речь идёт о <strong>таких тонких процессах?</strong></p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">19</div>
+                <p class="q-text"><strong>Где границы компетенции специалиста</strong> — что я могу брать в работу, а что лучше не трогать?</p>
+              </div>
+              <div class="q-item">
+                <div class="q-num">20</div>
+                <p class="q-text">У меня нет психологического образования — <strong>смогу ли я это применять в своей практике?</strong></p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        <div class="q-slider__arrows">
+          <button class="q-arrow" id="prevPsycho" aria-label="Назад">&#8592;</button>
+          <div class="q-dots" id="dotsPsycho"></div>
+          <button class="q-arrow" id="nextPsycho" aria-label="Вперёд">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОЧЕМУ СТОИТ ПРИЙТИ -->
+  <section class="why">
+    <div class="wrap">
+      <h2 class="why__title h-section">После семинара <em>вы сможете</em></h2>
+      <ul class="why__list">
+        <li class="why__item">
+          <div class="why__num">01</div>
+          <p class="why__text"><strong>Видеть причину, а не только симптом</strong> — диагностировать, где в теле зафиксирована эмоция и что за ней стоит</p>
+        </li>
+        <li class="why__item">
+          <div class="why__num">02</div>
+          <p class="why__text"><strong>Давать устойчивый результат</strong> — симптом уходит и не возвращается, потому что снята первопричина</p>
+        </li>
+        <li class="why__item">
+          <div class="why__num">03</div>
+          <p class="why__text"><strong>Работать с психоэмоциональными запросами</strong> через тело — без психотерапии, анализа и «копаний»</p>
+        </li>
+        <li class="why__item">
+          <div class="why__num">04</div>
+          <p class="why__text"><strong>Объединить телесную и эмоциональную работу</strong> в одну сессию — целостный подход, который выделяет вас среди коллег</p>
+        </li>
+        <li class="why__item is-wide">
+          <div class="why__num">05</div>
+          <p class="why__text">Получить <strong>систему диагностики и алгоритм коррекции</strong> — карту психосоматических зон, техники высвобождения, протоколы работы с тревогой, депрессией, аутоиммунными состояниями</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- СЕМИНАР -->
+  <section class="seminar">
+    <div class="wrap">
+      <div class="seminar__inner">
+        <span class="seminar__label">Семинар</span>
+        <h2 class="seminar__title h-section">Психосоматика</h2>
+        <div class="seminar__details">
+          <div class="detail">
+            <div class="detail__label">Даты</div>
+            <div class="detail__val">24–26 июля 2026</div>
+          </div>
+          <div class="detail">
+            <div class="detail__label">Место</div>
+            <div class="detail__val">Москва + онлайн</div>
+          </div>
+          <div class="detail">
+            <div class="detail__label">Длительность</div>
+            <div class="detail__val">3 дня практики</div>
+          </div>
+          <div class="detail">
+            <div class="detail__label">Формат</div>
+            <div class="detail__val">Очно / Онлайн</div>
+          </div>
+        </div>
+        <div class="seminar__note">
+          Группа до 20 человек. Практика на телесных моделях — очно и онлайн.
+        </div>
+        <div class="cta-block" style="margin-top:0">
+          <button class="cta gc-button" type="button">Попасть в предзапись</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section><!-- /ПСИХОСОМАТИКА -->
 
 
 <!-- ══════ АВТОР ══════ -->
