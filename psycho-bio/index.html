@@ -927,111 +927,77 @@
 
   /* ══ ОФФЕР-БАННЕР ══ */
   .offer-banner {
-    padding: 0 0 56px;
+    padding: 0 0 64px;
   }
   .offer-banner__inner {
-    max-width: 900px;
+    max-width: 720px;
     margin: 0 auto;
-    background: linear-gradient(135deg, var(--warm) 0%, #1e4a84 100%);
-    border-radius: 24px;
-    padding: 40px 48px;
-    color: #fff;
-    box-shadow: 0 20px 48px -12px rgba(20,50,110,0.40);
-    position: relative;
-    overflow: hidden;
+    text-align: center;
   }
-  .offer-banner__inner::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 240px; height: 240px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    pointer-events: none;
+  .offer-banner__desc {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0 0 32px;
   }
-  @media (max-width: 600px) {
-    .offer-banner__inner { padding: 28px 22px; }
-  }
-  .offer-banner__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.28);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 18px;
-  }
-  .offer-banner__title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(18px, 2.5vw, 26px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.2;
-    margin: 0 0 10px;
-    letter-spacing: -0.02em;
-  }
-  .offer-banner__sub {
-    font-size: clamp(14px, 1.5vw, 16px);
-    color: rgba(255,255,255,0.82);
-    line-height: 1.55;
-    margin: 0 0 24px;
-    max-width: 640px;
-  }
-  .offer-banner__bullets {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .offer-bullet {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: clamp(13px, 1.45vw, 15px);
-    color: rgba(255,255,255,0.90);
-    line-height: 1.45;
-  }
-  .offer-bullet__icon {
-    flex-shrink: 0;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.18);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px;
-    margin-top: 1px;
-  }
+  .offer-banner__desc strong { font-weight: 700; }
   .offer-banner__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    color: var(--warm);
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--accent);
+    color: #fff;
     border: none;
-    border-radius: 50px;
-    padding: 15px 32px;
+    border-radius: 14px;
+    padding: 20px 32px;
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(13px, 1.4vw, 15px);
+    font-size: clamp(14px, 1.6vw, 17px);
     font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: transform .18s, box-shadow .18s;
-    box-shadow: 0 8px 24px -6px rgba(10,30,80,0.30);
-    letter-spacing: -0.01em;
+    box-shadow: 0 8px 28px -6px rgba(209,88,54,0.45);
   }
   .offer-banner__cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px -8px rgba(10,30,80,0.38);
+    box-shadow: 0 14px 36px -8px rgba(209,88,54,0.55);
   }
   .offer-banner__note {
-    margin-top: 12px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.03em;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 0.01em;
+  }
+  .offer-banner__result {
+    margin-top: 28px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .offer-banner__result-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .offer-banner__result-text {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--ink);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .offer-banner__result-text em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  @media (max-width: 600px) {
+    .offer-banner__result { padding: 22px 18px; }
   }
 
   /* ══ КЕЙСЫ ══ */
@@ -1271,24 +1237,20 @@
   <section class="offer-banner">
     <div class="wrap">
       <div class="offer-banner__inner">
-        <div class="offer-banner__badge">🎓 6-месячное обучение · Сентябрь 2026</div>
-        <h3 class="offer-banner__title">Биодинамика — для остеопатов и телесников, которые хотят работать глубже</h3>
-        <div class="offer-banner__bullets">
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Для кого:</strong> остеопаты, массажисты, телесные практики с опытом работы</span>
-          </div>
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Что:</strong> 6 месяцев — переход от техник к состоянию, где тело само показывает путь</span>
-          </div>
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Результат:</strong> работаете глубже, не выгораете, клиенты держатся и возвращаются</span>
-          </div>
+        <p class="offer-banner__desc">
+          <strong>Биодинамика</strong> — 6-месячное обучение для остеопатов и телесных специалистов,
+          которые хотят перейти от техник к состоянию и работать на уровне первичного дыхания тела.
+          Старт — сентябрь 2026.
+        </p>
+        <button class="offer-banner__cta gc-button" type="button" data-course="bio">Попасть в предзапись</button>
+        <div class="offer-banner__note">за 1 минуту · бесплатно · без обязательств</div>
+        <div class="offer-banner__result">
+          <div class="offer-banner__result-label">Главный результат программы</div>
+          <p class="offer-banner__result-text">
+            Работать <em>из состояния, а не из техники</em> — глубже, без выгорания,
+            давая клиенту устойчивый результат.
+          </p>
         </div>
-        <button class="offer-banner__cta gc-button" type="button" data-course="bio">Попасть в предзапись →</button>
-        <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
       </div>
     </div>
   </section>
@@ -1532,24 +1494,20 @@
   <section class="offer-banner">
     <div class="wrap">
       <div class="offer-banner__inner">
-        <div class="offer-banner__badge">📅 24–26 июля 2026 · Москва + онлайн</div>
-        <h3 class="offer-banner__title">Психосоматика — для телесных специалистов, которые хотят точно распознавать психоэмоциональные блоки в теле</h3>
-        <div class="offer-banner__bullets">
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Для кого:</strong> остеопаты, массажисты, телесные практики с опытом работы</span>
-          </div>
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Что:</strong> 3 дня — система диагностики, алгоритм коррекции, работа с реальными кейсами</span>
-          </div>
-          <div class="offer-bullet">
-            <span class="offer-bullet__icon">✓</span>
-            <span><strong>Результат:</strong> находите истинную причину симптома и устраняете её через тело — клиент получает устойчивый результат</span>
-          </div>
+        <p class="offer-banner__desc">
+          <strong>Психосоматика</strong> — 3-дневный семинар-практикум для телесных специалистов,
+          которые хотят точно распознавать психоэмоциональные блоки в теле и работать с первопричиной симптома.
+          24–26 июля 2026 · Москва + онлайн.
+        </p>
+        <button class="offer-banner__cta gc-button" type="button" data-course="psycho">Попасть в предзапись</button>
+        <div class="offer-banner__note">за 1 минуту · бесплатно · без обязательств</div>
+        <div class="offer-banner__result">
+          <div class="offer-banner__result-label">Главный результат программы</div>
+          <p class="offer-banner__result-text">
+            Находить <em>истинную причину симптома</em> и устранять её через тело —
+            давая клиенту устойчивый результат.
+          </p>
         </div>
-        <button class="offer-banner__cta gc-button" type="button" data-course="psycho">Попасть в предзапись на Психосоматику →</button>
-        <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
       </div>
     </div>
   </section>
