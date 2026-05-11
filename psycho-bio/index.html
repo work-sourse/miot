@@ -1244,7 +1244,7 @@
 
   <!-- CTA top -->
   <div class="cta-block">
-    <button class="cta gc-button" type="button">Попасть в предзапись</button>
+    <button class="cta gc-button" type="button" data-course="bio">Попасть в предзапись</button>
     <span class="cta__hint">Биодинамика · дата уточняется</span>
   </div>
 
@@ -1269,7 +1269,7 @@
             <span><strong>Участники предзаписи</strong> получают приоритетные условия и ранний доступ к материалам</span>
           </div>
         </div>
-        <button class="offer-banner__cta gc-button" type="button">Попасть в предзапись на Биодинамику →</button>
+        <button class="offer-banner__cta gc-button" type="button" data-course="bio">Попасть в предзапись на Биодинамику →</button>
         <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
       </div>
     </div>
@@ -1537,7 +1537,7 @@
             <span><strong>Предзапись — это просто анкета.</strong> Мы свяжемся, ответим на вопросы и расскажем детали. Никаких обязательств.</span>
           </li>
         </ul>
-        <button class="cta gc-button" type="button">Попасть в предзапись на Биодинамику</button>
+        <button class="cta gc-button" type="button" data-course="bio">Попасть в предзапись на Биодинамику</button>
       </div>
     </div>
   </section>
@@ -1599,7 +1599,7 @@
           Это не быстрый инструмент. Это развитие навыка, который требует практики и включённости.
         </div>
         <div class="cta-block" style="margin-top:0">
-          <button class="cta gc-button" type="button">Попасть в предзапись</button>
+          <button class="cta gc-button" type="button" data-course="bio">Попасть в предзапись</button>
         </div>
       </div>
     </div>
@@ -1677,7 +1677,7 @@
 
   <!-- CTA top -->
   <div class="cta-block">
-    <button class="cta gc-button" type="button">Попасть в предзапись</button>
+    <button class="cta gc-button" type="button" data-course="psycho">Попасть в предзапись</button>
     <span class="cta__hint">24–26 июля 2026 · Москва + онлайн</span>
   </div>
 
@@ -1702,7 +1702,7 @@
             <span><strong>Участники предзаписи</strong> получают приоритетные условия и ранний доступ к материалам</span>
           </div>
         </div>
-        <button class="offer-banner__cta gc-button" type="button">Попасть в предзапись на Психосоматику →</button>
+        <button class="offer-banner__cta gc-button" type="button" data-course="psycho">Попасть в предзапись на Психосоматику →</button>
         <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
       </div>
     </div>
@@ -1942,7 +1942,7 @@
             <span><strong>Предзапись — это просто анкета.</strong> Мы свяжемся, ответим на вопросы и расскажем детали. Никаких обязательств.</span>
           </li>
         </ul>
-        <button class="cta gc-button" type="button">Попасть в предзапись на Психосоматику</button>
+        <button class="cta gc-button" type="button" data-course="psycho">Попасть в предзапись на Психосоматику</button>
       </div>
     </div>
   </section>
@@ -2004,7 +2004,7 @@
           Группа до 20 человек. Практика на телесных моделях — очно и онлайн.
         </div>
         <div class="cta-block" style="margin-top:0">
-          <button class="cta gc-button" type="button">Попасть в предзапись</button>
+          <button class="cta gc-button" type="button" data-course="psycho">Попасть в предзапись</button>
         </div>
       </div>
     </div>
@@ -2045,9 +2045,9 @@
 <section class="footer-cta">
   <div class="wrap">
     <div class="footer-cta__caption">Посмотрите видео — и все вопросы отпадут</div>
-    <div class="cta-block" style="margin:0">
-      <button class="cta gc-button" type="button">Попасть в предзапись</button>
-      <span class="cta__hint">Психосоматика · Биодинамика · Москва + онлайн</span>
+    <div class="cta-block" style="margin:0;gap:12px;flex-wrap:wrap">
+      <button class="cta gc-button" type="button" data-course="bio">Предзапись на Биодинамику</button>
+      <button class="cta gc-button" type="button" data-course="psycho" style="background:var(--accent)">Предзапись на Психосоматику</button>
     </div>
   </div>
 </section>
@@ -2061,16 +2061,30 @@
   </div>
 </footer>
 
-<!-- ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ -->
-<div id="gcModal" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись">
-  <div id="gcModalOverlay" class="gc-modal__overlay"></div>
+<!-- ══ МОДАЛ: БИОДИНАМИКА ══ -->
+<div id="gcModalBio" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись на Биодинамику">
+  <div class="gc-modal__overlay" data-close-modal="bio"></div>
   <div class="gc-modal__box">
-    <button id="gcModalClose" class="gc-modal__close" aria-label="Закрыть">✕</button>
-    <div class="gc-modal__title">Предзапись на курс</div>
+    <button class="gc-modal__close" data-close-modal="bio" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Предзапись на Биодинамику</div>
     <div class="gc-modal__body">
-      <script id="10966ce6f14560d719330c4e287434b14980d3c1"
-              src="https://online.agape-course.ru/pl/lite/widget/script?id=1601449"
-              onload="typeof startWidget10966ce6f14560d719330c4e287434b14980d3c1==='function'&&startWidget10966ce6f14560d719330c4e287434b14980d3c1()"></script>
+      <script id="7bcecc23b25b255beefda814cce4653957944791"
+              src="https://online.agape-course.ru/pl/lite/widget/script?id=1602255"
+              onload="typeof startWidget7bcecc23b25b255beefda814cce4653957944791==='function'&&startWidget7bcecc23b25b255beefda814cce4653957944791()"></script>
+    </div>
+  </div>
+</div>
+
+<!-- ══ МОДАЛ: ПСИХОСОМАТИКА ══ -->
+<div id="gcModalPsycho" class="gc-modal" aria-modal="true" role="dialog" aria-label="Предзапись на Психосоматику">
+  <div class="gc-modal__overlay" data-close-modal="psycho"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-close-modal="psycho" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Предзапись на Психосоматику</div>
+    <div class="gc-modal__body">
+      <script id="d79f48cd65b40addef173a7993c0dc52a52022b4"
+              src="https://online.agape-course.ru/pl/lite/widget/script?id=1602253"
+              onload="typeof startWidgetd79f48cd65b40addef173a7993c0dc52a52022b4==='function'&&startWidgetd79f48cd65b40addef173a7993c0dc52a52022b4()"></script>
     </div>
   </div>
 </div>
@@ -2170,29 +2184,46 @@
   loadVideo('youtube');
 })();
 
-// ══ МОДАЛКА GETCOURSE ══
+// ══ МОДАЛКИ GETCOURSE ══
 (function () {
-  var modal    = document.getElementById('gcModal');
-  var overlay  = document.getElementById('gcModalOverlay');
-  var closeBtn = document.getElementById('gcModalClose');
+  var modals = {
+    bio:    document.getElementById('gcModalBio'),
+    psycho: document.getElementById('gcModalPsycho')
+  };
 
-  function openModal() {
-    modal.classList.add('is-open');
+  function openModal(course) {
+    var m = modals[course];
+    if (!m) return;
+    m.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
-  function closeModal() {
-    modal.classList.remove('is-open');
+  function closeModal(course) {
+    var m = modals[course];
+    if (!m) return;
+    m.classList.remove('is-open');
     document.body.style.overflow = '';
   }
+  function closeAll() {
+    Object.keys(modals).forEach(function(k) { closeModal(k); });
+  }
 
+  // Кнопки открытия
   document.querySelectorAll('.gc-button').forEach(function(btn) {
-    btn.addEventListener('click', openModal);
+    btn.addEventListener('click', function() {
+      openModal(btn.dataset.course);
+    });
   });
 
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', closeModal);
+  // Кнопки закрытия и оверлеи
+  document.querySelectorAll('[data-close-modal]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      closeModal(el.dataset.closeModal);
+    });
+  });
+
+  // Escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') closeAll();
   });
 })();
 
