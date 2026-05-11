@@ -960,66 +960,80 @@
     padding: 0 0 64px;
   }
   .offer-banner__inner {
-    max-width: 720px;
+    max-width: 680px;
     margin: 0 auto;
     text-align: center;
   }
-  .offer-banner__desc {
-    font-size: clamp(16px, 1.8vw, 20px);
+  .offer-banner__headline {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(26px, 4vw, 46px);
+    font-weight: 700;
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+  }
+  .offer-banner__headline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .offer-banner__desc {
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: #555;
+    line-height: 1.65;
     margin: 0 0 32px;
   }
-  .offer-banner__desc strong { font-weight: 700; }
   .offer-banner__cta {
     display: block;
     width: 100%;
-    max-width: 420px;
+    max-width: 480px;
     margin: 0 auto;
     background: var(--accent);
     color: #fff;
     border: none;
     border-radius: 14px;
-    padding: 20px 32px;
+    padding: 22px 32px;
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(14px, 1.6vw, 17px);
+    font-size: clamp(14px, 1.5vw, 16px);
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
     transition: transform .18s, box-shadow .18s;
-    box-shadow: 0 8px 28px -6px rgba(209,88,54,0.45);
+    box-shadow: 0 10px 32px -6px rgba(209,88,54,0.45);
   }
   .offer-banner__cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 36px -8px rgba(209,88,54,0.55);
+    box-shadow: 0 16px 40px -8px rgba(209,88,54,0.55);
   }
   .offer-banner__note {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 13px;
-    color: #999;
+    color: #aaa;
     letter-spacing: 0.01em;
   }
   .offer-banner__result {
-    margin-top: 28px;
+    margin-top: 32px;
     background: #fff;
-    border-radius: 16px;
-    padding: 28px 32px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    border-radius: 20px;
+    padding: 30px 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    text-align: center;
   }
   .offer-banner__result-label {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .offer-banner__result-text {
-    font-size: clamp(16px, 1.8vw, 20px);
+    font-size: clamp(17px, 1.9vw, 22px);
     color: var(--ink);
-    line-height: 1.55;
+    line-height: 1.5;
     margin: 0;
+    font-weight: 500;
   }
   .offer-banner__result-text em {
     font-style: normal;
@@ -1027,7 +1041,8 @@
     font-weight: 600;
   }
   @media (max-width: 600px) {
-    .offer-banner__result { padding: 22px 18px; }
+    .offer-banner__result { padding: 22px 20px; }
+    .offer-banner__headline { font-size: clamp(22px, 7vw, 32px); }
   }
 
   /* ══ КЕЙСЫ ══ */
@@ -1235,8 +1250,9 @@
   <section class="offer-banner">
     <div class="wrap">
       <div class="offer-banner__inner">
+        <h2 class="offer-banner__headline">Предзапись на обучение<br>«<em>Биодинамика</em>»</h2>
         <p class="offer-banner__desc">
-          <strong>Биодинамика</strong> — 6-месячное обучение для остеопатов и телесных специалистов,
+          6-месячная программа для остеопатов и телесных специалистов,
           которые хотят перейти от техник к состоянию и работать на уровне первичного дыхания тела.
           Старт — сентябрь 2026.
         </p>
@@ -1502,8 +1518,9 @@
   <section class="offer-banner">
     <div class="wrap">
       <div class="offer-banner__inner">
+        <h2 class="offer-banner__headline">Предзапись на семинар<br>«<em>Психосоматика</em>»</h2>
         <p class="offer-banner__desc">
-          <strong>Психосоматика</strong> — 3-дневный семинар-практикум для телесных специалистов,
+          3-дневный практикум для телесных специалистов,
           которые хотят точно распознавать психоэмоциональные блоки в теле и работать с первопричиной симптома.
           24–26 июля 2026 · Москва + онлайн.
         </p>
