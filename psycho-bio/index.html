@@ -870,6 +870,262 @@
     line-height: 1.3;
   }
   .gc-modal__body { min-height: 80px; }
+
+  /* ══ ОФФЕР-БАННЕР ══ */
+  .offer-banner {
+    padding: 0 0 56px;
+  }
+  .offer-banner__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--warm) 0%, #1e4a84 100%);
+    border-radius: 24px;
+    padding: 40px 48px;
+    color: #fff;
+    box-shadow: 0 20px 48px -12px rgba(20,50,110,0.40);
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-banner__inner::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    pointer-events: none;
+  }
+  @media (max-width: 600px) {
+    .offer-banner__inner { padding: 28px 22px; }
+  }
+  .offer-banner__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .offer-banner__title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .offer-banner__sub {
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: rgba(255,255,255,0.82);
+    line-height: 1.55;
+    margin: 0 0 24px;
+    max-width: 640px;
+  }
+  .offer-banner__bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .offer-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: clamp(13px, 1.45vw, 15px);
+    color: rgba(255,255,255,0.90);
+    line-height: 1.45;
+  }
+  .offer-bullet__icon {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+  .offer-banner__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--warm);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 32px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(13px, 1.4vw, 15px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .18s, box-shadow .18s;
+    box-shadow: 0 8px 24px -6px rgba(10,30,80,0.30);
+    letter-spacing: -0.01em;
+  }
+  .offer-banner__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px -8px rgba(10,30,80,0.38);
+  }
+  .offer-banner__note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.03em;
+  }
+
+  /* ══ КЕЙСЫ ══ */
+  .cases {
+    padding: 60px 0;
+  }
+  .cases__title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 auto 44px;
+    max-width: 700px;
+  }
+  .cases__title em { font-style: normal; color: var(--warm); }
+  .cases__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) {
+    .cases__grid { grid-template-columns: 1fr; }
+  }
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s;
+  }
+  .case-card:hover { box-shadow: var(--shadow-md); }
+  .case-card__who {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .case-card__avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--warm-soft);
+    border: 1.5px solid var(--warm-line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--warm);
+    flex-shrink: 0;
+  }
+  .case-card__name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .case-card__role {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .case-card__before {
+    background: var(--bg-tint);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    border-left: 3px solid var(--border);
+  }
+  .case-card__before-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .case-card__after {
+    font-size: clamp(13px, 1.4vw, 15px);
+    color: var(--ink);
+    line-height: 1.55;
+    font-style: italic;
+    font-weight: 500;
+    border-left: 3px solid var(--warm);
+    padding-left: 14px;
+  }
+  .case-card__after strong { font-style: normal; color: var(--warm); font-weight: 700; }
+
+  /* ══ СРОЧНОСТЬ ══ */
+  .urgency {
+    padding: 0 0 56px;
+  }
+  .urgency__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 48px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 600px) {
+    .urgency__inner { padding: 28px 22px; }
+  }
+  .urgency__title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(18px, 2.4vw, 26px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0 0 28px;
+    letter-spacing: -0.02em;
+  }
+  .urgency__title em { font-style: normal; color: var(--warm); }
+  .urgency__list {
+    list-style: none;
+    padding: 0; margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .urgency__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .urgency__icon {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--warm-soft);
+    border: 1px solid var(--warm-line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    margin-top: 1px;
+  }
+  .urgency__item strong { color: var(--ink); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -938,6 +1194,33 @@
     <button class="cta gc-button" type="button">Попасть в предзапись</button>
     <span class="cta__hint">Биодинамика · дата уточняется</span>
   </div>
+
+  <!-- ОФФЕР-БАННЕР -->
+  <section class="offer-banner">
+    <div class="wrap">
+      <div class="offer-banner__inner">
+        <div class="offer-banner__badge">🎓 6-месячное обучение</div>
+        <h3 class="offer-banner__title">Биодинамика — глубокое обучение для телесных специалистов</h3>
+        <p class="offer-banner__sub">Вы посмотрели эфир. Следующий шаг — анкета предзаписи на курс. Это бесплатно и ни к чему не обязывает: мы свяжемся, расскажем детали и ответим на вопросы.</p>
+        <div class="offer-banner__bullets">
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>6 месяцев практики</strong> — переход от техник к состоянию, где тело само показывает путь</span>
+          </div>
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>Маленькая группа</strong> — персональное сопровождение, живая практика, глубокая обратная связь</span>
+          </div>
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>Участники предзаписи</strong> получают приоритетные условия и ранний доступ к материалам</span>
+          </div>
+        </div>
+        <button class="offer-banner__cta gc-button" type="button">Попасть в предзапись на Биодинамику →</button>
+        <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
+      </div>
+    </div>
+  </section>
 
   <!-- БОЛЬ -->
   <section class="pain">
@@ -1121,6 +1404,91 @@
     </div>
   </section>
 
+  <!-- КЕЙСЫ БИОДИНАМИКА -->
+  <section class="cases">
+    <div class="wrap">
+      <h2 class="cases__title">Что меняется у специалистов <em>после обучения</em></h2>
+      <div class="cases__grid">
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">А</div>
+            <div>
+              <div class="case-card__name">Алексей</div>
+              <div class="case-card__role">Мануальный терапевт</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Упёрся в финансовый потолок. Сеансы требовали больших физических сил — к вечеру едва стоял на ногах.
+          </div>
+          <div class="case-card__after">
+            Перешёл на <strong>премиальный сегмент</strong>. Теперь работает легко и мягко — пациенты сами просят записаться на курс вперёд.
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">А</div>
+            <div>
+              <div class="case-card__name">Анна</div>
+              <div class="case-card__role">Массажист</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Работала по стандартным техникам. Выгорание, боль в спине, мало клиентов, низкие чеки.
+          </div>
+          <div class="case-card__after">
+            Освоила системный подход. <strong>Очередь на месяц вперёд</strong>, чек вырос в 3 раза за счёт гарантированного результата.
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">П</div>
+            <div>
+              <div class="case-card__name">Павел</div>
+              <div class="case-card__role">Телесный специалист</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Искал структурное обучение. Не хватало уверенности и понимания, куда двигаться дальше.
+          </div>
+          <div class="case-card__after">
+            Поток клиентов вырос, получил уверенность. <strong>Начал преподавать и стал наставником</strong> для других специалистов.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- СРОЧНОСТЬ БИОДИНАМИКА -->
+  <section class="urgency">
+    <div class="wrap">
+      <div class="urgency__inner">
+        <h3 class="urgency__title">Почему стоит попасть <em>в предзапись сейчас</em></h3>
+        <ul class="urgency__list">
+          <li class="urgency__item">
+            <span class="urgency__icon">👥</span>
+            <span><strong>Группа маленькая намеренно.</strong> Биодинамика требует живой практики и внимания каждому участнику — поэтому мест немного и они заканчиваются быстро.</span>
+          </li>
+          <li class="urgency__item">
+            <span class="urgency__icon">🎁</span>
+            <span><strong>Участники предзаписи получают приоритетные условия</strong> — ранний доступ к материалам и специальные условия по стоимости до старта набора.</span>
+          </li>
+          <li class="urgency__item">
+            <span class="urgency__icon">💬</span>
+            <span><strong>Предзапись — это просто анкета.</strong> Мы свяжемся, ответим на вопросы и расскажем детали. Никаких обязательств.</span>
+          </li>
+        </ul>
+        <button class="cta gc-button" type="button">Попасть в предзапись на Биодинамику</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ПОЧЕМУ СТОИТ ПРИЙТИ -->
   <section class="why">
     <div class="wrap">
@@ -1231,6 +1599,33 @@
     <button class="cta gc-button" type="button">Попасть в предзапись</button>
     <span class="cta__hint">24–26 июля 2026 · Москва + онлайн</span>
   </div>
+
+  <!-- ОФФЕР-БАННЕР -->
+  <section class="offer-banner">
+    <div class="wrap">
+      <div class="offer-banner__inner">
+        <div class="offer-banner__badge">📅 24–26 июля 2026</div>
+        <h3 class="offer-banner__title">Психосоматика — семинар-практикум в Москве + онлайн</h3>
+        <p class="offer-banner__sub">Вы посмотрели эфир. Следующий шаг — анкета предзаписи на семинар. Это бесплатно и ни к чему не обязывает: мы свяжемся, расскажем детали и ответим на вопросы.</p>
+        <div class="offer-banner__bullets">
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>3 дня практики</strong> — система диагностики, алгоритм коррекции, работа с реальными кейсами</span>
+          </div>
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>Группа до 20 человек</strong> — живая работа, телесные модели, персональная обратная связь</span>
+          </div>
+          <div class="offer-bullet">
+            <span class="offer-bullet__icon">✓</span>
+            <span><strong>Участники предзаписи</strong> получают приоритетные условия и ранний доступ к материалам</span>
+          </div>
+        </div>
+        <button class="offer-banner__cta gc-button" type="button">Попасть в предзапись на Психосоматику →</button>
+        <div class="offer-banner__note">Предзапись бесплатна · без обязательств</div>
+      </div>
+    </div>
+  </section>
 
   <!-- БОЛЬ -->
   <section class="pain">
@@ -1382,6 +1777,91 @@
           <div class="q-dots" id="dotsPsycho"></div>
           <button class="q-arrow" id="nextPsycho" aria-label="Вперёд">&#8594;</button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КЕЙСЫ ПСИХОСОМАТИКА -->
+  <section class="cases">
+    <div class="wrap">
+      <h2 class="cases__title">Что меняется у специалистов <em>после обучения</em></h2>
+      <div class="cases__grid">
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">И</div>
+            <div>
+              <div class="case-card__name">Ирина</div>
+              <div class="case-card__role">Остеопат</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Боялась сложных пациентов с хроническими болями. Работала только с симптомами, не понимала первопричину.
+          </div>
+          <div class="case-card__after">
+            Полная клиническая уверенность. <strong>Решает сложные случаи за 1–2 сеанса</strong>, признана топ-экспертом в городе.
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">Е</div>
+            <div>
+              <div class="case-card__name">Елена</div>
+              <div class="case-card__role">Косметолог-эстетист</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Результаты не держались: напряжение в теле клиентов сводило на нет эффект от процедур.
+          </div>
+          <div class="case-card__after">
+            Начала работать с причиной. <strong>Результаты держатся дольше</strong>, чек вырос в 2 раза.
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__who">
+            <div class="case-card__avatar">Е</div>
+            <div>
+              <div class="case-card__name">Евгений</div>
+              <div class="case-card__role">Реабилитолог</div>
+            </div>
+          </div>
+          <div class="case-card__before">
+            <div class="case-card__before-label">Было</div>
+            Работал с детьми с особенностями. Не хватало инструментов для психоэмоционального уровня.
+          </div>
+          <div class="case-card__after">
+            Преодолел синдром самозванца. <strong>Работает осознанно</strong>, учитывая психоэмоциональное состояние каждого клиента.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- СРОЧНОСТЬ ПСИХОСОМАТИКА -->
+  <section class="urgency">
+    <div class="wrap">
+      <div class="urgency__inner">
+        <h3 class="urgency__title">Почему стоит попасть <em>в предзапись сейчас</em></h3>
+        <ul class="urgency__list">
+          <li class="urgency__item">
+            <span class="urgency__icon">📅</span>
+            <span><strong>Семинар 24–26 июля 2026.</strong> Места ограничены: группа до 20 человек — это принципиальное ограничение формата, а не маркетинговый ход.</span>
+          </li>
+          <li class="urgency__item">
+            <span class="urgency__icon">🎁</span>
+            <span><strong>Участники предзаписи получают приоритетные условия</strong> — специальная стоимость и ранний доступ к подготовительным материалам.</span>
+          </li>
+          <li class="urgency__item">
+            <span class="urgency__icon">💬</span>
+            <span><strong>Предзапись — это просто анкета.</strong> Мы свяжемся, ответим на вопросы и расскажем детали. Никаких обязательств.</span>
+          </li>
+        </ul>
+        <button class="cta gc-button" type="button">Попасть в предзапись на Психосоматику</button>
       </div>
     </div>
   </section>
