@@ -117,7 +117,7 @@
     letter-spacing: -0.01em;
   }
   .course-nav__link:hover { color: var(--warm); }
-  .course-nav__link[href="#bio"] { color: var(--warm); border-bottom-color: var(--warm); }
+  .course-nav__link.is-active { color: var(--warm); border-bottom-color: var(--warm); }
   @media (max-width: 600px) {
     .course-nav__link { padding: 12px 18px; font-size: 12px; }
   }
@@ -2019,14 +2019,13 @@
 
   function updateNav() {
     var scrollY = window.scrollY + 100;
-    var active = sections[0];
+    var active = null;
     sections.forEach(function(s) {
       if (s && s.offsetTop <= scrollY) active = s;
     });
     links.forEach(function(link) {
-      var isActive = link.getAttribute('href') === '#' + (active ? active.id : '');
-      link.style.color = isActive ? 'var(--warm)' : '';
-      link.style.borderBottomColor = isActive ? 'var(--warm)' : 'transparent';
+      var isActive = active && link.getAttribute('href') === '#' + active.id;
+      link.classList.toggle('is-active', !!isActive);
     });
   }
 
