@@ -816,12 +816,11 @@
 
   /* ══ ТАЙМКОДЫ ══ */
   .timecodes-section {
-    padding: 0 0 56px;
+    padding: 0 0 64px;
   }
   .timecodes {
     margin: 0 auto;
-    max-width: 720px;
-    padding: 20px 0 4px;
+    max-width: 860px;
   }
   .timecodes__label {
     font-size: 11px;
@@ -829,46 +828,74 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    text-align: center;
   }
   .timecodes__list {
     list-style: none;
     padding: 0; margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px 20px;
+    gap: 10px;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .timecodes__list { grid-template-columns: 1fr; }
   }
   .timecode-btn {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
-    background: none;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 8px;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border: 1.5px solid transparent;
+    padding: 14px 18px;
+    border-radius: 14px;
     cursor: pointer;
     text-align: left;
     width: 100%;
-    transition: background .15s;
+    transition: border-color .18s, box-shadow .18s, transform .15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
-  .timecode-btn:hover { background: var(--warm-soft); }
+  .timecode-btn:hover {
+    border-color: var(--warm);
+    box-shadow: 0 4px 18px rgba(30,74,132,0.12);
+    transform: translateY(-1px);
+  }
   .timecode-btn__time {
     font-family: 'Unbounded', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--warm);
     flex-shrink: 0;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
+    min-width: 44px;
+    background: rgba(30,74,132,0.07);
+    border-radius: 8px;
+    padding: 5px 8px;
+    text-align: center;
+  }
+  .timecode-btn:hover .timecode-btn__time {
+    background: var(--warm);
+    color: #fff;
   }
   .timecode-btn__text {
-    font-size: 13px;
-    color: var(--ink-soft);
+    font-size: 14px;
+    color: var(--ink);
     line-height: 1.4;
     font-weight: 500;
   }
+  .timecode-btn__play {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(30,74,132,0.06);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--warm);
+    opacity: 0;
+    transition: opacity .18s;
+  }
+  .timecode-btn:hover .timecode-btn__play { opacity: 1; }
+  .timecode-btn__play svg { width: 10px; height: 10px; }
 
   /* ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ */
   .gc-modal {
@@ -1964,6 +1991,12 @@
 
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
+
+  // Inject play icon into all timecode buttons
+  var playSVG = '<span class="timecode-btn__play"><svg viewBox="0 0 10 12" fill="currentColor"><path d="M0 0 L10 6 L0 12 Z"/></svg></span>';
+  document.querySelectorAll('.timecode-btn').forEach(function(btn) {
+    btn.insertAdjacentHTML('beforeend', playSVG);
+  });
 })();
 </script>
 
