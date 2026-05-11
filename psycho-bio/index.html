@@ -873,9 +873,21 @@
   }
   .tc-slider__slide {
     min-width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
     gap: 10px;
+    align-content: start;
+  }
+  @media (max-width: 700px) {
+    .tc-slider__slide {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .tc-slider__slide {
+      grid-template-columns: 1fr;
+    }
   }
   .tc-slider__nav {
     display: flex;
@@ -959,9 +971,9 @@
     color: #fff;
   }
   .timecode-btn__text {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--ink);
-    line-height: 1.4;
+    line-height: 1.35;
     font-weight: 500;
   }
   .timecode-btn__play {
@@ -2103,7 +2115,7 @@
     var items = Array.from(container.querySelectorAll('.timecodes__list li'));
     if (!items.length) return;
 
-    var PER = 3;
+    var PER = 9;
     var pages = [];
     for (var i = 0; i < items.length; i += PER) {
       pages.push(items.slice(i, i + PER));
