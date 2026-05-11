@@ -838,6 +838,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  .timecodes__list li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
   @media (max-width: 640px) {
     .timecodes__list { grid-template-columns: 1fr; }
   }
