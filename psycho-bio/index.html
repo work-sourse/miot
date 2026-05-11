@@ -1238,6 +1238,39 @@
             <span>Вставьте ссылку на видео в коде</span>
           </div>
         </div>
+
+        <!-- ТАЙМКОДЫ БИОДИНАМИКА -->
+        <div class="timecodes" id="timecodesBio">
+          <div class="timecodes__label">Таймкоды</div>
+          <ul class="timecodes__list">
+            <li><button class="timecode-btn" onclick="seekBio(0)"><span class="timecode-btn__time">00:00</span><span class="timecode-btn__text">В чём суть биодинамики в отличие от других техник?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(91)"><span class="timecode-btn__time">01:31</span><span class="timecode-btn__text">Почему вокруг биодинамики столько интереса?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(120)"><span class="timecode-btn__time">02:00</span><span class="timecode-btn__text">Кому подходит это обучение?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(234)"><span class="timecode-btn__time">03:54</span><span class="timecode-btn__text">С какими запросами работает особенно глубоко?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(301)"><span class="timecode-btn__time">05:01</span><span class="timecode-btn__text">Когда привычная работа перестаёт давать результат?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(362)"><span class="timecode-btn__time">06:02</span><span class="timecode-btn__text">Как биодинамика влияет на состояние клиента?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(410)"><span class="timecode-btn__time">06:50</span><span class="timecode-btn__text">Как через мягкие техники получить серьёзный результат?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(451)"><span class="timecode-btn__time">07:31</span><span class="timecode-btn__text">Что меняется в работе специалиста?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(495)"><span class="timecode-btn__time">08:15</span><span class="timecode-btn__text">Как влияет на результаты и доверие клиентов?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(540)"><span class="timecode-btn__time">09:00</span><span class="timecode-btn__text">Почему иначе начинают чувствовать тело?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(570)"><span class="timecode-btn__time">09:30</span><span class="timecode-btn__text">Как не выгорать от плотной работы руками?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(605)"><span class="timecode-btn__time">10:05</span><span class="timecode-btn__text">Работать глубже, но мягче для себя и клиента?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(635)"><span class="timecode-btn__time">10:35</span><span class="timecode-btn__text">Как меняется позиционирование специалиста?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(682)"><span class="timecode-btn__time">11:22</span><span class="timecode-btn__text">Помогает ли выйти на платёжеспособную аудиторию?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(705)"><span class="timecode-btn__time">11:45</span><span class="timecode-btn__text">За счёт чего начинают зарабатывать больше?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(725)"><span class="timecode-btn__time">12:05</span><span class="timecode-btn__text">Как проходит обучение — теория или практика?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(740)"><span class="timecode-btn__time">12:20</span><span class="timecode-btn__text">Почему обучение длится 6 месяцев?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(767)"><span class="timecode-btn__time">12:47</span><span class="timecode-btn__text">Как устроена практика? Развитие чувствительности рук</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(810)"><span class="timecode-btn__time">13:30</span><span class="timecode-btn__text">Можно ли освоить биодинамику онлайн?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(840)"><span class="timecode-btn__time">14:00</span><span class="timecode-btn__text">Есть ли структура или это про состояние?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(870)"><span class="timecode-btn__time">14:30</span><span class="timecode-btn__text">Смогу внедрить в практику сразу после обучения?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(890)"><span class="timecode-btn__time">14:50</span><span class="timecode-btn__text">Нет остеопатического образования — освою?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(900)"><span class="timecode-btn__time">15:00</span><span class="timecode-btn__text">Только начинаю практику — не рано?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(915)"><span class="timecode-btn__time">15:15</span><span class="timecode-btn__text">Насколько это безопасно для клиента?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekBio(943)"><span class="timecode-btn__time">15:43</span><span class="timecode-btn__text">Чем ваше обучение отличается от других программ?</span></button></li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1883,13 +1916,15 @@
 // ══ ВИДЕО: БИОДИНАМИКА ══
 (function () {
   var VIDEOS_BIO = {
-    youtube: '',  // https://www.youtube.com/embed/ВАШЕ_ID
-    vk:      ''   // https://vk.com/video_ext.php?oid=...
+    youtube: '',  // https://www.youtube.com/embed/ВАШЕ_ID?enablejsapi=1
+    vk:      ''   // https://vkvideo.ru/video_ext.php?oid=...
   };
-  var player = document.getElementById('playerBio');
+  var player     = document.getElementById('playerBio');
   var toggleBtns = document.querySelectorAll('[data-course="bio"].video-toggle__btn');
+  var currentKind = 'youtube';
 
   function loadVideo(kind) {
+    currentKind = kind;
     var src = VIDEOS_BIO[kind];
     if (!src) {
       player.innerHTML = `<div class="video-player__placeholder">
@@ -1904,7 +1939,7 @@
     var allow = kind === 'youtube'
       ? 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
       : 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-    player.innerHTML = `<iframe src="${src}" allow="${allow}" allowfullscreen></iframe>`;
+    player.innerHTML = `<iframe id="iframeBio" src="${src}" allow="${allow}" allowfullscreen></iframe>`;
   }
 
   toggleBtns.forEach(function(btn) {
@@ -1916,6 +1951,21 @@
   });
 
   loadVideo('youtube');
+
+  // Глобальная функция для таймкодов
+  window.seekBio = function(seconds) {
+    var iframe = document.getElementById('iframeBio');
+    if (!iframe) return;
+    if (currentKind === 'youtube') {
+      iframe.contentWindow.postMessage(JSON.stringify({
+        event: 'command', func: 'seekTo', args: [seconds, true]
+      }), '*');
+    } else {
+      var base = VIDEOS_BIO.vk;
+      iframe.src = base + '&t=' + seconds + 's';
+    }
+    document.getElementById('playerBio').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 })();
 
 // ══ МОДАЛКИ GETCOURSE ══
