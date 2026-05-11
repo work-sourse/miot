@@ -854,15 +854,73 @@
   .timecodes__list {
     list-style: none;
     padding: 0; margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
   }
-  .timecodes__list li:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
+  /* ══ СЛАЙДЕР ТАЙМКОДОВ ══ */
+  .tc-slider {
+    position: relative;
   }
-  @media (max-width: 640px) {
-    .timecodes__list { grid-template-columns: 1fr; }
+  .tc-slider__overflow {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .tc-slider__track {
+    display: flex;
+    transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+  .tc-slider__slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tc-slider__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .tc-slider__arrow {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--warm-line);
+    background: #fff;
+    color: var(--warm);
+    cursor: pointer;
+    font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, border-color .15s, transform .15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    flex-shrink: 0;
+  }
+  .tc-slider__arrow:hover:not(:disabled) {
+    background: var(--warm-soft);
+    border-color: var(--warm);
+    transform: scale(1.05);
+  }
+  .tc-slider__arrow:disabled { opacity: 0.28; cursor: default; }
+  .tc-slider__dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+  }
+  .tc-slider__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--warm-line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+    flex-shrink: 0;
+  }
+  .tc-slider__dot.is-active {
+    background: var(--warm);
+    transform: scale(1.3);
   }
   .timecode-btn {
     display: flex;
@@ -2037,6 +2095,101 @@
   document.querySelectorAll('.timecode-btn').forEach(function(btn) {
     btn.insertAdjacentHTML('beforeend', playSVG);
   });
+
+  // ══ СЛАЙДЕР ТАЙМКОДОВ ══
+  function initTcSlider(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var items = Array.from(container.querySelectorAll('.timecodes__list li'));
+    if (!items.length) return;
+
+    var PER = 3;
+    var pages = [];
+    for (var i = 0; i < items.length; i += PER) {
+      pages.push(items.slice(i, i + PER));
+    }
+
+    // Build track
+    var overflow = document.createElement('div');
+    overflow.className = 'tc-slider__overflow';
+    var track = document.createElement('div');
+    track.className = 'tc-slider__track';
+
+    pages.forEach(function(pageItems) {
+      var slide = document.createElement('div');
+      slide.className = 'tc-slider__slide';
+      var ul = document.createElement('ul');
+      ul.className = 'timecodes__list';
+      pageItems.forEach(function(li) { ul.appendChild(li); });
+      slide.appendChild(ul);
+      track.appendChild(slide);
+    });
+    overflow.appendChild(track);
+
+    // Nav
+    var nav = document.createElement('div');
+    nav.className = 'tc-slider__nav';
+
+    var prevBtn = document.createElement('button');
+    prevBtn.className = 'tc-slider__arrow';
+    prevBtn.innerHTML = '&#8592;';
+    prevBtn.setAttribute('aria-label', 'Назад');
+
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'tc-slider__dots';
+
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 'tc-slider__arrow';
+    nextBtn.innerHTML = '&#8594;';
+    nextBtn.setAttribute('aria-label', 'Вперёд');
+
+    var dots = pages.map(function(_, idx) {
+      var d = document.createElement('button');
+      d.className = 'tc-slider__dot';
+      d.setAttribute('aria-label', 'Слайд ' + (idx + 1));
+      d.addEventListener('click', function() { goTo(idx); });
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    nav.appendChild(prevBtn);
+    nav.appendChild(dotsWrap);
+    nav.appendChild(nextBtn);
+
+    // Assemble
+    var wrapper = document.createElement('div');
+    wrapper.className = 'tc-slider';
+    wrapper.appendChild(overflow);
+    wrapper.appendChild(nav);
+
+    var oldList = container.querySelector('.timecodes__list');
+    container.replaceChild(wrapper, oldList);
+
+    var cur = 0;
+    function goTo(idx) {
+      cur = Math.max(0, Math.min(idx, pages.length - 1));
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === cur); });
+      prevBtn.disabled = cur === 0;
+      nextBtn.disabled = cur === pages.length - 1;
+    }
+
+    prevBtn.addEventListener('click', function() { goTo(cur - 1); });
+    nextBtn.addEventListener('click', function() { goTo(cur + 1); });
+
+    // Touch swipe
+    var tx = 0;
+    track.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      var dx = tx - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 40) goTo(cur + (dx > 0 ? 1 : -1));
+    });
+
+    goTo(0);
+  }
+
+  initTcSlider('timecodesBio');
+  initTcSlider('timecodesPsycho');
 })();
 </script>
 
