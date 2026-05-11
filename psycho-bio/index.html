@@ -813,6 +813,59 @@
     .video-toggle__btn { font-size: 13px; padding: 9px 14px; }
   }
 
+  /* ══ ТАЙМКОДЫ ══ */
+  .timecodes {
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 20px 0 4px;
+  }
+  .timecodes__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  .timecodes__list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  @media (max-width: 600px) {
+    .timecodes__list { grid-template-columns: 1fr; }
+  }
+  .timecode-btn {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background .15s;
+  }
+  .timecode-btn:hover { background: var(--warm-soft); }
+  .timecode-btn__time {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--warm);
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+  .timecode-btn__text {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
   /* ══ МОДАЛЬНОЕ ОКНО GETCOURSE ══ */
   .gc-modal {
     display: none;
@@ -1590,6 +1643,24 @@
             <span>Вставьте ссылку на видео в коде</span>
           </div>
         </div>
+
+        <!-- ТАЙМКОДЫ ПСИХОСОМАТИКА -->
+        <div class="timecodes" id="timecodesPsycho">
+          <div class="timecodes__label">Таймкоды</div>
+          <ul class="timecodes__list">
+            <li><button class="timecode-btn" onclick="seekPsycho(0)"><span class="timecode-btn__time">00:00</span><span class="timecode-btn__text">Вступление</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(180)"><span class="timecode-btn__time">03:00</span><span class="timecode-btn__text">На что вы опираетесь в подходе?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(420)"><span class="timecode-btn__time">07:00</span><span class="timecode-btn__text">Где грань реальной психосоматики?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(700)"><span class="timecode-btn__time">11:40</span><span class="timecode-btn__text">Когда телесная работа даёт слабый эффект</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(960)"><span class="timecode-btn__time">16:00</span><span class="timecode-btn__text">Как эмоции влияют на результат</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(1200)"><span class="timecode-btn__time">20:00</span><span class="timecode-btn__text">Нужна ли психологическая подготовка?</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(1500)"><span class="timecode-btn__time">25:00</span><span class="timecode-btn__text">Как объяснить работу клиенту</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(1800)"><span class="timecode-btn__time">30:00</span><span class="timecode-btn__text">Результаты и как они держатся</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(2100)"><span class="timecode-btn__time">35:00</span><span class="timecode-btn__text">Формат обучения</span></button></li>
+            <li><button class="timecode-btn" onclick="seekPsycho(2400)"><span class="timecode-btn__time">40:00</span><span class="timecode-btn__text">Кому подходит семинар</span></button></li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1998,13 +2069,15 @@
 // ══ ВИДЕО: ПСИХОСОМАТИКА ══
 (function () {
   var VIDEOS_PSYCHO = {
-    youtube: '',  // https://www.youtube.com/embed/ВАШЕ_ID
-    vk:      ''   // https://vk.com/video_ext.php?oid=...
+    youtube: 'https://www.youtube.com/embed/lw5tFkivzKs?enablejsapi=1',
+    vk:      'https://vkvideo.ru/video_ext.php?oid=-211757880&id=456239428&hd=3&list=ln-oYFhDywJuRiFfqJzRK'
   };
-  var player = document.getElementById('playerPsycho');
+  var player   = document.getElementById('playerPsycho');
   var toggleBtns = document.querySelectorAll('[data-course="psycho"].video-toggle__btn');
+  var currentKind = 'youtube';
 
   function loadVideo(kind) {
+    currentKind = kind;
     var src = VIDEOS_PSYCHO[kind];
     if (!src) {
       player.innerHTML = `<div class="video-player__placeholder">
@@ -2019,7 +2092,7 @@
     var allow = kind === 'youtube'
       ? 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
       : 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-    player.innerHTML = `<iframe src="${src}" allow="${allow}" allowfullscreen></iframe>`;
+    player.innerHTML = `<iframe id="iframePsycho" src="${src}" allow="${allow}" allowfullscreen></iframe>`;
   }
 
   toggleBtns.forEach(function(btn) {
@@ -2031,6 +2104,22 @@
   });
 
   loadVideo('youtube');
+
+  // Глобальная функция для таймкодов
+  window.seekPsycho = function(seconds) {
+    var iframe = document.getElementById('iframePsycho');
+    if (!iframe) return;
+    if (currentKind === 'youtube') {
+      iframe.contentWindow.postMessage(JSON.stringify({
+        event: 'command', func: 'seekTo', args: [seconds, true]
+      }), '*');
+    } else {
+      var base = VIDEOS_PSYCHO.vk;
+      iframe.src = base + '&t=' + seconds + 's';
+    }
+    // Прокрутить к плееру
+    document.getElementById('playerPsycho').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 })();
 
 // ══ ВИДЕО: БИОДИНАМИКА ══
