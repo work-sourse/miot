@@ -356,6 +356,59 @@
     }
     .lcard__btn:hover { background: #a85e20; transform: translateY(-1px); }
 
+    /* ══ ТАРИФЫ ══ */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .plan {
+      background: var(--bg);
+      border: 2px solid var(--warm-line);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .plan--featured {
+      background: var(--card);
+      border-color: var(--accent);
+      box-shadow: 0 6px 28px -8px rgba(192,114,48,0.25);
+      position: relative;
+    }
+    .plan__best {
+      position: absolute;
+      top: -13px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 20px; padding: 4px 14px;
+      white-space: nowrap;
+    }
+    .plan__name {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 14px; font-weight: 700;
+      color: var(--ink-soft); letter-spacing: -0.01em;
+    }
+    .plan__price {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(32px, 4vw, 42px);
+      font-weight: 800; color: var(--ink);
+      letter-spacing: -0.03em; line-height: 1;
+    }
+    .plan__price span { font-size: 0.5em; color: var(--ink-mute); }
+    .plan__list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 8px;
+      font-size: 14px; color: var(--ink-soft); line-height: 1.4;
+    }
+    .plan__list li { display: flex; gap: 8px; }
+
     /* ══ FOOTER ══ */
     .page-foot {
       padding: 24px 0 36px; text-align: center;
@@ -435,103 +488,35 @@
           Когда три центра — таз, сердце и ум — рассогласованы, человек живёт <strong>одним центром</strong>: либо думает о реальности, либо ощущает, либо чувствует. Только интеграция всех трёх даёт настоящую адаптацию и силу. Этот эфир — про то, как это сделать.
         </div>
 
-        <div class="main-offer__cta-row">
-          <div class="main-offer__price">
-            <span class="main-offer__price-val">1 499 ₽</span>
-            <span class="main-offer__price-hint">только запись · доступ сразу</span>
+        <!-- ТАРИФЫ -->
+        <div class="pricing-grid">
+
+          <!-- ТАРИФ 1 -->
+          <div class="plan">
+            <div class="plan__name">Только 4-й эфир</div>
+            <div class="plan__price">1 499 <span>₽</span></div>
+            <ul class="plan__list">
+              <li>✓ Запись эфира «Внешний контур»</li>
+              <li>✓ Доступ на 2 недели</li>
+              <li>✓ Открывается сразу после оплаты</li>
+            </ul>
+            <a class="btn-primary" href="#" onclick="return false;">Купить 4-й эфир</a>
           </div>
-          <a class="btn-primary" href="#" onclick="return false;">Купить запись 4-го эфира</a>
-        </div>
-        <div class="main-offer__note">Бессрочный доступ · Смотреть в любое время</div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ══ БАНДЛ — ВСЕ 4 ══ -->
-<section class="bundle">
-  <div class="wrap">
-    <div class="bundle__inner">
-      <div class="bundle__left">
-        <div class="bundle__badge">🎁 Выгоднее всего</div>
-        <h2 class="bundle__title">Все 4 эфира — полная система</h2>
-        <p class="bundle__desc">
-          Таз → Сердечный центр → Ментальный центр → Внешний контур.<br>
-          Пройдите путь целиком: от основания к реализации
-        </p>
-        <div class="bundle__tags">
-          <span class="bundle__tag">Таз</span>
-          <span class="bundle__tag">Сердечный центр</span>
-          <span class="bundle__tag">Ментальный центр</span>
-          <span class="bundle__tag">Внешний контур</span>
-        </div>
-      </div>
-      <div class="bundle__right">
-        <div class="bundle__pricing">
-          <span class="bundle__old">5 996 ₽</span>
-          <span class="bundle__new">3 990 ₽</span>
-        </div>
-        <span class="bundle__save">Экономия 2 006 ₽</span>
-        <a class="btn-bundle" href="#" onclick="return false;">Купить все 4 эфира</a>
-        <span class="bundle__hint">Бессрочный доступ · Сразу после оплаты</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ ЭФИРЫ 1–3 ══ -->
-<section class="others">
-  <div class="wrap">
-    <h2 class="others__title">Или купите отдельные эфиры</h2>
-    <p class="others__sub">Каждый эфир — самостоятельная тема · 1 499 ₽ за запись</p>
-    <div class="others__grid">
-
-      <div class="lcard">
-        <div class="lcard__num">1</div>
-        <span class="lcard__tag">Эфир 1</span>
-        <h3 class="lcard__title">Мета-анатомия: <em>Таз</em></h3>
-        <div class="lcard__focus">
-          Основание системы — программы выживания, родовая система, репродуктивная функция. Где живут самые глубокие блоки
-        </div>
-        <div class="lcard__bottom">
-          <div>
-            <div class="lcard__price-val">1 499 ₽</div>
-            <div class="lcard__price-hint">только запись</div>
+          <!-- ТАРИФ 2 -->
+          <div class="plan plan--featured">
+            <div class="plan__best">🎁 Выгоднее</div>
+            <div class="plan__name">Все 4 эфира</div>
+            <div class="plan__price">3 999 <span>₽</span></div>
+            <ul class="plan__list">
+              <li>✓ Записи всех 4 эфиров серии</li>
+              <li>✓ Таз · Сердце · Ментал · Контур</li>
+              <li>✓ Доступ на 3 недели</li>
+              <li>✓ Открывается сразу после оплаты</li>
+            </ul>
+            <a class="btn-bundle" href="#" onclick="return false;">Купить все 4 эфира</a>
           </div>
-          <a class="lcard__btn" href="#" onclick="return false;">Купить</a>
-        </div>
-      </div>
 
-      <div class="lcard">
-        <div class="lcard__num">2</div>
-        <span class="lcard__tag">Эфир 2</span>
-        <h3 class="lcard__title">Мета-анатомия: <em>Сердечный центр</em></h3>
-        <div class="lcard__focus">
-          Эмоции, сострадание и физическая свобода проявлять любовь — без хронического зажима в груди
-        </div>
-        <div class="lcard__bottom">
-          <div>
-            <div class="lcard__price-val">1 499 ₽</div>
-            <div class="lcard__price-hint">только запись</div>
-          </div>
-          <a class="lcard__btn" href="#" onclick="return false;">Купить</a>
-        </div>
-      </div>
-
-      <div class="lcard">
-        <div class="lcard__num">3</div>
-        <span class="lcard__tag">Эфир 3</span>
-        <h3 class="lcard__title">Мета-анатомия: <em>Ментальный центр</em></h3>
-        <div class="lcard__focus">
-          Ум как диспетчер потоков, а не центр решений. Почему возникают тревога, СДВГ и ментальный туман
-        </div>
-        <div class="lcard__bottom">
-          <div>
-            <div class="lcard__price-val">1 499 ₽</div>
-            <div class="lcard__price-hint">только запись</div>
-          </div>
-          <a class="lcard__btn" href="#" onclick="return false;">Купить</a>
         </div>
       </div>
 
