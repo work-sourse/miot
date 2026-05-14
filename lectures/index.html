@@ -409,6 +409,94 @@
     }
     .plan__list li { display: flex; gap: 8px; }
 
+    /* ══ КАРУСЕЛЬ ОТЗЫВОВ ══ */
+    .reviews { padding: 0 0 72px; }
+    .reviews__title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 700; color: var(--ink);
+      text-align: center; letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .reviews__slider { position: relative; }
+    .reviews__overflow { overflow: hidden; border-radius: 4px; }
+    .reviews__track {
+      display: flex;
+      transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+    .reviews__slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .reviews__slide { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .reviews__slide { grid-template-columns: 1fr; }
+    }
+    .review-img {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      cursor: zoom-in;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .review-img:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+    }
+    .review-img img {
+      width: 100%; height: auto;
+      display: block;
+    }
+    .reviews__nav {
+      display: flex; justify-content: center;
+      align-items: center; gap: 20px;
+      margin-top: 20px;
+    }
+    .reviews__arrow {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1.5px solid var(--warm-line);
+      background: var(--card); color: var(--warm);
+      cursor: pointer; font-size: 17px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, border-color .15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .reviews__arrow:hover:not(:disabled) {
+      background: var(--warm-soft); border-color: var(--warm);
+    }
+    .reviews__arrow:disabled { opacity: 0.28; cursor: default; }
+    .reviews__dots { display: flex; gap: 7px; align-items: center; }
+    .reviews__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--warm-line); border: none; padding: 0;
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .reviews__dot.is-active { background: var(--warm); transform: scale(1.3); }
+
+    /* ══ ЛАЙТБОКС ══ */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 90vh;
+      border-radius: 12px; object-fit: contain;
+    }
+    .lightbox__close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: #fff;
+      font-size: 32px; cursor: pointer; line-height: 1;
+    }
+
     /* ══ FOOTER ══ */
     .page-foot {
       padding: 24px 0 36px; text-align: center;
@@ -426,7 +514,7 @@
   <div class="wrap">
     <div class="hero__eyebrow">Серия эфиров · Олег Агапэ</div>
     <h1 class="hero__title">Мета-<em>анатомия</em></h1>
-    <p class="hero__sub">Четыре эфира о том, как тело устроено не как анатомия, а как карта ваших состояний, эмоций и пути реализации</p>
+    <p class="hero__sub">4 эфира о том, как читать своё тело как карту: где зажат страх, где спрятана усталость и где лежит ресурс</p>
   </div>
 </section>
 
@@ -524,6 +612,64 @@
   </div>
 </section>
 
+<!-- ══ ОТЗЫВЫ ══ -->
+<section class="reviews">
+  <div class="wrap">
+    <h2 class="reviews__title">Отзывы участников</h2>
+    <div class="reviews__slider">
+      <div class="reviews__overflow">
+        <div class="reviews__track" id="reviewsTrack">
+
+          <!-- Слайд 1 -->
+          <div class="reviews__slide">
+            <div class="review-img"><img src="reviews/IMG_6900.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6901.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6902.PNG" alt="Отзыв" loading="lazy"></div>
+          </div>
+
+          <!-- Слайд 2 -->
+          <div class="reviews__slide">
+            <div class="review-img"><img src="reviews/IMG_6903.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6904.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6905.PNG" alt="Отзыв" loading="lazy"></div>
+          </div>
+
+          <!-- Слайд 3 -->
+          <div class="reviews__slide">
+            <div class="review-img"><img src="reviews/IMG_6906.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6908.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6909.PNG" alt="Отзыв" loading="lazy"></div>
+          </div>
+
+          <!-- Слайд 4 -->
+          <div class="reviews__slide">
+            <div class="review-img"><img src="reviews/IMG_6910.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6911.PNG" alt="Отзыв" loading="lazy"></div>
+            <div class="review-img"><img src="reviews/IMG_6912.PNG" alt="Отзыв" loading="lazy"></div>
+          </div>
+
+          <!-- Слайд 5 -->
+          <div class="reviews__slide">
+            <div class="review-img"><img src="reviews/IMG_6913.PNG" alt="Отзыв" loading="lazy"></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="reviews__nav">
+        <button class="reviews__arrow" id="rPrev">&#8592;</button>
+        <div class="reviews__dots" id="rDots"></div>
+        <button class="reviews__arrow" id="rNext">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ЛАЙТБОКС ══ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lbClose">&#10005;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
 <!-- ══ ЗАБОТА ══ -->
 <section style="padding: 0 0 64px; text-align: center;">
   <div class="wrap">
@@ -551,5 +697,63 @@
   </div>
 </footer>
 
+<script>
+  // ══ КАРУСЕЛЬ ОТЗЫВОВ ══
+  (function() {
+    var track = document.getElementById('reviewsTrack');
+    var slides = track.querySelectorAll('.reviews__slide');
+    var prev = document.getElementById('rPrev');
+    var next = document.getElementById('rNext');
+    var dotsWrap = document.getElementById('rDots');
+    var cur = 0;
+
+    var dots = Array.from(slides).map(function(_, i) {
+      var d = document.createElement('button');
+      d.className = 'reviews__dot';
+      d.addEventListener('click', function() { goTo(i); });
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    function goTo(idx) {
+      cur = Math.max(0, Math.min(idx, slides.length - 1));
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === cur); });
+      prev.disabled = cur === 0;
+      next.disabled = cur === slides.length - 1;
+    }
+
+    prev.addEventListener('click', function() { goTo(cur - 1); });
+    next.addEventListener('click', function() { goTo(cur + 1); });
+
+    // Swipe
+    var tx = 0;
+    track.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      if (Math.abs(tx - e.changedTouches[0].clientX) > 40)
+        goTo(cur + (tx - e.changedTouches[0].clientX > 0 ? 1 : -1));
+    });
+
+    goTo(0);
+  })();
+
+  // ══ ЛАЙТБОКС ══
+  (function() {
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lbImg');
+    document.querySelectorAll('.review-img img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        lbImg.src = img.src;
+        lb.classList.add('is-open');
+      });
+    });
+    document.getElementById('lbClose').addEventListener('click', function() {
+      lb.classList.remove('is-open');
+    });
+    lb.addEventListener('click', function(e) {
+      if (e.target === lb) lb.classList.remove('is-open');
+    });
+  })();
+</script>
 </body>
 </html>
