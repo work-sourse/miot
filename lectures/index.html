@@ -787,19 +787,27 @@
 </script>
 
 <!-- Модальное окно для виджетов GetCourse -->
-<div id="gcModal" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto;">
-  <div style="position:relative; max-width:640px; width:100%; background:#fff; border-radius:16px; padding:48px 24px 24px; margin:auto;">
-    <button onclick="gcClose()" aria-label="Закрыть" style="position:absolute; top:8px; right:12px; background:none; border:none; font-size:32px; line-height:1; cursor:pointer; color:#888;">&times;</button>
+<style>
+  #gcModal { display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto; }
+  #gcModal.is-open { display:flex; }
+  #gcModalBox { position:relative; max-width:680px; width:100%; background:#fff; border-radius:16px; padding:48px 16px 24px; margin:auto; }
+  #gcModalClose { position:absolute; top:8px; right:12px; background:none; border:none; font-size:32px; line-height:1; cursor:pointer; color:#666; z-index:2; }
+  #gcModalContent { min-height:560px; }
+  #gcModalContent iframe { width:100% !important; min-height:560px !important; border:none !important; display:block; }
+</style>
+<div id="gcModal">
+  <div id="gcModalBox">
+    <button id="gcModalClose" onclick="gcClose()" aria-label="Закрыть">&times;</button>
     <div id="gcModalContent"></div>
   </div>
 </div>
 
 <script>
-  function gcOpen(scriptId, src, fnName) {
+  function gcOpen(scriptId, src) {
     var modal = document.getElementById('gcModal');
     var content = document.getElementById('gcModalContent');
     content.innerHTML = '';
-    modal.style.display = 'flex';
+    modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     var s = document.createElement('script');
     s.id = scriptId;
@@ -807,7 +815,7 @@
     content.appendChild(s);
   }
   function gcClose() {
-    document.getElementById('gcModal').style.display = 'none';
+    document.getElementById('gcModal').classList.remove('is-open');
     document.getElementById('gcModalContent').innerHTML = '';
     document.body.style.overflow = '';
   }
