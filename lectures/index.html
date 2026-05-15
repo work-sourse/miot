@@ -616,7 +616,7 @@
               <li>✓ Доступ на 2 недели</li>
               <li>✓ Открывается сразу после оплаты</li>
             </ul>
-            <button class="btn-primary" onclick="gcOpen('7ad3f94ba8533d2e6dcdc795284b8527912f944f','https://online.agape-course.ru/pl/lite/widget/script?id=1604249')">Купить 4-й эфир</button>
+            <button class="btn-primary" onclick="gcOpen('gcModalSingle')">Купить 4-й эфир</button>
           </div>
 
           <!-- ТАРИФ 2 -->
@@ -630,7 +630,7 @@
               <li>✓ Доступ на 3 недели</li>
               <li>✓ Открывается сразу после оплаты</li>
             </ul>
-            <button class="btn-bundle" onclick="gcOpen('9c2736894370ca26189c57a454faaa2aa35435fc','https://online.agape-course.ru/pl/lite/widget/script?id=1604250')">Купить все 4 эфира</button>
+            <button class="btn-bundle" onclick="gcOpen('gcModalBundle')">Купить все 4 эфира</button>
           </div>
 
         </div>
@@ -704,7 +704,7 @@
 <section style="padding: 0 0 64px; text-align: center;">
   <div class="wrap">
     <p style="font-size: 15px; color: var(--ink-mute); margin-bottom: 16px;">Остались вопросы по оплате или доступу?</p>
-    <button onclick="gcOpen('be6b85ed96a6f8895860dd5068e035bc80b858f2','https://online.agape-course.ru/pl/lite/widget/script?id=1604251')"
+    <button onclick="gcOpen('gcModalSupport')"
        style="display: inline-flex; align-items: center; gap: 10px;
               background: var(--card); color: var(--warm);
               font-family: 'Unbounded', sans-serif; font-size: 13px;
@@ -786,42 +786,67 @@
   })();
 </script>
 
-<!-- Модальное окно для виджетов GetCourse -->
+<!-- ══ Модалки GetCourse ══ -->
 <style>
-  #gcModal { display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto; }
-  #gcModal.is-open { display:flex; }
-  #gcModalBox { position:relative; max-width:680px; width:100%; background:#fff; border-radius:16px; padding:48px 16px 24px; margin:auto; }
-  #gcModalClose { position:absolute; top:8px; right:12px; background:none; border:none; font-size:32px; line-height:1; cursor:pointer; color:#666; z-index:2; }
-  #gcModalContent { min-height:560px; }
-  #gcModalContent iframe { width:100% !important; min-height:560px !important; border:none !important; display:block; }
+  .gc-modal { display:none; position:fixed; inset:0; z-index:9000; align-items:center; justify-content:center; }
+  .gc-modal.is-open { display:flex; }
+  .gc-modal__overlay { position:absolute; inset:0; background:rgba(10,20,40,0.70); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+  .gc-modal__box { position:relative; z-index:1; background:var(--card); border-radius:20px; padding:40px 24px 24px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; margin:16px; box-shadow:0 32px 64px -16px rgba(10,30,80,0.40); }
+  @media (max-width:600px){ .gc-modal__box { padding:36px 14px 20px; } }
+  .gc-modal__close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; line-height:1; cursor:pointer; color:var(--ink-mute); padding:4px 8px; border-radius:8px; transition:color .15s, background .15s; }
+  .gc-modal__close:hover { color:var(--ink); background:var(--bg); }
+  .gc-modal__title { font-family:'Unbounded',sans-serif; font-size:15px; font-weight:700; color:var(--ink); margin:0 0 16px; line-height:1.3; }
+  .gc-modal__body { min-height:80px; }
 </style>
-<div id="gcModal">
-  <div id="gcModalBox">
-    <button id="gcModalClose" onclick="gcClose()" aria-label="Закрыть">&times;</button>
-    <div id="gcModalContent"></div>
+
+<div id="gcModalSingle" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Покупка 4-го эфира</div>
+    <div class="gc-modal__body">
+      <script id="7ad3f94ba8533d2e6dcdc795284b8527912f944f" src="https://online.agape-course.ru/pl/lite/widget/script?id=1604249"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalBundle" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Покупка всех 4 эфиров</div>
+    <div class="gc-modal__body">
+      <script id="9c2736894370ca26189c57a454faaa2aa35435fc" src="https://online.agape-course.ru/pl/lite/widget/script?id=1604250"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalSupport" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Вопрос службе заботы</div>
+    <div class="gc-modal__body">
+      <script id="be6b85ed96a6f8895860dd5068e035bc80b858f2" src="https://online.agape-course.ru/pl/lite/widget/script?id=1604251"></script>
+    </div>
   </div>
 </div>
 
 <script>
-  function gcOpen(scriptId, src) {
-    var modal = document.getElementById('gcModal');
-    var content = document.getElementById('gcModalContent');
-    content.innerHTML = '';
-    modal.classList.add('is-open');
+  function gcOpen(modalId) {
+    var m = document.getElementById(modalId);
+    if (!m) return;
+    m.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    var s = document.createElement('script');
-    s.id = scriptId;
-    s.src = src;
-    content.appendChild(s);
   }
-  function gcClose() {
-    document.getElementById('gcModal').classList.remove('is-open');
-    document.getElementById('gcModalContent').innerHTML = '';
+  function gcCloseAll() {
+    document.querySelectorAll('.gc-modal.is-open').forEach(function(m){ m.classList.remove('is-open'); });
     document.body.style.overflow = '';
   }
-  document.getElementById('gcModal').addEventListener('click', function(e) {
-    if (e.target.id === 'gcModal') gcClose();
+  document.querySelectorAll('[data-gc-close]').forEach(function(el){
+    el.addEventListener('click', gcCloseAll);
   });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') gcCloseAll(); });
 </script>
 
 </body>
