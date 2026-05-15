@@ -616,7 +616,7 @@
               <li>✓ Доступ на 2 недели</li>
               <li>✓ Открывается сразу после оплаты</li>
             </ul>
-            <button class="btn-primary" onclick="gcOpen('7ad3f94ba8533d2e6dcdc795284b8527912f944f','https://online.agape-course.ru/pl/lite/widget/script?id=1604249','startWidget7ad3f94ba8533d2e6dcdc795284b8527912f944f')">Купить 4-й эфир</button>
+            <button class="btn-primary" onclick="gcOpen('7ad3f94ba8533d2e6dcdc795284b8527912f944f','https://online.agape-course.ru/pl/lite/widget/script?id=1604249')">Купить 4-й эфир</button>
           </div>
 
           <!-- ТАРИФ 2 -->
@@ -630,7 +630,7 @@
               <li>✓ Доступ на 3 недели</li>
               <li>✓ Открывается сразу после оплаты</li>
             </ul>
-            <button class="btn-bundle" onclick="gcOpen('9c2736894370ca26189c57a454faaa2aa35435fc','https://online.agape-course.ru/pl/lite/widget/script?id=1604250','startWidget9c2736894370ca26189c57a454faaa2aa35435fc')">Купить все 4 эфира</button>
+            <button class="btn-bundle" onclick="gcOpen('9c2736894370ca26189c57a454faaa2aa35435fc','https://online.agape-course.ru/pl/lite/widget/script?id=1604250')">Купить все 4 эфира</button>
           </div>
 
         </div>
@@ -704,7 +704,7 @@
 <section style="padding: 0 0 64px; text-align: center;">
   <div class="wrap">
     <p style="font-size: 15px; color: var(--ink-mute); margin-bottom: 16px;">Остались вопросы по оплате или доступу?</p>
-    <button onclick="gcOpen('be6b85ed96a6f8895860dd5068e035bc80b858f2','https://online.agape-course.ru/pl/lite/widget/script?id=1604251','startWidgetbe6b85ed96a6f8895860dd5068e035bc80b858f2')"
+    <button onclick="gcOpen('be6b85ed96a6f8895860dd5068e035bc80b858f2','https://online.agape-course.ru/pl/lite/widget/script?id=1604251')"
        style="display: inline-flex; align-items: center; gap: 10px;
               background: var(--card); color: var(--warm);
               font-family: 'Unbounded', sans-serif; font-size: 13px;
@@ -786,17 +786,34 @@
   })();
 </script>
 
+<!-- Модальное окно для виджетов GetCourse -->
+<div id="gcModal" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto;">
+  <div style="position:relative; max-width:640px; width:100%; background:#fff; border-radius:16px; padding:48px 24px 24px; margin:auto;">
+    <button onclick="gcClose()" aria-label="Закрыть" style="position:absolute; top:8px; right:12px; background:none; border:none; font-size:32px; line-height:1; cursor:pointer; color:#888;">&times;</button>
+    <div id="gcModalContent"></div>
+  </div>
+</div>
+
 <script>
   function gcOpen(scriptId, src, fnName) {
-    if (typeof window[fnName] === 'function') {
-      window[fnName](); return;
-    }
+    var modal = document.getElementById('gcModal');
+    var content = document.getElementById('gcModalContent');
+    content.innerHTML = '';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
     var s = document.createElement('script');
     s.id = scriptId;
     s.src = src;
-    s.onload = function() { if (typeof window[fnName] === 'function') window[fnName](); };
-    document.body.appendChild(s);
+    content.appendChild(s);
   }
+  function gcClose() {
+    document.getElementById('gcModal').style.display = 'none';
+    document.getElementById('gcModalContent').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('gcModal').addEventListener('click', function(e) {
+    if (e.target.id === 'gcModal') gcClose();
+  });
 </script>
 
 </body>
