@@ -1957,9 +1957,9 @@ ul.dots li::before{content:'·';font-size:20px;line-height:0.8}
 </div><!-- /left-panel -->
 
 <script>
+const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 let current = 1;
-const slides = document.querySelectorAll('.slide');
 
 function goTo(n){
   if(n < 1 || n > slides.length) return;
