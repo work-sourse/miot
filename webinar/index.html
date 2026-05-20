@@ -169,76 +169,47 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 
 /* ══════════════════════════════════════════════
    ПЛАНШЕТ  ≤ 1100 px
-   Слайд занимает почти весь экран, контент читабелен
+   Слайд — слева (как на ПК), но шире: 70vw вместо 46vw
+   Шрифты масштабируются пропорционально (коэф. ×1.52)
    ══════════════════════════════════════════════ */
 @media (max-width: 1100px) {
-  html,body{
-    justify-content:center;
-    align-items:flex-start;
-    overflow-y:auto;
-    height:auto;
-    min-height:100%;
-  }
-  .left-panel{
-    padding:14px 12px 18px;
-    width:100%;
-    align-items:center;
-  }
+  /* Слайд шире — занимает бо́льшую часть экрана слева */
   .stage{
-    width:min(96vw,82vh);
-    height:min(96vw,82vh);
+    width:min(70vw,84vh);
+    height:min(70vw,84vh);
   }
-  .slide{padding:28px 30px 24px}
+  .slide{padding:34px 38px 30px}
 
-  /* Типографика: vw-коэффициент увеличен, т.к. слайд шире */
-  h1{font-size:clamp(26px,4.8vw,52px)}
-  h2{font-size:clamp(17px,2.9vw,34px)}
-  h3{font-size:clamp(15px,2.4vw,28px)}
-  p {font-size:clamp(14px,2.1vw,22px)}
-  .section-title-slide h1{font-size:clamp(28px,5.2vw,58px)}
+  /* Шрифты: vw-коэффициенты ×1.52 (70÷46),
+     чтобы текст выглядел так же крупно, как на ПК */
+  h1{font-size:clamp(26px,4.9vw,52px)}
+  h2{font-size:clamp(17px,3vw,34px)}
+  h3{font-size:clamp(15px,2.6vw,28px)}
+  p {font-size:clamp(14px,2vw,22px)}
+  .section-title-slide h1{font-size:clamp(28px,6vw,62px)}
   ul.items li{font-size:clamp(13px,2vw,20px)}
   .num-text{font-size:clamp(13px,2vw,20px)}
   .quote-block p{font-size:clamp(14px,2.1vw,22px)}
-  .stat-num{font-size:clamp(26px,4.8vw,52px)}
-  .stat-label{font-size:clamp(12px,1.8vw,18px)}
+  .stat-num{font-size:clamp(26px,5.3vw,52px)}
+  .stat-label{font-size:clamp(12px,1.7vw,18px)}
   .col-card h4{font-size:clamp(13px,2vw,20px)}
-  .col-card p,.col-card li{font-size:clamp(12px,1.8vw,18px)}
-  .case-label{font-size:clamp(11px,1.5vw,15px)}
-  .case-text{font-size:clamp(13px,1.9vw,18px)}
+  .col-card p,.col-card li{font-size:clamp(12px,1.7vw,18px)}
+  .case-label{font-size:clamp(10px,1.5vw,14px)}
+  .case-text{font-size:clamp(12px,1.7vw,18px)}
   .small{font-size:clamp(12px,1.7vw,18px)}
-  .warn p{font-size:clamp(12px,1.9vw,16px)}
-  .tag{font-size:clamp(12px,1.6vw,16px)}
-  .timer-badge{font-size:clamp(12px,1.6vw,15px);padding:6px 16px}
-  .badge{font-size:clamp(10px,1.2vw,13px)}
-  .price-card .tier{font-size:clamp(10px,1.2vw,13px)}
-  .price-card .old{font-size:clamp(11px,1.3vw,14px)}
+  .warn p{font-size:clamp(12px,2.3vw,15px)}
+  .tag{font-size:clamp(11px,1.6vw,16px)}
+  .timer-badge{font-size:clamp(12px,1.6vw,15px)}
+  .badge{font-size:clamp(10px,1.3vw,14px)}
+  .price-card .tier{font-size:clamp(10px,1.3vw,14px)}
+  .price-card .old{font-size:clamp(11px,1.4vw,15px)}
   .price-card .features{font-size:clamp(10px,1.3vw,14px)}
   .price-card .amount{font-size:clamp(16px,2.8vw,26px)}
 
-  /* Навигация: кнопки крупнее для тач */
-  .nav{padding:10px 20px;gap:16px}
+  /* Тач-навигация: кнопки крупнее */
   .nav-btn{width:42px;height:42px;font-size:18px}
-  .counter{font-size:13px;min-width:58px}
-  .nav-hint{display:none}   /* подсказка «пробел/стрелки» — не нужна на тач */
+  .nav-hint{display:none}
   .cta-btn{font-size:14px;padding:12px 32px}
-}
-
-/* Телефон ≤ 600 px */
-@media (max-width: 600px) {
-  .stage{
-    width:min(98vw,75vh);
-    height:min(98vw,75vh);
-  }
-  .slide{padding:22px 22px 18px}
-  h1{font-size:clamp(20px,5.5vw,36px)}
-  h2{font-size:clamp(14px,3.5vw,24px)}
-  p {font-size:clamp(12px,3vw,18px)}
-  .section-title-slide h1{font-size:clamp(22px,6vw,40px)}
-  .stat-num{font-size:clamp(22px,6vw,40px)}
-  .two-col,.case-grid,.stat-grid{grid-template-columns:1fr}
-  .price-table{grid-template-columns:1fr}
-  .price-card.featured::before{display:none}
-  .nav-btn{width:44px;height:44px}
 }
 </style>
 </head>
@@ -2057,7 +2028,7 @@ function fitContent(slide) {
   sc.style.width = '';
   if (sc.scrollHeight > sc.clientHeight + 8) {
     const ratio = sc.clientHeight / sc.scrollHeight;
-    const scale = Math.max(ratio, 0.72);
+    const scale = Math.max(ratio, 0.70);
     sc.style.transform = 'scale(' + scale.toFixed(3) + ')';
     sc.style.width = (100 / scale).toFixed(1) + '%';
   }
