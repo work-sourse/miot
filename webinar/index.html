@@ -166,6 +166,80 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 /* Warning */
 .warn{display:flex;align-items:center;gap:8px;background:rgba(219,168,112,0.15);border:1px solid rgba(200,121,65,0.25);border-radius:10px;padding:10px 14px;margin:10px 0}
 .warn p{color:#7a3d10;font-size:clamp(11px,1.5vw,13px);margin:0}
+
+/* ══════════════════════════════════════════════
+   ПЛАНШЕТ  ≤ 1100 px
+   Слайд занимает почти весь экран, контент читабелен
+   ══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  html,body{
+    justify-content:center;
+    align-items:flex-start;
+    overflow-y:auto;
+    height:auto;
+    min-height:100%;
+  }
+  .left-panel{
+    padding:14px 12px 18px;
+    width:100%;
+    align-items:center;
+  }
+  .stage{
+    width:min(96vw,82vh);
+    height:min(96vw,82vh);
+  }
+  .slide{padding:28px 30px 24px}
+
+  /* Типографика: vw-коэффициент увеличен, т.к. слайд шире */
+  h1{font-size:clamp(26px,4.8vw,52px)}
+  h2{font-size:clamp(17px,2.9vw,34px)}
+  h3{font-size:clamp(15px,2.4vw,28px)}
+  p {font-size:clamp(14px,2.1vw,22px)}
+  .section-title-slide h1{font-size:clamp(28px,5.2vw,58px)}
+  ul.items li{font-size:clamp(13px,2vw,20px)}
+  .num-text{font-size:clamp(13px,2vw,20px)}
+  .quote-block p{font-size:clamp(14px,2.1vw,22px)}
+  .stat-num{font-size:clamp(26px,4.8vw,52px)}
+  .stat-label{font-size:clamp(12px,1.8vw,18px)}
+  .col-card h4{font-size:clamp(13px,2vw,20px)}
+  .col-card p,.col-card li{font-size:clamp(12px,1.8vw,18px)}
+  .case-label{font-size:clamp(11px,1.5vw,15px)}
+  .case-text{font-size:clamp(13px,1.9vw,18px)}
+  .small{font-size:clamp(12px,1.7vw,18px)}
+  .warn p{font-size:clamp(12px,1.9vw,16px)}
+  .tag{font-size:clamp(12px,1.6vw,16px)}
+  .timer-badge{font-size:clamp(12px,1.6vw,15px);padding:6px 16px}
+  .badge{font-size:clamp(10px,1.2vw,13px)}
+  .price-card .tier{font-size:clamp(10px,1.2vw,13px)}
+  .price-card .old{font-size:clamp(11px,1.3vw,14px)}
+  .price-card .features{font-size:clamp(10px,1.3vw,14px)}
+  .price-card .amount{font-size:clamp(16px,2.8vw,26px)}
+
+  /* Навигация: кнопки крупнее для тач */
+  .nav{padding:10px 20px;gap:16px}
+  .nav-btn{width:42px;height:42px;font-size:18px}
+  .counter{font-size:13px;min-width:58px}
+  .nav-hint{display:none}   /* подсказка «пробел/стрелки» — не нужна на тач */
+  .cta-btn{font-size:14px;padding:12px 32px}
+}
+
+/* Телефон ≤ 600 px */
+@media (max-width: 600px) {
+  .stage{
+    width:min(98vw,75vh);
+    height:min(98vw,75vh);
+  }
+  .slide{padding:22px 22px 18px}
+  h1{font-size:clamp(20px,5.5vw,36px)}
+  h2{font-size:clamp(14px,3.5vw,24px)}
+  p {font-size:clamp(12px,3vw,18px)}
+  .section-title-slide h1{font-size:clamp(22px,6vw,40px)}
+  .stat-num{font-size:clamp(22px,6vw,40px)}
+  .two-col,.case-grid,.stat-grid{grid-template-columns:1fr}
+  .price-table{grid-template-columns:1fr}
+  .price-card.featured::before{display:none}
+  .nav-btn{width:44px;height:44px}
+}
 </style>
 </head>
 <body>
@@ -2018,6 +2092,18 @@ document.getElementById('stage').addEventListener('touchend',e=>{
 },{passive:true});
 slides.forEach(s => fitContent(s));
 goTo(1);
+
+// Пересчёт при смене ориентации / ресайзе (планшет)
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    slides.forEach(s => { s.style.transform = ''; });
+    const sc = slides[current-1].querySelector('.scroll-content');
+    if (sc) { sc.style.transform = ''; sc.style.width = ''; }
+    fitContent(slides[current-1]);
+  }, 120);
+});
 </script>
 </body>
 </html>
