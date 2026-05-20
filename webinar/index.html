@@ -169,47 +169,84 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 
 /* ══════════════════════════════════════════════
    ПЛАНШЕТ  ≤ 1100 px
-   Слайд — слева (как на ПК), но шире: 70vw вместо 46vw
-   Шрифты масштабируются пропорционально (коэф. ×1.52)
+   Слайд слева (как на ПК), шире: 70vw вместо 46vw
+   Вертикальные отступы сжаты — влезает весь контент
    ══════════════════════════════════════════════ */
 @media (max-width: 1100px) {
-  /* Слайд шире — занимает бо́льшую часть экрана слева */
-  .stage{
-    width:min(70vw,84vh);
-    height:min(70vw,84vh);
-  }
-  .slide{padding:34px 38px 30px}
 
-  /* Шрифты: vw-коэффициенты ×1.52 (70÷46),
-     чтобы текст выглядел так же крупно, как на ПК */
-  h1{font-size:clamp(26px,4.9vw,52px)}
-  h2{font-size:clamp(17px,3vw,34px)}
-  h3{font-size:clamp(15px,2.6vw,28px)}
-  p {font-size:clamp(14px,2vw,22px)}
-  .section-title-slide h1{font-size:clamp(28px,6vw,62px)}
-  ul.items li{font-size:clamp(13px,2vw,20px)}
-  .num-text{font-size:clamp(13px,2vw,20px)}
-  .quote-block p{font-size:clamp(14px,2.1vw,22px)}
-  .stat-num{font-size:clamp(26px,5.3vw,52px)}
-  .stat-label{font-size:clamp(12px,1.7vw,18px)}
-  .col-card h4{font-size:clamp(13px,2vw,20px)}
-  .col-card p,.col-card li{font-size:clamp(12px,1.7vw,18px)}
-  .case-label{font-size:clamp(10px,1.5vw,14px)}
-  .case-text{font-size:clamp(12px,1.7vw,18px)}
-  .small{font-size:clamp(12px,1.7vw,18px)}
-  .warn p{font-size:clamp(12px,2.3vw,15px)}
-  .tag{font-size:clamp(11px,1.6vw,16px)}
-  .timer-badge{font-size:clamp(12px,1.6vw,15px)}
-  .badge{font-size:clamp(10px,1.3vw,14px)}
-  .price-card .tier{font-size:clamp(10px,1.3vw,14px)}
-  .price-card .old{font-size:clamp(11px,1.4vw,15px)}
-  .price-card .features{font-size:clamp(10px,1.3vw,14px)}
-  .price-card .amount{font-size:clamp(16px,2.8vw,26px)}
+  /* Слайд шире, левое выравнивание сохраняется */
+  .stage{width:min(70vw,84vh);height:min(70vw,84vh)}
 
-  /* Тач-навигация: кнопки крупнее */
+  /* Padding слайда: минимальный, чтобы освободить высоту */
+  .slide{padding:16px 26px 14px}
+
+  /* Счётчик внутри слайда скрываем — он дублируется в навигации снизу */
+  .slide-num{display:none}
+
+  /* ── Типографика: vw × 1.52 (70÷46) ── */
+  h1{font-size:clamp(22px,4.6vw,48px);margin-bottom:6px;letter-spacing:-.3px}
+  h2{font-size:clamp(15px,2.8vw,30px);margin-bottom:8px}
+  h3{font-size:clamp(13px,2.4vw,24px);margin-bottom:6px}
+  p {font-size:clamp(13px,1.9vw,20px);margin-bottom:6px;line-height:1.5}
+  .section-title-slide h1{font-size:clamp(24px,5.6vw,58px)}
+  ul.items li{font-size:clamp(12px,1.9vw,18px)}
+  ul.items{gap:6px;margin:6px 0}
+  .num-text{font-size:clamp(12px,1.9vw,18px)}
+  .quote-block p{font-size:clamp(13px,2vw,20px)}
+  .small{font-size:clamp(11px,1.6vw,16px)}
+  .warn p{font-size:clamp(11px,2vw,14px)}
+  .tag{font-size:clamp(11px,1.5vw,15px)}
+
+  /* ── Вертикальные промежутки ── */
+  .divider{margin:8px 0;height:2px}
+  .badge{margin-bottom:8px;font-size:clamp(9px,1.2vw,12px);padding:3px 12px}
+  .section-tag{font-size:9px}
+  .tag-row{gap:5px;margin:6px 0}
+  .tag{padding:4px 10px}
+
+  /* Нумерованный список */
+  .num-list{gap:7px;margin:6px 0}
+  .num-item{gap:10px}
+  .num-circle{min-width:28px;height:28px;font-size:13px}
+
+  /* Карточки */
+  .stat-grid{gap:8px;margin:6px 0}
+  .stat-card{padding:12px 10px}
+  .stat-num{font-size:clamp(24px,4.8vw,48px)}
+  .stat-label{font-size:clamp(11px,1.6vw,15px);margin-top:4px}
+  .two-col{gap:10px;margin:6px 0}
+  .col-card{padding:10px 12px}
+  .col-card h4{font-size:clamp(12px,1.9vw,18px);margin-bottom:6px}
+  .col-card p,.col-card li{font-size:clamp(11px,1.6vw,15px)}
+  .case-grid{gap:8px;margin:6px 0}
+  .case-item{padding:10px}
+  .case-label{font-size:clamp(9px,1.3vw,12px)}
+  .case-text{font-size:clamp(11px,1.6vw,15px);line-height:1.45}
+  .quote-block{padding:10px 14px;margin:6px 0}
+  .insight-grid{gap:8px;margin:6px 0}
+  .insight-card{padding:10px}
+  .insight-card p{font-size:clamp(12px,1.7vw,16px)}
+  .profile-card{padding:12px;gap:14px}
+  .profile-img{width:76px;height:92px}
+
+  /* Цены */
+  .price-table{gap:6px;margin:6px 0}
+  .price-card{padding:10px 8px}
+  .price-card .tier{font-size:clamp(9px,1.2vw,12px)}
+  .price-card .old{font-size:clamp(10px,1.3vw,13px)}
+  .price-card .features{font-size:clamp(9px,1.2vw,13px);line-height:1.5}
+  .price-card .amount{font-size:clamp(15px,2.6vw,24px)}
+
+  /* CTA */
+  .cta-box{padding:12px 16px;margin:8px 0}
+  .timer-badge{font-size:clamp(11px,1.5vw,14px);padding:5px 12px}
+  .cta-btn{font-size:13px;padding:10px 26px}
+
+  /* Тач-навигация */
+  .nav{padding:10px 20px;gap:16px}
   .nav-btn{width:42px;height:42px;font-size:18px}
+  .counter{font-size:14px;min-width:60px}
   .nav-hint{display:none}
-  .cta-btn{font-size:14px;padding:12px 32px}
 }
 </style>
 </head>
@@ -2028,7 +2065,9 @@ function fitContent(slide) {
   sc.style.width = '';
   if (sc.scrollHeight > sc.clientHeight + 8) {
     const ratio = sc.clientHeight / sc.scrollHeight;
-    const scale = Math.max(ratio, 0.70);
+    // На планшете (≤1100px) разрешаем сжимать сильнее
+    const minScale = window.innerWidth <= 1100 ? 0.58 : 0.70;
+    const scale = Math.max(ratio, minScale);
     sc.style.transform = 'scale(' + scale.toFixed(3) + ')';
     sc.style.width = (100 / scale).toFixed(1) + '%';
   }
