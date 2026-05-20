@@ -251,8 +251,8 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
   /* Картинки на планшете — правая колонка, немного уже */
   .slide-img{
     width:36%!important;
-    opacity:0.85!important;
-    background:rgba(248,244,255,0.6)!important;
+    opacity:0.88!important;
+    mix-blend-mode:multiply!important;
   }
   .has-img{
     padding-right:calc(36% + 10px)!important;
@@ -270,11 +270,10 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
   width: 40% !important;
   object-fit: contain !important;
   object-position: center !important;
-  opacity: 0.88 !important;
-  mix-blend-mode: normal !important;
+  opacity: 0.92 !important;
+  mix-blend-mode: multiply !important;
   pointer-events: none !important;
   border-radius: 0 20px 20px 0 !important;
-  background: rgba(248,244,255,0.55) !important;
 }
 
 /* Контент слайда смещается влево, освобождая место для картинки */
