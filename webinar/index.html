@@ -2135,7 +2135,8 @@ function goTo(n){
   setTimeout(()=>slides[current-1].classList.remove('exit-left'),450);
   current = n;
   slides[current-1].classList.add('active');
-  document.getElementById('counter').textContent = current + ' / ' + totalSlides;
+  const slideLabel = slides[current-1].getAttribute('data-slide') || current;
+  document.getElementById('counter').textContent = slideLabel + ' / 78';
   document.getElementById('prev').disabled = current === 1;
   document.getElementById('next').disabled = current === slides.length;
   const pct = ((current-1)/(slides.length-1)*100).toFixed(1);
