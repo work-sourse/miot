@@ -248,22 +248,38 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
   .counter{font-size:14px;min-width:60px}
   .nav-hint{display:none}
 
-  /* Картинки — убираем отрицательные отступы, подгоняем размер */
+  /* Картинки на планшете — правая колонка, немного уже */
   .slide-img{
-    bottom:0!important;
-    right:0!important;
-    top:auto!important;
-    width:44%!important;
-    height:52%!important;
-    object-position:bottom right!important;
+    width:36%!important;
+    opacity:0.85!important;
+    background:rgba(248,244,255,0.6)!important;
   }
-  /* Слайд 24 — был top-right, возвращаем верхнее позиционирование */
-  .slide[data-slide="24"] .slide-img{
-    top:0!important;
-    bottom:auto!important;
-    height:56%!important;
-    object-position:top right!important;
+  .has-img{
+    padding-right:calc(36% + 10px)!important;
   }
+}
+
+/* ── Слайды с картинками — двухколоночный макет ── */
+.slide-img {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: auto !important;
+  height: 100% !important;
+  width: 40% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 0.88 !important;
+  mix-blend-mode: normal !important;
+  pointer-events: none !important;
+  border-radius: 0 20px 20px 0 !important;
+  background: rgba(248,244,255,0.55) !important;
+}
+
+/* Контент слайда смещается влево, освобождая место для картинки */
+.has-img {
+  padding-right: calc(40% + 14px) !important;
 }
 </style>
 </head>
@@ -469,7 +485,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 8 -->
-<div class="slide" data-slide="8">
+<div class="slide has-img" data-slide="8">
   <svg class="anat-deco top-right" viewBox="0 0 200 200" fill="none">
     <path d="M100 30 Q76 36 66 56 Q59 72 64 94 Q72 118 100 126 Q128 118 136 94 Q141 72 134 56 Q124 36 100 30Z" fill="rgba(139,92,246,0.12)" stroke="#a855f7" stroke-width="1"/>
     <path d="M64 58 Q44 50 32 60" fill="none" stroke="#fb923c" stroke-width="1.2"/>
@@ -715,7 +731,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 19 -->
-<div class="slide" data-slide="19">
+<div class="slide has-img" data-slide="19">
   <img class="slide-img" src="img/slide19.png" alt="" style="position:absolute;bottom:-10px;right:-10px;width:58%;height:72%;object-fit:contain;object-position:bottom right;opacity:0.12;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">19 / 78</span>
   <div class="badge badge-purple">Главный принцип</div>
@@ -778,7 +794,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 21 -->
-<div class="slide" data-slide="21">
+<div class="slide has-img" data-slide="21">
   <svg class="anat-deco center-right" viewBox="0 0 200 200" fill="none">
     <ellipse cx="100" cy="100" rx="80" ry="55" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1.5"/>
     <path d="M38 100 Q70 86 100 90 Q130 86 162 100" fill="none" stroke="rgba(139,92,246,0.5)" stroke-width="2"/>
@@ -810,7 +826,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 22 -->
-<div class="slide" data-slide="22">
+<div class="slide has-img" data-slide="22">
   <img class="slide-img" src="img/slide22.png" alt="" style="position:absolute;bottom:-8px;right:-8px;width:56%;height:64%;object-fit:contain;object-position:bottom right;opacity:0.14;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">22 / 78</span>
   <div class="badge badge-purple">Уровень 1 · Тазовое дно</div>
@@ -840,7 +856,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 23 -->
-<div class="slide" data-slide="23">
+<div class="slide has-img" data-slide="23">
   <svg class="anat-deco top-right" viewBox="0 0 200 200" fill="none">
     <path d="M100 30 Q76 36 66 56 Q59 72 64 94 Q72 118 100 126 Q128 118 136 94 Q141 72 134 56 Q124 36 100 30Z" fill="rgba(139,92,246,0.2)" stroke="#a855f7" stroke-width="1.5"/>
     <rect x="93" y="125" width="14" height="22" rx="6" fill="rgba(139,92,246,0.15)" stroke="#a855f7" stroke-width="1"/>
@@ -871,7 +887,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 24 -->
-<div class="slide" data-slide="24">
+<div class="slide has-img" data-slide="24">
   <svg class="anat-deco center-right" viewBox="0 0 100 200" fill="none">
     <rect x="30" y="8" width="40" height="22" rx="4" fill="rgba(139,92,246,0.3)" stroke="#a855f7" stroke-width="1"/>
     <rect x="30" y="34" width="40" height="22" rx="4" fill="rgba(139,92,246,0.3)" stroke="#a855f7" stroke-width="1"/>
@@ -916,7 +932,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 25 -->
-<div class="slide" data-slide="25">
+<div class="slide has-img" data-slide="25">
   <img class="slide-img" src="img/slide25.png" alt="" style="position:absolute;bottom:-6px;right:-8px;width:54%;height:68%;object-fit:contain;object-position:bottom right;opacity:0.17;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">25 / 78</span>
   <div class="badge badge-orange">Уровень 4 · Нейрорегуляция</div>
@@ -937,7 +953,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 26 -->
-<div class="slide" data-slide="26">
+<div class="slide has-img" data-slide="26">
   <img class="slide-img" src="img/slide26.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:50%;height:68%;object-fit:contain;object-position:bottom right;opacity:0.15;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">26 / 78</span>
   <div class="badge badge-blue">Уровень 5 · Ткань</div>
@@ -1111,7 +1127,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 
 
 <!-- SLIDE 35 — Кейс 1 -->
-<div class="slide grad-case" data-slide="35">
+<div class="slide grad-case has-img" data-slide="35">
   <img class="slide-img" src="img/slide35.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:58%;height:62%;object-fit:contain;object-position:bottom right;opacity:0.22;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">35 / 78</span>
   <div class="badge badge-orange">Кейс 1 · Дисменорея</div>
@@ -1137,7 +1153,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 36 — Кейс 2 -->
-<div class="slide grad-case" data-slide="36">
+<div class="slide grad-case has-img" data-slide="36">
   <img class="slide-img" src="img/slide36.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:54%;height:60%;object-fit:contain;object-position:bottom right;opacity:0.20;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">36 / 78</span>
   <div class="badge badge-orange">Кейс 2 · Бесплодие</div>
@@ -1188,7 +1204,7 @@ ul.dots li::before{content:'·';font-size:22px;line-height:0.8}
 </div>
 
 <!-- SLIDE 38 — Кейс 4 -->
-<div class="slide grad-case" data-slide="38">
+<div class="slide grad-case has-img" data-slide="38">
   <img class="slide-img" src="img/slide38.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:52%;height:64%;object-fit:contain;object-position:bottom right;opacity:0.19;mix-blend-mode:multiply;pointer-events:none">
   <span class="slide-num">38 / 78</span>
   <div class="badge badge-orange">Кейс 4 · Рецидивирующий цистит</div>
