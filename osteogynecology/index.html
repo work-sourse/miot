@@ -667,8 +667,8 @@
           </div>
           <div class="plan-price-note">офлайн&nbsp;&nbsp;·&nbsp;&nbsp;онлайн: <s>50 000₽</s> → 45 000₽</div>
           <div class="plan-btns">
-            <a class="btn-primary" href="https://agape-course.com/osteogin_pred?utm_source=zapis">Внести предоплату</a>
-            <a class="btn-outline" href="https://agape-course.com/gin_zayavka?utm_source=zapis">Оставить заявку</a>
+            <button class="btn-primary" onclick="gcOpen('gcModalPred')">Внести предоплату</button>
+            <button class="btn-outline" onclick="gcOpen('gcModalZayavka')">Оставить заявку</button>
             <a class="btn-ghost" href="https://agape-course.com/osteogynecology" target="_blank">Смотреть наполнение →</a>
           </div>
         </div>
@@ -711,8 +711,8 @@
           </div>
           <div class="plan-price-note">эфирное предложение</div>
           <div class="plan-btns">
-            <a class="btn-primary" href="https://agape-course.com/osteogin_pred?utm_source=zapis">Внести предоплату</a>
-            <a class="btn-outline" href="https://agape-course.com/gin_zayavka?utm_source=zapis">Оставить заявку</a>
+            <button class="btn-primary" onclick="gcOpen('gcModalPred')">Внести предоплату</button>
+            <button class="btn-outline" onclick="gcOpen('gcModalZayavka')">Оставить заявку</button>
             <a class="btn-ghost" href="https://agape-course.com/osteogynecology" target="_blank">Смотреть наполнение →</a>
           </div>
         </div>
@@ -867,8 +867,8 @@
       </div>
       <div class="savings-btns">
         <a class="btn-white" href="javascript:void(0)" onclick="document.querySelector('.video-wrap video').scrollIntoView({behavior:'smooth',block:'center'})">Смотреть запись</a>
-        <a class="btn-white-outline" href="https://agape-course.com/gin_zayavka?utm_source=zapis">Оставить заявку</a>
-        <a class="btn-white-outline" href="https://agape-course.com/osteogin_pred?utm_source=zapis">Внести предоплату</a>
+        <button class="btn-white-outline" onclick="gcOpen('gcModalZayavka')">Оставить заявку</button>
+        <button class="btn-white-outline" onclick="gcOpen('gcModalPred')">Внести предоплату</button>
       </div>
     </div>
   </div>
@@ -935,6 +935,58 @@
       if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
     }, {passive:true});
   })();
+</script>
+
+<!-- ══ Модалки GetCourse ══ -->
+<style>
+  .gc-modal { display:none; position:fixed; inset:0; z-index:9000; align-items:center; justify-content:center; }
+  .gc-modal.is-open { display:flex; }
+  .gc-modal__overlay { position:absolute; inset:0; background:rgba(10,20,40,0.70); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+  .gc-modal__box { position:relative; z-index:1; background:var(--card); border-radius:20px; padding:40px 24px 24px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; margin:16px; box-shadow:0 32px 64px -16px rgba(10,30,80,0.40); }
+  @media (max-width:600px){ .gc-modal__box { padding:36px 14px 20px; } }
+  .gc-modal__close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; line-height:1; cursor:pointer; color:var(--ink-mute); padding:4px 8px; border-radius:8px; transition:color .15s, background .15s; }
+  .gc-modal__close:hover { color:var(--ink); background:var(--bg); }
+  .gc-modal__title { font-family:'Unbounded',sans-serif; font-size:15px; font-weight:700; color:var(--ink); margin:0 0 16px; line-height:1.3; }
+  .gc-modal__body { min-height:80px; }
+</style>
+
+<div id="gcModalPred" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Предоплата</div>
+    <div class="gc-modal__body">
+      <script id="b189600d63b0db35432685f11b01ac702c7fa53c" src="https://online.agape-course.ru/pl/lite/widget/script?id=1607020" onload="typeof startWidgetb189600d63b0db35432685f11b01ac702c7fa53c==='function'&&startWidgetb189600d63b0db35432685f11b01ac702c7fa53c()"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalZayavka" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Оставить заявку</div>
+    <div class="gc-modal__body">
+      <script id="68c5c80af2053386d32a050ccc653717d9ed0a67" src="https://online.agape-course.ru/pl/lite/widget/script?id=1580323" onload="typeof startWidget68c5c80af2053386d32a050ccc653717d9ed0a67==='function'&&startWidget68c5c80af2053386d32a050ccc653717d9ed0a67()"></script>
+    </div>
+  </div>
+</div>
+
+<script>
+  function gcOpen(id) {
+    var m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function gcCloseAll() {
+    document.querySelectorAll('.gc-modal.is-open').forEach(function(m){ m.classList.remove('is-open'); });
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-gc-close]').forEach(function(el){
+    el.addEventListener('click', gcCloseAll);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') gcCloseAll(); });
 </script>
 
 </body>
