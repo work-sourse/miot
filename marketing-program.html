@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Программа по маркетингу · МИОТ &amp; Глеб Асташев</title>
+  <meta name="description" content="Блок по маркетингу: позиционирование, упаковка, контент, воронка продаж. 4 урока с личным сопровождением продюсера Глеба Асташева.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { padding: 0; margin: 0; list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+    h3 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #888;
+      margin: 0 0 18px;
+      font-weight: 500;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.93rem;
+      letter-spacing: 0.01em;
+      transition: all .2s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn--primary { background: #111; color: #fff; }
+    .btn--primary:hover { background: #fff; color: #111; border-color: #111; }
+    .btn--ghost { background: transparent; color: #111; border-color: #ccc; }
+    .btn--ghost:hover { background: #111; color: #fff; border-color: #111; }
+    .btn--lg { padding: 18px 40px; font-size: 1rem; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    .header.is-scrolled { border-bottom-color: #ececec; }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .logo__mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+    }
+    .logo__mark img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .logo__text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .logo__text small {
+      font-size: 0.66rem;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 136px 0 72px;
+      border-bottom: 1px solid #ececec;
+    }
+    .hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #555;
+      font-family: 'Inter', sans-serif;
+    }
+    .hero__badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #3fb950;
+    }
+    .hero__title {
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+    .hero__sub {
+      font-size: 1.05rem;
+      color: #444;
+      max-width: 560px;
+      margin: 0 0 36px;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+    .hero__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #ececec;
+      margin: 0;
+    }
+
+    /* ── Section ── */
+    .section { padding: 80px 0; }
+    .section--alt { background: #fafafa; }
+    .section__header {
+      margin-bottom: 56px;
+    }
+    .section__header h2 { margin-bottom: 12px; }
+    .section__lead {
+      color: #555;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Lesson Cards ── */
+    .lessons { display: flex; flex-direction: column; gap: 0; }
+
+    .lesson {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 40px;
+      padding: 48px 0;
+      border-bottom: 1px solid #ececec;
+      position: relative;
+    }
+    .lesson:first-child { border-top: 1px solid #ececec; }
+
+    .lesson__date-col {
+      padding-top: 4px;
+    }
+    .lesson__date {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      line-height: 1;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .lesson__time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: #888;
+      letter-spacing: 0.04em;
+    }
+    .lesson__month {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2px;
+    }
+
+    .lesson__content { }
+    .lesson__title {
+      margin-bottom: 20px;
+      color: #111;
+    }
+    .lesson__list {
+      margin-bottom: 24px;
+    }
+    .lesson__list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 5px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    .lesson__list li::before {
+      content: '—';
+      color: #bbb;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .lesson__result {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #f6f6f6;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .lesson__result-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .lesson__result strong {
+      color: #111;
+      font-weight: 600;
+    }
+
+    /* ── Bonus section ── */
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: #ececec;
+      border: 1px solid #ececec;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .bonus-item {
+      background: #fff;
+      padding: 24px 20px;
+    }
+    .bonus-item__icon {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .bonus-item__text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: #333;
+      line-height: 1.55;
+    }
+
+    .support-box {
+      border: 1px solid #ececec;
+      border-radius: 12px;
+      padding: 28px 32px;
+      background: #fafafa;
+    }
+    .support-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .support-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .support-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      color: #333;
+      line-height: 1.55;
+    }
+    .support-list li::before {
+      content: '✓';
+      color: #3fb950;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* ── Outcome ── */
+    .outcome {
+      border-left: 2px solid #111;
+      padding: 24px 32px;
+      background: #f9f9f9;
+      border-radius: 0 12px 12px 0;
+    }
+    .outcome__label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .outcome__text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: #111;
+      line-height: 1.5;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .price-card {
+      border: 1px solid #ececec;
+      border-radius: 14px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .price-card:hover {
+      border-color: #ccc;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .price-card--featured {
+      border-color: #111;
+      background: #fff;
+    }
+    .price-card__label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #888;
+    }
+    .price-card--featured .price-card__label { color: #111; font-weight: 600; }
+    .price-card__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .price-card__amount {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: #111;
+      line-height: 1;
+    }
+    .price-card__amount span {
+      font-size: 1rem;
+      color: #888;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      margin-left: 4px;
+    }
+    .price-card__saving {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #f0faf0;
+      color: #2a8a2a;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .price-card__cta {
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .price-card__cta .btn { width: 100%; }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid #ececec;
+    }
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer__copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.83rem;
+      color: #999;
+    }
+    .footer__links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer__links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.83rem;
+      color: #888;
+      transition: color .2s;
+    }
+    .footer__links a:hover { color: #111; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .lesson {
+        grid-template-columns: 1fr;
+        gap: 16px 0;
+      }
+      .lesson__date-col {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .lesson__date { font-size: 1.8rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .hero__actions { flex-direction: column; }
+      .hero__actions .btn { width: 100%; text-align: center; }
+      .bonus-grid { grid-template-columns: 1fr 1fr; }
+      .support-box { padding: 22px 20px; }
+      .outcome { padding: 18px 22px; }
+    }
+    @media (max-width: 400px) {
+      .bonus-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="oleg/index.html" class="logo">
+      <span class="logo__mark"><img src="oleg/logo.png" alt="Олег Агапэ"></span>
+      <span class="logo__text">
+        Олег Агапэ
+        <small>× Глеб Асташев</small>
+      </span>
+    </a>
+    <a href="#pricing" class="btn btn--primary" style="padding: 10px 22px; font-size: 0.88rem;">Записаться</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__meta">
+        <span class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          Июнь 2025 · онлайн
+        </span>
+        <span class="eyebrow" style="margin: 0;">4 урока · личное сопровождение</span>
+      </div>
+      <h1 class="hero__title">Программа<br><em style="font-style: italic; color: #555;">по маркетингу</em></h1>
+      <p class="hero__sub">
+        Вы собираете полноценную систему частной практики с нуля — от позиционирования до автоматизированной воронки продаж. С личным сопровождением продюсера.
+      </p>
+      <div class="hero__actions">
+        <a href="#pricing" class="btn btn--primary btn--lg">Записаться на блок</a>
+        <a href="#lessons" class="btn btn--ghost btn--lg">Смотреть программу</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lessons -->
+  <section class="section" id="lessons">
+    <div class="container">
+      <div class="section__header">
+        <p class="eyebrow">Расписание занятий</p>
+        <h2>4 урока — полная система</h2>
+        <p class="section__lead">Каждый урок — конкретный блок вашей маркетинговой системы. После каждого занятия остаётся результат, который вы сразу применяете в практике.</p>
+      </div>
+
+      <div class="lessons" id="lessons-list">
+
+        <!-- Урок 1 -->
+        <div class="lesson">
+          <div class="lesson__date-col">
+            <div class="lesson__date">10</div>
+            <div class="lesson__month">июня</div>
+            <div class="lesson__time">18:00 МСК</div>
+          </div>
+          <div class="lesson__content">
+            <h3 class="lesson__title">Позиционирование, матрица услуг и оффер</h3>
+            <ul class="lesson__list">
+              <li>Ответим на вопрос: кто вы и в чём ваше уникальное конкурентное преимущество?</li>
+              <li>Создадим ёмкое продающее вас описание для знакомств, представлений и соцсетей</li>
+              <li>Составим продающее описание ваших услуг, доработаем матрицу услуг</li>
+              <li>Создадим оффер — ключевое обещание клиенту, по которому он будет вас выбирать</li>
+            </ul>
+            <div class="lesson__result">
+              <span class="lesson__result-icon">→</span>
+              <span><strong>Результат:</strong> вы понимаете кто вы, для кого, что продаёте и как это преподнести. Клиент понимает, почему надо выбирать именно вас — и как можно раньше.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Урок 2 -->
+        <div class="lesson">
+          <div class="lesson__date-col">
+            <div class="lesson__date">13</div>
+            <div class="lesson__month">июня</div>
+            <div class="lesson__time">10:00 МСК</div>
+          </div>
+          <div class="lesson__content">
+            <h3 class="lesson__title">Упаковка</h3>
+            <ul class="lesson__list">
+              <li>На основе предыдущего блока упаковываем основные соцсети и рекламные каналы</li>
+              <li>Instagram, VK, Youtube, Дзен, VC, карты и отзывы, Авито, Telegram, MAX и другие</li>
+            </ul>
+            <div class="lesson__result">
+              <span class="lesson__result-icon">→</span>
+              <span><strong>Результат:</strong> вы представлены в основных публичных каналах, где находится ваш потенциальный клиент. Вас легче найти, и по профилю очевидна ценность пойти именно к вам.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Урок 3 -->
+        <div class="lesson">
+          <div class="lesson__date-col">
+            <div class="lesson__date">17</div>
+            <div class="lesson__month">июня</div>
+            <div class="lesson__time">18:00 МСК</div>
+          </div>
+          <div class="lesson__content">
+            <h3 class="lesson__title">Контент + ИИ-решения</h3>
+            <ul class="lesson__list">
+              <li>Как создавать контент с вашим лицом с минимальными вложениями времени и денег</li>
+              <li>Как создавать контент без лица с помощью ИИ</li>
+              <li>Структуры постов и видео, которые «залетают» и с которых записываются на сеансы и программы</li>
+              <li>Как создать свой личный контент-завод — один раз настроили и легко создаёте большое количество материала</li>
+            </ul>
+            <div class="lesson__result">
+              <span class="lesson__result-icon">→</span>
+              <span><strong>Результат:</strong> вы научились создавать разнообразный контент под разные соцсети для получения бесплатного органического трафика на ваши услуги.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Урок 4 -->
+        <div class="lesson">
+          <div class="lesson__date-col">
+            <div class="lesson__date">20</div>
+            <div class="lesson__month">июня</div>
+            <div class="lesson__time">10:00 МСК</div>
+          </div>
+          <div class="lesson__content">
+            <h3 class="lesson__title">Воронка продаж и продажи</h3>
+            <ul class="lesson__list">
+              <li>Как проводить потенциального клиента от случайного зрителя до «тёплого» заинтересованного клиента, который не пропадает</li>
+              <li>Как автоматизировать обработку заявок с высокой конверсией в запись на приём или продажу программы</li>
+              <li>Как эффективно продавать без стыда, страха и ощущения «уговариваю»?</li>
+            </ul>
+            <div class="lesson__result">
+              <span class="lesson__result-icon">→</span>
+              <span><strong>Результат:</strong> со всех каналов трафика, которые мы проработали в предыдущих блоках, заявки быстрее конвертируются в клиентов с минимальными вашими усилиями.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bonus -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="eyebrow">Дополнительно</p>
+        <h2>Бонусные уроки и материалы</h2>
+      </div>
+
+      <div class="bonus-grid">
+        <div class="bonus-item">
+          <div class="bonus-item__icon">📢</div>
+          <div class="bonus-item__text">Урок по Яндекс и VK рекламе</div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-item__icon">🌐</div>
+          <div class="bonus-item__text">Урок по созданию ИИ-сайтов</div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-item__icon">🤖</div>
+          <div class="bonus-item__text">Урок по созданию чат-ботов в TG и MAX</div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-item__icon">💳</div>
+          <div class="bonus-item__text">Как использовать и оплачивать ИИ из РФ</div>
+        </div>
+      </div>
+
+      <div class="support-box">
+        <h3>Личное сопровождение</h3>
+        <ul class="support-list">
+          <li>Каждый урок сопровождается личной обратной связью от Глеба Асташева</li>
+          <li>В чате отвечает Глеб и команда — доступны детальные ответы-разборы</li>
+          <li>Записи всех уроков остаются у вас навсегда</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcome -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Финальный результат программы</p>
+      <div class="outcome">
+        <div class="outcome__label">Что вы получаете в итоге</div>
+        <p class="outcome__text">
+          Вы собрали полноценную систему успешной частной практики и экспертного бизнеса с личным сопровождением продюсера. Знаете как себя продвинуть и откуда брать клиентов, а клиенты идентифицируют вас как «своего» специалиста и записываются на услуги.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section--alt" id="pricing">
+    <div class="container">
+      <div class="section__header">
+        <p class="eyebrow">Стоимость участия</p>
+        <h2>Выберите свой формат</h2>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="price-card__label">Один урок</div>
+          <div class="price-card__amount">15 000<span>руб</span></div>
+          <p class="price-card__desc">1 урок на выбор + неделя доступа в чат с командой</p>
+          <div class="price-card__cta">
+            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn--ghost">Написать Глебу</a>
+          </div>
+        </div>
+
+        <div class="price-card price-card--featured">
+          <div class="price-card__label">Обучались у нас</div>
+          <div class="price-card__amount">40 000<span>руб</span></div>
+          <span class="price-card__saving">−15 000 руб</span>
+          <p class="price-card__desc">Полный блок (4 урока + бонусы + чат) для тех, кто обучался в МИОТ Олега Агапэ или у Глеба Асташева</p>
+          <div class="price-card__cta">
+            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn--primary">Записаться</a>
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card__label">Без нас раньше</div>
+          <div class="price-card__amount">55 000<span>руб</span></div>
+          <p class="price-card__desc">Полный блок (4 урока + бонусы + чат) для новых участников</p>
+          <div class="price-card__cta">
+            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn--ghost">Записаться</a>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #888; text-align: center;">
+        Остались вопросы? Напишите в Telegram — ответим подробно.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__copy">© 2025 · МИОТ &amp; Глеб Асташев</div>
+    <div class="footer__links">
+      <a href="index.html">МИОТ</a>
+      <a href="oleg/index.html">Олег Агапэ</a>
+      <a href="https://t.me/glebasht" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+
+</body>
+</html>
