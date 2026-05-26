@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мини-курс: Самокоррекция тела · Олег Агапэ</title>
+  <meta name="description" content="4 практических урока по самокоррекции тела: осанка, дыхание и лёгкость">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --warm:        #2E5F9E;
+      --warm-soft:   #DDE8F5;
+      --warm-line:   rgba(46,95,158,0.22);
+      --accent:      #C07230;
+      --accent-soft: #FAEEDE;
+      --ink:         #141C2A;
+      --ink-soft:    #3A4758;
+      --ink-mute:    #7A8FA8;
+      --bg:          #F0F3F9;
+      --card:        #fff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ══ HERO ══ */
+    .hero {
+      background: linear-gradient(160deg, #0f2548 0%, #1a3a6b 55%, #2E5F9E 100%);
+      padding: 60px 0 56px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(192,114,48,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__inner { position: relative; z-index: 1; }
+    .hero__eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 20px; padding: 5px 16px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); margin-bottom: 18px;
+    }
+    .hero__title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(22px, 3.5vw, 40px);
+      font-weight: 800; color: #fff;
+      line-height: 1.15; letter-spacing: -0.025em;
+      max-width: 680px; margin: 0 auto 16px;
+    }
+    .hero__title em { font-style: normal; color: #F5D49A; }
+    .hero__desc {
+      font-size: clamp(14px, 1.6vw, 16px);
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7; max-width: 580px;
+      margin: 0 auto 20px;
+    }
+    .hero__tagline {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(18px, 2vw, 22px);
+      color: #F5D49A;
+      margin-bottom: 32px;
+    }
+    .hero__pills {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 10px;
+    }
+    .hero__pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 13px; color: rgba(255,255,255,0.85);
+    }
+
+    /* ══ УРОКИ ══ */
+    .lessons { padding: 64px 0 0; }
+
+    .lesson {
+      margin-bottom: 56px;
+    }
+    .lesson__header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .lesson__num {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #1a3a6b 0%, #2E5F9E 100%);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 16px; font-weight: 800;
+      color: #fff;
+    }
+    .lesson__meta {}
+    .lesson__label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--warm); margin-bottom: 3px;
+    }
+    .lesson__title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 700; color: var(--ink);
+      line-height: 1.2; letter-spacing: -0.02em;
+    }
+
+    .lesson__body {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(46,95,158,0.09);
+    }
+    .lesson__video {
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+    .lesson__video video {
+      width: 100%; height: 100%; display: block;
+    }
+    .lesson__content {
+      padding: 24px 28px 28px;
+      display: flex; gap: 28px;
+    }
+    @media (max-width: 600px) {
+      .lesson__content { flex-direction: column; gap: 16px; padding: 20px 18px 22px; }
+    }
+    .lesson__desc {
+      font-size: 15px; color: var(--ink-soft);
+      line-height: 1.65; flex: 1;
+    }
+    .lesson__points {
+      flex-shrink: 0; width: 220px;
+    }
+    @media (max-width: 600px) { .lesson__points { width: 100%; } }
+    .lesson__points-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--warm); margin-bottom: 10px;
+    }
+    .lesson__points ul {
+      list-style: none;
+    }
+    .lesson__points li {
+      font-size: 13px; color: var(--ink-soft);
+      line-height: 1.5; padding: 5px 0;
+      border-bottom: 1px solid rgba(46,95,158,0.07);
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .lesson__points li:last-child { border-bottom: none; }
+    .lesson__points li::before {
+      content: '✓';
+      color: var(--warm); font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+      font-size: 12px;
+    }
+
+    /* Разделитель между уроками */
+    .lesson-divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 0 0 56px;
+      color: var(--ink-mute); font-size: 12px;
+      font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lesson-divider::before,
+    .lesson-divider::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: var(--warm-line);
+    }
+
+    /* ══ ЧТО ДАЛЬШЕ ══ */
+    .next-section {
+      padding: 8px 0 80px;
+    }
+    .next-inner {
+      background: linear-gradient(135deg, #0f2548 0%, #1a3a6b 55%, #2E5F9E 100%);
+      border-radius: 24px;
+      padding: 52px 48px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 8px 40px rgba(20,50,110,0.2);
+      position: relative; overflow: hidden;
+    }
+    @media (max-width: 600px) { .next-inner { padding: 36px 24px; } }
+    .next-inner::before {
+      content: '→';
+      position: absolute; right: 24px; bottom: -24px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 140px; font-weight: 800;
+      color: rgba(255,255,255,0.05);
+      line-height: 1; pointer-events: none;
+    }
+    .next-inner__eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px; padding: 4px 14px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.8); margin-bottom: 16px;
+    }
+    .next-inner__title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 800; color: #fff;
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .next-inner__sub {
+      font-size: 15px; color: rgba(255,255,255,0.68);
+      line-height: 1.6; max-width: 480px;
+      margin: 0 auto 32px;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--accent); color: #fff;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.04em;
+      border: none; border-radius: 14px;
+      padding: 18px 36px; cursor: pointer;
+      text-decoration: none;
+      transition: background .18s, transform .15s, box-shadow .18s;
+      box-shadow: 0 10px 28px -8px rgba(192,114,48,0.55);
+      max-width: 500px; text-align: center; line-height: 1.35;
+    }
+    .btn-cta:hover { background: #a85e20; transform: translateY(-2px); box-shadow: 0 14px 34px -8px rgba(192,114,48,0.6); }
+
+    /* ══ FOOTER ══ */
+    .page-foot {
+      background: var(--ink);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .page-foot p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .page-foot a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .page-foot a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__eyebrow">Мини-курс · 4 урока</div>
+      <h1 class="hero__title">
+        «Самокоррекция тела:<br>
+        <em>осанка, дыхание и лёгкость</em>»
+      </h1>
+      <p class="hero__desc">
+        Тело умеет восстанавливаться. Если ему не мешать, и немного помочь 🫶🏻<br>
+        4 практических урока для мягкой самокоррекции тела, снижения напряжения, уменьшения отёков и восстановления внутреннего баланса.
+      </p>
+      <div class="hero__tagline">Идеально, чтобы подготовить тело к лету ☀️</div>
+      <div class="hero__pills">
+        <span class="hero__pill">🦴 Выровнять осанку</span>
+        <span class="hero__pill">💨 Восстановить дыхание</span>
+        <span class="hero__pill">💧 Убрать отёки</span>
+        <span class="hero__pill">✨ Вернуть лёгкость</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ УРОКИ ══ -->
+<section class="lessons">
+  <div class="wrap">
+
+    <!-- УРОК 1 -->
+    <div class="lesson">
+      <div class="lesson__header">
+        <div class="lesson__num">1</div>
+        <div class="lesson__meta">
+          <div class="lesson__label">Урок 1</div>
+          <div class="lesson__title">Самокоррекция осанки, позвоночника и лица</div>
+        </div>
+      </div>
+      <div class="lesson__body">
+        <div class="lesson__video">
+          <video controls preload="none">
+            <source src="https://fs.getcourse.ru/fileservice/file/download/a/202733/sc/23/h/438b284577747fc1471af4d9371f1f58.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="lesson__content">
+          <div class="lesson__desc">
+            Осанка влияет не только на спину, но и на положение головы, напряжение лица и общее состояние тела. Работа с центром тела позволяет мягко выровнять позвоночник и снять накопленное напряжение.
+          </div>
+          <div class="lesson__points">
+            <div class="lesson__points-label">В уроке</div>
+            <ul>
+              <li>Выравнивание позвоночника</li>
+              <li>Работа с центром тела</li>
+              <li>Связь осанки и лица</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-divider">Урок 2</div>
+
+    <!-- УРОК 2 -->
+    <div class="lesson">
+      <div class="lesson__header">
+        <div class="lesson__num">2</div>
+        <div class="lesson__meta">
+          <div class="lesson__label">Урок 2</div>
+          <div class="lesson__title">Грудобрюшная диафрагма и дыхание</div>
+        </div>
+      </div>
+      <div class="lesson__body">
+        <div class="lesson__video">
+          <video controls preload="none">
+            <source src="https://fs.getcourse.ru/fileservice/file/download/a/202733/sc/356/h/4606783223d71497944ca79938f88093.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="lesson__content">
+          <div class="lesson__desc">
+            Нарушение дыхания приводит к напряжению, отёкам и снижению общего тонуса. Правильная работа с диафрагмой — основа для восстановления всего тела.
+          </div>
+          <div class="lesson__points">
+            <div class="lesson__points-label">В уроке</div>
+            <ul>
+              <li>Восстановление дыхательного паттерна</li>
+              <li>Работа с диафрагмой</li>
+              <li>Улучшение общего состояния</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-divider">Урок 3</div>
+
+    <!-- УРОК 3 -->
+    <div class="lesson">
+      <div class="lesson__header">
+        <div class="lesson__num">3</div>
+        <div class="lesson__meta">
+          <div class="lesson__label">Урок 3</div>
+          <div class="lesson__title">Плечевой пояс и шея</div>
+        </div>
+      </div>
+      <div class="lesson__body">
+        <div class="lesson__video">
+          <video controls preload="none">
+            <source src="https://fs.getcourse.ru/fileservice/file/download/a/202733/sc/108/h/7d8324b8f17c17ba6c0b214e88f47297.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="lesson__content">
+          <div class="lesson__desc">
+            Напряжение в шее и плечах ухудшает кровообращение и влияет на состояние лица. Освобождение плечевого пояса — один из ключевых шагов к общей лёгкости.
+          </div>
+          <div class="lesson__points">
+            <div class="lesson__points-label">В уроке</div>
+            <ul>
+              <li>Снятие зажимов</li>
+              <li>Улучшение кровотока и лимфотока</li>
+              <li>Работа с плечевым поясом</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-divider">Урок 4</div>
+
+    <!-- УРОК 4 -->
+    <div class="lesson">
+      <div class="lesson__header">
+        <div class="lesson__num">4</div>
+        <div class="lesson__meta">
+          <div class="lesson__label">Урок 4</div>
+          <div class="lesson__title">Лимфодренажный комплекс</div>
+        </div>
+      </div>
+      <div class="lesson__body">
+        <div class="lesson__video">
+          <video controls preload="none">
+            <source src="https://fs.getcourse.ru/fileservice/file/download/a/202733/sc/87/h/6f5e9529876300959fb34a6c59ce79f4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="lesson__content">
+          <div class="lesson__desc">
+            Отёки и тяжесть в теле чаще всего связаны с нарушением движения жидкости. Мягкий лимфодренаж помогает активировать отток и вернуть телу лёгкость.
+          </div>
+          <div class="lesson__points">
+            <div class="lesson__points-label">В уроке</div>
+            <ul>
+              <li>Мягкий лимфодренаж</li>
+              <li>Уменьшение отёков</li>
+              <li>Активация оттока жидкости</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ ЧТО ДАЛЬШЕ ══ -->
+<section class="next-section">
+  <div class="wrap">
+    <div class="next-inner">
+      <div class="next-inner__eyebrow">Что дальше?</div>
+      <h2 class="next-inner__title">Хотите пойти глубже?</h2>
+      <p class="next-inner__sub">Специалисты отдела заботы помогут подобрать подходящий формат обучения или практики именно для вас</p>
+      <a class="btn-cta" href="https://agape-course.com/lymphatic_drainage" target="_blank">
+        💬 Получить консультацию менеджера отдела заботы
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="page-foot">
+  <div class="wrap">
+    <p>© 2026 Олег Агапэ · <a href="https://dr-agape.ru">dr-agape.ru</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
