@@ -70,6 +70,133 @@
         /* ── Section ── */
         .section-padding { padding: 100px 0; }
 
+        /* ── Mentor Section ── */
+        .mentor-section {
+            padding: 80px 0;
+            background: var(--color-bg-primary);
+        }
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .mentor-photo-col {
+            background: #E8531A;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 460px;
+            overflow: hidden;
+        }
+        .mentor-photo-col::before {
+            content: '';
+            position: absolute;
+            bottom: 60px; left: -30px;
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+        .mentor-photo-col::after {
+            content: '';
+            position: absolute;
+            top: 40px; right: -20px;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+        .mentor-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            position: absolute;
+            inset: 0;
+            border-radius: 0;
+        }
+        .mentor-photo-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            text-align: center;
+            gap: 8px;
+        }
+        .mentor-name-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 24px 28px;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            z-index: 2;
+        }
+        .mentor-name {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .mentor-info-col {
+            background: var(--color-bg-dark);
+            padding: 44px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mentor-info-col .section-eyebrow {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 20px;
+            font-family: var(--font-primary);
+        }
+        .mentor-facts {
+            list-style: none;
+            padding: 0; margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .mentor-facts li {
+            position: relative;
+            padding-left: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+        .mentor-facts li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #E8531A;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .mentor-facts li strong {
+            color: #E8531A;
+            font-weight: 600;
+        }
+        .mentor-facts li em {
+            font-style: normal;
+            color: #E8531A;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .mentor-grid { grid-template-columns: 1fr; }
+            .mentor-photo-col { min-height: 300px; }
+            .mentor-info-col { padding: 32px 28px; }
+        }
+
         /* ── Lesson Timeline ── */
         .lessons-list {
             display: flex;
@@ -374,7 +501,7 @@
         <section class="course-hero">
             <div class="container">
                 <div class="fade-in-up">
-                    <span class="course-badge">Блок по маркетингу · Июнь 2025</span>
+                    <span class="course-badge">Блок по маркетингу · Июнь 2026</span>
                     <h1 class="course-title">Система продвижения<br>для <span class="highlight">частной практики</span></h1>
                     <p class="course-description">4 урока с личным сопровождением продюсера Глеба Асташева. От позиционирования до автоматизированной воронки — полная система привлечения клиентов.</p>
                     <div class="hero-actions">
@@ -394,6 +521,37 @@
                             <h3>∞</h3>
                             <p>записи уроков</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentor -->
+        <section class="mentor-section">
+            <div class="container">
+                <div class="mentor-grid fade-in-up">
+                    <div class="mentor-photo-col">
+                        <img src="images/gleb-astashev.jpg"
+                             alt="Глеб Асташев"
+                             class="mentor-photo"
+                             onerror="this.style.display='none'">
+                        <div class="mentor-photo-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            Загрузите фото Глеба<br>как <code>images/gleb-astashev.jpg</code>
+                        </div>
+                        <div class="mentor-name-overlay">
+                            <div class="mentor-name">Глеб Асташев</div>
+                        </div>
+                    </div>
+                    <div class="mentor-info-col">
+                        <div class="section-eyebrow">Ведущий блока</div>
+                        <ul class="mentor-facts">
+                            <li>Маркетолог и продюсер с опытом <strong>8 лет.</strong></li>
+                            <li>Сформировал супер силу за эти годы — <em>делать прорывы в медийности, клиентах и деньгах</em> помогающим специалистам.</li>
+                            <li>Работал с <em>десятками помогающих специалистов</em> по всему миру.</li>
+                            <li>Специализируется на <em>глубоком аутентичном позиционировании и стабильных стратегиях,</em> которые приносят <strong>80%</strong> результата при <strong>20%</strong> вложений денег и времени.</li>
+                            <li><strong>В программе:</strong> создание сильного позиционирования, продуктовая линейка, персональная воронка продаж под вашу специфику, контент, структура стабильных продаж и мастер-майнды с разборами.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
