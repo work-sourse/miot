@@ -73,91 +73,61 @@
         /* ── Mentor Section ── */
         .mentor-section {
             padding: 80px 0;
-            background: var(--color-bg-primary);
+            background: var(--color-bg-secondary);
         }
         .mentor-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            grid-template-columns: 420px 1fr;
+            gap: 60px;
+            align-items: center;
         }
         .mentor-photo-col {
-            background: #E8531A;
             position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            min-height: 460px;
-            overflow: hidden;
-        }
-        .mentor-photo-col::before {
-            content: '';
-            position: absolute;
-            bottom: 60px; left: -30px;
-            width: 140px; height: 140px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-        }
-        .mentor-photo-col::after {
-            content: '';
-            position: absolute;
-            top: 40px; right: -20px;
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.06);
         }
         .mentor-photo {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 3/4;
             object-fit: cover;
             object-position: top center;
-            position: absolute;
-            inset: 0;
-            border-radius: 0;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: block;
         }
         .mentor-photo-placeholder {
-            position: absolute;
-            inset: 0;
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-tertiary);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: rgba(255,255,255,0.5);
+            color: var(--color-text-secondary);
             font-size: 0.85rem;
             text-align: center;
             gap: 8px;
         }
-        .mentor-name-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 24px 28px;
-            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-            z-index: 2;
+        .mentor-info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .mentor-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+            font-family: var(--font-primary);
+            font-weight: 600;
         }
         .mentor-name {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
             font-weight: 800;
-            color: #fff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .mentor-info-col {
-            background: var(--color-bg-dark);
-            padding: 44px 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .mentor-info-col .section-eyebrow {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 20px;
-            font-family: var(--font-primary);
+            color: var(--color-text-primary);
+            margin-bottom: 28px;
+            line-height: 1.1;
         }
         .mentor-facts {
             list-style: none;
@@ -167,34 +137,34 @@
             gap: 14px;
         }
         .mentor-facts li {
-            position: relative;
-            padding-left: 20px;
-            color: rgba(255,255,255,0.8);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
             font-size: 0.95rem;
+            color: var(--color-text-secondary);
             line-height: 1.65;
         }
         .mentor-facts li::before {
             content: '•';
-            position: absolute;
-            left: 0;
-            color: #E8531A;
+            color: var(--color-highlight);
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            line-height: 1.5;
         }
         .mentor-facts li strong {
-            color: #E8531A;
+            color: var(--color-text-primary);
             font-weight: 600;
         }
         .mentor-facts li em {
             font-style: normal;
-            color: #E8531A;
+            color: var(--color-highlight);
             font-weight: 600;
         }
 
-        @media (max-width: 768px) {
-            .mentor-grid { grid-template-columns: 1fr; }
-            .mentor-photo-col { min-height: 300px; }
-            .mentor-info-col { padding: 32px 28px; }
+        @media (max-width: 900px) {
+            .mentor-grid { grid-template-columns: 1fr; gap: 40px; }
+            .mentor-photo { aspect-ratio: 4/3; object-position: top; }
         }
 
         /* ── Lesson Timeline ── */
@@ -529,22 +499,18 @@
         <!-- Mentor -->
         <section class="mentor-section">
             <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Ведущий блока</span>
+                </div>
                 <div class="mentor-grid fade-in-up">
                     <div class="mentor-photo-col">
                         <img src="images/gleb-astashev.jpg"
                              alt="Глеб Асташев"
-                             class="mentor-photo"
-                             onerror="this.style.display='none'">
-                        <div class="mentor-photo-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                            Загрузите фото Глеба<br>как <code>images/gleb-astashev.jpg</code>
-                        </div>
-                        <div class="mentor-name-overlay">
-                            <div class="mentor-name">Глеб Асташев</div>
-                        </div>
+                             class="mentor-photo">
                     </div>
                     <div class="mentor-info-col">
-                        <div class="section-eyebrow">Ведущий блока</div>
+                        <div class="mentor-eyebrow">Продюсер · маркетолог</div>
+                        <div class="mentor-name">Глеб Асташев</div>
                         <ul class="mentor-facts">
                             <li>Маркетолог и продюсер с опытом <strong>8 лет.</strong></li>
                             <li>Сформировал супер силу за эти годы — <em>делать прорывы в медийности, клиентах и деньгах</em> помогающим специалистам.</li>
