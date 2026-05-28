@@ -462,8 +462,16 @@
         @media (max-width: 768px) {
             .booking-block {
                 grid-template-columns: 1fr;
-                padding: 36px 28px;
-                gap: 32px;
+                padding: 0;
+                gap: 0;
+            }
+            .booking-block > div:first-child {
+                padding: 32px 24px 28px !important;
+            }
+            .booking-block > div:last-child {
+                padding: 24px 24px 32px !important;
+                grid-template-columns: 1fr !important;
+                text-align: center;
             }
         }
 
@@ -874,26 +882,36 @@
         <!-- Booking -->
         <section class="section-padding">
             <div class="container">
-                <div class="booking-block fade-in-up">
-                    <div class="booking-left">
-                        <span class="badge" style="margin-bottom: 16px;">Бронирование места</span>
-                        <h2 style="color:#fff; margin-bottom: 12px;">Забронируйте место<br>прямо сейчас</h2>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.7; margin: 0;">Оплатите бронирование и зафиксируйте своё место в блоке. Оставшаяся сумма оплачивается до старта.</p>
+                <div class="booking-block fade-in-up" style="flex-direction: column; gap: 0; padding: 0; overflow: hidden;">
+
+                    <!-- Верхняя часть: главная ценность — консультация -->
+                    <div style="padding: 40px 48px 36px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span class="badge" style="margin-bottom: 20px; display: inline-block;">🎁 Бонус при бронировании</span>
+                        <h2 style="color:#fff; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.25; margin-bottom: 16px;">
+                            Получите 25-минутную стратегическую<br>персональную консультацию<br>с Глебом Асташевым
+                        </h2>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75; margin: 0; max-width: 640px;">
+                            За 25 минут Глеб разберёт вашу ситуацию, укажет точки роста и даст конкретные шаги для развития вашей практики. Это не общий разговор — это персональная стратегическая сессия, заточенная под вас.
+                        </p>
                     </div>
-                    <div class="booking-right">
-                        <div class="booking-price-tag">
-                            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); margin-bottom: 6px;">Стоимость бронирования</div>
-                            <div style="font-family: var(--font-primary); font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">5 000 <span style="font-size: 1.3rem; font-weight: 500; color: rgba(255,255,255,0.7);">руб</span></div>
+
+                    <!-- Нижняя часть: предоплата + кнопка -->
+                    <div style="padding: 32px 48px 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="badge" style="margin-bottom: 14px; display: inline-block; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">Бронирование места</span>
+                            <h3 style="color:#fff; font-size: 1.25rem; margin-bottom: 10px;">Зафиксируйте своё место в блоке</h3>
+                            <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.7; margin: 0;">
+                                Предоплата — это не полная стоимость обучения, а подтверждение вашего участия.<br>
+                                Оставшаяся сумма оплачивается до старта блока.
+                            </p>
                         </div>
-                        <div class="booking-bonus">
-                            <div class="booking-bonus-icon">🎁</div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--color-highlight); font-size: 0.9rem; margin-bottom: 4px;">Бонус при бронировании</div>
-                                <div style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.55;">25 минут личной сессии с Глебом Асташевым в ближайшее время</div>
-                            </div>
+                        <div style="text-align: center; min-width: 200px;">
+                            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Стоимость бронирования</div>
+                            <div style="font-family: var(--font-primary); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 20px;">5 000 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.6);">руб</span></div>
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px; white-space: nowrap;">Забронировать место</a>
                         </div>
-                        <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px;">Забронировать место</a>
                     </div>
+
                 </div>
             </div>
         </section>
