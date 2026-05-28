@@ -575,6 +575,32 @@
             .course-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
             .stat-item h3 { font-size: 1.5rem; }
         }
+        /* ── Widget button overlay ── */
+        .plw-btn-wrap { position: relative; display: block; }
+        .plw-overlay {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .plw-overlay iframe {
+            position: absolute !important;
+            top: 0 !important; left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 0.01 !important;
+            cursor: pointer !important;
+            border: none !important;
+        }
+        .plw-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -607,7 +633,10 @@
                 <a href="#bonus">Бонусы</a>
                 <a href="#outcome">Результат</a>
                 <a href="#tariffs">Стоимость</a>
-                <button type="button" onclick="openWidget(1)" class="btn btn-primary btn-sm">Записаться</button>
+                <div class="plw-btn-wrap btn btn-primary btn-sm" style="padding:0;min-width:120px;min-height:36px;">
+                    <span class="plw-label" style="height:36px;padding:0 20px;font-size:0.85rem;font-weight:600;">Записаться</span>
+                    <div class="plw-overlay"><script id="8bf96b1209c4448700170a2a0dcb49fb5275898b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610939"></script></div>
+                </div>
             </nav>
             <div class="mobile-menu-btn">
                 <span></span><span></span><span></span>
@@ -625,6 +654,7 @@
                     <p class="course-description">4 урока с личным сопровождением продюсера Глеба Асташева. От позиционирования до автоматизированной воронки — полная система привлечения клиентов.</p>
                     <div class="hero-actions">
                         <button type="button" onclick="openWidget(1)" class="btn btn-primary btn-glow">Записаться на блок</button>
+
                         <a href="#lessons" class="btn btn-secondary">Смотреть программу</a>
                     </div>
                     <div class="course-stats">
@@ -908,7 +938,10 @@
                         <div style="text-align: center; min-width: 200px;">
                             <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Стоимость бронирования</div>
                             <div style="font-family: var(--font-primary); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 20px;">5 000 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.6);">руб</span></div>
-                            <button type="button" onclick="openWidget(2)" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px; white-space: nowrap; cursor:pointer;">Забронировать место</button>
+                            <div class="plw-btn-wrap" style="width:100%;min-height:54px;border-radius:50px;background:var(--color-highlight);">
+                                <span class="plw-label" style="height:54px;color:#fff;font-size:1rem;font-weight:700;font-family:var(--font-primary);">Забронировать место</span>
+                                <div class="plw-overlay" style="border-radius:50px;"><script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script></div>
+                            </div>
                         </div>
                     </div>
 
@@ -929,8 +962,11 @@
                         <h3>Один урок</h3>
                         <p class="price-desc">1 урок на выбор + неделя доступа в чат с командой Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <button type="button" onclick="openWidget(3)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
-                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
+                            <div class="plw-btn-wrap btn btn-primary" style="padding:0;min-height:46px;">
+                                <span class="plw-label" style="height:46px;font-size:0.95rem;font-weight:600;">Записаться</span>
+                                <div class="plw-overlay"><script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script></div>
+                            </div>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -939,8 +975,11 @@
                         <span class="price-saving">−27% от полной цены</span>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для тех, кто обучался в МИОТ Олега Агапэ или у Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <button type="button" onclick="openWidget(4)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
-                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
+                            <div class="plw-btn-wrap btn btn-primary" style="padding:0;min-height:46px;">
+                                <span class="plw-label" style="height:46px;font-size:0.95rem;font-weight:600;">Записаться</span>
+                                <div class="plw-overlay"><script id="38dd7c4de3581d52bdf4c43297bc3734541ff8b6" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610955"></script></div>
+                            </div>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -948,8 +987,11 @@
                         <h3>Без нас раньше</h3>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для новых участников, которые не обучались у нас ранее</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <button type="button" onclick="openWidget(5)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
-                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
+                            <div class="plw-btn-wrap btn btn-primary" style="padding:0;min-height:46px;">
+                                <span class="plw-label" style="height:46px;font-size:0.95rem;font-weight:600;">Записаться</span>
+                                <div class="plw-overlay"><script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script></div>
+                            </div>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -1033,24 +1075,13 @@
         })();
     </script>
 
-    <!-- ── Payment widgets ── -->
-    <div style="position:fixed;left:-9999px;top:0;width:400px;" aria-hidden="true">
-        <div id="plw-1"><script id="8bf96b1209c4448700170a2a0dcb49fb5275898b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610939"></script></div>
-        <div id="plw-2"><script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script></div>
-        <div id="plw-3"><script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script></div>
-        <div id="plw-4"><script id="38dd7c4de3581d52bdf4c43297bc3734541ff8b6" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610955"></script></div>
-        <div id="plw-5"><script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script></div>
-    </div>
     <script>
-    var _widgetIds = {
-        1: '8bf96b1209c4448700170a2a0dcb49fb5275898b',
-        2: 'fbc6faead5abddae871199c0d102df7f99d59473',
-        3: 'b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef',
-        4: '38dd7c4de3581d52bdf4c43297bc3734541ff8b6',
-        5: '446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b'
-    };
     function openWidget(n) {
-        var id = _widgetIds[n];
+        var ids = {
+            1: '8bf96b1209c4448700170a2a0dcb49fb5275898b',
+            2: 'fbc6faead5abddae871199c0d102df7f99d59473'
+        };
+        var id = ids[n];
         if (!id) return;
         var fn = window['startWidget' + id];
         if (typeof fn === 'function') { fn(); return; }
