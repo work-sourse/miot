@@ -607,7 +607,7 @@
                 <a href="#bonus">Бонусы</a>
                 <a href="#outcome">Результат</a>
                 <a href="#tariffs">Стоимость</a>
-                <a href="https://t.me/glebasht" target="_blank" class="btn btn-primary btn-sm">Записаться</a>
+                <button type="button" onclick="openWidget(1)" class="btn btn-primary btn-sm">Записаться</button>
             </nav>
             <div class="mobile-menu-btn">
                 <span></span><span></span><span></span>
@@ -624,7 +624,7 @@
                     <h1 class="course-title">Система продвижения<br>для <span class="highlight">частной практики</span></h1>
                     <p class="course-description">4 урока с личным сопровождением продюсера Глеба Асташева. От позиционирования до автоматизированной воронки — полная система привлечения клиентов.</p>
                     <div class="hero-actions">
-                        <a href="#tariffs" class="btn btn-primary btn-glow">Записаться на блок</a>
+                        <button type="button" onclick="openWidget(1)" class="btn btn-primary btn-glow">Записаться на блок</button>
                         <a href="#lessons" class="btn btn-secondary">Смотреть программу</a>
                     </div>
                     <div class="course-stats">
@@ -908,7 +908,7 @@
                         <div style="text-align: center; min-width: 200px;">
                             <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Стоимость бронирования</div>
                             <div style="font-family: var(--font-primary); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 20px;">5 000 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.6);">руб</span></div>
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px; white-space: nowrap;">Забронировать место</a>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px; white-space: nowrap; cursor:pointer;">Забронировать место</button>
                         </div>
                     </div>
 
@@ -929,8 +929,8 @@
                         <h3>Один урок</h3>
                         <p class="price-desc">1 урок на выбор + неделя доступа в чат с командой Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                            <button type="button" onclick="openWidget(3)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
                         </div>
                     </div>
 
@@ -939,8 +939,8 @@
                         <span class="price-saving">−15 000 руб от полной цены</span>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для тех, кто обучался в МИОТ Олега Агапэ или у Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                            <button type="button" onclick="openWidget(4)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
                         </div>
                     </div>
 
@@ -948,8 +948,8 @@
                         <h3>Без нас раньше</h3>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для новых участников, которые не обучались у нас ранее</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
-                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                            <button type="button" onclick="openWidget(5)" class="btn btn-primary" style="cursor:pointer;">Записаться</button>
+                            <button type="button" onclick="openWidget(2)" class="btn btn-secondary" style="cursor:pointer;">Забронировать</button>
                         </div>
                     </div>
 
@@ -1031,6 +1031,25 @@
                 if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
             });
         })();
+    </script>
+
+    <!-- ── Payment widgets (off-screen) ── -->
+    <div style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+        <div id="plw-1"><script id="8bf96b1209c4448700170a2a0dcb49fb5275898b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610939"></script></div>
+        <div id="plw-2"><script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script></div>
+        <div id="plw-3"><script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script></div>
+        <div id="plw-4"><script id="38dd7c4de3581d52bdf4c43297bc3734541ff8b6" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610955"></script></div>
+        <div id="plw-5"><script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script></div>
+    </div>
+    <script>
+    function openWidget(n) {
+        var el = document.querySelector('#plw-' + n + ' a, #plw-' + n + ' button');
+        if (el) { el.click(); return; }
+        setTimeout(function() {
+            var el2 = document.querySelector('#plw-' + n + ' a, #plw-' + n + ' button');
+            if (el2) el2.click();
+        }, 800);
+    }
     </script>
 </body>
 </html>
