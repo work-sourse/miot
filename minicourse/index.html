@@ -419,9 +419,9 @@
       <div class="next-inner__eyebrow">Что дальше?</div>
       <h2 class="next-inner__title">Хотите пойти глубже?</h2>
       <p class="next-inner__sub">Специалисты отдела заботы помогут подобрать подходящий формат обучения или практики именно для вас</p>
-      <a class="btn-cta" href="https://agape-course.com/lymphatic_drainage" target="_blank">
+      <button class="btn-cta" onclick="gcOpen('gcModalConsult')">
         💬 Получить консультацию менеджера отдела заботы
-      </a>
+      </button>
     </div>
   </div>
 </section>
@@ -432,6 +432,47 @@
     <p>© 2026 Олег Агапэ · <a href="https://dr-agape.ru">dr-agape.ru</a></p>
   </div>
 </footer>
+
+<!-- ══ Модалка GetCourse ══ -->
+<style>
+  .gc-modal { display:none; position:fixed; inset:0; z-index:9000; align-items:center; justify-content:center; }
+  .gc-modal.is-open { display:flex; }
+  .gc-modal__overlay { position:absolute; inset:0; background:rgba(10,20,40,0.70); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+  .gc-modal__box { position:relative; z-index:1; background:var(--card); border-radius:20px; padding:40px 24px 24px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; margin:16px; box-shadow:0 32px 64px -16px rgba(10,30,80,0.40); }
+  @media (max-width:600px){ .gc-modal__box { padding:36px 14px 20px; } }
+  .gc-modal__close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; line-height:1; cursor:pointer; color:var(--ink-mute); padding:4px 8px; border-radius:8px; transition:color .15s, background .15s; }
+  .gc-modal__close:hover { color:var(--ink); background:var(--bg); }
+  .gc-modal__title { font-family:'Unbounded',sans-serif; font-size:15px; font-weight:700; color:var(--ink); margin:0 0 16px; line-height:1.3; }
+  .gc-modal__body { min-height:80px; }
+</style>
+
+<div id="gcModalConsult" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" data-gc-close></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Консультация отдела заботы</div>
+    <div class="gc-modal__body">
+      <script id="b268073c78f9428a1b37aff6a6230a1ad9d5ce4b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610532" onload="typeof startWidgetb268073c78f9428a1b37aff6a6230a1ad9d5ce4b==='function'&&startWidgetb268073c78f9428a1b37aff6a6230a1ad9d5ce4b()"></script>
+    </div>
+  </div>
+</div>
+
+<script>
+  function gcOpen(id) {
+    var m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function gcCloseAll() {
+    document.querySelectorAll('.gc-modal.is-open').forEach(function(m){ m.classList.remove('is-open'); });
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-gc-close]').forEach(function(el){
+    el.addEventListener('click', gcCloseAll);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') gcCloseAll(); });
+</script>
 
 </body>
 </html>
