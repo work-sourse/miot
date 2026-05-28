@@ -575,32 +575,37 @@
             .course-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
             .stat-item h3 { font-size: 1.5rem; }
         }
-        /* ── Widget button overlay ── */
-        .plw-btn-wrap { position: relative; display: block; }
-        .plw-overlay {
-            position: absolute;
+        /* ── Modal popup for GetCourse widgets ── */
+        .gc-modal {
+            display: none;
+            position: fixed;
             inset: 0;
-            overflow: hidden;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .plw-overlay iframe {
-            position: absolute !important;
-            top: 0 !important; left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            opacity: 0.01 !important;
-            cursor: pointer !important;
-            border: none !important;
-        }
-        .plw-label {
-            display: flex;
+            background: rgba(0,0,0,0.65);
+            z-index: 99999;
             align-items: center;
             justify-content: center;
-            pointer-events: none;
-            position: relative;
-            z-index: 1;
+            padding: 20px;
         }
+        .gc-modal.open { display: flex; }
+        .gc-modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 44px 32px 32px;
+            max-width: 540px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .gc-modal-close {
+            position: absolute;
+            top: 12px; right: 16px;
+            background: none; border: none;
+            font-size: 28px; line-height: 1;
+            cursor: pointer; color: #888;
+        }
+        .gc-modal-close:hover { color: #333; }
+        .gc-modal iframe { width: 100% !important; }
     </style>
 </head>
 
@@ -633,7 +638,7 @@
                 <a href="#bonus">Бонусы</a>
                 <a href="#outcome">Результат</a>
                 <a href="#tariffs">Стоимость</a>
-                <a href="#tariffs" class="btn btn-primary btn-sm">Записаться</a>
+                <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary btn-sm">Записаться</button>
             </nav>
             <div class="mobile-menu-btn">
                 <span></span><span></span><span></span>
@@ -650,7 +655,7 @@
                     <h1 class="course-title">Система продвижения<br>для <span class="highlight">частной практики</span></h1>
                     <p class="course-description">4 урока с личным сопровождением продюсера Глеба Асташева. От позиционирования до автоматизированной воронки — полная система привлечения клиентов.</p>
                     <div class="hero-actions">
-                        <a href="#tariffs" class="btn btn-primary btn-glow">Записаться на блок</a>
+                        <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary btn-glow">Записаться на блок</button>
                         <a href="#lessons" class="btn btn-secondary">Смотреть программу</a>
                     </div>
                     <div class="course-stats">
@@ -934,7 +939,7 @@
                         <div style="text-align: center; min-width: 200px;">
                             <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 6px;">Стоимость бронирования</div>
                             <div style="font-family: var(--font-primary); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 20px;">5 000 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.6);">руб</span></div>
-                            <script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script>
+                            <button onclick="gcOpen('gc-modal-2')" class="btn btn-primary" style="width:100%;background:var(--color-highlight);border-color:var(--color-highlight);color:#fff;font-size:1rem;padding:16px;">Забронировать место</button>
                         </div>
                     </div>
 
@@ -955,8 +960,8 @@
                         <h3>Один урок</h3>
                         <p class="price-desc">1 урок на выбор + неделя доступа в чат с командой Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script>
-                            <script src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script>
+                            <button onclick="gcOpen('gc-modal-3')" class="btn btn-primary">Записаться</button>
+                            <button onclick="gcOpen('gc-modal-2')" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -965,8 +970,8 @@
                         <span class="price-saving">−27% от полной цены</span>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для тех, кто обучался в МИОТ Олега Агапэ или у Глеба Асташева</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <script id="38dd7c4de3581d52bdf4c43297bc3734541ff8b6" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610955"></script>
-                            <script src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script>
+                            <button onclick="gcOpen('gc-modal-4')" class="btn btn-primary">Записаться</button>
+                            <button onclick="gcOpen('gc-modal-2')" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -974,8 +979,8 @@
                         <h3>Без нас раньше</h3>
                         <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для новых участников, которые не обучались у нас ранее</p>
                         <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-                            <script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script>
-                            <script src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script>
+                            <button onclick="gcOpen('gc-modal-5')" class="btn btn-primary">Записаться</button>
+                            <button onclick="gcOpen('gc-modal-2')" class="btn btn-secondary">Забронировать</button>
                         </div>
                     </div>
 
@@ -1057,6 +1062,64 @@
                 if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
             });
         })();
+    </script>
+
+    <!-- ═══ GetCourse modal popups ═══ -->
+
+    <div id="gc-modal-1" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-1')">×</button>
+            <script id="8bf96b1209c4448700170a2a0dcb49fb5275898b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610939"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-2" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-2')">×</button>
+            <script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-3" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-3')">×</button>
+            <script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-4" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-4')">×</button>
+            <script id="38dd7c4de3581d52bdf4c43297bc3734541ff8b6" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610955"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-5" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-5')">×</button>
+            <script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script>
+        </div>
+    </div>
+
+    <script>
+    function gcOpen(id) {
+        document.getElementById(id).classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function gcClose(id) {
+        document.getElementById(id).classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('gc-modal')) {
+            gcClose(e.target.id);
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.gc-modal.open').forEach(function(m) { gcClose(m.id); });
+        }
+    });
     </script>
 
 </body>
