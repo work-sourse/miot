@@ -92,6 +92,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             display: block;
+            max-height: 560px;
         }
         .mentor-photo-placeholder {
             width: 100%;
@@ -164,8 +165,19 @@
         }
 
         @media (max-width: 900px) {
-            .mentor-grid { grid-template-columns: 1fr; gap: 40px; }
-            .mentor-photo { aspect-ratio: 4/3; object-position: top; }
+            .mentor-grid { grid-template-columns: 1fr; gap: 32px; }
+            .mentor-photo {
+                aspect-ratio: 3/4;
+                max-height: 480px;
+                width: 100%;
+                object-position: top center;
+            }
+        }
+        @media (max-width: 480px) {
+            .mentor-photo {
+                aspect-ratio: 4/5;
+                max-height: 380px;
+            }
         }
 
         /* ── Lesson Timeline ── */
@@ -470,15 +482,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 64px;
+            padding: 0 80px;
         }
         .review-img {
-            max-width: 520px;
-            max-height: 420px;
+            max-width: 680px;
+            max-height: 600px;
             width: 100%;
             object-fit: contain;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-md);
+        }
+        @media (max-width: 768px) {
+            .review-slide { padding: 0 48px; }
+            .review-img { max-height: 480px; }
+        }
+        @media (max-width: 480px) {
+            .review-slide { padding: 0 36px; }
+            .review-img { max-height: 380px; }
         }
         .reviews-btn {
             position: absolute;
