@@ -1033,8 +1033,8 @@
         })();
     </script>
 
-    <!-- ── Payment widgets (off-screen) ── -->
-    <div style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+    <!-- ── Payment widgets ── -->
+    <div style="position:fixed;left:-9999px;top:0;width:400px;" aria-hidden="true">
         <div id="plw-1"><script id="8bf96b1209c4448700170a2a0dcb49fb5275898b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610939"></script></div>
         <div id="plw-2"><script id="fbc6faead5abddae871199c0d102df7f99d59473" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610941"></script></div>
         <div id="plw-3"><script id="b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610954"></script></div>
@@ -1042,13 +1042,19 @@
         <div id="plw-5"><script id="446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1610956"></script></div>
     </div>
     <script>
+    var _widgetIds = {
+        1: '8bf96b1209c4448700170a2a0dcb49fb5275898b',
+        2: 'fbc6faead5abddae871199c0d102df7f99d59473',
+        3: 'b5a2be05850bbb1063fcb99d9c7c3d98dc7f67ef',
+        4: '38dd7c4de3581d52bdf4c43297bc3734541ff8b6',
+        5: '446a5290bfbc9e64b4e2c54c2e0dfce229f6e49b'
+    };
     function openWidget(n) {
-        var el = document.querySelector('#plw-' + n + ' a, #plw-' + n + ' button');
-        if (el) { el.click(); return; }
-        setTimeout(function() {
-            var el2 = document.querySelector('#plw-' + n + ' a, #plw-' + n + ' button');
-            if (el2) el2.click();
-        }, 800);
+        var id = _widgetIds[n];
+        if (!id) return;
+        var fn = window['startWidget' + id];
+        if (typeof fn === 'function') { fn(); return; }
+        document.dispatchEvent(new Event('StartWidget' + id));
     }
     </script>
 </body>
