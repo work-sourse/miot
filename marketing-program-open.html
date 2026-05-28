@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блок по маркетингу | МИОТ × Глеб Асташев</title>
+    <meta name="description" content="Программа по маркетингу для специалистов: позиционирование, упаковка, контент с ИИ, воронка продаж. 4 урока с личным сопровождением продюсера Глеба Асташева.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Hero ── */
+        .course-hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(204,167,118,0.07) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .course-hero .container { position: relative; z-index: 2; }
+
+        .course-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(204,167,118,0.12);
+            color: var(--color-accent);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .course-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--color-text-primary);
+        }
+        .course-title .highlight { color: var(--color-highlight); }
+        .course-description {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.65;
+            max-width: 560px;
+        }
+        .course-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--color-highlight);
+            margin-bottom: 4px;
+        }
+        .stat-item p { font-size: 0.88rem; margin: 0; }
+
+        /* ── Section ── */
+        .section-padding { padding: 100px 0; }
+
+        /* ── Mentor Section ── */
+        .mentor-section {
+            padding: 80px 0;
+            background: var(--color-bg-secondary);
+        }
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .mentor-photo-col {
+            position: relative;
+        }
+        .mentor-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: block;
+            max-height: 560px;
+        }
+        .mentor-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-tertiary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            text-align: center;
+            gap: 8px;
+        }
+        .mentor-info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .mentor-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+        }
+        .mentor-name {
+            font-family: var(--font-primary);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: 28px;
+            line-height: 1.1;
+        }
+        .mentor-facts {
+            list-style: none;
+            padding: 0; margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mentor-facts li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.98rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .mentor-facts li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-highlight);
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .mentor-facts li strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+        .mentor-facts li em {
+            font-style: normal;
+            color: var(--color-highlight);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .mentor-grid { grid-template-columns: 1fr; gap: 32px; }
+            .mentor-photo {
+                aspect-ratio: 3/4;
+                max-height: 480px;
+                width: 100%;
+                object-position: top center;
+            }
+        }
+        @media (max-width: 480px) {
+            .mentor-photo {
+                aspect-ratio: 4/5;
+                max-height: 380px;
+            }
+        }
+
+        /* ── Lesson Timeline ── */
+        .lessons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .lesson-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-bg-tertiary);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .lesson-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(204,167,118,0.3);
+        }
+        .lesson-inner {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0;
+        }
+        .lesson-date-col {
+            background: var(--color-bg-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 32px 16px;
+            border-right: 1px solid var(--color-bg-tertiary);
+            gap: 4px;
+        }
+        .lesson-day {
+            font-family: var(--font-primary);
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--color-highlight);
+            line-height: 1;
+        }
+        .lesson-month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+        .lesson-time {
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            margin-top: 8px;
+            font-weight: 500;
+            background: var(--color-bg-tertiary);
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            white-space: nowrap;
+        }
+        .lesson-body {
+            padding: 32px 36px;
+        }
+        .lesson-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 20px;
+            font-family: var(--font-primary);
+        }
+        .lesson-points {
+            list-style: none;
+            padding: 0; margin: 0 0 24px;
+        }
+        .lesson-points li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .lesson-points li::before {
+            content: '•';
+            position: absolute;
+            left: 6px;
+            color: var(--color-highlight);
+            font-weight: 700;
+        }
+        .lesson-result {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(204,167,118,0.08), rgba(204,167,118,0.03));
+            border: 1px solid rgba(204,167,118,0.2);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+        }
+        .lesson-result-arrow {
+            color: var(--color-highlight);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .lesson-result p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .lesson-result strong { color: var(--color-text-primary); }
+
+        /* ── Bonus Cards ── */
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .bonus-card {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 28px 22px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .bonus-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(204,167,118,0.2);
+        }
+        .bonus-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+        .bonus-card p { margin: 0; font-size: 0.92rem; color: var(--color-text-secondary); line-height: 1.5; }
+
+        /* ── Support Box ── */
+        .support-box {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid rgba(204,167,118,0.15);
+        }
+        .support-box h3 { margin-bottom: 20px; font-size: 1.4rem; }
+        .support-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+        .support-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.55;
+        }
+        .support-list li::before {
+            content: '✓';
+            color: var(--color-highlight);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ── Outcome Banner ── */
+        .outcome-banner {
+            background: var(--color-bg-dark);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .outcome-banner::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(204,167,118,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .outcome-banner .badge {
+            background: rgba(204,167,118,0.15);
+            color: var(--color-highlight);
+            margin-bottom: 24px;
+        }
+        .outcome-banner h2 { color: #fff; font-size: clamp(1.4rem, 3vw, 2.2rem); margin-bottom: 20px; }
+        .outcome-banner p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 680px; margin: 0 auto; line-height: 1.7; }
+
+        /* ── Price Cards ── */
+        .price-card {
+            background: var(--color-bg-secondary);
+            padding: 44px 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(204,167,118,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        .price-card.featured {
+            border-color: var(--color-highlight);
+            background: var(--color-bg-primary);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .price-card.featured::after {
+            content: 'ВЫГОДНЕЕ ВСЕГО';
+            position: absolute;
+            top: 20px; right: -30px;
+            background: var(--color-highlight);
+            color: var(--color-bg-primary);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .price-card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+        .price-card .price-amount {
+            font-family: var(--font-primary);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1;
+            margin: 16px 0;
+        }
+        .price-card .price-amount span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+        .price-saving {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(46,160,67,0.12);
+            color: #2ea043;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .price-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+        .price-card .btn { width: 100%; }
+
+        /* ── Booking Block ── */
+        .booking-block {
+            background: var(--color-bg-dark);
+            border-radius: var(--radius-lg);
+            padding: 56px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-block::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(204,167,118,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .booking-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .booking-price-tag {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+        }
+        .booking-bonus {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: rgba(204,167,118,0.08);
+            border: 1px solid rgba(204,167,118,0.25);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+        }
+        .booking-bonus-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .booking-block {
+                grid-template-columns: 1fr;
+                padding: 36px 28px;
+                gap: 32px;
+            }
+        }
+
+        /* ── Reviews Carousel ── */
+        .reviews-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+        }
+        .reviews-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .review-slide {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 80px;
+        }
+        .review-img {
+            max-width: 680px;
+            max-height: 600px;
+            width: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        @media (max-width: 768px) {
+            .review-slide { padding: 0 48px; }
+            .review-img { max-height: 480px; }
+        }
+        @media (max-width: 480px) {
+            .review-slide { padding: 0 36px; }
+            .review-img { max-height: 380px; }
+        }
+        .reviews-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-bg-tertiary);
+            box-shadow: var(--shadow-md);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-primary);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .reviews-btn:hover {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+        .reviews-btn--prev { left: 8px; }
+        .reviews-btn--next { right: 8px; }
+        .reviews-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+        .reviews-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-bg-tertiary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .reviews-dot.active {
+            background: var(--color-highlight);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .lesson-inner { grid-template-columns: 1fr; }
+            .lesson-date-col {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 16px;
+                padding: 20px 24px;
+                border-right: none;
+                border-bottom: 1px solid var(--color-bg-tertiary);
+            }
+            .lesson-body { padding: 24px; }
+            .course-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .outcome-banner { padding: 40px 24px; }
+            .support-box { padding: 28px 24px; }
+            .price-card { padding: 32px 28px; }
+        }
+        @media (max-width: 480px) {
+            .bonus-grid { grid-template-columns: 1fr 1fr; }
+            .course-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+            .stat-item h3 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animations -->
+    <div class="bg-graphics" id="bg-graphics">
+        <div class="shape shape-line shape-1"></div>
+        <div class="shape shape-circle shape-2"></div>
+        <div class="shape shape-line shape-3"></div>
+        <div class="shape shape-circle shape-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header slide-down">
+        <div class="container header-inner">
+            <div class="logo" style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+                    <img src="branding/logo.png" alt="МИОТ Логотип" class="logo-img">
+                    <div class="logo-text">
+                        МЕЖДУНАРОДНЫЙ<br>
+                        ИНСТИТУТ<br>
+                        ОСТЕОПАТИЧЕСКИХ<br>
+                        ТЕХНОЛОГИЙ
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="#mentor">О ведущем</a>
+                <a href="#lessons">Программа</a>
+                <a href="#bonus">Бонусы</a>
+                <a href="#outcome">Результат</a>
+                <a href="#tariffs">Стоимость</a>
+                <a href="https://t.me/glebasht" target="_blank" class="btn btn-primary btn-sm">Записаться</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="fade-in-up">
+                    <span class="course-badge">Блок по маркетингу · Июнь 2026</span>
+                    <h1 class="course-title">Система продвижения<br>для <span class="highlight">частной практики</span></h1>
+                    <p class="course-description">4 урока с личным сопровождением продюсера Глеба Асташева. От позиционирования до автоматизированной воронки — полная система привлечения клиентов.</p>
+                    <div class="hero-actions">
+                        <a href="#tariffs" class="btn btn-primary btn-glow">Записаться на блок</a>
+                        <a href="#lessons" class="btn btn-secondary">Смотреть программу</a>
+                    </div>
+                    <div class="course-stats">
+                        <div class="stat-item">
+                            <h3>4</h3>
+                            <p>живых урока</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>июнь</h3>
+                            <p>старт в 2026</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>∞</h3>
+                            <p>записи уроков</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentor -->
+        <section class="mentor-section" id="mentor">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Ведущий блока</span>
+                </div>
+                <div class="mentor-grid fade-in-up">
+                    <div class="mentor-photo-col">
+                        <img src="images/gleb-astashev.jpg"
+                             alt="Глеб Асташев"
+                             class="mentor-photo">
+                    </div>
+                    <div class="mentor-info-col">
+                        <div class="mentor-eyebrow">Продюсер · маркетолог</div>
+                        <div class="mentor-name">Глеб Асташев</div>
+                        <ul class="mentor-facts">
+                            <li>Маркетолог и продюсер с опытом <strong>8 лет.</strong></li>
+                            <li>Сформировал супер силу за эти годы — <em>делать прорывы в медийности, клиентах и деньгах</em> помогающим специалистам.</li>
+                            <li>Работал с <em>десятками помогающих специалистов</em> по всему миру.</li>
+                            <li>Специализируется на <em>глубоком аутентичном позиционировании и стабильных стратегиях,</em> которые приносят <strong>80%</strong> результата при <strong>20%</strong> вложений денег и времени.</li>
+                            <li><strong>В программе:</strong> создание сильного позиционирования, продуктовая линейка, персональная воронка продаж под вашу специфику, контент, структура стабильных продаж и мастер-майнды с разборами.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program -->
+        <section class="section-padding" id="lessons">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Учебный план</span>
+                    <h2>Программа блока</h2>
+                    <p style="color: var(--color-text-secondary); max-width: 560px; margin: 0 auto;">Каждый урок — конкретный инструмент вашей маркетинговой системы. После каждого занятия остаётся готовый результат.</p>
+                </div>
+
+                <div class="lessons-list fade-in-up">
+
+                    <!-- Урок 1 -->
+                    <div class="lesson-card">
+                        <div class="lesson-inner">
+                            <div class="lesson-date-col">
+                                <div class="lesson-day">10</div>
+                                <div class="lesson-month">июня</div>
+                                <div class="lesson-time">18:00 МСК</div>
+                            </div>
+                            <div class="lesson-body">
+                                <div class="lesson-title">Позиционирование, матрица услуг и оффер</div>
+                                <ul class="lesson-points">
+                                    <li>Ответим на вопрос: кто вы и в чём ваше уникальное конкурентное преимущество?</li>
+                                    <li>Создадим ёмкое продающее описание для знакомств, представлений и соцсетей</li>
+                                    <li>Составим продающее описание ваших услуг, доработаем матрицу услуг</li>
+                                    <li>Создадим оффер — ключевое обещание клиенту, по которому он будет вас выбирать</li>
+                                </ul>
+                                <div class="lesson-result">
+                                    <span class="lesson-result-arrow">→</span>
+                                    <p><strong>Результат:</strong> вы понимаете кто вы, для кого, что продаёте и как это преподнести. Клиент понимает, почему надо выбирать именно вас — как можно раньше.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Урок 2 -->
+                    <div class="lesson-card">
+                        <div class="lesson-inner">
+                            <div class="lesson-date-col">
+                                <div class="lesson-day">13</div>
+                                <div class="lesson-month">июня</div>
+                                <div class="lesson-time">10:00 МСК</div>
+                            </div>
+                            <div class="lesson-body">
+                                <div class="lesson-title">Упаковка</div>
+                                <ul class="lesson-points">
+                                    <li>На основе предыдущего блока упаковываем основные соцсети и рекламные каналы</li>
+                                    <li>Instagram, VK, Youtube, Дзен, VC, карты и отзывы, Авито, Telegram, MAX и другие</li>
+                                </ul>
+                                <div class="lesson-result">
+                                    <span class="lesson-result-arrow">→</span>
+                                    <p><strong>Результат:</strong> вы представлены в основных публичных каналах, где находится ваш потенциальный клиент. Вас легче найти, и по профилю очевидна ценность пойти именно к вам.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Урок 3 -->
+                    <div class="lesson-card">
+                        <div class="lesson-inner">
+                            <div class="lesson-date-col">
+                                <div class="lesson-day">17</div>
+                                <div class="lesson-month">июня</div>
+                                <div class="lesson-time">18:00 МСК</div>
+                            </div>
+                            <div class="lesson-body">
+                                <div class="lesson-title">Контент + ИИ-решения</div>
+                                <ul class="lesson-points">
+                                    <li>Как создавать контент с вашим лицом с минимальными вложениями времени и денег</li>
+                                    <li>Как создавать контент без лица — с помощью ИИ</li>
+                                    <li>Структуры постов и видео, которые «залетают» и с которых записываются на сеансы и программы</li>
+                                    <li>Как создать свой личный контент-завод: один раз настроили — легко производите большой объём материала</li>
+                                </ul>
+                                <div class="lesson-result">
+                                    <span class="lesson-result-arrow">→</span>
+                                    <p><strong>Результат:</strong> вы научились создавать разнообразный контент под разные соцсети для получения бесплатного органического трафика на ваши услуги.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Урок 4 -->
+                    <div class="lesson-card">
+                        <div class="lesson-inner">
+                            <div class="lesson-date-col">
+                                <div class="lesson-day">20</div>
+                                <div class="lesson-month">июня</div>
+                                <div class="lesson-time">10:00 МСК</div>
+                            </div>
+                            <div class="lesson-body">
+                                <div class="lesson-title">Воронка продаж и продажи</div>
+                                <ul class="lesson-points">
+                                    <li>Как проводить потенциального клиента от случайного зрителя до «тёплого» заинтересованного клиента, который не пропадает</li>
+                                    <li>Как автоматизировать обработку заявок с высокой конверсией в запись на приём или продажу программы</li>
+                                    <li>Как эффективно продавать без стыда, страха и ощущения «уговариваю»</li>
+                                </ul>
+                                <div class="lesson-result">
+                                    <span class="lesson-result-arrow">→</span>
+                                    <p><strong>Результат:</strong> со всех каналов трафика заявки быстрее конвертируются в клиентов с минимальными вашими усилиями.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus -->
+        <section class="section-padding bg-secondary" id="bonus">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Дополнительно</span>
+                    <h2>Бонусные уроки и материалы</h2>
+                </div>
+
+                <div class="bonus-grid fade-in-up">
+                    <div class="bonus-card">
+                        <span class="bonus-icon">📢</span>
+                        <p>Урок по Яндекс и VK рекламе</p>
+                    </div>
+                    <div class="bonus-card">
+                        <span class="bonus-icon">🌐</span>
+                        <p>Урок по созданию ИИ-сайтов</p>
+                    </div>
+                    <div class="bonus-card">
+                        <span class="bonus-icon">🤖</span>
+                        <p>Урок по созданию чат-ботов в Telegram и MAX</p>
+                    </div>
+                    <div class="bonus-card">
+                        <span class="bonus-icon">💳</span>
+                        <p>Как использовать и оплачивать ИИ из РФ</p>
+                    </div>
+                </div>
+
+                <div class="support-box fade-in-up delay-1">
+                    <h3>Личное сопровождение на каждом этапе</h3>
+                    <ul class="support-list">
+                        <li>Каждый урок сопровождается личной обратной связью от Глеба Асташева</li>
+                        <li>В чате отвечает Глеб и команда — доступны детальные ответы и разборы</li>
+                        <li>Записи всех уроков остаются у вас навсегда</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outcome -->
+        <section class="section-padding" id="outcome">
+            <div class="container">
+                <div class="outcome-banner fade-in-up">
+                    <span class="badge">Финальный результат программы</span>
+                    <h2>Полноценная система привлечения клиентов</h2>
+                    <p>Вы собрали полноценную систему успешной частной практики и экспертного бизнеса с личным сопровождением продюсера. Знаете как продвигаться и откуда брать клиентов, а клиенты идентифицируют вас как «своего» специалиста и записываются на услуги.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="section-padding" id="reviews">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Отзывы</span>
+                    <h2>Что говорят участники</h2>
+                </div>
+                <div class="reviews-carousel fade-in-up">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_31_14.png" alt="Кейс: Мария Володченко" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_32_50.png" alt="Кейс: Онлайн школа омоложения" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_34_23.png" alt="Кейс: Анастасия Синица" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_36_08.png" alt="Кейс: Елена Спис" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_38_56.png" alt="Кейс: Онлайн курс по психологии" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_40_16.png" alt="Кейс: Елена Бутюгова" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_49_43.png" alt="Кейс: Михаил Солпанов" class="review-img">
+                        </div>
+                        <div class="review-slide">
+                            <img src="media/ChatGPT Image 28 мая 2026 г., 15_54_03.png" alt="Кейс: Диана Игнатьева" class="review-img">
+                        </div>
+                    </div>
+                    <button class="reviews-btn reviews-btn--prev" id="reviewsPrev" aria-label="Назад">&#8592;</button>
+                    <button class="reviews-btn reviews-btn--next" id="reviewsNext" aria-label="Вперёд">&#8594;</button>
+                    <div class="reviews-dots" id="reviewsDots">
+                        <span class="reviews-dot active" data-idx="0"></span>
+                        <span class="reviews-dot" data-idx="1"></span>
+                        <span class="reviews-dot" data-idx="2"></span>
+                        <span class="reviews-dot" data-idx="3"></span>
+                        <span class="reviews-dot" data-idx="4"></span>
+                        <span class="reviews-dot" data-idx="5"></span>
+                        <span class="reviews-dot" data-idx="6"></span>
+                        <span class="reviews-dot" data-idx="7"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="booking-block fade-in-up">
+                    <div class="booking-left">
+                        <span class="badge" style="margin-bottom: 16px;">Бронирование места</span>
+                        <h2 style="color:#fff; margin-bottom: 12px;">Забронируйте место<br>прямо сейчас</h2>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.7; margin: 0;">Оплатите бронирование и зафиксируйте своё место в блоке. Оставшаяся сумма оплачивается до старта.</p>
+                    </div>
+                    <div class="booking-right">
+                        <div class="booking-price-tag">
+                            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); margin-bottom: 6px;">Стоимость бронирования</div>
+                            <div style="font-family: var(--font-primary); font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">5 000 <span style="font-size: 1.3rem; font-weight: 500; color: rgba(255,255,255,0.7);">руб</span></div>
+                        </div>
+                        <div class="booking-bonus">
+                            <div class="booking-bonus-icon">🎁</div>
+                            <div>
+                                <div style="font-weight: 600; color: var(--color-highlight); font-size: 0.9rem; margin-bottom: 4px;">Бонус при бронировании</div>
+                                <div style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.55;">25 минут личной сессии с Глебом Асташевым в ближайшее время</div>
+                            </div>
+                        </div>
+                        <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; background: var(--color-highlight); border-color: var(--color-highlight); color: #fff; font-size: 1rem; padding: 16px;">Забронировать место</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="section-padding bg-secondary" id="tariffs">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Стоимость</span>
+                    <h2>Варианты участия</h2>
+                </div>
+                <div class="grid-3 fade-in-up" style="align-items: stretch;">
+
+                    <div class="price-card">
+                        <h3>Один урок</h3>
+                        <p class="price-desc">1 урок на выбор + неделя доступа в чат с командой Глеба Асташева</p>
+                        <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                        </div>
+                    </div>
+
+                    <div class="price-card featured">
+                        <h3>Обучались у нас</h3>
+                        <span class="price-saving">−15 000 руб от полной цены</span>
+                        <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для тех, кто обучался в МИОТ Олега Агапэ или у Глеба Асташева</p>
+                        <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                        </div>
+                    </div>
+
+                    <div class="price-card">
+                        <h3>Без нас раньше</h3>
+                        <p class="price-desc">Полный блок (4 урока + все бонусы + чат) для новых участников, которые не обучались у нас ранее</p>
+                        <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-secondary">Забронировать</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo">
+                        <img src="branding/logo.png" alt="МИОТ" class="logo-img">
+                        <div class="logo-text">МЕЖДУНАРОДНЫЙ<br>ИНСТИТУТ<br>ОСТЕОПАТИЧЕСКИХ<br>ТЕХНОЛОГИЙ</div>
+                    </div>
+                    <p class="footer-desc">Обучаем специалистов телесных практик работать на уровне причин, а не симптомов. Профессиональное образование и курсы для самопомощи.</p>
+                    <div style="color: rgba(255,255,255,0.5); font-size: 0.75rem; line-height: 1.6; margin-top: 1rem;">
+                        ИП Петров Олег Вячеславович<br>
+                        ИНН 330510600108<br>
+                        ОГРН 322332800019880
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h4 style="color:#fff;">Навигация</h4>
+                    <ul>
+                        <li><a href="index.html" style="color:rgba(255,255,255,0.7);">Главная</a></li>
+                        <li><a href="programs.html" style="color:rgba(255,255,255,0.7);">Все программы</a></li>
+                        <li><a href="about.html" style="color:rgba(255,255,255,0.7);">Об институте</a></li>
+                        <li><a href="results.html" style="color:rgba(255,255,255,0.7);">Результаты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="mailto:info@agape-course.ru" style="color:rgba(255,255,255,0.7);">info@agape-course.ru</a></li>
+                        <li style="color:rgba(255,255,255,0.5);">101000, г. Москва, ул. Мясницкая 24/7</li>
+                        <li style="margin-top:16px;">
+                            <a href="https://t.me/glebasht" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Служба заботы</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 МИОТ. Все права защищены.</p>
+                <div class="footer-legal">
+                    <a href="https://dr-agape.ru/osteogynecology/policy.html" target="_blank">Политика конфиденциальности</a>
+                    <a href="https://dr-agape.ru/offer.html" target="_blank">Договор оферты</a>
+                    <a href="https://dr-agape.ru/osteogynecology/soglasie.html" target="_blank">Согласие на обработку данных</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        (function() {
+            const track = document.getElementById('reviewsTrack');
+            const dots = document.querySelectorAll('.reviews-dot');
+            const total = 8;
+            let current = 0;
+
+            function goTo(idx) {
+                current = (idx + total) % total;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            document.getElementById('reviewsNext').addEventListener('click', () => goTo(current + 1));
+            document.getElementById('reviewsPrev').addEventListener('click', () => goTo(current - 1));
+            dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+
+            // свайп на мобильном
+            let startX = 0;
+            track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+            track.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+            });
+        })();
+    </script>
+</body>
+</html>
