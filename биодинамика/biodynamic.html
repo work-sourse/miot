@@ -777,11 +777,12 @@
     /* ── Photo strip ── */
     .photo-strip {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       margin-top: 3rem;
     }
-    @media (max-width: 700px) { .photo-strip { grid-template-columns: repeat(2,1fr); } }
+    .photo-strip--3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 900px) { .photo-strip { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 420px) { .photo-strip { grid-template-columns: 1fr; } }
     .photo-strip__item {
       border-radius: var(--radius-md);
@@ -906,7 +907,7 @@
           </div>
         </div>
         <div class="bio-hero__img-wrap fade-in-up delay-1">
-          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ — Биодинамика">
+          <img src="../photos/oleg1676.jpg" alt="Олег Агапэ — Биодинамика">
           <div class="bio-hero__img-backdrop"></div>
         </div>
       </div>
@@ -1054,13 +1055,16 @@
       </div>
       <div class="photo-strip fade-in-up">
         <div class="photo-strip__item">
-          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ — работа с телом">
+          <img src="../photos/oleg1219.jpg" alt="Олег Агапэ — работа с телом">
         </div>
         <div class="photo-strip__item">
-          <img src="photo_5224239971244382842_w.jpg" alt="Олег Агапэ — обучение">
+          <img src="../photos/oleg1313.jpg" alt="Олег Агапэ — обучение">
         </div>
         <div class="photo-strip__item">
-          <img src="photo_5224239971244382843_w.jpg" alt="Олег Агапэ — практика">
+          <img src="../photos/oleg1438.jpg" alt="Олег Агапэ — практика">
+        </div>
+        <div class="photo-strip__item">
+          <img src="../photos/oleg1566.jpg" alt="Олег Агапэ — разбор кейса">
         </div>
       </div>
     </div>
@@ -1227,7 +1231,7 @@
           </div>
         </div>
       </div>
-      <img src="../photos/oleg1544.jpg" alt="Олег Агапэ на занятии" class="format-side-img">
+      <img src="../photos/oleg1590.jpg" alt="Олег Агапэ на занятии" class="format-side-img">
       </div>
     </div>
   </section>
@@ -1293,7 +1297,7 @@
       </div>
       <div class="author-inner fade-in-up">
         <div class="author-photo-col">
-          <img src="../photos/oleg1383.jpg" alt="Олег Агапэ">
+          <img src="../photos/oleg1292.jpg" alt="Олег Агапэ">
         </div>
         <div class="author-body">
           <div class="author-name">Олег Агапэ</div>
@@ -1355,8 +1359,25 @@
     </div>
   </section>
 
+  <!-- Фото-галерея 2 -->
+  <section class="section-pad-alt">
+    <div class="container">
+      <div class="photo-strip photo-strip--3 fade-in-up">
+        <div class="photo-strip__item">
+          <img src="../photos/oleg1251.jpg" alt="Олег Агапэ — занятие">
+        </div>
+        <div class="photo-strip__item">
+          <img src="../photos/oleg1635.jpg" alt="Олег Агапэ — практика">
+        </div>
+        <div class="photo-strip__item">
+          <img src="../photos/oleg1644.jpg" alt="Олег Агапэ — обучение">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section class="section-pad-alt" id="faq">
+  <section class="section-pad" id="faq">
     <div class="container">
       <div class="section-header text-center fade-in-up">
         <span class="badge">Вопросы и ответы</span>
