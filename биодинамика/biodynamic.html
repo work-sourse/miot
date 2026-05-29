@@ -14,53 +14,48 @@
     /* ── Hero ── */
     .bio-hero {
       padding: 160px 0 100px;
-      background: linear-gradient(135deg, var(--color-bg-dark) 0%, #1a2744 60%, #1a3a6b 100%);
+      background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
       position: relative;
       overflow: hidden;
     }
-    .bio-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 60% 0%, rgba(204,167,118,0.10) 0%, transparent 70%);
-      pointer-events: none;
+    .bio-hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
-    .bio-hero__inner {
-      position: relative;
-      z-index: 1;
+    @media (max-width: 900px) {
+      .bio-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     .bio-hero__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.20);
+      display: inline-block;
+      background: var(--color-bg-tertiary);
       border-radius: 100px;
       padding: 6px 18px;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.80);
+      color: var(--color-accent);
       margin-bottom: 1.5rem;
     }
     .bio-hero__title {
       font-family: var(--font-primary);
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
       font-weight: 800;
-      color: #fff;
+      color: var(--color-text-primary);
       line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
     .bio-hero__title span {
       color: var(--color-highlight);
     }
     .bio-hero__sub {
       font-size: 1.15rem;
-      color: rgba(255,255,255,0.75);
+      color: var(--color-text-secondary);
       line-height: 1.65;
-      max-width: 580px;
+      max-width: 560px;
       margin-bottom: 2rem;
     }
     .bio-hero__pills {
@@ -73,13 +68,47 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--color-bg-tertiary);
       border-radius: 100px;
       padding: 7px 16px;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.80);
+      font-weight: 500;
+      color: var(--color-text-primary);
     }
+    .bio-hero__img-wrap {
+      position: relative;
+    }
+    .bio-hero__img-wrap img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+    .bio-hero__img-backdrop {
+      position: absolute;
+      top: 5%; right: -5%;
+      width: 80%; height: 90%;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-highlight), var(--color-accent));
+      opacity: 0.12;
+      z-index: -1;
+      transform: rotate(5deg);
+    }
+    .bio-hero__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 560px) { .bio-hero__stats { grid-template-columns: repeat(2,1fr); } }
+    .bio-hero__stat h3 {
+      font-size: 1.8rem;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+    .bio-hero__stat p { font-size: 0.85rem; color: var(--color-text-secondary); margin: 0; }
     @media (max-width: 768px) {
       .bio-hero { padding: 120px 0 60px; }
     }
@@ -809,20 +838,31 @@
 
   <!-- Hero -->
   <section class="bio-hero">
-    <div class="container bio-hero__inner">
-      <div class="fade-in-up">
-        <div class="bio-hero__eyebrow">МИОТ · Старт сентябрь 2025</div>
-        <h1 class="bio-hero__title">Биодинамика:<br><span>от техники к состоянию</span></h1>
-        <p class="bio-hero__sub">Полугодичная программа для остеопатов и телесных практиков, которые хотят работать глубже — без усилий, выгорания и зависимости от алгоритмов.</p>
-        <div class="bio-hero__pills">
-          <span class="bio-hero__pill">🧩 4 модуля + интеграция</span>
-          <span class="bio-hero__pill">⏱ 6 месяцев</span>
-          <span class="bio-hero__pill">🤲 70% практика</span>
-          <span class="bio-hero__pill">📍 Офлайн + онлайн</span>
+    <div class="container">
+      <div class="bio-hero__grid">
+        <div class="fade-in-up">
+          <div class="bio-hero__eyebrow">МИОТ · Старт сентябрь 2025</div>
+          <h1 class="bio-hero__title">Биодинамика:<br><span>от техники к состоянию</span></h1>
+          <p class="bio-hero__sub">Полугодичная программа для остеопатов и телесных практиков, которые хотят работать глубже — без усилий, выгорания и зависимости от алгоритмов.</p>
+          <div class="bio-hero__pills">
+            <span class="bio-hero__pill">🧩 4 модуля + интеграция</span>
+            <span class="bio-hero__pill">⏱ 6 месяцев</span>
+            <span class="bio-hero__pill">🤲 70% практика</span>
+            <span class="bio-hero__pill">📍 Офлайн + онлайн</span>
+          </div>
+          <div class="hero-actions">
+            <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
+            <a href="#modules" class="btn btn-secondary">Смотреть программу</a>
+          </div>
+          <div class="bio-hero__stats">
+            <div class="bio-hero__stat"><h3>6 мес.</h3><p>полного обучения</p></div>
+            <div class="bio-hero__stat"><h3>70%</h3><p>практики</p></div>
+            <div class="bio-hero__stat"><h3>5</h3><p>модулей включая интеграцию</p></div>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
-          <a href="#modules" class="btn" style="color:#fff; border:2px solid rgba(255,255,255,0.3); background:transparent;">Смотреть программу</a>
+        <div class="bio-hero__img-wrap fade-in-up delay-1">
+          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ — Биодинамика">
+          <div class="bio-hero__img-backdrop"></div>
         </div>
       </div>
     </div>
