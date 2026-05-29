@@ -820,33 +820,6 @@
     }
     @media (max-width: 900px) { .format-side-img { max-width: 400px; margin: 0 auto; position: static; } }
 
-    /* ── Footer ── */
-    .page-foot {
-      background: #060d1a;
-      padding: 2rem 0;
-    }
-    .page-foot__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .page-foot__logo {
-      font-family: var(--font-primary);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-    }
-    .page-foot__links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .page-foot__links a {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .page-foot__links a:hover { color: #fff; }
   </style>
 </head>
 
@@ -1461,18 +1434,80 @@
 </main>
 
 <!-- Footer -->
-<footer class="page-foot">
-  <div class="container">
-    <div class="page-foot__inner">
-      <a href="../index.html" class="page-foot__logo">МИОТ · Олег Агапэ</a>
-      <div class="page-foot__links">
-        <a href="../offer.html">Оферта</a>
-        <a href="../psycho-bio/">Психосоматика</a>
-        <a href="../lectures/">Записи эфиров</a>
-        <a href="https://t.me/dr_agape">Telegram</a>
-      </div>
+<footer class="footer bg-dark" id="contacts">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                    <img src="../branding/logo.png" alt="МИОТ Логотип"
+                        style="width: 50px; height: 50px; object-fit: contain;">
+                    <div class="logo-text" style="color: white; font-size: 0.8rem; line-height: 1.2;">
+                        МЕЖДУНАРОДНЫЙ<br>
+                        ИНСТИТУТ<br>
+                        ОСТЕОПАТИЧЕСКИХ<br>
+                        ТЕХНОЛОГИЙ
+                    </div>
+                </div>
+                <div style="color: rgba(255,255,255,0.5); font-size: 0.75rem; line-height: 1.6; margin-top: 1rem;">
+                    ИП Петров Олег Вячеславович<br>
+                    ИНН 330510600108<br>
+                    ОГРН 322332800019880
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Обучение</h4>
+                <ul>
+                    <li><a href="../programs.html">Функциональная анатомия</a></li>
+                    <li><a href="../programs.html">Специалист остеокоррекции</a></li>
+                    <li><a href="../programs.html">Специалист ОстеоЭстетики</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Институт</h4>
+                <ul>
+                    <li><a href="../about.html">Об Олеге Агапэ</a></li>
+                    <li><a href="../results.html">Кейсы студентов</a></li>
+                    <li><a href="../about.html#media">СМИ о нас</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><a href="mailto:info@agape-course.ru">info@agape-course.ru</a></li>
+                    <li>101000, Россия, Московская область, г. Москва, ул. Мясницкая 24/7</li>
+                    <li><a href="tel:+79164487900" style="color: inherit; text-decoration: none;">+7 (916) 448-79-00</a></li>
+                    <li>
+                        <div class="messenger-grid">
+                            <a href="https://t.me/TatyBondar" target="_blank" class="messenger-item">
+                                <img src="https://static.tildacdn.com/tild6461-3037-4235-a634-323962653434/3d-icon-social-media.png" alt="Telegram">
+                                <span>Telegram</span>
+                            </a>
+                            <a href="https://vk.ru/id134100568" target="_blank" class="messenger-item">
+                                <img src="https://static.tildacdn.com/tild6139-3835-4561-a135-616364363831/3d-icon-social-media.png" alt="ВКонтакте">
+                                <span>ВКонтакте</span>
+                            </a>
+                            <a href="https://max.ru/u/f9LHodD0cOIDqa2IQgLfQV3CSNZPigp9Et2IvcvixcT07rknMmHq3d2XWBI" target="_blank" class="messenger-item">
+                                <img src="https://static.tildacdn.com/tild6138-3335-4432-a332-653163376361/noroot.png" alt="Max">
+                                <span>Max</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 МИОТ. Все права защищены.</p>
+            <div class="footer-legal">
+                <a href="https://agape-course.com/policy" target="_blank">Политика конфиденциальности</a>
+                <a href="../offer.html">Договор оферты</a>
+                <a href="https://agape-course.com/soglasie" target="_blank">Согласие на обработку данных</a>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
 
 <script src="../script.js"></script>
