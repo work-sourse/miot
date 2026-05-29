@@ -1,675 +1,898 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Биодинамика: от техники к состоянию · Олег Агапэ</title>
+  <title>Биодинамика: от техники к состоянию · МИОТ</title>
   <meta name="description" content="Полугодичная программа по биодинамической остеопатии для специалистов — старт сентябрь 2025">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --warm:        #2E5F9E;
-      --warm-soft:   #DDE8F5;
-      --warm-line:   rgba(46,95,158,0.22);
-      --accent:      #C07230;
-      --accent-soft: #FAEEDE;
-      --ink:         #141C2A;
-      --ink-soft:    #3A4758;
-      --ink-mute:    #7A8FA8;
-      --bg:          #F0F3F9;
-      --card:        #fff;
+    /* ── Hero ── */
+    .bio-hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(135deg, var(--color-bg-dark) 0%, #1a2744 60%, #1a3a6b 100%);
+      position: relative;
+      overflow: hidden;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
-
-    /* ══ NAV ══ */
-    .site-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--warm-line);
-    }
-    .site-nav__inner {
-      max-width: 1020px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center;
-      justify-content: space-between; height: 60px; gap: 20px;
-    }
-    .site-nav__logo {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 13px; font-weight: 700;
-      color: var(--warm); text-decoration: none;
-      letter-spacing: 0.01em; white-space: nowrap;
-    }
-    .site-nav__links {
-      display: flex; gap: 24px; list-style: none;
-    }
-    .site-nav__links a {
-      font-size: 13px; font-weight: 500; color: var(--ink-soft);
-      text-decoration: none; transition: color .15s;
-    }
-    .site-nav__links a:hover { color: var(--warm); }
-    .site-nav__cta {
-      flex-shrink: 0;
-      background: var(--accent); color: #fff;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      border: none; border-radius: 10px;
-      padding: 10px 20px; cursor: pointer;
-      text-decoration: none;
-      transition: background .18s;
-    }
-    .site-nav__cta:hover { background: #a85e20; }
-    @media (max-width: 720px) {
-      .site-nav__links { display: none; }
-    }
-
-    /* ══ HERO ══ */
-    .hero {
-      background: linear-gradient(160deg, #0f2548 0%, #1a3a6b 55%, #2E5F9E 100%);
-      padding: 72px 0 64px;
-      color: #fff;
-      position: relative; overflow: hidden;
-    }
-    .hero::after {
+    .bio-hero::after {
       content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(192,114,48,0.12) 0%, transparent 70%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 60% 0%, rgba(204,167,118,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero__inner { position: relative; z-index: 1; }
-    .hero__eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 20px; padding: 5px 16px;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); margin-bottom: 20px;
+    .bio-hero__inner {
+      position: relative;
+      z-index: 1;
     }
-    .hero__title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(28px, 4.5vw, 52px);
-      font-weight: 800; color: #fff;
-      line-height: 1.1; letter-spacing: -0.03em;
-      max-width: 700px; margin-bottom: 12px;
+    .bio-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 1.5rem;
     }
-    .hero__title em { font-style: normal; color: #F5D49A; }
-    .hero__sub {
-      font-size: clamp(15px, 1.7vw, 17px);
+    .bio-hero__title {
+      font-family: var(--font-primary);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .bio-hero__title span {
+      color: var(--color-highlight);
+    }
+    .bio-hero__sub {
+      font-size: 1.15rem;
       color: rgba(255,255,255,0.75);
-      line-height: 1.6; max-width: 560px; margin-bottom: 32px;
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 2rem;
     }
-    .hero__pills {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px;
+    .bio-hero__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2.5rem;
     }
-    .hero__pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 20px; padding: 6px 14px;
-      font-size: 13px; color: rgba(255,255,255,0.85);
+    .bio-hero__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.80);
     }
-    .hero__btns { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn-hero {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--accent); color: #fff;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      border: none; border-radius: 12px;
-      padding: 16px 32px; cursor: pointer; text-decoration: none;
-      transition: background .18s, transform .15s;
-      box-shadow: 0 10px 28px -8px rgba(192,114,48,0.55);
-    }
-    .btn-hero:hover { background: #a85e20; transform: translateY(-1px); }
-    .btn-hero-outline {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: transparent; color: #fff;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      border: 2px solid rgba(255,255,255,0.4); border-radius: 12px;
-      padding: 14px 28px; cursor: pointer; text-decoration: none;
-      transition: border-color .18s, background .18s;
-    }
-    .btn-hero-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-
-    /* ══ СЕКЦИИ ══ */
-    .section { padding: 72px 0; }
-    .section--alt { background: var(--card); }
-    .section-head { text-align: center; margin-bottom: 40px; }
-    .section-head__label {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--warm); background: var(--warm-soft);
-      border-radius: 20px; padding: 5px 16px;
-      display: inline-block; margin-bottom: 12px;
-    }
-    .section-head__title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(20px, 2.8vw, 32px);
-      font-weight: 800; color: var(--ink);
-      line-height: 1.2; letter-spacing: -0.025em;
-    }
-    .section-head__sub {
-      font-size: 15px; color: var(--ink-mute);
-      margin-top: 8px; line-height: 1.6;
+    @media (max-width: 768px) {
+      .bio-hero { padding: 120px 0 60px; }
     }
 
-    /* ══ ДЛЯ КОГО ══ */
+    /* ── Section base ── */
+    .section-pad { padding: 90px 0; }
+    .section-pad-alt { padding: 90px 0; background: var(--color-bg-secondary); }
+
+    /* ── For Whom ── */
     .for-whom-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
-    @media (max-width: 720px) { .for-whom-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 480px) { .for-whom-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .for-whom-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .for-whom-grid { grid-template-columns: 1fr; } }
     .for-whom-card {
-      background: var(--card); border-radius: 16px; padding: 22px 20px;
-      box-shadow: 0 2px 14px rgba(46,95,158,0.07);
-      border-top: 3px solid var(--warm-line);
-      transition: border-color .2s, box-shadow .2s;
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--color-bg-tertiary);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     }
-    .for-whom-card:hover { border-color: var(--warm); box-shadow: 0 4px 24px rgba(46,95,158,0.13); }
-    .for-whom-card--new { border-top-color: var(--accent); }
+    .for-whom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--color-highlight);
+    }
     .for-whom-card__num {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 11px; font-weight: 700; color: var(--warm);
-      letter-spacing: 0.1em; margin-bottom: 10px;
+      font-family: var(--font-primary);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      margin-bottom: 0.8rem;
     }
-    .for-whom-card--new .for-whom-card__num { color: var(--accent); }
     .for-whom-card__title {
-      font-size: 15px; font-weight: 700; color: var(--ink);
-      margin-bottom: 8px; line-height: 1.35;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
     }
-    .for-whom-card__text { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+    .for-whom-card__text {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .for-whom-card--accent { border-top-color: var(--color-highlight); }
     .audience-tags {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
     }
     .audience-tag {
       display: inline-block;
-      background: var(--warm-soft); color: var(--warm);
-      font-size: 13px; font-weight: 600;
-      border-radius: 20px; padding: 5px 14px;
+      background: var(--color-bg-tertiary);
+      color: var(--color-accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 100px;
+      padding: 6px 16px;
     }
 
-    /* ══ ТРАНСФОРМАЦИЯ ══ */
+    /* ── Transform Table ── */
     .transform-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
     @media (max-width: 600px) { .transform-grid { grid-template-columns: 1fr; } }
     .transform-col {
-      background: var(--card); border-radius: 18px; overflow: hidden;
-      box-shadow: 0 2px 16px rgba(46,95,158,0.08);
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
     .transform-col__head {
-      padding: 16px 24px;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 14px 22px;
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
     .transform-col--before .transform-col__head {
-      background: rgba(122,143,168,0.1); color: var(--ink-mute);
+      background: var(--color-bg-tertiary);
+      color: var(--color-text-secondary);
     }
     .transform-col--after .transform-col__head {
-      background: linear-gradient(135deg, #1a3a6b, #2E5F9E); color: #fff;
+      background: linear-gradient(135deg, var(--color-bg-dark), #1a3a6b);
+      color: #fff;
     }
-    .transform-col__items { padding: 8px 0; }
     .transform-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 10px 24px;
-      border-bottom: 1px solid rgba(46,95,158,0.06);
-      font-size: 14px; color: var(--ink-soft);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 22px;
+      border-bottom: 1px solid var(--color-bg-secondary);
+      font-size: 0.9rem;
     }
     .transform-item:last-child { border-bottom: none; }
     .transform-item::before {
-      content: '—'; color: var(--ink-mute);
-      flex-shrink: 0; font-weight: 700;
+      content: '—';
+      color: var(--color-text-secondary);
+      flex-shrink: 0;
+      font-weight: 700;
     }
     .transform-col--after .transform-item::before { content: '✓'; color: #22a249; }
-    .transform-col--after .transform-item { color: var(--ink); font-weight: 500; }
+    .transform-col--before .transform-item { color: var(--color-text-secondary); }
+    .transform-col--after .transform-item { color: var(--color-text-primary); font-weight: 500; }
 
-    /* ══ СУТЬ ══ */
+    /* ── What Is ── */
     .what-is-quote {
-      background: var(--warm-soft);
-      border-left: 4px solid var(--warm);
-      border-radius: 0 14px 14px 0;
-      padding: 18px 24px;
-      font-size: 16px; font-style: italic; color: var(--ink);
-      line-height: 1.6; margin-bottom: 28px;
+      background: var(--color-bg-secondary);
+      border-left: 4px solid var(--color-highlight);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.8rem;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
     }
-    .what-is-text { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 32px; }
-    .what-is-text strong { color: var(--ink); }
-    .what-is-text em {
-      font-style: normal; display: block; margin-top: 16px;
-      font-family: 'Caveat', cursive; font-size: 18px; color: var(--warm);
+    .what-is-text {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .what-is-text strong { color: var(--color-text-primary); }
+    .what-is-highlight {
+      display: block;
+      margin-top: 1.2rem;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--color-accent);
     }
     .principles-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
     }
-    @media (max-width: 720px) { .principles-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 768px) { .principles-grid { grid-template-columns: repeat(3,1fr); } }
     @media (max-width: 480px) { .principles-grid { grid-template-columns: repeat(2,1fr); } }
     .principle-card {
-      background: var(--card); border-radius: 14px; padding: 18px 14px;
-      text-align: center; box-shadow: 0 2px 12px rgba(46,95,158,0.07);
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border-bottom: 3px solid var(--color-bg-tertiary);
+      transition: border-color 0.25s, transform 0.25s;
     }
+    .principle-card:hover { border-bottom-color: var(--color-highlight); transform: translateY(-3px); }
     .principle-card__num {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 10px; font-weight: 700; color: var(--warm);
-      letter-spacing: 0.1em; margin-bottom: 8px;
+      font-family: var(--font-primary);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      margin-bottom: 0.6rem;
     }
     .principle-card__name {
-      font-size: 14px; font-weight: 700; color: var(--ink);
-      margin-bottom: 4px;
+      font-family: var(--font-primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
     }
-    .principle-card__desc { font-size: 12px; color: var(--ink-mute); line-height: 1.45; }
+    .principle-card__desc {
+      font-size: 0.78rem;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
 
-    /* ══ МОДУЛИ ══ */
-    .modules-list { display: flex; flex-direction: column; gap: 16px; }
+    /* ── Modules ── */
+    .modules-list { display: flex; flex-direction: column; gap: 1rem; }
     .module-card {
-      background: var(--card); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 2px 16px rgba(46,95,158,0.08);
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-bg-secondary);
     }
     .module-card__head {
-      display: flex; align-items: center; gap: 20px;
-      padding: 24px 28px; cursor: pointer;
-      transition: background .15s;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .module-card__head:hover { background: var(--bg); }
+    .module-card__head:hover { background: var(--color-bg-secondary); }
     .module-card__num {
-      flex-shrink: 0; width: 44px; height: 44px;
-      background: linear-gradient(135deg, #1a3a6b, #2E5F9E);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 15px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      background: var(--color-accent);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--color-highlight);
     }
-    .module-card__num--integration {
-      background: linear-gradient(135deg, #7a3a0a, var(--accent));
-    }
+    .module-card__num--integration { background: linear-gradient(135deg, #1a2744, var(--color-accent)); }
     .module-card__info { flex: 1; }
     .module-card__label {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--warm); margin-bottom: 3px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      margin-bottom: 3px;
     }
     .module-card__title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(14px, 1.8vw, 17px);
-      font-weight: 700; color: var(--ink); line-height: 1.2;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.2;
     }
-    .module-card__teaser { font-size: 13px; color: var(--ink-mute); margin-top: 3px; }
+    .module-card__teaser {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      margin-top: 3px;
+    }
+    .module-card__arrow {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--color-bg-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      transition: transform 0.25s;
+    }
+    .module-card.is-open .module-card__arrow { transform: rotate(45deg); }
     .module-card__body {
-      padding: 0 28px 24px 28px; padding-left: 92px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      padding: 0 2rem 0 5.5rem;
     }
-    @media (max-width: 600px) { .module-card__body { padding-left: 28px; } }
+    @media (max-width: 560px) { .module-card__body { padding: 0 1.5rem; } }
+    .module-card.is-open .module-card__body { max-height: 500px; }
+    .module-card__body-inner { padding-bottom: 1.8rem; }
     .module-points {
-      list-style: none; display: flex; flex-direction: column; gap: 7px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
     .module-points li {
-      font-size: 14px; color: var(--ink-soft); line-height: 1.5;
-      display: flex; gap: 8px; align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
     }
     .module-points li::before {
-      content: '→'; color: var(--warm); font-weight: 700; flex-shrink: 0;
+      content: '→';
+      color: var(--color-highlight);
+      font-weight: 700;
+      flex-shrink: 0;
     }
     .module-result {
-      margin-top: 14px; padding: 12px 16px;
-      background: var(--warm-soft); border-radius: 10px;
-      font-size: 13px; color: var(--warm); font-weight: 600;
+      padding: 10px 14px;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--color-highlight);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-accent);
     }
 
-    /* ══ ФОРМАТ ══ */
+    /* ── Format ── */
     .format-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
     @media (max-width: 600px) { .format-grid { grid-template-columns: 1fr; } }
     .format-card {
-      background: var(--card); border-radius: 16px; padding: 24px 22px;
-      box-shadow: 0 2px 14px rgba(46,95,158,0.07);
-      display: flex; gap: 16px;
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      border: 1px solid var(--color-bg-secondary);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
+    .format-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .format-card__icon {
-      flex-shrink: 0; width: 44px; height: 44px;
-      background: var(--warm-soft); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      background: var(--color-bg-tertiary);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
     }
     .format-card__label {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 12px; font-weight: 700; color: var(--warm);
-      letter-spacing: 0.04em; margin-bottom: 4px;
-    }
-    .format-card__title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .format-card__text { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
-
-    /* ══ РЕЗУЛЬТАТЫ ══ */
-    .results-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-    }
-    @media (max-width: 840px) { .results-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 480px) { .results-grid { grid-template-columns: 1fr; } }
-    .result-card {
-      background: var(--card); border-radius: 14px; padding: 20px 16px;
-      box-shadow: 0 2px 12px rgba(46,95,158,0.07);
-      border-bottom: 3px solid var(--warm-line);
-    }
-    .result-card__num {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 10px; font-weight: 700; color: var(--warm);
-      letter-spacing: 0.1em; margin-bottom: 8px;
-    }
-    .result-card__title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .result-card__text { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
-
-    /* ══ СРАВНЕНИЕ ══ */
-    .comparison-table {
-      width: 100%; border-collapse: collapse;
-      background: var(--card); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 2px 16px rgba(46,95,158,0.08);
-    }
-    .comparison-table th {
-      padding: 14px 20px; font-family: 'Unbounded', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; text-align: left;
-    }
-    .comparison-table th:first-child { background: var(--bg); color: var(--ink-mute); }
-    .comparison-table th:nth-child(2) { background: rgba(122,143,168,0.1); color: var(--ink-soft); }
-    .comparison-table th:nth-child(3) { background: linear-gradient(135deg, #1a3a6b, #2E5F9E); color: #fff; }
-    .comparison-table td {
-      padding: 12px 20px; font-size: 14px;
-      border-bottom: 1px solid rgba(46,95,158,0.07);
-    }
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table td:first-child { color: var(--ink-mute); font-weight: 500; }
-    .comparison-table td:nth-child(2) { color: var(--ink-soft); }
-    .comparison-table td:nth-child(3) { color: var(--warm); font-weight: 600; }
-    .comparison-note {
-      text-align: center; margin-top: 16px;
-      font-size: 14px; color: var(--ink-mute); font-style: italic;
-    }
-
-    /* ══ АВТОР ══ */
-    .author-inner {
-      background: var(--card); border-radius: 24px; overflow: hidden;
-      box-shadow: 0 4px 28px rgba(46,95,158,0.10);
-      display: grid; grid-template-columns: 280px 1fr;
-    }
-    @media (max-width: 720px) { .author-inner { grid-template-columns: 1fr; } }
-    .author-photo {
-      background: linear-gradient(160deg, #0f2548, #2E5F9E);
-      display: flex; align-items: center; justify-content: center;
-      min-height: 280px; position: relative; overflow: hidden;
-    }
-    .author-photo img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top;
-      display: block;
-    }
-    .author-body { padding: 36px 36px 32px; }
-    @media (max-width: 600px) { .author-body { padding: 24px 20px; } }
-    .author-name {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(20px, 2.5vw, 28px);
-      font-weight: 800; color: var(--ink);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
       margin-bottom: 4px;
     }
-    .author-role { font-size: 14px; color: var(--warm); font-weight: 600; margin-bottom: 16px; }
-    .author-quote {
-      font-family: 'Caveat', cursive; font-size: 18px; color: var(--accent);
-      line-height: 1.5; margin-bottom: 16px;
+    .format-card__title {
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
     }
-    .author-bio { font-size: 14px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 20px; }
-    .author-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
-    .author-list li {
-      font-size: 13px; color: var(--ink-soft); display: flex; gap: 8px;
+    .format-card__text {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
     }
-    .author-list li::before { content: '✓'; color: var(--warm); font-weight: 700; }
-    .author-stats {
-      display: flex; flex-wrap: wrap; gap: 12px;
-    }
-    .author-stat {
-      background: var(--bg); border-radius: 12px; padding: 12px 16px; text-align: center;
-    }
-    .author-stat__val {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 18px; font-weight: 800; color: var(--warm);
-    }
-    .author-stat__label { font-size: 11px; color: var(--ink-mute); margin-top: 2px; }
 
-    /* ══ КЕЙСЫ ══ */
-    .cases-grid { display: flex; flex-direction: column; gap: 20px; }
-    .case-card {
-      background: var(--card); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 2px 16px rgba(46,95,158,0.08);
+    /* ── Results ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
     }
-    .case-card__head {
-      background: linear-gradient(135deg, #1a3a6b, #2E5F9E);
-      padding: 20px 28px; display: flex; align-items: center; gap: 16px;
+    @media (max-width: 900px) { .results-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .results-grid { grid-template-columns: 1fr; } }
+    .result-card {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border-bottom: 3px solid var(--color-bg-tertiary);
+      transition: border-bottom-color 0.2s, transform 0.2s;
     }
-    .case-card__num {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 32px; font-weight: 800; color: rgba(255,255,255,0.18);
+    .result-card:hover { border-bottom-color: var(--color-highlight); transform: translateY(-3px); }
+    .result-card__num {
+      font-family: var(--font-primary);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      margin-bottom: 0.5rem;
     }
-    .case-card__title { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
-    .case-card__body { padding: 24px 28px; }
-    @media (max-width: 600px) { .case-card__head, .case-card__body { padding: 18px 20px; } }
-    .case-content { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; }
-    .case-insight {
-      background: var(--accent-soft); border-left: 4px solid var(--accent);
-      border-radius: 0 10px 10px 0; padding: 12px 16px;
-      font-size: 13px; font-weight: 500; color: var(--ink);
+    .result-card__title {
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
     }
-    .case-insight strong { color: var(--accent); }
+    .result-card__text {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
 
-    /* ══ FAQ ══ */
-    .faq-list { display: flex; flex-direction: column; gap: 8px; }
-    .faq-item {
-      background: var(--card); border-radius: 14px;
-      box-shadow: 0 1px 8px rgba(46,95,158,0.06);
+    /* ── Comparison ── */
+    .comparison-wrapper { overflow-x: auto; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .comparison-table th {
+      padding: 14px 20px;
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+    .comparison-table th:first-child { background: var(--color-bg-secondary); color: var(--color-text-secondary); }
+    .comparison-table th:nth-child(2) { background: var(--color-bg-tertiary); color: var(--color-text-secondary); }
+    .comparison-table th:nth-child(3) { background: var(--color-accent); color: var(--color-highlight); }
+    .comparison-table td {
+      padding: 11px 20px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--color-bg-secondary);
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td:first-child { color: var(--color-text-secondary); font-weight: 500; }
+    .comparison-table td:nth-child(2) { color: var(--color-text-secondary); }
+    .comparison-table td:nth-child(3) { color: var(--color-accent); font-weight: 600; }
+    .comparison-note {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    /* ── Author ── */
+    .author-inner {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+    }
+    @media (max-width: 768px) { .author-inner { grid-template-columns: 1fr; } }
+    .author-photo-col {
+      background: linear-gradient(160deg, var(--color-bg-dark), #1a3a6b);
+      min-height: 300px;
       overflow: hidden;
     }
-    .faq-item__q {
-      width: 100%; text-align: left; background: none; border: none;
-      padding: 18px 22px; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      font-size: 15px; font-weight: 600; color: var(--ink);
-      font-family: 'Inter', sans-serif;
-      transition: color .15s;
+    .author-photo-col img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-radius: 0;
     }
-    .faq-item__q:hover { color: var(--warm); }
+    .author-body { padding: 2.5rem; }
+    @media (max-width: 600px) { .author-body { padding: 1.5rem; } }
+    .author-name {
+      font-family: var(--font-primary);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--color-text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .author-role {
+      font-size: 0.9rem;
+      color: var(--color-highlight);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .author-quote {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--color-text-primary);
+      border-left: 3px solid var(--color-highlight);
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+    .author-bio {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .author-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .author-list li {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin: 0;
+    }
+    .author-list li::before { content: '✓'; color: var(--color-highlight); font-weight: 700; flex-shrink: 0; }
+    .author-stats { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .author-stat {
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+    .author-stat__val {
+      font-family: var(--font-primary);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      display: block;
+    }
+    .author-stat__label { font-size: 0.72rem; color: var(--color-text-secondary); }
+
+    /* ── Cases ── */
+    .cases-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .case-card {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .case-card__head {
+      background: var(--color-bg-dark);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .case-card__num {
+      font-family: var(--font-primary);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.12);
+    }
+    .case-card__title {
+      font-family: var(--font-primary);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .case-card__body { padding: 1.8rem 2rem; }
+    @media (max-width: 600px) { .case-card__head, .case-card__body { padding: 1.2rem 1.4rem; } }
+    .case-content {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .case-insight {
+      background: var(--color-bg-secondary);
+      border-left: 4px solid var(--color-highlight);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+    .case-insight strong { color: var(--color-highlight); }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .faq-item {
+      background: var(--color-bg-primary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-bg-secondary);
+    }
+    .faq-item__q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-secondary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      transition: color 0.15s;
+    }
+    .faq-item__q:hover { color: var(--color-accent); }
     .faq-item__icon {
-      flex-shrink: 0; width: 24px; height: 24px;
-      background: var(--warm-soft); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; color: var(--warm); transition: transform .25s;
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      background: var(--color-bg-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      transition: transform 0.25s;
     }
     .faq-item.is-open .faq-item__icon { transform: rotate(45deg); }
     .faq-item__a {
-      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
     }
-    .faq-item.is-open .faq-item__a { max-height: 300px; }
+    .faq-item.is-open .faq-item__a { max-height: 400px; }
     .faq-item__a-inner {
-      padding: 0 22px 18px; font-size: 14px; color: var(--ink-soft); line-height: 1.65;
+      padding: 0 1.5rem 1.2rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
     }
 
-    /* ══ CTA ══ */
+    /* ── CTA ── */
     .cta-section {
-      background: linear-gradient(160deg, #0f2548 0%, #1a3a6b 55%, #2E5F9E 100%);
-      padding: 72px 0;
+      background: var(--color-bg-dark);
+      padding: 90px 0;
     }
-    .cta-section .section-head__title { color: #fff; }
-    .cta-section .section-head__label { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
-    .cta-section .section-head__sub { color: rgba(255,255,255,0.65); }
+    .cta-section .section-header h2,
+    .cta-section .section-header p { color: var(--color-text-inverse); }
+    .cta-section .section-header p { opacity: 0.7; }
+    .cta-section .badge {
+      background: rgba(204,167,118,0.15);
+      color: var(--color-highlight);
+    }
     .plans-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
     @media (max-width: 680px) { .plans-grid { grid-template-columns: 1fr; } }
     .plan-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px; padding: 28px 24px;
-      color: #fff; display: flex; flex-direction: column; gap: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
     }
     .plan-card__name {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px;
+      font-family: var(--font-primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
     }
-    .plan-card__sub { font-size: 13px; color: rgba(255,255,255,0.65); }
-    .plan-card__list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .plan-card__sub { font-size: 0.85rem; color: rgba(255,255,255,0.60); margin: 0; }
+    .plan-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .plan-card__list li {
-      font-size: 13px; color: rgba(255,255,255,0.8);
-      display: flex; gap: 8px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.80);
+      display: flex;
+      gap: 8px;
+      margin: 0;
     }
-    .plan-card__list li::before { content: '✓'; color: #F5D49A; font-weight: 700; flex-shrink: 0; }
+    .plan-card__list li::before { content: '✓'; color: var(--color-highlight); font-weight: 700; flex-shrink: 0; }
     .plan-card__spots {
-      background: rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px;
-      font-size: 13px; color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.70);
     }
-    .plan-card__spots strong { color: #F5D49A; }
-    .plan-btn {
-      display: flex; align-items: center; justify-content: center;
-      background: var(--accent); color: #fff;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      border: none; border-radius: 12px; padding: 15px 24px; cursor: pointer;
-      text-decoration: none; transition: background .18s;
-      box-shadow: 0 8px 22px -6px rgba(192,114,48,0.5);
-    }
-    .plan-btn:hover { background: #a85e20; }
-    .plan-btn--outline {
-      background: transparent; border: 2px solid rgba(255,255,255,0.35);
-      box-shadow: none;
-    }
-    .plan-btn--outline:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
+    .plan-card__spots strong { color: var(--color-highlight); }
     .cta-note {
-      text-align: center; margin-top: 24px;
-      font-size: 13px; color: rgba(255,255,255,0.55);
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
     }
 
-    /* ══ FOOTER ══ */
-    .page-foot { background: var(--ink); padding: 28px 0; }
+    /* ── Footer ── */
+    .page-foot {
+      background: #060d1a;
+      padding: 2rem 0;
+    }
     .page-foot__inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .page-foot__logo {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 13px; font-weight: 700;
-      color: rgba(255,255,255,0.55); text-decoration: none;
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
     }
-    .page-foot__links { display: flex; gap: 20px; }
+    .page-foot__links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .page-foot__links a {
-      font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
     }
     .page-foot__links a:hover { color: #fff; }
   </style>
 </head>
+
 <body>
 
-<!-- ══ NAV ══ -->
-<nav class="site-nav">
-  <div class="site-nav__inner">
-    <a href="https://dr-agape.ru" class="site-nav__logo">Олег Агапэ</a>
-    <ul class="site-nav__links">
-      <li><a href="#for-whom">Для кого</a></li>
-      <li><a href="#modules">Программа</a></li>
-      <li><a href="#author">Автор</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="#cta" class="site-nav__cta">Занять место</a>
-  </div>
-</nav>
+<!-- Background -->
+<div class="bg-graphics" id="bg-graphics">
+  <div class="shape shape-line shape-1"></div>
+  <div class="shape shape-circle shape-2"></div>
+  <div class="shape shape-line shape-3"></div>
+  <div class="shape shape-circle shape-4"></div>
+</div>
 
-<!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero__inner">
-      <div class="hero__eyebrow">МИОТ · Старт сентябрь 2025</div>
-      <h1 class="hero__title">Биодинамика:<br><em>от техники к состоянию</em></h1>
-      <p class="hero__sub">Полугодичная программа для остеопатов и телесных практиков, которые хотят работать глубже — без усилий, выгорания и зависимости от алгоритмов.</p>
-      <div class="hero__pills">
-        <span class="hero__pill">🧩 4 модуля + интеграция</span>
-        <span class="hero__pill">⏱ 6 месяцев</span>
-        <span class="hero__pill">🤲 70% практика</span>
-        <span class="hero__pill">📍 Офлайн + онлайн</span>
-      </div>
-      <div class="hero__btns">
-        <a href="#cta" class="btn-hero">Занять место</a>
-        <a href="#modules" class="btn-hero-outline">Смотреть программу</a>
-      </div>
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <a href="../index.html" style="display:flex; align-items:center; gap:15px; text-decoration:none;">
+        <img src="../branding/logo.png" alt="МИОТ Логотип" class="logo-img">
+        <div class="logo-text">МЕЖДУНАРОДНЫЙ<br>ИНСТИТУТ<br>ОСТЕОПАТИЧЕСКИХ<br>ТЕХНОЛОГИЙ</div>
+      </a>
     </div>
+    <nav class="nav">
+      <a href="#for-whom">Для кого</a>
+      <a href="#modules">Программа</a>
+      <a href="#author">Автор</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta" class="btn btn-primary btn-sm">Занять место</a>
+    </nav>
+    <div class="mobile-menu-btn"><span></span><span></span><span></span></div>
   </div>
-</section>
+</header>
 
-<!-- ══ ДЛЯ КОГО ══ -->
-<section class="section" id="for-whom">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Для кого</span>
-      <h2 class="section-head__title">Это обучение для вас, если…</h2>
-    </div>
-    <div class="for-whom-grid">
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">01</div>
-        <div class="for-whom-card__title">Много техник — но нет ощущения глубины</div>
-        <div class="for-whom-card__text">Прошли 5, 10, 20 курсов. Знаете алгоритмы. Но на приёме всё равно что-то ускользает.</div>
-      </div>
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">02</div>
-        <div class="for-whom-card__title">Результат нестабильный — непонятно почему</div>
-        <div class="for-whom-card__text">С одними работает, с другими нет. Это выматывает и подрывает уверенность.</div>
-      </div>
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">03</div>
-        <div class="for-whom-card__title">Много делаете, но устаёте сверх меры</div>
-        <div class="for-whom-card__text">После приёмов — усталость, напряжение, иногда опустошённость.</div>
-      </div>
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">04</div>
-        <div class="for-whom-card__title">Чувствуете, что есть уровень глубже</div>
-        <div class="for-whom-card__text">Интуиция говорит: «что-то важное я упускаю». Но инструмента нет.</div>
-      </div>
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">05</div>
-        <div class="for-whom-card__title">Зависите от протоколов, боитесь отступить</div>
-        <div class="for-whom-card__text">Нет опоры на собственное ощущение. Страшно работать «вне алгоритма».</div>
-      </div>
-      <div class="for-whom-card">
-        <div class="for-whom-card__num">06</div>
-        <div class="for-whom-card__title">Теряетесь со сложными пациентами</div>
-        <div class="for-whom-card__text">Хроника, системные нарушения, психосоматика — не хватает внутренней устойчивости.</div>
-      </div>
-      <div class="for-whom-card for-whom-card--new">
-        <div class="for-whom-card__num">07</div>
-        <div class="for-whom-card__title">Просто хотите понять, как устроено тело</div>
-        <div class="for-whom-card__text">Программа не только для глубоких практиков. Если вам интересно, как тело слышит и отвечает, как устроена анатомия изнутри — здесь есть место и для вас.</div>
-      </div>
-    </div>
-    <div class="audience-tags">
-      <span class="audience-tag">Остеопаты</span>
-      <span class="audience-tag">Мануальные терапевты</span>
-      <span class="audience-tag">Телесно-ориентированные терапевты</span>
-      <span class="audience-tag">Массажисты с анатомической базой</span>
-      <span class="audience-tag">Интегративная медицина</span>
-      <span class="audience-tag">Все, кому интересно тело и слушание</span>
-    </div>
-  </div>
-</section>
+<main>
 
-<!-- ══ ТРАНСФОРМАЦИЯ ══ -->
-<section class="section section--alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Что меняется</span>
-      <h2 class="section-head__title">Что мешает работать на полную —<br>и как это меняется</h2>
+  <!-- Hero -->
+  <section class="bio-hero">
+    <div class="container bio-hero__inner">
+      <div class="fade-in-up">
+        <div class="bio-hero__eyebrow">МИОТ · Старт сентябрь 2025</div>
+        <h1 class="bio-hero__title">Биодинамика:<br><span>от техники к состоянию</span></h1>
+        <p class="bio-hero__sub">Полугодичная программа для остеопатов и телесных практиков, которые хотят работать глубже — без усилий, выгорания и зависимости от алгоритмов.</p>
+        <div class="bio-hero__pills">
+          <span class="bio-hero__pill">🧩 4 модуля + интеграция</span>
+          <span class="bio-hero__pill">⏱ 6 месяцев</span>
+          <span class="bio-hero__pill">🤲 70% практика</span>
+          <span class="bio-hero__pill">📍 Офлайн + онлайн</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
+          <a href="#modules" class="btn" style="color:#fff; border:2px solid rgba(255,255,255,0.3); background:transparent;">Смотреть программу</a>
+        </div>
+      </div>
     </div>
-    <div class="transform-grid">
-      <div class="transform-col transform-col--before">
-        <div class="transform-col__head">Сейчас</div>
-        <div class="transform-col__items">
+  </section>
+
+  <!-- Для кого -->
+  <section class="section-pad" id="for-whom">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Для кого</span>
+        <h2>Это обучение для вас, если…</h2>
+      </div>
+      <div class="for-whom-grid fade-in-up">
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">01</div>
+          <div class="for-whom-card__title">Много техник — но нет ощущения глубины</div>
+          <p class="for-whom-card__text">Прошли 5, 10, 20 курсов. Знаете алгоритмы. Но на приёме всё равно что-то ускользает.</p>
+        </div>
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">02</div>
+          <div class="for-whom-card__title">Результат нестабильный — непонятно почему</div>
+          <p class="for-whom-card__text">С одними работает, с другими нет. Это выматывает и подрывает уверенность.</p>
+        </div>
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">03</div>
+          <div class="for-whom-card__title">Много делаете, но устаёте сверх меры</div>
+          <p class="for-whom-card__text">После приёмов — усталость, напряжение, иногда опустошённость.</p>
+        </div>
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">04</div>
+          <div class="for-whom-card__title">Чувствуете, что есть уровень глубже</div>
+          <p class="for-whom-card__text">Интуиция говорит: «что-то важное я упускаю». Но инструмента нет.</p>
+        </div>
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">05</div>
+          <div class="for-whom-card__title">Зависите от протоколов, боитесь отступить</div>
+          <p class="for-whom-card__text">Нет опоры на собственное ощущение. Страшно работать «вне алгоритма».</p>
+        </div>
+        <div class="for-whom-card">
+          <div class="for-whom-card__num">06</div>
+          <div class="for-whom-card__title">Теряетесь со сложными пациентами</div>
+          <p class="for-whom-card__text">Хроника, системные нарушения, психосоматика — не хватает внутренней устойчивости.</p>
+        </div>
+        <div class="for-whom-card for-whom-card--accent">
+          <div class="for-whom-card__num">07</div>
+          <div class="for-whom-card__title">Просто хотите понять, как устроено тело</div>
+          <p class="for-whom-card__text">Программа не только для глубоких практиков. Если вам интересно, как тело слышит и отвечает, как устроена анатомия изнутри — здесь есть место и для вас.</p>
+        </div>
+      </div>
+      <div class="audience-tags fade-in-up">
+        <span class="audience-tag">Остеопаты</span>
+        <span class="audience-tag">Мануальные терапевты</span>
+        <span class="audience-tag">Телесно-ориентированные терапевты</span>
+        <span class="audience-tag">Массажисты с анатомической базой</span>
+        <span class="audience-tag">Интегративная медицина</span>
+        <span class="audience-tag">Все, кому интересно тело и слушание</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Трансформация -->
+  <section class="section-pad-alt">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Что меняется</span>
+        <h2>Что мешает работать на полную —<br>и как это меняется</h2>
+      </div>
+      <div class="transform-grid fade-in-up">
+        <div class="transform-col transform-col--before">
+          <div class="transform-col__head">Сейчас</div>
           <div class="transform-item">Много знаний — мало ощущений</div>
           <div class="transform-item">Нестабильный результат</div>
           <div class="transform-item">Усталость от работы</div>
@@ -677,10 +900,8 @@
           <div class="transform-item">Страх сложных пациентов</div>
           <div class="transform-item">Ощущение потолка</div>
         </div>
-      </div>
-      <div class="transform-col transform-col--after">
-        <div class="transform-col__head">После программы</div>
-        <div class="transform-col__items">
+        <div class="transform-col transform-col--after">
+          <div class="transform-col__head">После программы</div>
           <div class="transform-item">Начинаете чувствовать ткани, а не только думать о них</div>
           <div class="transform-item">Понимаете, почему работает, и воспроизводите это</div>
           <div class="transform-item">Работаете в ресурсе — через поток, а не усилие</div>
@@ -690,455 +911,442 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ СУТЬ ПОДХОДА ══ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Суть подхода</span>
-      <h2 class="section-head__title">Биодинамика — это не новые техники.<br>Это другой уровень взаимодействия с телом.</h2>
+  <!-- Суть подхода -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Суть подхода</span>
+        <h2>Биодинамика — это не новые техники.<br>Это другой уровень взаимодействия с телом.</h2>
+      </div>
+      <div class="fade-in-up" style="max-width:760px; margin:0 auto;">
+        <div class="what-is-quote">«Знание без ощущения — это просто информация»</div>
+        <div class="what-is-text">
+          Большинство подходов работают по принципу: <strong>«найти проблему — исправить»</strong>. Специалист давит, растягивает, корректирует.<br><br>
+          Биодинамика работает иначе: не против сопротивления, а через него. Вместо усилия — слушание. Вместо алгоритма — восприятие.<br><br>
+          Когда специалист перестаёт «делать» — тело перестаёт защищаться. Появляется пространство для саморегуляции. И происходят изменения, которые раньше требовали в 3 раза больше работы.
+          <span class="what-is-highlight">«Это тот уровень, который многие называют магией. Но за ним стоит конкретный навык — который можно развить.»</span>
+        </div>
+      </div>
+      <div class="principles-grid fade-in-up">
+        <div class="principle-card">
+          <div class="principle-card__num">01</div>
+          <div class="principle-card__name">Присутствие</div>
+          <p class="principle-card__desc">Качество контакта важнее техники</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__num">02</div>
+          <div class="principle-card__name">Нейтральность</div>
+          <p class="principle-card__desc">Не навязывать результат — позволить телу найти его</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__num">03</div>
+          <div class="principle-card__name">Слушание</div>
+          <p class="principle-card__desc">Воспринимать, а не воздействовать</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__num">04</div>
+          <div class="principle-card__name">Витальность</div>
+          <p class="principle-card__desc">Находить то, что живёт в теле — не только что болит</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-card__num">05</div>
+          <div class="principle-card__name">Первичность</div>
+          <p class="principle-card__desc">Определять, что важно сейчас, без лишних действий</p>
+        </div>
+      </div>
     </div>
-    <div class="what-is-quote">«Знание без ощущения — это просто информация»</div>
-    <div class="what-is-text">
-      Большинство подходов работают по принципу: <strong>«найти проблему — исправить»</strong>. Специалист давит, растягивает, корректирует.<br><br>
-      Биодинамика работает иначе: не против сопротивления, а через него. Вместо усилия — слушание. Вместо алгоритма — восприятие.<br><br>
-      Когда специалист перестаёт «делать» — тело перестаёт защищаться. Появляется пространство для саморегуляции. И происходят изменения, которые раньше требовали в 3 раза больше работы.
-      <em>«Это тот уровень, который многие называют магией. Но за ним стоит конкретный навык — который можно развить.»</em>
-    </div>
-    <div class="principles-grid">
-      <div class="principle-card">
-        <div class="principle-card__num">01</div>
-        <div class="principle-card__name">Присутствие</div>
-        <div class="principle-card__desc">Качество контакта важнее техники</div>
-      </div>
-      <div class="principle-card">
-        <div class="principle-card__num">02</div>
-        <div class="principle-card__name">Нейтральность</div>
-        <div class="principle-card__desc">Не навязывать результат — позволить телу найти его</div>
-      </div>
-      <div class="principle-card">
-        <div class="principle-card__num">03</div>
-        <div class="principle-card__name">Слушание</div>
-        <div class="principle-card__desc">Воспринимать, а не воздействовать</div>
-      </div>
-      <div class="principle-card">
-        <div class="principle-card__num">04</div>
-        <div class="principle-card__name">Витальность</div>
-        <div class="principle-card__desc">Находить то, что живёт в теле — не только что болит</div>
-      </div>
-      <div class="principle-card">
-        <div class="principle-card__num">05</div>
-        <div class="principle-card__name">Первичность</div>
-        <div class="principle-card__desc">Определять, что важно сейчас, без лишних действий</div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ ПРОГРАММА ══ -->
-<section class="section section--alt" id="modules">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Программа</span>
-      <h2 class="section-head__title">4 модуля + интеграция · 6 месяцев</h2>
-      <p class="section-head__sub">Каждый модуль — не набор новых техник, а углубление принципов через новый уровень работы с телом.</p>
-    </div>
-    <div class="modules-list">
-      <div class="module-card">
-        <div class="module-card__head">
-          <div class="module-card__num">1</div>
-          <div class="module-card__info">
-            <div class="module-card__label">Модуль I · Опорно-двигательный аппарат</div>
-            <div class="module-card__title">Биодинамика и опорно-двигательный аппарат</div>
-            <div class="module-card__teaser">От «я делаю технику» к «я чувствую ткань»</div>
+  <!-- Программа / Модули -->
+  <section class="section-pad-alt" id="modules">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Программа</span>
+        <h2>4 модуля + интеграция · 6 месяцев</h2>
+        <p>Каждый модуль — не набор новых техник, а углубление принципов через новый уровень работы с телом.</p>
+      </div>
+      <div class="modules-list fade-in-up">
+        <div class="module-card">
+          <div class="module-card__head">
+            <div class="module-card__num">1</div>
+            <div class="module-card__info">
+              <div class="module-card__label">Модуль I · Опорно-двигательный аппарат</div>
+              <div class="module-card__title">Биодинамика и опорно-двигательный аппарат</div>
+              <div class="module-card__teaser">От «я делаю технику» к «я чувствую ткань»</div>
+            </div>
+            <div class="module-card__arrow">+</div>
+          </div>
+          <div class="module-card__body">
+            <div class="module-card__body-inner">
+              <ul class="module-points">
+                <li>Как работать с тканями без давления и форсирования</li>
+                <li>Как «слушать» движение и ограничение</li>
+                <li>Как находить первичную дисфункцию без протокола</li>
+                <li>Разница между механическим и биодинамическим подходом</li>
+              </ul>
+              <div class="module-result">✓ Результат: вы начинаете чувствовать ткани — а не только думать о них</div>
+            </div>
           </div>
         </div>
-        <div class="module-card__body">
-          <ul class="module-points">
-            <li>Как работать с тканями без давления и форсирования</li>
-            <li>Как «слушать» движение и ограничение</li>
-            <li>Как находить первичную дисфункцию без протокола</li>
-            <li>Разница между механическим и биодинамическим подходом</li>
-          </ul>
-          <div class="module-result">✓ Результат: вы начинаете чувствовать ткани — а не только думать о них</div>
-        </div>
-      </div>
-      <div class="module-card">
-        <div class="module-card__head">
-          <div class="module-card__num">2</div>
-          <div class="module-card__info">
-            <div class="module-card__label">Модуль II · Висцеральные системы</div>
-            <div class="module-card__title">Биодинамика висцеральных систем</div>
-            <div class="module-card__teaser">Внутренние органы — самый отзывчивый маркер состояния</div>
+        <div class="module-card">
+          <div class="module-card__head">
+            <div class="module-card__num">2</div>
+            <div class="module-card__info">
+              <div class="module-card__label">Модуль II · Висцеральные системы</div>
+              <div class="module-card__title">Биодинамика висцеральных систем</div>
+              <div class="module-card__teaser">Внутренние органы — самый отзывчивый маркер состояния</div>
+            </div>
+            <div class="module-card__arrow">+</div>
+          </div>
+          <div class="module-card__body">
+            <div class="module-card__body-inner">
+              <ul class="module-points">
+                <li>Восприятие ритмов и движений органов</li>
+                <li>Влияние состояния оператора на висцеральный ответ</li>
+                <li>Работа с органами через слушание, а не давление</li>
+              </ul>
+              <div class="module-result">✓ Результат: появляется глубина там, где раньше была только техника</div>
+            </div>
           </div>
         </div>
-        <div class="module-card__body">
-          <ul class="module-points">
-            <li>Восприятие ритмов и движений органов</li>
-            <li>Влияние состояния оператора на висцеральный ответ</li>
-            <li>Работа с органами через слушание, а не давление</li>
-          </ul>
-          <div class="module-result">✓ Результат: появляется глубина там, где раньше была только техника</div>
-        </div>
-      </div>
-      <div class="module-card">
-        <div class="module-card__head">
-          <div class="module-card__num">3</div>
-          <div class="module-card__info">
-            <div class="module-card__label">Модуль III · Регуляторные системы</div>
-            <div class="module-card__title">Биодинамика нервной и эндокринной систем</div>
-            <div class="module-card__teaser">Ключевой уровень для работы с хроникой</div>
+        <div class="module-card">
+          <div class="module-card__head">
+            <div class="module-card__num">3</div>
+            <div class="module-card__info">
+              <div class="module-card__label">Модуль III · Регуляторные системы</div>
+              <div class="module-card__title">Биодинамика нервной и эндокринной систем</div>
+              <div class="module-card__teaser">Ключевой уровень для работы с хроникой</div>
+            </div>
+            <div class="module-card__arrow">+</div>
+          </div>
+          <div class="module-card__body">
+            <div class="module-card__body-inner">
+              <ul class="module-points">
+                <li>Работа с вегетативной нервной системой через присутствие</li>
+                <li>Как состояние оператора влияет на регуляцию пациента</li>
+                <li>Переход от «работы с симптомом» к «включению саморегуляции»</li>
+              </ul>
+              <div class="module-result">✓ Результат: вы начинаете работать не с жалобой, а с системой</div>
+            </div>
           </div>
         </div>
-        <div class="module-card__body">
-          <ul class="module-points">
-            <li>Работа с вегетативной нервной системой через присутствие</li>
-            <li>Как состояние оператора влияет на регуляцию пациента</li>
-            <li>Переход от «работы с симптомом» к «включению саморегуляции»</li>
-          </ul>
-          <div class="module-result">✓ Результат: вы начинаете работать не с жалобой, а с системой</div>
-        </div>
-      </div>
-      <div class="module-card">
-        <div class="module-card__head">
-          <div class="module-card__num">4</div>
-          <div class="module-card__info">
-            <div class="module-card__label">Модуль IV · Поле</div>
-            <div class="module-card__title">Биодинамика поля и расширенного взаимодействия</div>
-            <div class="module-card__teaser">Уровень, где остеопатия выходит за пределы тела</div>
+        <div class="module-card">
+          <div class="module-card__head">
+            <div class="module-card__num">4</div>
+            <div class="module-card__info">
+              <div class="module-card__label">Модуль IV · Поле</div>
+              <div class="module-card__title">Биодинамика поля и расширенного взаимодействия</div>
+              <div class="module-card__teaser">Уровень, где остеопатия выходит за пределы тела</div>
+            </div>
+            <div class="module-card__arrow">+</div>
+          </div>
+          <div class="module-card__body">
+            <div class="module-card__body-inner">
+              <ul class="module-points">
+                <li>Расширение восприятия за пределы локального контакта</li>
+                <li>Работа с вниманием и намерением как инструментом</li>
+                <li>Влияние «внешнего контура» на процессы внутри тела</li>
+              </ul>
+              <div class="module-result">✓ Результат: системное видение и воздействие на всех уровнях</div>
+            </div>
           </div>
         </div>
-        <div class="module-card__body">
-          <ul class="module-points">
-            <li>Расширение восприятия за пределы локального контакта</li>
-            <li>Работа с вниманием и намерением как инструментом</li>
-            <li>Влияние «внешнего контура» на процессы внутри тела</li>
-          </ul>
-          <div class="module-result">✓ Результат: системное видение и воздействие на всех уровнях</div>
-        </div>
-      </div>
-      <div class="module-card">
-        <div class="module-card__head">
-          <div class="module-card__num module-card__num--integration">∞</div>
-          <div class="module-card__info">
-            <div class="module-card__label">Интеграция · Финальный день</div>
-            <div class="module-card__title">Инициация: когда знания становятся состоянием</div>
-            <div class="module-card__teaser">Это не лекция. Это практика погружения — момент, где всё собирается воедино.</div>
+        <div class="module-card">
+          <div class="module-card__head">
+            <div class="module-card__num module-card__num--integration">∞</div>
+            <div class="module-card__info">
+              <div class="module-card__label">Интеграция · Финальный день</div>
+              <div class="module-card__title">Инициация: когда знания становятся состоянием</div>
+              <div class="module-card__teaser">Это не лекция. Это практика погружения — момент, где всё собирается воедино.</div>
+            </div>
+            <div class="module-card__arrow">+</div>
+          </div>
+          <div class="module-card__body">
+            <div class="module-card__body-inner">
+              <ul class="module-points">
+                <li>Сборка всех уровней в единый опыт</li>
+                <li>Практическое закрепление навыка</li>
+                <li>Переход в целостное восприятие работы</li>
+              </ul>
+              <div class="module-result">Однодневный живой формат · только очно</div>
+            </div>
           </div>
         </div>
-        <div class="module-card__body">
-          <ul class="module-points">
-            <li>Сборка всех уровней в единый опыт</li>
-            <li>Практическое закрепление навыка</li>
-            <li>Переход в целостное восприятие работы</li>
+      </div>
+    </div>
+  </section>
+
+  <!-- Формат -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Как проходит</span>
+        <h2>Формат обучения</h2>
+      </div>
+      <div class="format-grid fade-in-up">
+        <div class="format-card">
+          <div class="format-card__icon">🤲</div>
+          <div>
+            <div class="format-card__label">70% практика</div>
+            <div class="format-card__title">Работа руками</div>
+            <p class="format-card__text">Каждый модуль строится вокруг работы руками: в парах, с собой, в группе. Теория — только как контекст для практики.</p>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-card__icon">🧘</div>
+          <div>
+            <div class="format-card__label">Медитация</div>
+            <div class="format-card__title">Работа с состоянием</div>
+            <p class="format-card__text">Развитие чувствительности, тренировка присутствия, управление вниманием оператора через медитативные практики.</p>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-card__icon">📋</div>
+          <div>
+            <div class="format-card__label">Кейсы</div>
+            <div class="format-card__title">Разбор живых случаев</div>
+            <p class="format-card__text">Реальные случаи из практики. Разбор принципов принятия решений — не по протоколу, а через понимание.</p>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-card__icon">🪞</div>
+          <div>
+            <div class="format-card__label">Тело</div>
+            <div class="format-card__title">Вы — первый пациент</div>
+            <p class="format-card__text">Ваше тело — главный инструмент обучения. Через себя — к пониманию других. Без этого биодинамика не работает.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Результаты -->
+  <section class="section-pad-alt">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">После программы</span>
+        <h2>Что изменится в вашей практике</h2>
+      </div>
+      <div class="results-grid fade-in-up">
+        <div class="result-card"><div class="result-card__num">01</div><div class="result-card__title">Глубже чувствуете ткани</div><p class="result-card__text">Не просто думаете о них — начинаете воспринимать</p></div>
+        <div class="result-card"><div class="result-card__num">02</div><div class="result-card__title">Понимаете приоритет</div><p class="result-card__text">Куда идти первым — без хаоса и перебора техник</p></div>
+        <div class="result-card"><div class="result-card__num">03</div><div class="result-card__title">Меньше усилий — устойчивее результат</div><p class="result-card__text">Работаете мягче, но эффект глубже и дольше держится</p></div>
+        <div class="result-card"><div class="result-card__num">04</div><div class="result-card__title">Снижается выгорание</div><p class="result-card__text">Работа через поток, а не через напряжение и контроль</p></div>
+        <div class="result-card"><div class="result-card__num">05</div><div class="result-card__title">Уходит зависимость от алгоритмов</div><p class="result-card__text">Появляется собственный стиль — опора на ощущение</p></div>
+        <div class="result-card"><div class="result-card__num">06</div><div class="result-card__title">Уверенность со сложными</div><p class="result-card__text">Хроника, психосоматика, системные нарушения — понятна точка входа</p></div>
+        <div class="result-card"><div class="result-card__num">07</div><div class="result-card__title">Клиенты чувствуют разницу</div><p class="result-card__text">Возвращаются и рекомендуют — результат устойчивый</p></div>
+        <div class="result-card"><div class="result-card__num">08</div><div class="result-card__title">Меняется ощущение от работы</div><p class="result-card__text">Появляется ощущение потока, смысла и точности</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сравнение -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Сравнение</span>
+        <h2>Чем биодинамика отличается от классики</h2>
+        <p>Не замена техническим знаниям — следующий уровень, который работает поверх вашей базы.</p>
+      </div>
+      <div class="comparison-wrapper fade-in-up">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Параметр</th>
+              <th>Классический / механический</th>
+              <th>Биодинамический</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Логика работы</td><td>Найти → исправить</td><td>Слушать → позволить</td></tr>
+            <tr><td>Инструмент</td><td>Техника, алгоритм</td><td>Состояние, присутствие</td></tr>
+            <tr><td>Усилие оператора</td><td>Высокое</td><td>Минимальное</td></tr>
+            <tr><td>Основа</td><td>Протокол</td><td>Восприятие</td></tr>
+            <tr><td>Сопротивление тела</td><td>Высокое</td><td>Тело не защищается</td></tr>
+            <tr><td>Результат</td><td>Локальный</td><td>Системный</td></tr>
+            <tr><td>Выгорание</td><td>Высокий риск</td><td>Снижается</td></tr>
+            <tr><td>Сложные пациенты</td><td>Сложно предсказать</td><td>Понятна точка входа</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="comparison-note">Чем лучше ваша техническая база — тем сильнее эффект от этого обучения.</p>
+    </div>
+  </section>
+
+  <!-- Автор -->
+  <section class="section-pad-alt" id="author">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Автор программы</span>
+      </div>
+      <div class="author-inner fade-in-up">
+        <div class="author-photo-col">
+          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ">
+        </div>
+        <div class="author-body">
+          <div class="author-name">Олег Агапэ</div>
+          <div class="author-role">Врач-остеопат · Анатом · Основатель МИОТ</div>
+          <blockquote class="author-quote">«Я создаю мост между традиционной медициной и рынком помогающих практик — даю врачебную глубину в прикладной и понятной форме»</blockquote>
+          <p class="author-bio">Олег создал эту программу из одного наблюдения: большинство специалистов застревают не из-за нехватки техник, а из-за нехватки глубины восприятия. Именно разрыв между «знаю» и «чувствую» он закрывает в своей работе — в клинике, на Бали, в обучении по всей России и за рубежом.</p>
+          <ul class="author-list">
+            <li>Основатель Международного Института Остеопатических Технологий (МИОТ)</li>
+            <li>Ведущий эксперт по анатомическим диссекциям в России</li>
+            <li>Международная квалификация — обучение остеопатии в Европе</li>
+            <li>Практика в РФ и на Бали — более 7000 пациентов лично</li>
+            <li>Обучил 3000+ человек методам самокоррекции</li>
           </ul>
-          <div class="module-result">Однодневный живой формат · только очно</div>
+          <div class="author-stats">
+            <div class="author-stat"><span class="author-stat__val">7000+</span><div class="author-stat__label">пациентов лично</div></div>
+            <div class="author-stat"><span class="author-stat__val">500+</span><div class="author-stat__label">специалистов</div></div>
+            <div class="author-stat"><span class="author-stat__val">20+</span><div class="author-stat__label">диссекций</div></div>
+            <div class="author-stat"><span class="author-stat__val">14+</span><div class="author-stat__label">лет опыта</div></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ ФОРМАТ ══ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Как проходит</span>
-      <h2 class="section-head__title">Формат обучения</h2>
-    </div>
-    <div class="format-grid">
-      <div class="format-card">
-        <div class="format-card__icon">🤲</div>
-        <div>
-          <div class="format-card__label">70% практика</div>
-          <div class="format-card__title">Работа руками</div>
-          <div class="format-card__text">Каждый модуль строится вокруг работы руками: в парах, с собой, в группе. Теория — только как контекст для практики.</div>
-        </div>
+  <!-- Кейсы -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Реальная практика</span>
+        <h2>Как выглядит биодинамическая работа</h2>
+        <p>Не «сделал технику — пациент встал здоровым». А то, что происходит изнутри.</p>
       </div>
-      <div class="format-card">
-        <div class="format-card__icon">🧘</div>
-        <div>
-          <div class="format-card__label">Медитация</div>
-          <div class="format-card__title">Работа с состоянием</div>
-          <div class="format-card__text">Развитие чувствительности, тренировка присутствия, управление вниманием оператора через медитативные практики.</div>
+      <div class="cases-list fade-in-up">
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__num">01</div>
+            <div class="case-card__title">Хроническая боль в шее — 6 лет</div>
+          </div>
+          <div class="case-card__body">
+            <p class="case-content">Женщина, 41 год. 6 лет боли в шейном отделе — прошла МРТ, физиотерапию, классическую остеопатию. Временные улучшения, потом возврат.<br><br>
+            На первом сеансе специалист не искал «где зажато» — он просто слушал. Без давления, без поиска ограничения по протоколу. Просто держал контакт и наблюдал, что делает тело.<br><br>
+            Через 10 минут пациентка начала глубоко дышать. Потом — слёзы. «Не знаю почему — просто что-то отпустило». Нервная система вышла из хронического защитного напряжения. После 3 сеансов боль не вернулась.</p>
+            <p class="case-insight"><strong>Для специалиста:</strong> не нужно было «лечить шею». Нужно было создать условия, в которых тело само нашло решение.</p>
+          </div>
         </div>
-      </div>
-      <div class="format-card">
-        <div class="format-card__icon">📋</div>
-        <div>
-          <div class="format-card__label">Кейсы</div>
-          <div class="format-card__title">Разбор живых случаев</div>
-          <div class="format-card__text">Реальные случаи из практики. Разбор принципов принятия решений — не по протоколу, а через понимание.</div>
-        </div>
-      </div>
-      <div class="format-card">
-        <div class="format-card__icon">🪞</div>
-        <div>
-          <div class="format-card__label">Тело</div>
-          <div class="format-card__title">Вы — первый пациент</div>
-          <div class="format-card__text">Ваше тело — главный инструмент обучения. Через себя — к пониманию других. Без этого биодинамика не работает.</div>
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__num">02</div>
+            <div class="case-card__title">Педиатрия — частые простуды, нарушение сна</div>
+          </div>
+          <div class="case-card__body">
+            <p class="case-content">Ребёнок 4 года. Частые простуды, нарушение сна, гиперактивность. Мама привела «на всякий случай» — педиатры ничего не находили. Ребёнок не мог усидеть на месте дольше двух минут.<br><br>
+            Специалист работал не с конкретной зоной, а с состоянием — своим и ребёнка одновременно. Просто держал очень лёгкий контакт у основания черепа и ждал.<br><br>
+            Через 7 минут ребёнок замер. Уснул прямо на столе. После 4 сеансов — нормализация сна, снижение частоты ОРВИ.</p>
+            <p class="case-insight"><strong>Для специалиста:</strong> ребёнок не нуждался в «лечении». Ему нужна была регуляция — через состояние, а не через технику.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ РЕЗУЛЬТАТЫ ══ -->
-<section class="section section--alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">После программы</span>
-      <h2 class="section-head__title">Что изменится в вашей практике</h2>
-    </div>
-    <div class="results-grid">
-      <div class="result-card">
-        <div class="result-card__num">01</div>
-        <div class="result-card__title">Глубже чувствуете ткани</div>
-        <div class="result-card__text">Не просто думаете о них — начинаете воспринимать</div>
+  <!-- FAQ -->
+  <section class="section-pad-alt" id="faq">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Вопросы и ответы</span>
+        <h2>FAQ</h2>
       </div>
-      <div class="result-card">
-        <div class="result-card__num">02</div>
-        <div class="result-card__title">Понимаете приоритет</div>
-        <div class="result-card__text">Куда идти первым — без хаоса и перебора техник</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">03</div>
-        <div class="result-card__title">Меньше усилий — устойчивее результат</div>
-        <div class="result-card__text">Работаете мягче, но эффект глубже и дольше держится</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">04</div>
-        <div class="result-card__title">Снижается выгорание</div>
-        <div class="result-card__text">Работа через поток, а не через напряжение и контроль</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">05</div>
-        <div class="result-card__title">Уходит зависимость от алгоритмов</div>
-        <div class="result-card__text">Появляется собственный стиль — опора на ощущение</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">06</div>
-        <div class="result-card__title">Уверенность со сложными</div>
-        <div class="result-card__text">Хроника, психосоматика, системные нарушения — понятна точка входа</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">07</div>
-        <div class="result-card__title">Клиенты чувствуют разницу</div>
-        <div class="result-card__text">Возвращаются и рекомендуют — результат устойчивый</div>
-      </div>
-      <div class="result-card">
-        <div class="result-card__num">08</div>
-        <div class="result-card__title">Меняется ощущение от работы</div>
-        <div class="result-card__text">Появляется ощущение потока, смысла и точности</div>
+      <div class="faq-list fade-in-up" style="max-width:780px; margin:0 auto;">
+        <div class="faq-item">
+          <button class="faq-item__q">Нужна ли специальная подготовка для участия?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Программа рассчитана на специалистов с базовой подготовкой в телесных практиках или медицине. Специального оборудования не требуется — только желание работать с собой и открытость к новому опыту.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Это эзотерика?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Нет. Программа построена на физиологических механизмах, нейронауке и остеопатических принципах. «Магия», которую вы будете развивать — это конкретный навык восприятия и состояния. Всё объясняется через механику и практику, без мистики.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Что если я не остеопат?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Программа подходит для любых специалистов, работающих с телом: мануальные терапевты, телесно-ориентированные терапевты, массажисты с пониманием анатомии. Важна не специальность, а намерение работать глубже.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Можно ли присоединиться к отдельному модулю?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Программа выстроена последовательно — каждый модуль опирается на предыдущий. Рекомендуем начинать с первого модуля. Доступ к отдельным модулям возможен после согласования с куратором.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Онлайн — это полноценно?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Да. Онлайн-формат включает качественную трансляцию в реальном времени, полную запись каждого модуля и личного куратора между занятиями. Вы полноценный участник — не наблюдатель со стороны.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q">Это быстрый результат?<span class="faq-item__icon">+</span></button>
+          <div class="faq-item__a"><div class="faq-item__a-inner">Нет. Биодинамика — это развитие навыка, который требует практики и включённости. Быстрых кнопок здесь нет. Но устойчивость результата, которую вы получите — принципиально другого уровня.</div></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ СРАВНЕНИЕ ══ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Сравнение</span>
-      <h2 class="section-head__title">Чем биодинамика отличается от классики</h2>
-      <p class="section-head__sub">Не замена техническим знаниям — следующий уровень, который работает поверх вашей базы.</p>
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Старт — сентябрь 2025</span>
+        <h2>Готовы перейти на следующий уровень?</h2>
+        <p>Группа закрытая. Следующий поток — не раньше чем через 6 месяцев.</p>
+      </div>
+      <div class="plans-grid fade-in-up">
+        <div class="plan-card">
+          <div>
+            <div class="plan-card__name">Офлайн · Живой формат</div>
+            <p class="plan-card__sub">Работа в группе, практика в парах, полное погружение</p>
+          </div>
+          <ul class="plan-card__list">
+            <li>4 модуля очно + интеграционный день</li>
+            <li>Практика в парах в живом контакте</li>
+            <li>Разборы прямо в зале</li>
+            <li>Записи всех занятий</li>
+            <li>Куратор между модулями</li>
+            <li>Закрытый чат участников</li>
+          </ul>
+          <div class="plan-card__spots">Мест в группе: 22 · <strong>Осталось: 10</strong></div>
+          <a href="https://t.me/dr_agape" class="btn btn-primary">Занять офлайн-место</a>
+        </div>
+        <div class="plan-card">
+          <div>
+            <div class="plan-card__name">Онлайн · Дистанционно</div>
+            <p class="plan-card__sub">Трансляция в реальном времени — полноценное участие</p>
+          </div>
+          <ul class="plan-card__list">
+            <li>Прямая трансляция всех модулей</li>
+            <li>Полная запись каждого занятия</li>
+            <li>Личный куратор между модулями</li>
+            <li>Ответы на вопросы по практике</li>
+            <li>Методические материалы</li>
+            <li>Закрытый чат участников</li>
+          </ul>
+          <div class="plan-card__spots">Без ограничений по местам</div>
+          <a href="https://t.me/dr_agape" class="btn" style="border:2px solid rgba(255,255,255,0.3); background:transparent; color:#fff;">Участвовать онлайн</a>
+        </div>
+      </div>
+      <p class="cta-note">⚡ Часть мест уже занята. Если после первого модуля вы почувствуете, что это не ваше — мы найдём решение.</p>
     </div>
-    <div style="overflow-x:auto;">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Параметр</th>
-            <th>Классический / механический</th>
-            <th>Биодинамический</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Логика работы</td><td>Найти → исправить</td><td>Слушать → позволить</td></tr>
-          <tr><td>Инструмент</td><td>Техника, алгоритм</td><td>Состояние, присутствие</td></tr>
-          <tr><td>Усилие оператора</td><td>Высокое</td><td>Минимальное</td></tr>
-          <tr><td>Основа</td><td>Протокол</td><td>Восприятие</td></tr>
-          <tr><td>Сопротивление тела</td><td>Высокое</td><td>Тело не защищается</td></tr>
-          <tr><td>Результат</td><td>Локальный</td><td>Системный</td></tr>
-          <tr><td>Выгорание</td><td>Высокий риск</td><td>Снижается</td></tr>
-          <tr><td>Сложные пациенты</td><td>Сложно предсказать</td><td>Понятна точка входа</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="comparison-note">Чем лучше ваша техническая база — тем сильнее эффект от этого обучения.</p>
-  </div>
-</section>
+  </section>
 
-<!-- ══ АВТОР ══ -->
-<section class="section section--alt" id="author">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Автор программы</span>
-    </div>
-    <div class="author-inner">
-      <div class="author-photo">
-        <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ">
-      </div>
-      <div class="author-body">
-        <div class="author-name">Олег Агапэ</div>
-        <div class="author-role">Врач-остеопат · Анатом · Основатель МИОТ</div>
-        <div class="author-quote">«Я создаю мост между традиционной медициной и рынком помогающих практик — даю врачебную глубину в прикладной и понятной форме»</div>
-        <p class="author-bio">Олег создал эту программу из одного наблюдения: большинство специалистов застревают не из-за нехватки техник, а из-за нехватки глубины восприятия. Именно разрыв между «знаю» и «чувствую» он закрывает в своей работе — в клинике, на Бали, в обучении по всей России и за рубежом.</p>
-        <ul class="author-list">
-          <li>Основатель Международного Института Остеопатических Технологий (МИОТ)</li>
-          <li>Ведущий эксперт по анатомическим диссекциям в России</li>
-          <li>Международная квалификация — обучение остеопатии в Европе</li>
-          <li>Практика в РФ и на Бали — более 7000 пациентов лично</li>
-          <li>Обучил 3000+ человек методам самокоррекции</li>
-        </ul>
-        <div class="author-stats">
-          <div class="author-stat"><div class="author-stat__val">7000+</div><div class="author-stat__label">пациентов лично</div></div>
-          <div class="author-stat"><div class="author-stat__val">500+</div><div class="author-stat__label">специалистов</div></div>
-          <div class="author-stat"><div class="author-stat__val">20+</div><div class="author-stat__label">диссекций</div></div>
-          <div class="author-stat"><div class="author-stat__val">14+</div><div class="author-stat__label">лет опыта</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- ══ КЕЙСЫ ══ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Реальная практика</span>
-      <h2 class="section-head__title">Как выглядит биодинамическая работа</h2>
-      <p class="section-head__sub">Не «сделал технику — пациент встал здоровым». А то, что происходит изнутри.</p>
-    </div>
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-card__head">
-          <div class="case-card__num">01</div>
-          <div class="case-card__title">Хроническая боль в шее — 6 лет</div>
-        </div>
-        <div class="case-card__body">
-          <p class="case-content">Женщина, 41 год. 6 лет боли в шейном отделе — прошла МРТ, физиотерапию, классическую остеопатию. Временные улучшения, потом возврат.<br><br>
-          На первом сеансе специалист не искал «где зажато» — он просто слушал. Без давления, без поиска ограничения по протоколу. Просто держал контакт и наблюдал, что делает тело.<br><br>
-          Через 10 минут пациентка начала глубоко дышать. Потом — слёзы. «Не знаю почему — просто что-то отпустило». Нервная система вышла из хронического защитного напряжения. После 3 сеансов боль не вернулась.</p>
-          <div class="case-insight"><strong>Для специалиста:</strong> не нужно было «лечить шею». Нужно было создать условия, в которых тело само нашло решение.</div>
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-card__head">
-          <div class="case-card__num">02</div>
-          <div class="case-card__title">Педиатрия — частые простуды, нарушение сна</div>
-        </div>
-        <div class="case-card__body">
-          <p class="case-content">Ребёнок 4 года. Частые простуды, нарушение сна, гиперактивность. Мама привела «на всякий случай» — педиатры ничего не находили. Ребёнок не мог усидеть на месте дольше двух минут.<br><br>
-          Специалист работал не с конкретной зоной, а с состоянием — своим и ребёнка одновременно. Просто держал очень лёгкий контакт у основания черепа и ждал.<br><br>
-          Через 7 минут ребёнок замер. Уснул прямо на столе. После 4 сеансов — нормализация сна, снижение частоты ОРВИ.</p>
-          <div class="case-insight"><strong>Для специалиста:</strong> ребёнок не нуждался в «лечении». Ему нужна была регуляция — через состояние, а не через технику.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section class="section section--alt" id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Вопросы и ответы</span>
-      <h2 class="section-head__title">FAQ</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-item__q">Нужна ли специальная подготовка для участия?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Программа рассчитана на специалистов с базовой подготовкой в телесных практиках или медицине. Специального оборудования не требуется — только желание работать с собой и открытость к новому опыту.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-item__q">Это эзотерика?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Нет. Программа построена на физиологических механизмах, нейронауке и остеопатических принципах. «Магия», которую вы будете развивать — это конкретный навык восприятия и состояния. Всё объясняется через механику и практику, без мистики.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-item__q">Что если я не остеопат?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Программа подходит для любых специалистов, работающих с телом: мануальные терапевты, телесно-ориентированные терапевты, массажисты с пониманием анатомии. Важна не специальность, а намерение работать глубже.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-item__q">Можно ли присоединиться к отдельному модулю?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Программа выстроена последовательно — каждый модуль опирается на предыдущий. Рекомендуем начинать с первого модуля. Доступ к отдельным модулям возможен после согласования с куратором.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-item__q">Онлайн — это полноценно?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Да. Онлайн-формат включает качественную трансляцию в реальном времени, полную запись каждого модуля и личного куратора между занятиями. Вы полноценный участник — не наблюдатель со стороны.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-item__q">Это быстрый результат?<span class="faq-item__icon">+</span></button>
-        <div class="faq-item__a"><div class="faq-item__a-inner">Нет. Биодинамика — это развитие навыка, который требует практики и включённости. Быстрых кнопок здесь нет. Но устойчивость результата, которую вы получите — принципиально другого уровня.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA ══ -->
-<section class="cta-section" id="cta">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-head__label">Старт — сентябрь 2025</span>
-      <h2 class="section-head__title">Готовы перейти на следующий уровень?</h2>
-      <p class="section-head__sub">Группа закрытая. Следующий поток — не раньше чем через 6 месяцев.</p>
-    </div>
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div>
-          <div class="plan-card__name">Офлайн · Живой формат</div>
-          <div class="plan-card__sub">Работа в группе, практика в парах, полное погружение</div>
-        </div>
-        <ul class="plan-card__list">
-          <li>4 модуля очно + интеграционный день</li>
-          <li>Практика в парах в живом контакте</li>
-          <li>Разборы прямо в зале</li>
-          <li>Записи всех занятий</li>
-          <li>Куратор между модулями</li>
-          <li>Закрытый чат участников</li>
-        </ul>
-        <div class="plan-card__spots">Мест в группе: 22 · <strong>Осталось: 10</strong></div>
-        <a href="https://t.me/dr_agape" class="plan-btn">Занять офлайн-место</a>
-      </div>
-      <div class="plan-card">
-        <div>
-          <div class="plan-card__name">Онлайн · Дистанционно</div>
-          <div class="plan-card__sub">Трансляция в реальном времени — полноценное участие</div>
-        </div>
-        <ul class="plan-card__list">
-          <li>Прямая трансляция всех модулей</li>
-          <li>Полная запись каждого занятия</li>
-          <li>Личный куратор между модулями</li>
-          <li>Ответы на вопросы по практике</li>
-          <li>Методические материалы</li>
-          <li>Закрытый чат участников</li>
-        </ul>
-        <div class="plan-card__spots">Без ограничений по местам</div>
-        <a href="https://t.me/dr_agape" class="plan-btn plan-btn--outline">Участвовать онлайн</a>
-      </div>
-    </div>
-    <p class="cta-note">⚡ Часть мест уже занята. Если после первого модуля вы почувствуете, что это не ваше — мы найдём решение.</p>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
+<!-- Footer -->
 <footer class="page-foot">
-  <div class="wrap">
+  <div class="container">
     <div class="page-foot__inner">
-      <a href="https://dr-agape.ru" class="page-foot__logo">Олег Агапэ · МИОТ</a>
+      <a href="../index.html" class="page-foot__logo">МИОТ · Олег Агапэ</a>
       <div class="page-foot__links">
-        <a href="https://dr-agape.ru/offer.html">Оферта</a>
-        <a href="https://dr-agape.ru/psycho-bio/">Психосоматика</a>
-        <a href="https://dr-agape.ru/lectures/">Записи эфиров</a>
+        <a href="../offer.html">Оферта</a>
+        <a href="../psycho-bio/">Психосоматика</a>
+        <a href="../lectures/">Записи эфиров</a>
         <a href="https://t.me/dr_agape">Telegram</a>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="../script.js"></script>
 <script>
-  // FAQ
+  // FAQ accordion
   document.querySelectorAll('.faq-item__q').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var item = btn.closest('.faq-item');
@@ -1148,12 +1356,15 @@
     });
   });
 
-  // Sticky nav shrink
-  window.addEventListener('scroll', function() {
-    document.querySelector('.site-nav').style.boxShadow =
-      window.scrollY > 10 ? '0 2px 16px rgba(46,95,158,0.10)' : 'none';
+  // Module accordion
+  document.querySelectorAll('.module-card__head').forEach(function(head) {
+    head.addEventListener('click', function() {
+      var card = head.closest('.module-card');
+      var wasOpen = card.classList.contains('is-open');
+      document.querySelectorAll('.module-card').forEach(function(c) { c.classList.remove('is-open'); });
+      if (!wasOpen) card.classList.add('is-open');
+    });
   });
 </script>
-
 </body>
 </html>
