@@ -501,12 +501,24 @@
             box-shadow: var(--shadow-md);
         }
         @media (max-width: 768px) {
-            .review-slide { padding: 0 48px; }
-            .review-img { max-height: 480px; }
+            .review-slide { padding: 0 40px; }
+            .review-img { max-height: none; max-width: 100%; }
         }
         @media (max-width: 480px) {
-            .review-slide { padding: 0 36px; }
-            .review-img { max-height: 380px; }
+            .review-slide { padding: 0 8px; }
+            .review-img {
+                max-height: none;
+                max-width: 100%;
+                width: 100%;
+                border-radius: 8px;
+            }
+            .reviews-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            .reviews-btn.prev { left: 4px; }
+            .reviews-btn.next { right: 4px; }
         }
         .reviews-btn {
             position: absolute;
