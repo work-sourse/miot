@@ -620,7 +620,7 @@
     .case-card {
       background: var(--color-bg-primary);
       border-radius: var(--radius-md);
-      overflow: hidden;
+      overflow: visible;
       box-shadow: var(--shadow-sm);
     }
     .case-card__head {
@@ -629,6 +629,8 @@
       display: flex;
       align-items: center;
       gap: 1.2rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      overflow: hidden;
     }
     .case-card__num {
       font-family: var(--font-primary);
