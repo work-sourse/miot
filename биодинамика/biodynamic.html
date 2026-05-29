@@ -800,6 +800,51 @@
     }
     .photo-strip__item:hover img { transform: scale(1.04); }
 
+    /* ── Case avatar ── */
+    .case-card__head { position: relative; }
+    .case-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.25);
+      flex-shrink: 0;
+    }
+
+    /* ── Mid-page CTA block ── */
+    .mid-cta {
+      text-align: center;
+      padding: 2.5rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* ── Floating «ask» button ── */
+    .float-ask {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-accent);
+      color: #fff;
+      font-family: var(--font-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 14px 22px;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(15,23,42,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-ask:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,23,42,0.45); color: #fff; }
+    .float-ask__icon { font-size: 1.1rem; }
+    @media (max-width: 600px) {
+      .float-ask { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 0.75rem; }
+    }
+
     /* ── Format with side photo ── */
     .format-layout {
       display: grid;
@@ -939,6 +984,10 @@
         <span class="audience-tag">Интегративная медицина</span>
         <span class="audience-tag">Все, кому интересно тело и слушание</span>
       </div>
+      <div class="mid-cta fade-in-up">
+        <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
+        <a href="#modules" class="btn btn-secondary">Смотреть программу</a>
+      </div>
     </div>
   </section>
 
@@ -1013,31 +1062,6 @@
           <div class="principle-card__num">05</div>
           <div class="principle-card__name">Первичность</div>
           <p class="principle-card__desc">Определять, что важно сейчас, без лишних действий</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Фото-галерея Олега -->
-  <section class="section-pad-alt">
-    <div class="container">
-      <div class="section-header text-center fade-in-up">
-        <span class="badge">Олег в работе</span>
-        <h2>Обучение — это живой процесс</h2>
-        <p>Практика, диссекции, живые разборы — в каждом занятии присутствие важнее теории.</p>
-      </div>
-      <div class="photo-strip fade-in-up">
-        <div class="photo-strip__item">
-          <img src="../photos/oleg1219.jpg" alt="Олег Агапэ — работа с телом">
-        </div>
-        <div class="photo-strip__item">
-          <img src="../photos/oleg1313.jpg" alt="Олег Агапэ — обучение">
-        </div>
-        <div class="photo-strip__item">
-          <img src="../photos/oleg1438.jpg" alt="Олег Агапэ — практика">
-        </div>
-        <div class="photo-strip__item">
-          <img src="../photos/oleg1566.jpg" alt="Олег Агапэ — разбор кейса">
         </div>
       </div>
     </div>
@@ -1159,6 +1183,10 @@
           </div>
         </div>
       </div>
+      <div class="mid-cta fade-in-up">
+        <a href="#cta" class="btn btn-primary btn-glow">Занять место на программу</a>
+        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос менеджеру</a>
+      </div>
     </div>
   </section>
 
@@ -1225,6 +1253,10 @@
         <div class="result-card"><div class="result-card__num">06</div><div class="result-card__title">Уверенность со сложными</div><p class="result-card__text">Хроника, психосоматика, системные нарушения — понятна точка входа</p></div>
         <div class="result-card"><div class="result-card__num">07</div><div class="result-card__title">Клиенты чувствуют разницу</div><p class="result-card__text">Возвращаются и рекомендуют — результат устойчивый</p></div>
         <div class="result-card"><div class="result-card__num">08</div><div class="result-card__title">Меняется ощущение от работы</div><p class="result-card__text">Появляется ощущение потока, смысла и точности</p></div>
+      </div>
+      <div class="mid-cta fade-in-up">
+        <a href="#cta" class="btn btn-primary btn-glow">Хочу эти результаты</a>
+        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос</a>
       </div>
     </div>
   </section>
@@ -1308,6 +1340,7 @@
           <div class="case-card__head">
             <div class="case-card__num">01</div>
             <div class="case-card__title">Хроническая боль в шее — 6 лет</div>
+            <img src="../cases/photo_elena.png" alt="Пациентка" class="case-avatar">
           </div>
           <div class="case-card__body">
             <p class="case-content">Женщина, 41 год. 6 лет боли в шейном отделе — прошла МРТ, физиотерапию, классическую остеопатию. Временные улучшения, потом возврат.<br><br>
@@ -1320,6 +1353,7 @@
           <div class="case-card__head">
             <div class="case-card__num">02</div>
             <div class="case-card__title">Педиатрия — частые простуды, нарушение сна</div>
+            <img src="../cases/photo_anna.png" alt="Пациентка" class="case-avatar">
           </div>
           <div class="case-card__body">
             <p class="case-content">Ребёнок 4 года. Частые простуды, нарушение сна, гиперактивность. Мама привела «на всякий случай» — педиатры ничего не находили. Ребёнок не мог усидеть на месте дольше двух минут.<br><br>
@@ -1329,21 +1363,28 @@
           </div>
         </div>
       </div>
+      <div class="mid-cta fade-in-up">
+        <a href="#cta" class="btn btn-primary btn-glow">Хочу так работать</a>
+        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос менеджеру</a>
+      </div>
     </div>
   </section>
 
   <!-- Фото-галерея 2 -->
   <section class="section-pad-alt">
     <div class="container">
-      <div class="photo-strip photo-strip--3 fade-in-up">
+      <div class="photo-strip fade-in-up">
         <div class="photo-strip__item">
           <img src="../photos/oleg1251.jpg" alt="Олег Агапэ — занятие">
         </div>
         <div class="photo-strip__item">
-          <img src="../photos/oleg1635.jpg" alt="Олег Агапэ — практика">
+          <img src="../photos/oleg1587.jpg" alt="Олег Агапэ — практика">
         </div>
         <div class="photo-strip__item">
-          <img src="../photos/oleg1644.jpg" alt="Олег Агапэ — обучение">
+          <img src="../photos/oleg1635.jpg" alt="Олег Агапэ — обучение">
+        </div>
+        <div class="photo-strip__item">
+          <img src="../photos/oleg1644.jpg" alt="Олег Агапэ — разбор">
         </div>
       </div>
     </div>
@@ -1509,6 +1550,11 @@
         </div>
     </div>
 </footer>
+
+<!-- Floating ask button -->
+<a href="https://t.me/TatyBondar" target="_blank" class="float-ask">
+  <span class="float-ask__icon">💬</span> Задать вопрос менеджеру
+</a>
 
 <script src="../script.js"></script>
 <script>
