@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Биодинамика: от техники к состоянию · МИОТ</title>
-  <meta name="description" content="Полугодичная программа по биодинамической остеопатии для специалистов — старт сентябрь 2025">
+  <meta name="description" content="Полугодичная программа по биодинамической остеопатии для специалистов — старт сентябрь 2026">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -774,6 +774,51 @@
       color: rgba(255,255,255,0.45);
     }
 
+    /* ── Photo strip ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 700px) { .photo-strip { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 420px) { .photo-strip { grid-template-columns: 1fr; } }
+    .photo-strip__item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      aspect-ratio: 4/5;
+    }
+    .photo-strip__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 0;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .photo-strip__item:hover img { transform: scale(1.04); }
+
+    /* ── Format with side photo ── */
+    .format-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .format-layout { grid-template-columns: 1fr; } }
+    .format-side-img {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+      aspect-ratio: 3/4;
+      position: sticky;
+      top: 100px;
+    }
+    @media (max-width: 900px) { .format-side-img { max-width: 400px; margin: 0 auto; position: static; } }
+
     /* ── Footer ── */
     .page-foot {
       background: #060d1a;
@@ -841,7 +886,7 @@
     <div class="container">
       <div class="bio-hero__grid">
         <div class="fade-in-up">
-          <div class="bio-hero__eyebrow">МИОТ · Старт сентябрь 2025</div>
+          <div class="bio-hero__eyebrow">МИОТ · Старт сентябрь 2026</div>
           <h1 class="bio-hero__title">Биодинамика:<br><span>от техники к состоянию</span></h1>
           <p class="bio-hero__sub">Полугодичная программа для остеопатов и телесных практиков, которые хотят работать глубже — без усилий, выгорания и зависимости от алгоритмов.</p>
           <div class="bio-hero__pills">
@@ -999,6 +1044,28 @@
     </div>
   </section>
 
+  <!-- Фото-галерея Олега -->
+  <section class="section-pad-alt">
+    <div class="container">
+      <div class="section-header text-center fade-in-up">
+        <span class="badge">Олег в работе</span>
+        <h2>Обучение — это живой процесс</h2>
+        <p>Практика, диссекции, живые разборы — в каждом занятии присутствие важнее теории.</p>
+      </div>
+      <div class="photo-strip fade-in-up">
+        <div class="photo-strip__item">
+          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ — работа с телом">
+        </div>
+        <div class="photo-strip__item">
+          <img src="photo_5224239971244382842_w.jpg" alt="Олег Агапэ — обучение">
+        </div>
+        <div class="photo-strip__item">
+          <img src="photo_5224239971244382843_w.jpg" alt="Олег Агапэ — практика">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Программа / Модули -->
   <section class="section-pad-alt" id="modules">
     <div class="container">
@@ -1125,7 +1192,8 @@
         <span class="badge">Как проходит</span>
         <h2>Формат обучения</h2>
       </div>
-      <div class="format-grid fade-in-up">
+      <div class="format-layout fade-in-up">
+      <div class="format-grid">
         <div class="format-card">
           <div class="format-card__icon">🤲</div>
           <div>
@@ -1158,6 +1226,8 @@
             <p class="format-card__text">Ваше тело — главный инструмент обучения. Через себя — к пониманию других. Без этого биодинамика не работает.</p>
           </div>
         </div>
+      </div>
+      <img src="../photos/oleg1544.jpg" alt="Олег Агапэ на занятии" class="format-side-img">
       </div>
     </div>
   </section>
@@ -1223,7 +1293,7 @@
       </div>
       <div class="author-inner fade-in-up">
         <div class="author-photo-col">
-          <img src="photo_5224239971244382841_w.jpg" alt="Олег Агапэ">
+          <img src="../photos/oleg1383.jpg" alt="Олег Агапэ">
         </div>
         <div class="author-body">
           <div class="author-name">Олег Агапэ</div>
@@ -1325,7 +1395,7 @@
   <section class="cta-section" id="cta">
     <div class="container">
       <div class="section-header text-center fade-in-up">
-        <span class="badge">Старт — сентябрь 2025</span>
+        <span class="badge">Старт — сентябрь 2026</span>
         <h2>Готовы перейти на следующий уровень?</h2>
         <p>Группа закрытая. Следующий поток — не раньше чем через 6 месяцев.</p>
       </div>
