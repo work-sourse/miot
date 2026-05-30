@@ -1187,7 +1187,7 @@
       </div>
       <div class="mid-cta fade-in-up">
         <a href="#cta" class="btn btn-primary btn-glow">Занять место на программу</a>
-        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос менеджеру</a>
+        <button onclick="gcOpen('gcModalManager')" class="btn btn-secondary" style="cursor:pointer;">Задать вопрос менеджеру</button>
       </div>
     </div>
   </section>
@@ -1258,7 +1258,7 @@
       </div>
       <div class="mid-cta fade-in-up">
         <a href="#cta" class="btn btn-primary btn-glow">Хочу эти результаты</a>
-        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос</a>
+        <button onclick="gcOpen('gcModalManager')" class="btn btn-secondary" style="cursor:pointer;">Задать вопрос</button>
       </div>
     </div>
   </section>
@@ -1367,7 +1367,7 @@
       </div>
       <div class="mid-cta fade-in-up">
         <a href="#cta" class="btn btn-primary btn-glow">Хочу так работать</a>
-        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary">Задать вопрос менеджеру</a>
+        <button onclick="gcOpen('gcModalManager')" class="btn btn-secondary" style="cursor:pointer;">Задать вопрос менеджеру</button>
       </div>
     </div>
   </section>
@@ -1569,8 +1569,19 @@
   </div>
 </div>
 
+<div id="gcModalManager" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__title">Связаться с менеджером</div>
+    <div class="gc-modal__body">
+      <script id="300c22a93ee59029fed08535161143283bb407fc" src="https://online.agape-course.ru/pl/lite/widget/script?id=1611867" onload="typeof startWidget300c22a93ee59029fed08535161143283bb407fc==='function'&&startWidget300c22a93ee59029fed08535161143283bb407fc()"></script>
+    </div>
+  </div>
+</div>
+
 <!-- Floating ask button -->
-<a href="https://t.me/TatyBondar" target="_blank" class="float-ask">
+<button onclick="gcOpen('gcModalManager')" class="float-ask">
   <span class="float-ask__icon">💬</span> Задать вопрос менеджеру
 </a>
 
