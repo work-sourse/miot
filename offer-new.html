@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Артур Ахтямов · Технический специалист</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0ece4;
+    --bg-soft: #f6f2ea;
+    --bg-tint: #e8e2d6;
+    --surface: #ffffff;
+    --surface-tint: #f9f6f0;
+    --border: rgba(26,26,26,0.08);
+    --border-strong: rgba(26,26,26,0.18);
+    --ink: #1a1a1a;
+    --ink-soft: rgba(26,26,26,0.74);
+    --ink-mute: rgba(26,26,26,0.52);
+    --warm: #b85432;
+    --warm-soft: rgba(184,84,50,0.10);
+    --warm-line: rgba(184,84,50,0.32);
+    --olive: #6b6a3a;
+    --red: #c8392f;
+  }
+  html, body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,84,50,0.05), transparent 60%),
+      radial-gradient(circle at 0% 100%, rgba(107,106,58,0.04), transparent 50%),
+      var(--bg);
+    background-attachment: fixed;
+    position: relative;
+  }
+  body::before {
+    content:'';
+    position: fixed; inset: 14px;
+    pointer-events: none;
+    border: 1px solid rgba(26,26,26,0.08);
+    border-radius: 18px;
+    z-index: 5;
+  }
+  .top-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 38px;
+    z-index: 60;
+    pointer-events: none;
+  }
+  .logo {
+    font-family: 'Caveat', cursive;
+    font-size: 38px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    pointer-events: auto;
+    letter-spacing: -0.02em;
+  }
+  .live-tag {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--ink-mute); text-transform: uppercase;
+    font-weight: 600;
+  }
+  .live-tag::before {
+    content:''; display: block;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--warm);
+    box-shadow: 0 0 10px rgba(184,84,50,0.45);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .deck {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 110px 38px 110px;
+    position: relative; z-index: 10;
+  }
+  .slide { display: none; width: 100%; max-width: 1180px; }
+  .slide.active { display: block; animation: fadeUp 0.5s cubic-bezier(.2,.6,.2,1) forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .h-display { font-family: 'Unbounded', 'Manrope', sans-serif; font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
+  .h-section { font-family: 'Unbounded', 'Manrope', sans-serif; font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
+
+  /* === HERO === */
+  .slide--hero { text-align: center; min-height: 70vh; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--hero.active { display: flex; }
+  .hero-eyebrow { font-size: 12px; letter-spacing: 0.26em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 32px; font-weight: 600; }
+  .hero-title { font-size: clamp(40px, 7vw, 110px); color: var(--ink); letter-spacing: -0.04em; max-width: 1100px; line-height: 1; }
+  .hero-sub { font-size: clamp(20px, 2.6vw, 32px); margin-top: 22px; font-weight: 500; color: var(--ink-soft); font-family: 'Manrope', sans-serif; }
+  .hero-foot { margin-top: 40px; font-size: 13px; color: var(--ink-mute); letter-spacing: 0.14em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; }
+  .hero-foot::before, .hero-foot::after { content:''; width: 32px; height: 1px; background: rgba(26,26,26,0.25); }
+
+  /* === HUB === */
+  .slide--hub { min-height: 75vh; position: relative; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--hub.active { display: flex; }
+  .hub-eyebrow { font-size: 11px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 28px; font-weight: 600; }
+  .hub-title { font-size: clamp(56px, 9vw, 140px); text-align: center; text-transform: uppercase; letter-spacing: -0.045em; }
+  .hub-title.is-warm { color: var(--warm); }
+  .hub-title.is-ink { color: var(--ink); }
+  .hub-title.is-outline { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+  .hub-title.is-phrase { text-transform: none; font-size: clamp(40px, 7vw, 96px); letter-spacing: -0.035em; line-height: 1.05; max-width: 1000px; }
+  .hub-title.is-phrase em { font-style: normal; color: var(--warm); }
+  .hub-sub { color: var(--ink-soft); font-size: 17px; margin-top: 22px; text-align: center; max-width: 640px; font-weight: 500; }
+  .hub-quotes { position: absolute; inset: 0; pointer-events: none; }
+  .hub-quote { position: absolute; color: var(--ink-soft); font-family: 'Caveat', cursive; font-size: clamp(26px, 2.4vw, 34px); font-weight: 600; line-height: 1.2; max-width: 320px; letter-spacing: -0.005em; }
+  .hub-quote.tl { top: 14%; left: 4%; text-align: left; }
+  .hub-quote.tr { top: 14%; right: 4%; text-align: right; }
+  .hub-quote.bl { bottom: 18%; left: 4%; text-align: left; }
+  .hub-quote.br { bottom: 18%; right: 4%; text-align: right; }
+  @media (max-width: 760px){ .hub-quote { display: none; } }
+
+  /* === PLAN === */
+  .slide--plan .plan-title { font-size: clamp(36px, 5vw, 60px); color: var(--ink); margin-bottom: 38px; }
+  .plan-icons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; max-width: 980px; }
+  .plan-icon-card { display: flex; gap: 16px; align-items: flex-start; padding: 22px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; }
+  .plan-icon-bubble { width: 44px; height: 44px; border-radius: 12px; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; line-height: 1; font-weight: 700; }
+  .plan-icon-text { font-size: 15px; line-height: 1.45; padding-top: 6px; color: var(--ink); font-weight: 500; }
+  .plan-rule-label { font-size: 12px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
+  .plan-pills { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .plan-pill { padding: 14px 26px; border-radius: 40px; font-weight: 600; font-size: 15px; border: 1px solid var(--border); }
+  .plan-pill--gray { background: var(--surface); color: var(--ink); }
+  .plan-pill--ink { background: var(--ink); color: var(--bg); border-color: transparent; }
+  .plan-pill--ink-soft { background: rgba(26,26,26,0.10); color: var(--ink); border-color: transparent; }
+  .plan-pill--warm { background: var(--warm); color: #fff; border-color: transparent; }
+  .plan-pill-arrow { color: var(--ink-mute); font-size: 18px; }
+  @media (max-width: 760px){ .plan-icons { grid-template-columns: 1fr; } .plan-pill { padding: 12px 20px; font-size: 13px; } }
+
+  /* === BIG-STAT === */
+  .slide--big-stat { text-align: center; min-height: 65vh; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--big-stat.active { display: flex; }
+  .big-stat-eyebrow { font-size: 12px; letter-spacing: 0.24em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 22px; font-weight: 700; }
+  .big-stat-value { font-size: clamp(72px, 13vw, 200px); color: var(--ink); white-space: nowrap; letter-spacing: -0.05em; }
+  .big-stat-value.is-warm { color: var(--warm); }
+  .big-stat-value.is-red { color: var(--red); }
+  .big-stat-value.is-outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+  .big-stat-sub { font-size: clamp(18px, 2vw, 24px); color: var(--ink); font-weight: 500; margin-top: 22px; max-width: 720px; line-height: 1.4; }
+  .big-stat-note { font-size: clamp(15px, 1.4vw, 17px); color: var(--ink-soft); margin-top: 18px; max-width: 760px; line-height: 1.55; font-weight: 500; }
+
+  /* === TIMELINE-V === */
+  .timeline-title { font-size: clamp(36px, 5vw, 60px); color: var(--ink); margin-bottom: 36px; text-align: center; }
+  .timeline-v { display: flex; flex-direction: column; gap: 14px; max-width: 920px; margin: 0 auto; position: relative; }
+  .timeline-row { display: grid; grid-template-columns: 64px 1fr; gap: 22px; align-items: center; position: relative; }
+  .timeline-row::before { content:''; position: absolute; top: 100%; left: 31px; width: 1.5px; height: 14px; background: rgba(26,26,26,0.18); }
+  .timeline-row:last-child::before { display: none; }
+  .timeline-chip { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 24px; flex-shrink: 0; position: relative; z-index: 2; letter-spacing: -0.02em; }
+  .timeline-chip.is-ink { background: var(--ink); color: var(--bg); }
+  .timeline-chip.is-warm { background: var(--warm); color: #fff; }
+  .timeline-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 24px; min-height: 64px; display: flex; flex-direction: column; justify-content: center; }
+  .timeline-card.is-warm { background: var(--warm-soft); border-color: var(--warm-line); }
+  .timeline-card__title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .timeline-card__sub { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; font-weight: 500; }
+  .timeline-v.is-reveal .timeline-row::before { display: none; }
+  .timeline-v.is-reveal .timeline-row:not(.is-revealed) { display: none; }
+  @keyframes timelineRowReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .timeline-v.is-reveal .timeline-row.is-revealed { animation: timelineRowReveal 0.5s cubic-bezier(.2,.6,.2,1); }
+  .timeline-progress { margin: 32px auto 0; display: flex; gap: 8px; justify-content: center; }
+  .timeline-progress__dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(26,26,26,0.18); transition: background 0.25s; }
+  .timeline-progress__dot.is-revealed { background: var(--ink); }
+  .timeline-hint { margin: 14px auto 0; text-align: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
+  .timeline-foot { margin: 32px auto 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .timeline-foot__pill { padding: 14px 26px; border-radius: 40px; background: var(--surface); border: 1px solid var(--border); font-weight: 700; font-size: 17px; color: var(--ink); }
+  .timeline-foot__pill.is-ink { background: var(--ink); color: var(--bg); border-color: transparent; }
+  .timeline-foot__pill.is-warm { background: var(--warm); color: #fff; border-color: transparent; }
+  .timeline-foot__arrow { color: var(--ink-mute); font-size: 22px; font-weight: 600; }
+  .timeline-foot__pill[data-chain-step] { background: var(--surface); color: var(--ink); border-color: var(--border); transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease; }
+  .timeline-foot__pill.is-chain-past { background: var(--ink); color: var(--bg); border-color: transparent; }
+  .timeline-foot__pill.is-chain-current { background: var(--warm); color: #fff; border-color: transparent; }
+
+  /* === ANKETA === */
+  .slide--anketa { text-align: center; min-height: 70vh; display: none; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+  .slide--anketa.active { display: flex; }
+  .anketa-block__quotes { margin-top: 28px; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
+  .anketa-block__quote { font-family: 'Caveat', cursive; font-size: clamp(18px, 1.7vw, 24px); color: var(--ink-soft); font-weight: 600; line-height: 1.2; letter-spacing: -0.005em; max-width: 23%; flex: 0 1 auto; opacity: 0.9; }
+  .anketa-block__quote.bl { text-align: left; transform: rotate(-2deg); }
+  .anketa-block__quote.bcl { text-align: center; transform: rotate(-1deg); }
+  .anketa-block__quote.bc { text-align: center; transform: rotate(-1deg); }
+  .anketa-block__quote.bcr { text-align: center; transform: rotate(1deg); }
+  .anketa-block__quote.br { text-align: right; transform: rotate(2deg); }
+  @media (max-width: 760px){ .anketa-block__quotes { gap: 8px; margin-top: 20px; } .anketa-block__quote { font-size: 16px; max-width: 24%; } }
+  @media (max-width: 540px){ .anketa-block__quote { font-size: 14px; max-width: 48%; } }
+  .anketa-eyebrow { font-size: 12px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 24px; font-weight: 700; }
+  .anketa-title { font-size: clamp(26px, 3.4vw, 44px); color: var(--ink); line-height: 1.22; letter-spacing: -0.022em; max-width: 1000px; margin-bottom: 44px; font-family: 'Unbounded', sans-serif; font-weight: 600; }
+  .anketa-title em { font-style: normal; color: var(--warm); }
+  .anketa-block { margin: 0 auto; width: 100%; max-width: 920px; background: var(--surface); border: 2px solid var(--ink); border-radius: 24px; padding: 38px 48px 36px; display: flex; flex-direction: column; align-items: center; }
+  .anketa-block__tag { display: inline-block; font-size: 12px; letter-spacing: 0.22em; color: var(--warm); text-transform: uppercase; font-weight: 700; padding: 9px 20px; background: var(--warm-soft); border: 1px solid var(--warm-line); border-radius: 24px; margin-bottom: 22px; }
+  .anketa-block__label { font-family: 'Caveat', cursive; font-size: clamp(36px, 4.4vw, 56px); color: var(--ink); font-weight: 600; line-height: 1; margin-bottom: 24px; letter-spacing: -0.005em; }
+  .anketa-block__items { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 0; padding: 0; }
+  .anketa-block__items li { font-size: 17px; font-weight: 600; color: var(--ink); padding: 12px 22px; background: var(--surface-tint); border: 1px solid var(--border); border-radius: 30px; line-height: 1.2; }
+  .anketa-strap { text-align: center; margin: 32px auto 0; font-size: clamp(16px, 1.9vw, 22px); color: var(--ink-soft); max-width: 700px; line-height: 1.5; font-style: italic; }
+  @media (max-width: 760px){ .anketa-block { padding: 28px 22px 30px; } .anketa-block__items li { font-size: 15px; padding: 10px 16px; } }
+
+  /* === DAY === */
+  .day-title { font-size: clamp(36px, 5vw, 60px); color: var(--ink); margin-bottom: 36px; text-align: center; }
+  .day-title em { font-style: normal; color: var(--warm); }
+  .day-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; width: 100%; }
+  .day-row { display: grid; grid-template-columns: 130px 1fr; gap: 22px; align-items: baseline; padding: 22px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+  .day-row__time { font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; color: var(--warm); text-transform: uppercase; }
+  .day-row__text { font-size: 18px; color: var(--ink); font-weight: 700; line-height: 1.3; }
+  .day-row__text small { display: block; color: var(--ink-soft); font-size: 14.5px; margin-top: 5px; font-weight: 500; line-height: 1.5; }
+  .day-foot { margin: 28px auto 0; text-align: center; font-size: clamp(16px, 1.9vw, 22px); color: var(--ink-soft); max-width: 720px; font-weight: 500; line-height: 1.5; }
+  .day-foot strong { color: var(--ink); font-weight: 700; }
+  @media (max-width: 760px){ .day-row { grid-template-columns: 100px 1fr; padding: 16px 18px; gap: 14px; } .day-row__time { font-size: 11px; } .day-row__text { font-size: 15px; } }
+
+  /* === SPLIT-2 === */
+  .split-title { font-size: clamp(36px, 5vw, 60px); color: var(--ink); margin-bottom: 32px; text-align: center; }
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 1080px; margin: 0 auto; }
+  .split-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 30px 32px; }
+  .split-card.is-tint { background: var(--surface-tint); }
+  .split-card__tag { display: inline-block; font-size: 11px; letter-spacing: 0.2em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 14px; font-weight: 700; padding: 5px 10px; border: 1px solid var(--border-strong); border-radius: 20px; }
+  .split-card__tag.is-warm { color: var(--warm); border-color: var(--warm-line); }
+  .split-card__title { font-size: 22px; font-weight: 700; line-height: 1.25; margin-bottom: 16px; color: var(--ink); }
+  .split-card__list { display: flex; flex-direction: column; gap: 8px; }
+  .split-card__list li { display: flex; gap: 10px; font-size: 15px; color: var(--ink-soft); list-style: none; line-height: 1.45; }
+  .split-card__list li::before { content:''; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); margin-top: 9px; flex-shrink: 0; }
+  .split-strapline { text-align: center; margin-top: 30px; font-size: clamp(18px, 2.4vw, 26px); font-weight: 600; color: var(--ink); max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.4; }
+  .split-strapline em { font-style: normal; color: var(--warm); }
+  @media (max-width: 760px){ .split-grid { grid-template-columns: 1fr; } }
+
+  /* === STATEMENT === */
+  .slide--statement { text-align: center; min-height: 50vh; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--statement.active { display: flex; }
+  .statement-title { font-size: clamp(34px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; max-width: 900px; color: var(--ink); font-family: 'Unbounded', sans-serif; }
+  .statement-title em { font-style: normal; color: var(--warm); }
+  .statement-sub { margin-top: 22px; color: var(--ink-soft); font-size: clamp(16px, 1.9vw, 24px); max-width: 760px; line-height: 1.5; }
+  .statement-sub strong { color: var(--ink); font-weight: 700; }
+  .statement-eyebrow { font-size: 12px; letter-spacing: 0.24em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 22px; font-weight: 700; }
+  .statement-foot { margin-top: 30px; color: var(--warm); font-family: 'Caveat', cursive; font-size: clamp(28px, 3vw, 40px); font-weight: 600; letter-spacing: -0.005em; line-height: 1.2; max-width: 720px; }
+
+  /* === MANIFESTO === */
+  .slide--manifesto { text-align: center; min-height: 60vh; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--manifesto.active { display: flex; }
+  .manifesto-title { font-size: clamp(48px, 8vw, 110px); color: var(--ink); line-height: 0.96; letter-spacing: -0.045em; max-width: 1000px; }
+  .manifesto-title.is-small { font-size: clamp(28px, 3.6vw, 48px); line-height: 1.18; letter-spacing: -0.025em; max-width: 920px; font-weight: 600; }
+  .manifesto-title em { font-style: normal; color: var(--warm); }
+  .manifesto-sub { margin-top: 28px; font-size: clamp(18px, 2.2vw, 24px); color: var(--ink-soft); font-weight: 500; max-width: 720px; line-height: 1.45; }
+
+  /* === CHECKLIST === */
+  .checklist-eyebrow { font-size: 12px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 18px; font-weight: 700; text-align: center; }
+  .checklist-title { font-size: clamp(36px, 5vw, 60px); color: var(--ink); margin-bottom: 36px; text-align: center; }
+  .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1080px; margin: 0 auto; }
+  .checklist.is-reveal .check-card:not(.is-revealed) { display: none; }
+  @keyframes checkCardReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .checklist.is-reveal .check-card.is-revealed { animation: checkCardReveal 0.5s cubic-bezier(.2,.6,.2,1); }
+  .check-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px; position: relative; }
+  .check-card__num { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 36px; -webkit-text-stroke: 1.2px rgba(26,26,26,0.4); color: transparent; line-height: 1; margin-bottom: 18px; }
+  .check-card__text { font-size: 17px; color: var(--ink); font-weight: 600; line-height: 1.35; }
+  .check-card__icon { position: absolute; top: 24px; right: 24px; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 13px; font-weight: 700; }
+  @media (max-width: 760px){ .checklist { grid-template-columns: 1fr; } }
+
+  /* === GRID 2x2 === */
+  .grid22-title { font-size: clamp(40px, 6vw, 72px); color: var(--ink); margin-bottom: 36px; text-align: center; }
+  .grid22 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1000px; margin: 0 auto; }
+  .grid22-cell { padding: 30px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; position: relative; }
+  .grid22-cell.alt { background: var(--surface-tint); }
+  .grid22-cell.is-wide { grid-column: span 2; }
+  @media (max-width: 760px){ .grid22-cell.is-wide { grid-column: auto; } }
+  .grid22-cell__num { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; line-height: 1; color: var(--warm); margin-bottom: 14px; letter-spacing: 0.04em; }
+  .grid22-cell__title { font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.2; font-family: 'Unbounded', sans-serif; letter-spacing: -0.02em; }
+  .grid22-cell__sub { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+  @media (max-width: 760px){ .grid22 { grid-template-columns: 1fr; } }
+
+  /* === Q&A / FINAL === */
+  .slide--qa, .slide--final { text-align: center; min-height: 65vh; display: none; flex-direction: column; align-items: center; justify-content: center; }
+  .slide--qa.active, .slide--final.active { display: flex; }
+  .qa-title { font-size: clamp(80px, 14vw, 200px); color: var(--ink); line-height: 1; letter-spacing: -0.05em; }
+  .qa-sub { margin-top: 26px; font-size: 18px; color: var(--ink-soft); }
+  .final-title { font-size: clamp(72px, 12vw, 180px); color: var(--ink); line-height: 1; letter-spacing: -0.05em; }
+  .final-title em { font-style: normal; color: var(--warm); }
+  .final-sub { margin-top: 22px; font-size: clamp(20px, 2.4vw, 28px); color: var(--ink-soft); font-weight: 500; }
+
+  /* === НАВИГАЦИЯ === */
+  .nav-bar { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 40px; padding: 6px; z-index: 80; box-shadow: 0 14px 40px -10px rgba(26,26,26,0.18); }
+  .nav-btn { width: 38px; height: 38px; border-radius: 50%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink); transition: background 0.2s, opacity 0.2s; }
+  .nav-btn:hover:not(:disabled) { background: rgba(26,26,26,0.06); }
+  .nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .nav-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
+  .counter-pill { position: fixed; bottom: 32px; right: 32px; font-size: 13px; letter-spacing: 0.1em; color: var(--ink-mute); z-index: 70; font-weight: 600; font-family: 'Unbounded', sans-serif; }
+  .counter-pill strong { color: var(--ink); font-weight: 700; }
+  .hint-pill { position: fixed; bottom: 36px; left: 32px; font-size: 11px; letter-spacing: 0.06em; color: var(--ink-mute); z-index: 70; }
+  .hint-pill kbd { font-family: 'Manrope', monospace; padding: 2px 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin: 0 2px; color: var(--ink-soft); font-size: 11px; }
+  @media (max-width: 760px){ .hint-pill { display: none; } .counter-pill { right: 18px; bottom: 84px; } }
+  .nav-menu { position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%); width: 320px; max-height: 60vh; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 16px; padding: 8px; z-index: 90; box-shadow: 0 18px 44px -16px rgba(26,26,26,0.3); overflow-y: auto; overscroll-behavior: contain; }
+  .nav-menu[hidden] { display: none; }
+  .nav-menu__item { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 10px; cursor: pointer; transition: background 0.15s; background: transparent; border: none; width: 100%; text-align: left; font-family: inherit; color: var(--ink); }
+  .nav-menu__item:hover { background: var(--surface-tint); }
+  .nav-menu__item.is-active { background: var(--ink); color: var(--bg); }
+  .nav-menu__item.is-active .nav-menu__num { color: var(--bg); }
+  .nav-menu__num { font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 12px; color: var(--ink-mute); text-align: right; }
+  .nav-menu__label { font-size: 14px; font-weight: 500; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 900px){ .deck { padding: 100px 22px 110px; } .top-bar { padding: 22px 24px; } body::before { inset: 8px; border-radius: 14px; } }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="live-tag">ОБУЧЕНИЕ · АРТУР АХТЯМОВ</div>
+  <div></div>
+</div>
+
+<main class="deck" id="deck"></main>
+
+<nav class="nav-bar">
+  <button class="nav-btn" id="btnPrev" aria-label="Назад">
+    <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
+  </button>
+  <button class="nav-btn" id="btnMenu" aria-label="Меню слайдов">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="7" x2="19" y2="7"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="17" x2="19" y2="17"/></svg>
+  </button>
+  <button class="nav-btn" id="btnNext" aria-label="Вперёд">
+    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+</nav>
+<div class="nav-menu" id="navMenu" hidden></div>
+
+<div class="counter-pill"><strong id="navNow">1</strong> / <span id="navTotal">25</span></div>
+<div class="hint-pill"><kbd>←</kbd> <kbd>→</kbd> <kbd>Space</kbd></div>
+
+<script>
+  const slides = [
+
+    // 1 · ОТКРЫТИЕ
+    { type:'hero',
+      eyebrow:'Артур Ахтямов · Полное обучение',
+      title:'Освой одну из самых востребованных удалённых профессий',
+      sub:'Технический специалист: GetCourse, боты, воронки, интеграции',
+      foot:'Даже если никогда ранее не было опыта работы в онлайне.'
+    },
+
+    // 2 · Что ты получишь
+    { type:'plan',
+      title:'Что ты получишь через 2 месяца',
+      icons:[
+        { i:'1', t:'Научишься работать с GetCourse, ботами, воронками, CRM' },
+        { i:'2', t:'Соберёшь реальное портфолио и первый боевой проект' },
+        { i:'3', t:'Начнёшь зарабатывать на настройке автоворонок, интеграций и запусков' }
+      ],
+      ruleLabel:'Формат обучения:',
+      pills:[
+        { t:'Теория', cls:'gray' },
+        { t:'Практика', cls:'ink-soft' },
+        { t:'Портфолио', cls:'ink' },
+        { t:'Первый клиент', cls:'warm' }
+      ]
+    },
+
+    // 3 · HUB — Кто я
+    { type:'hub',
+      title:'КТО Я',
+      tone:'warm',
+      sub:'и почему веду это обучение',
+      quotes:[
+        { p:'tl', t:'«8 лет в IT на удалёнке»' },
+        { p:'tr', t:'«10+ стран за 3 года»' },
+        { p:'bl', t:'«400–600 тыс. ₽ в месяц»' },
+        { p:'br', t:'«начинал с нуля»' }
+      ]
+    },
+
+    // 4 · Артур bio — раскрытие
+    { type:'timeline-v',
+      title:'Кто я и почему веду это обучение',
+      reveal:true,
+      steps:[
+        { t:'8 лет в IT, работаю удалённо', s:'Давно в сфере — знаю изнутри, как устроена эта работа.' },
+        { t:'Прошёл путь от маркетинга до тех.спеца', s:'Занимался маркетингом, SMM, продажами — нашёл «золотую жилу» именно в профессии тех.спеца.' },
+        { t:'400–600 тыс. ₽ в месяц', s:'За последние 3 года это позволило мне посетить более 10 стран мира и жить на своих условиях.' },
+        { t:'Знаю, каково начинать с нуля', s:'Знаю, как это — не понимать ничего в GetCourse, ботах и автоматизациях.' },
+        { t:'Создал обучение, которое сам бы хотел пройти', s:'Именно поэтому программа выстроена так, чтобы с первого урока было понятно и применимо.' }
+      ]
+    },
+
+    // 5 · Statement — оффер
+    { type:'statement',
+      title:'Профессия «технический специалист» — с нуля за <em>2 месяца</em>',
+      sub:'Научитесь работать с GetCourse, ботами, воронками, CRM. Соберёте портфолио и первый боевой проект.'
+    },
+
+    // 6 · Anketa — аудитория
+    { type:'anketa',
+      eyebrow:'Программа для тех, кто:',
+      title:'Подойдёт тем, кто хочет освоить техническую профессию с нуля — <em>без опыта и страха «не получится»</em>',
+      tag:'ВЫ ПО АДРЕСУ, ЕСЛИ ХОТИТЕ',
+      label:'Получить',
+      items:['Работу на удалёнке', 'Стабильный доход', 'Портфолио с кейсами', 'Поддержку куратора'],
+      quotes:[
+        { p:'bl',  t:'«сразу применять на практике»' },
+        { p:'bcl', t:'«от новичка до специалиста»' },
+        { p:'bcr', t:'«зарабатывать уже в процессе»' },
+        { p:'br',  t:'«свободу перемещения»' }
+      ]
+    },
+
+    // 7 · Big-stat — рост рынка
+    { type:'big-stat',
+      eyebrow:'Спрос на технических специалистов растёт',
+      value:'165 млрд ₽',
+      tone:'ink',
+      sub:'объём доходов онлайн-школ на GetCourse в 2025 году',
+      note:'В 2020 году было 47 млрд ₽. Рынок вырос в 3,5 раза — а значит, растёт спрос на тех, кто умеет настраивать GetCourse, делать ботов, строить воронки и интеграции.'
+    },
+
+    // 8 · Statement — переход
+    { type:'statement',
+      title:'Уже на обучении — <em>реальные проекты</em> и первые клиенты',
+      sub:'Каждый модуль курса — это отдельная услуга, которую можно предложить заказчику сразу после обучения.'
+    },
+
+    // 9 · Checklist — практика в цифрах
+    { type:'checklist',
+      eyebrow:'Вас ждёт практическая программа',
+      title:'Три кита обучения',
+      items:[
+        '6 модулей = 6 отдельных услуг, за которые платят',
+        '25 практических заданий, приближённых к реальным бизнес-задачам',
+        'Готовое портфолио: боты, страницы, воронки, интеграции',
+        'Цель — не «научить», а привести к первому клиенту и оплате'
+      ]
+    },
+
+    // 10 · Timeline — 6 реальных проектов
+    { type:'timeline-v',
+      title:'Реальные проекты и готовое портфолио',
+      steps:[
+        { t:'3 Telegram-бота', s:'Подарок, визитка, образовательный бот — разные задачи, разные механики.' },
+        { t:'1 проект на GetCourse', s:'Домен, оплаты, страницы, продукты — как для реального клиента.' },
+        { t:'1 вебинарная система', s:'Регистрация, вход, рассылки, комната, трансляция OBS — под ключ.' },
+        { t:'1 автоворонка', s:'Email-цепочка, боты, SMS, автозвонки, автовебинар — полный цикл.' },
+        { t:'1 проект с интеграциями', s:'Связка Tilda, GetCourse, amoCRM, SaleBot — данные передаются автоматически.' },
+        { t:'1 полноценная воронка для клиента', s:'Финальный проект: с нуля до готового продукта под реального заказчика.' }
+      ]
+    },
+
+    // 11 · HUB — Ключевые навыки
+    { type:'hub',
+      eyebrow:'Блок 3',
+      title:'КЛЮЧЕВЫЕ НАВЫКИ',
+      tone:'outline',
+      sub:'которые пригодятся с первого проекта',
+      quotes:[
+        { p:'tl', t:'«чат-боты и автоворонки»' },
+        { p:'tr', t:'«GetCourse под ключ»' },
+        { p:'bl', t:'«интеграции между платформами»' },
+        { p:'br', t:'«продажи и портфолио»' }
+      ]
+    },
+
+    // 12 · Grid22 — ключевые навыки
+    { type:'grid22',
+      title:'На программе вы прокачаете',
+      items:[
+        { num:'01', t:'Telegram-боты', s:'Разные сценарии: подарки, квизы, визитки, онлайн-курсы.' },
+        { num:'02', alt:true, t:'GetCourse', s:'Домены, продукты, оплаты, страницы, доступы.' },
+        { num:'03', alt:true, t:'Вебинарные системы', s:'Регистрация, чекин, комната, рассылки, OBS-трансляция.' },
+        { num:'04', t:'Автоворонки', s:'Email, чат-боты, автовебинар, SMS, автозвонки.' },
+        { num:'05', t:'Интеграции', s:'Связка заявок, оплат, CRM, Tilda, GetCourse, amoCRM.' },
+        { num:'06', alt:true, t:'Продажи тех.спеца', s:'Портфолио, упаковка кейсов, переписка, созвон, первый клиент.' }
+      ]
+    },
+
+    // 13 · Plan — Формат обучения
+    { type:'plan',
+      title:'Удобный формат обучения',
+      icons:[
+        { i:'📹', t:'Уроки раз в неделю с демонстрацией экрана — комфортно, без перегруза' },
+        { i:'✅', t:'25 практических заданий: чат-боты, воронки, интеграции, страницы, CRM' },
+        { i:'💬', t:'Личный куратор, мини-группы, эфиры с разборами — поддержка на каждом этапе' },
+        { i:'🏆', t:'Чат с вакансиями — свежие реальные заказы для первых клиентов' }
+      ],
+      ruleLabel:'Доступ:',
+      pills:[
+        { t:'Любое устройство', cls:'gray' },
+        { t:'24/7', cls:'ink' },
+        { t:'Через браузер', cls:'warm' }
+      ]
+    },
+
+    // 14 · HUB — 6 модулей
+    { type:'hub',
+      eyebrow:'Блок 4',
+      title:'6 МОДУЛЕЙ',
+      tone:'warm',
+      sub:'= 6 услуг, которые можно продавать сразу',
+      quotes:[
+        { p:'tl', t:'«Модуль 1: Чат-боты»' },
+        { p:'tr', t:'«Модуль 2: GetCourse»' },
+        { p:'bl', t:'«Модуль 3: Вебинары»' },
+        { p:'br', t:'«Модуль 4-6: Воронки, Интеграции, Продажи»' }
+      ]
+    },
+
+    // 15 · Split — Модули 1-2
+    { type:'split-2',
+      title:'6 модулей = 6 услуг (1/3)',
+      cols:[
+        { tag:'Модуль 1', tagTone:'', title:'Чат-боты',
+          items:[
+            'Бот с выдачей подарков',
+            'Бот-визитка',
+            'Бот для онлайн-курса',
+            'Результат: 3 готовых бота в портфолио'
+          ]
+        },
+        { tag:'Модуль 2', tagTone:'warm', title:'GetCourse',
+          tint:true,
+          items:[
+            'Регистрация, обзор платформы',
+            'Домен и корпоративная почта',
+            'Платёжный модуль',
+            'Страницы продаж и продукты по ТЗ клиента',
+            'Результат: рабочий аккаунт, готовый к продажам'
+          ]
+        }
+      ]
+    },
+
+    // 16 · Split — Модули 3-4
+    { type:'split-2',
+      title:'6 модулей = 6 услуг (2/3)',
+      cols:[
+        { tag:'Модуль 3', tagTone:'', title:'Организация вебинаров',
+          items:[
+            'Страница регистрации',
+            'Страница чекина / авторизации',
+            'Рассылки после регистрации',
+            'Вебинарная комната в GetCourse',
+            'Настройка OBS и трансляция',
+            'Результат: полностью готовая вебинарная система'
+          ]
+        },
+        { tag:'Модуль 4', tagTone:'warm', title:'Автоворонки',
+          tint:true,
+          items:[
+            'Примеры автоворонок — насмотренность',
+            'Сборка виджета GetCourse',
+            'Цепочка в SaleBot',
+            'Email-цепочка, SMS и автозвонки',
+            'Создание автовебинара',
+            'Результат: готовая автоматизированная воронка'
+          ]
+        }
+      ]
+    },
+
+    // 17 · Split — Модули 5-6
+    { type:'split-2',
+      title:'6 модулей = 6 услуг (3/3)',
+      cols:[
+        { tag:'Модуль 5', tagTone:'', title:'Автоматизация',
+          items:[
+            'Vakas-tools, основы',
+            'Участники вебинара → amoCRM',
+            'Заявки и продажи → amoCRM',
+            'Анкеты предзаписи → amoCRM',
+            'Настройка amoCRM и CRM GetCourse',
+            'Результат: рабочая автоматизация между платформами'
+          ]
+        },
+        { tag:'Модуль 6', tagTone:'warm', title:'Продажа своих услуг',
+          tint:true,
+          items:[
+            'Упаковка портфолио тех.специалиста',
+            'Кто наш клиент и где его искать',
+            'Продажи в переписке',
+            'Продающий созвон',
+            'Организация работы с клиентами',
+            'Результат: первый клиент и оплата'
+          ]
+        }
+      ]
+    },
+
+    // 18 · Timeline — путь ученика (chain)
+    { type:'timeline-v',
+      title:'5 шагов от новичка до специалиста',
+      reveal:true,
+      footChain:true,
+      steps:[
+        { t:'Модуль 1: Чат-боты', s:'Собираешь 3 бота — первые инструменты в портфолио.' },
+        { t:'Модуль 2-3: GetCourse + Вебинары', s:'Делаешь аккаунт и вебинарную систему как для реального клиента.' },
+        { t:'Модуль 4: Автоворонки', s:'Строишь полную автоматизированную воронку с ботами и email.' },
+        { t:'Модуль 5: Интеграции', s:'Связываешь сервисы между собой — Tilda, GetCourse, amoCRM, SaleBot.' },
+        { t:'Модуль 6: Продажи', s:'Упаковываешь портфолио, находишь первого клиента, закрываешь сделку.' }
+      ],
+      foot:[
+        { t:'Новичок', cls:'ink' },
+        { a:'→' },
+        { t:'Практика', cls:'' },
+        { a:'→' },
+        { t:'Портфолио', cls:'' },
+        { a:'→' },
+        { t:'Клиент', cls:'' },
+        { a:'→' },
+        { t:'Доход', cls:'warm' }
+      ]
+    },
+
+    // 19 · Manifesto
+    { type:'manifesto',
+      size:'small',
+      title:'Это не просто «навыки» — это <em>переход в профессию</em>',
+      sub:'С нуля — до уверенного специалиста с реальным портфолио и первым клиентом.'
+    },
+
+    // 20 · Day — Артур
+    { type:'day',
+      title:'Учитесь у лучших: <em>Артур Ахтямов</em>',
+      rows:[
+        { time:'ОПЫТ', t:'Технический стратег, более 100 клиентов', s:'От начинающих экспертов до крупных онлайн-школ. Специалист по чат-ботам, GetCourse, автоматизациям и онлайн-продажам.' },
+        { time:'ПОДХОД', t:'Учит думать как техспец', s:'Не просто «нажимать кнопки» — видеть логику, понимать задачу, предлагать решения.' },
+        { time:'ЖИЗНЬ', t:'8 лет в IT, работа удалённо', s:'За 3 года — более 10 стран мира. Доход 400–600 тыс. ₽ в месяц. Начинал с нуля.' }
+      ],
+      foot:'Настраивал технические решения под ключ — <strong>от лендингов до автоворонок и CRM.</strong> Выступал на конференциях.'
+    },
+
+    // 21 · Day — Полина
+    { type:'day',
+      title:'Наставник: <em>Полина</em>',
+      rows:[
+        { time:'МАСШТАБ', t:'Проекты с оборотом 1,5 млрд руб/год', s:'Руководила техническим отделом 10+ человек. Своя команда разработчиков и техспецов.' },
+        { time:'СТИЛЬ', t:'Честная обратная связь', s:'Помогает разобраться даже в самых сложных темах. Проверяет домашки, не даёт застрять.' },
+        { time:'ЖИЗНЬ', t:'С 2019 года — только в онлайн', s:'Путешествует по миру и России, работая удалённо.' }
+      ],
+      foot:'Эксперт по поиску клиентов и продажам. <strong>Ждёт вас на каждом этапе обучения.</strong>'
+    },
+
+    // 22 · Split — Поддержка после курса
+    { type:'split-2',
+      title:'Поддержка после курса',
+      cols:[
+        { tag:'Чат выпускников', tagTone:'', title:'Вы не остаётесь одни',
+          items:[
+            'Свежие вакансии и проекты — публикуются постоянно',
+            'Задавайте вопросы и делитесь опытом',
+            'Находите подрядчиков и партнёров'
+          ]
+        },
+        { tag:'Эфиры для выпускников', tagTone:'warm', title:'Остаётесь в профессии',
+          tint:true,
+          items:[
+            'Бесплатные эфиры: разборы кейсов',
+            'Ответы на вопросы, актуальные тренды',
+            'Чтобы вы не выпадали из профессии'
+          ]
+        }
+      ],
+      strapline:'Выпускники: частная практика, команды продюсеров, агентства, IT-компании.'
+    },
+
+    // 23 · Checklist — Что в итоге
+    { type:'checklist',
+      eyebrow:'Что в итоге?',
+      title:'После курса вы получите',
+      reveal:true,
+      items:[
+        'Умение оказывать 6 отдельных услуг, за которые платят',
+        'Реальное портфолио, собранное в процессе обучения',
+        'Опыт командной работы с куратором и мини-группой',
+        'Чёткое понимание, как продавать себя как специалиста',
+        'Кейсы, которые можно показать клиенту',
+        'И самое главное — уверенность'
+      ]
+    },
+
+    // 24 · Q&A
+    { type:'qa',
+      title:'Q&A',
+      sub:'Задавайте вопросы — отвечаю по очереди.'
+    },
+
+    // 25 · Финал
+    { type:'final',
+      title:'Сделай первый шаг.',
+      sub:'Делаем людей счастливыми, помогая обрести любимое дело.'
+    }
+  ];
+
+  // ========== РЕНДЕР ==========
+  function el(tag, cls, html){
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  function renderHub(s){
+    const wrap = el('section', 'slide slide--hub');
+    if (s.eyebrow) wrap.appendChild(el('div', 'hub-eyebrow', s.eyebrow));
+    const toneCls = s.tone === 'warm' ? 'is-warm' : s.tone === 'outline' ? 'is-outline' : 'is-ink';
+    const sizeCls = s.size === 'phrase' ? ' is-phrase' : '';
+    wrap.appendChild(el('h1', 'hub-title h-display ' + toneCls + sizeCls, s.title));
+    if (s.sub) wrap.appendChild(el('div', 'hub-sub', s.sub));
+    if (s.quotes && s.quotes.length){
+      const qbox = el('div', 'hub-quotes');
+      s.quotes.forEach(q => qbox.appendChild(el('div', 'hub-quote ' + q.p, q.t)));
+      wrap.appendChild(qbox);
+    }
+    return wrap;
+  }
+
+  function renderHero(s){
+    const wrap = el('section', 'slide slide--hero');
+    if (s.eyebrow) wrap.appendChild(el('div', 'hero-eyebrow', s.eyebrow));
+    wrap.appendChild(el('h1', 'hero-title h-display', s.title));
+    if (s.sub) wrap.appendChild(el('div', 'hero-sub', s.sub));
+    if (s.foot) wrap.appendChild(el('div', 'hero-foot', s.foot));
+    return wrap;
+  }
+
+  function renderPlan(s){
+    const wrap = el('section', 'slide slide--plan');
+    wrap.appendChild(el('h2', 'plan-title h-section', s.title));
+    const icons = el('div', 'plan-icons');
+    s.icons.forEach(ic => {
+      const card = el('div', 'plan-icon-card');
+      card.appendChild(el('div', 'plan-icon-bubble', ic.i));
+      card.appendChild(el('div', 'plan-icon-text', ic.t));
+      icons.appendChild(card);
+    });
+    wrap.appendChild(icons);
+    wrap.appendChild(el('div', 'plan-rule-label', s.ruleLabel));
+    const pills = el('div', 'plan-pills');
+    s.pills.forEach((p, i) => {
+      if (i > 0) pills.appendChild(el('span', 'plan-pill-arrow', '→'));
+      pills.appendChild(el('div', 'plan-pill plan-pill--' + p.cls, p.t));
+    });
+    wrap.appendChild(pills);
+    return wrap;
+  }
+
+  function renderBigStat(s){
+    const wrap = el('section', 'slide slide--big-stat');
+    if (s.eyebrow) wrap.appendChild(el('div', 'big-stat-eyebrow', s.eyebrow));
+    const toneCls = s.tone === 'warm' ? 'is-warm' : s.tone === 'red' ? 'is-red' : s.tone === 'outline' ? 'is-outline' : '';
+    wrap.appendChild(el('div', 'big-stat-value h-display ' + toneCls, s.value));
+    if (s.sub) wrap.appendChild(el('div', 'big-stat-sub', s.sub));
+    if (s.note) wrap.appendChild(el('div', 'big-stat-note', s.note));
+    return wrap;
+  }
+
+  function renderTimelineV(s){
+    const wrap = el('section', 'slide slide--timeline');
+    wrap.appendChild(el('h2', 'timeline-title h-section', s.title));
+    const tl = el('div', 'timeline-v' + (s.reveal ? ' is-reveal' : ''));
+    s.steps.forEach((st, i) => {
+      const row = el('div', 'timeline-row');
+      if (s.reveal){ row.dataset.step = i; if (i === 0) row.classList.add('is-revealed'); }
+      const tone = i % 2 === 0 ? 'is-ink' : 'is-warm';
+      row.appendChild(el('div', 'timeline-chip ' + tone, String(i+1)));
+      const card = el('div', 'timeline-card' + (tone === 'is-warm' ? ' is-warm' : ''));
+      card.appendChild(el('div', 'timeline-card__title', st.t));
+      if (st.s) card.appendChild(el('div', 'timeline-card__sub', st.s));
+      row.appendChild(card);
+      tl.appendChild(row);
+    });
+    wrap.appendChild(tl);
+    if (s.reveal){
+      const prog = el('div', 'timeline-progress');
+      s.steps.forEach((st, i) => {
+        const dot = el('div', 'timeline-progress__dot' + (i === 0 ? ' is-revealed' : ''));
+        dot.dataset.step = i;
+        prog.appendChild(dot);
+      });
+      wrap.appendChild(prog);
+      if (s.hint) wrap.appendChild(el('div', 'timeline-hint', s.hint));
+      wrap.dataset.reveal = 'true';
+      wrap.dataset.stepsTotal = s.steps.length;
+    }
+    if (s.foot && s.foot.length){
+      const f = el('div', 'timeline-foot');
+      let chainIdx = 0;
+      s.foot.forEach(item => {
+        if (item.a) f.appendChild(el('div', 'timeline-foot__arrow', item.a));
+        else {
+          const cls = !s.footChain && item.cls === 'ink' ? 'is-ink' : !s.footChain && item.cls === 'warm' ? 'is-warm' : '';
+          const pill = el('div', 'timeline-foot__pill ' + cls, item.t);
+          if (s.footChain){ pill.dataset.chainStep = chainIdx; if (chainIdx === 0) pill.classList.add('is-chain-current'); chainIdx++; }
+          f.appendChild(pill);
+        }
+      });
+      wrap.appendChild(f);
+    }
+    return wrap;
+  }
+
+  function renderAnketa(s){
+    const wrap = el('section', 'slide slide--anketa');
+    if (s.eyebrow) wrap.appendChild(el('div', 'anketa-eyebrow', s.eyebrow));
+    wrap.appendChild(el('h2', 'anketa-title', s.title));
+    const block = el('div', 'anketa-block');
+    if (s.tag) block.appendChild(el('div', 'anketa-block__tag', s.tag));
+    if (s.label) block.appendChild(el('div', 'anketa-block__label', s.label));
+    const ul = el('ul', 'anketa-block__items');
+    s.items.forEach(it => ul.appendChild(el('li', '', it)));
+    block.appendChild(ul);
+    if (s.quotes && s.quotes.length){
+      const qwrap = el('div', 'anketa-block__quotes');
+      const order = { bl: 0, bcl: 1, bc: 2, bcr: 3, br: 4 };
+      s.quotes.filter(q => q.p in order).sort((a, b) => order[a.p] - order[b.p])
+        .forEach(q => qwrap.appendChild(el('div', 'anketa-block__quote ' + q.p, q.t)));
+      if (qwrap.children.length) block.appendChild(qwrap);
+    }
+    wrap.appendChild(block);
+    if (s.strap) wrap.appendChild(el('div', 'anketa-strap', s.strap));
+    return wrap;
+  }
+
+  function renderSplit2(s){
+    const wrap = el('section', 'slide slide--split');
+    wrap.appendChild(el('h2', 'split-title h-section', s.title));
+    const grid = el('div', 'split-grid');
+    s.cols.forEach(c => {
+      const card = el('div', 'split-card' + (c.tint ? ' is-tint' : ''));
+      card.appendChild(el('div', 'split-card__tag ' + (c.tagTone === 'warm' ? 'is-warm' : ''), c.tag));
+      card.appendChild(el('div', 'split-card__title', c.title));
+      const ul = el('ul', 'split-card__list');
+      c.items.forEach(it => ul.appendChild(el('li', '', it)));
+      card.appendChild(ul);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    if (s.strapline) wrap.appendChild(el('div', 'split-strapline', s.strapline));
+    return wrap;
+  }
+
+  function renderDay(s){
+    const wrap = el('section', 'slide slide--day');
+    wrap.appendChild(el('h2', 'day-title h-section', s.title));
+    const list = el('div', 'day-list');
+    s.rows.forEach(r => {
+      const row = el('div', 'day-row');
+      row.appendChild(el('div', 'day-row__time', r.time));
+      const text = el('div', 'day-row__text');
+      text.innerHTML = r.t + (r.s ? '<small>' + r.s + '</small>' : '');
+      row.appendChild(text);
+      list.appendChild(row);
+    });
+    wrap.appendChild(list);
+    if (s.foot) wrap.appendChild(el('div', 'day-foot', s.foot));
+    return wrap;
+  }
+
+  function renderStatement(s){
+    const wrap = el('section', 'slide slide--statement');
+    if (s.eyebrow) wrap.appendChild(el('div', 'statement-eyebrow', s.eyebrow));
+    if (s.title) wrap.appendChild(el('h2', 'statement-title', s.title));
+    if (s.lines && s.lines.length){
+      const block = el('div', 'statement-lines');
+      s.lines.forEach(line => block.appendChild(el('div', 'statement-line', line)));
+      wrap.appendChild(block);
+    }
+    if (s.sub) wrap.appendChild(el('div', 'statement-sub', s.sub));
+    if (s.foot) wrap.appendChild(el('div', 'statement-foot', s.foot));
+    return wrap;
+  }
+
+  function renderManifesto(s){
+    const wrap = el('section', 'slide slide--manifesto');
+    const sizeCls = s.size === 'small' ? ' is-small' : '';
+    wrap.appendChild(el('h2', 'manifesto-title h-display' + sizeCls, s.title));
+    if (s.sub) wrap.appendChild(el('div', 'manifesto-sub', s.sub));
+    return wrap;
+  }
+
+  function renderChecklist(s){
+    const wrap = el('section', 'slide slide--checklist');
+    if (s.eyebrow) wrap.appendChild(el('div', 'checklist-eyebrow', s.eyebrow));
+    wrap.appendChild(el('h2', 'checklist-title h-section', s.title));
+    const grid = el('div', 'checklist' + (s.reveal ? ' is-reveal' : ''));
+    s.items.forEach((item, i) => {
+      const card = el('div', 'check-card');
+      if (s.reveal){ card.dataset.step = i; if (i === 0) card.classList.add('is-revealed'); }
+      card.appendChild(el('div', 'check-card__icon', '✓'));
+      card.appendChild(el('div', 'check-card__num', '0' + (i+1)));
+      card.appendChild(el('div', 'check-card__text', item));
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    if (s.reveal){
+      const prog = el('div', 'timeline-progress');
+      s.items.forEach((item, i) => {
+        const dot = el('div', 'timeline-progress__dot' + (i === 0 ? ' is-revealed' : ''));
+        dot.dataset.step = i;
+        prog.appendChild(dot);
+      });
+      wrap.appendChild(prog);
+      wrap.dataset.reveal = 'true';
+      wrap.dataset.stepsTotal = s.items.length;
+    }
+    return wrap;
+  }
+
+  function renderGrid22(s){
+    const wrap = el('section', 'slide slide--grid22');
+    wrap.appendChild(el('h2', 'grid22-title h-section', s.title));
+    const grid = el('div', 'grid22');
+    const total = s.items.length;
+    s.items.forEach((it, i) => {
+      const isOddTail = total % 2 === 1 && i === total - 1;
+      const cell = el('div', 'grid22-cell' + (it.alt ? ' alt' : '') + (isOddTail ? ' is-wide' : ''));
+      cell.appendChild(el('div', 'grid22-cell__num', it.num));
+      cell.appendChild(el('div', 'grid22-cell__title', it.t));
+      cell.appendChild(el('div', 'grid22-cell__sub', it.s));
+      grid.appendChild(cell);
+    });
+    wrap.appendChild(grid);
+    return wrap;
+  }
+
+  function renderQA(s){
+    const wrap = el('section', 'slide slide--qa');
+    wrap.appendChild(el('h2', 'qa-title h-display', s.title));
+    if (s.sub) wrap.appendChild(el('div', 'qa-sub', s.sub));
+    return wrap;
+  }
+
+  function renderFinal(s){
+    const wrap = el('section', 'slide slide--final');
+    wrap.appendChild(el('h2', 'final-title h-display', s.title));
+    if (s.sub) wrap.appendChild(el('div', 'final-sub', s.sub));
+    return wrap;
+  }
+
+  const RENDERERS = {
+    hero: renderHero, plan: renderPlan, hub: renderHub,
+    'big-stat': renderBigStat, 'timeline-v': renderTimelineV,
+    anketa: renderAnketa, day: renderDay, 'split-2': renderSplit2,
+    statement: renderStatement, manifesto: renderManifesto,
+    checklist: renderChecklist, grid22: renderGrid22,
+    qa: renderQA, final: renderFinal
+  };
+
+  const deck = document.getElementById('deck');
+  slides.forEach((s, i) => {
+    const node = RENDERERS[s.type](s);
+    node.dataset.index = i;
+    deck.appendChild(node);
+  });
+
+  const total = slides.length;
+  document.getElementById('navTotal').textContent = total;
+  const navNow = document.getElementById('navNow');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+
+  let current = 0;
+  let currentStep = 0;
+
+  function getCurrentSlide(){ return document.querySelectorAll('.slide')[current]; }
+  function getStepInfo(slide){
+    if (!slide || slide.dataset.reveal !== 'true') return null;
+    return { total: parseInt(slide.dataset.stepsTotal, 10) || 0 };
+  }
+  function updateStepReveal(slide){
+    if (!slide) return;
+    slide.setAttribute('data-current-step', currentStep);
+    slide.querySelectorAll('[data-step]').forEach(node => {
+      const step = parseInt(node.dataset.step, 10);
+      if (step <= currentStep) node.classList.add('is-revealed'); else node.classList.remove('is-revealed');
+      if (step === currentStep) node.classList.add('is-current'); else node.classList.remove('is-current');
+    });
+    slide.querySelectorAll('[data-chain-step]').forEach(node => {
+      const step = parseInt(node.dataset.chainStep, 10);
+      node.classList.toggle('is-chain-past', step < currentStep);
+      node.classList.toggle('is-chain-current', step === currentStep);
+    });
+  }
+  function updateNav(){
+    const slide = getCurrentSlide();
+    const info = getStepInfo(slide);
+    const atFirstStep = !info || currentStep === 0;
+    const atLastStep = !info || currentStep === info.total - 1;
+    btnPrev.disabled = current === 0 && atFirstStep;
+    btnNext.disabled = current === total - 1 && atLastStep;
+  }
+
+  function show(i, direction){
+    current = Math.max(0, Math.min(total - 1, i));
+    document.querySelectorAll('.slide').forEach(s => {
+      if (+s.dataset.index === current) s.classList.add('active'); else s.classList.remove('active');
+    });
+    navNow.textContent = current + 1;
+    const slide = getCurrentSlide();
+    const info = getStepInfo(slide);
+    if (info){ currentStep = direction === 'back' ? info.total - 1 : 0; updateStepReveal(slide); }
+    else { currentStep = 0; }
+    updateNav();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  function next(){
+    const slide = getCurrentSlide();
+    const info = getStepInfo(slide);
+    if (info && currentStep < info.total - 1){ currentStep++; updateStepReveal(slide); updateNav(); return; }
+    if (current < total - 1) show(current + 1, 'forward');
+  }
+  function prev(){
+    const slide = getCurrentSlide();
+    const info = getStepInfo(slide);
+    if (info && currentStep > 0){ currentStep--; updateStepReveal(slide); updateNav(); return; }
+    if (current > 0) show(current - 1, 'back');
+  }
+
+  btnPrev.addEventListener('click', prev);
+  btnNext.addEventListener('click', next);
+
+  const btnMenu = document.getElementById('btnMenu');
+  const navMenu = document.getElementById('navMenu');
+
+  function getSlideLabel(s){
+    if (s.title){ const stripped = String(s.title).replace(/<[^>]+>/g, '').trim(); if (stripped) return stripped; }
+    if (s.eyebrow) return String(s.eyebrow);
+    if (s.value) return String(s.value);
+    return '—';
+  }
+
+  slides.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-menu__item';
+    btn.dataset.idx = i;
+    btn.innerHTML = '<span class="nav-menu__num">' + (i+1) + '</span><span class="nav-menu__label">' + getSlideLabel(s) + '</span>';
+    btn.addEventListener('click', () => { show(i, 'forward'); closeMenu(); });
+    navMenu.appendChild(btn);
+  });
+
+  function syncMenuActive(){
+    navMenu.querySelectorAll('.nav-menu__item').forEach((el, idx) => { el.classList.toggle('is-active', idx === current); });
+  }
+  function openMenu(){ navMenu.hidden = false; syncMenuActive(); const active = navMenu.querySelector('.is-active'); if (active) active.scrollIntoView({ block: 'center' }); }
+  function closeMenu(){ navMenu.hidden = true; }
+  function toggleMenu(){ navMenu.hidden ? openMenu() : closeMenu(); }
+
+  btnMenu.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+  document.addEventListener('click', (e) => { if (!navMenu.hidden && !navMenu.contains(e.target) && e.target !== btnMenu) closeMenu(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !navMenu.hidden) { closeMenu(); return; }
+    if (!navMenu.hidden) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(total - 1);
+  });
+
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+    touchX = null;
+  }, {passive:true});
+
+  const hash = parseInt(location.hash.replace('#',''), 10);
+  if (hash >= 1 && hash <= total) show(hash - 1); else show(0);
+</script>
+</body>
+</html>
