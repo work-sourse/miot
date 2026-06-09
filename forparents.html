@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс для родителей | Олег Агапэ — Остеопатия для детей от 0 до 7 лет</title>
+    <meta name="description" content="Авторский курс врача-остеопата Олега Агапэ. Профессиональные остеопатические техники, адаптированные для родителей. 15 уроков по 20 минут.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.4">
+    <style>
+        .fp-hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .fp-stat {
+            text-align: center;
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-bg-tertiary);
+            border-radius: var(--radius-md);
+            padding: 18px 28px;
+            min-width: 110px;
+        }
+        .fp-stat-num {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-highlight);
+            line-height: 1;
+        }
+        .fp-stat-label {
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+        .fp-for-whom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .fp-for-whom-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            border: 1px solid var(--color-bg-tertiary);
+        }
+        .fp-for-whom-card h3 { font-size: 1.3rem; margin-bottom: 16px; color: var(--color-text-primary); }
+        .fp-for-whom-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+        .fp-for-whom-card li { position: relative; padding-left: 20px; color: var(--color-text-secondary); line-height: 1.65; font-size: 0.97rem; }
+        .fp-for-whom-card li::before { content: '•'; position: absolute; left: 0; color: var(--color-highlight); font-weight: 700; }
+        .fp-result-banner {
+            background: var(--color-bg-dark);
+            border-radius: var(--radius-lg);
+            padding: 48px 56px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .fp-result-banner p { color: rgba(255,255,255,0.85); font-size: 1.15rem; line-height: 1.8; max-width: 760px; margin: 0 auto; }
+        .fp-result-banner strong { color: var(--color-highlight); }
+        .fp-problems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .fp-problem-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            border: 1px solid var(--color-bg-tertiary);
+        }
+        .fp-problem-card h3 { font-size: 1.1rem; margin-bottom: 16px; color: var(--color-text-primary); display: flex; align-items: center; gap: 10px; }
+        .fp-problem-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        .fp-problem-card li { position: relative; padding-left: 18px; color: var(--color-text-secondary); font-size: 0.93rem; line-height: 1.6; }
+        .fp-problem-card li::before { content: '—'; position: absolute; left: 0; color: var(--color-highlight); font-weight: 600; }
+        .fp-stages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .fp-stage-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            border: 1px solid var(--color-bg-tertiary);
+            border-left: 4px solid var(--color-highlight);
+        }
+        .fp-stage-card h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--color-text-primary); }
+        .fp-stage-card p { color: var(--color-text-secondary); font-size: 0.93rem; line-height: 1.65; margin: 0 0 12px 0; }
+        .fp-stage-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+        .fp-stage-card li { position: relative; padding-left: 16px; color: var(--color-text-secondary); font-size: 0.9rem; line-height: 1.55; }
+        .fp-stage-card li::before { content: '›'; position: absolute; left: 0; color: var(--color-highlight); font-weight: 700; }
+        .fp-bonus-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .fp-bonus-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            border: 1px solid var(--color-bg-tertiary);
+            text-align: center;
+        }
+        .fp-bonus-card .bonus-icon { font-size: 2rem; margin-bottom: 14px; }
+        .fp-bonus-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--color-text-primary); }
+        .fp-bonus-card p { font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
+        .fp-formats-banner {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 36px 44px;
+            margin-top: 32px;
+            border: 1px solid var(--color-bg-tertiary);
+        }
+        .fp-formats-banner h4 { font-size: 1rem; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+        .fp-formats-list { display: flex; flex-wrap: wrap; gap: 12px; }
+        .fp-format-tag { background: var(--color-bg-primary); border: 1px solid var(--color-bg-tertiary); border-radius: 50px; padding: 8px 18px; font-size: 0.88rem; color: var(--color-text-secondary); }
+        .fp-price-card {
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            border: 1px solid var(--color-bg-tertiary);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .fp-price-card.featured { border-color: var(--color-highlight); box-shadow: 0 0 0 1px var(--color-highlight); }
+        .fp-price-card.featured::before { content: 'ВЫГОДНЕЕ ВСЕГО'; position: absolute; top: 16px; right: -4px; background: var(--color-highlight); color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; padding: 5px 12px; border-radius: 4px 0 0 4px; }
+        .fp-price-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--color-text-primary); }
+        .fp-price-old { font-size: 1rem; color: var(--color-text-secondary); text-decoration: line-through; margin-bottom: 4px; }
+        .fp-price-new { font-family: var(--font-primary); font-size: 2.4rem; font-weight: 800; color: var(--color-highlight); line-height: 1; margin-bottom: 24px; }
+        .fp-price-features { list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+        .fp-price-features li { position: relative; padding-left: 22px; color: var(--color-text-secondary); font-size: 0.9rem; line-height: 1.55; }
+        .fp-price-features li::before { content: '✓'; position: absolute; left: 0; color: var(--color-highlight); font-weight: 700; }
+        .fp-faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+        .fp-faq-item { background: var(--color-bg-primary); border-radius: var(--radius-md); border: 1px solid var(--color-bg-tertiary); overflow: hidden; }
+        .fp-faq-q { padding: 22px 28px; font-weight: 600; font-size: 1rem; color: var(--color-text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .fp-faq-q::after { content: '+'; font-size: 1.4rem; color: var(--color-highlight); font-weight: 300; flex-shrink: 0; }
+        .fp-faq-a { padding: 0 28px 22px; color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.75; }
+        .fp-quote { border-left: 4px solid var(--color-highlight); padding: 20px 28px; background: var(--color-bg-secondary); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0; font-style: italic; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.7; }
+        @media (max-width: 768px) {
+            .fp-for-whom-grid, .fp-problems-grid, .fp-stages-grid { grid-template-columns: 1fr; }
+            .fp-bonus-row { grid-template-columns: 1fr; }
+            .fp-result-banner { padding: 32px 24px; }
+            .fp-result-banner p { font-size: 1rem; }
+            .fp-hero-stats { gap: 16px; }
+            .fp-formats-banner { padding: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-graphics" id="bg-graphics">
+        <div class="shape shape-line shape-1"></div>
+        <div class="shape shape-circle shape-2"></div>
+        <div class="shape shape-line shape-3"></div>
+        <div class="shape shape-circle shape-4"></div>
+        <div class="shape shape-line shape-5"></div>
+    </div>
+
+    <header class="header slide-down">
+        <div class="container header-inner">
+            <div class="logo" style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+                    <img src="branding/logo.png" alt="МИОТ Логотип" class="logo-img">
+                    <div class="logo-text">МЕЖДУНАРОДНЫЙ<br>ИНСТИТУТ<br>ОСТЕОПАТИЧЕСКИХ<br>ТЕХНОЛОГИЙ</div>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="#for-whom">Для кого</a>
+                <a href="#program">Программа</a>
+                <a href="#about-oleg">Об авторе</a>
+                <a href="#pricing">Стоимость</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-primary btn-sm">Присоединиться</a>
+            </nav>
+            <div class="mobile-menu-btn"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero bg-secondary">
+            <div class="container hero-inner">
+                <div class="hero-content fade-in-up">
+                    <span class="badge" style="margin-bottom: 20px; display: inline-block;">Курс для родителей</span>
+                    <h1 class="compact-offer">Занимайтесь гармоничным развитием ребёнка по авторскому курсу от врача-остеопата Олега Агапэ</h1>
+                    <p class="hero-subtitle">Профессиональные остеопатические техники, адаптированные для родителей. Работа с детьми от рождения до 7 лет.</p>
+                    <div class="hero-actions">
+                        <a href="#pricing" class="btn btn-primary btn-glow">Присоединиться</a>
+                        <a href="#program" class="btn btn-secondary">Смотреть программу</a>
+                    </div>
+                    <div class="fp-hero-stats">
+                        <div class="fp-stat">
+                            <div class="fp-stat-num">4</div>
+                            <div class="fp-stat-label">недели</div>
+                        </div>
+                        <div class="fp-stat">
+                            <div class="fp-stat-num">15</div>
+                            <div class="fp-stat-label">уроков</div>
+                        </div>
+                        <div class="fp-stat">
+                            <div class="fp-stat-num">20</div>
+                            <div class="fp-stat-label">минут / урок</div>
+                        </div>
+                        <div class="fp-stat">
+                            <div class="fp-stat-num">0→7</div>
+                            <div class="fp-stat-label">лет</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-media fade-in-up delay-1">
+                    <div class="hero-gallery">
+                        <img class="hero-img img-main" style="width:100%;height:100%;" src="photos/oleg1316.jpg" alt="Олег Агапэ — врач-остеопат">
+                        <div class="hero-backdrop"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ДЛЯ КОГО -->
+        <section class="section-padding" id="for-whom">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Аудитория</span>
+                    <h2>Для кого этот курс?</h2>
+                </div>
+                <div class="fp-for-whom-grid fade-in-up">
+                    <div class="fp-for-whom-card">
+                        <h3>👶 Родителям</h3>
+                        <ul>
+                            <li>Адаптированные техники легко освоить любому родителю без медицинского образования</li>
+                            <li>К каждому уроку есть анатомическое пояснение — понятно и наглядно</li>
+                            <li>Легко проходить курс даже с новорождённым ребёнком: 1 урок — 20 минут</li>
+                            <li>Техники можно интегрировать в повседневные дела: купание, игры, ритуалы</li>
+                        </ul>
+                    </div>
+                    <div class="fp-for-whom-card">
+                        <h3>🩺 Специалистам</h3>
+                        <ul>
+                            <li>Наиболее эффективные и простые техники, подходящие для различных состояний и целей</li>
+                            <li>Все техники пронизаны авторскими наработками Олега Агапэ</li>
+                            <li>Готовые протоколы для работы с детьми в рамках практики</li>
+                            <li>Подходит для массажистов, остеопатов, мануальных терапевтов, педиатров</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- РЕЗУЛЬТАТЫ -->
+        <section class="section-padding bg-secondary">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Результат</span>
+                    <h2>Что вы получите</h2>
+                </div>
+                <div class="fp-result-banner fade-in-up">
+                    <p><strong>15 подробных практических уроков и 3 лекции</strong> в доступном формате позволят самостоятельно профилактировать и корректировать большинство проблем, связанных с ранним развитием ребёнка <strong>от рождения до 7 лет</strong></p>
+                </div>
+                <div class="grid-3 fade-in-up" style="margin-top: 32px; align-items: stretch;">
+                    <div class="card" style="text-align:center; padding: 28px 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">🦴</div>
+                        <h4 style="margin-bottom: 8px;">30 техник</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin:0;">на опорно-двигательный аппарат</p>
+                    </div>
+                    <div class="card" style="text-align:center; padding: 28px 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">🫀</div>
+                        <h4 style="margin-bottom: 8px;">20 техник</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin:0;">на висцеральные органы</p>
+                    </div>
+                    <div class="card" style="text-align:center; padding: 28px 20px;">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">🧠</div>
+                        <h4 style="margin-bottom: 8px;">Психо-эмоциональные</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin:0;">техники устранения напряжения в теле</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ЧТО МОЖНО РЕШИТЬ -->
+        <section class="section-padding" id="problems">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Применение</span>
+                    <h2>Что можно решить?</h2>
+                    <p>Остеопатические техники курса охватывают основные состояния раннего детского возраста</p>
+                </div>
+                <div class="fp-problems-grid fade-in-up">
+                    <div class="fp-problem-card">
+                        <h3>🦴 Опорно-двигательный аппарат</h3>
+                        <ul>
+                            <li>гипертонус и гипотонус</li>
+                            <li>кривошея</li>
+                            <li>дисплазия ТБС</li>
+                            <li>сколиоз</li>
+                            <li>вальгус и варус</li>
+                            <li>плоскостопие</li>
+                            <li>реабилитация после травм и ушибов</li>
+                        </ul>
+                    </div>
+                    <div class="fp-problem-card">
+                        <h3>🧠 Нервная система</h3>
+                        <ul>
+                            <li>плохой сон</li>
+                            <li>тревожность</li>
+                            <li>задержка речевого и моторного развития</li>
+                            <li>гармония психо-эмоционального состояния</li>
+                        </ul>
+                    </div>
+                    <div class="fp-problem-card">
+                        <h3>🫁 ЖКТ и внутренние органы</h3>
+                        <ul>
+                            <li>повышенное газообразование</li>
+                            <li>запоры</li>
+                            <li>частые ОРВИ</li>
+                        </ul>
+                    </div>
+                    <div class="fp-problem-card">
+                        <h3>🤝 Укрепление привязанности</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.93rem; line-height: 1.7; margin: 0;">Регулярный мягкий контакт с ребёнком на телесном уровне позволяет малышу чувствовать безопасность и открывает бесценные возможности для дальнейшего развития.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ПРОГРАММА КУРСА -->
+        <section class="section-padding bg-secondary" id="program">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Программа</span>
+                    <h2>Этапы обучения</h2>
+                    <p>За 4 недели освоим остеопатические техники для работы с детьми от 0 до 7 лет — 15 уроков по 20 минут</p>
+                </div>
+                <div class="fp-stages-grid fade-in-up">
+                    <div class="fp-stage-card">
+                        <h3>🖐 Работа с собственным телом</h3>
+                        <ul>
+                            <li>Правильное позиционирование в пространстве</li>
+                            <li>Корректное прикосновение</li>
+                            <li>Развитие пальпаторной чувствительности</li>
+                            <li>Безопасное мануальное воздействие на ребёнка</li>
+                        </ul>
+                    </div>
+                    <div class="fp-stage-card">
+                        <h3>🦷 Опорно-двигательный аппарат</h3>
+                        <p>Работаем с мышцами, связками, суставами, фасциями, сосудами и нервами.</p>
+                        <ul>
+                            <li>Адаптированные остеопатические техники, пронизанные авторскими наработками</li>
+                            <li>Никаких растираний и похлопываний из традиционного массажа</li>
+                        </ul>
+                    </div>
+                    <div class="fp-stage-card">
+                        <h3>🫀 Внутренние органы</h3>
+                        <p>Изучим как оптимизировать работу ЖКТ, дыхательной и сердечно-сосудистой систем.</p>
+                        <ul>
+                            <li>Как помочь малышу при «газиках», запорах, «застарелом» кашле</li>
+                        </ul>
+                    </div>
+                    <div class="fp-stage-card">
+                        <h3>🌀 Эмоции и ритмы</h3>
+                        <p>Разберём техники гармонизации нервной системы и механизм «запечатывания» эмоций в теле.</p>
+                        <ul>
+                            <li>Дыхательный, сердечный и кранио-сакральный ритм</li>
+                            <li>Взаимодействие с ритмами тела</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fp-formats-banner fade-in-up" style="margin-top: 32px;">
+                    <h4>Несколько форматов подачи материала</h4>
+                    <div class="fp-formats-list">
+                        <span class="fp-format-tag">Демонстрация на анатомической кукле</span>
+                        <span class="fp-format-tag">Демонстрация на детях разного возраста</span>
+                        <span class="fp-format-tag">Наглядные анатомические пояснения в 3D</span>
+                        <span class="fp-format-tag">Формат вопрос / ответ</span>
+                    </div>
+                    <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin: 16px 0 0 0; line-height: 1.65;">Это позволит понять изначальный смысл техник и легко их использовать в повседневной жизни.</p>
+                </div>
+
+                <div class="section-header text-center fade-in-up" style="margin-top: 60px;">
+                    <span class="badge">Бонусы</span>
+                    <h2>Дополнительные материалы</h2>
+                </div>
+                <div class="fp-bonus-row fade-in-up">
+                    <div class="fp-bonus-card">
+                        <div class="bonus-icon">📡</div>
+                        <h4>3 прямых эфира</h4>
+                        <p>Эфиры с подробным разбором физиологии и анатомии техник курса + ответами на все ваши вопросы</p>
+                    </div>
+                    <div class="fp-bonus-card">
+                        <div class="bonus-icon">🤱</div>
+                        <h4>Техники при лактостазе</h4>
+                        <p>Специальные техники для восстановления здоровья молочной железы в период грудного вскармливания</p>
+                    </div>
+                    <div class="fp-bonus-card">
+                        <div class="bonus-icon">🥦</div>
+                        <h4>Питание и БАДы</h4>
+                        <p>Питание и биологически активные добавки в первые 3 года жизни ребёнка</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ОБ АВТОРЕ -->
+        <section class="about bg-secondary" id="about-oleg" style="padding-top: 0;">
+            <div class="container">
+                <div class="about-content fade-in-up">
+                    <h2>Об авторе курса</h2>
+                    <div class="about-grid-content">
+                        <div class="about-column-left">
+                            <div class="about-media mb-md">
+                                <img class="about-img" src="photos/oleg1316.jpg" alt="Олег Агапэ" style="margin-bottom: 2rem;">
+                            </div>
+                            <div class="expert-roles-styled">
+                                ВРАЧ-ОСТЕОПАТ / ВРАЧ ОБЩЕЙ ПРАКТИКИ / ОТЕЦ 2 ДЕТЕЙ
+                            </div>
+                            <div class="bio-section">
+                                <p class="bio-text">Я — Олег Агапэ, практикующий врач-остеопат, преподаватель и отец 2 детей.</p>
+                                <p class="bio-text">Большая часть моей врачебной практики — это работа с детьми. И подавляющее большинство проблем, с которыми ко мне обращаются родители, можно эффективно предупредить, если заниматься с ребёнком с рождения.</p>
+                                <p class="bio-text">Это привело меня к идее о создании курса о детском здоровье, который будет одинаково понятен как для родителей, так и для мануальных практиков.</p>
+                            </div>
+                            <div class="fp-quote">«Это не про лежать "солдатиком" 30 минут пока делают массаж — это динамическое интуитивное взаимодействие с ребёнком»</div>
+                        </div>
+                        <div class="about-column-right">
+                            <div class="about-sub-section mb-md">
+                                <h3>Образование</h3>
+                                <ul class="regalia-list">
+                                    <li><strong>РУДН</strong> — Специальность «Лечебное дело».</li>
+                                    <li><strong>Первый МГМУ им. И.М. Сеченова</strong> — Ординатура по специальности «Остеопатия» (Квалификация: Врач-остеопат).</li>
+                                    <li><strong>Институт остеопатии и метавитоники</strong> — Профессиональная переподготовка: Оздоровительное телесно-ориентированное направление «Метавитоника».</li>
+                                    <li><strong>Международная Академия Остеопатии</strong> (Чешская ассоциация) — Повышение квалификации.</li>
+                                </ul>
+                            </div>
+                            <div class="path-section">
+                                <h3>Опыт с детьми</h3>
+                                <p class="path-text">Большая часть врачебной практики Олега — работа с детьми с рождения. Многолетний опыт показал: подавляющее большинство проблем, с которыми обращаются родители, можно эффективно предупредить остеопатическими техниками при регулярной работе в домашних условиях.</p>
+                            </div>
+                            <div class="mt-lg about-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="#pricing" class="btn btn-primary">Записаться на курс</a>
+                                <a href="about.html" class="btn btn-outline">Подробнее об авторе</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ТАРИФЫ -->
+        <section class="section-padding" id="pricing">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Стоимость</span>
+                    <h2>Варианты участия</h2>
+                    <p>Выберите формат, который подходит именно вам</p>
+                </div>
+                <div class="grid-3 fade-in-up" style="align-items: stretch; margin-top: 40px;">
+
+                    <div class="fp-price-card">
+                        <h3>Самостоятельный</h3>
+                        <div class="fp-price-old">14 000 ₽</div>
+                        <div class="fp-price-new">10 000 ₽</div>
+                        <ul class="fp-price-features">
+                            <li>Доступны все 15 уроков курса</li>
+                            <li>Бонус: техники при лактостазе</li>
+                            <li>Бонус: питание детей до 3 лет</li>
+                            <li>Бонус: дисплазия соединительной ткани</li>
+                            <li>Обратная связь в формате чата</li>
+                            <li>Доступ к курсу 3 месяца</li>
+                        </ul>
+                        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary" style="width:100%; text-align:center;">СМОГУ САМ</a>
+                    </div>
+
+                    <div class="fp-price-card featured">
+                        <h3>Продвинутый</h3>
+                        <div class="fp-price-old">25 500 ₽</div>
+                        <div class="fp-price-new">15 000 ₽</div>
+                        <ul class="fp-price-features">
+                            <li>Доступны все 15 уроков курса</li>
+                            <li>Бонус: техники при лактостазе</li>
+                            <li>Бонус: питание детей до 3 лет</li>
+                            <li>Бонус: дисплазия соединительной ткани</li>
+                            <li>Проверка техники куратором (видео)</li>
+                            <li>Диагностика от куратора</li>
+                            <li>Аудио-ответы от куратора с профильным образованием</li>
+                            <li>Доступ к курсу 5 месяцев</li>
+                        </ul>
+                        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">ХОЧУ С ПОДДЕРЖКОЙ</a>
+                    </div>
+
+                    <div class="fp-price-card">
+                        <h3>Индивидуальный</h3>
+                        <div class="fp-price-old">80 000 ₽</div>
+                        <div class="fp-price-new">50 000 ₽</div>
+                        <ul class="fp-price-features">
+                            <li>Доступны все 15 уроков курса</li>
+                            <li>Все бонусные уроки</li>
+                            <li>Проверка техники + диагностика</li>
+                            <li>Аудио-ответы от куратора с профильным образованием</li>
+                            <li>Доступ к курсу 1 год</li>
+                            <li>ВИП: та же поддержка лично от Олега</li>
+                            <li>1 персональная Zoom-сессия с Олегом Агапэ</li>
+                        </ul>
+                        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary" style="width:100%; text-align:center;">ХОЧУ БОЛЬШЕ</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ -->
+        <section class="section-padding bg-secondary" id="faq">
+            <div class="container">
+                <div class="section-header text-center fade-in-up">
+                    <span class="badge">Вопросы</span>
+                    <h2>Часто задаваемые вопросы</h2>
+                </div>
+                <div class="fp-faq-list fade-in-up">
+                    <div class="fp-faq-item">
+                        <div class="fp-faq-q">Не наврежу ли я ребёнку?</div>
+                        <div class="fp-faq-a">Мягкие остеопатические техники абсолютно безопасны для ребёнка. Силу давления и возможные эффекты мы подробно разбираем в первом модуле.</div>
+                    </div>
+                    <div class="fp-faq-item">
+                        <div class="fp-faq-q">Хватит ли времени, чтобы освоить техники?</div>
+                        <div class="fp-faq-a">Информация изложена максимально доступным языком и «без воды». Каждый урок максимум 20–30 минут. Техники можно интегрировать в повседневные дела (купание, игры, ритуалы).</div>
+                    </div>
+                    <div class="fp-faq-item">
+                        <div class="fp-faq-q">Как часто нужно заниматься с ребёнком?</div>
+                        <div class="fp-faq-a">Оптимальны регулярные занятия 2–3 раза в неделю по 20–30 минут. Но при необходимости можно использовать отдельные техники под ваш запрос. Обычный тактильный контакт становится терапевтическим.</div>
+                    </div>
+                    <div class="fp-faq-item">
+                        <div class="fp-faq-q">Зачем мне заниматься с ребёнком?</div>
+                        <div class="fp-faq-a">Мы можем быть огромным вкладом в гармоничное развитие ребёнка и избежать многих заболеваний — а значит, сэкономить на обращениях к специалистам.</div>
+                    </div>
+                    <div class="fp-faq-item">
+                        <div class="fp-faq-q">Что если ребёнок плачет во время занятий?</div>
+                        <div class="fp-faq-a">Реакции ребёнка во многом зависят от нашего состояния, поэтому мы много времени посвятим «отстройке» родителя. Все техники можно адаптировать к различным положениям ребёнка. Научимся подбирать оптимальное время и настроение, отличать лёгкое недовольство от категорического несогласия.</div>
+                    </div>
+                </div>
+                <div class="text-center fade-in-up" style="margin-top: 48px;">
+                    <p style="color: var(--color-text-secondary); margin-bottom: 24px;">Остались вопросы? Напишите нам — ответим лично</p>
+                    <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-primary btn-glow">Написать в Telegram</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer bg-dark" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                        <img src="branding/logo.png" alt="МИОТ Логотип" style="width: 50px; height: 50px; object-fit: contain;">
+                        <div class="logo-text" style="color: white; font-size: 0.8rem; line-height: 1.2;">МЕЖДУНАРОДНЫЙ<br>ИНСТИТУТ<br>ОСТЕОПАТИЧЕСКИХ<br>ТЕХНОЛОГИЙ</div>
+                    </div>
+                    <p class="footer-desc">Авторский курс по детской остеопатии для родителей и специалистов. Работа с детьми от 0 до 7 лет.</p>
+                    <div style="color: rgba(255,255,255,0.5); font-size: 0.75rem; line-height: 1.6; margin-top: 1rem;">
+                        ИП Петров Олег Вячеславович<br>ИНН 330510600108<br>ОГРН 322332800019880
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h4 style="color:#fff;">Навигация</h4>
+                    <ul>
+                        <li><a href="index.html" style="color:rgba(255,255,255,0.7);">Главная</a></li>
+                        <li><a href="programs.html" style="color:rgba(255,255,255,0.7);">Все программы</a></li>
+                        <li><a href="about.html" style="color:rgba(255,255,255,0.7);">Об институте</a></li>
+                        <li><a href="#pricing" style="color:rgba(255,255,255,0.7);">Стоимость курса</a></li>
+                        <li><a href="#faq" style="color:rgba(255,255,255,0.7);">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4 style="color:#fff;">Контакты</h4>
+                    <ul>
+                        <li><a href="mailto:info@agape-course.ru" style="color:rgba(255,255,255,0.7);">info@agape-course.ru</a></li>
+                        <li style="color:rgba(255,255,255,0.5);">101000, г. Москва, ул. Мясницкая 24/7</li>
+                        <li style="margin-top:16px;"><a href="https://t.me/TatyBondar" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Написать нам</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color:rgba(255,255,255,0.5);">&copy; 2026 МИОТ. Все права защищены.</p>
+                <div class="footer-legal">
+                    <a href="https://dr-agape.ru/osteogynecology/policy.html" target="_blank" style="color:rgba(255,255,255,0.6);">Политика конфиденциальности</a>
+                    <a href="https://dr-agape.ru/offer.html" target="_blank" style="color:rgba(255,255,255,0.6);">Договор оферты</a>
+                    <a href="https://dr-agape.ru/osteogynecology/soglasie.html" target="_blank" style="color:rgba(255,255,255,0.6);">Согласие на обработку данных</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
