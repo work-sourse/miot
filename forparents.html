@@ -433,8 +433,8 @@
                 <div class="fp-bonus-row fade-in-up">
                     <div class="fp-bonus-card">
                         <div class="bonus-icon">📡</div>
-                        <h4>3 прямых эфира</h4>
-                        <p>Эфиры с подробным разбором физиологии и анатомии техник курса + ответами на все ваши вопросы</p>
+                        <h4>3 эфира в записи</h4>
+                        <p>Записи эфиров с подробным разбором физиологии и анатомии техник курса + ответами на частые вопросы</p>
                     </div>
                     <div class="fp-bonus-card">
                         <div class="bonus-icon">🤱</div>
@@ -508,8 +508,14 @@
                 </div>
                 <div class="grid-2 fade-in-up" style="align-items: stretch; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
 
-                    <div class="fp-price-card">
+                    <div class="fp-price-card" style="border-color: #e53e3e; box-shadow: 0 0 0 1px #e53e3e;">
+                        <div style="background:#e53e3e; color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 14px; border-radius:6px; display:inline-flex; align-items:center; gap:6px; margin-bottom:14px;">
+                            🔥 Цена доступна только 1 день
+                        </div>
                         <h3>Самостоятельный</h3>
+                        <div style="background:#fff3f3; border:1px solid #fca5a5; border-radius:8px; padding:10px 14px; margin-bottom:14px; font-size:0.85rem; color:#b91c1c; display:flex; align-items:center; gap:8px;">
+                            ⏱ Осталось: <strong id="fp-timer" style="font-family:var(--font-primary); font-size:1rem; letter-spacing:0.05em;">24:00:00</strong>
+                        </div>
                         <div class="fp-price-old">14 000 ₽</div>
                         <div class="fp-price-new">10 000 ₽</div>
                         <ul class="fp-price-features">
@@ -658,6 +664,31 @@
             <script id="eef244c1c16f7a83ee2703a33d4dfa87b1ab1c0b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1616354"></script>
         </div>
     </div>
+
+    <script>
+    // Countdown timer — 24h from first visit, stored in localStorage
+    (function() {
+        var KEY = 'fp_timer_end';
+        var end = localStorage.getItem(KEY);
+        if (!end) {
+            end = Date.now() + 24 * 60 * 60 * 1000;
+            localStorage.setItem(KEY, end);
+        }
+        end = parseInt(end);
+        function update() {
+            var el = document.getElementById('fp-timer');
+            if (!el) return;
+            var diff = end - Date.now();
+            if (diff <= 0) { el.textContent = '00:00:00'; return; }
+            var h = Math.floor(diff / 3600000);
+            var m = Math.floor((diff % 3600000) / 60000);
+            var s = Math.floor((diff % 60000) / 1000);
+            el.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+    </script>
 
     <script>
     function gcOpen(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
