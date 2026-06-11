@@ -211,7 +211,7 @@
                 <a href="#about-oleg">Об авторе</a>
                 <a href="#pricing">Стоимость</a>
                 <a href="#faq">FAQ</a>
-                <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-primary btn-sm">Присоединиться</a>
+                <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary btn-sm">Присоединиться</button>
             </nav>
             <div class="mobile-menu-btn"><span></span><span></span><span></span></div>
         </div>
@@ -227,7 +227,7 @@
                     <h1 class="compact-offer">Занимайтесь гармоничным развитием ребёнка по авторскому курсу от врача-остеопата Олега Агапэ</h1>
                     <p class="hero-subtitle">Профессиональные остеопатические техники, адаптированные для родителей. Работа с детьми от рождения до 7 лет.</p>
                     <div class="hero-actions">
-                        <a href="#pricing" class="btn btn-primary btn-glow">Присоединиться</a>
+                        <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary btn-glow">Присоединиться</button>
                         <a href="#program" class="btn btn-secondary">Смотреть программу</a>
                     </div>
                     <div class="fp-hero-stats">
@@ -423,7 +423,7 @@
                 </div>
 
                 <div class="text-center fade-in-up" style="margin-top: 40px;">
-                    <a href="#pricing" class="btn btn-primary btn-glow">Записаться</a>
+                    <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary btn-glow">Записаться</button>
                 </div>
 
                 <div class="section-header text-center fade-in-up" style="margin-top: 60px;">
@@ -486,7 +486,7 @@
                                 <p class="path-text">Большая часть врачебной практики Олега — работа с детьми с рождения. Многолетний опыт показал: подавляющее большинство проблем, с которыми обращаются родители, можно эффективно предупредить остеопатическими техниками при регулярной работе в домашних условиях.</p>
                             </div>
                             <div class="mt-lg about-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                                <a href="#pricing" class="btn btn-primary">Записаться на курс</a>
+                                <button onclick="gcOpen('gc-modal-1')" class="btn btn-primary">Записаться на курс</button>
                                 <a href="about.html" class="btn btn-outline">Подробнее об авторе</a>
                             </div>
                         </div>
@@ -520,7 +520,7 @@
                             <li>Обратная связь в формате чата</li>
                             <li>Доступ к курсу 3 месяца</li>
                         </ul>
-                        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-secondary" style="width:100%; text-align:center;">СМОГУ САМ</a>
+                        <button onclick="gcOpen('gc-modal-2')" class="btn btn-secondary" style="width:100%;">СМОГУ САМ</button>
                     </div>
 
                     <div class="fp-price-card featured">
@@ -537,7 +537,7 @@
                             <li>Аудио-ответы от куратора с профильным образованием</li>
                             <li>Доступ к курсу 5 месяцев</li>
                         </ul>
-                        <a href="https://t.me/TatyBondar" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">ХОЧУ С ПОДДЕРЖКОЙ</a>
+                        <button onclick="gcOpen('gc-modal-3')" class="btn btn-primary" style="width:100%;">ХОЧУ С ПОДДЕРЖКОЙ</button>
                     </div>
 
                 </div>
@@ -627,5 +627,43 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- ═══ GetCourse modal popups ═══ -->
+    <style>
+        .gc-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:99999; align-items:center; justify-content:center; padding:20px; }
+        .gc-modal.open { display:flex; }
+        .gc-modal-box { background:#fff; border-radius:16px; padding:44px 32px 32px; max-width:540px; width:100%; position:relative; max-height:90vh; overflow-y:auto; }
+        .gc-modal-close { position:absolute; top:12px; right:16px; background:none; border:none; font-size:28px; line-height:1; cursor:pointer; color:#888; }
+        .gc-modal-close:hover { color:#333; }
+        .gc-modal iframe { width:100% !important; }
+    </style>
+
+    <div id="gc-modal-1" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-1')">×</button>
+            <script id="5cee0db15a83f75cd72ea7a324c01e3a0c852f5e" src="https://online.agape-course.ru/pl/lite/widget/script?id=1616356"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-2" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-2')">×</button>
+            <script id="2a4d7d567117f7af083f84378835ebb6117dd90a" src="https://online.agape-course.ru/pl/lite/widget/script?id=1616347"></script>
+        </div>
+    </div>
+
+    <div id="gc-modal-3" class="gc-modal">
+        <div class="gc-modal-box">
+            <button class="gc-modal-close" onclick="gcClose('gc-modal-3')">×</button>
+            <script id="eef244c1c16f7a83ee2703a33d4dfa87b1ab1c0b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1616354"></script>
+        </div>
+    </div>
+
+    <script>
+    function gcOpen(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+    function gcClose(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+    document.addEventListener('click', function(e) { if (e.target.classList.contains('gc-modal')) { gcClose(e.target.id); } });
+    document.addEventListener('keydown', function(e) { if (e.key==='Escape') { document.querySelectorAll('.gc-modal.open').forEach(function(m){ gcClose(m.id); }); } });
+    </script>
 </body>
 </html>
