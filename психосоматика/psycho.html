@@ -1671,7 +1671,7 @@
   /* Fade-in-up on scroll */
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-in-up').forEach(function (el) { observer.observe(el); });
