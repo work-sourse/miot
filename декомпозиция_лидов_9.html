@@ -975,6 +975,32 @@ function showTab(tab){
 }
 document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.tab);});});
 
+function exportData(){
+  var data={R:R,C:C,W:W,P:P,YAB:YAB,factMonth:factMonth,
+    allDayLeads:allDayLeads,allDayPayments:allDayPayments,allDaySales:allDaySales,
+    currentWeek:currentWeek,currentDow:currentDow};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='miot_decomp_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importData(event){
+  var file=event.target.files[0]; if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      localStorage.setItem(LS_KEY,JSON.stringify(data));
+      loadFromLS(); update();
+      alert('Данные импортированы успешно');
+    }catch(err){ alert('Ошибка импорта: '+err.message); }
+  };
+  reader.readAsText(file);
+  event.target.value='';
+}
+
 function update(){
   R=parseInt(el('revenue').value); C=parseInt(el('check').value);
   W=parseInt(el('webs').value);    P=parseInt(el('pre').value);
