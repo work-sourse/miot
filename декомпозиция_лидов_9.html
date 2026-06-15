@@ -154,6 +154,7 @@ footer{text-align:center;padding:18px;font-size:11px;color:var(--text3);border-t
 </style>
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <header>
   <h1>Декомпозиция лидов</h1>
   <span>МИОТ · план / факт · все каналы</span>
@@ -417,34 +418,61 @@ function monthPayTotal(){
   return tot;
 }
 
-// ── LOCALSTORAGE ──
+// ── SUPABASE + LOCALSTORAGE ──
+var SUPA_URL = 'https://ubxkoihmmdqfyubfhhjx.supabase.co';
+var SUPA_KEY = 'sb_publishable_8SRS_V03FmPyF3w_1SiOyw_xnswHJ8e';
+var db = window.supabase ? window.supabase.createClient(SUPA_URL, SUPA_KEY) : null;
+
 var LS_KEY = 'miot_decomp_v2';
+
+function _getState(){
+  return {R:R,C:C,W:W,P:P,YAB:YAB,factMonth:factMonth,
+    allDayLeads:allDayLeads,allDayPayments:allDayPayments,allDaySales:allDaySales,
+    currentWeek:currentWeek,currentDow:currentDow};
+}
+function _applyState(data){
+  if(data.R)R=data.R; if(data.C)C=data.C; if(data.W!=null)W=data.W;
+  if(data.P)P=data.P; if(data.YAB)YAB=data.YAB;
+  if(data.factMonth)factMonth=data.factMonth;
+  if(data.allDayLeads)allDayLeads=data.allDayLeads;
+  if(data.allDayPayments)allDayPayments=data.allDayPayments;
+  if(data.allDaySales)allDaySales=data.allDaySales;
+  if(data.currentWeek)currentWeek=data.currentWeek;
+  if(data.currentDow)currentDow=data.currentDow;
+  initAllWeeks();
+  var sliders={revenue:R,check:C,webs:W,pre:P,yabud:YAB};
+  Object.keys(sliders).forEach(function(id){var e=el(id);if(e)e.value=sliders[id];});
+}
+
 function saveToLS(){
   try{
-    var data={R:R,C:C,W:W,P:P,YAB:YAB,factMonth:factMonth,
-      allDayLeads:allDayLeads,allDayPayments:allDayPayments,allDaySales:allDaySales,
-      currentWeek:currentWeek,currentDow:currentDow};
+    var data=_getState();
     localStorage.setItem(LS_KEY,JSON.stringify(data));
+    if(db) _saveToSupabase(data);
     var si=el('save-indicator');
     if(si){si.textContent='✓ сохранено';si.style.opacity=1;setTimeout(function(){si.style.opacity=0;},2000);}
   }catch(e){}
 }
+async function _saveToSupabase(data){
+  try{
+    await db.from('decomp_state').upsert({id:'default',data:data,updated_at:new Date().toISOString()});
+  }catch(e){}
+}
+
 function loadFromLS(){
   try{
     var raw=localStorage.getItem(LS_KEY);
     if(!raw)return false;
-    var data=JSON.parse(raw);
-    if(data.R)R=data.R; if(data.C)C=data.C; if(data.W!=null)W=data.W;
-    if(data.P)P=data.P; if(data.YAB)YAB=data.YAB;
-    if(data.factMonth)factMonth=data.factMonth;
-    if(data.allDayLeads)allDayLeads=data.allDayLeads;
-    if(data.allDayPayments)allDayPayments=data.allDayPayments;
-    if(data.allDaySales)allDaySales=data.allDaySales;
-    if(data.currentWeek)currentWeek=data.currentWeek;
-    if(data.currentDow)currentDow=data.currentDow;
-    initAllWeeks();
-    var sliders={revenue:R,check:C,webs:W,pre:P,yabud:YAB};
-    Object.keys(sliders).forEach(function(id){var e=el(id);if(e)e.value=sliders[id];});
+    _applyState(JSON.parse(raw));
+    return true;
+  }catch(e){return false;}
+}
+async function loadFromSupabase(){
+  if(!db)return false;
+  try{
+    var resp=await db.from('decomp_state').select('data').eq('id','default').single();
+    if(resp.error||!resp.data)return false;
+    _applyState(resp.data.data);
     return true;
   }catch(e){return false;}
 }
@@ -989,10 +1017,11 @@ function exportData(){
 function importData(event){
   var file=event.target.files[0]; if(!file)return;
   var reader=new FileReader();
-  reader.onload=function(e){
+  reader.onload=async function(e){
     try{
       var data=JSON.parse(e.target.result);
       localStorage.setItem(LS_KEY,JSON.stringify(data));
+      if(db) await _saveToSupabase(data);
       loadFromLS(); update();
       alert('Данные импортированы успешно');
     }catch(err){ alert('Ошибка импорта: '+err.message); }
@@ -1016,9 +1045,12 @@ function update(){
 ['revenue','check','webs','pre','yabud'].forEach(function(id){el(id).addEventListener('input',update);});
 
 // ── INIT ──
-(function(){
-  var loaded = loadFromLS();
-  if(loaded){
+(async function(){
+  var loaded = loadFromLS(); // быстрый старт из кэша
+  if(loaded){ update(); renderMonthSummaryBar(); }
+  // затем загружаем актуальные данные из Supabase
+  var fromDB = await loadFromSupabase();
+  if(fromDB||loaded){
     document.querySelectorAll('.period-btn[data-week]').forEach(function(b){
       b.classList.toggle('active',parseInt(b.dataset.week)===currentWeek);
     });
