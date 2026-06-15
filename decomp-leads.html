@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Декомпозиция лидов — МИОТ</title>
+<style>
+:root{--bg:#F7F6F3;--surface:#FFF;--surface2:#F0EEE9;--border:#E2DED6;--border2:#CCC9C0;--text:#1A1916;--text2:#6B6860;--text3:#9B9890;--teal:#0F6E56;--teal-bg:#E1F5EE;--blue:#185FA5;--blue-bg:#E6F1FB;--amber:#854F0B;--amber-bg:#FAEEDA;--red:#A32D2D;--red-bg:#FCEBEB;--green:#3B6D11;--green-bg:#EAF3DE;--ya:#CC3300;--ya-bg:#FFF0EC;--wa:#1b5e20;--wa-bg:#e8f5e9;--radius:10px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:baseline;gap:16px;}
+header h1{font-size:18px;font-weight:600;letter-spacing:-.3px;}
+header span{font-size:13px;color:var(--text2);}
+.main{max-width:1200px;margin:0 auto;padding:22px 32px 60px;}
+.slabel{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;}
+.ctrls{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px;}
+.ctrl{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;}
+.ctrl-lbl{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+.ctrl-row{display:flex;align-items:center;gap:8px;}
+.ctrl-row input[type=range]{flex:1;-webkit-appearance:none;height:3px;background:var(--border2);border-radius:2px;outline:none;cursor:pointer;}
+.ctrl-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--teal);cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--teal);}
+.ctrl-val{font-size:14px;font-weight:700;min-width:68px;text-align:right;color:var(--text);}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.mlbl{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;}
+.mval{font-size:20px;font-weight:700;letter-spacing:-.4px;}
+.msub{font-size:11px;color:var(--text3);margin-top:2px;}
+.metric.accent{border-color:var(--teal);background:var(--teal-bg);}.metric.accent .mval{color:var(--teal);}
+.metric.warn{border-color:#EF9F27;background:var(--amber-bg);}.metric.warn .mval{color:var(--amber);}
+.metric.danger{border-color:#E24B4A;background:var(--red-bg);}.metric.danger .mval{color:var(--red);}
+.metric.good{border-color:var(--green);background:var(--green-bg);}.metric.good .mval{color:var(--green);}
+.metric.ya{border-color:var(--ya);background:var(--ya-bg);}.metric.ya .mval{color:var(--ya);}
+.tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--border);}
+.tab-btn{padding:8px 16px;font-size:13px;font-weight:500;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;margin-bottom:-1px;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal);}
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{font-size:10px;font-weight:600;color:var(--text2);text-align:left;padding:9px 12px;background:var(--surface2);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;}
+thead th.r{text-align:right;}
+th.ph{background:#EAF3DE;color:var(--green);}
+th.fh{background:#E6F1FB;color:var(--blue);}
+th.dh{background:var(--surface2);color:var(--text2);}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text);}
+td.r{text-align:right;font-variant-numeric:tabular-nums;}
+td.ch{font-weight:600;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:var(--surface2);}
+.rw td{background:#EAF3DE;}.rp td{background:var(--teal-bg);}.rpw td{background:var(--amber-bg);}.rt td{background:var(--surface2);font-weight:700;}.rwa td{background:#e8f5e9;}.rya td{background:var(--ya-bg);}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;}
+.bb{background:var(--blue-bg);color:var(--blue);}
+.bt{background:var(--teal-bg);color:var(--teal);}
+.by{background:var(--ya-bg);color:var(--ya);}
+/* PF */
+.pf-wrap{display:flex;flex-direction:column;gap:14px;}
+.pf-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.pf-block-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--border);color:var(--text2);display:flex;align-items:center;gap:8px;}
+.pf-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+.pf-table th{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;text-align:right;background:var(--surface2);border-bottom:1px solid var(--border);white-space:nowrap;}
+.pf-table th:first-child{text-align:left;width:22%;}
+.pf-table th:nth-child(2),.pf-table th:nth-child(3){width:11%;background:#EAF3DE;color:var(--green);}
+.pf-table th:nth-child(4),.pf-table th:nth-child(5){width:14%;background:#E6F1FB;color:var(--blue);}
+.pf-table th:nth-child(6){width:10%;background:var(--surface2);color:var(--text2);}
+.pf-table th:nth-child(7){width:10%;background:var(--surface2);color:var(--text2);}
+.pf-table td{padding:7px 10px;border-bottom:1px solid var(--border);font-size:13px;text-align:right;vertical-align:middle;}
+.pf-table td:first-child{text-align:left;font-weight:600;color:var(--text2);}
+.pf-table tbody tr:last-child td{border-bottom:none;}
+.pf-table tbody tr:hover{background:var(--surface2);}
+.pf-table input[type=number]{width:100%;text-align:right;border:1px solid var(--border2);border-radius:6px;padding:4px 6px;font-size:13px;font-weight:600;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;-moz-appearance:textfield;}
+.pf-table input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
+.pf-table input[type=number]:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(24,95,165,.15);}
+.diff-pos{color:var(--green);font-weight:700;}
+.diff-neg{color:var(--red);font-weight:700;}
+.diff-zero{color:var(--text3);}
+/* YA funnel */
+.ya-funnel{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--border);}
+.ya-step{padding:14px 10px;border-right:1px solid var(--border);text-align:center;}
+.ya-step:last-child{border-right:none;}
+.ya-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--text2);margin-bottom:5px;}
+.ya-plan{font-size:12px;font-weight:600;color:var(--ya);margin-bottom:4px;}
+.ya-inp input{width:80px;text-align:center;border:1px solid var(--border2);border-radius:6px;padding:3px 6px;font-size:14px;font-weight:700;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;}
+.ya-inp input:focus{border-color:var(--blue);}
+.ya-conv{font-size:10px;color:var(--text3);margin-top:3px;}
+.ya-diff{font-size:11px;font-weight:700;margin-top:2px;}
+/* WA funnel */
+.wa-funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border);}
+.wa-step{padding:14px 10px;border-right:1px solid var(--border);text-align:center;}
+.wa-step:last-child{border-right:none;}
+.wa-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--text2);margin-bottom:5px;}
+.wa-plan{font-size:12px;font-weight:600;color:var(--wa);margin-bottom:4px;}
+.wa-inp input{width:80px;text-align:center;border:1px solid var(--border2);border-radius:6px;padding:3px 6px;font-size:14px;font-weight:700;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;}
+.wa-inp input:focus{border-color:var(--blue);}
+.wa-conv{font-size:10px;color:var(--text3);margin-top:3px;}
+.wa-diff{font-size:11px;font-weight:700;margin-top:2px;}
+.ch-results{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px;background:var(--surface2);border-top:1px solid var(--border);}
+/* Funnel grid */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ft{font-size:13px;font-weight:700;margin-bottom:10px;}
+.fs{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.fs:last-of-type{border-bottom:none;}
+.fsn{color:var(--text2);}
+.fsr{display:flex;align-items:baseline;gap:5px;}
+.fsv{font-weight:700;}.fsv.s{color:var(--teal);}
+.fsc{font-size:10px;color:var(--text3);}
+.fn{font-size:11px;color:var(--text3);margin-top:8px;border-top:1px solid var(--border);padding-top:7px;}
+/* Insights */
+.ig{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ic.focus{border-color:var(--teal);}
+.itag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:7px;}
+.tf{background:var(--teal-bg);color:var(--teal);}
+.tw{background:var(--amber-bg);color:var(--amber);}
+.tr{background:var(--red-bg);color:var(--red);}
+.ty{background:var(--ya-bg);color:var(--ya);}
+.it{font-size:13px;font-weight:700;margin-bottom:4px;}
+.ib{font-size:12px;color:var(--text2);line-height:1.6;}
+.in{font-size:20px;font-weight:800;color:var(--teal);letter-spacing:-.4px;margin:5px 0;}
+/* Week */
+.db{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--surface2);text-align:center;line-height:26px;font-size:10px;font-weight:700;color:var(--text2);margin-right:5px;}
+.db.a{background:var(--teal);color:#fff;}
+/* PF summary */
+.pf-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+.day-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.day-card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--border);color:var(--text2);}
+.pay-list{padding:10px 14px;}
+.pay-row{display:grid;grid-template-columns:1fr 110px 130px 30px;gap:8px;align-items:center;margin-bottom:8px;}
+.pay-row input[type=text],.pay-row input[type=number]{border:1px solid var(--border2);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit;width:100%;outline:none;background:var(--blue-bg);color:var(--blue);font-weight:600;}
+.pay-row input[type=text]{background:var(--surface);color:var(--text);font-weight:400;}
+.pay-row input:focus{border-color:var(--blue);}
+.pay-row select{border:1px solid var(--border2);border-radius:6px;padding:5px 8px;font-size:12px;font-family:inherit;width:100%;outline:none;background:var(--surface);color:var(--text2);cursor:pointer;}
+.pay-row select:focus{border-color:var(--blue);}
+.pay-del{background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;padding:0 4px;line-height:1;}
+.pay-del:hover{color:var(--red);}
+.add-pay-btn{margin:6px 14px 14px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal);border-radius:6px;cursor:pointer;width:calc(100% - 28px);}
+.add-pay-btn:hover{background:#c8edd8;}
+.day-plan-row{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px;}
+.day-plan-name{color:var(--text2);}
+.day-plan-val{font-weight:600;color:var(--green);}
+.day-fact-val{font-weight:700;color:var(--blue);}
+.day-diff{font-size:11px;font-weight:700;}
+.day-sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+.period-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);}
+.period-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-right:4px;}
+.period-btn{padding:5px 14px;font-size:12px;font-weight:600;border:1px solid var(--border2);border-radius:6px;background:transparent;cursor:pointer;color:var(--text2);}
+.period-btn:hover{background:var(--surface2);}
+.period-btn.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+.period-month-summary{margin-left:auto;font-size:12px;color:var(--text2);}
+.period-month-summary span{font-weight:700;color:var(--teal);}
+.save-indicator{font-size:11px;color:var(--text3);margin-left:12px;transition:opacity .5s;}
+footer{text-align:center;padding:18px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);margin-top:40px;}
+@media(max-width:900px){.main{padding:14px;}.ctrls,.metrics{grid-template-columns:1fr 1fr;}.fg,.ig{grid-template-columns:1fr;}.ya-funnel{grid-template-columns:1fr 1fr 1fr;}.wa-funnel{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<header>
+  <h1>Декомпозиция лидов</h1>
+  <span>МИОТ · план / факт · все каналы</span>
+</header>
+<div class="main">
+  <div class="slabel">Параметры плана</div>
+  <div class="ctrls">
+    <div class="ctrl"><div class="ctrl-lbl">План выручки</div><div class="ctrl-row"><input type="range" id="revenue" min="1000000" max="7000000" step="100000" value="3500000"><span class="ctrl-val" id="revenue-out">—</span></div></div>
+    <div class="ctrl"><div class="ctrl-lbl">Средний чек</div><div class="ctrl-row"><input type="range" id="check" min="5000" max="50000" step="1000" value="20000"><span class="ctrl-val" id="check-out">—</span></div></div>
+    <div class="ctrl"><div class="ctrl-lbl">Предзапись (чел)</div><div class="ctrl-row"><input type="range" id="pre" min="10" max="300" step="5" value="60"><span class="ctrl-val" id="pre-out">—</span></div></div>
+    <div class="ctrl"><div class="ctrl-lbl">Вебинаров / мес</div><div class="ctrl-row"><input type="range" id="webs" min="0" max="4" step="1" value="1"><span class="ctrl-val" id="webs-out">—</span></div></div>
+    <div class="ctrl"><div class="ctrl-lbl">Бюджет Яндекс</div><div class="ctrl-row"><input type="range" id="yabud" min="0" max="1000000" step="10000" value="250000"><span class="ctrl-val" id="yabud-out">—</span></div></div>
+  </div>
+  <div class="metrics" id="metrics"></div>
+  <div class="period-bar">
+    <span class="period-label">Период:</span>
+    <button class="period-btn active" data-week="1" onclick="switchPeriod(1)">Неделя 1</button>
+    <button class="period-btn" data-week="2" onclick="switchPeriod(2)">Неделя 2</button>
+    <button class="period-btn" data-week="3" onclick="switchPeriod(3)">Неделя 3</button>
+    <button class="period-btn" data-week="4" onclick="switchPeriod(4)">Неделя 4</button>
+    <span class="period-month-summary" id="month-summary-bar"></span>
+    <span class="save-indicator" id="save-indicator"></span>
+    <button onclick="exportData()" style="margin-left:4px;padding:5px 12px;font-size:11px;font-weight:600;border:1px solid var(--border2);border-radius:6px;background:var(--surface);cursor:pointer;color:var(--text2);">&#8595; Экспорт</button>
+    <label style="padding:5px 12px;font-size:11px;font-weight:600;border:1px solid var(--border2);border-radius:6px;background:var(--surface);cursor:pointer;color:var(--text2);margin-left:2px;">&#8593; Импорт<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="planfact">План vs Факт</button>
+    <button class="tab-btn" data-tab="channels">По каналам</button>
+    <button class="tab-btn" data-tab="funnels">Воронки</button>
+    <button class="tab-btn" data-tab="week">Неделя</button>
+    <button class="tab-btn" data-tab="day">День</button>
+    <button class="tab-btn" data-tab="insights">Фокус</button>
+  </div>
+
+  <!-- PLAN vs FACT -->
+  <div id="tab-planfact">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:14px;">Синие поля — для ввода факта. Всё пересчитывается автоматически.</div>
+    <div class="pf-wrap">
+
+      <!-- Яндекс -->
+      <div class="pf-block">
+        <div class="pf-block-title" style="background:var(--ya-bg);border-color:#f5b8a8;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ya)"><path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12zm10.5-5.5h-1.25C9.56 6.5 8 8.06 8 9.75c0 1.418.806 2.442 2.094 2.986L8 17.5h2l1.906-4.5H13V17.5h2V6.5h-2.5zm0 5V8h.25c.966 0 1.75.784 1.75 1.75s-.784 1.75-1.75 1.75h-.25z"/></svg>
+          Яндекс.Директ — воронка
+        </div>
+        <div class="ya-funnel">
+          <div class="ya-step"><div class="ya-lbl">Показы</div><div class="ya-plan" id="ya-p-imp">—</div><div class="ya-inp"><input type="number" id="ya-imp" placeholder="факт" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-imp">—</div><div class="ya-diff" id="ya-d-imp"></div></div>
+          <div class="ya-step"><div class="ya-lbl">Клики (CTR 1.25%)</div><div class="ya-plan" id="ya-p-clk">—</div><div class="ya-inp"><input type="number" id="ya-clk" placeholder="факт" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-clk">—</div><div class="ya-diff" id="ya-d-clk"></div></div>
+          <div class="ya-step"><div class="ya-lbl">Заявки (13%)</div><div class="ya-plan" id="ya-p-app">—</div><div class="ya-inp"><input type="number" id="ya-app" placeholder="факт" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-app">—</div><div class="ya-diff" id="ya-d-app"></div></div>
+          <div class="ya-step"><div class="ya-lbl">Переданы ОП (35%)</div><div class="ya-plan" id="ya-p-op">—</div><div class="ya-inp"><input type="number" id="ya-op" placeholder="факт" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-op">—</div><div class="ya-diff" id="ya-d-op"></div></div>
+          <div class="ya-step"><div class="ya-lbl">Продажи (3%)</div><div class="ya-plan" id="ya-p-sale">—</div><div class="ya-inp"><input type="number" id="ya-sale" placeholder="факт" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-sale">—</div><div class="ya-diff" id="ya-d-sale"></div></div>
+          <div class="ya-step"><div class="ya-lbl">Цена заявки</div><div class="ya-plan" id="ya-p-cpa">—</div><div class="ya-inp"><input type="number" id="ya-spend" placeholder="потрачено" oninput="calcYA()"></div><div class="ya-conv" id="ya-c-cpa">—</div><div class="ya-diff" id="ya-d-cpa"></div></div>
+        </div>
+        <div class="ch-results">
+          <div class="metric" id="ya-m1"><div class="mlbl">CTR факт</div><div class="mval" id="ya-v-ctr">—</div><div class="msub">план 1.25%</div></div>
+          <div class="metric" id="ya-m2"><div class="mlbl">Конв. клик→заявка</div><div class="mval" id="ya-v-app">—</div><div class="msub">план 13%</div></div>
+          <div class="metric" id="ya-m3"><div class="mlbl">Цена заявки факт</div><div class="mval" id="ya-v-cpa">—</div><div class="msub">план 231 ₽</div></div>
+          <div class="metric" id="ya-m4"><div class="mlbl">ROMI факт</div><div class="mval" id="ya-v-romi">—</div><div class="msub">план >100%</div></div>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="pf-block">
+        <div class="pf-block-title" style="background:var(--wa-bg);border-color:#a5d6a7;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--wa)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.856L.057 23.997l6.304-1.654A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.866 9.866 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374A9.867 9.867 0 0 1 2.106 12C2.106 6.53 6.53 2.106 12 2.106c5.471 0 9.894 4.424 9.894 9.894 0 5.471-4.423 9.894-9.894 9.894z"/></svg>
+          WhatsApp — подъём базы
+        </div>
+        <div class="wa-funnel">
+          <div class="wa-step"><div class="wa-lbl">Отправлено</div><div class="wa-plan" id="wa-p-sent">—</div><div class="wa-inp"><input type="number" id="wa-sent" placeholder="факт" oninput="calcWA()"></div><div class="wa-conv" id="wa-c-sent">100%</div><div class="wa-diff" id="wa-d-sent"></div></div>
+          <div class="wa-step"><div class="wa-lbl">Доставлено (69%)</div><div class="wa-plan" id="wa-p-del">—</div><div class="wa-inp"><input type="number" id="wa-del" placeholder="факт" oninput="calcWA()"></div><div class="wa-conv" id="wa-c-del">—</div><div class="wa-diff" id="wa-d-del"></div></div>
+          <div class="wa-step"><div class="wa-lbl">Заявки (3.7%)</div><div class="wa-plan" id="wa-p-app">—</div><div class="wa-inp"><input type="number" id="wa-app" placeholder="факт" oninput="calcWA()"></div><div class="wa-conv" id="wa-c-app">—</div><div class="wa-diff" id="wa-d-app"></div></div>
+          <div class="wa-step"><div class="wa-lbl">Продажи (35%)</div><div class="wa-plan" id="wa-p-sale">—</div><div class="wa-inp"><input type="number" id="wa-sale" placeholder="факт" oninput="calcWA()"></div><div class="wa-conv" id="wa-c-sale">—</div><div class="wa-diff" id="wa-d-sale"></div></div>
+        </div>
+        <div class="ch-results">
+          <div class="metric" id="wa-m1"><div class="mlbl">Доставляемость</div><div class="mval" id="wa-v-del">—</div><div class="msub">план 69% (факт ваш)</div></div>
+          <div class="metric" id="wa-m2"><div class="mlbl">Заявки / доставлено</div><div class="mval" id="wa-v-app">—</div><div class="msub">план 3.7%</div></div>
+          <div class="metric" id="wa-m3"><div class="mlbl">Конв. в продажу</div><div class="mval" id="wa-v-sale">—</div><div class="msub">план 35%</div></div>
+          <div class="metric" id="wa-m4"><div class="mlbl">Стоимость заявки</div><div class="mval" id="wa-v-cpa">—</div><div class="msub">из ваших данных ~280 ₽</div></div>
+        </div>
+      </div>
+
+      <!-- Органика -->
+      <div class="pf-block">
+        <div class="pf-block-title">Органические каналы — лиды и продажи</div>
+        <table class="pf-table">
+          <thead><tr><th>Канал</th><th class="ph">План лиды</th><th class="ph">План продажи</th><th class="fh">Факт лиды</th><th class="fh">Факт продажи</th><th class="dh">Δ продажи</th><th class="dh">Конв. факт</th></tr></thead>
+          <tbody id="pf-organic-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="slabel" style="margin-top:16px;">Итоги месяца</div>
+    <div class="pf-sum" id="pf-summary"></div>
+  </div>
+
+  <!-- CHANNELS -->
+  <div id="tab-channels" style="display:none">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Канал</th><th class="r">Конверсия</th><th class="r ph">Лидов / мес</th><th class="r ph">Продаж / мес</th><th class="r ph">Выручка / мес</th><th class="r dh">Лидов / нед</th><th class="r dh">Продаж / нед</th></tr></thead>
+        <tbody id="channels-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FUNNELS -->
+  <div id="tab-funnels" style="display:none">
+    <div class="fg" id="funnel-cards"></div>
+  </div>
+
+  <!-- WEEK -->
+  <div id="tab-week" style="display:none">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:12px;">Факт суммируется автоматически из данных по дням (вкладка День). Здесь — сводка по выбранной неделе.</div>
+    <div class="table-wrap">
+      <table style="table-layout:fixed;">
+        <colgroup><col style="width:22%"><col style="width:9%"><col style="width:11%"><col style="width:12%"><col style="width:12%"><col style="width:10%"><col style="width:10%"><col style="width:14%"></colgroup>
+        <thead><tr>
+          <th>Источник</th><th class="r">Конв.</th>
+          <th class="r ph">Лиды план/нед</th>
+          <th class="r fh">Лиды факт</th>
+          <th class="r fh">Продажи факт</th>
+          <th class="r dh">&Delta; лиды</th>
+          <th class="r dh">Конв. факт</th>
+          <th class="r dh">Выручка факт</th>
+        </tr></thead>
+        <tbody id="week-body"></tbody>
+      </table>
+    </div>
+    <div class="pf-sum" id="week-summary" style="margin-top:14px;"></div>
+  </div>
+
+  <!-- DAY -->
+  <div id="tab-day" style="display:none">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+      <span style="font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;">День:</span>
+      <button class="period-btn active" data-dow="1" onclick="switchDay(1)">Пн</button>
+      <button class="period-btn" data-dow="2" onclick="switchDay(2)">Вт</button>
+      <button class="period-btn" data-dow="3" onclick="switchDay(3)">Ср</button>
+      <button class="period-btn" data-dow="4" onclick="switchDay(4)">Чт</button>
+      <button class="period-btn" data-dow="5" onclick="switchDay(5)">Пт</button>
+      <button class="period-btn" data-dow="6" onclick="switchDay(6)">Сб</button>
+      <button class="period-btn" data-dow="7" onclick="switchDay(7)">Вс</button>
+      <span id="day-week-label" style="font-size:12px;color:var(--text3);margin-left:4px;"></span>
+    </div>
+    <div class="day-grid">
+      <div>
+        <div class="day-card">
+          <div class="day-card-title" id="day-pay-title">Оплаты</div>
+          <div style="display:grid;grid-template-columns:1fr 110px 130px 30px;gap:8px;padding:8px 14px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--text3);">
+            <span>Комментарий</span><span>Сумма, ₽</span><span>Источник</span><span></span>
+          </div>
+          <div class="pay-list" id="pay-list"></div>
+          <button class="add-pay-btn" onclick="addPayment()">+ добавить оплату</button>
+        </div>
+        <div class="day-sum-grid" id="day-pay-summary"></div>
+      </div>
+      <div>
+        <div class="day-card">
+          <div class="day-card-title" id="day-leads-title">Лиды — план vs факт</div>
+          <div id="day-leads-rows"></div>
+        </div>
+        <div class="day-sum-grid" id="day-leads-summary" style="margin-top:14px;grid-template-columns:1fr 1fr;"></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="slabel">Итог недели (сумма всех дней)</div>
+      <div id="day-week-totals" class="pf-sum"></div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div id="tab-insights" style="display:none">
+    <div class="ig" id="insights-grid"></div>
+  </div>
+</div>
+<footer>МИОТ · Декомпозиция лидов · конверсии: внутренняя аналитика янв–май + Яндекс.Директ</footer>
+
+<script>
+// ── КОНСТАНТЫ ──
+const WEB_BASE   = 873;
+const WEB_CHAIN  = 0.58 * 0.28 * 0.51 * 0.35;
+const PRE_CONV   = 0.45;
+const WA_SENT    = 1000;
+const YA_REV_CAP = 500000;
+const YA  = {ctr:0.0125, appRate:0.13, opRate:0.3462, saleRate:0.0308, cpaTarget:231};
+const WA  = {delivRate:0.693, appRate:0.0374, saleRate:0.35, costPerSent:3.06};
+const LEADS = {
+  tg:    {name:'Основной ТГ канал',    n:351,  conv:0.10},
+  tg2:   {name:'ТГ канал анатомии',    n:200,  conv:0.06},
+  insta: {name:'Instagram',             n:100,  conv:0.07},
+  vk:    {name:'ВКонтакте',             n:70,   conv:0.015},
+  maks:  {name:'Макс',                  n:400,  conv:0.015},
+  email: {name:'Email (кликнули)',      n:200,  conv:0.04},
+  bot:   {name:'Бот (отреагировали)',  n:150,  conv:0.04}
+};
+
+let R=3500000, C=20000, W=1, P=60, YAB=250000;
+var currentWeek = 1;  // активная неделя (1-4)
+var currentDow  = 1;  // активный день недели (1=Пн .. 7=Вс)
+var DOW_NAMES   = {1:'Пн',2:'Вт',3:'Ср',4:'Чт',5:'Пт',6:'Сб',7:'Вс'};
+
+// Структура данных:
+// allDayLeads[week][dow][channel_id] = число лидов
+// allDayPayments[week][dow] = [{id,comment,amount,source}, ...]
+// allDaySales[week][dow][channel_id] = число продаж
+// factMonth = месячный план/факт (вкладка "План vs Факт")
+var factMonth      = {};
+var allDayLeads    = {};   // [1..4][1..7][id] = int
+var allDayPayments = {};   // [1..4][1..7] = []
+var allDaySales    = {};   // [1..4][1..7][id] = int
+
+function initWeek(w){
+  if(!allDayLeads[w])   allDayLeads[w]={};
+  if(!allDayPayments[w])allDayPayments[w]={};
+  if(!allDaySales[w])   allDaySales[w]={};
+  for(var d=1;d<=7;d++){
+    if(!allDayLeads[w][d])   allDayLeads[w][d]={};
+    if(!allDayPayments[w][d])allDayPayments[w][d]=[];
+    if(!allDaySales[w][d])   allDaySales[w][d]={};
+  }
+}
+function initAllWeeks(){ for(var w=1;w<=4;w++) initWeek(w); }
+initAllWeeks();
+
+// Helpers to get current day data
+function curLeads(){ return allDayLeads[currentWeek][currentDow]; }
+function curSales(){ return allDaySales[currentWeek][currentDow]; }
+function curPayments(){ return allDayPayments[currentWeek][currentDow]; }
+
+// Computed week totals from day data
+function weekLeadsTotal(w, chId){
+  var tot=0;
+  for(var d=1;d<=7;d++) tot+=(allDayLeads[w]&&allDayLeads[w][d]&&allDayLeads[w][d][chId])||0;
+  return tot;
+}
+function weekSalesTotal(w, chId){
+  var tot=0;
+  for(var d=1;d<=7;d++) tot+=(allDaySales[w]&&allDaySales[w][d]&&allDaySales[w][d][chId])||0;
+  return tot;
+}
+function weekPayTotal(w){
+  var tot=0;
+  for(var d=1;d<=7;d++){
+    var pays=(allDayPayments[w]&&allDayPayments[w][d])||[];
+    pays.forEach(function(p){ tot+=parseFloat(p.amount)||0; });
+  }
+  return tot;
+}
+function weekPayCount(w){
+  var tot=0;
+  for(var d=1;d<=7;d++){
+    var pays=(allDayPayments[w]&&allDayPayments[w][d])||[];
+    tot+=pays.filter(function(p){return p.amount;}).length;
+  }
+  return tot;
+}
+function monthPayTotal(){
+  var tot=0;
+  for(var w=1;w<=4;w++) tot+=weekPayTotal(w);
+  return tot;
+}
+
+// ── SUPABASE + LOCALSTORAGE ──
+var SUPA_URL = 'https://ubxkoihmmdqfyubfhhjx.supabase.co';
+var SUPA_KEY = 'sb_publishable_8SRS_V03FmPyF3w_1SiOyw_xnswHJ8e';
+var db = window.supabase ? window.supabase.createClient(SUPA_URL, SUPA_KEY) : null;
+
+var LS_KEY = 'miot_decomp_v2';
+
+function _getState(){
+  return {R:R,C:C,W:W,P:P,YAB:YAB,factMonth:factMonth,
+    allDayLeads:allDayLeads,allDayPayments:allDayPayments,allDaySales:allDaySales,
+    currentWeek:currentWeek,currentDow:currentDow};
+}
+function _applyState(data){
+  if(data.R)R=data.R; if(data.C)C=data.C; if(data.W!=null)W=data.W;
+  if(data.P)P=data.P; if(data.YAB)YAB=data.YAB;
+  if(data.factMonth)factMonth=data.factMonth;
+  if(data.allDayLeads)allDayLeads=data.allDayLeads;
+  if(data.allDayPayments)allDayPayments=data.allDayPayments;
+  if(data.allDaySales)allDaySales=data.allDaySales;
+  if(data.currentWeek)currentWeek=data.currentWeek;
+  if(data.currentDow)currentDow=data.currentDow;
+  initAllWeeks();
+  var sliders={revenue:R,check:C,webs:W,pre:P,yabud:YAB};
+  Object.keys(sliders).forEach(function(id){var e=el(id);if(e)e.value=sliders[id];});
+}
+
+function saveToLS(){
+  try{
+    var data=_getState();
+    localStorage.setItem(LS_KEY,JSON.stringify(data));
+    if(db) _saveToSupabase(data);
+    var si=el('save-indicator');
+    if(si){si.textContent='✓ сохранено';si.style.opacity=1;setTimeout(function(){si.style.opacity=0;},2000);}
+  }catch(e){}
+}
+async function _saveToSupabase(data){
+  try{
+    await db.from('decomp_state').upsert({id:'default',data:data,updated_at:new Date().toISOString()});
+  }catch(e){}
+}
+
+function loadFromLS(){
+  try{
+    var raw=localStorage.getItem(LS_KEY);
+    if(!raw)return false;
+    _applyState(JSON.parse(raw));
+    return true;
+  }catch(e){return false;}
+}
+async function loadFromSupabase(){
+  if(!db)return false;
+  try{
+    var resp=await db.from('decomp_state').select('data').eq('id','default').single();
+    if(resp.error||!resp.data)return false;
+    _applyState(resp.data.data);
+    return true;
+  }catch(e){return false;}
+}
+
+function switchPeriod(w){
+  currentWeek=w;
+  initWeek(w);
+  document.querySelectorAll('.period-btn[data-week]').forEach(function(b){
+    b.classList.toggle('active',parseInt(b.dataset.week)===w);
+  });
+  var d=calc();
+  renderWeek(d); renderDay(); renderMonthSummaryBar();
+  saveToLS();
+}
+
+function switchDay(dow){
+  currentDow=dow;
+  document.querySelectorAll('.period-btn[data-dow]').forEach(function(b){
+    b.classList.toggle('active',parseInt(b.dataset.dow)===dow);
+  });
+  renderDay();
+  saveToLS();
+}
+
+function renderMonthSummaryBar(){
+  var total=monthPayTotal(), count=0;
+  for(var w=1;w<=4;w++) count+=weekPayCount(w);
+  var e=el('month-summary-bar');
+  if(e) e.innerHTML=total>0?'Месяц итого: <span>'+fmtr(total)+'</span> ('+count+' оплат)':'';
+}
+function switchPeriod(w){
+  currentWeek=w;
+  initWeek(w);
+  document.querySelectorAll('.period-btn').forEach(function(b){
+    b.classList.toggle('active', parseInt(b.dataset.week)===w);
+  });
+  var d=calc();
+  renderWeek(d); renderDay(); renderMonthSummaryBar();
+  saveToLS();
+}
+function renderMonthSummaryBar(){
+  // Sum all weeks payments for quick month total
+  var total=0, count=0;
+  [1,2,3,4].forEach(function(w){
+    (allPayments[w]||[]).forEach(function(p){
+      var a=parseFloat(p.amount)||0;
+      total+=a; if(a>0)count++;
+    });
+  });
+  var e=el('month-summary-bar');
+  if(e) e.innerHTML=total>0?'Месяц итого: <span>'+fmtr(total)+'</span> ('+count+' оплат)':'';
+}
+
+const fmt   = function(n){ return Math.round(n).toLocaleString('ru-RU'); };
+const fmtp  = function(n,d){ d=d||1; return (isFinite(n)&&!isNaN(n)) ? (n*100).toFixed(d)+'%' : '—'; };
+const fmtr  = function(n){ return fmt(n)+' ₽'; };
+const iv    = function(id){ var v=parseInt(document.getElementById(id).value); return isNaN(v)?0:v; };
+const el    = function(id){ return document.getElementById(id); };
+const ht    = function(id,html){ var e=el(id); if(e) e.innerHTML=html; };
+const tx    = function(id,txt){ var e=el(id); if(e) e.textContent=txt; };
+
+function calc(){
+  var ya = (function(bud){
+    var imp=Math.round(bud/0.375), clk=Math.round(imp*YA.ctr),
+        app=Math.round(clk*YA.appRate), op=Math.round(app*YA.opRate),
+        sRaw=Math.round(app*YA.saleRate),
+        sale=Math.min(sRaw,Math.floor(YA_REV_CAP/C)),
+        cpa=app>0?Math.round(bud/app):0;
+    return {imp:imp,clk:clk,app:app,op:op,sale:sale,sRaw:sRaw,cpa:cpa};
+  })(YAB);
+  var waDel   = Math.round(WA_SENT*WA.delivRate);
+  var waLeads = Math.round(waDel*WA.appRate);
+  var waSales = Math.round(waLeads*WA.saleRate);
+  var webRegs  = W>0 ? WEB_BASE : 0;
+  var webSales = W>0 ? Math.round(WEB_BASE*WEB_CHAIN)*W : 0;
+  var preSales = Math.round(P*PRE_CONV);
+  var orgSales = Object.values(LEADS).reduce(function(s,ch){ return s+Math.round(ch.n*ch.conv); },0);
+  var totalRev = (orgSales+waSales+ya.sale+preSales+webSales)*C;
+  var gap      = R-totalRev;
+  return {ya:ya,waDel:waDel,waLeads:waLeads,waSales:waSales,
+          webRegs:webRegs,webSales:webSales,preSales:preSales,
+          orgSales:orgSales,totalRev:totalRev,gap:gap};
+}
+
+// ── МЕТРИКИ ──
+function renderMetrics(d){
+  var ya=d.ya, need=Math.ceil(R/C);
+  var actual=d.orgSales+d.waSales+ya.sale+d.preSales+d.webSales;
+  var g = d.gap;
+  ht('metrics',
+    '<div class="metric accent"><div class="mlbl">Нужно продаж / мес</div><div class="mval">'+need+'</div><div class="msub">при чеке '+fmt(C)+' ₽</div></div>'+
+    '<div class="metric '+(g>0?'danger':'good')+'"><div class="mlbl">'+(g>0?'Дефицит':'Профицит')+'</div><div class="mval">'+fmtr(Math.abs(g))+'</div><div class="msub">план даёт '+actual+' прод.</div></div>'+
+    '<div class="metric ya"><div class="mlbl">Яндекс (кап 500к)</div><div class="mval">'+ya.sale+' прод.</div><div class="msub">'+fmt(ya.sale*C)+' ₽ · '+fmt(ya.app)+' заявок</div></div>'+
+    '<div class="metric '+(P<=70?'warn':'')+'"><div class="mlbl">Предзапись</div><div class="mval">'+d.preSales+' прод.</div><div class="msub">'+P+' чел × 45%</div></div>'+
+    '<div class="metric"><div class="mlbl">WA лиды (ответили)</div><div class="mval">'+d.waLeads+'</div><div class="msub">'+WA_SENT+' отпр → '+d.waDel+' дост → '+d.waSales+' прод.</div></div>'
+  );
+}
+
+// ── ПЛАН vs ФАКТ ──
+function renderPlanFact(d){
+  var ya=d.ya;
+  tx('ya-p-imp','план '+fmt(ya.imp)); tx('ya-p-clk','план '+fmt(ya.clk));
+  tx('ya-p-app','план '+fmt(ya.app)); tx('ya-p-op','план '+fmt(ya.op));
+  tx('ya-p-sale','план '+ya.sale);    tx('ya-p-cpa','план '+fmt(ya.cpa)+' ₽');
+  tx('ya-c-imp','бюджет '+fmt(YAB)+' ₽'); tx('ya-c-clk','CTR план 1.25%');
+  tx('ya-c-app','конв. план 13%'); tx('ya-c-op','передача план 35%');
+  tx('ya-c-sale','конв. план 3.1%'); tx('ya-c-cpa','введите расход');
+  tx('wa-p-sent','план '+WA_SENT);
+  tx('wa-p-del','план '+d.waDel);
+  tx('wa-p-app','план '+d.waLeads+' (ответили)');
+  tx('wa-p-sale','план '+d.waSales);
+
+  var pfRows = [];
+  Object.entries(LEADS).forEach(function(kv){
+    var id=kv[0], ch=kv[1];
+    pfRows.push({id:id, name:ch.name, planL:ch.n, planS:Math.round(ch.n*ch.conv), conv:ch.conv});
+  });
+  pfRows.push({id:'wa',  name:'WhatsApp (ответили)',      planL:d.waLeads,               planS:d.waSales,   conv:WA.saleRate});
+  pfRows.push({id:'ya',  name:'Яндекс (заявки)',           planL:ya.app,                  planS:ya.sale,     conv:YA.saleRate});
+  pfRows.push({id:'web', name:'Вебинар ('+W+'×) регистрации', planL:W>0?d.webRegs:0,     planS:d.webSales,  conv:WEB_CHAIN});
+  pfRows.push({id:'pre', name:'Предзапись',                planL:P,                        planS:d.preSales,  conv:PRE_CONV});
+
+  var rows='', totPS=0, totFS=0, totFL=0;
+  pfRows.forEach(function(row){
+    var fL=factMonth['l_'+row.id]||'', fS=factMonth['s_'+row.id]||'';
+    var dS=fS!==''?parseInt(fS)-row.planS:null;
+    var fc=fL&&fS&&parseInt(fL)>0?parseInt(fS)/parseInt(fL):null;
+    totPS+=row.planS;
+    if(fS)totFS+=parseInt(fS); if(fL)totFL+=parseInt(fL);
+    var dc=dS===null?'diff-zero':dS>=0?'diff-pos':'diff-neg';
+    var ds_str=dS===null?'—':(dS>0?'+':'')+dS;
+    rows+='<tr>'+
+      '<td>'+row.name+'</td>'+
+      '<td style="text-align:right;color:var(--green);font-weight:600">'+row.planL+'</td>'+
+      '<td style="text-align:right;color:var(--green);font-weight:600">'+row.planS+'</td>'+
+      '<td style="text-align:right"><input type="number" placeholder="лиды" value="'+fL+'" data-key="l_'+row.id+'" oninput="saveFact(this)"></td>'+
+      '<td style="text-align:right"><input type="number" placeholder="продажи" value="'+fS+'" data-key="s_'+row.id+'" oninput="saveFact(this)"></td>'+
+      '<td style="text-align:right"><span class="'+dc+'">'+ds_str+'</span></td>'+
+      '<td style="text-align:right;font-size:12px;color:var(--text3)">'+(fc!==null?fmtp(fc):fmtp(row.conv)+'п')+'</td>'+
+      '</tr>';
+  });
+  ht('pf-organic-body', rows);
+
+  var revF=totFS*C, pct=totPS>0?totFS/totPS:0, diff=revF-totPS*C;
+  ht('pf-summary',
+    '<div class="metric '+(pct>=1?'good':pct>=0.8?'warn':'danger')+'"><div class="mlbl">Выполнение плана</div><div class="mval">'+(totFS>0?Math.round(pct*100)+'%':'—')+'</div><div class="msub">'+totFS+' факт / '+totPS+' план</div></div>'+
+    '<div class="metric '+(diff>=0?'good':'danger')+'"><div class="mlbl">'+(diff>=0?'Профицит':'Дефицит')+'</div><div class="mval">'+(totFS>0?fmtr(Math.abs(diff)):'—')+'</div><div class="msub">факт: '+(totFS>0?fmtr(revF):'не внесён')+'</div></div>'+
+    '<div class="metric"><div class="mlbl">Конверсия факт</div><div class="mval">'+(totFL>0&&totFS>0?fmtp(totFS/totFL):'—')+'</div><div class="msub">'+totFS+' из '+totFL+' лидов</div></div>'+
+    '<div class="metric"><div class="mlbl">Осталось до плана</div><div class="mval">'+(totFS>0?Math.max(0,totPS-totFS):totPS)+'</div><div class="msub">продаж</div></div>'
+  );
+}
+
+function saveFact(e){ factMonth[e.dataset.key]=e.value; var d=calc(); renderPlanFact(d); renderMetrics(d); saveToLS(); }
+
+// ── ЯНДЕКС ──
+function calcYA(){
+  var imp=iv('ya-imp'),clk=iv('ya-clk'),app=iv('ya-app'),op=iv('ya-op'),sale=iv('ya-sale'),spend=iv('ya-spend');
+  var d=calc(); var yp=d.ya;
+  function setD(id,fv,pv){ var e=el(id); if(!e||!fv){if(e)e.textContent='';return;} var dv=fv-pv; e.textContent=(dv>=0?'+':'')+fmt(dv); e.style.color=dv>=0?'var(--green)':'var(--red)'; }
+  if(imp)setD('ya-d-imp',imp,yp.imp); if(clk)setD('ya-d-clk',clk,yp.clk);
+  if(app)setD('ya-d-app',app,yp.app); if(op)setD('ya-d-op',op,yp.op);
+  if(sale)setD('ya-d-sale',sale,yp.sale);
+  var ctr=imp&&clk?clk/imp:null, appR=clk&&app?app/clk:null;
+  var cpa=spend&&app?Math.round(spend/app):null, romi=spend&&sale?(sale*C-spend)/spend:null;
+  tx('ya-v-ctr',ctr!==null?fmtp(ctr,2):'—'); tx('ya-v-app',appR!==null?fmtp(appR):'—');
+  tx('ya-v-cpa',cpa!==null?fmtr(cpa):'—');   tx('ya-v-romi',romi!==null?Math.round(romi*100)+'%':'—');
+  if(cpa){ var yaM3=el('ya-m3'); if(yaM3)yaM3.className='metric '+(cpa<=231?'good':cpa<=300?'warn':'danger'); }
+  if(romi){ var yaM4=el('ya-m4'); if(yaM4)yaM4.className='metric '+(romi>=1?'good':romi>=0.5?'warn':'danger'); }
+  if(spend&&app){ tx('ya-d-cpa','факт '+fmtr(cpa)); }
+}
+
+// ── ВАТСАП ──
+function calcWA(){
+  var sent=iv('wa-sent'),del=iv('wa-del'),app=iv('wa-app'),sale=iv('wa-sale');
+  var d=calc();
+  function setD(id,fv,pv){ var e=el(id); if(!e||!fv){if(e)e.textContent='';return;} var dv=fv-pv; e.textContent=(dv>=0?'+':'')+dv; e.style.color=dv>=0?'var(--green)':'var(--red)'; }
+  setD('wa-d-sent',sent,WA_SENT); setD('wa-d-del',del,d.waDel);
+  setD('wa-d-app',app,d.waLeads); setD('wa-d-sale',sale,d.waSales);
+  var delR=sent&&del?del/sent:null, appR=del&&app?app/del:null, saleR=app&&sale?sale/app:null;
+  var cpa=sent&&app&&app>0?Math.round(sent*WA.costPerSent/app):null;
+  tx('wa-v-del',delR!==null?fmtp(delR):'—'); tx('wa-v-app',appR!==null?fmtp(appR):'—');
+  tx('wa-v-sale',saleR!==null?fmtp(saleR):'—'); tx('wa-v-cpa',cpa!==null?fmtr(cpa):'~280 ₽');
+  if(delR!==null){ var waM1=el('wa-m1'); if(waM1)waM1.className='metric '+(delR>=0.7?'good':delR>=0.55?'warn':'danger'); }
+  if(appR!==null){ var waM2=el('wa-m2'); if(waM2)waM2.className='metric '+(appR>=0.037?'good':appR>=0.02?'warn':'danger'); }
+  if(saleR!==null){ var waM3=el('wa-m3'); if(waM3)waM3.className='metric '+(saleR>=0.3?'good':saleR>=0.15?'warn':'danger'); }
+  if(del)tx('wa-c-del','факт '+fmtp(del/(sent||1)));
+  if(app)tx('wa-c-app','факт '+fmtp(app/(del||sent||1)));
+  if(sale)tx('wa-c-sale','факт '+fmtp(sale/(app||1)));
+}
+
+// ── КАНАЛЫ ──
+function renderChannels(d){
+  var ya=d.ya; var rows='',totL=0,totS=0,totR=0;
+  function row(cls,name,conv,leads,sales,rev,wLeads,wSales){
+    totL+=leads;totS+=sales;totR+=rev;
+    return '<tr class="'+cls+'"><td class="ch">'+name+'</td><td class="r">'+fmtp(conv)+'</td>'+
+      '<td class="r"><span class="bt">'+leads+'</span></td><td class="r">'+sales+'</td>'+
+      '<td class="r">'+fmtr(rev)+'</td><td class="r"><span class="bb">'+wLeads+'</span></td>'+
+      '<td class="r">'+wSales+'</td></tr>';
+  }
+  Object.entries(LEADS).forEach(function(kv){
+    var id=kv[0],ch=kv[1]; var s=Math.round(ch.n*ch.conv);
+    rows+=row('',ch.name,ch.conv,ch.n,s,s*C,Math.ceil(ch.n/4),Math.ceil(s/4));
+  });
+  rows+=row('rwa','WhatsApp ('+WA_SENT+' отпр → '+d.waDel+' дост → '+d.waLeads+' ответили)',
+    WA.saleRate,d.waLeads,d.waSales,d.waSales*C,Math.ceil(d.waLeads/4),Math.ceil(d.waSales/4));
+  rows+=row('rya','Яндекс.Директ (бюджет '+fmt(YAB)+' ₽)',
+    YA.saleRate,ya.app,ya.sale,ya.sale*C,Math.ceil(ya.app/4),Math.ceil(ya.sale/4));
+  if(W>0) rows+=row('rw','Вебинар ('+W+' в мес) — регистрации',
+    WEB_CHAIN,d.webRegs,d.webSales,d.webSales*C,Math.ceil(d.webRegs/4),Math.ceil(d.webSales/4));
+  rows+=row(P<=70?'rpw':'rp','Предзапись'+(P<=70?' ⚠':''),
+    PRE_CONV,P,d.preSales,d.preSales*C,Math.ceil(P/4),Math.ceil(d.preSales/4));
+  rows+='<tr class="rt"><td>ИТОГО</td><td></td><td class="r">'+fmt(totL)+'</td><td class="r">'+totS+'</td><td class="r">'+fmtr(totR)+'</td><td class="r">'+fmt(Math.ceil(totL/4))+'</td><td class="r">'+Math.ceil(totS/4)+'</td></tr>';
+  ht('channels-body',rows);
+}
+
+// ── ВОРОНКИ ──
+function renderFunnels(d){
+  var ya=d.ya;
+  var wAt=Math.round(d.webRegs*.58),wOn=Math.round(wAt*.58),wCl=Math.round(wOn*.28),wAp=Math.round(wCl*.51),wSl=Math.round(wAp*.35);
+  function fs(n,v,c,s){ return '<div class="fs"><span class="fsn">'+n+'</span><div class="fsr"><span class="fsv'+(s?' s':'')+'">'+fmt(v)+'</span><span class="fsc">'+c+'</span></div></div>'; }
+  function fc(title,body){ return '<div class="fc"><div class="ft">'+title+'</div>'+body+'</div>'; }
+  ht('funnel-cards',
+    fc('Вебинар ('+W+' / мес)',
+      fs('Регистрации',d.webRegs,'100%')+fs('Зашли',wAt,'58%')+fs('Макс. онлайн',wOn,'58%')+
+      fs('Нажали кнопку',wCl,'28%')+fs('Заявки',wAp,'51%')+fs('Продажи',wSl,'35%',true))+
+    fc('Яндекс.Директ ('+fmt(YAB)+' ₽)',
+      fs('Показы',ya.imp,'—')+fs('Клики',ya.clk,'CTR 1.25%')+fs('Заявки (лиды)',ya.app,'13%')+
+      fs('Переданы ОП',ya.op,'35%')+fs('Продажи',ya.sale,'3.1%',true)+
+      '<div class="fn">Цена заявки: '+fmt(ya.cpa)+' ₽</div>')+
+    fc('Предзапись ('+P+' чел)',
+      fs('В предзапись',P,'100%')+fs('Продажи',d.preSales,'45%',true)+
+      '<div class="fn">'+fmtr(d.preSales*C)+' выручки</div>')+
+    fc('WhatsApp ('+WA_SENT+' отпр / мес)',
+      fs('Отправлено',WA_SENT,'100%')+fs('Доставлено',d.waDel,'69%')+
+      fs('Ответили = лиды',d.waLeads,'3.7% от дост.')+fs('Продажи',d.waSales,'35%',true)+
+      '<div class="fn">Стоим. ~'+fmtr(Math.round(WA_SENT*WA.costPerSent))+'</div>')+
+    fc('Email + Бот',
+      fs('Email кликов',200,'план')+fs('Продажи',8,'4%',true)+
+      fs('Бот реакций',150,'план')+fs('Продажи',6,'4%',true))+
+    fc('Квалификация лида',
+      fs('Входящий лид',500,'100%')+fs('Квал. лид',125,'25%')+fs('Продажи',44,'35%',true))
+  );
+}
+
+// ── НЕДЕЛЯ ──
+function renderWeek(d){
+  var ya=d.ya;
+  function diffSpan(fact,plan){
+    if(fact===0&&plan===0)return '<span class="diff-zero">—</span>';
+    var dv=fact-plan;
+    return '<span class="'+(dv>=0?'diff-pos':'diff-neg')+'">'+(dv>0?'+':'')+dv+'</span>';
+  }
+
+  var WEEK_LEADS=[
+    {id:'tg',   name:'Основной ТГ канал',   conv:0.10,  planL:Math.ceil(351/4),  cls:''},
+    {id:'tg2',  name:'ТГ канал анатомии',   conv:0.06,  planL:Math.ceil(200/4),  cls:''},
+    {id:'insta',name:'Instagram',            conv:0.07,  planL:Math.ceil(100/4),  cls:''},
+    {id:'vk',   name:'ВКонтакте',            conv:0.015, planL:Math.ceil(70/4),   cls:''},
+    {id:'maks', name:'Макс',                 conv:0.015, planL:Math.ceil(400/4),  cls:''},
+    {id:'email',name:'Email (кликнули)',     conv:0.04,  planL:Math.ceil(200/4),  cls:''},
+    {id:'bot',  name:'Бот (отреагировали)', conv:0.04,  planL:Math.ceil(150/4),  cls:''},
+    {id:'wa',   name:'WhatsApp (ответили)',  conv:WA.saleRate, planL:Math.ceil(d.waLeads/4), cls:'rwa'},
+    {id:'ya',   name:'Яндекс (заявки)',      conv:YA.saleRate, planL:Math.ceil(ya.app/4),    cls:'rya'},
+    {id:'pre',  name:'Предзапись',            conv:PRE_CONV,    planL:Math.ceil(P/4),          cls:P<=70?'rpw':'rp'},
+  ];
+  var WEEK_REGS=[
+    {id:'web',name:'Вебинар — регистрации',conv:WEB_CHAIN,planL:W>0?Math.ceil(d.webRegs/4):0,cls:'rw'},
+  ];
+
+  var rows='',totPL=0,totFL=0,totFS=0,totFR=0,totPR=0,totFR2=0;
+  rows+='<tr style="background:var(--surface2)"><td colspan="8" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text2);padding:6px 12px">Лиды (сумма по дням)</td></tr>';
+
+  WEEK_LEADS.forEach(function(src){
+    var factL=weekLeadsTotal(currentWeek,src.id);
+    var factS=weekSalesTotal(currentWeek,src.id);
+    var planS=Math.round(src.planL*src.conv);
+    var fc=factL>0&&factS>0?factS/factL:null;
+    var factRev=factS*C;
+    totPL+=src.planL; totFL+=factL; totFS+=factS; totFR+=factRev;
+    rows+='<tr class="'+src.cls+'">'+
+      '<td class="ch">'+src.name+'</td>'+
+      '<td class="r" style="font-size:11px;color:var(--text3)">'+fmtp(src.conv)+'</td>'+
+      '<td class="r"><span class="bt">'+src.planL+'</span> <span style="font-size:10px;color:var(--text3)">/ '+planS+' прод</span></td>'+
+      '<td class="r" style="font-weight:600;color:var(--blue)">'+(factL||'—')+'</td>'+
+      '<td class="r" style="font-weight:600;color:var(--blue)">'+(factS||'—')+'</td>'+
+      '<td class="r">'+diffSpan(factL,src.planL)+'</td>'+
+      '<td class="r" style="font-size:11px;color:var(--text3)">'+(fc!==null?fmtp(fc):'—')+'</td>'+
+      '<td class="r" style="font-size:12px">'+(factRev>0?fmtr(factRev):'—')+'</td>'+
+      '</tr>';
+  });
+
+  rows+='<tr style="background:#EAF3DE"><td colspan="8" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);padding:6px 12px;border-top:1px solid var(--border)">Регистрации (сумма по дням)</td></tr>';
+  WEEK_REGS.forEach(function(src){
+    var factL=weekLeadsTotal(currentWeek,src.id);
+    var factS=weekSalesTotal(currentWeek,src.id);
+    var planS=Math.round(src.planL*src.conv);
+    totPR+=src.planL; totFR2+=factL;
+    rows+='<tr class="'+src.cls+'">'+
+      '<td class="ch">'+src.name+'</td>'+
+      '<td class="r" style="font-size:11px;color:var(--text3)">'+fmtp(WEB_CHAIN)+' итог</td>'+
+      '<td class="r"><span class="bt">'+src.planL+'</span> <span style="font-size:10px;color:var(--text3)">/ '+planS+' прод</span></td>'+
+      '<td class="r" style="font-weight:600;color:var(--blue)">'+(factL||'—')+'</td>'+
+      '<td class="r" style="font-weight:600;color:var(--blue)">'+(factS||'—')+'</td>'+
+      '<td class="r">'+diffSpan(factL,src.planL)+'</td>'+
+      '<td></td>'+
+      '<td class="r" style="font-size:12px">'+(factS>0?fmtr(factS*C):'—')+'</td>'+
+      '</tr>';
+  });
+
+  var wkPay=weekPayTotal(currentWeek);
+  rows+='<tr class="rt">'+
+    '<td>Итого лидов нед.'+currentWeek+'</td><td></td>'+
+    '<td class="r">'+totPL+' <span style="font-size:10px;font-weight:400">+ '+totPR+' рег</span></td>'+
+    '<td class="r">'+(totFL||'—')+'</td>'+
+    '<td class="r">'+(totFS||'—')+'</td>'+
+    '<td class="r">'+(totFL?diffSpan(totFL,totPL):'—')+'</td>'+
+    '<td class="r">'+(totFL&&totFS?fmtp(totFS/totFL):'—')+'</td>'+
+    '<td class="r">'+fmtr(wkPay)+'</td>'+
+    '</tr>';
+  ht('week-body',rows);
+
+  var planS_tot=WEEK_LEADS.reduce(function(s,r){return s+Math.round(r.planL*r.conv);},0)+
+    WEEK_REGS.reduce(function(s,r){return s+Math.round(r.planL*r.conv);},0);
+  var pct=planS_tot>0&&totFS>0?totFS/planS_tot:null;
+  var wkPayPlan=Math.ceil(R/4);
+  var revPct=wkPayPlan>0&&wkPay>0?wkPay/wkPayPlan:null;
+  ht('week-summary',
+    '<div class="metric '+(revPct===null?'':revPct>=1?'good':revPct>=0.7?'warn':'danger')+'"><div class="mlbl">Выручка недели (оплаты)</div><div class="mval">'+fmtr(wkPay)+'</div><div class="msub">план '+fmtr(wkPayPlan)+'</div></div>'+
+    '<div class="metric '+(pct===null?'':pct>=1?'good':pct>=0.7?'warn':'danger')+'"><div class="mlbl">Выполнение плана продаж</div><div class="mval">'+(pct!==null?Math.round(pct*100)+'%':'—')+'</div><div class="msub">'+totFS+' факт / '+planS_tot+' план</div></div>'+
+    '<div class="metric"><div class="mlbl">Лиды факт / план</div><div class="mval">'+(totFL||'—')+' / '+totPL+'</div><div class="msub">'+(totFL?(totFL>=totPL?'выполнен':'−'+(totPL-totFL)):'по дням недели')+'</div></div>'+
+    '<div class="metric"><div class="mlbl">Регистрации факт / план</div><div class="mval">'+(totFR2||'—')+' / '+totPR+'</div><div class="msub">'+(totFR2&&totPR?Math.round(totFR2/totPR*100)+'%':'')+'</div></div>'
+  );
+}
+// ── ДЕНЬ — ОПЛАТЫ ──
+var SOURCES_LIST=['Основной ТГ','ТГ анатомии','Instagram','ВКонтакте','Макс','Email','Бот','WhatsApp','Яндекс','Предзапись','Вебинар','Другое'];
+
+function addPayment(){
+  initWeek(currentWeek);
+  allDayPayments[currentWeek][currentDow].push({id:Date.now(),comment:'',amount:'',source:'Другое'});
+  renderDay(); saveToLS();
+}
+function removePayment(id){
+  allDayPayments[currentWeek][currentDow]=allDayPayments[currentWeek][currentDow].filter(function(p){return p.id!==id;});
+  renderDay(); saveToLS();
+}
+function updatePayment(id,field,val){
+  var p=allDayPayments[currentWeek][currentDow].find(function(p){return p.id===id;});
+  if(p){p[field]=val; saveToLS();}
+  renderPaySummary(); renderMonthSummaryBar(); renderWeekTotals();
+}
+function handlePayInput(e){ updatePayment(parseInt(e.dataset.pid),e.dataset.field,e.value); }
+function handlePayDel(e){ removePayment(parseInt(e.dataset.pid)); }
+
+function renderDay(){
+  var dowName = DOW_NAMES[currentDow];
+  var weekLabel = 'Неделя '+currentWeek+', '+dowName;
+  tx('day-week-label', weekLabel);
+  tx('day-pay-title', 'Оплаты — '+dowName);
+  tx('day-leads-title','Лиды — '+dowName+' (план vs факт)');
+  renderPayList(); renderPaySummary(); renderDayLeads(); renderWeekTotals();
+}
+
+function renderPayList(){
+  var e=el('pay-list'); if(!e)return;
+  var pays=curPayments();
+  if(!pays||!pays.length){
+    e.innerHTML='<div style="padding:12px;text-align:center;color:var(--text3);font-size:13px">Нет оплат — нажмите кнопку ниже</div>';
+    return;
+  }
+  e.innerHTML=pays.map(function(p){
+    var selOpts=SOURCES_LIST.map(function(s){return '<option'+(s===p.source?' selected':'')+'>'+s+'</option>';}).join('');
+    return '<div class="pay-row">'+
+      '<input type="text" placeholder="клиент / продукт" value="'+p.comment.replace(/"/g,'&quot;')+'" data-field="comment" data-pid="'+p.id+'" oninput="handlePayInput(this)">'+
+      '<input type="number" placeholder="сумма" value="'+p.amount+'" data-field="amount" data-pid="'+p.id+'" oninput="handlePayInput(this)" style="-moz-appearance:textfield;">'+
+      '<select data-field="source" data-pid="'+p.id+'" onchange="handlePayInput(this)">'+selOpts+'</select>'+
+      '<button class="pay-del" data-pid="'+p.id+'" onclick="handlePayDel(this)">&#x2715;</button>'+
+      '</div>';
+  }).join('');
+}
+
+function renderPaySummary(){
+  var e=el('day-pay-summary'); if(!e)return;
+  var pays=curPayments()||[];
+  var dayTotal=pays.reduce(function(s,p){return s+(parseFloat(p.amount)||0);},0);
+  var dayCount=pays.filter(function(p){return p.amount;}).length;
+  var dayAvg=dayCount>0?dayTotal/dayCount:0;
+  var dayPlan=Math.ceil(R/30);
+  var pct=dayPlan>0?dayTotal/dayPlan:0;
+  var wkTotal=weekPayTotal(currentWeek);
+  var bySrc={};
+  pays.forEach(function(p){if(!p.amount)return;bySrc[p.source]=(bySrc[p.source]||0)+(parseFloat(p.amount)||0);});
+  var top=Object.entries(bySrc).sort(function(a,b){return b[1]-a[1];});
+  ht('day-pay-summary',
+    '<div class="metric '+(pct>=1?'good':pct>=0.6?'warn':dayTotal>0?'danger':'')+'"><div class="mlbl">Выручка сегодня</div><div class="mval">'+fmtr(dayTotal)+'</div><div class="msub">план ~'+fmtr(dayPlan)+'/день</div></div>'+
+    '<div class="metric"><div class="mlbl">Оплат сегодня</div><div class="mval">'+dayCount+'</div><div class="msub">ср. чек '+(dayCount>0?fmtr(Math.round(dayAvg)):'—')+'</div></div>'+
+    '<div class="metric"><div class="mlbl">Топ источник</div><div class="mval" style="font-size:14px">'+(top.length?top[0][0]:'—')+'</div><div class="msub">'+(top.length?fmtr(top[0][1]):'')+'</div></div>'+
+    '<div class="metric '+(wkTotal>0?'accent':'')+'"><div class="mlbl">Выручка за неделю</div><div class="mval">'+fmtr(wkTotal)+'</div><div class="msub">план ~'+fmtr(Math.ceil(R/4))+'</div></div>'
+  );
+}
+
+// ── ДЕНЬ — ЛИДЫ ──
+function saveFactDay(e){
+  initWeek(currentWeek);
+  var key=e.dataset.key, val=parseInt(e.value)||0;
+  if(e.dataset.type==='sales') allDaySales[currentWeek][currentDow][key]=val;
+  else allDayLeads[currentWeek][currentDow][key]=val;
+  renderDayLeads(); renderWeekTotals(); saveToLS();
+}
+
+function renderDayLeads(){
+  var d=calc(); var ya=d.ya;
+  var DAY_LEADS=[
+    {id:'tg',   name:'Основной ТГ',      planL:Math.ceil(351/30)},
+    {id:'tg2',  name:'ТГ анатомии',       planL:Math.ceil(200/30)},
+    {id:'insta',name:'Instagram',          planL:Math.ceil(100/30)},
+    {id:'vk',   name:'ВКонтакте',          planL:Math.ceil(70/30)},
+    {id:'maks', name:'Макс',               planL:Math.ceil(400/30)},
+    {id:'email',name:'Email (кликнули)',   planL:Math.ceil(200/30)},
+    {id:'bot',  name:'Бот (отреагировали)',planL:Math.ceil(150/30)},
+    {id:'wa',   name:'WA (ответили)',      planL:Math.ceil(d.waLeads/30)},
+    {id:'ya',   name:'Яндекс (заявки)',   planL:Math.ceil(ya.app/30)},
+    {id:'pre',  name:'Предзапись',          planL:Math.ceil(P/30)},
+  ];
+  var DAY_REGS=[{id:'web',name:'Вебинар — регистрации',planL:W>0?Math.ceil(d.webRegs/30):0}];
+
+  function makeInp(key,val,type){
+    return '<input type="number" placeholder="факт" value="'+(val||'')+'" data-key="'+key+'" data-type="'+(type||'leads')+'" oninput="saveFactDay(this)" '+
+      'style="width:62px;text-align:right;border:1px solid var(--border2);border-radius:6px;padding:3px 5px;'+
+      'font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;-moz-appearance:textfield;">';
+  }
+  function makeRow(src,isReg){
+    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
+    var fS=(allDaySales[currentWeek]&&allDaySales[currentWeek][currentDow]&&allDaySales[currentWeek][currentDow][src.id])||'';
+    var factL=fL!==''?parseInt(fL):null;
+    var diff=factL!==null?factL-src.planL:null;
+    var dc=diff===null?'diff-zero':diff>=0?'diff-pos':'diff-neg';
+    return '<div class="day-plan-row" style="gap:6px;display:flex;align-items:center;padding:7px 14px;border-bottom:1px solid var(--border);">'+
+      '<span class="day-plan-name" style="flex:1">'+src.name+'</span>'+
+      '<span class="day-plan-val" style="min-width:52px;text-align:right">пл '+src.planL+'</span>'+
+      '<span style="font-size:10px;color:var(--text3);min-width:28px">лид</span>'+makeInp(src.id,fL,'leads')+
+      '<span style="font-size:10px;color:var(--text3);min-width:28px;margin-left:4px">прод</span>'+makeInp(src.id,fS,'sales')+
+      '<span class="day-diff '+dc+'" style="min-width:28px;text-align:right">'+(diff===null?'—':(diff>0?'+':'')+diff)+'</span>'+
+      '</div>';
+  }
+
+  var totP=0,totF=0,totPR=0,totFR=0;
+  var html='<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text2);padding:6px 14px;background:var(--surface2)">Лиды</div>';
+  DAY_LEADS.forEach(function(src){
+    totP+=src.planL;
+    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
+    if(fL!=='')totF+=parseInt(fL);
+    html+=makeRow(src,false);
+  });
+  html+='<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);padding:6px 14px;background:#EAF3DE;border-top:1px solid var(--border)">Регистрации</div>';
+  DAY_REGS.forEach(function(src){
+    totPR+=src.planL;
+    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
+    if(fL!=='')totFR+=parseInt(fL);
+    html+=makeRow(src,true);
+  });
+  ht('day-leads-rows',html);
+
+  var pct=totP>0&&totF>0?totF/totP:null;
+  ht('day-leads-summary',
+    '<div class="metric '+(pct===null?'':pct>=1?'good':pct>=0.7?'warn':'danger')+'"><div class="mlbl">Лиды факт / план</div><div class="mval">'+(totF||'—')+' / '+totP+'</div><div class="msub">'+(pct!==null?Math.round(pct*100)+'%':'')+'</div></div>'+
+    '<div class="metric '+(totFR>0?(totFR>=totPR?'good':'warn'):'')+'"><div class="mlbl">Рег. факт / план</div><div class="mval">'+(totFR||'—')+' / '+totPR+'</div><div class="msub">'+(totFR&&totPR?Math.round(totFR/totPR*100)+'%':'')+'</div></div>'
+  );
+}
+
+function renderWeekTotals(){
+  var d=calc(); var ya=d.ya;
+  var ALL_CH=[
+    {id:'tg',n:'Основной ТГ',planW:Math.ceil(351/4)},
+    {id:'tg2',n:'ТГ анатомии',planW:Math.ceil(200/4)},
+    {id:'insta',n:'Instagram',planW:Math.ceil(100/4)},
+    {id:'vk',n:'ВКонтакте',planW:Math.ceil(70/4)},
+    {id:'maks',n:'Макс',planW:Math.ceil(400/4)},
+    {id:'email',n:'Email',planW:Math.ceil(200/4)},
+    {id:'bot',n:'Бот',planW:Math.ceil(150/4)},
+    {id:'wa',n:'WhatsApp',planW:Math.ceil(d.waLeads/4)},
+    {id:'ya',n:'Яндекс',planW:Math.ceil(ya.app/4)},
+    {id:'pre',n:'Предзапись',planW:Math.ceil(P/4)},
+    {id:'web',n:'Вебинар рег.',planW:W>0?Math.ceil(d.webRegs/4):0},
+  ];
+  var wkPay=weekPayTotal(currentWeek), wkPayPlan=Math.ceil(R/4);
+  var totFL=0,totPL=0,totFS=0;
+  ALL_CH.forEach(function(ch){
+    totFL+=weekLeadsTotal(currentWeek,ch.id);
+    totPL+=ch.planW;
+    totFS+=weekSalesTotal(currentWeek,ch.id);
+  });
+  var pct=totPL>0&&totFL>0?totFL/totPL:null;
+  var revPct=wkPayPlan>0&&wkPay>0?wkPay/wkPayPlan:null;
+  ht('day-week-totals',
+    '<div class="metric '+(revPct===null?'':revPct>=1?'good':revPct>=0.7?'warn':'danger')+'"><div class="mlbl">Выручка недели</div><div class="mval">'+fmtr(wkPay)+'</div><div class="msub">план '+fmtr(wkPayPlan)+'</div></div>'+
+    '<div class="metric '+(pct===null?'':pct>=1?'good':pct>=0.7?'warn':'danger')+'"><div class="mlbl">Лиды недели</div><div class="mval">'+(totFL||'—')+' / '+totPL+'</div><div class="msub">'+(pct!==null?Math.round(pct*100)+'% выполнения':'')+'</div></div>'+
+    '<div class="metric"><div class="mlbl">Продажи недели</div><div class="mval">'+(totFS||'—')+'</div><div class="msub">из всех источников</div></div>'+
+    '<div class="metric"><div class="mlbl">До плана недели</div><div class="mval '+(wkPay>=wkPayPlan?'':'danger')+'">'+(wkPay>=wkPayPlan?'✓ выполнен':fmtr(Math.max(0,wkPayPlan-wkPay)))+'</div><div class="msub">'+(wkPay>=wkPayPlan?'молодцы!':'осталось')+'</div></div>'
+  );
+}
+// ── ИНСАЙТЫ ──
+function renderInsights(d){
+  var ya=d.ya, g=d.gap;
+  var preSalesNow=Math.round(P*PRE_CONV), preSales150=Math.round(150*PRE_CONV);
+  ht('insights-grid',
+    '<div class="ic focus"><div class="itag tf">Приоритет №1</div><div class="it">Набрать предзапись до 150 чел</div><div class="in">+'+fmtr((preSales150-preSalesNow)*C)+'</div><div class="ib">Сейчас '+P+' чел → '+preSalesNow+' продаж. При 150 → '+preSales150+'. Конверсия 45% — лучший показатель.</div></div>'+
+    '<div class="ic"><div class="itag tf">Приоритет №2</div><div class="it">Дожим ОП на вебинаре</div><div class="in">+'+fmtr(Math.round(Math.round(WEB_BASE*WEB_CHAIN)*.15*C))+'</div><div class="ib">35% → 50% конверсии заявки в продажу = +40% выручки вебинара без роста трафика.</div></div>'+
+    '<div class="ic"><div class="itag ty">Яндекс</div><div class="it">Цена заявки план '+fmt(ya.cpa)+' ₽</div><div class="in">'+ya.sale+' прод.</div><div class="ib">С бюджетом '+fmt(YAB)+' ₽ план '+ya.sale+' продаж, '+fmt(ya.app)+' заявок. Конверсия 13% клик→заявка — ключевая метрика лендинга.</div></div>'+
+    '<div class="ic"><div class="itag tf">Приоритет №3</div><div class="it">Рост основного ТГ канала</div><div class="in">10% конв.</div><div class="ib">Лучший органический канал. +100 подписчиков = +10 продаж. ROI выше Яндекса.</div></div>'+
+    '<div class="ic"><div class="itag tw">WA</div><div class="it">'+WA_SENT+' отпр → '+d.waLeads+' лидов / мес</div><div class="in">'+d.waLeads+' лидов</div><div class="ib">'+WA_SENT+' отправлено → '+d.waDel+' доставлено (69%) → '+d.waLeads+' ответили (3.7% от дост.) → '+d.waSales+' продаж.</div></div>'+
+    '<div class="ic"><div class="itag '+(g>0?'tr':'tf')+'">'+( g>0?'Дефицит':'Выполнимо')+'</div><div class="it">'+(g>0?'До плана '+fmtr(Math.abs(g)):'Каналы закрывают план')+'</div><div class="in">'+(g>0?'−'+Math.ceil(g/C)+' прод.':'✓')+'</div><div class="ib">'+(g>0?'Фокус: предзапись до 150 чел, бюджет Яндекса, рост регистраций на вебинар.':'Текущие каналы без роста закрывают план.')+'</div></div>'
+  );
+}
+
+// ── ТАБЫ ──
+function showTab(tab){
+  ['planfact','channels','funnels','week','day','insights'].forEach(function(t){
+    var e=el('tab-'+t); if(e)e.style.display=t===tab?'':'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active',b.dataset.tab===tab);});
+  if(tab==='day'){
+    document.querySelectorAll('.period-btn[data-dow]').forEach(function(b){
+      b.classList.toggle('active',parseInt(b.dataset.dow)===currentDow);
+    });
+    renderDay();
+  }
+}
+document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.tab);});});
+
+function exportData(){
+  var data={R:R,C:C,W:W,P:P,YAB:YAB,factMonth:factMonth,
+    allDayLeads:allDayLeads,allDayPayments:allDayPayments,allDaySales:allDaySales,
+    currentWeek:currentWeek,currentDow:currentDow};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='miot_decomp_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importData(event){
+  var file=event.target.files[0]; if(!file)return;
+  var reader=new FileReader();
+  reader.onload=async function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      localStorage.setItem(LS_KEY,JSON.stringify(data));
+      if(db) await _saveToSupabase(data);
+      loadFromLS(); update();
+      alert('Данные импортированы успешно');
+    }catch(err){ alert('Ошибка импорта: '+err.message); }
+  };
+  reader.readAsText(file);
+  event.target.value='';
+}
+
+function update(){
+  R=parseInt(el('revenue').value); C=parseInt(el('check').value);
+  W=parseInt(el('webs').value);    P=parseInt(el('pre').value);
+  YAB=parseInt(el('yabud').value);
+  tx('revenue-out',fmt(R)+' ₽'); tx('check-out',fmt(C)+' ₽');
+  tx('webs-out',W); tx('pre-out',P+' чел'); tx('yabud-out',fmt(YAB)+' ₽');
+  var d=calc();
+  renderMetrics(d); renderPlanFact(d); renderChannels(d);
+  renderFunnels(d); renderWeek(d); renderInsights(d);
+  renderPaySummary(); renderDayLeads(); renderWeekTotals(); renderMonthSummaryBar();
+  saveToLS();
+}
+['revenue','check','webs','pre','yabud'].forEach(function(id){el(id).addEventListener('input',update);});
+
+// ── INIT ──
+(async function(){
+  var loaded = loadFromLS(); // быстрый старт из кэша
+  if(loaded){ update(); renderMonthSummaryBar(); }
+  // затем загружаем актуальные данные из Supabase
+  var fromDB = await loadFromSupabase();
+  if(fromDB||loaded){
+    document.querySelectorAll('.period-btn[data-week]').forEach(function(b){
+      b.classList.toggle('active',parseInt(b.dataset.week)===currentWeek);
+    });
+    document.querySelectorAll('.period-btn[data-dow]').forEach(function(b){
+      b.classList.toggle('active',parseInt(b.dataset.dow)===currentDow);
+    });
+  }
+  update();
+  renderMonthSummaryBar();
+})();
+</script>
+</body>
+</html>
