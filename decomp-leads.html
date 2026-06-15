@@ -143,7 +143,7 @@ tbody tr:hover{background:var(--surface2);}
 .day-sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
 .period-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);}
 .period-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-right:4px;}
-.period-btn{padding:5px 14px;font-size:12px;font-weight:600;border:1px solid var(--border2);border-radius:6px;background:transparent;cursor:pointer;color:var(--text2);}
+.period-btn{padding:5px 14px;font-size:12px;font-weight:600;border:1px solid var(--border2);border-radius:6px;background:transparent;cursor:pointer;color:var(--text2);line-height:1.3;text-align:center;}
 .period-btn:hover{background:var(--surface2);}
 .period-btn.active{background:var(--teal);color:#fff;border-color:var(--teal);}
 .period-month-summary{margin-left:auto;font-size:12px;color:var(--text2);}
@@ -357,6 +357,32 @@ var currentWeek = 1;  // активная неделя (1-4)
 var currentDow  = 1;  // активный день недели (1=Пн .. 7=Вс)
 var DOW_NAMES   = {1:'Пн',2:'Вт',3:'Ср',4:'Чт',5:'Пт',6:'Сб',7:'Вс'};
 
+// ── ДАТЫ ──
+var WEEK1_START = new Date(2026, 5, 1); // 1 июня 2026
+var MON_SHORT   = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+function getWeekDate(week, dow){
+  var d=new Date(WEEK1_START); d.setDate(d.getDate()+(week-1)*7+(dow-1)); return d;
+}
+function fmtDate(d){ return d.getDate()+' '+MON_SHORT[d.getMonth()]; }
+function getWeekRange(week){
+  var s=getWeekDate(week,1), e=getWeekDate(week,7);
+  if(s.getMonth()===e.getMonth()) return s.getDate()+'–'+e.getDate()+' '+MON_SHORT[e.getMonth()];
+  return s.getDate()+' '+MON_SHORT[s.getMonth()]+' – '+e.getDate()+' '+MON_SHORT[e.getMonth()];
+}
+function initDateLabels(){
+  for(var w=1;w<=4;w++){
+    var btn=document.querySelector('.period-btn[data-week="'+w+'"]');
+    if(btn) btn.innerHTML='Неделя '+w+'<span style="display:block;font-size:10px;font-weight:400;opacity:.75;margin-top:1px">'+getWeekRange(w)+'</span>';
+  }
+  updateDayLabels();
+}
+function updateDayLabels(){
+  for(var d=1;d<=7;d++){
+    var btn=document.querySelector('.period-btn[data-dow="'+d+'"]');
+    if(btn) btn.innerHTML=DOW_NAMES[d]+'<span style="display:block;font-size:10px;font-weight:400;opacity:.75">'+getWeekDate(currentWeek,d).getDate()+'</span>';
+  }
+}
+
 // Структура данных:
 // allDayLeads[week][dow][channel_id] = число лидов
 // allDayPayments[week][dow] = [{id,comment,amount,source}, ...]
@@ -509,6 +535,7 @@ function switchPeriod(w){
   document.querySelectorAll('.period-btn').forEach(function(b){
     b.classList.toggle('active', parseInt(b.dataset.week)===w);
   });
+  updateDayLabels();
   var d=calc();
   renderWeek(d); renderDay(); renderMonthSummaryBar();
   saveToLS();
@@ -829,10 +856,11 @@ function handlePayDel(e){ removePayment(parseInt(e.dataset.pid)); }
 
 function renderDay(){
   var dowName = DOW_NAMES[currentDow];
-  var weekLabel = 'Неделя '+currentWeek+', '+dowName;
-  tx('day-week-label', weekLabel);
-  tx('day-pay-title', 'Оплаты — '+dowName);
-  tx('day-leads-title','Лиды — '+dowName+' (план vs факт)');
+  var date = getWeekDate(currentWeek, currentDow);
+  var dateStr = fmtDate(date);
+  tx('day-week-label', 'Неделя '+currentWeek+', '+dowName+' '+dateStr);
+  tx('day-pay-title', 'Оплаты — '+dowName+', '+dateStr);
+  tx('day-leads-title','Лиды — '+dowName+', '+dateStr+' (план vs факт)');
   renderPayList(); renderPaySummary(); renderDayLeads(); renderWeekTotals();
 }
 
@@ -1058,6 +1086,7 @@ function update(){
       b.classList.toggle('active',parseInt(b.dataset.dow)===currentDow);
     });
   }
+  initDateLabels();
   update();
   renderMonthSummaryBar();
 })();
