@@ -891,6 +891,156 @@
     }
     .method-bullet__icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
     .method-bullet__text { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
+
+    /* ── Announcement banner ── */
+    .announce-banner {
+      background: linear-gradient(135deg, #0a1628 0%, #0f2040 50%, #1a1a2e 100%);
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .announce-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(204,167,118,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .announce-banner__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(204,167,118,0.15);
+      border: 1px solid rgba(204,167,118,0.4);
+      color: var(--color-highlight);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .announce-banner__headline {
+      font-family: var(--font-primary);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .announce-banner__headline span { color: var(--color-highlight); }
+    .announce-banner__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .announce-experts {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .announce-expert {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 0.5rem 1.1rem 0.5rem 0.5rem;
+    }
+    .announce-expert__avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      flex-shrink: 0;
+      border: 2px solid rgba(204,167,118,0.5);
+    }
+    .announce-expert__info {}
+    .announce-expert__name {
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .announce-expert__role {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .announce-facts {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 1.5rem;
+    }
+    @media (max-width: 600px) { .announce-facts { grid-template-columns: repeat(2, 1fr); } }
+    .announce-fact__val {
+      font-family: var(--font-primary);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-highlight);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .announce-fact__label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.3;
+    }
+    .announce-banner__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .announce-duo {
+      position: relative;
+      width: 260px;
+      height: 320px;
+    }
+    .announce-duo__img {
+      position: absolute;
+      width: 180px;
+      height: 220px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 3px solid rgba(204,167,118,0.5);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .announce-duo__img--1 {
+      top: 0; left: 0;
+      object-position: center top;
+      z-index: 2;
+    }
+    .announce-duo__img--2 {
+      bottom: 0; right: 0;
+      object-position: 75% top;
+      z-index: 1;
+    }
+    .announce-duo__badge {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--color-highlight);
+      color: #fff;
+      font-family: var(--font-primary);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.75rem;
+      border-radius: 20px;
+      z-index: 3;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(204,167,118,0.4);
+    }
+    @media (max-width: 900px) {
+      .announce-banner__visual { display: none; }
+    }
   </style>
 </head>
 
@@ -952,6 +1102,54 @@
         <div class="bio-hero__img-wrap fade-in-up delay-1">
           <img src="../photos/oleg1606.jpg" alt="Олег Агапэ — Семинар по психосоматике">
           <div class="bio-hero__img-backdrop"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Инфоповод: обновлённый семинар + два эксперта -->
+  <section class="announce-banner">
+    <div class="container" style="display:grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;">
+      <div class="fade-in-up">
+        <div class="announce-banner__tag">🔥 Обновлённый семинар · Июль 2025</div>
+        <h2 class="announce-banner__headline">Впервые: углублённая программа<br><span>с двумя ведущими экспертами</span></h2>
+        <p class="announce-banner__sub">Олег Агапэ и Артём Тен объединяют остеопатию и восточную медицину в единую систему работы с психосоматикой. 11 блоков — от диагностики до полной сессии. Ни одного лишнего часа.</p>
+        <div class="announce-experts">
+          <div class="announce-expert">
+            <img src="../photos/oleg1292.jpg" alt="Олег Агапэ" class="announce-expert__avatar" style="object-position: top center;">
+            <div class="announce-expert__info">
+              <div class="announce-expert__name">Олег Агапэ</div>
+              <div class="announce-expert__role">Врач-остеопат · Методолог МИОТ</div>
+            </div>
+          </div>
+          <div class="announce-expert">
+            <img src="../photos/artem_ten.png" alt="Артём Тен" class="announce-expert__avatar" style="object-position: 75% top;">
+            <div class="announce-expert__info">
+              <div class="announce-expert__name">Артём Тен</div>
+              <div class="announce-expert__role">Восточная и интегративная медицина</div>
+            </div>
+          </div>
+        </div>
+        <div class="announce-facts">
+          <div>
+            <div class="announce-fact__val">11</div>
+            <div class="announce-fact__label">тематических<br>блоков</div>
+          </div>
+          <div>
+            <div class="announce-fact__val">3</div>
+            <div class="announce-fact__label">дня практики<br>и диагностики</div>
+          </div>
+          <div>
+            <div class="announce-fact__val">20</div>
+            <div class="announce-fact__label">человек<br>в группе</div>
+          </div>
+        </div>
+      </div>
+      <div class="announce-banner__visual fade-in-up delay-1">
+        <div class="announce-duo">
+          <img src="../photos/oleg1292.jpg" alt="Олег Агапэ" class="announce-duo__img announce-duo__img--1" style="object-position: top center;">
+          <img src="../photos/artem_ten.png" alt="Артём Тен" class="announce-duo__img announce-duo__img--2" style="object-position: 75% top;">
+          <div class="announce-duo__badge">2 эксперта</div>
         </div>
       </div>
     </div>
