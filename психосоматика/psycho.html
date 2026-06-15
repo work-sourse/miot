@@ -798,6 +798,99 @@
       color: var(--color-text-primary);
       line-height: 1.4;
     }
+
+    /* ── Problem→Solution steps ── */
+    .insight-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) { .insight-steps { grid-template-columns: 1fr; } }
+    .insight-step {
+      border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
+      position: relative;
+    }
+    .insight-step--has { background: var(--color-bg-primary); border: 1px solid var(--color-bg-secondary); box-shadow: var(--shadow-sm); }
+    .insight-step--problem { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.18); }
+    .insight-step--solution { background: rgba(204,167,118,0.12); border: 1px solid rgba(204,167,118,0.35); }
+    .insight-step__icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .insight-step__label {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .insight-step--has .insight-step__label { color: var(--color-text-secondary); }
+    .insight-step--problem .insight-step__label { color: #ef4444; }
+    .insight-step--solution .insight-step__label { color: var(--color-highlight); }
+    .insight-step__title {
+      font-family: var(--font-primary); font-size: 1.05rem; font-weight: 700;
+      color: var(--color-text-primary); margin-bottom: 0.75rem; line-height: 1.3;
+    }
+    .insight-step__text { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.65; margin: 0; }
+
+    /* ── Body emotion cards ── */
+    .body-emotion-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+    }
+    @media (max-width: 600px) { .body-emotion-grid { grid-template-columns: 1fr; } }
+    .body-emotion-card {
+      display: flex;
+      align-items: stretch;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .body-emotion-card__left {
+      background: var(--color-bg-dark);
+      color: #fff;
+      padding: 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 130px;
+      max-width: 130px;
+    }
+    .body-emotion-card__icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .body-emotion-card__emotion {
+      font-family: var(--font-primary); font-size: 0.85rem; font-weight: 700; line-height: 1.3;
+    }
+    .body-emotion-card__right {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-bg-secondary);
+      border-left: none;
+      padding: 1.25rem 1.25rem;
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+    .body-emotion-card__body {
+      font-size: 0.875rem; color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+    .body-emotion-card__body strong { color: var(--color-highlight); font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+
+    /* ── Method bullets ── */
+    .method-bullets {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin: 1.5rem 0 2rem;
+    }
+    @media (max-width: 560px) { .method-bullets { grid-template-columns: 1fr; } }
+    .method-bullet {
+      display: flex; gap: 0.85rem; align-items: flex-start;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1rem;
+    }
+    .method-bullet__icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .method-bullet__text { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
   </style>
 </head>
 
@@ -914,11 +1007,24 @@
         <span class="badge">Для специалиста</span>
         <h2>Как психосоматика усиливает<br>практику специалиста</h2>
       </div>
-      <div class="fade-in-up" style="max-width:780px; margin:0 auto;">
-        <div class="what-is-text">
-          Ты умеешь снимать напряжение, восстанавливать движение, улучшать функции. Ты действуешь уверенно, опираешься на логику тела и получаешь результаты.<br><br>
-          Но если в основе симптома — непрожитый эмоциональный конфликт, тело будет возвращаться к напряжению снова.<br><br>
-          Психосоматика позволяет видеть не только структуру, но и суть: где зафиксирована эмоция, как она искажает физиологию, и что можно сделать, чтобы это высвободить — мягко, точно, профессионально. Это не отменяет твою работу. Это делает её глубже. Так появляется целостный результат: симптом уходит — и не возвращается.
+      <div class="insight-steps fade-in-up">
+        <div class="insight-step insight-step--has">
+          <span class="insight-step__icon">✅</span>
+          <div class="insight-step__label">Что у тебя уже есть</div>
+          <div class="insight-step__title">Ты работаешь с телом и получаешь результаты</div>
+          <p class="insight-step__text">Снимаешь напряжение, восстанавливаешь движение, улучшаешь функции. Действуешь уверенно, опираешься на логику тела.</p>
+        </div>
+        <div class="insight-step insight-step--problem">
+          <span class="insight-step__icon">⚠️</span>
+          <div class="insight-step__label">Но есть ограничение</div>
+          <div class="insight-step__title">Симптом возвращается снова и снова</div>
+          <p class="insight-step__text">Если в основе — непрожитый эмоциональный конфликт, тело будет возвращаться к напряжению, сколько бы раз ты его ни снимал.</p>
+        </div>
+        <div class="insight-step insight-step--solution">
+          <span class="insight-step__icon">🎯</span>
+          <div class="insight-step__label">Что добавляет психосоматика</div>
+          <div class="insight-step__title">Работа на уровне первопричины</div>
+          <p class="insight-step__text">Видишь, где зафиксирована эмоция, как она искажает физиологию — и высвобождаешь её мягко, точно. Симптом уходит и не возвращается.</p>
         </div>
       </div>
       <div class="section-header text-center fade-in-up" style="margin-top:3rem;">
@@ -956,10 +1062,27 @@
       <div class="fade-in-up" style="max-width:760px; margin:0 auto 3rem;">
         <div class="what-is-quote">«Психосоматика — это метод, который позволяет определить, какой внутренний конфликт лежит в основе телесного симптома, и мягко высвободить его через тело»</div>
         <div class="what-is-text">
-          Метод сочетает <strong>остеопатию, телесно-ориентированную психотерапию и диагностику через ткани.</strong> Результат — работа на уровне первопричины.<br><br>
-          Психосоматика объединяет наблюдение за реакциями тканей, понимание телесных паттернов, связанных с эмоциями, прикосновение как инструмент диагностики и коррекции, и тонкую работу с бессознательным через тело.
-          <span class="what-is-highlight">Диагностика → Интерпретация → Мягкая коррекция</span>
+          Метод сочетает <strong>остеопатию, телесно-ориентированную психотерапию и диагностику через ткани.</strong> Результат — работа на уровне первопричины.
         </div>
+        <div class="method-bullets">
+          <div class="method-bullet">
+            <span class="method-bullet__icon">👁</span>
+            <p class="method-bullet__text">Наблюдение за реакциями тканей</p>
+          </div>
+          <div class="method-bullet">
+            <span class="method-bullet__icon">🧠</span>
+            <p class="method-bullet__text">Понимание телесных паттернов, связанных с эмоциями</p>
+          </div>
+          <div class="method-bullet">
+            <span class="method-bullet__icon">🤲</span>
+            <p class="method-bullet__text">Прикосновение как инструмент диагностики и коррекции</p>
+          </div>
+          <div class="method-bullet">
+            <span class="method-bullet__icon">🌀</span>
+            <p class="method-bullet__text">Тонкая работа с бессознательным через тело</p>
+          </div>
+        </div>
+        <span class="what-is-highlight">Диагностика → Интерпретация → Мягкая коррекция</span>
       </div>
       <div class="principles-grid fade-in-up">
         <div class="principle-card">
@@ -993,12 +1116,54 @@
         <span class="badge">Карта тела</span>
         <h2>Тело первым показывает,<br>что в человеке застряли эмоции</h2>
       </div>
-      <div class="fade-in-up" style="max-width:720px; margin:0 auto 2.5rem;">
-        <div class="what-is-text" style="font-size:1.05rem; line-height:2;">
-          <p>Одиночество — как хроническое напряжение в мышцах таза.</p>
-          <p>Страх — как спазм в шее, лице, плечах.</p>
-          <p>Потеря ощущается как тяжесть в груди.</p>
-          <p>Невыраженный гнев фиксируется в диафрагме.</p>
+      <div class="body-emotion-grid fade-in-up">
+        <div class="body-emotion-card">
+          <div class="body-emotion-card__left">
+            <div class="body-emotion-card__icon">😶</div>
+            <div class="body-emotion-card__emotion">Одиночество</div>
+          </div>
+          <div class="body-emotion-card__right">
+            <div class="body-emotion-card__body">
+              <strong>Фиксируется в</strong>
+              Хроническое напряжение в мышцах таза
+            </div>
+          </div>
+        </div>
+        <div class="body-emotion-card">
+          <div class="body-emotion-card__left">
+            <div class="body-emotion-card__icon">😰</div>
+            <div class="body-emotion-card__emotion">Страх</div>
+          </div>
+          <div class="body-emotion-card__right">
+            <div class="body-emotion-card__body">
+              <strong>Фиксируется в</strong>
+              Спазм в шее, лице, плечах
+            </div>
+          </div>
+        </div>
+        <div class="body-emotion-card">
+          <div class="body-emotion-card__left">
+            <div class="body-emotion-card__icon">💔</div>
+            <div class="body-emotion-card__emotion">Потеря</div>
+          </div>
+          <div class="body-emotion-card__right">
+            <div class="body-emotion-card__body">
+              <strong>Фиксируется в</strong>
+              Тяжесть в груди
+            </div>
+          </div>
+        </div>
+        <div class="body-emotion-card">
+          <div class="body-emotion-card__left">
+            <div class="body-emotion-card__icon">😤</div>
+            <div class="body-emotion-card__emotion">Невыраженный гнев</div>
+          </div>
+          <div class="body-emotion-card__right">
+            <div class="body-emotion-card__body">
+              <strong>Фиксируется в</strong>
+              Диафрагма
+            </div>
+          </div>
         </div>
       </div>
       <div class="mid-cta fade-in-up">
