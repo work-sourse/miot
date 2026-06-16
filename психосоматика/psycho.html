@@ -651,6 +651,24 @@
     }
     .plan-card__list li::before { content: '✓'; color: var(--color-highlight); font-weight: 700; flex-shrink: 0; }
     .cta-note { text-align: center; margin-top: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .early-bird-banner {
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+      background: linear-gradient(90deg, rgba(204,167,118,0.15) 0%, rgba(204,167,118,0.07) 100%);
+      border: 1.5px solid rgba(204,167,118,0.45);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--color-text-primary);
+    }
+    .early-bird-banner__fire { font-size: 1.2rem; flex-shrink: 0; }
+    .early-bird-banner__text { flex: 1; }
+    .early-bird-banner__text strong { color: var(--color-highlight); }
+    .early-bird-banner__date {
+      background: var(--color-highlight); color: #0f172a;
+      font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem; border-radius: 20px; white-space: nowrap;
+    }
     .installment-note {
       text-align: center;
       margin-top: 1.5rem;
@@ -2068,6 +2086,12 @@
         <h2>Выбери формат участия</h2>
         <p>Москва · 24–26 июля · 10:00–18:00</p>
       </div>
+      <div class="early-bird-banner fade-in-up">
+        <span class="early-bird-banner__fire">🔥</span>
+        <span class="early-bird-banner__text">Раннее бронирование — выгода <strong>5 000 ₽</strong> на тарифы для специалистов</span>
+        <span class="early-bird-banner__date">до 20 июня</span>
+      </div>
+
       <div class="plans-grid fade-in-up">
         <div class="plan-card">
           <div class="plan-card__name">📍 Очный · Москва</div>
