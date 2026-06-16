@@ -905,9 +905,10 @@ function renderPaySummary(){
 // ── ДЕНЬ — ЛИДЫ ──
 function saveFactDay(e){
   initWeek(currentWeek);
-  var key=e.dataset.key, val=parseInt(e.value)||0;
-  if(e.dataset.type==='sales') allDaySales[currentWeek][currentDow][key]=val;
-  else allDayLeads[currentWeek][currentDow][key]=val;
+  var key=e.dataset.key;
+  var val=e.value.trim()===''?null:Math.max(0,parseInt(e.value)||0);
+  if(val===null){delete (e.dataset.type==='sales'?allDaySales:allDayLeads)[currentWeek][currentDow][key];}
+  else{(e.dataset.type==='sales'?allDaySales:allDayLeads)[currentWeek][currentDow][key]=val;}
   renderDayLeads(); renderWeekTotals(); saveToLS();
 }
 
@@ -928,9 +929,12 @@ function renderDayLeads(){
   var DAY_REGS=[{id:'web',name:'Вебинар — регистрации',planL:W>0?Math.ceil(d.webRegs/30):0}];
 
   function makeInp(key,val,type){
-    return '<input type="number" placeholder="факт" value="'+(val||'')+'" data-key="'+key+'" data-type="'+(type||'leads')+'" oninput="saveFactDay(this)" '+
+    var display=(val===0||val)?val:'';
+    return '<input type="number" min="0" placeholder="факт" value="'+display+'" data-key="'+key+'" data-type="'+(type||'leads')+'" '+
+      'onchange="saveFactDay(this)" onkeydown="if(event.key===\'Enter\')this.blur()" '+
       'style="width:62px;text-align:right;border:1px solid var(--border2);border-radius:6px;padding:3px 5px;'+
-      'font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;-moz-appearance:textfield;">';
+      'font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-bg);outline:none;font-family:inherit;'+
+      '-moz-appearance:textfield;-webkit-appearance:none;">';
   }
   function makeRow(src,isReg){
     var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
