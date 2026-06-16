@@ -937,8 +937,10 @@ function renderDayLeads(){
       '-moz-appearance:textfield;-webkit-appearance:none;">';
   }
   function makeRow(src,isReg){
-    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
-    var fS=(allDaySales[currentWeek]&&allDaySales[currentWeek][currentDow]&&allDaySales[currentWeek][currentDow][src.id])||'';
+    var _ldR=allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow];
+    var fL=(_ldR&&src.id in _ldR)?_ldR[src.id]:'';
+    var _sdR=allDaySales[currentWeek]&&allDaySales[currentWeek][currentDow];
+    var fS=(_sdR&&src.id in _sdR)?_sdR[src.id]:'';
     var factL=fL!==''?parseInt(fL):null;
     var diff=factL!==null?factL-src.planL:null;
     var dc=diff===null?'diff-zero':diff>=0?'diff-pos':'diff-neg';
@@ -955,14 +957,16 @@ function renderDayLeads(){
   var html='<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text2);padding:6px 14px;background:var(--surface2)">Лиды</div>';
   DAY_LEADS.forEach(function(src){
     totP+=src.planL;
-    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
+    var _ld=allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow];
+    var fL=(_ld&&src.id in _ld)?_ld[src.id]:'';
     if(fL!=='')totF+=parseInt(fL);
     html+=makeRow(src,false);
   });
   html+='<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);padding:6px 14px;background:#EAF3DE;border-top:1px solid var(--border)">Регистрации</div>';
   DAY_REGS.forEach(function(src){
     totPR+=src.planL;
-    var fL=(allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow]&&allDayLeads[currentWeek][currentDow][src.id])||'';
+    var _ld=allDayLeads[currentWeek]&&allDayLeads[currentWeek][currentDow];
+    var fL=(_ld&&src.id in _ld)?_ld[src.id]:'';
     if(fL!=='')totFR+=parseInt(fL);
     html+=makeRow(src,true);
   });
