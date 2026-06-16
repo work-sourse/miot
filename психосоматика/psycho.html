@@ -892,6 +892,61 @@
     .method-bullet__icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
     .method-bullet__text { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
 
+    /* ── Для себя block ── */
+    .forself-block {
+      background: linear-gradient(135deg, rgba(204,167,118,0.08) 0%, rgba(204,167,118,0.03) 100%);
+      border: 1.5px solid rgba(204,167,118,0.3);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.5rem;
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .forself-block { grid-template-columns: 1fr; padding: 1.75rem; gap: 1.5rem; } }
+    .forself-block__tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(204,167,118,0.15); border: 1px solid rgba(204,167,118,0.35);
+      color: var(--color-highlight); font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1rem;
+    }
+    .forself-block__title {
+      font-family: var(--font-primary); font-size: 1.4rem; font-weight: 800;
+      color: var(--color-text-primary); margin-bottom: 0.5rem; line-height: 1.3;
+    }
+    .forself-block__sub { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1.5rem; }
+    .forself-who { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem; }
+    .forself-who__item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5;
+    }
+    .forself-who__item::before { content: '—'; color: var(--color-highlight); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .forself-includes__label {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-highlight); margin-bottom: 0.9rem;
+    }
+    .forself-includes__list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .forself-includes__item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      background: var(--color-bg-primary); border-radius: var(--radius-sm);
+      padding: 0.65rem 0.9rem; font-size: 0.85rem; color: var(--color-text-primary); line-height: 1.4;
+      box-shadow: var(--shadow-sm);
+    }
+    .forself-includes__item-icon { flex-shrink: 0; font-size: 1rem; }
+    .forself-block__expert {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-top: 1.25rem; padding-top: 1.25rem;
+      border-top: 1px solid rgba(204,167,118,0.2);
+    }
+    .forself-block__expert img {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+      border: 2px solid rgba(204,167,118,0.4); flex-shrink: 0;
+    }
+    .forself-block__expert-text { font-size: 0.8rem; color: var(--color-text-secondary); }
+    .forself-block__expert-name { font-weight: 700; color: var(--color-text-primary); }
+
     /* ── Announcement banner ── */
     .announce-banner {
       background: linear-gradient(135deg, #0a1628 0%, #0f2040 50%, #1a1a2e 100%);
@@ -1136,12 +1191,12 @@
             <div class="announce-fact__label">тематических<br>блоков</div>
           </div>
           <div>
-            <div class="announce-fact__val">3</div>
-            <div class="announce-fact__label">дня практики<br>и диагностики</div>
+            <div class="announce-fact__val">2</div>
+            <div class="announce-fact__label">ведущих<br>эксперта</div>
           </div>
           <div>
-            <div class="announce-fact__val">20</div>
-            <div class="announce-fact__label">человек<br>в группе</div>
+            <div class="announce-fact__val">2025</div>
+            <div class="announce-fact__label">обновлённая<br>программа</div>
           </div>
         </div>
       </div>
@@ -1160,8 +1215,8 @@
     <div class="container">
       <div class="section-header text-center fade-in-up">
         <span class="badge">Подходит для</span>
-        <h2>Этот семинар для специалистов, которые:</h2>
-        <p>Ты работаешь с телом. Теперь можешь работать с его глубиной.</p>
+        <h2>Семинар для тех, кто работает с телом —<br>и хочет работать глубже</h2>
+        <p>Остеопаты, психологи, массажисты, телесные терапевты и фасилитаторы</p>
       </div>
       <div class="audience-tags fade-in-up" style="margin-top:0; margin-bottom:2.5rem;">
         <span class="audience-tag">– всех, кто помогает другим, используя контакт с телом</span>
@@ -1191,7 +1246,41 @@
           <p class="for-whom-card__text">Не только физически, но и внутренне</p>
         </div>
       </div>
-      <div class="mid-cta fade-in-up">
+      <!-- Для себя -->
+      <div class="forself-block fade-in-up">
+        <div>
+          <div class="forself-block__tag">🌸 Тариф «Для себя»</div>
+          <h3 class="forself-block__title">Хотите понять своё тело — не как специалист, а для себя?</h3>
+          <p class="forself-block__sub">Семинар создан для практикующих специалистов, но тариф «Для себя» — для тех, кто хочет разобраться в своих собственных психосоматических паттернах.</p>
+          <div class="forself-who">
+            <div class="forself-who__item">Чувствуете хроническое напряжение, усталость или симптомы, причину которых врачи не находят</div>
+            <div class="forself-who__item">Замечаете, что тело реагирует на стресс, но не знаете, как с этим работать</div>
+            <div class="forself-who__item">Хотите понять, где именно в теле живут ваши эмоции — и как их отпустить</div>
+            <div class="forself-who__item">Ищете практики самонаблюдения, которые можно делать самостоятельно</div>
+          </div>
+          <div class="forself-block__expert">
+            <img src="../photos/lubov_zaitseva.png" alt="Любовь Зайцева" style="object-position: center top;">
+            <div class="forself-block__expert-text">
+              Тариф ведёт <span class="forself-block__expert-name">Любовь Зайцева</span> — телесный терапевт, биодинамист, инструктор МИОТ
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="forself-includes__label">Что входит в тариф</div>
+          <div class="forself-includes__list">
+            <div class="forself-includes__item"><span class="forself-includes__item-icon">🎥</span>8 видеоуроков по зонам тела и эмоциям</div>
+            <div class="forself-includes__item"><span class="forself-includes__item-icon">🪞</span>Пошаговая система самонаблюдения</div>
+            <div class="forself-includes__item"><span class="forself-includes__item-icon">🤲</span>Практики для отпускания застрявших эмоций</div>
+            <div class="forself-includes__item"><span class="forself-includes__item-icon">💬</span>Zoom-сессия с разбором вашего запроса</div>
+            <div class="forself-includes__item"><span class="forself-includes__item-icon">📅</span>Доступ на 3 месяца · полностью онлайн</div>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer; width:100%;">Узнать стоимость тарифа «Для себя»</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mid-cta fade-in-up" style="margin-top:2rem;">
         <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
         <button onclick="gcOpen('gcModalManager')" class="btn btn-secondary" style="cursor:pointer;">Задать вопрос менеджеру</button>
       </div>
