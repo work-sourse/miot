@@ -664,12 +664,16 @@
       display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center;
       padding: 3rem 0;
     }
-    @media (max-width: 700px) { .stat90-inner { grid-template-columns: 1fr; gap: 1.5rem; } }
+    @media (max-width: 700px) {
+      .stat90-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stat90-left { display: flex; align-items: center; gap: 1rem; text-align: left; }
+      .stat90-label { margin-top: 0; max-width: none; }
+    }
     .stat90-left { text-align: center; }
     .stat90-num {
       font-family: 'Montserrat', sans-serif; font-weight: 900;
       font-size: clamp(4rem, 10vw, 7rem); line-height: 1;
-      color: var(--color-highlight);
+      color: var(--color-highlight); flex-shrink: 0;
     }
     .stat90-num span { font-size: 0.55em; }
     .stat90-label {
