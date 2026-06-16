@@ -651,6 +651,28 @@
     }
     .plan-card__list li::before { content: '✓'; color: var(--color-highlight); font-weight: 700; flex-shrink: 0; }
     .cta-note { text-align: center; margin-top: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .stat90-section { background: var(--color-bg-dark); }
+    .stat90-inner {
+      display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center;
+      padding: 3rem 0;
+    }
+    @media (max-width: 700px) { .stat90-inner { grid-template-columns: 1fr; gap: 1.5rem; } }
+    .stat90-left { text-align: center; }
+    .stat90-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(4rem, 10vw, 7rem); line-height: 1;
+      color: var(--color-highlight);
+    }
+    .stat90-num span { font-size: 0.55em; }
+    .stat90-label {
+      font-size: 0.9rem; line-height: 1.5; color: rgba(255,255,255,0.55);
+      margin-top: 0.5rem; max-width: 160px;
+    }
+    .stat90-right p {
+      color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 1rem; font-size: 1rem;
+    }
+    .stat90-right p:last-child { margin-bottom: 0; }
+    .stat90-right strong { color: #fff; }
     .early-bird-banner {
       display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
       background: linear-gradient(90deg, rgba(204,167,118,0.15) 0%, rgba(204,167,118,0.07) 100%);
@@ -1301,6 +1323,23 @@
       <div class="mid-cta fade-in-up" style="margin-top:2rem;">
         <a href="#cta" class="btn btn-primary btn-glow">Занять место</a>
         <button onclick="gcOpen('gcModalManager')" class="btn btn-secondary" style="cursor:pointer;">Задать вопрос менеджеру</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 90% статистика -->
+  <section class="section-pad stat90-section">
+    <div class="container">
+      <div class="stat90-inner fade-in-up">
+        <div class="stat90-left">
+          <div class="stat90-num">90<span>%</span></div>
+          <div class="stat90-label">людей сталкиваются<br>с психосоматическими<br>нарушениями — в той<br>или иной форме</div>
+        </div>
+        <div class="stat90-right">
+          <p>Чем сложнее устроена психика человека, тем выше вероятность, что эмоции не выражаются напрямую, а <strong>фиксируются в теле</strong> — через мышцы, фасции, дыхание, работу органов.</p>
+          <p>Психика напрямую влияет на физиологию. Хроническое напряжение, спазмы, боли, расстройства сна, скачки давления, сложности с пищеварением — часто это не патология органов, а <strong>функциональные изменения, вызванные психоэмоциональными конфликтами.</strong></p>
+          <p>Мы исследуем телесные реакции как отражение непрожитых эмоциональных процессов.</p>
+        </div>
       </div>
     </div>
   </section>
