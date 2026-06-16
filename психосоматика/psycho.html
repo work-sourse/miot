@@ -1094,27 +1094,26 @@
     }
     .announce-duo {
       position: relative;
-      width: 260px;
-      height: 320px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
     }
     .announce-duo__img {
-      position: absolute;
-      width: 180px;
-      height: 220px;
+      width: 140px;
+      height: 190px;
       border-radius: 16px;
       object-fit: cover;
       border: 3px solid rgba(204,167,118,0.5);
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      flex-shrink: 0;
     }
     .announce-duo__img--1 {
-      top: 0; left: 0;
       object-position: center top;
-      z-index: 2;
+      margin-top: 0;
     }
     .announce-duo__img--2 {
-      bottom: 0; right: 0;
       object-position: 75% top;
-      z-index: 1;
+      margin-top: 32px;
     }
     .announce-duo__badge {
       position: absolute;
@@ -1206,7 +1205,7 @@
   <section class="announce-banner">
     <div class="container" style="display:grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;">
       <div class="fade-in-up">
-        <div class="announce-banner__tag">🔥 Обновлённый семинар · Июль 2025</div>
+        <div class="announce-banner__tag">🔥 Обновлённый семинар · Июль 2026</div>
         <h2 class="announce-banner__headline">Впервые: углублённая программа<br><span>с двумя ведущими экспертами</span></h2>
         <p class="announce-banner__sub">Олег Агапэ и Артём Тен объединяют остеопатию и восточную медицину в единую систему работы с психосоматикой. 11 блоков — от диагностики до полной сессии. Ни одного лишнего часа.</p>
         <div class="announce-experts">
@@ -1235,7 +1234,7 @@
             <div class="announce-fact__label">ведущих<br>эксперта</div>
           </div>
           <div>
-            <div class="announce-fact__val">2025</div>
+            <div class="announce-fact__val">2026</div>
             <div class="announce-fact__label">обновлённая<br>программа</div>
           </div>
         </div>
