@@ -664,7 +664,12 @@
       display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center;
       padding: 3rem 0;
     }
-    @media (max-width: 700px) { .stat90-inner { grid-template-columns: 1fr; gap: 1.5rem; } }
+    @media (max-width: 700px) {
+      .stat90-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stat90-left { display: flex; align-items: center; gap: 1rem; text-align: left; }
+      .stat90-num { font-size: 3.5rem; }
+      .stat90-label { margin-top: 0; max-width: none; font-size: 0.95rem; }
+    }
     .stat90-left { text-align: center; }
     .stat90-num {
       font-family: 'Montserrat', sans-serif; font-weight: 900;
@@ -1340,7 +1345,7 @@
       <div class="stat90-inner fade-in-up">
         <div class="stat90-left">
           <div class="stat90-num">90<span>%</span></div>
-          <div class="stat90-label">людей сталкиваются<br>с психосоматическими<br>нарушениями — в той<br>или иной форме</div>
+          <div class="stat90-label">людей сталкиваются с психосоматическими нарушениями — в той или иной форме</div>
         </div>
         <div class="stat90-right">
           <p>Чем сложнее устроена психика человека, тем выше вероятность, что эмоции не выражаются напрямую, а <strong>фиксируются в теле</strong> — через мышцы, фасции, дыхание, работу органов.</p>
