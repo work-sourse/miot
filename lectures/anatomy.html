@@ -694,7 +694,7 @@
         </div>
         <div class="tariff__btns">
           <a href="https://agape-course.com/anatom" target="_blank" class="btn btn--warm">Смотреть наполнение</a>
-          <a href="#" class="btn btn--accent">Внести предоплату / Оплатить</a>
+          <a href="#" onclick="gcOpen('gcModalBasic');return false;" class="btn btn--accent">Внести предоплату / Оплатить</a>
         </div>
       </div>
 
@@ -737,8 +737,8 @@
         </div>
         <div class="tariff__btns">
           <a href="https://agape-course.com/anatom" target="_blank" class="btn btn--accent">Смотреть наполнение</a>
-          <a href="#" class="btn btn--warm">Внести предоплату / Оплатить</a>
-          <a href="#" class="btn btn--outline">Купить обновление</a>
+          <a href="#" onclick="gcOpen('gcModalAdvanced');return false;" class="btn btn--warm">Внести предоплату / Оплатить</a>
+          <a href="#" onclick="gcOpen('gcModalAdvanced');return false;" class="btn btn--outline">Купить обновление</a>
         </div>
       </div>
 
@@ -804,11 +804,33 @@
       <div class="bottom-cta__btns">
         <a href="#video" class="btn btn--accent btn--lg">Смотреть запись эфира</a>
         <a href="#pricing" class="btn btn--warm btn--lg">Смотреть наполнение</a>
-        <a href="#" class="btn btn--ghost-white btn--lg">Задать вопрос</a>
+        <a href="#" onclick="gcOpen('gcModalManager');return false;" class="btn btn--ghost-white btn--lg">Задать вопрос</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- GC MODALS -->
+<div id="gcModalManager" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:480px;width:90%;position:relative;">
+    <button onclick="document.getElementById('gcModalManager').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+    <script id="6f5c4cd76863c2be8cf8ec3b206ed58756edfd54" src="https://online.agape-course.ru/pl/lite/widget/script?id=1621859" onload="typeof startWidget6f5c4cd76863c2be8cf8ec3b206ed58756edfd54==='function'&&startWidget6f5c4cd76863c2be8cf8ec3b206ed58756edfd54()"></script>
+  </div>
+</div>
+
+<div id="gcModalBasic" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:480px;width:90%;position:relative;">
+    <button onclick="document.getElementById('gcModalBasic').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+    <script id="f4a242e5257b53a524161952d7f995a0896d8d52" src="https://online.agape-course.ru/pl/lite/widget/script?id=1621860" onload="typeof startWidgetf4a242e5257b53a524161952d7f995a0896d8d52==='function'&&startWidgetf4a242e5257b53a524161952d7f995a0896d8d52()"></script>
+  </div>
+</div>
+
+<div id="gcModalAdvanced" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:480px;width:90%;position:relative;">
+    <button onclick="document.getElementById('gcModalAdvanced').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+    <script id="ead4167017a7b32f19283129ef9dd7b104895d45" src="https://online.agape-course.ru/pl/lite/widget/script?id=1621864" onload="typeof startWidgetead4167017a7b32f19283129ef9dd7b104895d45==='function'&&startWidgetead4167017a7b32f19283129ef9dd7b104895d45()"></script>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="footer">
@@ -821,6 +843,20 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function gcOpen(id) {
+    var el = document.getElementById(id);
+    if (el) { el.style.display = 'flex'; }
+  }
+  document.addEventListener('click', function(e) {
+    var modals = ['gcModalManager','gcModalBasic','gcModalAdvanced'];
+    modals.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && e.target === el) el.style.display = 'none';
+    });
+  });
+</script>
 
 <script>
   // 48-hour countdown from page load (stored in sessionStorage to persist on reload)
