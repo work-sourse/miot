@@ -365,7 +365,19 @@ const calendarEvents = [
     { start: '2026-05-22', end: '2026-05-24', title: '6 поток Краниосакральные технологии', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Краниа' },
     { start: '2026-07-11', end: '2026-07-12', title: 'Экзамен 6 поток', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Экзамен' },
     { start: '2026-10-10', end: '2026-10-11', title: 'Конференция «Секреты фасции»', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Конфа' },
-    { start: '2026-10-30', end: '2026-11-01', title: 'Диссекция «Жир и фасции — скрытая механика боли и старения»', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Диссекция' }
+    { start: '2025-10-30', end: '2025-11-01', title: 'Диссекция «Жир и фасции — скрытая механика боли и старения»', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Диссекция' },
+    // Семинар по психосоматике
+    { start: '2026-07-24', end: '2026-07-26', title: 'Семинар по психосоматике', target: '#psychosomatics', program: 'Психосоматика', shortTitle: 'Психосоматика' },
+    // 7 поток «Специалист Остеокоррекции»
+    { start: '2026-09-04', end: '2026-09-06', title: '7 поток Базовые Остеопатические Технологии', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Базовые ОТ' },
+    { start: '2026-10-02', end: '2026-10-04', title: '7 поток Висцеральные Остеопатические Технологии', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Висцеральные ОТ' },
+    { start: '2026-10-30', end: '2026-11-01', title: '7 поток Биомеханические Остеопатические Технологии', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Биомеханические ОТ' },
+    { start: '2026-12-04', end: '2026-12-06', title: '7 поток Краниосакральные Остеопатические Технологии', target: '#osteocorrection', program: 'Специалист Остеокоррекции', shortTitle: 'Краниосакральные ОТ' },
+    // Биодинамика
+    { start: '2026-09-11', end: '2026-09-13', title: 'Биодинамика опорно-двигательной системы', target: 'биодинамика/biodynamic.html', program: 'Биодинамика', shortTitle: 'Биодинамика ОДС' },
+    { start: '2026-10-16', end: '2026-10-18', title: 'Биодинамика висцеральной системы', target: 'биодинамика/biodynamic.html', program: 'Биодинамика', shortTitle: 'Биодинамика висцеральной системы' },
+    { start: '2026-11-13', end: '2026-11-15', title: 'Биодинамика систем регуляции', target: 'биодинамика/biodynamic.html', program: 'Биодинамика', shortTitle: 'Биодинамика систем регуляции' },
+    { start: '2026-12-11', end: '2026-12-13', title: 'Биодинамика полевых процессов', target: 'биодинамика/biodynamic.html', program: 'Биодинамика', shortTitle: 'Биодинамика полевых процессов' }
 ];
 
 function initCalendar() {
@@ -377,7 +389,9 @@ function initCalendar() {
 
     if (!calendarDays) return;
 
-    let currentDate = new Date(2026, 2, 1); // Март 2026 (индекс 2)
+    // Открываем календарь на текущем месяце (на момент захода на сайт)
+    let currentDate = new Date();
+    currentDate.setDate(1);
 
     const monthNames = [
         "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
@@ -461,8 +475,11 @@ function initCalendar() {
                 </div>
             `;
             
-            // Плавный скролл при клике на ссылку в карточке
+            // Плавный скролл для якорей на этой странице; обычный переход для ссылок на другие страницы
             card.querySelector('.scroll-to-product').addEventListener('click', (e) => {
+                if (!event.target.startsWith('#')) {
+                    return; // внешняя/другая страница — переходим по ссылке
+                }
                 e.preventDefault();
                 const targetEl = document.querySelector(event.target);
                 if (targetEl) {

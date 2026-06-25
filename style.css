@@ -1263,6 +1263,8 @@ section {
     position: relative;
     border: 1px solid transparent;
     padding: 5px;
+    overflow: hidden;
+    min-width: 0;
 }
 
 .day-number {
@@ -1309,8 +1311,7 @@ section {
     background: linear-gradient(135deg, var(--color-highlight), #b89260);
     color: white !important;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(204, 167, 118, 0.3);
-    animation: glowPulse 3s infinite ease-in-out;
+    box-shadow: 0 2px 8px rgba(204, 167, 118, 0.25);
 }
 
 .calendar-day.has-event .event-label {
@@ -1318,8 +1319,8 @@ section {
 }
 
 .calendar-day.has-event:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(204, 167, 118, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(204, 167, 118, 0.4);
     background: linear-gradient(135deg, #d4b58c, var(--color-highlight));
 }
 
