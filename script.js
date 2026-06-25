@@ -363,7 +363,7 @@ const calendarEvents = [
     { start: '2026-03-27', end: '2026-03-29', title: '6 поток Висцеральные Остеопатические Технологии', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Висцеральные' },
     { start: '2026-04-24', end: '2026-04-26', title: '6 поток Биомеханические Остеопатические Технологии', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Биомеханика' },
     { start: '2026-05-22', end: '2026-05-24', title: '6 поток Краниосакральные технологии', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Краниа' },
-    { start: '2026-07-11', end: '2026-07-12', title: 'Экзамен 6 поток', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Экзамен' },
+    { start: '2026-07-11', end: '2026-07-12', title: 'Экзамен 6 поток', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Экзамен', promo: false },
     { start: '2026-10-10', end: '2026-10-11', title: 'Конференция «Секреты фасции»', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Конфа' },
     { start: '2025-10-30', end: '2025-11-01', title: 'Диссекция «Жир и фасции — скрытая механика боли и старения»', target: 'osteocorrection.html', program: 'Специалист Остеокоррекции', shortTitle: 'Диссекция' },
     // Семинар по психосоматике
@@ -529,3 +529,58 @@ function initCalendar() {
 if (document.getElementById('calendar')) {
     initCalendar();
 }
+
+// --- Блок «Ближайшие мероприятия» (автозаполнение из calendarEvents) ---
+function renderUpcomingEvents() {
+    const list = document.getElementById('upcomingEventsList');
+    if (!list) return;
+
+    const monthGen = ["января", "февраля", "марта", "апреля", "мая", "июня",
+        "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+    const monthShort = ["ЯНВ", "ФЕВ", "МАР", "АПР", "МАЙ", "ИЮН",
+        "ИЮЛ", "АВГ", "СЕН", "ОКТ", "НОЯ", "ДЕК"];
+    const LIMIT = 3;
+
+    // Сегодняшняя дата в формате YYYY-MM-DD (для сравнения со строковыми датами событий)
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+    const upcoming = calendarEvents
+        .filter(e => e.promo !== false)            // исключаем служебные события (например, экзамен)
+        .filter(e => (e.end || e.start) >= todayStr) // ещё не прошедшие
+        .sort((a, b) => a.start.localeCompare(b.start))
+        .slice(0, LIMIT);
+
+    function badge(start, end) {
+        const s = start.split('-'), e = (end || start).split('-');
+        const sD = +s[2], sM = +s[1] - 1, eD = +e[2], eM = +e[1] - 1;
+        if (start === (end || start)) return { day: `${sD}`, month: monthGen[sM].toUpperCase() };
+        if (sM === eM) return { day: `${sD}-${eD}`, month: monthGen[sM].toUpperCase() };
+        return { day: `${sD}-${eD}`, month: `${monthShort[sM]}/${monthShort[eM]}` };
+    }
+
+    if (upcoming.length === 0) {
+        list.innerHTML = '<p class="no-events">Ближайшие мероприятия скоро появятся.</p>';
+        return;
+    }
+
+    list.innerHTML = upcoming.map((ev, i) => {
+        const b = badge(ev.start, ev.end);
+        return `
+            <div class="event-row fade-in-up delay-${i + 2}">
+                <div class="event-date">
+                    <span class="day">${b.day}</span>
+                    <span class="month">${b.month}</span>
+                </div>
+                <div class="event-info">
+                    <h4>${ev.program}</h4>
+                    <p>${ev.title}</p>
+                </div>
+                <div class="event-action">
+                    <a href="${ev.target}" class="btn btn-secondary btn-sm">Записаться</a>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+renderUpcomingEvents();
