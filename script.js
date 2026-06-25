@@ -559,6 +559,17 @@ function renderUpcomingEvents() {
         return { day: `${sD}-${eD}`, month: `${monthShort[sM]}/${monthShort[eM]}` };
     }
 
+    // Краткие теги (формат / для кого). Можно задать в событии (format, audience),
+    // иначе подставляются значения по типу программы.
+    function metaTags(ev) {
+        const defaults = {
+            'Биодинамика': { format: 'Очно / Онлайн', audience: 'Для остеопатов и практиков' },
+            'Психосоматика': { format: 'Онлайн', audience: 'Для специалистов и для себя' }
+        };
+        const def = defaults[ev.program] || { format: 'Очно / Онлайн', audience: 'Для специалистов' };
+        return [ev.format || def.format, ev.audience || def.audience].filter(Boolean);
+    }
+
     if (upcoming.length === 0) {
         list.innerHTML = '<p class="no-events">Ближайшие мероприятия скоро появятся.</p>';
         return;
@@ -575,6 +586,9 @@ function renderUpcomingEvents() {
                 <div class="event-info">
                     <h4>${ev.program}</h4>
                     <p>${ev.title}</p>
+                    <div class="event-tags">
+                        ${metaTags(ev).map(t => `<span>${t}</span>`).join('')}
+                    </div>
                 </div>
                 <div class="event-action">
                     <a href="${ev.target}" class="btn btn-secondary btn-sm">Записаться</a>

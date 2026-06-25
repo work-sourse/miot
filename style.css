@@ -1170,6 +1170,24 @@ section {
     font-size: 0.95rem;
 }
 
+.event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+}
+
+.event-tags span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
 @media (max-width: 900px) {
     .events-grid {
         grid-template-columns: 1fr;
