@@ -1137,9 +1137,14 @@ section {
     width: 100px;
     height: 100px;
     padding: 0 6px;
-    background: var(--color-bg-secondary);
+    background: linear-gradient(135deg, var(--color-highlight), #b89260);
     border-radius: var(--radius-md);
-    color: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(204, 167, 118, 0.35);
+}
+
+.event-date .month {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .event-date .day {
