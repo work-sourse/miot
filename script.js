@@ -569,7 +569,7 @@ function renderUpcomingEvents() {
         return `
             <div class="event-row fade-in-up delay-${i + 2}">
                 <div class="event-date">
-                    <span class="day">${b.day}</span>
+                    <span class="day${b.day.includes('-') ? ' day--range' : ''}">${b.day}</span>
                     <span class="month">${b.month}</span>
                 </div>
                 <div class="event-info">
