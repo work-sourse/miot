@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260625f">
+    <link rel="stylesheet" href="style.css?v=20260625g">
 </head>
 
 <body>
@@ -132,7 +132,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://t.me/TatyBondar" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalOsteocorrection')">Узнать стоимость</button>
                                     <a href="osteocorrection.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://t.me/TatyBondar" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalAnatomy')">Узнать стоимость</button>
                                     <a href="anatomy.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://t.me/TatyBondar" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalOsteoestetics')">Узнать стоимость</button>
                                     <a href="osteoestetics.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://t.me/TatyBondar" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalBiodynamics')">Узнать стоимость</button>
                                     <a href="биодинамика/biodynamic.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://t.me/TatyBondar" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalPsychosomatics')">Узнать стоимость</button>
                                     <a href="психосоматика/psycho-preview.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -309,8 +309,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://online.agape-course.ru/teach/control/stream/view/id/677817237"
-                                        target="_blank" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalSamSebe')">Узнать стоимость</button>
                                     <a href="self-osteopath.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -346,8 +345,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://agape-course.com/forparents2" target="_blank"
-                                        class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalOsteoroditel')">Узнать стоимость</button>
                                     <a href="parents.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -383,8 +381,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://agape-course.com/estetika" target="_blank"
-                                        class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalOsteoestetikaSelf')">Узнать стоимость</button>
                                     <a href="estetika.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -416,7 +413,7 @@
                                 </div>
 
                                 <div class="program-actions">
-                                    <a href="https://agape-course.com/psycho" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                                    <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalPsychosomatics')">Узнать стоимость</button>
                                     <a href="психосоматика/psycho-preview.html" class="btn btn-secondary">Подробнее</a>
                                 </div>
                             </div>
@@ -691,7 +688,102 @@
         </div>
     </div>
 
-    <script src="script.js?v=20260625e"></script>
+    <!-- ══ Модалки «Узнать стоимость» (виджеты GetCourse) ══ -->
+    <div id="gcModalOsteocorrection" class="gc-modal" role="dialog" aria-modal="true" aria-label="Специалист остеокоррекции — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Специалист остеокоррекции</div>
+            <div class="gc-modal__body">
+                <script id="ed0822e92f7de27c901416219460fd427aef2ec1" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622834" onload="typeof startWidgeted0822e92f7de27c901416219460fd427aef2ec1==='function'&&startWidgeted0822e92f7de27c901416219460fd427aef2ec1()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalAnatomy" class="gc-modal" role="dialog" aria-modal="true" aria-label="Функциональная анатомия — тарифы">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Функциональная анатомия</div>
+            <div class="gc-modal__body">
+                <div class="gc-modal__tariff">Тариф «Базовый»</div>
+                <script id="ca398cb4b4370363bcebd35c6c74e52dbf2e4956" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622844" onload="typeof startWidgetca398cb4b4370363bcebd35c6c74e52dbf2e4956==='function'&&startWidgetca398cb4b4370363bcebd35c6c74e52dbf2e4956()"></script>
+                <div class="gc-modal__tariff">Тариф «Профи»</div>
+                <script id="c36932756c7ecceef566aeeb40428f95d202303b" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622846" onload="typeof startWidgetc36932756c7ecceef566aeeb40428f95d202303b==='function'&&startWidgetc36932756c7ecceef566aeeb40428f95d202303b()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalOsteoestetics" class="gc-modal" role="dialog" aria-modal="true" aria-label="Специалист ОстеоЭстетики — форматы">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Специалист ОстеоЭстетики</div>
+            <div class="gc-modal__body">
+                <div class="gc-modal__tariff">Формат «Онлайн-трансляция»</div>
+                <script id="ced9d7e72111b8fc2b94f2db8b74585c044980d0" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622847" onload="typeof startWidgetced9d7e72111b8fc2b94f2db8b74585c044980d0==='function'&&startWidgetced9d7e72111b8fc2b94f2db8b74585c044980d0()"></script>
+                <div class="gc-modal__tariff">Формат «Очное участие (МСК)»</div>
+                <script id="bf3f8688612f26b32464894969f7027bbadefc7a" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622849" onload="typeof startWidgetbf3f8688612f26b32464894969f7027bbadefc7a==='function'&&startWidgetbf3f8688612f26b32464894969f7027bbadefc7a()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalBiodynamics" class="gc-modal" role="dialog" aria-modal="true" aria-label="Биодинамика — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Биодинамика</div>
+            <div class="gc-modal__body">
+                <script id="300c22a93ee59029fed08535161143283bb407fc" src="https://online.agape-course.ru/pl/lite/widget/script?id=1611867" onload="typeof startWidget300c22a93ee59029fed08535161143283bb407fc==='function'&&startWidget300c22a93ee59029fed08535161143283bb407fc()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalPsychosomatics" class="gc-modal" role="dialog" aria-modal="true" aria-label="Психосоматика — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Психосоматика</div>
+            <div class="gc-modal__body">
+                <script id="ce192ab28640eddfea33711c5734e149a914bf30" src="https://online.agape-course.ru/pl/lite/widget/script?id=1618911" onload="typeof startWidgetce192ab28640eddfea33711c5734e149a914bf30==='function'&&startWidgetce192ab28640eddfea33711c5734e149a914bf30()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalSamSebe" class="gc-modal" role="dialog" aria-modal="true" aria-label="Сам себе остеопат 2.0 — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">Сам себе остеопат 2.0</div>
+            <div class="gc-modal__body">
+                <script id="d6b3e51e9aa32b26ab63f246924fb1ca295b1d11" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622837" onload="typeof startWidgetd6b3e51e9aa32b26ab63f246924fb1ca295b1d11==='function'&&startWidgetd6b3e51e9aa32b26ab63f246924fb1ca295b1d11()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalOsteoroditel" class="gc-modal" role="dialog" aria-modal="true" aria-label="ОстеоРодитель 2.0 — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">ОстеоРодитель 2.0</div>
+            <div class="gc-modal__body">
+                <script id="5cee0db15a83f75cd72ea7a324c01e3a0c852f5e" src="https://online.agape-course.ru/pl/lite/widget/script?id=1616356" onload="typeof startWidget5cee0db15a83f75cd72ea7a324c01e3a0c852f5e==='function'&&startWidget5cee0db15a83f75cd72ea7a324c01e3a0c852f5e()"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcModalOsteoestetikaSelf" class="gc-modal" role="dialog" aria-modal="true" aria-label="ОстеоЭстетика для себя — стоимость">
+        <div class="gc-modal__overlay" data-gc-close></div>
+        <div class="gc-modal__box">
+            <button class="gc-modal__close" data-gc-close aria-label="Закрыть">✕</button>
+            <div class="gc-modal__title">ОстеоЭстетика для себя (21 день)</div>
+            <div class="gc-modal__body">
+                <script id="50a80f4a65b43fa32339d3471676b4535d2bdfb8" src="https://online.agape-course.ru/pl/lite/widget/script?id=1622840" onload="typeof startWidget50a80f4a65b43fa32339d3471676b4535d2bdfb8==='function'&&startWidget50a80f4a65b43fa32339d3471676b4535d2bdfb8()"></script>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=20260625g"></script>
 </body>
 
 </html>

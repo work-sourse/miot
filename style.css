@@ -3107,3 +3107,84 @@ section {
     }
 }
 
+/* --- Модалки «Узнать стоимость» (виджеты GetCourse) --- */
+.gc-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+}
+
+.gc-modal.is-open {
+    display: flex;
+}
+
+.gc-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 20, 40, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.gc-modal__box {
+    position: relative;
+    z-index: 1;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px 32px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: 16px;
+    box-shadow: 0 32px 64px -16px rgba(10, 30, 80, 0.4);
+}
+
+.gc-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.gc-modal__close:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+}
+
+.gc-modal__title {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 20px;
+    line-height: 1.3;
+}
+
+.gc-modal__tariff {
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 22px 0 8px;
+}
+
+.gc-modal__body {
+    min-height: 80px;
+}
+
+@media (max-width: 600px) {
+    .gc-modal__box {
+        padding: 36px 16px 24px;
+    }
+}
+

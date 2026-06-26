@@ -598,3 +598,29 @@ function renderUpcomingEvents() {
 }
 
 renderUpcomingEvents();
+
+// --- Модалки «Узнать стоимость» (виджеты GetCourse) ---
+window.gcOpen = function (id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+};
+(function () {
+    function closeModal(m) {
+        m.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('click', function (e) {
+        const t = e.target;
+        if (t.hasAttribute('data-gc-close') || t.classList.contains('gc-modal__overlay')) {
+            const m = t.closest('.gc-modal');
+            if (m) closeModal(m);
+        }
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.gc-modal.is-open').forEach(closeModal);
+        }
+    });
+})();
