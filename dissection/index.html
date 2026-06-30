@@ -3349,6 +3349,39 @@ section {
       line-height: 1.6;
       margin: 0 0 1.1rem;
     }
+    .course-card__price {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 0 0 1.2rem;
+    }
+    .course-card__price-old {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      text-decoration: line-through;
+      text-decoration-color: var(--color-highlight);
+    }
+    .course-card__price-new {
+      font-family: var(--font-primary);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+    }
+    .course-card__price-tag {
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--color-highlight);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 4px 11px;
+    }
     .course-card__meta {
       display: flex; flex-wrap: wrap; gap: 0.5rem;
       margin-bottom: 1.4rem;
@@ -3525,6 +3558,11 @@ section {
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
             </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
+            </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
             </div>
@@ -3536,6 +3574,11 @@ section {
             <p class="course-card__desc">Органы груди и живота, диафрагма, плевра и брюшина, их фасциальные связи и подвижность. Основа для висцеральной остеопатии.</p>
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
+            </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
             </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
@@ -3549,6 +3592,11 @@ section {
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
             </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
+            </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
             </div>
@@ -3560,6 +3608,11 @@ section {
             <p class="course-card__desc">Миофасциальные цепи всего тела на препарате: как натяжение в одной зоне передаётся по непрерывным линиям и формирует паттерны.</p>
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
+            </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
             </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
@@ -3573,6 +3626,11 @@ section {
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
             </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
+            </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
             </div>
@@ -3584,6 +3642,11 @@ section {
             <p class="course-card__desc">Бедро, колено, голень и стопа: мышцы, фасции и нервы. Анатомия опоры и ходьбы для работы с нижней конечностью.</p>
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись класса</span>
+            </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">55 000 ₽</span>
+              <span class="course-card__price-new">50 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
             </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
@@ -3615,6 +3678,11 @@ section {
               <span class="course-card__badge course-card__badge--rec">🎥 Запись конференции</span>
               <span class="course-card__badge">🧠 Голова · ЦНС</span>
             </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">15 000 ₽</span>
+              <span class="course-card__price-new">10 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
+            </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
             </div>
@@ -3627,6 +3695,11 @@ section {
             <div class="course-card__meta">
               <span class="course-card__badge course-card__badge--rec">🎥 Запись конференции</span>
               <span class="course-card__badge">🫀 Живот · ЖКТ</span>
+            </div>
+            <div class="course-card__price">
+              <span class="course-card__price-old">15 000 ₽</span>
+              <span class="course-card__price-new">10 000 ₽</span>
+              <span class="course-card__price-tag">🔖 скидка</span>
             </div>
             <div class="course-card__cta">
               <button onclick="gcOpen('gcModalManager')" class="btn btn-primary" style="cursor:pointer;">Смотреть 🔥</button>
