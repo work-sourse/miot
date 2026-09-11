@@ -146,6 +146,7 @@
         .tag-tg { background: #E3F2FD; color: #1565C0; text-decoration: none; }
         .tag-max { background: #FFF3E0; color: #E65100; text-decoration: none; }
         .tag-phone { background: #E8F5E9; color: #2E7D32; text-decoration: none; }
+        .tag-ig { background: #FCE4EC; color: #AD1457; text-decoration: none; }
         .tag-no-map { background: #F5F5F5; color: #AAA; }
 
         /* Leaflet popup override */
@@ -290,7 +291,7 @@ const ALL_GRADUATES = [
   { name:"Гульфина Ахмедьянова", city:"Набережные Челны", country:"Россия", specialty:"Специалист по омоложению", tg:"Gulfina_Akhmedyanova", lat:55.7290, lng:52.4061 },
   { name:"Оксана Ахметова", city:"Нальчик", country:"Россия", specialty:"Телесно ориентированный специалист", lat:43.4847, lng:43.6067 },
   { name:"Елена Андреева", city:"Москва", country:"Россия", specialty:"Мастер массажа, специалист остеокоррекции, спа специалист", lat:55.7558, lng:37.6173 },
-  { name:"Юлия Грицкевич", city:"Петропавловск-Камчатский", country:"Россия", specialty:"Специалист остеокоррекции", tg:"osteopractic", lat:53.0218, lng:158.6544 },
+  { name:"Юлия Грицкевич", city:"Петропавловск-Камчатский", country:"Россия", specialty:"Специалист остеокоррекции", tg:"osteo_gritskevich", ig:"https://www.instagram.com/osteo_gritskevich", lat:53.0218, lng:158.6544 },
   { name:"Алена Бережная", city:"Москва", country:"Россия", specialty:"Остеопрактика и эстетическая остеопатия", tg:"vitaMoscow", lat:55.7558, lng:37.6173 },
   { name:"Inna Яценко", country:"Россия", specialty:"", tg:"inessa_leto" },
   { name:"Ирина Грабина", city:"Петрозаводск", country:"Россия", specialty:"Омоложение и осанка", tg:"irina_grabina", active:true, lat:61.7849, lng:34.3469 },
@@ -443,6 +444,7 @@ function renderList(data) {
                     ${g.tg ? `<a href="https://t.me/${g.tg.replace('@','')}" target="_blank" class="tag tag-tg" onclick="event.stopPropagation()">Telegram</a>` : ''}
                     ${g.max ? `<a href="${g.max}" target="_blank" class="tag tag-max" onclick="event.stopPropagation()">MAX</a>` : ''}
                     ${g.phone ? `<a href="tel:${g.phone}" class="tag tag-phone" onclick="event.stopPropagation()">${g.phone}</a>` : ''}
+                    ${g.ig ? `<a href="${g.ig}" target="_blank" class="tag tag-ig" onclick="event.stopPropagation()">Instagram</a>` : ''}
                     ${!g.lat ? '<span class="tag tag-no-map">Нет на карте</span>' : ''}
                 </div>
             </div>
@@ -466,6 +468,7 @@ function renderMarkers(data) {
             ${g.tg ? `<a href="https://t.me/${g.tg.replace('@','')}" target="_blank" class="popup-tg">✈ @${g.tg.replace('@','')}</a>` : ''}
             ${g.max ? `<a href="${g.max}" target="_blank" class="popup-tg" style="color:#E65100;">MAX</a>` : ''}
             ${g.phone ? `<a href="tel:${g.phone}" class="popup-tg" style="color:#2E7D32;">📞 ${g.phone}</a>` : ''}
+            ${g.ig ? `<a href="${g.ig}" target="_blank" class="popup-tg" style="color:#AD1457;">Instagram</a>` : ''}
         `, { maxWidth: 220 });
         marker.on('click', () => highlightCard(realIdx));
         markerMap.set(realIdx, marker);
