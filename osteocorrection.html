@@ -152,6 +152,23 @@
         .task-card .task-icon { font-size: 2rem; margin-bottom: 12px; }
         .task-card h4 { font-size: .95rem; color: var(--color-text-primary); line-height: 1.4; }
 
+        /* ── Shared icon badge (used in income/outcome/fear cards) ── */
+        .icon-badge {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 50%;
+            background: rgba(212,175,55,.12);
+            border: 2px solid rgba(212,175,55,.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+        .icon-badge.navy { background: rgba(15,23,42,.06); border-color: rgba(15,23,42,.2); }
+        .icon-badge.sm { width: 44px; height: 44px; min-width: 44px; font-size: 1.3rem; margin-bottom: 16px; }
+
         /* ── Income streams ── */
         .income-grid {
             display: grid;
@@ -826,28 +843,28 @@
                 <h2 class="section-title" style="padding-top:60px;">Источники дохода <span>специалиста</span></h2>
                 <div class="income-grid">
                     <div class="income-card">
-                        <div class="income-num">01</div>
+                        <div class="icon-badge">💻</div>
                         <div>
                             <h4>Онлайн-сессии</h4>
                             <p>Консультации и работа с клиентами удалённо — из любой точки мира</p>
                         </div>
                     </div>
                     <div class="income-card">
-                        <div class="income-num">02</div>
+                        <div class="icon-badge navy">🤲</div>
                         <div>
                             <h4>Остеокоррекция-сессии</h4>
                             <p>Индивидуальные очные сеансы с пациентами в вашем кабинете</p>
                         </div>
                     </div>
                     <div class="income-card">
-                        <div class="income-num">03</div>
+                        <div class="icon-badge">📚</div>
                         <div>
                             <h4>Обучающие материалы</h4>
                             <p>Продажа курсов, гайдов и авторских методик — пассивный доход</p>
                         </div>
                     </div>
                     <div class="income-card">
-                        <div class="income-num">04</div>
+                        <div class="icon-badge navy">💼</div>
                         <div>
                             <h4>Комплексное ведение</h4>
                             <p>Долгосрочные программы сопровождения клиентов с высоким чеком</p>
@@ -864,18 +881,22 @@
                 <p class="section-lead">Разбираем главные страхи новичков — и объясняем, почему они не должны мешать тебе начать.</p>
                 <div class="fears-grid">
                     <div class="fear-card">
+                        <div class="icon-badge sm">🌱</div>
                         <div class="fear-q">«У меня нет опыта — меня не возьмут»</div>
                         <div class="fear-a">Берём с любым уровнем подготовки. Курс выстроен с нуля — от анатомии до самостоятельной практики. <strong>Опыт строится здесь.</strong></div>
                     </div>
                     <div class="fear-card">
+                        <div class="icon-badge sm navy">🛡️</div>
                         <div class="fear-q">«Боюсь навредить пациенту»</div>
                         <div class="fear-a">Обучаем только безопасным мягким техникам. Весь курс построен на принципе <strong>«безопасность прежде всего»</strong> — это первый блок программы.</div>
                     </div>
                     <div class="fear-card">
+                        <div class="icon-badge sm">📣</div>
                         <div class="fear-q">«Не смогу найти клиентов»</div>
                         <div class="fear-a">В программу включён экстрамодуль по маркетингу и продвижению в соцсетях от наставника Глеба Асташева. <strong>Клиенты придут к вам сами.</strong></div>
                     </div>
                     <div class="fear-card">
+                        <div class="icon-badge sm navy">🎓</div>
                         <div class="fear-q">«Нет медицинского образования»</div>
                         <div class="fear-a">Медицинское образование не нужно. После экзамена вы получите <strong>диплом с ОКВЭДом</strong> — и будете работать на законных основаниях.</div>
                     </div>
@@ -935,28 +956,28 @@
                 <h2 class="section-title">Что ты получишь <span>через 6 месяцев</span></h2>
                 <div class="outcomes-list">
                     <div class="outcome-item fade-in-up">
-                        <div class="outcome-num orange">1</div>
+                        <div class="icon-badge">📜</div>
                         <div class="outcome-body">
                             <h4>Документы для легальной практики</h4>
                             <p>Получите диплом профессиональной подготовки с ОКВЭДом «Специалист по остеокоррекции», который позволит проводить сеансы с юридической защитой.</p>
                         </div>
                     </div>
                     <div class="outcome-item fade-in-up delay-1">
-                        <div class="outcome-num blue">2</div>
+                        <div class="icon-badge navy">🤲</div>
                         <div class="outcome-body">
                             <h4>Твёрдый навык телесной практики</h4>
                             <p>Закрепите навыки работы с телом и сможете принимать пациентов любой сложности, помогая им двигаться к выздоровлению.</p>
                         </div>
                     </div>
                     <div class="outcome-item fade-in-up delay-2">
-                        <div class="outcome-num orange">3</div>
+                        <div class="icon-badge">🩺</div>
                         <div class="outcome-body">
                             <h4>Уверенная диагностика и лечение</h4>
                             <p>Сможете уверенно работать с пациентами и выдвигать верные диагнозы с методами лечения без страха навредить их здоровью.</p>
                         </div>
                     </div>
                     <div class="outcome-item fade-in-up delay-3">
-                        <div class="outcome-num blue">4</div>
+                        <div class="icon-badge navy">📈</div>
                         <div class="outcome-body">
                             <h4>Умение продавать и продвигать себя</h4>
                             <p>Научитесь правильно продавать свои услуги, указывать стоимость, поднимать чеки и получать оплаты — поймёте, как продвигать себя в социальных сетях.</p>
@@ -1059,6 +1080,7 @@
                 <div class="suits-grid">
                     <div class="suits-card fade-in-up">
                         <div class="suits-body">
+                            <div class="icon-badge" style="margin-bottom:16px;">🩺</div>
                             <p>
                                 <strong style="color:var(--color-highlight);">Действующим врачам-остеопатам.</strong>
                                 Преподаватель курса — ведущий специалист, анатом, регулярно повышающий квалификацию в Европе и России.
@@ -1068,6 +1090,7 @@
                     </div>
                     <div class="suits-card fade-in-up delay-1">
                         <div class="suits-body">
+                            <div class="icon-badge" style="margin-bottom:16px;">💆</div>
                             <p>
                                 <strong style="color:var(--color-highlight);">Специалистам помогающих профессий</strong> — массажистам, терапевтам, психотерапевтам, висцеральным практикам.
                                 Освоите эффективные технологии, расширите физическое мышление и выйдете на новый уровень дохода.
@@ -1076,6 +1099,7 @@
                     </div>
                     <div class="suits-card fade-in-up delay-2">
                         <div class="suits-body">
+                            <div class="icon-badge" style="margin-bottom:16px;">🤝</div>
                             <p>
                                 <strong style="color:var(--color-highlight);">Людям, которые хотят помогать другим</strong> — желающим найти эффективные техники для работы и начать с нуля,
                                 без медицинского образования и без опыта.
