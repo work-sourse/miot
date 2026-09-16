@@ -238,6 +238,13 @@
   .day-card__num { display: inline-flex; align-items: center; gap: 8px; font-family: 'Unbounded', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 7px 16px; margin-bottom: 16px; }
   .sec--light .day-card__num { color: var(--violet); background: rgba(204,167,118,0.16); border-color: rgba(204,167,118,0.4); }
   .day-card__title { font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
+  .day-card__img { width: 100%; max-height: 190px; object-fit: contain; margin-bottom: 18px; filter: drop-shadow(0 10px 22px rgba(0,0,0,0.28)); }
+
+  /* ══ ABOUT LAYOUT ══ */
+  .about-layout { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .about-layout .card { flex: 1 1 460px; max-width: 640px; margin: 0; }
+  .about-img { flex: 0 1 260px; max-width: 260px; width: 100%; height: auto; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.38)); }
+  @media (max-width: 780px) { .about-layout { flex-direction: column-reverse; } .about-img { max-width: 200px; } }
   .day-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .day-list li { position: relative; padding-left: 20px; font-size: 15.5px; line-height: 1.5; }
   .sec--dark .day-list li, .sec--dark2 .day-list li { color: var(--w-70); }
@@ -384,14 +391,20 @@
   <div class="wrap reveal">
     <span class="eyebrow">О курсе</span>
     <h2 class="sec__title">Анатомия, которую нельзя увидеть на схеме</h2>
-    <div class="card" style="max-width:780px;margin:0 auto;">
-      <p>Диссекционный семинар на качественном кадавер-материале позволит выйти на новый профессиональный уровень понимания и восприятия анатомии головы, шеи и мозга — а вместе с ней и человеческой жизни.</p>
-      <p>Диссекция проходит на <strong>свежем биоматериале без фиксации формалином</strong> — это значит, что вы увидите ткани в их естественном, живом состоянии: цвет, плотность, скольжение фасциальных слоёв.</p>
-      <p><strong>Автор и ведущий — врач-остеопат Олег Агапэ.</strong> Послойно, от кожи до кости, вы пройдёте весь путь: мимическая и жевательная мускулатура, сосуды и нервы лица, слюнные железы, слои скальпа, фасции и мышцы шеи, гортань, щитовидная железа, магистральные сосуды и черепные нервы.</p>
-      <div class="dissect-highlight">
-        <div class="dissect-highlight__title">🧠 Почему именно эта диссекция редкая</div>
-        <p>Найти качественный кадавер-материал и получить разрешения на такую диссекцию тяжело — это могут единицы специалистов. Вы получаете доступ к тому же уровню редкости, что и на диссекциях, о которых писали федеральные СМИ.</p>
+    <div class="about-layout">
+      <div class="card" style="max-width:640px;">
+        <p>Диссекционный семинар на качественном кадавер-материале позволит выйти на новый профессиональный уровень понимания и восприятия анатомии головы, шеи и мозга — а вместе с ней и человеческой жизни.</p>
+        <p>Диссекция проходит на <strong>свежем биоматериале без фиксации формалином</strong> — это значит, что вы увидите ткани в их естественном, живом состоянии: цвет, плотность, скольжение фасциальных слоёв.</p>
+        <p><strong>Автор и ведущий — врач-остеопат Олег Агапэ.</strong> Послойно, от кожи до кости, вы пройдёте весь путь: мимическая и жевательная мускулатура, сосуды и нервы лица, слюнные железы, слои скальпа, фасции и мышцы шеи, гортань, щитовидная железа, магистральные сосуды и черепные нервы.</p>
+        <div class="dissect-highlight">
+          <div class="dissect-highlight__title">🧠 Почему именно эта диссекция редкая</div>
+          <p>Найти качественный кадавер-материал и получить разрешения на такую диссекцию тяжело — это могут единицы специалистов. Вы получаете доступ к тому же уровню редкости, что и на диссекциях, о которых писали федеральные СМИ.</p>
+        </div>
       </div>
+      <picture>
+        <source srcset="photos/anatomy-4.webp" type="image/webp">
+        <img class="about-img" src="photos/anatomy-4.png" alt="Анатомия головы и шеи: мышцы, сосуды, нервы под кожей лица">
+      </picture>
     </div>
   </div>
 </section>
@@ -451,6 +464,10 @@
     <p class="sec__sub">Два дня послойной диссекции: сначала шея, затем голова — с погружением до глубоких структур мозга.</p>
     <div class="day-grid reveal-stagger">
       <div class="day-card">
+        <picture>
+          <source srcset="photos/anatomy-2.webp" type="image/webp">
+          <img class="day-card__img" src="photos/anatomy-2.png" alt="Анатомия шеи: мышцы, сосуды, нервы и щитовидная железа">
+        </picture>
         <div class="day-card__num">День 1 · 16 декабря</div>
         <div class="day-card__title">Послойная диссекция шеи</div>
         <ul class="day-list">
@@ -467,6 +484,10 @@
         </ul>
       </div>
       <div class="day-card">
+        <picture>
+          <source srcset="photos/anatomy-3.webp" type="image/webp">
+          <img class="day-card__img" src="photos/anatomy-3.png" alt="Анатомия головного мозга в разрезе: кора, мозжечок, ствол мозга">
+        </picture>
         <div class="day-card__num">День 2 · 17 декабря</div>
         <div class="day-card__title">Послойная диссекция головы и мозга</div>
         <ul class="day-list">
