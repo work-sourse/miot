@@ -98,15 +98,16 @@
   }
   .hero__inner { position: relative; z-index: 1; }
   @media (min-width: 861px) {
-    .hero__inner { max-width: 640px; text-align: left; }
+    .hero__inner { max-width: clamp(320px, 44vw, 540px); text-align: left; margin-left: max(24px, calc((100vw - 1080px) / 2 + 24px)); margin-right: 0; }
     .hero__badge, .hero__date { margin-left: 0; margin-right: 0; }
     .hero__sub { margin-left: 0; margin-right: 0; }
     .btn-row, .quicknav { justify-content: flex-start; }
   }
   .hero__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--grad-card); color: #fff; border-radius: 999px; padding: 10px 22px; margin-bottom: 26px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) both; }
-  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(36px, 7vw, 76px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 22px; background: var(--grad-title); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-wrap: balance; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .08s both, titleShimmer 7s ease-in-out infinite 1.2s; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(36px, 7vw, 76px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 22px; background: var(--grad-title); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-wrap: balance; overflow-wrap: break-word; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .08s both, titleShimmer 7s ease-in-out infinite 1.2s; }
   @keyframes titleShimmer { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
   .hero__title span { background: none; -webkit-text-fill-color: var(--gold); color: var(--gold); }
+  @media (min-width: 861px) { .hero__title { font-size: clamp(30px, 3.8vw, 54px); } }
   .hero__sub { font-size: clamp(18px, 2.3vw, 23px); color: var(--w-70); max-width: 680px; margin: 0 auto 12px; line-height: 1.6; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .16s both; }
   .hero__date { display: inline-block; font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 9px 20px; margin: 10px 0 32px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .22s both; }
 
@@ -351,10 +352,10 @@
 
 <!-- ══ 1. HERO ══ -->
 <section class="hero">
-  <div class="hero__photo" aria-hidden="true">
+  <div class="hero__photo">
     <picture>
-      <source srcset="photos/oleg-prozrachno.webp" type="image/webp">
-      <img src="photos/oleg-prozrachno.png" alt="">
+      <source srcset="photos/dissection-head-anatomy.webp" type="image/webp">
+      <img src="photos/dissection-head-anatomy.png" alt="Анатомическая иллюстрация головы и шеи: мышцы, сосуды и нервы">
     </picture>
   </div>
   <div class="wrap hero__inner">
