@@ -763,7 +763,7 @@
                 <a href="graduates.html">Реестр выпускников</a>
                 <a href="contacts.html">Контакты</a>
                 <a href="blog.html">Блог</a>
-                <a href="https://t.me/TatyBondar" class="btn btn-primary btn-sm">Записаться на обучение</a>
+                <a href="#tariffs" class="btn btn-primary btn-sm">Записаться на обучение</a>
             </nav>
             <div class="mobile-menu-btn"><span></span><span></span><span></span></div>
         </div>
@@ -1117,7 +1117,7 @@
                     </div>
                 </div>
                 <div style="text-align:center; margin-top:44px;">
-                    <a href="https://t.me/TatyBondar" class="btn btn-primary btn-glow">Стать специалистом</a>
+                    <a href="#tariffs" class="btn btn-primary btn-glow">Стать специалистом</a>
                 </div>
             </div>
         </section>
@@ -1352,7 +1352,7 @@
                                 </ul>
                             </div>
                             <div class="tariff-pricing" style="margin-top:24px;">
-                                <a href="https://t.me/TatyBondar" class="btn btn-primary btn-glow" style="width:100%; text-align:center; display:block; margin-bottom:12px;">Пройти интервью</a>
+                                <a href="#tariffs" class="btn btn-primary btn-glow" style="width:100%; text-align:center; display:block; margin-bottom:12px;">Пройти интервью</a>
                                 <p class="tariff-note">*Попади на курс-наставничество, записавшись по анкете и пройдя индивидуальное собеседование</p>
                             </div>
                         </div>
@@ -1438,7 +1438,7 @@
                 <h2>Оставьте заявку</h2>
                 <p>И в течение нескольких часов с вами свяжется наш специалист</p>
                 <div class="cta-actions" style="margin-top:36px;">
-                    <a href="https://t.me/TatyBondar" class="btn btn-primary btn-glow" style="font-size:1rem; padding:16px 36px;">Написать в Telegram</a>
+                    <a href="#tariffs" class="btn btn-primary btn-glow" style="font-size:1rem; padding:16px 36px;">Перейти к тарифам</a>
                 </div>
             </div>
         </section>
@@ -1562,11 +1562,6 @@
             const isOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
             if (!isOpen) item.classList.add('open');
-        }
-
-        function submitForm(e) {
-            e.preventDefault();
-            window.open('https://t.me/TatyBondar', '_blank');
         }
 
         function gcOpen(id) {
