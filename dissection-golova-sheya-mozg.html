@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Диссекция «Голова — Шея — Мозг» — кадавер-курс Олега Агапэ</title>
+<meta name="description" content="Диссекционный кадавер-курс «Голова — Шея — Мозг», 16–17 декабря. Послойная диссекция на свежем биоматериале, пальпация на каждом этапе, ведущий — врач-остеопат Олег Агапэ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-dark:      #08071D;
+    --bg-dark2:     #0E0D28;
+    --card-dark:    #141331;
+    --card-dark2:   #1A1940;
+    --border-dark:  rgba(255,255,255,0.10);
+    --grad-title:   linear-gradient(37deg, #D6DEFF 0%, #8CA3F7 55%, #577DF2 100%);
+    --grad-card:    linear-gradient(135deg, #1A234A 0%, #465EA7 100%);
+    --grad-btn:     linear-gradient(135deg, #6853FF 0%, #271A86 100%);
+    --grad-btn2:    linear-gradient(135deg, #FF7749 0%, #271A86 100%);
+    --gold:         #FEE495;
+    --violet:       #6853FF;
+    --blue:         #577DF2;
+    --white:        #FFFFFF;
+    --w-70:         rgba(255,255,255,0.72);
+    --w-50:         rgba(255,255,255,0.52);
+
+    --light-bg:     #F3F5FC;
+    --card:         #FFFFFF;
+    --ink:          #12142B;
+    --ink-soft:     #454C66;
+    --ink-mute:     #7C82A0;
+    --line:         rgba(20,25,60,0.10);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; font-size: 17px; background: var(--bg-dark); color: var(--white); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  /* ══ SECTION SHELLS ══ */
+  .sec { padding: 76px 0; position: relative; overflow: hidden; }
+  .sec--dark { background: var(--bg-dark); color: var(--white); }
+  .sec--dark2 { background: var(--bg-dark2); color: var(--white); }
+  .sec--light { background: var(--light-bg); color: var(--ink); }
+  .eyebrow { display: block; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+  .sec--dark .eyebrow, .sec--dark2 .eyebrow { color: var(--gold); }
+  .sec--light .eyebrow { color: var(--violet); }
+  .sec__title { font-family: 'Unbounded', sans-serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; text-align: center; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.18; text-wrap: balance; }
+  .sec--dark .sec__title, .sec--dark2 .sec__title { color: var(--white); }
+  .sec--light .sec__title { color: var(--ink); }
+  .sec__sub { text-align: center; font-size: 18px; max-width: 700px; margin: 0 auto 40px; line-height: 1.65; }
+  .sec--dark .sec__sub, .sec--dark2 .sec__sub { color: var(--w-70); }
+  .sec--light .sec__sub { color: var(--ink-mute); }
+
+  em.hl { position: relative; font-style: normal; color: var(--gold); }
+  .sec--light em.hl { color: var(--violet); }
+  em.hl::after {
+    content: ''; position: absolute; left: -2px; right: -2px; bottom: -4px; height: 3px;
+    background: var(--gold); border-radius: 2px; transform-origin: left; transform: scaleX(0);
+    animation: underlineDraw .7s cubic-bezier(.3,.9,.3,1) 1.1s both;
+  }
+  .sec--light em.hl::after { background: var(--violet); }
+  @keyframes underlineDraw { to { transform: scaleX(1); } }
+
+  /* ══ BUTTONS ══ */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16.5px; border: none; border-radius: 999px; padding: 18px 34px; cursor: pointer; text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.3,1.4), box-shadow .2s, opacity .15s, background .2s; white-space: nowrap; }
+  .btn:hover { transform: translateY(-3px) scale(1.02); }
+  .btn:active { transform: translateY(-1px) scale(0.99); }
+  .btn-primary { background: var(--grad-btn); background-size: 160% 160%; color: #fff; box-shadow: 0 10px 28px -10px rgba(104,83,255,0.55); animation: btnSheen 6s ease infinite; }
+  .btn-primary:hover { box-shadow: 0 16px 38px -10px rgba(104,83,255,0.75); }
+  @keyframes btnSheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.16); }
+  .btn-white { background: #fff; color: var(--ink); }
+  .btn-white:hover { background: #F0F0F5; }
+  .sec--light .btn-ghost { background: rgba(20,25,60,0.06); color: var(--ink); border-color: rgba(20,25,60,0.18); }
+  .sec--light .btn-ghost:hover { background: rgba(20,25,60,0.1); }
+
+  /* ══ HERO ══ */
+  .hero { padding: 60px 0 56px; text-align: center; overflow: hidden; position: relative; }
+  .hero__photo { position: absolute; top: 0; right: -2%; bottom: 0; width: 48%; z-index: 0; pointer-events: none; display: flex; align-items: flex-end; justify-content: center; }
+  .hero__photo img { width: 100%; height: auto; max-height: 96%; object-fit: contain; opacity: 0.92; -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 99%); mask-image: linear-gradient(to bottom, black 78%, transparent 99%); }
+  @media (max-width: 860px) { .hero__photo { width: 68%; opacity: 0.5; } }
+  @media (max-width: 560px) { .hero__photo { width: 88%; right: 50%; transform: translateX(50%); opacity: 0.32; } }
+  .hero::before {
+    content: ''; position: absolute; top: -220px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 500px; background: radial-gradient(closest-side, rgba(104,83,255,0.35), transparent 70%);
+    pointer-events: none; animation: floatBlob 13s ease-in-out infinite;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -260px; right: -120px;
+    width: 640px; height: 480px; background: radial-gradient(closest-side, rgba(254,228,149,0.16), transparent 72%);
+    pointer-events: none; animation: floatBlob 16s ease-in-out infinite; animation-delay: -4s;
+  }
+  .hero__inner { position: relative; z-index: 1; }
+  .hero__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--grad-card); color: #fff; border-radius: 999px; padding: 10px 22px; margin-bottom: 26px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) both; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(36px, 7vw, 76px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 22px; background: var(--grad-title); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-wrap: balance; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .08s both, titleShimmer 7s ease-in-out infinite 1.2s; }
+  @keyframes titleShimmer { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
+  .hero__title span { background: none; -webkit-text-fill-color: var(--gold); color: var(--gold); }
+  .hero__sub { font-size: clamp(18px, 2.3vw, 23px); color: var(--w-70); max-width: 680px; margin: 0 auto 12px; line-height: 1.6; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .16s both; }
+  .hero__date { display: inline-block; font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 600; color: var(--gold); background: rgba(254,228,149,0.10); border: 1px solid rgba(254,228,149,0.30); border-radius: 999px; padding: 9px 20px; margin: 10px 0 32px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .22s both; }
+
+  .btn-row { animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .28s both; }
+  .quicknav { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 32px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .4s both; }
+  .quicknav a { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); color: var(--w-70); text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 18px; border-radius: 20px; transition: background .15s, color .15s, transform .15s; }
+  .quicknav a:hover { background: rgba(255,255,255,0.14); color: #fff; transform: translateY(-2px); }
+
+  .scroll-cue { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); width: 26px; height: 40px; border: 2px solid rgba(255,255,255,0.28); border-radius: 14px; }
+  .scroll-cue::before { content: ''; position: absolute; top: 7px; left: 50%; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--gold); animation: scrollcue 1.8s infinite; }
+  @keyframes scrollcue { 0% { opacity: 1; transform: translateY(0); } 70% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; transform: translateY(0); } }
+
+  /* ══ MOTION ══ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes floatBlob { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%, -4%) scale(1.06); } }
+  @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; }
+  .reveal-stagger.in-view > * { animation: fadeUp .6s cubic-bezier(.2,.7,.3,1) both; }
+  .reveal-stagger.in-view > *:nth-child(1) { animation-delay: .02s; }
+  .reveal-stagger.in-view > *:nth-child(2) { animation-delay: .09s; }
+  .reveal-stagger.in-view > *:nth-child(3) { animation-delay: .16s; }
+  .reveal-stagger.in-view > *:nth-child(4) { animation-delay: .23s; }
+  .reveal-stagger.in-view > *:nth-child(5) { animation-delay: .30s; }
+  .reveal-stagger.in-view > *:nth-child(6) { animation-delay: .37s; }
+  .reveal-stagger.in-view > *:nth-child(7) { animation-delay: .44s; }
+  .reveal-stagger.in-view > *:nth-child(8) { animation-delay: .51s; }
+  .reveal-stagger.in-view > *:nth-child(9) { animation-delay: .58s; }
+
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; animation: floatBlob 11s ease-in-out infinite; z-index: 0; }
+  .blob--violet { background: radial-gradient(closest-side, rgba(104,83,255,0.30), transparent 72%); }
+  .blob--gold   { background: radial-gradient(closest-side, rgba(254,228,149,0.22), transparent 72%); animation-duration: 14s; animation-delay: -3s; }
+  .sec--light .blob--violet { background: radial-gradient(closest-side, rgba(104,83,255,0.14), transparent 72%); }
+  .sec--light .blob--gold   { background: radial-gradient(closest-side, rgba(254,190,80,0.16), transparent 72%); }
+  .sec > .blob + * { position: relative; z-index: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+    .blob, .scroll-cue::before, .hero::before, .hero__title { animation: none !important; }
+    .stat-tile__dot, .dot-trace { display: none; }
+    em.hl::after { animation: none !important; transform: scaleX(1) !important; }
+    .price-card__ribbon { animation: none !important; }
+    * { scroll-behavior: auto !important; }
+  }
+
+  /* ══ CARDS ══ */
+  .card { border-radius: 24px; padding: 38px 42px; transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s; }
+  .sec--dark .card, .sec--dark2 .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  .sec--light .card { background: var(--card); box-shadow: 0 4px 28px rgba(20,25,60,0.08); }
+  @media (max-width: 600px) { .card { padding: 28px 22px; } }
+  .card p { font-size: 17px; line-height: 1.72; margin-bottom: 16px; }
+  .card p:last-child { margin-bottom: 0; }
+  .sec--dark .card p, .sec--dark2 .card p { color: rgba(255,255,255,0.85); }
+  .sec--light .card p { color: var(--ink-soft); }
+  .card p strong { font-weight: 700; }
+  .sec--dark .card p strong, .sec--dark2 .card p strong { color: var(--gold); }
+  .sec--light .card p strong { color: var(--violet); }
+
+  /* ══ DISSECTION HIGHLIGHT ══ */
+  .dissect-highlight { margin-top: 18px; border-left: 4px solid var(--gold); background: rgba(254,228,149,0.08); border-radius: 0 16px 16px 0; padding: 20px 24px; }
+  .dissect-highlight__title { font-family: 'Unbounded', sans-serif; font-size: 14.5px; font-weight: 700; color: var(--gold); margin-bottom: 10px; line-height: 1.4; }
+  .dissect-highlight p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+  .dissect-highlight p:last-child { margin-bottom: 0; }
+  .sec--light .dissect-highlight { border-left-color: var(--violet); background: rgba(88,60,209,0.06); }
+  .sec--light .dissect-highlight__title { color: var(--violet); }
+  .sec--light .dissect-highlight p { color: var(--ink-soft); }
+
+  /* ══ BULLET LISTS ══ */
+  .blist { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .blist li { display: flex; align-items: flex-start; gap: 14px; font-size: 16.5px; line-height: 1.6; }
+  .sec--dark .blist li, .sec--dark2 .blist li { color: var(--w-70); }
+  .sec--light .blist li { color: var(--ink-soft); }
+  .blist li strong { font-weight: 700; }
+  .sec--dark .blist li strong, .sec--dark2 .blist li strong { color: #fff; }
+  .sec--light .blist li strong { color: var(--ink); }
+  .bicon { flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; font-family: 'Unbounded', sans-serif; transition: transform .25s; }
+  .sec--dark .bicon, .sec--dark2 .bicon { background: rgba(254,228,149,0.14); color: var(--gold); }
+  .sec--light .bicon { background: rgba(88,60,209,0.09); color: var(--violet); }
+  .blist li:hover .bicon { transform: scale(1.15) rotate(-6deg); }
+
+  .checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) { .checklist { grid-template-columns: 1fr; } }
+  .checklist li { display: flex; align-items: flex-start; gap: 13px; border-radius: 16px; padding: 18px 20px; font-size: 16px; line-height: 1.5; transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s; }
+  .sec--dark .checklist li, .sec--dark2 .checklist li { background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); color: var(--w-70); }
+  .sec--light .checklist li { background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); color: var(--ink-soft); }
+  .checklist li:hover { transform: translateY(-4px); }
+  .sec--dark .checklist li:hover, .sec--dark2 .checklist li:hover { background: rgba(255,255,255,0.09); }
+  .sec--light .checklist li:hover { box-shadow: 0 10px 26px rgba(88,60,209,0.14); }
+  .checkmark { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; margin-top: 1px; }
+  .sec--dark .checkmark, .sec--dark2 .checkmark { background: var(--grad-btn); }
+  .sec--light .checkmark { background: var(--violet); }
+
+  /* ══ STAT TILES ══ */
+  .stat-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 700px) { .stat-tiles { grid-template-columns: 1fr; } }
+  .stat-tile { position: relative; overflow: visible; border-radius: 18px; padding: 30px 20px; text-align: center; transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s; }
+  .sec--dark .stat-tile, .sec--dark2 .stat-tile { background: rgba(255,255,255,0.05); border: 1.5px solid var(--border-dark); }
+  .sec--light .stat-tile { background: var(--card); border: 1.5px solid rgba(88,60,209,0.14); box-shadow: 0 3px 18px rgba(20,25,60,0.07); }
+  .stat-tile:hover { transform: translateY(-6px); }
+  .sec--dark .stat-tile:hover, .sec--dark2 .stat-tile:hover { box-shadow: 0 16px 34px -10px rgba(254,228,149,0.18); border-color: rgba(254,228,149,0.4); }
+  .sec--light .stat-tile:hover { box-shadow: 0 16px 34px -10px rgba(88,60,209,0.22); border-color: rgba(88,60,209,0.35); }
+  .stat-tile__num { font-family: 'Unbounded', sans-serif; font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+  .sec--dark .stat-tile__num, .sec--dark2 .stat-tile__num { color: var(--gold); }
+  .sec--light .stat-tile__num { color: var(--violet); }
+  .stat-tile__label { font-size: 14px; }
+  .sec--dark .stat-tile__label, .sec--dark2 .stat-tile__label { color: var(--w-70); }
+  .sec--light .stat-tile__label { color: var(--ink-mute); }
+
+  .stat-tile__dot {
+    position: absolute; top: 0; left: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+    border-radius: 50%; pointer-events: none;
+    offset-path: inset(0 round 18px); offset-distance: 0%;
+    animation: dotTravel 4.5s linear infinite;
+  }
+  .sec--dark .stat-tile__dot, .sec--dark2 .stat-tile__dot { background: var(--gold); box-shadow: 0 0 10px 3px rgba(254,228,149,0.65); }
+  .sec--light .stat-tile__dot { background: var(--violet); box-shadow: 0 0 10px 3px rgba(104,83,255,0.5); }
+  @keyframes dotTravel { to { offset-distance: 100%; } }
+  @supports not (offset-path: inset(0 round 1px)) { .stat-tile__dot { display: none; } }
+
+  /* ══ PROGRAM DAY CARDS ══ */
+  .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 780px) { .day-grid { grid-template-columns: 1fr; } }
+  .day-card { border-radius: 22px; padding: 30px 30px 32px; }
+  .sec--dark .day-card, .sec--dark2 .day-card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  .sec--light .day-card { background: var(--card); box-shadow: 0 4px 24px rgba(20,25,60,0.08); }
+  .day-card__num { display: inline-flex; align-items: center; gap: 8px; font-family: 'Unbounded', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(254,228,149,0.1); border: 1px solid rgba(254,228,149,0.3); border-radius: 999px; padding: 7px 16px; margin-bottom: 16px; }
+  .sec--light .day-card__num { color: var(--violet); background: rgba(104,83,255,0.08); border-color: rgba(104,83,255,0.25); }
+  .day-card__title { font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
+  .day-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .day-list li { position: relative; padding-left: 20px; font-size: 15.5px; line-height: 1.5; }
+  .sec--dark .day-list li, .sec--dark2 .day-list li { color: var(--w-70); }
+  .sec--light .day-list li { color: var(--ink-soft); }
+  .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sec--light .day-list li::before { color: var(--violet); }
+
+  /* ══ SPEAKERS ══ */
+  .speaker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .speaker-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .speaker-grid { grid-template-columns: 1fr; } }
+  .speaker-card { border-radius: 20px; overflow: hidden; text-align: center; transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s; }
+  .sec--light .speaker-card { background: var(--card); box-shadow: 0 4px 22px rgba(20,25,60,0.08); }
+  .speaker-card--real { position: relative; overflow: visible; }
+  .speaker-card--real:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -14px rgba(88,60,209,0.28); }
+  .speaker-card--real .speaker-card__photo { aspect-ratio: 1/1; overflow: hidden; border-radius: 20px 20px 0 0; }
+  .speaker-card--real .speaker-card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
+  .speaker-card--real:hover .speaker-card__photo img { transform: scale(1.06); }
+  .speaker-card__body { padding: 20px 18px 24px; }
+  .speaker-card__name { font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+  .speaker-card__role { font-size: 13.5px; color: var(--ink-mute); line-height: 1.4; margin-bottom: 9px; min-height: 32px; }
+  .speaker-card__topic { font-size: 13.5px; color: var(--violet); font-weight: 600; line-height: 1.4; }
+
+  /* traveling dot */
+  .dot-trace { position: absolute; top: 0; left: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; pointer-events: none; offset-distance: 0%; animation: dotTravel 5s linear infinite; z-index: 2; }
+  .price-card--best .dot-trace { offset-path: inset(0 round 24px); background: var(--violet); box-shadow: 0 0 10px 3px rgba(104,83,255,0.55); }
+  .speaker-card--real .dot-trace { offset-path: inset(0 round 20px); background: var(--violet); box-shadow: 0 0 10px 3px rgba(104,83,255,0.55); animation-duration: 6s; }
+  @supports not (offset-path: inset(0 round 1px)) { .dot-trace { display: none; } }
+
+  /* ══ TICKETS / TARIFFS ══ */
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .price-grid { grid-template-columns: 1fr; } }
+  .price-card { position: relative; background: var(--card); border-radius: 24px; padding: 38px 34px; box-shadow: 0 4px 28px rgba(20,25,60,0.08); transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s; }
+  .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px -14px rgba(20,25,60,0.18); }
+  .price-card--best { border: 2px solid var(--violet); box-shadow: 0 0 0 6px rgba(104,83,255,0.08), 0 4px 28px rgba(20,25,60,0.08); }
+  .price-card--best:hover { box-shadow: 0 0 0 6px rgba(104,83,255,0.12), 0 22px 46px -14px rgba(104,83,255,0.3); }
+  .price-card__ribbon { position: absolute; top: -15px; right: 26px; background: var(--grad-btn); color: #fff; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 8px 18px; border-radius: 999px; box-shadow: 0 6px 16px -4px rgba(104,83,255,0.5); animation: ribbonPulse 2.4s ease-in-out infinite; }
+  @keyframes ribbonPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+  .price-card__label { font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 12px; }
+  .price-card__price { font-family: 'Unbounded', sans-serif; font-size: clamp(32px, 4.6vw, 46px); font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+  .price-card__note { font-size: 15px; color: var(--ink-mute); margin-bottom: 22px; line-height: 1.55; }
+  .price-card__feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+  .price-card__feats li { display: flex; gap: 10px; font-size: 15.5px; color: var(--ink-soft); line-height: 1.5; }
+  .price-card__feats li::before { content: '✓'; color: var(--violet); font-weight: 800; flex-shrink: 0; }
+  .price-card .btn { width: 100%; }
+
+  /* ══ ORGANIZER ══ */
+  .org-hero { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; flex-wrap: wrap; justify-content: center; }
+  .org-badge { font-family: 'Unbounded', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--gold); background: rgba(254,228,149,0.1); border: 1px solid rgba(254,228,149,0.3); border-radius: 999px; padding: 9px 18px; transition: transform .2s, background .2s; }
+  .org-badge:hover { transform: translateY(-2px); background: rgba(254,228,149,0.18); }
+
+  /* ══ FAQ ══ */
+  .faq { display: flex; flex-direction: column; gap: 14px; }
+  .faq details { border-radius: 16px; padding: 4px 24px; transition: background .2s; }
+  .sec--light .faq details { background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); }
+  .sec--dark .faq details, .sec--dark2 .faq details { background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); }
+  .faq details[open] { box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Unbounded', sans-serif; font-size: 16.5px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+  .sec--light .faq summary { color: var(--ink); }
+  .sec--dark .faq summary, .sec--dark2 .faq summary { color: #fff; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 22px; font-weight: 400; flex-shrink: 0; transition: transform .3s cubic-bezier(.3,1.4,.5,1); }
+  .sec--light .faq summary::after { color: var(--violet); }
+  .sec--dark .faq summary::after, .sec--dark2 .faq summary::after { color: var(--gold); }
+  .faq details[open] summary::after { transform: rotate(135deg); }
+  .faq .faq__a { font-size: 15.5px; line-height: 1.6; padding-bottom: 20px; animation: fadeUp .35s ease both; }
+  .sec--light .faq .faq__a { color: var(--ink-soft); }
+  .sec--dark .faq .faq__a, .sec--dark2 .faq .faq__a { color: var(--w-70); }
+
+  /* ══ RECAP ══ */
+  .recap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 700px) { .recap-grid { grid-template-columns: 1fr 1fr; } }
+  .recap-photo { aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; box-shadow: 0 3px 18px rgba(20,25,60,0.08); transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s; }
+  .recap-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
+  .recap-photo:hover { transform: translateY(-5px); box-shadow: 0 16px 30px -10px rgba(88,60,209,0.28); }
+  .recap-photo:hover img { transform: scale(1.06); }
+  .recap-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 700px) { .recap-videos { grid-template-columns: 1fr; } }
+  .recap-video { width: 100%; aspect-ratio: 9/16; max-height: 420px; border-radius: 16px; background: #000; box-shadow: 0 3px 18px rgba(20,25,60,0.1); }
+
+  /* ══ REVIEWS SCROLLER ══ */
+  .reviews-scroll { overflow-x: auto; overflow-y: hidden; padding: 6px 24px 18px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .reviews-track { display: flex; gap: 16px; width: max-content; margin: 0 auto; }
+  .reviews-shot { height: 380px; width: auto; border-radius: 16px; box-shadow: 0 4px 20px rgba(20,25,60,0.1); flex-shrink: 0; scroll-snap-align: start; transition: transform .3s cubic-bezier(.2,.7,.3,1); }
+  .reviews-shot:hover { transform: translateY(-6px); }
+  .reviews-scroll { scroll-snap-type: x proximity; }
+  @media (max-width: 600px) { .reviews-shot { height: 300px; } }
+
+  /* ══ CTA DARK BLOCK ══ */
+  .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 26px; padding: 50px 44px; text-align: center; }
+  .cta-final::before { content: ''; position: absolute; top: -40%; left: -10%; width: 60%; height: 180%; background: radial-gradient(closest-side, rgba(255,255,255,0.18), transparent 70%); animation: floatBlob 9s ease-in-out infinite; }
+  @media (max-width: 600px) { .cta-final { padding: 34px 24px; } }
+  .cta-final__eyebrow { position: relative; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; }
+  .cta-final__title { position: relative; font-family: 'Unbounded', sans-serif; font-size: clamp(21px, 3vw, 30px); font-weight: 700; color: #fff; max-width: 620px; margin: 0 auto 20px; line-height: 1.35; text-wrap: balance; }
+  .cta-final p.note { position: relative; font-size: 16px; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 26px; }
+  .cta-final .btn { position: relative; }
+
+  hr.div { border: none; border-top: 1px solid var(--border-dark); margin: 0; }
+  .sec--light hr.div { border-top-color: var(--line); }
+
+  /* ══ FOOTER ══ */
+  .page-foot { background: var(--bg-dark2); padding: 44px 0 34px; text-align: center; color: var(--w-50); font-size: 14px; line-height: 1.9; }
+  .page-foot a { color: var(--w-70); text-decoration: none; }
+  .page-foot a:hover { color: var(--gold); }
+  .page-foot .legal { margin-top: 10px; font-size: 12.5px; color: rgba(255,255,255,0.35); }
+  .page-foot .legal a { color: rgba(255,255,255,0.45); margin: 0 6px; }
+</style>
+</head>
+<body>
+
+<!-- ══ 1. HERO ══ -->
+<section class="hero">
+  <div class="hero__photo" aria-hidden="true">
+    <picture>
+      <source srcset="photos/oleg-prozrachno.webp" type="image/webp">
+      <img src="photos/oleg-prozrachno.png" alt="">
+    </picture>
+  </div>
+  <div class="wrap hero__inner">
+    <div class="hero__badge">Диссекционный кадавер-курс</div>
+    <h1 class="hero__title">Диссекция<br><span>Голова — Шея — Мозг</span></h1>
+    <p class="hero__sub">Послойная диссекция на качественном кадавер-материале — от кожи до кости. Увидьте настоящую анатомию головы, шеи и мозга, а не картинку из учебника</p>
+    <div class="hero__date">16–17 декабря · очно и онлайн-трансляция</div>
+    <div class="btn-row">
+      <a href="#program" class="btn btn-ghost">Смотреть программу</a>
+      <a href="#tariffs" class="btn btn-primary">Забронировать место</a>
+    </div>
+    <nav class="quicknav">
+      <a href="#about">О курсе</a>
+      <a href="#program">Программа</a>
+      <a href="#format">Формат</a>
+      <a href="#tariffs">Тарифы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+  </div>
+  <span class="scroll-cue"></span>
+</section>
+
+<!-- ══ 2. О КУРСЕ ══ -->
+<section class="sec sec--dark2" id="about">
+  <span class="blob blob--violet" style="width:380px;height:380px;top:-80px;left:-100px;"></span>
+  <div class="wrap reveal">
+    <span class="eyebrow">О курсе</span>
+    <h2 class="sec__title">Анатомия, которую нельзя увидеть на схеме</h2>
+    <div class="card" style="max-width:780px;margin:0 auto;">
+      <p>Диссекционный семинар на качественном кадавер-материале позволит выйти на новый профессиональный уровень понимания и восприятия анатомии головы, шеи и мозга — а вместе с ней и человеческой жизни.</p>
+      <p>Диссекция проходит на <strong>свежем биоматериале без фиксации формалином</strong> — это значит, что вы увидите ткани в их естественном, живом состоянии: цвет, плотность, скольжение фасциальных слоёв.</p>
+      <p><strong>Автор и ведущий — врач-остеопат Олег Агапэ.</strong> Послойно, от кожи до кости, вы пройдёте весь путь: мимическая и жевательная мускулатура, сосуды и нервы лица, слюнные железы, слои скальпа, фасции и мышцы шеи, гортань, щитовидная железа, магистральные сосуды и черепные нервы.</p>
+      <div class="dissect-highlight">
+        <div class="dissect-highlight__title">🧠 Почему именно эта диссекция редкая</div>
+        <p>Найти качественный кадавер-материал и получить разрешения на такую диссекцию тяжело — это могут единицы специалистов. Вы получаете доступ к тому же уровню редкости, что и на диссекциях, о которых писали федеральные СМИ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. КОМУ ПОДОЙДЁТ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <span class="eyebrow">Проверьте себя</span>
+    <h2 class="sec__title">Кому подойдёт курс</h2>
+    <div class="card" style="max-width:820px;margin:0 auto 30px;">
+      <p><strong>Специалистам естественного омоложения и косметологам.</strong> Изучив строение лица, крепление мышц, связок и фасций с возможностью пальпации на каждом этапе, вы сможете дать клиентам более глубокий и стойкий результат в омоложении и эстетизации лица.</p>
+      <p><strong>Телесно-ориентированным специалистам.</strong> Вы увидите, как на самом деле устроено тело человека — костные структуры, сосуды, нервы, внутренние органы, сухожилия. Это не сравнить с изучением анатомии по картинкам.</p>
+    </div>
+    <ul class="checklist reveal-stagger">
+      <li><span class="checkmark">✓</span><span>Усилите техники для работы с клиентами</span></li>
+      <li><span class="checkmark">✓</span><span>Углубите понимание причинно-следственных связей</span></li>
+      <li><span class="checkmark">✓</span><span>Будете получать более эффективный и глубокий результат в оздоровлении клиентов</span></li>
+      <li><span class="checkmark">✓</span><span>Получите конкретное преимущество на рынке и улучшите свою презентацию как специалиста</span></li>
+    </ul>
+    <div class="btn-row" style="margin-top:28px;">
+      <a href="#tariffs" class="btn btn-primary">Забронировать место</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. ФОРМАТ ══ -->
+<section class="sec sec--dark" id="format">
+  <div class="wrap reveal">
+    <span class="eyebrow">Формат</span>
+    <h2 class="sec__title">Как проходит курс</h2>
+    <p class="sec__sub">Мини-группа, свежий материал, возможность пальпации на каждом этапе — и трансляция для тех, кто участвует онлайн.</p>
+
+    <div class="stat-tiles reveal-stagger" style="margin-bottom:30px;">
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">2 дня</div><div class="stat-tile__label">16–17 декабря</div></div>
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">до 20</div><div class="stat-tile__label">человек в группе</div></div>
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">гос. образца</div><div class="stat-tile__label">удостоверение о повышении квалификации</div></div>
+    </div>
+
+    <div class="card">
+      <ul class="blist">
+        <li><span class="bicon">✓</span><span><strong>Послойная диссекция</strong> — идём от кожи до кости, шаг за шагом</span></li>
+        <li><span class="bicon">✓</span><span><strong>Возможность пальпации</strong> на каждом этапе диссекции</span></li>
+        <li><span class="bicon">✓</span><span><strong>Свежезамороженный материал</strong> без фиксации — естественное состояние тканей</span></li>
+        <li><span class="bicon">✓</span><span><strong>Трансляция во всех деталях</strong> в режиме реального времени для участников онлайн</span></li>
+        <li><span class="bicon">✓</span><span><strong>Видеозапись</strong> семинара после окончания курса</span></li>
+        <li><span class="bicon">✓</span><span><strong>Удостоверение гос. образца</strong> о повышении квалификации по итогам курса, а также сертификат от МИОТ</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. ПРОГРАММА ══ -->
+<section class="sec sec--light" id="program">
+  <div class="wrap reveal">
+    <span class="eyebrow">16–17 декабря</span>
+    <h2 class="sec__title">Программа курса</h2>
+    <p class="sec__sub">Два дня послойной диссекции: сначала шея, затем голова — с погружением до глубоких структур мозга.</p>
+    <div class="day-grid reveal-stagger">
+      <div class="day-card">
+        <div class="day-card__num">День 1 · 16 декабря</div>
+        <div class="day-card__title">Послойная диссекция шеи</div>
+        <ul class="day-list">
+          <li>Фасциальные слои шеи</li>
+          <li>Мышцы шеи — от поверхностных до глубоких</li>
+          <li>Подзатылочная область</li>
+          <li>Связки шейного отдела позвоночника</li>
+          <li>Гортань и глотка</li>
+          <li>Верхний отдел трахеи</li>
+          <li>Общая, наружная и внутренняя сонная артерия</li>
+          <li>Щитовидная железа</li>
+          <li>Диафрагмальный нерв</li>
+          <li>Блуждающий нерв</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-card__num">День 2 · 17 декабря</div>
+        <div class="day-card__title">Послойная диссекция головы и мозга</div>
+        <ul class="day-list">
+          <li>Слои скальпа</li>
+          <li>Мимическая мускулатура</li>
+          <li>Жевательная мускулатура</li>
+          <li>Лицевая артерия</li>
+          <li>Лицевой нерв</li>
+          <li>Тройничный нерв</li>
+          <li>Слюнные железы</li>
+          <li>Язык и диафрагма рта</li>
+          <li>Наружный нос, подъязычная кость</li>
+          <li>Наружная и внутренняя яремная вены</li>
+          <li>Оболочки и структуры головного мозга</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. О ВЕДУЩЕМ ══ -->
+<section class="sec sec--dark" id="organizer">
+  <span class="blob blob--gold" style="width:420px;height:420px;top:-60px;right:-120px;"></span>
+  <div class="wrap reveal">
+    <span class="eyebrow">Ведущий курса</span>
+    <h2 class="sec__title">Олег Агапэ</h2>
+    <div class="org-hero"><span class="org-badge">Врач-остеопат</span><span class="org-badge">Преподаватель и методолог МИОТ</span></div>
+
+    <div class="stat-tiles reveal-stagger" style="margin-bottom:26px;">
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">10 лет</div><div class="stat-tile__label">изучения традиционных и нетрадиционных методов лечения</div></div>
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">95%</div><div class="stat-tile__label">положительного результата от лечения</div></div>
+      <div class="stat-tile"><span class="stat-tile__dot"></span><div class="stat-tile__num">3000+</div><div class="stat-tile__label">учеников online, получивших результат уже через неделю</div></div>
+    </div>
+
+    <div class="card" style="max-width:820px;margin:0 auto;">
+      <p><strong>Преподаватель и методолог</strong> Института Остеопатии, Академии Остеопатических технологий и Адаптации, МИИН.</p>
+      <p>Сотни специалистов-остеопатов обучаются у Олега и считают его своим наставником. Непрерывное повышение квалификации в ВУЗах Европы, России, Сингапура, Австралии.</p>
+      <p>В 2025 году Олег Агапэ <strong>первым в мире физически доказал непрерывность всех 11 фасциальных линий</strong>, подтвердив теорию «анатомических поездов» Томаса Майерса — на анатомической диссекции. Об этом писали РИА Новости и федеральные СМИ.</p>
+      <div class="btn-row" style="margin-top:22px;">
+        <a href="#tariffs" class="btn btn-primary">Забронировать место</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. ТАРИФЫ ══ -->
+<section class="sec sec--light" id="tariffs">
+  <span class="blob blob--violet" style="width:400px;height:400px;top:-100px;right:-80px;"></span>
+  <div class="wrap reveal">
+    <span class="eyebrow">16–17 декабря</span>
+    <h2 class="sec__title">Тарифы</h2>
+    <p class="sec__sub">Выберите формат участия — очно в зале с возможностью пальпации или онлайн в прямом эфире.</p>
+
+    <div class="price-grid reveal-stagger">
+      <div class="price-card">
+        <div class="price-card__label">Онлайн</div>
+        <div class="price-card__price">50 000 ₽</div>
+        <div class="price-card__note">Прямой эфир диссекции с лучшего ракурса, без выезда в Москву.</div>
+        <ul class="price-card__feats">
+          <li>Прямой эфир с диссекции обоих дней</li>
+          <li>Теоретическая лекция перед семинаром</li>
+          <li>Видеозапись семинара после курса</li>
+          <li>Сертификат от МИОТ</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);">Забронировать «Онлайн»</a>
+      </div>
+      <div class="price-card price-card--best">
+        <span class="dot-trace"></span>
+        <div class="price-card__ribbon">Личное присутствие</div>
+        <div class="price-card__label">Очно</div>
+        <div class="price-card__price">80 000 ₽</div>
+        <div class="price-card__note">Личное присутствие в зале, пальпация на каждом этапе диссекции.</div>
+        <ul class="price-card__feats">
+          <li>Личное присутствие на диссекции 16–17 декабря</li>
+          <li>Возможность пальпации и вопросов на каждом этапе</li>
+          <li>Теоретическая лекция перед семинаром</li>
+          <li>Видеозапись семинара после курса</li>
+          <li>Сертификат от МИОТ, удостоверение гос. образца о повышении квалификации</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Забронировать «Очно»</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. КАК ПРОХОДИЛИ ПРОШЛЫЕ ДИССЕКЦИИ ══ -->
+<section class="sec sec--dark2">
+  <div class="wrap reveal">
+    <span class="eyebrow">Прошлые диссекции МИОТ</span>
+    <h2 class="sec__title">Как проходят наши диссекции</h2>
+    <p class="sec__sub">Анатомический театр, разбор на биоматериале и практикующий ведущий — так проходят все кадавер-курсы МИОТ.</p>
+    <div class="recap-grid reveal-stagger">
+      <div class="recap-photo"><img src="conf-media/recap/event-05.webp" alt="Олег Агапэ проводит анатомическую диссекцию" loading="lazy"></div>
+      <div class="recap-photo"><img src="conf-media/recap/event-02.webp" alt="Подготовка к диссекции" loading="lazy"></div>
+      <div class="recap-photo"><img src="conf-media/recap/event-01.webp" alt="Участники наблюдают за диссекцией" loading="lazy"></div>
+      <div class="recap-photo"><img src="conf-media/recap/event-04.webp" alt="Съёмочная группа на диссекции" loading="lazy"></div>
+      <div class="recap-photo"><img src="conf-media/recap/event-03.webp" alt="Участники курса в зале" loading="lazy"></div>
+      <div class="recap-photo"><img src="conf-media/recap/event-06.webp" alt="Диссекция крупным планом" loading="lazy"></div>
+    </div>
+    <div class="recap-videos reveal-stagger">
+      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-01-poster.webp"><source src="conf-media/recap/clip-01.mov"></video>
+      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-02-poster.webp"><source src="conf-media/recap/clip-02.mov"></video>
+      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-03-poster.webp"><source src="conf-media/recap/clip-03.mov"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. ОТЗЫВЫ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <span class="eyebrow">Что говорят участники</span>
+    <h2 class="sec__title">Отзывы</h2>
+    <p class="sec__sub">Реальные сообщения из чата прошлых диссекционных курсов — свайпайте, чтобы посмотреть все.</p>
+  </div>
+  <div class="reviews-scroll reveal">
+    <div class="reviews-track">
+      <img class="reviews-shot" src="conf-media/reviews/review-01.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-02.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-03.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-04.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-05.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-06.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-07.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-08.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-09.webp" alt="Отзыв участника курса" loading="lazy">
+      <img class="reviews-shot" src="conf-media/reviews/review-10.webp" alt="Отзыв участника курса" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. FAQ ══ -->
+<section class="sec sec--dark" id="faq">
+  <div class="wrap reveal">
+    <span class="eyebrow">Обычные вопросы</span>
+    <h2 class="sec__title">Часто задаваемые вопросы</h2>
+    <div class="faq" style="max-width:760px;margin:0 auto;">
+      <details open>
+        <summary>Где и когда пройдёт курс?</summary>
+        <div class="faq__a">Очно в Москве и в прямом эфире онлайн, 16–17 декабря.</div>
+      </details>
+      <details>
+        <summary>Сколько стоит участие?</summary>
+        <div class="faq__a">Онлайн — 50 000 ₽, очно — 80 000 ₽. Оба тарифа включают оба дня диссекции — шею 16 декабря и голову с мозгом 17 декабря.</div>
+      </details>
+      <details>
+        <summary>Чем отличается материал от фиксированного?</summary>
+        <div class="faq__a">Диссекция проводится на свежем сертифицированном биоматериале без фиксации формалином — это естественное состояние тканей: цвет, плотность, подвижность фасциальных слоёв, максимально приближённые к живому телу.</div>
+      </details>
+      <details>
+        <summary>Дадут ли удостоверение о повышении квалификации?</summary>
+        <div class="faq__a">По окончании курса выдаётся удостоверение гос. образца о повышении квалификации, а также сертификат от МИОТ — Международного института остеопатических технологий.</div>
+      </details>
+      <details>
+        <summary>Можно ли пальпировать структуры на диссекции?</summary>
+        <div class="faq__a">Да, при очном участии пальпация доступна на каждом этапе диссекции. При участии онлайн вы наблюдаете за диссекцией в прямом эфире со всеми деталями.</div>
+      </details>
+      <details>
+        <summary>Карта зарубежного банка не проходит. Что делать?</summary>
+        <div class="faq__a">Напишите нам через форму обратной связи ниже — подскажем актуальный способ оплаты.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. КОНТАКТ ══ -->
+<section class="sec sec--dark" id="contact">
+  <div class="wrap reveal">
+    <div class="cta-final">
+      <div class="cta-final__eyebrow">Осталось немного мест</div>
+      <div class="cta-final__title">Есть вопросы или хотите забронировать место на диссекцию?</div>
+      <p class="note">Заполни форму — менеджер свяжется с тобой в течение 24 часов.</p>
+      <a href="mailto:info@dr-agape.ru?subject=Диссекция%20Голова-Шея-Мозг" class="btn btn-white">Задать вопрос</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12. FOOTER ══ -->
+<footer class="page-foot">
+  <div class="wrap reveal">
+    <p>© 2026 Олег Агапэ · <a href="https://dr-agape.ru">dr-agape.ru</a></p>
+    <p class="legal">
+      ИНН 330510600108 · ОГРН 322332800019880 ·
+      <a href="policy.html">Политика конфиденциальности</a> ·
+      <a href="offer.html">Договор оферта</a> ·
+      <a href="soglasie.html">Согласие на обработку персональных данных</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+
+    function revealTarget(el) {
+      el.classList.add('in-view');
+    }
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(revealTarget);
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          revealTarget(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+
+    setTimeout(function () {
+      targets.forEach(revealTarget);
+    }, 4000);
+  })();
+</script>
+
+</body>
+</html>
