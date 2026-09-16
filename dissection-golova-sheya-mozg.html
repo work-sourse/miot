@@ -18,7 +18,7 @@
     --border-dark:  rgba(255,255,255,0.10);
     --grad-title:   linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
     --grad-card:    linear-gradient(135deg, #1B2947 0%, #35507E 100%);
-    --grad-btn:     linear-gradient(135deg, #16213F 0%, #0F172A 100%);
+    --grad-btn:     linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
     --grad-btn2:    linear-gradient(135deg, #CCA776 0%, #8A6A3A 100%);
     --gold:         #CCA776;
     --violet:       #0F172A;
@@ -70,11 +70,11 @@
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16.5px; border: none; border-radius: 999px; padding: 18px 34px; cursor: pointer; text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.3,1.4), box-shadow .2s, opacity .15s, background .2s; white-space: nowrap; }
   .btn:hover { transform: translateY(-3px) scale(1.02); }
   .btn:active { transform: translateY(-1px) scale(0.99); }
-  .btn-primary { background: var(--grad-btn); background-size: 160% 160%; color: #fff; box-shadow: 0 10px 28px -10px rgba(15,23,42,0.55); animation: btnSheen 6s ease infinite; }
-  .btn-primary:hover { box-shadow: 0 16px 38px -10px rgba(15,23,42,0.75); }
+  .btn-primary { background: var(--grad-btn); background-size: 160% 160%; color: var(--ink); box-shadow: 0 10px 28px -10px rgba(204,167,118,0.6); animation: btnSheen 6s ease infinite; }
+  .btn-primary:hover { box-shadow: 0 16px 38px -10px rgba(204,167,118,0.8); }
   @keyframes btnSheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-  .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
-  .btn-ghost:hover { background: rgba(255,255,255,0.16); }
+  .btn-ghost { background: rgba(255,255,255,0.10); color: #fff; border: 1.5px solid rgba(255,255,255,0.45); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.65); }
   .btn-white { background: #fff; color: var(--ink); }
   .btn-white:hover { background: #F0F0F5; }
   .sec--light .btn-ghost { background: rgba(20,25,60,0.06); color: var(--ink); border-color: rgba(20,25,60,0.18); }
@@ -199,7 +199,7 @@
   .sec--dark .checklist li:hover, .sec--dark2 .checklist li:hover { background: rgba(255,255,255,0.09); }
   .sec--light .checklist li:hover { box-shadow: 0 10px 26px rgba(15,23,42,0.14); }
   .checkmark { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; margin-top: 1px; }
-  .sec--dark .checkmark, .sec--dark2 .checkmark { background: var(--grad-btn); }
+  .sec--dark .checkmark, .sec--dark2 .checkmark { background: var(--grad-btn); color: var(--ink); }
   .sec--light .checkmark { background: var(--violet); }
 
   /* ══ STAT TILES ══ */
@@ -281,7 +281,7 @@
   .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px -14px rgba(20,25,60,0.18); }
   .price-card--best { border: 2px solid var(--violet); box-shadow: 0 0 0 6px rgba(15,23,42,0.08), 0 4px 28px rgba(20,25,60,0.08); }
   .price-card--best:hover { box-shadow: 0 0 0 6px rgba(15,23,42,0.12), 0 22px 46px -14px rgba(15,23,42,0.3); }
-  .price-card__ribbon { position: absolute; top: -15px; right: 26px; background: var(--grad-btn); color: #fff; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 8px 18px; border-radius: 999px; box-shadow: 0 6px 16px -4px rgba(15,23,42,0.5); animation: ribbonPulse 2.4s ease-in-out infinite; }
+  .price-card__ribbon { position: absolute; top: -15px; right: 26px; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 8px 18px; border-radius: 999px; box-shadow: 0 6px 16px -4px rgba(15,23,42,0.5); animation: ribbonPulse 2.4s ease-in-out infinite; }
   @keyframes ribbonPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
   .price-card__label { font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 12px; }
   .price-card__price { font-family: 'Unbounded', sans-serif; font-size: clamp(32px, 4.6vw, 46px); font-weight: 800; color: var(--ink); margin-bottom: 8px; }
@@ -339,9 +339,9 @@
   .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 26px; padding: 50px 44px; text-align: center; }
   .cta-final::before { content: ''; position: absolute; top: -40%; left: -10%; width: 60%; height: 180%; background: radial-gradient(closest-side, rgba(255,255,255,0.18), transparent 70%); animation: floatBlob 9s ease-in-out infinite; }
   @media (max-width: 600px) { .cta-final { padding: 34px 24px; } }
-  .cta-final__eyebrow { position: relative; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; }
-  .cta-final__title { position: relative; font-family: 'Unbounded', sans-serif; font-size: clamp(21px, 3vw, 30px); font-weight: 700; color: #fff; max-width: 620px; margin: 0 auto 20px; line-height: 1.35; text-wrap: balance; }
-  .cta-final p.note { position: relative; font-size: 16px; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 26px; }
+  .cta-final__eyebrow { position: relative; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.68); margin-bottom: 14px; }
+  .cta-final__title { position: relative; font-family: 'Unbounded', sans-serif; font-size: clamp(21px, 3vw, 30px); font-weight: 700; color: var(--ink); max-width: 620px; margin: 0 auto 20px; line-height: 1.35; text-wrap: balance; }
+  .cta-final p.note { position: relative; font-size: 16px; color: rgba(15,23,42,0.72); max-width: 480px; margin: 0 auto 26px; }
   .cta-final .btn { position: relative; }
 
   hr.div { border: none; border-top: 1px solid var(--border-dark); margin: 0; }
