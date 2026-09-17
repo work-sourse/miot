@@ -671,7 +671,10 @@
                     дыхание, ЖКТ, мышечные цепи. Всё в формате «повторяй за мной» с объяснением автора.</p>
                 <p><strong>Результат:</strong> больше не нужно бегать по врачам — ты сам снимаешь напряжение,
                     чувствуешь больше энергии и заметно омолаживаешь лицо и тело своими руками.</p>
-                <a href="https://agape-course.com/ostropat20" target="_blank" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('Сам себе остеопат 2.0')">Оставить заявку</button>
+                    <a href="https://agape-course.com/ostropat20" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -686,7 +689,10 @@
                     Никакого медицинского образования не требуется.</p>
                 <p><strong>Результат:</strong> навык профилактики и коррекции — крепкий сон, спокойное пищеварение,
                     правильная осанка и меньше тревожности у ребёнка.</p>
-                <a href="forparents.html" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('ОстеоРодители')">Оставить заявку</button>
+                    <a href="forparents.html" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -701,7 +707,10 @@
                     с телом и лицом — без филлеров и операций.</p>
                 <p><strong>Результат:</strong> свежий вид, чёткий овал лица и улучшение цвета кожи — заметно уже в
                     первую неделю, устойчивый результат — за 21 день.</p>
-                <a href="https://agape-course.com/estetika" target="_blank" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('ОстеоЭстетика')">Оставить заявку</button>
+                    <a href="https://agape-course.com/estetika" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -716,7 +725,10 @@
                     личного запроса.</p>
                 <p><strong>Результат:</strong> умение находить психоэмоциональные блоки в теле и мягко их отпускать,
                     вместо того чтобы носить хроническое напряжение годами.</p>
-                <a href="психосоматика/psycho-short-ten.html" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('Психосоматика')">Оставить заявку</button>
+                    <a href="психосоматика/psycho-short-ten.html" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -731,7 +743,10 @@
                     симптом» — без операций и догадок, с записью и доступом на несколько месяцев.</p>
                 <p><strong>Результат:</strong> ты перестаёшь бояться и избегать эту зону тела, понимаешь, что
                     происходит внутри, и как помогать себе безопасно.</p>
-                <a href="https://agape-course.com/osteogynecology" target="_blank" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('ОстеоГинекология')">Оставить заявку</button>
+                    <a href="https://agape-course.com/osteogynecology" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -746,7 +761,10 @@
                     дыханием — без специальной подготовки, доступ к материалам 3 месяца.</p>
                 <p><strong>Результат:</strong> инструмент для самопомощи в любой момент — снимаешь головные боли,
                     тревожность и напряжение без таблеток.</p>
-                <a href="https://agape-course.com/kranio" target="_blank" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('Краниосакральная самокоррекция')">Оставить заявку</button>
+                    <a href="https://agape-course.com/kranio" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
@@ -761,12 +779,106 @@
                     баланса при вздутии, тяжести и запорах.</p>
                 <p><strong>Результат:</strong> восстановление баланса внутренних органов, улучшение самочувствия и
                     энергообмена — мягко и без лекарств.</p>
-                <a href="https://agape-course.com/zkt_1" target="_blank" class="btn btn-primary mt-sm">Записаться на курс</a>
+                <div class="program-actions mt-sm">
+                    <button type="button" class="btn btn-secondary" onclick="openLeadModal('Висцеральная самокоррекция')">Оставить заявку</button>
+                    <a href="https://agape-course.com/zkt_1" target="_blank" class="btn btn-primary">Записаться на курс</a>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Lead Capture Modal -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="closeLeadModal" aria-label="Закрыть">&times;</button>
+            <h3 style="color: var(--color-text-primary); margin-bottom: 1rem;">Оставить заявку на курс</h3>
+            <p style="margin-bottom: 1.5rem;">Курс: <strong id="leadCourseName">—</strong>. Заполните форму, и наш
+                менеджер свяжется с вами для подбора формата и оплаты.</p>
+            <form id="leadForm">
+                <input type="hidden" id="leadCourseInput" name="course">
+                <input type="text" placeholder="Ваше имя" required class="form-input"
+                    style="width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid var(--color-bg-secondary); border-radius: var(--radius-sm); font-family: var(--font-secondary);">
+                <input type="tel" placeholder="Ваш телефон" required class="form-input"
+                    style="width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid var(--color-bg-secondary); border-radius: var(--radius-sm); font-family: var(--font-secondary);">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.72rem; color: var(--color-text-tertiary); line-height:1.4; margin-bottom:0.5rem; cursor:pointer;">
+                        <input type="checkbox" required style="margin-top:0.2rem; flex-shrink:0;">
+                        <span>Даю согласие на <a href="soglasie.html" target="_blank" style="color: inherit; text-decoration: underline;">обработку персональных данных</a></span>
+                    </label>
+                    <label style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.72rem; color: var(--color-text-tertiary); line-height:1.4; cursor:pointer;">
+                        <input type="checkbox" style="margin-top:0.2rem; flex-shrink:0;">
+                        <span>Согласен(на) получать <a href="soglasie-reklama.html" target="_blank" style="color: inherit; text-decoration: underline;">рекламно-информационную рассылку</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                <div class="messenger-block">
+                    <span class="messenger-text-sm">Или напишите нам в мессенджеры:</span>
+                    <div class="messenger-grid">
+                        <a href="https://t.me/TatyBondar" target="_blank" class="messenger-item">
+                            <img src="https://static.tildacdn.com/tild6461-3037-4235-a634-323962653434/3d-icon-social-media.png" alt="Telegram">
+                            <span>Telegram</span>
+                        </a>
+                        <a href="https://vk.ru/id134100568" target="_blank" class="messenger-item">
+                            <img src="https://static.tildacdn.com/tild6139-3835-4561-a135-616364363831/3d-icon-social-media.png" alt="ВКонтакте">
+                            <span>ВКонтакте</span>
+                        </a>
+                        <a href="https://max.ru/u/f9LHodD0cOIDqa2IQgLfQV3CSNZPigp9Et2IvcvixcT07rknMmHq3d2XWBI" target="_blank" class="messenger-item">
+                            <img src="https://static.tildacdn.com/tild6138-3335-4432-a332-653163376361/noroot.png" alt="Max">
+                            <span>Max</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js?v=20260625g"></script>
+    <script>
+        window.openLeadModal = function (courseName) {
+            document.querySelectorAll('.gc-modal.is-open').forEach(function (m) {
+                m.classList.remove('is-open');
+            });
+            var nameEl = document.getElementById('leadCourseName');
+            var inputEl = document.getElementById('leadCourseInput');
+            if (nameEl) nameEl.textContent = courseName || '—';
+            if (inputEl) inputEl.value = courseName || '';
+            var lm = document.getElementById('leadModal');
+            if (lm) {
+                lm.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+        (function () {
+            var leadModal = document.getElementById('leadModal');
+            var closeLeadModal = document.getElementById('closeLeadModal');
+            var leadForm = document.getElementById('leadForm');
+
+            function closeLead() {
+                if (leadModal) {
+                    leadModal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (closeLeadModal) closeLeadModal.addEventListener('click', closeLead);
+            if (leadModal) {
+                leadModal.addEventListener('click', function (e) {
+                    if (e.target === leadModal) closeLead();
+                });
+            }
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && leadModal && leadModal.classList.contains('show')) closeLead();
+            });
+            if (leadForm) {
+                leadForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    window.open('https://t.me/TatyBondar', '_blank');
+                    closeLead();
+                    leadForm.reset();
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
