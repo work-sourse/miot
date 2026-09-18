@@ -972,6 +972,44 @@ section {
     color: var(--color-text-inverse);
 }
 
+.instructor-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 1rem 0;
+}
+
+.instructor-chip img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-highlight);
+    flex-shrink: 0;
+}
+
+.instructor-chip .instructor-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-secondary);
+}
+
+.instructor-chip .instructor-names {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+}
+
+.instructor-chip .instructor-avatars {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.instructor-chip .instructor-avatars img:not(:first-child) {
+    margin-left: -14px;
+}
+
 .gc-modal__sale-callout {
     display: inline-block;
     background: linear-gradient(135deg, #ff7a4a, #ff3b3b);
