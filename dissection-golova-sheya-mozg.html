@@ -316,17 +316,6 @@
   .sec--light .faq .faq__a { color: var(--ink-soft); }
   .sec--dark .faq .faq__a, .sec--dark2 .faq .faq__a { color: var(--w-70); }
 
-  /* ══ RECAP ══ */
-  .recap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-  @media (max-width: 700px) { .recap-grid { grid-template-columns: 1fr 1fr; } }
-  .recap-photo { aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; box-shadow: 0 3px 18px rgba(20,25,60,0.08); transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s; }
-  .recap-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
-  .recap-photo:hover { transform: translateY(-5px); box-shadow: 0 16px 30px -10px rgba(15,23,42,0.28); }
-  .recap-photo:hover img { transform: scale(1.06); }
-  .recap-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width: 700px) { .recap-videos { grid-template-columns: 1fr; } }
-  .recap-video { width: 100%; aspect-ratio: 9/16; max-height: 420px; border-radius: 16px; background: #000; box-shadow: 0 3px 18px rgba(20,25,60,0.1); }
-
   /* ══ REVIEWS SCROLLER ══ */
   .reviews-scroll { overflow-x: auto; overflow-y: hidden; padding: 6px 24px 18px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
   .reviews-track { display: flex; gap: 16px; width: max-content; margin: 0 auto; }
@@ -585,30 +574,8 @@
   </div>
 </section>
 
-<!-- ══ 8. КАК ПРОХОДИЛИ ПРОШЛЫЕ ДИССЕКЦИИ ══ -->
-<section class="sec sec--dark2">
-  <div class="wrap reveal">
-    <span class="eyebrow">Прошлые диссекции МИОТ</span>
-    <h2 class="sec__title">Как проходят наши диссекции</h2>
-    <p class="sec__sub">Анатомический театр, разбор на биоматериале и практикующий ведущий — так проходят все кадавер-курсы МИОТ.</p>
-    <div class="recap-grid reveal-stagger">
-      <div class="recap-photo"><img src="conf-media/recap/event-05.webp" alt="Олег Агапэ проводит анатомическую диссекцию" loading="lazy"></div>
-      <div class="recap-photo"><img src="conf-media/recap/event-02.webp" alt="Подготовка к диссекции" loading="lazy"></div>
-      <div class="recap-photo"><img src="conf-media/recap/event-01.webp" alt="Участники наблюдают за диссекцией" loading="lazy"></div>
-      <div class="recap-photo"><img src="conf-media/recap/event-04.webp" alt="Съёмочная группа на диссекции" loading="lazy"></div>
-      <div class="recap-photo"><img src="conf-media/recap/event-03.webp" alt="Участники курса в зале" loading="lazy"></div>
-      <div class="recap-photo"><img src="conf-media/recap/event-06.webp" alt="Диссекция крупным планом" loading="lazy"></div>
-    </div>
-    <div class="recap-videos reveal-stagger">
-      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-01-poster.webp"><source src="conf-media/recap/clip-01.mov"></video>
-      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-02-poster.webp"><source src="conf-media/recap/clip-02.mov"></video>
-      <video class="recap-video" controls preload="none" poster="conf-media/recap/clip-03-poster.webp"><source src="conf-media/recap/clip-03.mov"></video>
-    </div>
-  </div>
-</section>
-
 <!-- ══ 8.5. ФОТО С ПРОШЛЫХ ДИССЕКЦИЙ (КАРУСЕЛЬ) ══ -->
-<section class="sec sec--light">
+<section class="sec sec--dark2">
   <div class="wrap reveal">
     <span class="eyebrow">Живые кадры</span>
     <h2 class="sec__title">Фото с прошлых диссекций</h2>
