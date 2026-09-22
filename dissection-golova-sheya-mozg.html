@@ -553,7 +553,8 @@
           <li>Видеозапись семинара после курса</li>
           <li>Сертификат от МИОТ</li>
         </ul>
-        <button onclick="gcOpen('gcModalOnline')" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);width:100%;">Забронировать «Онлайн»</button>
+        <button onclick="gcOpen('gcModalPayOnline')" class="btn btn-primary" style="width:100%;">Оплатить участие</button>
+        <button onclick="gcOpen('gcModalOnline')" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);width:100%;margin-top:10px;">Забронировать «Онлайн»</button>
       </div>
       <div class="price-card price-card--best">
         <span class="dot-trace"></span>
@@ -568,7 +569,8 @@
           <li>Видеозапись семинара после курса</li>
           <li>Сертификат от МИОТ, удостоверение гос. образца о повышении квалификации</li>
         </ul>
-        <button onclick="gcOpen('gcModalOchno')" class="btn btn-primary" style="width:100%;">Забронировать «Очно»</button>
+        <button onclick="gcOpen('gcModalPayOchno')" class="btn btn-primary" style="width:100%;">Оплатить участие</button>
+        <button onclick="gcOpen('gcModalOchno')" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);width:100%;margin-top:10px;">Забронировать «Очно»</button>
       </div>
     </div>
   </div>
@@ -684,6 +686,30 @@
     <div class="gc-modal__title">Очно — 80 000 ₽</div>
     <div class="gc-modal__body">
       <script id="5780cbcf6e54098af7182fa6cb60123757fc8fbe" src="https://online.agape-course.ru/pl/lite/widget/script?id=1657748"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalPayOnline" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Диссекция «Голова — Шея — Мозг» · 16–17 декабря</div>
+    <div class="gc-modal__title">Оплата участия · Онлайн — 50 000 ₽</div>
+    <div class="gc-modal__body">
+      <script id="d6c8dc655dc31f9371ffa63ddc4160b1131d341e" src="https://online.agape-course.ru/pl/lite/widget/script?id=1659364"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalPayOchno" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Диссекция «Голова — Шея — Мозг» · 16–17 декабря</div>
+    <div class="gc-modal__title">Оплата участия · Очно — 80 000 ₽</div>
+    <div class="gc-modal__body">
+      <script id="3b6cd4d42f26c39182ebfc7525c13695ee4a7ce0" src="https://online.agape-course.ru/pl/lite/widget/script?id=1659365"></script>
     </div>
   </div>
 </div>
