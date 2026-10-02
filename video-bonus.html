@@ -42,12 +42,20 @@
   @media (max-width: 600px) { .wrap { padding: 40px 18px 48px; } .btn { width: 100%; padding: 17px 24px; } .player { border-radius: 16px; } }
   .video { margin-top: 56px; }
   .video:first-of-type { margin-top: 40px; }
-  .note { margin: 56px auto 0; max-width: 640px; background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 22px; padding: 28px 30px; text-align: left; }
-  .note__title { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 700; color: var(--gold); margin-bottom: 12px; line-height: 1.35; }
-  .note p { font-size: 16.5px; line-height: 1.65; color: var(--w-70); }
-  .note p + p { margin-top: 10px; }
-  .note strong { color: #fff; }
-  @media (max-width: 600px) { .note { padding: 22px 20px; } }
+  .note { position: relative; margin: 60px auto 0; max-width: 680px; border-radius: 28px; padding: 38px 36px 34px; text-align: center; border: 1.5px solid transparent;
+    background: linear-gradient(160deg, #1b1a45 0%, #121131 100%) padding-box, linear-gradient(135deg, rgba(254,228,149,0.65), rgba(104,83,255,0.55) 45%, rgba(87,125,242,0.15)) border-box;
+    box-shadow: 0 30px 70px -30px rgba(104,83,255,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset; overflow: hidden; }
+  .note::before { content: ''; position: absolute; top: -90px; left: 50%; transform: translateX(-50%); width: 420px; max-width: 100%; height: 200px; background: radial-gradient(closest-side, rgba(104,83,255,0.35), transparent 72%); pointer-events: none; }
+  .note > * { position: relative; }
+  .note__eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); background: rgba(254,228,149,0.10); border: 1px solid rgba(254,228,149,0.30); border-radius: 999px; padding: 7px 16px; margin-bottom: 18px; }
+  .note__title { font-family: 'Unbounded', sans-serif; font-size: clamp(21px, 3.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; text-wrap: balance; }
+  .note__lead { font-size: 17px; line-height: 1.6; color: var(--w-70); max-width: 520px; margin: 0 auto 26px; }
+  .note__lead strong { color: #fff; font-weight: 700; }
+  .note__list { list-style: none; display: grid; gap: 12px; text-align: left; }
+  .note__list li { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 15px 18px; font-size: 16.5px; line-height: 1.45; color: rgba(255,255,255,0.88); }
+  .note__ico { flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 21px; background: linear-gradient(135deg, rgba(104,83,255,0.45), rgba(87,125,242,0.18)); border: 1px solid rgba(140,163,247,0.35); }
+  .note__list strong { color: #fff; font-weight: 700; }
+  @media (max-width: 600px) { .note { padding: 30px 18px 22px; border-radius: 22px; } .note__list li { padding: 13px 14px; gap: 13px; font-size: 15.5px; } .note__ico { width: 42px; height: 42px; font-size: 19px; } }
 </style>
 </head>
 <body>
@@ -74,9 +82,14 @@
     </div>
   </section>
   <div class="note">
-    <div class="note__title">Зачем возвращаться в бота</div>
-    <p>После просмотра <strong>вернитесь в бота и закрепите его</strong>.</p>
-    <p>Туда придёт ссылка на канал конференции, напоминания и ссылки на эфиры — чтобы ничего не пропустить. Там же вы будете получать актуальные предложения.</p>
+    <span class="note__eyebrow">Важный шаг</span>
+    <div class="note__title">Не забудьте вернуться в бота</div>
+    <p class="note__lead">После просмотра <strong>вернитесь в бота и закрепите его</strong> — так вы ничего не пропустите.</p>
+    <ul class="note__list">
+      <li><span class="note__ico">🔗</span><span><strong>Ссылка на канал</strong> конференции</span></li>
+      <li><span class="note__ico">🔔</span><span><strong>Напоминания</strong> и ссылки на эфиры</span></li>
+      <li><span class="note__ico">🎁</span><span>Актуальные <strong>предложения</strong></span></li>
+    </ul>
   </div>
   <div class="btn-row">
     <a class="btn btn-primary">Вернуться в бот</a>
