@@ -358,17 +358,6 @@
   .sec--dark .ico, .sec--dark2 .ico { background: rgba(204,167,118,0.13); border: 1px solid rgba(204,167,118,0.28); }
   .sec--dark .ico svg, .sec--dark2 .ico svg { stroke: var(--gold); }
 
-  /* numbers band */
-  .numbers { background: var(--bg-dark2); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); padding: 30px 0; position: relative; z-index: 2; }
-  .numbers__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-  @media (max-width: 900px) { .numbers__row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 22px; } }
-  @media (max-width: 520px) { .numbers__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .num { text-align: center; padding: 0 6px; }
-  .num + .num { border-left: 1px solid var(--border-dark); }
-  @media (max-width: 900px) { .num + .num { border-left: none; } }
-  .num b { display: block; font-family: 'Unbounded', sans-serif; font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; line-height: 1.05; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
-  .num span { font-size: 13.5px; color: var(--w-70); line-height: 1.4; display: block; }
-
   /* icon lists */
   .ilist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .ilist li { display: flex; align-items: center; gap: 16px; font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
@@ -502,17 +491,6 @@
     </div>
   </div>
 </section>
-
-<!-- ══ ЦИФРЫ ══ -->
-<div class="numbers">
-  <div class="wrap numbers__row">
-    <div class="num"><b>2 дня</b><span>19–20 декабря · офлайн и онлайн</span></div>
-    <div class="num"><b>80%</b><span>практики</span></div>
-    <div class="num"><b>6 мес.</b><span>доступ к записям</span></div>
-    <div class="num"><b>10 лет</b><span>практики по протоколу</span></div>
-    <div class="num"><b>20 лет</b><span>работы с особенными детьми</span></div>
-  </div>
-</div>
 
 <!-- ══ 2. ДЛЯ КОГО ══ -->
 <section class="sec sec--light" id="for">
