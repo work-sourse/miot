@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Биостимуляция нейрогенеза — семинар МИОТ, 19–20 декабря</title>
+<meta name="description" content="Авторский семинар для телесно ориентированных специалистов: как помогать детям с ДЦП, РАС и поражениями ЦНС. 19–20 декабря, офлайн и онлайн. Ведущие — Евгений Вишняков и Олег Агапэ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-dark:      #0F172A;
+    --bg-dark2:     #16213F;
+    --card-dark:    #1B2947;
+    --border-dark:  rgba(255,255,255,0.10);
+    --grad-title:   linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
+    --grad-card:    linear-gradient(135deg, #1B2947 0%, #35507E 100%);
+    --grad-btn:     linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
+    --gold:         #CCA776;
+    --white:        #FFFFFF;
+    --w-70:         rgba(255,255,255,0.72);
+    --w-50:         rgba(255,255,255,0.52);
+
+    --light-bg:     #F0F4F8;
+    --card:         #FFFFFF;
+    --ink:          #0F172A;
+    --ink-soft:     #3C4A5E;
+    --ink-mute:     #6B7B90;
+    --line:         rgba(15,23,42,0.10);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; font-size: 17px; background: var(--bg-dark); color: var(--white); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  img, video { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  /* ══ SECTION SHELLS ══ */
+  .sec { padding: 76px 0; position: relative; overflow: hidden; }
+  @media (max-width: 600px) { .sec { padding: 56px 0; } }
+  .sec--dark { background: var(--bg-dark); color: var(--white); }
+  .sec--dark2 { background: var(--bg-dark2); color: var(--white); }
+  .sec--light { background: var(--light-bg); color: var(--ink); }
+  .eyebrow { display: block; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+  .sec--dark .eyebrow, .sec--dark2 .eyebrow { color: var(--gold); }
+  .sec--light .eyebrow { color: #8A6A3A; }
+  .sec__title { font-family: 'Unbounded', sans-serif; font-size: clamp(25px, 4vw, 40px); font-weight: 700; text-align: center; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; text-wrap: balance; }
+  .sec--dark .sec__title, .sec--dark2 .sec__title { color: var(--white); }
+  .sec--light .sec__title { color: var(--ink); }
+  .sec__title { margin-bottom: 36px; }
+  .sec__title:has(+ .sec__sub) { margin-bottom: 16px; }
+  .sec__sub { text-align: center; font-size: 18px; max-width: 760px; margin: 0 auto 40px; line-height: 1.65; }
+  .sec--dark .sec__sub, .sec--dark2 .sec__sub { color: var(--w-70); }
+  .sec--light .sec__sub { color: var(--ink-mute); }
+  .sub-title { font-family: 'Unbounded', sans-serif; font-size: clamp(18px, 2.4vw, 22px); font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+  .sec--light .sub-title { color: var(--ink); }
+  .sec--dark .sub-title, .sec--dark2 .sub-title { color: #fff; }
+
+  /* ══ BUTTONS ══ */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16.5px; border: none; border-radius: 999px; padding: 18px 34px; cursor: pointer; text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.3,1.4), box-shadow .2s, background .2s; white-space: nowrap; }
+  .btn:hover { transform: translateY(-3px) scale(1.02); }
+  .btn:active { transform: translateY(-1px) scale(0.99); }
+  .btn-primary { background: var(--grad-btn); background-size: 160% 160%; color: var(--ink); box-shadow: 0 10px 28px -10px rgba(204,167,118,0.6); animation: btnSheen 6s ease infinite; }
+  .btn-primary:hover { box-shadow: 0 16px 38px -10px rgba(204,167,118,0.8); }
+  @keyframes btnSheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .btn-ghost { background: rgba(255,255,255,0.10); color: #fff; border: 1.5px solid rgba(255,255,255,0.45); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.65); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #1E293B; box-shadow: 0 14px 30px -12px rgba(15,23,42,0.6); }
+  @media (max-width: 480px) { .btn { white-space: normal; text-align: center; padding: 17px 26px; } .btn-row .btn { width: 100%; } }
+
+  /* ══ HERO ══ */
+  .hero { padding: 64px 0 72px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -220px; left: 30%; width: 900px; height: 520px; background: radial-gradient(closest-side, rgba(204,167,118,0.26), transparent 70%); pointer-events: none; animation: floatBlob 13s ease-in-out infinite; }
+  .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; gap: 36px; } }
+  .hero__grid > * { min-width: 0; }
+  .hero__badge { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; background: var(--grad-card); color: #fff; border-radius: 18px; padding: 10px 20px; margin-bottom: 26px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5; animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) both; }
+  .hero__badge b { color: var(--gold); font-weight: 700; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(34px, 5.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 20px; background: var(--grad-title); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; overflow-wrap: break-word; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .08s both, titleShimmer 7s ease-in-out infinite 1.2s; }
+  @keyframes titleShimmer { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
+  .hero__h2 { font-family: 'Unbounded', sans-serif; font-size: clamp(19px, 2.4vw, 26px); font-weight: 600; line-height: 1.3; color: #fff; margin-bottom: 16px; text-wrap: balance; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .14s both; }
+  @media (max-width: 480px) { .hero__title { font-size: 6.3vw; } .hero__h2 { font-size: 17px; } }
+  .hero__sub { font-size: clamp(16.5px, 1.9vw, 19px); color: var(--w-70); line-height: 1.6; margin-bottom: 22px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .2s both; }
+  .hero__chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .26s both; }
+  .hero__chips li { font-size: 13.5px; font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 7px 14px; }
+  .hero__lead { font-size: 15.5px; color: var(--w-70); margin-bottom: 28px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .3s both; }
+  .hero__lead strong { color: #fff; }
+  .hero .btn-row { justify-content: flex-start; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .34s both; }
+  .hero__media { position: relative; animation: fadeUp .9s cubic-bezier(.2,.7,.3,1) .2s both; }
+  .hero__media img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 28px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6); }
+  .hero__media::before { content: ''; position: absolute; inset: -12px 12px 12px -12px; border: 1.5px solid rgba(204,167,118,0.45); border-radius: 32px; z-index: -1; }
+  .hero__float { position: absolute; left: -22px; bottom: 26px; background: rgba(15,23,42,0.86); backdrop-filter: blur(10px); border: 1px solid rgba(204,167,118,0.35); border-radius: 18px; padding: 14px 18px; max-width: 230px; }
+  .hero__float b { display: block; font-family: 'Unbounded', sans-serif; font-size: 24px; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+  .hero__float span { font-size: 13px; color: var(--w-70); line-height: 1.4; }
+  @media (max-width: 900px) { .hero__media { max-width: 420px; margin: 0 auto; } .hero__float { left: 10px; } }
+
+  /* ══ MOTION ══ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes floatBlob { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%, -4%) scale(1.06); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; animation: floatBlob 11s ease-in-out infinite; z-index: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.22), transparent 72%); }
+  .sec--light .blob { background: radial-gradient(closest-side, rgba(204,167,118,0.18), transparent 72%); }
+  .sec > .wrap { position: relative; z-index: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    *, *::before { animation: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ══ CARDS & LISTS ══ */
+  .card { border-radius: 24px; padding: 36px 40px; }
+  .sec--dark .card, .sec--dark2 .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  .sec--light .card { background: var(--card); box-shadow: 0 4px 28px rgba(20,25,60,0.08); }
+  @media (max-width: 600px) { .card { padding: 28px 22px; } }
+  .card p { font-size: 17px; line-height: 1.72; margin-bottom: 16px; }
+  .card p:last-child { margin-bottom: 0; }
+  .sec--dark .card p, .sec--dark2 .card p { color: rgba(255,255,255,0.85); }
+  .sec--light .card p { color: var(--ink-soft); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+
+  .dash { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .dash li { position: relative; padding-left: 30px; font-size: 16.5px; line-height: 1.55; }
+  .dash li::before { content: ''; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--grad-btn); box-shadow: inset 0 0 0 5px #fff; }
+  .sec--light .dash li { color: var(--ink-soft); }
+  .sec--dark .dash li, .sec--dark2 .dash li { color: var(--w-70); }
+  .sec--dark .dash li::before, .sec--dark2 .dash li::before { box-shadow: inset 0 0 0 5px var(--card-dark); }
+  .dash li strong { font-weight: 700; }
+  .sec--light .dash li strong { color: var(--ink); }
+  .sec--dark .dash li strong, .sec--dark2 .dash li strong { color: #fff; }
+
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .diag-grid { grid-template-columns: 1fr; } }
+  .diag { border-radius: 16px; padding: 18px; font-weight: 600; font-size: 15.5px; line-height: 1.45; color: var(--ink); background: linear-gradient(135deg, rgba(204,167,118,0.16), rgba(204,167,118,0.05)); border: 1px solid rgba(204,167,118,0.35); }
+  .diag small { display: block; font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 800; color: #8A6A3A; margin-bottom: 6px; }
+
+  .card-title { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; line-height: 1.35; }
+  .sec--light .card-title { color: var(--ink); }
+
+  /* family */
+  .family { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; }
+  @media (max-width: 800px) { .family { grid-template-columns: 1fr; } }
+  .family img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 26px; box-shadow: 0 26px 50px -20px rgba(0,0,0,0.6); }
+  .family .sec__title { text-align: left; }
+  @media (max-width: 800px) { .family img { max-width: 380px; margin: 0 auto; } }
+
+  /* questions */
+  .q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  @media (max-width: 900px) { .q-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .q-grid { grid-template-columns: 1fr; } }
+  .q-card { position: relative; background: var(--card); border-radius: 20px; padding: 54px 20px 22px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--ink); transition: transform .25s; }
+  .q-card:hover { transform: translateY(-4px); }
+  .q-card::before { content: '?'; position: absolute; top: 16px; left: 20px; width: 28px; height: 28px; border-radius: 9px; background: var(--ink); color: var(--gold); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .callout { max-width: 760px; margin: 0 auto; text-align: center; font-size: 18px; line-height: 1.6; color: var(--ink); font-weight: 600; border-left: 4px solid var(--gold); border-right: 4px solid var(--gold); padding: 6px 24px; border-radius: 4px; }
+
+  /* method */
+  .method-intro { max-width: 860px; margin: 0 auto 44px; }
+  .focus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 44px; }
+  @media (max-width: 760px) { .focus-grid { grid-template-columns: 1fr; } }
+  .focus { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 22px; padding: 28px 28px 30px; transition: transform .3s, border-color .3s; }
+  .focus:hover { transform: translateY(-4px); border-color: rgba(204,167,118,0.45); }
+  .focus__num { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 12px; }
+  .focus h4 { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .focus p { font-size: 15.5px; line-height: 1.65; color: var(--w-70); }
+  .stat-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  @media (max-width: 760px) { .stat-tiles { grid-template-columns: 1fr; } }
+  .stat-tile { border-radius: 18px; padding: 26px 22px; text-align: center; background: rgba(255,255,255,0.05); border: 1.5px solid var(--border-dark); }
+  .stat-tile__num { font-family: 'Unbounded', sans-serif; font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; color: var(--gold); line-height: 1.15; margin-bottom: 8px; }
+  .stat-tile__label { font-size: 14.5px; color: var(--w-70); line-height: 1.5; }
+
+  /* video + gallery */
+  .video-frame { max-width: 380px; margin: 0 auto 14px; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 26px 50px -20px rgba(15,23,42,0.45); aspect-ratio: 464/848; position: relative; }
+  .video-frame video, .video-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .video-frame--wait img { filter: brightness(0.55); }
+  .video-frame--wait::after { content: ''; position: absolute; top: 50%; left: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%; background: rgba(255,255,255,0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%230F172A'/%3E%3C/svg%3E") center/34px no-repeat; }
+  .video-caption { text-align: center; font-style: italic; color: var(--ink-mute); font-size: 15px; margin-bottom: 40px; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; cursor: zoom-in; transition: transform .3s; }
+  .gallery img:hover { transform: scale(1.03); }
+
+  /* speakers */
+  .speakers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 820px) { .speakers { grid-template-columns: 1fr; } }
+  .speaker { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
+  .speaker__photo { aspect-ratio: 4/3; overflow: hidden; }
+  .speaker__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+  .speaker:hover .speaker__photo img { transform: scale(1.05); }
+  .speaker__body { padding: 28px 30px 32px; }
+  .speaker__name { font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .speaker__role { font-size: 15px; color: var(--gold); line-height: 1.5; margin-bottom: 20px; font-weight: 600; }
+
+  /* steps */
+  .steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: step; }
+  @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  .steps li { counter-increment: step; background: var(--card); border-radius: 20px; padding: 24px 20px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+  .steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: var(--gold); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 17px; margin-bottom: 14px; }
+  .steps li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+
+  /* program */
+  .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 34px; }
+  @media (max-width: 780px) { .day-grid { grid-template-columns: 1fr; } }
+  .day-card { border-radius: 22px; padding: 30px 30px 32px; background: var(--card-dark); border: 1px solid var(--border-dark); display: flex; flex-direction: column; }
+  .day-card__num { align-self: flex-start; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; margin-bottom: 20px; }
+  .day-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+  .day-list li { position: relative; padding-left: 22px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.86); }
+  .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .day-result { margin-top: auto; border-left: 3px solid var(--gold); background: rgba(204,167,118,0.08); border-radius: 0 14px 14px 0; padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--w-70); }
+  .day-result strong { color: var(--gold); }
+
+  /* contraindications */
+  .contra { max-width: 860px; margin: 0 auto; border: 1.5px solid rgba(190,70,60,0.25); }
+  .contra__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; margin-top: 8px; }
+  @media (max-width: 640px) { .contra__list { grid-template-columns: 1fr; } }
+  .contra__list li { position: relative; padding: 12px 14px 12px 44px; background: #FBF5F4; border-radius: 12px; font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); }
+  .contra__list li::before { content: '✕'; position: absolute; left: 14px; top: 12px; width: 20px; height: 20px; border-radius: 50%; background: #B9483E; color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .contra__list li.wide { grid-column: 1 / -1; }
+
+  /* changes */
+  .changes { list-style: none; display: grid; gap: 14px; max-width: 900px; margin: 0 auto; }
+  .changes li { display: grid; grid-template-columns: 52px 1fr; gap: 18px; align-items: start; background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark); border-radius: 20px; padding: 22px 24px; transition: background .25s, transform .25s; }
+  .changes li:hover { background: rgba(255,255,255,0.08); transform: translateX(4px); }
+  .changes__n { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+  .changes h4 { font-family: 'Unbounded', sans-serif; font-size: 17px; color: #fff; margin-bottom: 6px; line-height: 1.35; }
+  .changes p { font-size: 15.5px; color: var(--w-70); line-height: 1.6; }
+
+  /* results / reviews */
+  .result-wrap { display: flex; justify-content: center; }
+  .reviews-scroll { overflow-x: auto; padding: 6px 0 18px; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; scrollbar-width: thin; }
+  .reviews-track { display: flex; gap: 16px; width: max-content; padding: 0 24px; margin: 0 auto; }
+  .reviews-track > * { flex-shrink: 0; scroll-snap-align: center; }
+  .reviews-shot { height: 460px; width: auto; border-radius: 18px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); cursor: zoom-in; transition: transform .3s; }
+  .reviews-shot:hover { transform: translateY(-6px); }
+  .reviews-video { height: 460px; aspect-ratio: 464/848; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+  .reviews-video video { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 600px) { .reviews-shot, .reviews-video { height: 380px; } }
+  .scroll-hint { text-align: center; font-size: 13.5px; color: var(--w-50); margin-top: 6px; }
+
+  /* support */
+  .support { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 960px) { .support { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .support { grid-template-columns: 1fr; } }
+  .support li { background: var(--card); border-radius: 20px; padding: 24px 20px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+  .support li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 15.5px; color: var(--ink); margin-bottom: 6px; }
+  .support__ico { width: 44px; height: 44px; border-radius: 13px; background: rgba(204,167,118,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .support__ico svg { width: 22px; height: 22px; stroke: #8A6A3A; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* tariffs */
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 920px; margin: 0 auto; }
+  @media (max-width: 760px) { .price-grid { grid-template-columns: 1fr; } }
+  .price-card { position: relative; background: var(--card); border-radius: 26px; padding: 36px 32px; box-shadow: 0 4px 28px rgba(20,25,60,0.08); display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
+  .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px -14px rgba(20,25,60,0.2); }
+  .price-card--best { border: 2px solid var(--ink); box-shadow: 0 0 0 6px rgba(15,23,42,0.07), 0 4px 28px rgba(20,25,60,0.08); }
+  .price-card__label { font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A6A3A; margin-bottom: 8px; }
+  .price-card__price { font-family: 'Unbounded', sans-serif; font-size: clamp(34px, 4.6vw, 46px); font-weight: 800; color: var(--ink); margin-bottom: 24px; }
+  .price-card__feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+  .price-card__feats li { display: flex; gap: 10px; font-size: 15.5px; color: var(--ink-soft); line-height: 1.5; }
+  .price-card__feats li::before { content: '✓'; color: #8A6A3A; font-weight: 800; flex-shrink: 0; }
+  .price-card .btn { width: 100%; margin-top: auto; }
+
+  /* forms */
+  .lead { display: grid; gap: 12px; }
+  .lead--row { grid-template-columns: 1fr 1fr auto; align-items: start; }
+  .lead--grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px) { .lead--row, .lead--grid { grid-template-columns: 1fr; } }
+  .lead input, .lead select { width: 100%; font: inherit; font-size: 16px; padding: 16px 20px; border-radius: 14px; border: 1.5px solid rgba(15,23,42,0.14); background: #fff; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s; appearance: none; -webkit-appearance: none; }
+  .lead select { background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%230F172A' stroke-width='2'/%3E%3C/svg%3E") right 16px center/18px no-repeat; padding-right: 44px; }
+  .lead select:invalid { color: #8794A6; }
+  .lead input:focus, .lead select:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(204,167,118,0.22); }
+  .sec--dark2 .lead input { border-color: transparent; }
+  .lead .btn { padding: 17px 30px; }
+  .lead__full { grid-column: 1 / -1; }
+  .consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; cursor: pointer; }
+  .consent input { width: 18px; height: 18px; padding: 0; margin-top: 1px; flex-shrink: 0; accent-color: var(--ink); appearance: auto; -webkit-appearance: checkbox; }
+  .consent a { text-decoration: underline; }
+  .sec--dark2 .consent { color: var(--w-50); }
+  .sec--dark2 .consent input { accent-color: var(--gold); }
+  .lead-done { display: none; text-align: center; font-weight: 600; padding: 18px; border-radius: 14px; }
+  .lead.is-sent { display: none; }
+  .lead.is-sent + .lead-done { display: block; }
+  .sec--dark2 .lead-done { background: rgba(204,167,118,0.12); color: #fff; border: 1px solid rgba(204,167,118,0.35); }
+
+  .ask { max-width: 860px; margin: 0 auto; text-align: center; }
+  .ask .sec__sub { margin-bottom: 28px; }
+  .ask .lead { text-align: left; }
+
+  /* faq */
+  .faq { display: flex; flex-direction: column; gap: 14px; max-width: 860px; margin: 0 auto; }
+  .faq details { border-radius: 16px; padding: 4px 24px; background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; color: #8A6A3A; flex-shrink: 0; transition: transform .3s cubic-bezier(.3,1.4,.5,1); }
+  .faq details[open] summary::after { transform: rotate(135deg); }
+  .faq__a { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); padding-bottom: 20px; }
+
+  /* final CTA */
+  .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 28px; padding: 54px 48px; text-align: center; max-width: 960px; margin: 0 auto; }
+  .cta-final::before { content: ''; position: absolute; top: -40%; left: -10%; width: 60%; height: 180%; background: radial-gradient(closest-side, rgba(255,255,255,0.2), transparent 70%); animation: floatBlob 9s ease-in-out infinite; pointer-events: none; }
+  @media (max-width: 600px) { .cta-final { padding: 36px 20px; border-radius: 22px; } }
+  .cta-final > * { position: relative; }
+  .cta-final__title { font-family: 'Unbounded', sans-serif; font-size: clamp(22px, 3.2vw, 32px); font-weight: 700; color: var(--ink); max-width: 700px; margin: 0 auto 16px; line-height: 1.3; text-wrap: balance; }
+  .cta-final__text { font-size: 17px; color: rgba(15,23,42,0.78); max-width: 560px; margin: 0 auto 18px; line-height: 1.6; }
+  .cta-final__date { display: inline-block; font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); background: rgba(255,255,255,0.45); border-radius: 999px; padding: 9px 20px; margin-bottom: 28px; }
+  .cta-final .lead { max-width: 680px; margin: 0 auto; text-align: left; }
+  .cta-final .lead input, .cta-final .lead select { border-color: rgba(15,23,42,0.08); }
+  .cta-final .consent { color: rgba(15,23,42,0.72); }
+  .cta-final__note { font-size: 14.5px; color: rgba(15,23,42,0.7); margin-top: 18px; }
+  .cta-final .lead-done { background: rgba(255,255,255,0.6); color: var(--ink); }
+
+  /* footer */
+  .page-foot { background: var(--bg-dark2); padding: 40px 0 34px; text-align: center; color: var(--w-50); font-size: 14px; line-height: 1.9; }
+  .page-foot a { color: var(--w-70); text-decoration: none; }
+  .page-foot a:hover { color: var(--gold); }
+
+  /* lightbox */
+  .lb { position: fixed; inset: 0; z-index: 9999; background: rgba(5,10,25,0.9); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+  .lb.is-open { display: flex; }
+  .lb img { max-width: 100%; max-height: 100%; border-radius: 14px; }
+  .lb__close { position: absolute; top: 14px; right: 18px; background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+
+  /* sticky mobile CTA */
+  .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
+  .sticky-cta .btn { width: 100%; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
+  @media (max-width: 760px) { .sticky-cta.is-visible { display: block; } }
+</style>
+</head>
+<body>
+
+<!-- ══ 1. HERO ══ -->
+<section class="hero sec--dark">
+  <div class="wrap hero__grid">
+    <div>
+      <div class="hero__badge"><span>Авторский семинар для телесно ориентированных специалистов</span><b>19–20 декабря · офлайн и онлайн</b></div>
+      <h1 class="hero__title">Биостимуляция нейрогенеза</h1>
+      <h2 class="hero__h2">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
+      <p class="hero__sub">За 2 дня вы разберётесь, что происходит с нервной системой особенного ребёнка, освоите безопасный алгоритм сеанса и отработаете каждый этап руками.</p>
+      <ul class="hero__chips">
+        <li>80% практики</li>
+        <li>Видеометодичка</li>
+        <li>Запись на 6 месяцев</li>
+        <li>Чат с поддержкой</li>
+        <li>Сертификат</li>
+      </ul>
+      <p class="hero__lead"><strong>Ведущие:</strong> Евгений Вишняков и Олег Агапэ</p>
+      <div class="btn-row">
+        <a href="#signup" class="btn btn-primary">Записаться на семинар</a>
+        <a href="#program" class="btn btn-ghost">Смотреть программу</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="photos/neurogenez/work-1.jpg" alt="Евгений Вишняков проводит сеанс с ребёнком">
+      <div class="hero__float"><b>80%</b><span>практики</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 2. ДЛЯ КОГО ══ -->
+<section class="sec sec--light" id="for">
+  <span class="blob" style="width:420px;height:420px;top:-120px;right:-120px;"></span>
+  <div class="wrap reveal">
+    <div class="two-col">
+      <div class="card">
+        <h2 class="sub-title">Для кого семинар</h2>
+        <ul class="dash">
+          <li>Остеопаты и специалисты остеокоррекции, в том числе студенты и выпускники МИОТ</li>
+          <li>Массажисты, реабилитологи, специалисты ЛФК</li>
+          <li>Специалисты, которые работают с детьми и хотят уверенно вести детей с неврологическими диагнозами</li>
+          <li>Те, кто хочет развивать в практике востребованное и социально значимое направление</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="sub-title">С какими детьми вы сможете работать</h2>
+        <div class="diag-grid">
+          <div class="diag"><small>ДЦП</small>Детский церебральный паралич</div>
+          <div class="diag"><small>РАС</small>Расстройства аутистического спектра</div>
+          <div class="diag"><small>ЦНС</small>Тяжёлые поражения центральной нервной системы</div>
+          <div class="diag"><small>ВПР</small>Врождённые заболевания нервной системы</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. СЕМЬЯ ══ -->
+<section class="sec sec--dark2">
+  <span class="blob" style="width:420px;height:420px;bottom:-140px;left:-120px;"></span>
+  <div class="wrap reveal family">
+    <img src="photos/neurogenez/work-8.jpg" alt="Евгений Вишняков с ребёнком после сеанса">
+    <div>
+      <h2 class="sec__title">За каждым диагнозом стоит семья, которая не сдаётся</h2>
+      <div class="card">
+        <p>Родители особенных детей годами ищут помощь. Они пробуют новые методики, возят ребёнка от специалиста к специалисту и радуются каждому, даже самому маленькому шагу вперёд. Всё, чего они хотят, — чтобы у их ребёнка была обычная, полноценная жизнь.</p>
+        <p>Когда вы становитесь специалистом, который помогает сделать этот шаг, вы видите, как ваша работа меняет жизнь целой семьи. И понимаете, что выбрали своё дело не зря.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. ОСОБЕННЫЙ РЕБЁНОК НА ПРИЁМЕ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Особенный ребёнок на приёме. Что дальше?</h2>
+    <p class="sec__sub">Когда на приём приводят ребёнка с тяжёлым неврологическим диагнозом, даже опытный специалист часто сталкивается с вопросами, на которые нет готовых ответов:</p>
+    <div class="q-grid">
+      <div class="q-card">С чего начать работу и как не навредить?</div>
+      <div class="q-card">Как выстроить сеанс, если каждый случай кажется уникальным?</div>
+      <div class="q-card">Каких изменений реально ожидать и как говорить об этом с родителями?</div>
+      <div class="q-card">К кому обратиться, если что-то идёт не по плану?</div>
+    </div>
+    <p class="callout">Без чёткой системы такие дети часто остаются за рамками практики, хотя именно им помощь нужна больше всего.</p>
+  </div>
+</section>
+
+<!-- ══ 5. МЕТОД ══ -->
+<section class="sec sec--dark" id="method">
+  <span class="blob" style="width:520px;height:520px;top:-160px;right:-160px;"></span>
+  <div class="wrap reveal">
+    <span class="eyebrow">О методе</span>
+    <h2 class="sec__title">Как работает метод «Биостимуляция нейрогенеза»</h2>
+    <div class="card method-intro">
+      <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
+    </div>
+
+    <h3 class="sub-title" style="text-align:center;">На что направлено воздействие</h3>
+    <div class="focus-grid">
+      <div class="focus">
+        <div class="focus__num">01</div>
+        <h4>Краниосакральная система.</h4>
+        <p>Мягкая работа с костями черепа, оболочками головного и спинного мозга и крестцом снимает напряжения, которые ограничивают подвижность этих структур и мешают нервной системе работать полноценно.</p>
+      </div>
+      <div class="focus">
+        <div class="focus__num">02</div>
+        <h4>Циркуляция жидкостей.</h4>
+        <p>Техники улучшают движение ликвора, венозный и лимфатический отток, а значит, питание и очищение нервной ткани.</p>
+      </div>
+      <div class="focus">
+        <div class="focus__num">03</div>
+        <h4>Вегетативная нервная система.</h4>
+        <p>Восстановление баланса между симпатическим и парасимпатическим отделами выводит организм из состояния постоянного напряжения и включает процессы восстановления.</p>
+      </div>
+      <div class="focus">
+        <div class="focus__num">04</div>
+        <h4>Патологические цепочки.</h4>
+        <p>Работа с ключевыми зонами напряжения разрывает цепочки дисфункций, которые закрепляют нарушения и мешают развитию ребёнка.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3 class="sub-title">Почему важна регулярность</h3>
+        <p>Изменения после стимуляции отмечаются практически у всех детей, но скорость у каждого своя. Кому-то достаточно нескольких сеансов, а кому-то нужна системная работа курсами. Поэтому на семинаре мы разбираем не только технику, но и то, как выстроить план работы с ребёнком на длительный срок.</p>
+      </div>
+      <div class="card">
+        <h3 class="sub-title">Почему один алгоритм подходит разным детям</h3>
+        <p>При тяжёлых состояниях у детей в первую очередь страдает центральная нервная система, а нарушения развиваются по сходным цепочкам. Поэтому алгоритм общий, а специалист адаптирует его под конкретного ребёнка.</p>
+      </div>
+    </div>
+    <div class="stat-tiles">
+      <div class="stat-tile"><div class="stat-tile__num">10 лет</div><div class="stat-tile__label">клинической практики по протоколу</div></div>
+      <div class="stat-tile"><div class="stat-tile__num">Системный подход:</div><div class="stat-tile__label">устойчивая динамика при регулярной работе</div></div>
+      <div class="stat-tile"><div class="stat-tile__num">Международный запрос:</div><div class="stat-tile__label">к Евгению на реабилитацию приезжают семьи из Чехии и Израиля</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. КАК ВЫГЛЯДИТ РАБОТА ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Посмотрите, как выглядит работа по методу</h2>
+    <!-- TODO: сюда встанет фрагмент из видеометодички. Когда будет файл — замените блок ниже на:
+         <div class="video-frame"><video src="photos/neurogenez/metodichka.mp4" controls playsinline preload="metadata" poster="photos/neurogenez/work-2.jpg"></video></div> -->
+    <div class="video-frame video-frame--wait">
+      <img src="photos/neurogenez/work-2.jpg" alt="Фрагмент сеанса по методу «Биостимуляция нейрогенеза»">
+    </div>
+    <p class="video-caption">Фрагмент из видеометодички</p>
+    <div class="gallery" data-lightbox>
+      <img src="photos/neurogenez/work-3.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-4.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-5.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-6.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-7.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-1.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-2.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+      <img src="photos/neurogenez/work-8.jpg" alt="Работа с ребёнком по методу" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. ВЕДУЩИЕ ══ -->
+<section class="sec sec--dark2" id="speakers">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Ведущие семинара</h2>
+    <div class="speakers">
+      <article class="speaker">
+        <div class="speaker__photo"><img src="photos/evgeniy-vishnyakov.jpeg" alt="Евгений Вишняков"></div>
+        <div class="speaker__body">
+          <h3 class="speaker__name">Евгений Вишняков</h3>
+          <p class="speaker__role">Остеопат, реабилитолог, автор метода «Биостимуляция нейрогенеза», преподаватель и наставник МИОТ</p>
+          <ul class="dash">
+            <li>20 лет работы с детьми с особенностями развития и поражениями ЦНС</li>
+            <li>10 лет практики по авторскому протоколу</li>
+            <li>Сотрудничает с благотворительной организацией «Дети-Ангелы»</li>
+            <li>Руководит центром реабилитации в Электростали и проводит выездные реабилитационные курсы</li>
+            <li>Медицинское образование, специализации по массажу и ЛФК, остеопатическая подготовка, участие в анатомических диссекциях</li>
+          </ul>
+        </div>
+      </article>
+      <article class="speaker">
+        <div class="speaker__photo"><img src="photos/oleg-agape-square.jpg" alt="Олег Агапэ"></div>
+        <div class="speaker__body">
+          <h3 class="speaker__name">Олег Агапэ</h3>
+          <p class="speaker__role">Врач-остеопат, анатом, основатель Международного института остеопатических технологий (МИОТ)</p>
+          <ul class="dash">
+            <li>Один из ведущих специалистов по анатомическим диссекциям в России</li>
+            <li>Более 14 лет медицинского опыта, остеопатическое образование в Европе</li>
+            <li>Более 7000 пациентов в России и на Бали</li>
+            <li>Подготовил более 500 дипломированных специалистов</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. КАК ПРОХОДИТ ОБУЧЕНИЕ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Как проходит обучение</h2>
+    <ol class="steps">
+      <li><strong>Теория.</strong> Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</li>
+      <li><strong>Демонстрация.</strong> Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</li>
+      <li><strong>Практика.</strong> Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</li>
+      <li><strong>Разбор.</strong> Отвечаем на вопросы и разбираем случаи из вашей практики.</li>
+      <li><strong>Закрепление.</strong> После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ 9. ПРОГРАММА ══ -->
+<section class="sec sec--dark" id="program">
+  <span class="blob" style="width:480px;height:480px;bottom:-160px;right:-140px;"></span>
+  <div class="wrap reveal">
+    <h2 class="sec__title">Программа</h2>
+    <div class="day-grid">
+      <div class="day-card">
+        <span class="day-card__num">День 1 · 19 декабря</span>
+        <ul class="day-list">
+          <li>Знакомство и вводная практика</li>
+          <li>Патологии центральной нервной системы и врождённые заболевания у детей</li>
+          <li>Патологические цепочки: как формируются нарушения</li>
+          <li>Противопоказания и безопасность работы</li>
+        </ul>
+        <div class="day-result"><strong>Результат дня:</strong> вы понимаете, как формируются нарушения у особенных детей, и умеете определять, когда работать нельзя.</div>
+      </div>
+      <div class="day-card">
+        <span class="day-card__num">День 2 · 20 декабря</span>
+        <ul class="day-list">
+          <li>Построение сеанса и общение с родителями</li>
+          <li>Протокол «Биостимуляция нейрогенеза»: пошаговый разбор</li>
+          <li>Отработка техники в парах под контролем ведущих</li>
+          <li>Вручение сертификатов</li>
+        </ul>
+        <div class="day-result"><strong>Результат дня:</strong> вы знаете протокол целиком, отработали его руками и готовы применять в практике.</div>
+      </div>
+    </div>
+    <div class="btn-row"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
+  </div>
+</section>
+
+<!-- ══ 10. ПРОТИВОПОКАЗАНИЯ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Противопоказания</h2>
+    <div class="card contra">
+      <p>Работа с особенными детьми требует особой ответственности. Поэтому на семинаре отдельно разбираем состояния, при которых протокол не применяется:</p>
+      <ul class="contra__list">
+        <li>онкологические заболевания</li>
+        <li>нарушения свёртываемости и системные заболевания крови</li>
+        <li>острые инфекционные и воспалительные процессы</li>
+        <li>тяжёлые психические расстройства</li>
+        <li>гидроцефалия</li>
+        <li class="wide">эпилептические энцефалопатии, в том числе синдромы Веста, Леннокса — Гасто и Отахары</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. ЧТО ИЗМЕНИТСЯ ══ -->
+<section class="sec sec--dark2">
+  <span class="blob" style="width:440px;height:440px;top:-120px;left:-140px;"></span>
+  <div class="wrap reveal">
+    <h2 class="sec__title">Что изменится в вашей практике</h2>
+    <ul class="changes">
+      <li><span class="changes__n">1</span><div><h4>Вы перестанете отказывать сложным детям.</h4><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></div></li>
+      <li><span class="changes__n">2</span><div><h4>Вы будете видеть динамику и сможете показать её родителям.</h4><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></div></li>
+      <li><span class="changes__n">3</span><div><h4>Вы будете делать работу, которой гордитесь.</h4><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></div></li>
+      <li><span class="changes__n">4</span><div><h4>Вы займёте редкую нишу.</h4><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></div></li>
+      <li><span class="changes__n">5</span><div><h4>Ваша практика будет расти естественно.</h4><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 12. РЕЗУЛЬТАТЫ ══ -->
+<section class="sec sec--light" id="results">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Результаты работы по методу</h2>
+    <!-- Место для кейсов: история ребёнка, состояние до начала работы, что изменилось и за какой срок. -->
+    <div class="result-wrap">
+      <div class="video-frame" style="margin-bottom:0;">
+        <video src="photos/neurogenez/result-walk.mp4" poster="photos/neurogenez/result-walk-poster.jpg" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 13. ОТЗЫВЫ ══ -->
+<section class="sec sec--dark" id="reviews">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Отзывы</h2>
+    <!-- Место для отзывов родителей и специалистов. -->
+  </div>
+  <div class="reviews-scroll reveal">
+    <div class="reviews-track" data-lightbox>
+      <div class="reviews-video"><video src="photos/neurogenez/review-video.mp4" poster="photos/neurogenez/review-video-poster.jpg" controls playsinline preload="none"></video></div>
+      <img class="reviews-shot" src="photos/neurogenez/review-2.jpg" alt="Отзыв мамы Марка, часть 1" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-3.jpg" alt="Отзыв мамы Марка, часть 2" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-4.jpg" alt="Отзыв мамы Марка, часть 3" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-5.jpg" alt="Отзыв Виктории, часть 1" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-6.jpg" alt="Отзыв Виктории, часть 2" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-1.jpg" alt="Отзыв Юлии" loading="lazy">
+      <img class="reviews-shot" src="photos/neurogenez/review-7.jpg" alt="Публикация мамы Марка" loading="lazy">
+    </div>
+  </div>
+  <p class="scroll-hint">← листайте →</p>
+</section>
+
+<!-- ══ 14. ПОДДЕРЖКА ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Поддержка после обучения</h2>
+    <ul class="support">
+      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><strong>Чат с ведущими:</strong> вопросы и разбор случаев из вашей практики</li>
+      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><strong>Сообщество коллег,</strong> которые работают по одному протоколу</li>
+      <li><span class="support__ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg></span><strong>Записи всех занятий</strong> с доступом на 6 месяцев</li>
+      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M10 7l4 3-4 3z"/></svg></span><strong>Видеометодичка</strong> с пошаговым разбором протокола</li>
+      <li><span class="support__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span><strong>Сертификат</strong> участника семинара</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 15. СТОИМОСТЬ ══ -->
+<section class="sec sec--light" id="tariffs" style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Стоимость участия</h2>
+    <div class="price-grid">
+      <div class="price-card price-card--best">
+        <div class="price-card__label">Офлайн</div>
+        <div class="price-card__price">55 000 ₽</div>
+        <ul class="price-card__feats">
+          <li>Два дня обучения в зале вместе с ведущими</li>
+          <li>Отработка техники в парах с личной корректировкой от ведущих</li>
+          <li>Ответы на вопросы вживую</li>
+          <li>Записи всех занятий с доступом на 6 месяцев</li>
+          <li>Видеометодичка по протоколу</li>
+          <li>Чат с ведущими после семинара</li>
+          <li>Сертификат</li>
+        </ul>
+        <a href="#signup" class="btn btn-dark" data-format="Офлайн · 55 000 ₽">Участвовать офлайн</a>
+      </div>
+      <div class="price-card">
+        <div class="price-card__label">Онлайн</div>
+        <div class="price-card__price">45 000 ₽</div>
+        <ul class="price-card__feats">
+          <li>Качественная прямая трансляция обоих дней</li>
+          <li>Вопросы ведущим в прямом эфире</li>
+          <li>Практика вместе с группой: вы выполняете те же упражнения, что и участники в зале</li>
+          <li>Записи всех занятий с доступом на 6 месяцев</li>
+          <li>Видеометодичка по протоколу</li>
+          <li>Чат с ведущими после семинара</li>
+          <li>Сертификат</li>
+        </ul>
+        <a href="#signup" class="btn btn-primary" data-format="Онлайн · 45 000 ₽">Участвовать онлайн</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 16. ОСТАЛИСЬ ВОПРОСЫ ══ -->
+<section class="sec sec--dark2" id="ask">
+  <span class="blob" style="width:420px;height:420px;top:-140px;right:-120px;"></span>
+  <div class="wrap reveal ask">
+    <h2 class="sec__title">Остались вопросы?</h2>
+    <p class="sec__sub">Оставьте заявку, и специалист отдела заботы свяжется с вами и ответит на все вопросы о семинаре.</p>
+    <form class="lead lead--row" data-lead="question">
+      <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
+      <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
+      <button type="submit" class="btn btn-primary">Задать вопрос</button>
+      <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
+    </form>
+    <div class="lead-done">Спасибо! Специалист отдела заботы скоро свяжется с вами.</div>
+  </div>
+</section>
+
+<!-- ══ 17. FAQ ══ -->
+<section class="sec sec--light" id="faq">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Подойдёт ли семинар, если я ещё не работал с особенными детьми?</summary>
+        <div class="faq__a">Да. Протокол даёт понятную последовательность действий, а противопоказаниям и безопасности на семинаре отведено отдельное время. После обучения вы сможете пересматривать записи и задавать вопросы в чате с ведущими.</div>
+      </details>
+      <details>
+        <summary>Хватит ли двух дней, чтобы освоить метод?</summary>
+        <div class="faq__a">Да. Вы осваиваете не десятки разрозненных техник, а один алгоритм. Записи на 6 месяцев, видеометодичка и чат с ведущими помогут закрепить навык уже в работе.</div>
+      </details>
+      <details>
+        <summary>Чем онлайн-участие отличается от очного?</summary>
+        <div class="faq__a">Онлайн вы видите всё в качественной трансляции, задаёте вопросы в прямом эфире и выполняете те же упражнения, что и участники в зале. Очно ведущие могут лично поправить положение рук.</div>
+      </details>
+      <details>
+        <summary>Выдаётся ли документ по итогам?</summary>
+        <div class="faq__a">Да, все участники получают сертификат.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 18. ФИНАЛЬНЫЙ CTA ══ -->
+<section class="sec sec--light" id="signup" style="padding-top:0;">
+  <div class="wrap reveal">
+    <div class="cta-final">
+      <h2 class="cta-final__title">Научитесь помогать особенным детям системно и безопасно</h2>
+      <p class="cta-final__text">Каждый шаг ребёнка вперёд меняет жизнь целой семьи. Станьте специалистом, который помогает его сделать.</p>
+      <div class="cta-final__date">19–20 декабря · офлайн и онлайн</div>
+      <form class="lead lead--grid" data-lead="signup">
+        <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
+        <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
+        <input type="text" name="specialty" placeholder="Специальность" required>
+        <select name="format" required>
+          <option value="" disabled selected>Формат участия</option>
+          <option>Офлайн · 55 000 ₽</option>
+          <option>Онлайн · 45 000 ₽</option>
+        </select>
+        <button type="submit" class="btn btn-dark lead__full">Записаться на семинар</button>
+        <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
+      </form>
+      <div class="lead-done">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+      <p class="cta-final__note">Мы свяжемся с вами, ответим на вопросы и пришлём ссылку на оплату.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="page-foot">
+  <div class="wrap">
+    <p>© МИОТ — Международный институт остеопатических технологий · <a href="policy.html">Политика конфиденциальности</a> · <a href="offer.html">Договор оферты</a></p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
+<div class="lb" role="dialog" aria-modal="true"><button class="lb__close" aria-label="Закрыть">✕</button><img alt=""></div>
+
+<script>
+  // Появление блоков при скролле
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Кнопки тарифов подставляют формат в форму записи
+  const formatSelect = document.querySelector('[data-lead="signup"] select[name="format"]');
+  document.querySelectorAll('[data-format]').forEach(btn => {
+    btn.addEventListener('click', () => { formatSelect.value = btn.dataset.format; });
+  });
+
+  // Заявки. TODO: подключить отправку (виджет GetCourse / CRM) — сейчас форма только показывает «Спасибо».
+  document.querySelectorAll('form[data-lead]').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.classList.add('is-sent');
+    });
+  });
+
+  // Просмотр фото и отзывов на весь экран
+  const lb = document.querySelector('.lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('[data-lightbox] img').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('is-open'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('is-open'));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('is-open'); });
+
+  // Липкая кнопка на мобильных — после первого экрана и не поверх формы записи
+  const sticky = document.querySelector('.sticky-cta'), signup = document.getElementById('signup');
+  const onScroll = () => {
+    const past = window.scrollY > window.innerHeight * 0.8;
+    const r = signup.getBoundingClientRect();
+    const atForm = r.top < window.innerHeight && r.bottom > 0;
+    sticky.classList.toggle('is-visible', past && !atForm);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>
