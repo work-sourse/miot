@@ -128,6 +128,7 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     *, *::before { animation: none !important; scroll-behavior: auto !important; }
+    .marquee { overflow-x: auto; }
   }
 
   /* ══ CARDS & LISTS ══ */
@@ -174,6 +175,8 @@
   @media (max-width: 500px) { .q-grid { grid-template-columns: 1fr; } }
   .q-card { position: relative; background: var(--card); border-radius: 20px; padding: 54px 20px 22px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--ink); transition: transform .25s; }
   .q-card:hover { transform: translateY(-4px); }
+  .q-card--ico { padding-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .q-card.q-card--ico::before { display: none; }
   .q-card::before { content: '?'; position: absolute; top: 16px; left: 20px; width: 28px; height: 28px; border-radius: 9px; background: var(--ink); color: var(--gold); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
   .callout { max-width: 760px; margin: 0 auto; text-align: center; font-size: 18px; line-height: 1.6; color: var(--ink); font-weight: 600; border-left: 4px solid var(--gold); border-right: 4px solid var(--gold); padding: 6px 24px; border-radius: 4px; }
 
@@ -224,9 +227,10 @@
 
   /* program */
   .day-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-bottom: 34px; }
-  @media (max-width: 780px) { .day-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 780px) { .day-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 420px) { .day-card { padding: 24px 20px 26px; } .day-card__big { display: none; } }
   .day-card { border-radius: 22px; padding: 30px 30px 32px; background: var(--card-dark); border: 1px solid var(--border-dark); display: flex; flex-direction: column; }
-  .day-card__num { align-self: flex-start; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; margin-bottom: 20px; }
+  .day-card__num { align-self: flex-start; white-space: nowrap; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; margin-bottom: 20px; }
   .day-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
   .day-list li { position: relative; padding-left: 22px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.86); }
   .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
@@ -347,6 +351,90 @@
   .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
   .sticky-cta .btn { width: 100%; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
   @media (max-width: 760px) { .sticky-cta.is-visible { display: block; } }
+
+  /* ══ VISUALS ══ */
+  .ico { flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(204,167,118,0.16); }
+  .ico svg { width: 23px; height: 23px; fill: none; stroke: #8A6A3A; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .sec--dark .ico, .sec--dark2 .ico { background: rgba(204,167,118,0.13); border: 1px solid rgba(204,167,118,0.28); }
+  .sec--dark .ico svg, .sec--dark2 .ico svg { stroke: var(--gold); }
+
+  /* numbers band */
+  .numbers { background: var(--bg-dark2); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); padding: 30px 0; position: relative; z-index: 2; }
+  .numbers__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 900px) { .numbers__row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 22px; } }
+  @media (max-width: 520px) { .numbers__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .num { text-align: center; padding: 0 6px; }
+  .num + .num { border-left: 1px solid var(--border-dark); }
+  @media (max-width: 900px) { .num + .num { border-left: none; } }
+  .num b { display: block; font-family: 'Unbounded', sans-serif; font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; line-height: 1.05; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+  .num span { font-size: 13.5px; color: var(--w-70); line-height: 1.4; display: block; }
+
+  /* icon lists */
+  .ilist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .ilist li { display: flex; align-items: center; gap: 16px; font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
+  .ilist .ico { width: 44px; height: 44px; }
+
+  .diag { position: relative; overflow: hidden; }
+  .diag::after { content: ''; position: absolute; right: -18px; bottom: -18px; width: 70px; height: 70px; border-radius: 50%; border: 10px solid rgba(204,167,118,0.16); }
+
+  /* method intro with diagram */
+  .method-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 28px; align-items: center; margin-bottom: 44px; }
+  @media (max-width: 860px) { .method-split { grid-template-columns: 1fr; } }
+  .method-split .method-intro { margin: 0; }
+  .neuro { background: radial-gradient(circle at 50% 45%, rgba(204,167,118,0.10), transparent 70%), var(--card-dark); border: 1px solid var(--border-dark); border-radius: 24px; padding: 18px 18px 14px; }
+  .neuro svg { width: 100%; height: auto; display: block; }
+  .neuro__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: var(--w-70); margin-top: 6px; }
+  .neuro__legend i { display: inline-block; width: 22px; height: 0; border-top: 2px dashed #D86A5F; vertical-align: middle; margin-right: 7px; }
+  .neuro__legend i.ok { border-top: 3px solid var(--gold); }
+  .neuro .new-path { stroke-dasharray: 8 7; animation: pathFlow 1.6s linear infinite; }
+  @keyframes pathFlow { to { stroke-dashoffset: -30; } }
+  .neuro .pulse-node { animation: nodePulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes nodePulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.35); opacity: 1; } }
+
+  .focus__head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .focus__head .focus__num { margin: 0; }
+  .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .card-head .sub-title { margin: 0; }
+
+  /* learning timeline */
+  .timeline { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; position: relative; counter-reset: step; }
+  .timeline::before { content: ''; position: absolute; top: 31px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+  .timeline li { position: relative; text-align: center; font-size: 15px; line-height: 1.55; color: var(--ink-soft); counter-increment: step; }
+  .timeline__dot { position: relative; width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 6px var(--light-bg), 0 10px 24px -8px rgba(15,23,42,0.5); }
+  .timeline__dot svg { width: 26px; height: 26px; fill: none; stroke: var(--gold); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .timeline__dot::after { content: counter(step); position: absolute; top: -4px; right: -4px; width: 22px; height: 22px; border-radius: 50%; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .timeline li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+  @media (max-width: 900px) {
+    .timeline { grid-template-columns: 1fr; gap: 0; }
+    .timeline::before { top: 0; bottom: 0; left: 31px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+    .timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; text-align: left; padding-bottom: 22px; align-items: start; }
+    .timeline__dot { margin: 0; }
+  }
+
+  /* speaker numbers */
+  .sp-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .sp-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 480px) { .sp-stats--3 { grid-template-columns: 1fr 1fr; } }
+  .sp-stat { background: rgba(204,167,118,0.08); border: 1px solid rgba(204,167,118,0.25); border-radius: 16px; padding: 14px 14px 12px; }
+  .sp-stat b { display: block; font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 800; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+  .sp-stat span { font-size: 13px; color: var(--w-70); line-height: 1.4; display: block; }
+
+  /* changes with icons */
+  .changes__n.ico { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); border: none; }
+  .changes__n.ico svg { stroke: var(--ink); width: 24px; height: 24px; }
+
+  /* photo marquee */
+  .marquee { overflow: hidden; padding: 6px 0 46px; -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+  .marquee__track { display: flex; gap: 14px; width: max-content; animation: marquee 50s linear infinite; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee img { width: 220px; height: 220px; object-fit: cover; border-radius: 20px; flex-shrink: 0; }
+  @media (max-width: 600px) { .marquee img { width: 150px; height: 150px; } }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* program day icon */
+  .day-card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+  .day-card__top .day-card__num { margin: 0; }
+  .day-card__big { font-family: 'Unbounded', sans-serif; font-size: 54px; font-weight: 800; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(204,167,118,0.55); }
 </style>
 </head>
 <body>
@@ -415,6 +503,17 @@
   </div>
 </section>
 
+<!-- ══ ЦИФРЫ ══ -->
+<div class="numbers">
+  <div class="wrap numbers__row">
+    <div class="num"><b>2 дня</b><span>19–20 декабря · офлайн и онлайн</span></div>
+    <div class="num"><b>80%</b><span>практики</span></div>
+    <div class="num"><b>6 мес.</b><span>доступ к записям</span></div>
+    <div class="num"><b>10 лет</b><span>практики по протоколу</span></div>
+    <div class="num"><b>20 лет</b><span>работы с особенными детьми</span></div>
+  </div>
+</div>
+
 <!-- ══ 2. ДЛЯ КОГО ══ -->
 <section class="sec sec--light" id="for">
   <span class="blob" style="width:420px;height:420px;top:-120px;right:-120px;"></span>
@@ -422,11 +521,11 @@
     <div class="two-col">
       <div class="card">
         <h2 class="sub-title">Для кого семинар</h2>
-        <ul class="dash">
-          <li>Остеопаты и специалисты остеокоррекции, в том числе студенты и выпускники МИОТ</li>
-          <li>Массажисты, реабилитологи, специалисты ЛФК</li>
-          <li>Специалисты, которые работают с детьми и хотят уверенно вести детей с неврологическими диагнозами</li>
-          <li>Те, кто хочет развивать в практике востребованное и социально значимое направление</li>
+        <ul class="ilist">
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><span>Остеопаты и специалисты остеокоррекции, в том числе студенты и выпускники МИОТ</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span>Массажисты, реабилитологи, специалисты ЛФК</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><span>Специалисты, которые работают с детьми и хотят уверенно вести детей с неврологическими диагнозами</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span>Те, кто хочет развивать в практике востребованное и социально значимое направление</span></li>
         </ul>
       </div>
       <div class="card">
@@ -463,10 +562,10 @@
     <h2 class="sec__title">Особенный ребёнок на приёме. Что дальше?</h2>
     <p class="sec__sub">Когда на приём приводят ребёнка с тяжёлым неврологическим диагнозом, даже опытный специалист часто сталкивается с вопросами, на которые нет готовых ответов:</p>
     <div class="q-grid">
-      <div class="q-card">С чего начать работу и как не навредить?</div>
-      <div class="q-card">Как выстроить сеанс, если каждый случай кажется уникальным?</div>
-      <div class="q-card">Каких изменений реально ожидать и как говорить об этом с родителями?</div>
-      <div class="q-card">К кому обратиться, если что-то идёт не по плану?</div>
+      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>С чего начать работу и как не навредить?</span></div>
+      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span><span>Как выстроить сеанс, если каждый случай кажется уникальным?</span></div>
+      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>Каких изменений реально ожидать и как говорить об этом с родителями?</span></div>
+      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></svg></span><span>К кому обратиться, если что-то идёт не по плану?</span></div>
     </div>
     <p class="callout">Без чёткой системы такие дети часто остаются за рамками практики, хотя именно им помощь нужна больше всего.</p>
   </div>
@@ -478,29 +577,51 @@
   <div class="wrap reveal">
     <span class="eyebrow">О методе</span>
     <h2 class="sec__title">Как работает метод «Биостимуляция нейрогенеза»</h2>
+    <div class="method-split">
     <div class="card method-intro">
       <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
+    </div>
+      <div class="neuro">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Схема нейропластичности: сигнал обходит повреждённый путь по новому">
+          <defs>
+            <radialGradient id="nodeG"><stop offset="0" stop-color="#FFF6E6"/><stop offset="1" stop-color="#CCA776"/></radialGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,0.16)" stroke-width="1.5" fill="none">
+            <path d="M50 150 L120 90 M50 150 L120 210 M120 90 L200 70 M120 210 L200 230 M200 70 L280 90 M200 230 L280 210 M280 90 L350 150 M280 210 L350 150 M120 90 L120 210 M280 90 L280 210 M200 70 L200 230"/>
+          </g>
+          <path d="M120 150 L280 150" stroke="#D86A5F" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>
+          <g stroke="#D86A5F" stroke-width="3" stroke-linecap="round"><path d="M190 140 l20 20 M210 140 l-20 20"/></g>
+          <path class="new-path" d="M50 150 C 90 150, 100 105, 120 90 S 170 60, 200 70 S 255 70, 280 90 S 330 130, 350 150" stroke="#E9D3A1" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <g fill="#22314F" stroke="rgba(255,255,255,0.35)" stroke-width="1.5">
+            <circle cx="120" cy="150" r="7"/><circle cx="280" cy="150" r="7"/><circle cx="120" cy="210" r="9"/><circle cx="200" cy="230" r="9"/><circle cx="280" cy="210" r="9"/>
+          </g>
+          <g fill="url(#nodeG)">
+            <circle class="pulse-node" cx="50" cy="150" r="12"/><circle cx="120" cy="90" r="9"/><circle cx="200" cy="70" r="9"/><circle cx="280" cy="90" r="9"/><circle class="pulse-node" cx="350" cy="150" r="12"/>
+          </g>
+        </svg>
+        <div class="neuro__legend"><span><i></i>повреждённый путь</span><span><i class="ok"></i>новый путь передачи сигнала</span></div>
+      </div>
     </div>
 
     <h3 class="sub-title" style="text-align:center;">На что направлено воздействие</h3>
     <div class="focus-grid">
       <div class="focus">
-        <div class="focus__num">01</div>
+        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.6 3 5.8V18h8v-3.2c1.6-1.2 3-3.2 3-5.8a7 7 0 0 0-7-7z"/><path d="M10 22h4"/><path d="M12 6v6M9.5 9h5"/></svg></span><div class="focus__num">01</div></div>
         <h4>Краниосакральная система.</h4>
         <p>Мягкая работа с костями черепа, оболочками головного и спинного мозга и крестцом снимает напряжения, которые ограничивают подвижность этих структур и мешают нервной системе работать полноценно.</p>
       </div>
       <div class="focus">
-        <div class="focus__num">02</div>
+        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span><div class="focus__num">02</div></div>
         <h4>Циркуляция жидкостей.</h4>
         <p>Техники улучшают движение ликвора, венозный и лимфатический отток, а значит, питание и очищение нервной ткани.</p>
       </div>
       <div class="focus">
-        <div class="focus__num">03</div>
+        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l3-7 4 14 3-9 2 2h5"/></svg></span><div class="focus__num">03</div></div>
         <h4>Вегетативная нервная система.</h4>
         <p>Восстановление баланса между симпатическим и парасимпатическим отделами выводит организм из состояния постоянного напряжения и включает процессы восстановления.</p>
       </div>
       <div class="focus">
-        <div class="focus__num">04</div>
+        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><div class="focus__num">04</div></div>
         <h4>Патологические цепочки.</h4>
         <p>Работа с ключевыми зонами напряжения разрывает цепочки дисфункций, которые закрепляют нарушения и мешают развитию ребёнка.</p>
       </div>
@@ -508,11 +629,11 @@
 
     <div class="two-col">
       <div class="card">
-        <h3 class="sub-title">Почему важна регулярность</h3>
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><h3 class="sub-title">Почему важна регулярность</h3></div>
         <p>Изменения после стимуляции отмечаются практически у всех детей, но скорость у каждого своя. Кому-то достаточно нескольких сеансов, а кому-то нужна системная работа курсами. Поэтому на семинаре мы разбираем не только технику, но и то, как выстроить план работы с ребёнком на длительный срок.</p>
       </div>
       <div class="card">
-        <h3 class="sub-title">Почему один алгоритм подходит разным детям</h3>
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 3v12"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><h3 class="sub-title">Почему один алгоритм подходит разным детям</h3></div>
         <p>При тяжёлых состояниях у детей в первую очередь страдает центральная нервная система, а нарушения развиваются по сходным цепочкам. Поэтому алгоритм общий, а специалист адаптирует его под конкретного ребёнка.</p>
       </div>
     </div>
@@ -557,9 +678,11 @@
         <div class="speaker__body">
           <h3 class="speaker__name">Евгений Вишняков</h3>
           <p class="speaker__role">Остеопат, реабилитолог, автор метода «Биостимуляция нейрогенеза», преподаватель и наставник МИОТ</p>
+          <div class="sp-stats">
+            <div class="sp-stat"><b>20 лет</b><span>работы с детьми с особенностями развития и поражениями ЦНС</span></div>
+            <div class="sp-stat"><b>10 лет</b><span>практики по авторскому протоколу</span></div>
+          </div>
           <ul class="dash">
-            <li>20 лет работы с детьми с особенностями развития и поражениями ЦНС</li>
-            <li>10 лет практики по авторскому протоколу</li>
             <li>Сотрудничает с благотворительной организацией «Дети-Ангелы»</li>
             <li>Руководит центром реабилитации в Электростали и проводит выездные реабилитационные курсы</li>
             <li>Медицинское образование, специализации по массажу и ЛФК, остеопатическая подготовка, участие в анатомических диссекциях</li>
@@ -571,11 +694,14 @@
         <div class="speaker__body">
           <h3 class="speaker__name">Олег Агапэ</h3>
           <p class="speaker__role">Врач-остеопат, анатом, основатель Международного института остеопатических технологий (МИОТ)</p>
+          <div class="sp-stats sp-stats--3">
+            <div class="sp-stat"><b>14+ лет</b><span>медицинского опыта</span></div>
+            <div class="sp-stat"><b>7000+</b><span>пациентов в России и на Бали</span></div>
+            <div class="sp-stat"><b>500+</b><span>дипломированных специалистов подготовил</span></div>
+          </div>
           <ul class="dash">
             <li>Один из ведущих специалистов по анатомическим диссекциям в России</li>
-            <li>Более 14 лет медицинского опыта, остеопатическое образование в Европе</li>
-            <li>Более 7000 пациентов в России и на Бали</li>
-            <li>Подготовил более 500 дипломированных специалистов</li>
+            <li>Остеопатическое образование в Европе</li>
           </ul>
         </div>
       </article>
@@ -584,15 +710,15 @@
 </section>
 
 <!-- ══ 8. КАК ПРОХОДИТ ОБУЧЕНИЕ ══ -->
-<section class="sec sec--light">
+<section id="learning" class="sec sec--light">
   <div class="wrap reveal">
     <h2 class="sec__title">Как проходит обучение</h2>
-    <ol class="steps">
-      <li><strong>Теория.</strong> Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</li>
-      <li><strong>Демонстрация.</strong> Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</li>
-      <li><strong>Практика.</strong> Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</li>
-      <li><strong>Разбор.</strong> Отвечаем на вопросы и разбираем случаи из вашей практики.</li>
-      <li><strong>Закрепление.</strong> После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</li>
+    <ol class="timeline">
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/></svg></span><div><strong>Теория.</strong> Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>Демонстрация.</strong> Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><div><strong>Практика.</strong> Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><strong>Разбор.</strong> Отвечаем на вопросы и разбираем случаи из вашей практики.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Закрепление.</strong> После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</div></li>
     </ol>
   </div>
 </section>
@@ -604,7 +730,7 @@
     <h2 class="sec__title">Программа</h2>
     <div class="day-grid">
       <div class="day-card">
-        <span class="day-card__num">День 1 · 19 декабря</span>
+        <div class="day-card__top"><span class="day-card__num">День 1 · 19 декабря</span><span class="day-card__big" aria-hidden="true">01</span></div>
         <ul class="day-list">
           <li>Знакомство и вводная практика</li>
           <li>Патологии центральной нервной системы и врождённые заболевания у детей</li>
@@ -614,7 +740,7 @@
         <div class="day-result"><strong>Результат дня:</strong> вы понимаете, как формируются нарушения у особенных детей, и умеете определять, когда работать нельзя.</div>
       </div>
       <div class="day-card">
-        <span class="day-card__num">День 2 · 20 декабря</span>
+        <div class="day-card__top"><span class="day-card__num">День 2 · 20 декабря</span><span class="day-card__big" aria-hidden="true">02</span></div>
         <ul class="day-list">
           <li>Построение сеанса и общение с родителями</li>
           <li>Протокол «Биостимуляция нейрогенеза»: пошаговый разбор</li>
@@ -647,16 +773,17 @@
 </section>
 
 <!-- ══ 11. ЧТО ИЗМЕНИТСЯ ══ -->
-<section class="sec sec--dark2">
+<section id="changes" class="sec sec--dark2" style="padding-top:46px;">
   <span class="blob" style="width:440px;height:440px;top:-120px;left:-140px;"></span>
+  <div class="marquee" aria-hidden="true"><div class="marquee__track"><img src="photos/neurogenez/work-1.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-3.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-5.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-7.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-2.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-4.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-6.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-8.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-1.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-3.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-5.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-7.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-2.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-4.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-6.jpg" alt="" loading="lazy"><img src="photos/neurogenez/work-8.jpg" alt="" loading="lazy"></div></div>
   <div class="wrap reveal">
     <h2 class="sec__title">Что изменится в вашей практике</h2>
     <ul class="changes">
-      <li><span class="changes__n">1</span><div><h4>Вы перестанете отказывать сложным детям.</h4><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></div></li>
-      <li><span class="changes__n">2</span><div><h4>Вы будете видеть динамику и сможете показать её родителям.</h4><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></div></li>
-      <li><span class="changes__n">3</span><div><h4>Вы будете делать работу, которой гордитесь.</h4><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></div></li>
-      <li><span class="changes__n">4</span><div><h4>Вы займёте редкую нишу.</h4><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></div></li>
-      <li><span class="changes__n">5</span><div><h4>Ваша практика будет расти естественно.</h4><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></div></li>
+      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg></span><div><h4>Вы перестанете отказывать сложным детям.</h4><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></div></li>
+      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><div><h4>Вы будете видеть динамику и сможете показать её родителям.</h4><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></div></li>
+      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><div><h4>Вы будете делать работу, которой гордитесь.</h4><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></div></li>
+      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><div><h4>Вы займёте редкую нишу.</h4><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></div></li>
+      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Ваша практика будет расти естественно.</h4><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></div></li>
     </ul>
   </div>
 </section>
