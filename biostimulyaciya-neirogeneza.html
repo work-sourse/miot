@@ -95,10 +95,22 @@
   .hero__media { position: absolute; z-index: 1; bottom: 0; right: max(-40px, calc((100vw - 1080px) / 2 - 60px)); width: min(50vw, 620px); animation: fadeUp .9s cubic-bezier(.2,.7,.3,1) .2s both; }
   .hero__media::before { content: ''; position: absolute; left: 8%; right: 8%; top: 12%; bottom: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.38), transparent 75%); filter: blur(10px); z-index: -1; }
   .hero__media img { width: 100%; -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%); mask-image: linear-gradient(to bottom, black 82%, transparent 100%); filter: drop-shadow(0 24px 40px rgba(0,0,0,0.45)); }
-  .hero__float { position: absolute; left: 4%; top: -4%; background: rgba(15,23,42,0.82); backdrop-filter: blur(10px); border: 1px solid rgba(204,167,118,0.35); border-radius: 18px; padding: 14px 18px; max-width: 230px; }
-  .hero__float b { display: block; font-family: 'Unbounded', sans-serif; font-size: 24px; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
-  .hero__float span { font-size: 13px; color: var(--w-70); line-height: 1.4; }
-  @media (max-width: 900px) { .hero__media { position: relative; right: auto; bottom: auto; max-width: 560px; width: 100%; margin: 8px auto -72px; } .hero__float { display: none; } }
+  @media (max-width: 900px) { .hero__media { position: relative; right: auto; bottom: auto; max-width: 560px; width: 100%; margin: 8px auto -72px; } }
+  /* компактный текст и крупное фото на десктопе */
+  @media (min-width: 901px) {
+    .hero { padding: 44px 0 52px; min-height: 600px; }
+    .hero__grid { grid-template-columns: minmax(0, 460px); }
+    .hero__badge { font-size: 11px; padding: 8px 16px; margin-bottom: 18px; border-radius: 14px; }
+    .hero__title { font-size: clamp(28px, 2.6vw, 34px); margin-bottom: 14px; }
+    .hero__h2 { font-size: 20px; margin-bottom: 12px; }
+    .hero__sub { font-size: 16px; margin-bottom: 16px; }
+    .hero__chips { gap: 6px; margin-bottom: 16px; }
+    .hero__chips li { font-size: 12.5px; padding: 5px 12px; }
+    .hero__lead { font-size: 14.5px; margin-bottom: 22px; }
+    .hero .btn { font-size: 15.5px; padding: 15px 26px; }
+    /* фото занимает всё место справа от колонки текста */
+    .hero__media { right: max(-40px, calc((100vw - 1080px) / 2 - 160px)); width: min(800px, calc(100vw - max(-40px, (100vw - 1080px) / 2 - 160px) - max(24px, (100vw - 1080px) / 2 + 24px) - 476px)); }
+  }
   .hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
   .hero__waves-a { animation: waveDrift 18s ease-in-out infinite alternate; }
   .hero__waves-b { animation: waveDrift 24s ease-in-out infinite alternate-reverse; }
@@ -399,7 +411,6 @@
     </div>
     <div class="hero__media">
       <img src="photos/neurogenez/hero-family-cutout.png" alt="Евгений Вишняков и Олег Агапэ с ребёнком">
-      <div class="hero__float"><b>80%</b><span>практики</span></div>
     </div>
   </div>
 </section>
