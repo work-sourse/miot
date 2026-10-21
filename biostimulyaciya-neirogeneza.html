@@ -7,454 +7,421 @@
 <meta name="description" content="Авторский семинар для телесно ориентированных специалистов: как помогать детям с ДЦП, РАС и поражениями ЦНС. 19–20 декабря, офлайн и онлайн. Ведущие — Евгений Вишняков и Олег Агапэ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg-dark:      #0F172A;
-    --bg-dark2:     #16213F;
-    --card-dark:    #1B2947;
-    --border-dark:  rgba(255,255,255,0.10);
-    --grad-title:   linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
-    --grad-card:    linear-gradient(135deg, #1B2947 0%, #35507E 100%);
-    --grad-btn:     linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
-    --gold:         #CCA776;
-    --white:        #FFFFFF;
-    --w-70:         rgba(255,255,255,0.72);
-    --w-50:         rgba(255,255,255,0.52);
+    /* шкала шрифтов */
+    --f-h1: 54px; --f-h2: 40px; --f-h3: 20px; --f-num: 40px;
+    --f-offer: 24px; --f-plaque: 26px;
+    --f-body: 16px; --f-step: 15px; --f-sec: 14px; --f-cap: 13px;
+    --lh: 1.55;
 
-    --light-bg:     #F0F4F8;
-    --card:         #FFFFFF;
-    --ink:          #0F172A;
-    --ink-soft:     #3C4A5E;
-    --ink-mute:     #6B7B90;
-    --line:         rgba(15,23,42,0.10);
+    --bg-dark:  #0F172A;
+    --bg-dark2: #16213F;
+    --card-dark: #1B2947;
+    --border-dark: rgba(255,255,255,0.12);
+    --gold: #CCA776;
+    --gold-ink: #8A6A3A;
+    --grad-title: linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
+    --grad-btn: linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
+    --on-dark: rgba(255,255,255,0.8);
+    --on-dark-strong: #fff;
+
+    --light-bg: #F0F4F8;
+    --light-alt: #E9EDF5;
+    --card: #FFFFFF;
+    --ink: #0F172A;
+    --ink-soft: #3C4A5E;
+    --ink-mute: #5A6275;
+    --line: rgba(15,23,42,0.10);
+
+    --radius: 24px;
+    --shadow: 0 4px 28px rgba(20,25,60,0.08);
+    --shadow-media: 0 22px 44px -20px rgba(15,23,42,0.55);
+    --photo-filter: saturate(.9) contrast(1.05) brightness(1.02);
+    --sec-pad: 88px;
   }
+  @media (max-width: 600px) {
+    :root { --f-h1: 32px; --f-h2: 26px; --f-h3: 18px; --f-offer: 20px; --sec-pad: 56px; }
+  }
+
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; font-size: 17px; background: var(--bg-dark); color: var(--white); -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  body { font-family: 'Inter', sans-serif; font-size: var(--f-body); line-height: var(--lh); font-weight: 400; background: var(--bg-dark); color: #fff; -webkit-font-smoothing: antialiased; }
   img, video { max-width: 100%; display: block; }
   a { color: inherit; }
+  button { font: inherit; }
+  strong, b { font-weight: 600; }
+  .wrap { max-width: 1148px; margin: 0 auto; padding: 0 24px; }
 
-  /* ══ SECTION SHELLS ══ */
-  .sec { padding: 76px 0; position: relative; overflow: hidden; }
-  @media (max-width: 600px) { .sec { padding: 56px 0; } }
-  .sec--dark { background: var(--bg-dark); color: var(--white); }
-  .sec--dark2 { background: var(--bg-dark2); color: var(--white); }
+  /* ══ SECTIONS ══ */
+  .sec { padding-block: var(--sec-pad); position: relative; overflow: hidden; }
+  .sec--dark { background: var(--bg-dark); color: #fff; }
+  .sec--dark2 { background: var(--bg-dark2); color: #fff; }
   .sec--light { background: var(--light-bg); color: var(--ink); }
-  .eyebrow { display: block; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
-  .sec--dark .eyebrow, .sec--dark2 .eyebrow { color: var(--gold); }
-  .sec--light .eyebrow { color: #8A6A3A; }
-  .sec__title { font-family: 'Unbounded', sans-serif; font-size: clamp(25px, 4vw, 40px); font-weight: 700; text-align: center; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; text-wrap: balance; }
-  .sec--dark .sec__title, .sec--dark2 .sec__title { color: var(--white); }
-  .sec--light .sec__title { color: var(--ink); }
-  .sec__title { margin-bottom: 36px; }
+  .sec > .wrap { position: relative; z-index: 1; }
+  .eyebrow { display: block; text-align: center; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; color: var(--gold); }
+  .sec--light .eyebrow { color: var(--gold-ink); }
+  .sec__title { font-family: 'Unbounded', sans-serif; font-size: var(--f-h2); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; text-align: center; max-width: 900px; margin: 0 auto 40px; text-wrap: balance; }
   .sec__title:has(+ .sec__sub) { margin-bottom: 16px; }
-  .sec__sub { text-align: center; font-size: 18px; max-width: 760px; margin: 0 auto 40px; line-height: 1.65; }
-  .sec--dark .sec__sub, .sec--dark2 .sec__sub { color: var(--w-70); }
-  .sec--light .sec__sub { color: var(--ink-mute); }
-  .sub-title { font-family: 'Unbounded', sans-serif; font-size: clamp(18px, 2.4vw, 22px); font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
-  .sec--light .sub-title { color: var(--ink); }
-  .sec--dark .sub-title, .sec--dark2 .sub-title { color: #fff; }
+  .sec__sub { text-align: center; max-width: 720px; margin: 0 auto 40px; font-size: var(--f-body); }
+  .sec--dark .sec__sub, .sec--dark2 .sec__sub { color: var(--on-dark); }
+  .sec--light .sec__sub { color: var(--ink-soft); }
+  .h3 { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; line-height: 1.3; }
 
   /* ══ BUTTONS ══ */
-  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16.5px; border: none; border-radius: 999px; padding: 18px 34px; cursor: pointer; text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.3,1.4), box-shadow .2s, background .2s; white-space: nowrap; }
-  .btn:hover { transform: translateY(-3px) scale(1.02); }
-  .btn:active { transform: translateY(-1px) scale(0.99); }
-  .btn-primary { background: var(--grad-btn); background-size: 160% 160%; color: var(--ink); box-shadow: 0 10px 28px -10px rgba(204,167,118,0.6); animation: btnSheen 6s ease infinite; }
-  .btn-primary:hover { box-shadow: 0 16px 38px -10px rgba(204,167,118,0.8); }
-  @keyframes btnSheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-  .btn-ghost { background: rgba(255,255,255,0.10); color: #fff; border: 1.5px solid rgba(255,255,255,0.45); }
-  .btn-ghost:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.65); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-row--center { justify-content: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 30px; border: none; border-radius: 999px; font-family: 'Inter', sans-serif; font-size: var(--f-body); font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--grad-btn); color: var(--ink); box-shadow: 0 10px 28px -10px rgba(204,167,118,0.6); }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.45); }
   .btn-dark { background: var(--ink); color: #fff; }
-  .btn-dark:hover { background: #1E293B; box-shadow: 0 14px 30px -12px rgba(15,23,42,0.6); }
-  @media (max-width: 480px) { .btn { white-space: normal; text-align: center; padding: 17px 26px; } .btn-row .btn { width: 100%; } }
+  .btn-dark:hover { background: #1E293B; }
+
+  /* ══ CARDS ══ */
+  .card { border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .card { padding: 24px 20px; } }
+  .sec--light .card { background: var(--card); box-shadow: var(--shadow); }
+  .sec--dark .card, .sec--dark2 .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  .card p { margin-bottom: 14px; }
+  .card p:last-child { margin-bottom: 0; }
+  .sec--light .card p { color: var(--ink-soft); }
+  .sec--dark .card p, .sec--dark2 .card p { color: var(--on-dark); }
+  .grid { display: grid; gap: 24px; align-items: stretch; }
+  .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 860px) { .grid--2, .grid--3 { grid-template-columns: minmax(0, 1fr); } }
+
+  .ico { flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(204,167,118,0.16); }
+  .ico svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-ink); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .sec--dark .ico, .sec--dark2 .ico { background: rgba(204,167,118,0.13); border: 1px solid rgba(204,167,118,0.28); }
+  .sec--dark .ico svg, .sec--dark2 .ico svg { stroke: var(--gold); }
+
+  .dash { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .dash li { position: relative; padding-left: 28px; }
+  .dash li::before { content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--grad-btn); box-shadow: inset 0 0 0 5px var(--card-dark); }
+  .sec--dark2 .dash li, .sec--dark .dash li { color: var(--on-dark); }
 
   /* ══ HERO ══ */
-  .hero { padding: 64px 0 72px; position: relative; overflow: hidden; }
-  @media (min-width: 901px) { .hero { min-height: 640px; display: flex; align-items: center; } .hero__grid { width: 100%; } }
-  .hero::before { content: ''; position: absolute; top: -220px; left: 30%; width: 900px; height: 520px; background: radial-gradient(closest-side, rgba(204,167,118,0.26), transparent 70%); pointer-events: none; animation: floatBlob 13s ease-in-out infinite; }
-  .hero__grid { z-index: 1; display: grid; grid-template-columns: minmax(0, 500px); gap: 48px; align-items: center; }
-  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; gap: 36px; } }
-  .hero__grid > * { min-width: 0; position: relative; z-index: 2; }
-  .hero__grid > .hero__media { z-index: 1; }
-  .hero__badge { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; background: var(--grad-card); color: #fff; border-radius: 18px; padding: 10px 20px; margin-bottom: 26px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5; animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) both; }
-  .hero__badge b { color: var(--gold); font-weight: 700; }
-  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(34px, 5.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 20px; background: var(--grad-title); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; overflow-wrap: break-word; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .08s both, titleShimmer 7s ease-in-out infinite 1.2s; }
-  @keyframes titleShimmer { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
-  .hero__h2 { font-family: 'Unbounded', sans-serif; font-size: clamp(19px, 2.4vw, 26px); font-weight: 600; line-height: 1.3; color: #fff; margin-bottom: 16px; text-wrap: balance; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .14s both; }
-  @media (min-width: 901px) { .hero__title { font-size: clamp(30px, 2.9vw, 37px); } }
-  @media (max-width: 480px) { .hero__title { font-size: 6.3vw; } .hero__h2 { font-size: 17px; } }
-  .hero__sub { font-size: clamp(16.5px, 1.9vw, 19px); color: var(--w-70); line-height: 1.6; margin-bottom: 22px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .2s both; }
-  .hero__chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .26s both; }
-  .hero__chips li { font-size: 13.5px; font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 7px 14px; }
-  .hero__lead { font-size: 15.5px; color: var(--w-70); margin-bottom: 28px; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .3s both; }
-  .hero__lead strong { color: #fff; }
-  .hero .btn-row { justify-content: flex-start; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) .34s both; }
-  .hero__media { position: absolute; z-index: 1; bottom: 0; right: max(-40px, calc((100vw - 1080px) / 2 - 60px)); width: min(50vw, 620px); animation: fadeUp .9s cubic-bezier(.2,.7,.3,1) .2s both; }
-  .hero__media::before { content: ''; position: absolute; left: 8%; right: 8%; top: 12%; bottom: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.38), transparent 75%); filter: blur(10px); z-index: -1; }
-  .hero__media img { width: 100%; -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%); mask-image: linear-gradient(to bottom, black 82%, transparent 100%); filter: drop-shadow(0 24px 40px rgba(0,0,0,0.45)); }
-  @media (max-width: 900px) { .hero__media { position: relative; right: auto; bottom: auto; max-width: 560px; width: 100%; margin: 8px auto -72px; } }
-  /* компактный текст и крупное фото на десктопе */
-  @media (min-width: 901px) {
-    .hero { padding: 44px 0 52px; min-height: 600px; }
-    .hero__grid { grid-template-columns: minmax(0, 460px); }
-    .hero__badge { font-size: 11px; padding: 8px 16px; margin-bottom: 18px; border-radius: 14px; }
-    .hero__title { font-size: clamp(28px, 2.6vw, 34px); margin-bottom: 14px; }
-    .hero__h2 { font-size: 20px; margin-bottom: 12px; }
-    .hero__sub { font-size: 16px; margin-bottom: 16px; }
-    .hero__chips { gap: 6px; margin-bottom: 16px; }
-    .hero__chips li { font-size: 12.5px; padding: 5px 12px; }
-    .hero__lead { font-size: 14.5px; margin-bottom: 22px; }
-    .hero .btn { font-size: 15.5px; padding: 15px 26px; }
-    /* фото занимает всё место справа от колонки текста */
-    .hero__media { right: max(-40px, calc((100vw - 1080px) / 2 - 160px)); width: min(800px, calc(100vw - max(-40px, (100vw - 1080px) / 2 - 160px) - max(24px, (100vw - 1080px) / 2 + 24px) - 476px)); }
-  }
+  .hero { position: relative; overflow: hidden; padding-top: var(--sec-pad); }
+  .hero::before { content: ''; position: absolute; top: -220px; left: 30%; width: 900px; height: 520px; background: radial-gradient(closest-side, rgba(204,167,118,0.24), transparent 70%); pointer-events: none; }
   .hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
   .hero__waves-a { animation: waveDrift 18s ease-in-out infinite alternate; }
   .hero__waves-b { animation: waveDrift 24s ease-in-out infinite alternate-reverse; }
   @keyframes waveDrift { from { transform: translate(-30px, 0); } to { transform: translate(30px, -18px); } }
-  @media (max-width: 900px) { .hero__waves { opacity: .7; } }
-
-  /* ══ MOTION ══ */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes floatBlob { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%, -4%) scale(1.06); } }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
-  .reveal.in-view { opacity: 1; transform: translateY(0); }
-  .blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; animation: floatBlob 11s ease-in-out infinite; z-index: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.22), transparent 72%); }
-  .sec--light .blob { background: radial-gradient(closest-side, rgba(204,167,118,0.18), transparent 72%); }
-  .sec > .wrap { position: relative; z-index: 1; }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-    *, *::before { animation: none !important; scroll-behavior: auto !important; }
-    .marquee { overflow-x: auto; }
+  .hero__inner { position: relative; z-index: 2; max-width: 560px; padding-bottom: var(--sec-pad); }
+  .hero__badge { display: inline-block; white-space: nowrap; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.32); border-radius: 999px; padding: 9px 18px; margin-bottom: 24px; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: 46px; font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; hyphens: manual; }
+  .hero__offer { font-family: 'Unbounded', sans-serif; font-size: var(--f-offer); font-weight: 600; line-height: 1.3; color: #fff; margin-bottom: 16px; text-wrap: balance; }
+  .hero__sub { color: var(--on-dark); margin-bottom: 20px; }
+  .hero__chips { list-style: none; display: flex; flex-wrap: nowrap; gap: 6px; margin-bottom: 20px; }
+  .hero__chips li { white-space: nowrap; font-size: var(--f-cap); font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 6px 10px; }
+  .hero__lead { color: var(--on-dark); margin-bottom: 26px; }
+  .hero__lead strong { color: #fff; }
+  .hero__media { position: absolute; z-index: 1; right: -60px; bottom: 0; width: min(900px, calc(100vw - max(24px, (100vw - 1100px) / 2) - 630px)); }
+  .hero__media::before { content: ''; position: absolute; left: 8%; right: 8%; top: 14%; bottom: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.34), transparent 75%); filter: blur(10px); z-index: -1; }
+  .hero__media img { width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent); mask-image: linear-gradient(to bottom, #000 80%, transparent); }
+  @media (max-width: 900px) {
+    .hero__inner { max-width: none; padding-bottom: 8px; }
+    .hero__media { position: relative; right: auto; width: 100%; max-width: 620px; margin: 0 auto; }
+    .hero__title { font-size: var(--f-h1); }
+  }
+  @media (max-width: 600px) {
+    .hero__badge { white-space: normal; }
+    .hero__chips { flex-wrap: wrap; }
+    .hero .btn-row { flex-direction: column; }
+    .hero .btn { width: 100%; }
   }
 
-  /* ══ CARDS & LISTS ══ */
-  .card { border-radius: 24px; padding: 36px 40px; }
-  .sec--dark .card, .sec--dark2 .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
-  .sec--light .card { background: var(--card); box-shadow: 0 4px 28px rgba(20,25,60,0.08); }
-  @media (max-width: 600px) { .card { padding: 28px 22px; } }
-  .card p { font-size: 17px; line-height: 1.72; margin-bottom: 16px; }
-  .card p:last-child { margin-bottom: 0; }
-  .sec--dark .card p, .sec--dark2 .card p { color: rgba(255,255,255,0.85); }
-  .sec--light .card p { color: var(--ink-soft); }
-
-  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
-
-  .dash { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .dash li { position: relative; padding-left: 30px; font-size: 16.5px; line-height: 1.55; }
-  .dash li::before { content: ''; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--grad-btn); box-shadow: inset 0 0 0 5px #fff; }
-  .sec--light .dash li { color: var(--ink-soft); }
-  .sec--dark .dash li, .sec--dark2 .dash li { color: var(--w-70); }
-  .sec--dark .dash li::before, .sec--dark2 .dash li::before { box-shadow: inset 0 0 0 5px var(--card-dark); }
-  .dash li strong { font-weight: 700; }
-  .sec--light .dash li strong { color: var(--ink); }
-  .sec--dark .dash li strong, .sec--dark2 .dash li strong { color: #fff; }
-
-  .diag-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  @media (max-width: 480px) { .diag-grid { grid-template-columns: 1fr; } }
-  .diag { border-radius: 16px; padding: 18px; font-weight: 600; font-size: 15.5px; line-height: 1.45; color: var(--ink); background: linear-gradient(135deg, rgba(204,167,118,0.16), rgba(204,167,118,0.05)); border: 1px solid rgba(204,167,118,0.35); }
-  .diag small { display: block; font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 800; color: #8A6A3A; margin-bottom: 6px; }
-
-  .card-title { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; line-height: 1.35; }
-  .sec--light .card-title { color: var(--ink); }
-
-  /* family */
-  .family { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; }
-  @media (max-width: 800px) { .family { grid-template-columns: 1fr; } }
-  .family img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 26px; box-shadow: 0 26px 50px -20px rgba(0,0,0,0.6); }
-  .family .sec__title { text-align: left; }
-  @media (max-width: 800px) { .family img { max-width: 380px; margin: 0 auto; } }
-
-  /* questions */
-  .q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
-  @media (max-width: 900px) { .q-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 500px) { .q-grid { grid-template-columns: 1fr; } }
-  .q-card { position: relative; background: var(--card); border-radius: 20px; padding: 54px 20px 22px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--ink); transition: transform .25s; }
-  .q-card:hover { transform: translateY(-4px); }
-  .q-card--ico { padding-top: 22px; display: flex; flex-direction: column; gap: 14px; }
-  .q-card.q-card--ico::before { display: none; }
-  .q-card::before { content: '?'; position: absolute; top: 16px; left: 20px; width: 28px; height: 28px; border-radius: 9px; background: var(--ink); color: var(--gold); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
-  .callout { max-width: 760px; margin: 0 auto; text-align: center; font-size: 18px; line-height: 1.6; color: var(--ink); font-weight: 600; border-left: 4px solid var(--gold); border-right: 4px solid var(--gold); padding: 6px 24px; border-radius: 4px; }
-
-  /* method */
-  .method-intro { max-width: 860px; margin: 0 auto 44px; }
-  .focus-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 44px; }
-  @media (max-width: 760px) { .focus-grid { grid-template-columns: 1fr; } }
-  .focus { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 22px; padding: 28px 28px 30px; transition: transform .3s, border-color .3s; }
-  .focus:hover { transform: translateY(-4px); border-color: rgba(204,167,118,0.45); }
-  .focus__num { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 12px; }
-  .focus h4 { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-  .focus p { font-size: 15.5px; line-height: 1.65; color: var(--w-70); }
-  .stat-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
-  @media (max-width: 760px) { .stat-tiles { grid-template-columns: 1fr; } }
-  .stat-tile { border-radius: 18px; padding: 26px 22px; text-align: center; background: rgba(255,255,255,0.05); border: 1.5px solid var(--border-dark); }
-  .stat-tile__num { font-family: 'Unbounded', sans-serif; font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; color: var(--gold); line-height: 1.15; margin-bottom: 8px; }
-  .stat-tile__label { font-size: 14.5px; color: var(--w-70); line-height: 1.5; }
-
-  /* video + gallery */
-  .video-frame { max-width: 380px; margin: 0 auto 14px; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 26px 50px -20px rgba(15,23,42,0.45); aspect-ratio: 464/848; position: relative; }
-  .video-frame video, .video-frame img { width: 100%; height: 100%; object-fit: cover; }
-  .video-frame--wait img { filter: brightness(0.55); }
-  .video-frame--wait::after { content: ''; position: absolute; top: 50%; left: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%; background: rgba(255,255,255,0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%230F172A'/%3E%3C/svg%3E") center/34px no-repeat; }
-  .video-caption { text-align: center; font-style: italic; color: var(--ink-mute); font-size: 15px; margin-bottom: 40px; }
-  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-  .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; cursor: zoom-in; transition: transform .3s; }
-  .gallery img:hover { transform: scale(1.03); }
-
-  /* speakers */
-  .speakers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  @media (max-width: 820px) { .speakers { grid-template-columns: 1fr; } }
-  .speaker { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
-  .speaker__photo { aspect-ratio: 4/3; overflow: hidden; }
-  .speaker__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
-  .speaker:hover .speaker__photo img { transform: scale(1.05); }
-  .speaker__body { padding: 28px 30px 32px; }
-  .speaker__name { font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .speaker__role { font-size: 15px; color: var(--gold); line-height: 1.5; margin-bottom: 20px; font-weight: 600; }
-
-  /* steps */
-  .steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: step; }
-  @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
-  .steps li { counter-increment: step; background: var(--card); border-radius: 20px; padding: 24px 20px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
-  .steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: var(--gold); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 17px; margin-bottom: 14px; }
-  .steps li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
-
-  /* program */
-  .day-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-bottom: 34px; }
-  @media (max-width: 780px) { .day-grid { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 420px) { .day-card { padding: 24px 20px 26px; } .day-card__big { display: none; } }
-  .day-card { border-radius: 22px; padding: 30px 30px 32px; background: var(--card-dark); border: 1px solid var(--border-dark); display: flex; flex-direction: column; }
-  .day-card__num { align-self: flex-start; white-space: nowrap; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; margin-bottom: 20px; }
-  .day-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
-  .day-list li { position: relative; padding-left: 22px; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.86); }
-  .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
-  .day-result { margin-top: auto; border-left: 3px solid var(--gold); background: rgba(204,167,118,0.08); border-radius: 0 14px 14px 0; padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--w-70); }
-  .day-result strong { color: var(--gold); }
-
-  /* contraindications */
-  .contra { max-width: 860px; margin: 0 auto; border: 1.5px solid rgba(190,70,60,0.25); }
-  .contra__list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 22px; margin-top: 8px; }
-  @media (max-width: 640px) { .contra__list { grid-template-columns: 1fr; } }
-  .contra__list li { position: relative; padding: 12px 14px 12px 44px; background: #FBF5F4; border-radius: 12px; font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); }
-  .contra__list li::before { content: '✕'; position: absolute; left: 14px; top: 12px; width: 20px; height: 20px; border-radius: 50%; background: #B9483E; color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .contra__list li.wide { grid-column: 1 / -1; }
-
-  /* changes */
-  .changes { list-style: none; display: grid; gap: 14px; max-width: 900px; margin: 0 auto; }
-  .changes li { display: grid; grid-template-columns: 52px 1fr; gap: 18px; align-items: start; background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark); border-radius: 20px; padding: 22px 24px; transition: background .25s, transform .25s; }
-  .changes li:hover { background: rgba(255,255,255,0.08); transform: translateX(4px); }
-  .changes__n { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; }
-  .changes h4 { font-family: 'Unbounded', sans-serif; font-size: 17px; color: #fff; margin-bottom: 6px; line-height: 1.35; }
-  .changes p { font-size: 15.5px; color: var(--w-70); line-height: 1.6; }
-
-  /* results / reviews */
-  .result-wrap { display: flex; justify-content: center; }
-  .reviews-scroll { overflow-x: auto; padding: 6px 0 18px; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; scrollbar-width: thin; }
-  .reviews-track { display: flex; gap: 16px; width: max-content; padding: 0 24px; margin: 0 auto; }
-  .reviews-track > * { flex-shrink: 0; scroll-snap-align: center; }
-  .reviews-shot { height: 460px; width: auto; border-radius: 18px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); cursor: zoom-in; transition: transform .3s; }
-  .reviews-shot:hover { transform: translateY(-6px); }
-  .reviews-video { height: 460px; aspect-ratio: 464/848; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
-  .reviews-video video { width: 100%; height: 100%; object-fit: cover; }
-  @media (max-width: 600px) { .reviews-shot, .reviews-video { height: 380px; } }
-  .scroll-hint { text-align: center; font-size: 13.5px; color: var(--w-50); margin-top: 6px; }
-
-  /* support */
-  .support { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-  @media (max-width: 960px) { .support { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .support { grid-template-columns: 1fr; } }
-  .support li { background: var(--card); border-radius: 20px; padding: 24px 20px; box-shadow: 0 4px 22px rgba(20,25,60,0.07); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
-  .support li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 15.5px; color: var(--ink); margin-bottom: 6px; }
-  .support__ico { width: 44px; height: 44px; border-radius: 13px; background: rgba(204,167,118,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-  .support__ico svg { width: 22px; height: 22px; stroke: #8A6A3A; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-  /* tariffs */
-  .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 920px; margin: 0 auto; }
-  @media (max-width: 760px) { .price-grid { grid-template-columns: 1fr; } }
-  .price-card { position: relative; background: var(--card); border-radius: 26px; padding: 36px 32px; box-shadow: 0 4px 28px rgba(20,25,60,0.08); display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
-  .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px -14px rgba(20,25,60,0.2); }
-  .price-card--best { border: 2px solid var(--ink); box-shadow: 0 0 0 6px rgba(15,23,42,0.07), 0 4px 28px rgba(20,25,60,0.08); }
-  .price-card__label { font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A6A3A; margin-bottom: 8px; }
-  .price-card__price { font-family: 'Unbounded', sans-serif; font-size: clamp(34px, 4.6vw, 46px); font-weight: 800; color: var(--ink); margin-bottom: 24px; }
-  .price-card__feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-  .price-card__feats li { display: flex; gap: 10px; font-size: 15.5px; color: var(--ink-soft); line-height: 1.5; }
-  .price-card__feats li::before { content: '✓'; color: #8A6A3A; font-weight: 800; flex-shrink: 0; }
-  .price-card .btn { width: 100%; margin-top: auto; }
-
-  /* forms */
-  .lead { display: grid; gap: 12px; }
-  .lead--row { grid-template-columns: 1fr 1fr auto; align-items: start; }
-  .lead--grid { grid-template-columns: 1fr 1fr; }
-  @media (max-width: 760px) { .lead--row, .lead--grid { grid-template-columns: 1fr; } }
-  .lead input, .lead select { width: 100%; font: inherit; font-size: 16px; padding: 16px 20px; border-radius: 14px; border: 1.5px solid rgba(15,23,42,0.14); background: #fff; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s; appearance: none; -webkit-appearance: none; }
-  .lead select { background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%230F172A' stroke-width='2'/%3E%3C/svg%3E") right 16px center/18px no-repeat; padding-right: 44px; }
-  .lead select:invalid { color: #8794A6; }
-  .lead input:focus, .lead select:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(204,167,118,0.22); }
-  .sec--dark2 .lead input { border-color: transparent; }
-  .lead .btn { padding: 17px 30px; }
-  .lead__full { grid-column: 1 / -1; }
-  .consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; cursor: pointer; }
-  .consent input { width: 18px; height: 18px; padding: 0; margin-top: 1px; flex-shrink: 0; accent-color: var(--ink); appearance: auto; -webkit-appearance: checkbox; }
-  .consent a { text-decoration: underline; }
-  .sec--dark2 .consent { color: var(--w-50); }
-  .sec--dark2 .consent input { accent-color: var(--gold); }
-  .lead-done { display: none; text-align: center; font-weight: 600; padding: 18px; border-radius: 14px; }
-  .lead.is-sent { display: none; }
-  .lead.is-sent + .lead-done { display: block; }
-  .sec--dark2 .lead-done { background: rgba(204,167,118,0.12); color: #fff; border: 1px solid rgba(204,167,118,0.35); }
-
-  .ask { max-width: 860px; margin: 0 auto; text-align: center; }
-  .ask .sec__sub { margin-bottom: 28px; }
-  .ask .lead { text-align: left; }
-
-  /* faq */
-  .faq { display: flex; flex-direction: column; gap: 14px; max-width: 860px; margin: 0 auto; }
-  .faq details { border-radius: 16px; padding: 4px 24px; background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); }
-  .faq summary { list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; line-height: 1.4; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; color: #8A6A3A; flex-shrink: 0; transition: transform .3s cubic-bezier(.3,1.4,.5,1); }
-  .faq details[open] summary::after { transform: rotate(135deg); }
-  .faq__a { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); padding-bottom: 20px; }
-
-  /* final CTA */
-  .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 28px; padding: 54px 48px; text-align: center; max-width: 960px; margin: 0 auto; }
-  .cta-final::before { content: ''; position: absolute; top: -40%; left: -10%; width: 60%; height: 180%; background: radial-gradient(closest-side, rgba(255,255,255,0.2), transparent 70%); animation: floatBlob 9s ease-in-out infinite; pointer-events: none; }
-  @media (max-width: 600px) { .cta-final { padding: 36px 20px; border-radius: 22px; } }
-  .cta-final > * { position: relative; }
-  .cta-final__title { font-family: 'Unbounded', sans-serif; font-size: clamp(22px, 3.2vw, 32px); font-weight: 700; color: var(--ink); max-width: 700px; margin: 0 auto 16px; line-height: 1.3; text-wrap: balance; }
-  .cta-final__text { font-size: 17px; color: rgba(15,23,42,0.78); max-width: 560px; margin: 0 auto 18px; line-height: 1.6; }
-  .cta-final__date { display: inline-block; font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); background: rgba(255,255,255,0.45); border-radius: 999px; padding: 9px 20px; margin-bottom: 28px; }
-  .cta-final .lead { max-width: 680px; margin: 0 auto; text-align: left; }
-  .cta-final .lead input, .cta-final .lead select { border-color: rgba(15,23,42,0.08); }
-  .cta-final .consent { color: rgba(15,23,42,0.72); }
-  .cta-final__note { font-size: 14.5px; color: rgba(15,23,42,0.7); margin-top: 18px; }
-  .cta-final .lead-done { background: rgba(255,255,255,0.6); color: var(--ink); }
-
-  /* footer */
-  .page-foot { background: var(--bg-dark2); padding: 40px 0 34px; text-align: center; color: var(--w-50); font-size: 14px; line-height: 1.9; }
-  .page-foot a { color: var(--w-70); text-decoration: none; }
-  .page-foot a:hover { color: var(--gold); }
-
-  /* lightbox */
-  .lb { position: fixed; inset: 0; z-index: 9999; background: rgba(5,10,25,0.9); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
-  .lb.is-open { display: flex; }
-  .lb img { max-width: 100%; max-height: 100%; border-radius: 14px; }
-  .lb__close { position: absolute; top: 14px; right: 18px; background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
-
-  /* sticky mobile CTA */
-  .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
-  .sticky-cta .btn { width: 100%; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
-  @media (max-width: 760px) { .sticky-cta.is-visible { display: block; } }
-
-  /* ══ VISUALS ══ */
-  .ico { flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(204,167,118,0.16); }
-  .ico svg { width: 23px; height: 23px; fill: none; stroke: #8A6A3A; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-  .sec--dark .ico, .sec--dark2 .ico { background: rgba(204,167,118,0.13); border: 1px solid rgba(204,167,118,0.28); }
-  .sec--dark .ico svg, .sec--dark2 .ico svg { stroke: var(--gold); }
-
-  /* icon lists */
+  /* ══ FOR ══ */
   .ilist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .ilist li { display: flex; align-items: center; gap: 16px; font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
-  .ilist .ico { width: 44px; height: 44px; }
+  .ilist li { display: flex; align-items: center; gap: 16px; color: var(--ink-soft); }
+  .card .h3 { margin-bottom: 20px; }
+  .sec--light .card .h3 { color: var(--ink); }
+  .diag-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; flex: 1; }
+  @media (max-width: 480px) { .diag-grid { grid-template-columns: minmax(0, 1fr); } }
+  .diag { border-radius: 16px; padding: 18px; color: var(--ink); background: linear-gradient(135deg, rgba(204,167,118,0.18), rgba(204,167,118,0.05)); border: 1px solid rgba(204,167,118,0.35); }
+  .diag small { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--gold-ink); margin-bottom: 6px; }
 
-  .diag { position: relative; overflow: hidden; }
-  .diag::after { content: ''; position: absolute; right: -18px; bottom: -18px; width: 70px; height: 70px; border-radius: 50%; border: 10px solid rgba(204,167,118,0.16); }
+  /* ══ FAMILY ══ */
+  .family { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .family { grid-template-columns: minmax(0, 1fr); } }
+  .family__photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 25%; border-radius: var(--radius); box-shadow: var(--shadow-media); filter: var(--photo-filter); }
+  @media (max-width: 860px) { .family__photo { max-width: 420px; margin: 0 auto; } }
+  .family .sec__title { font-size: 32px; text-align: left; margin: 0 0 24px; }
+  @media (max-width: 600px) { .family .sec__title { font-size: var(--f-h2); } }
 
-  /* method intro with diagram */
-  .method-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 28px; align-items: center; margin-bottom: 44px; }
-  @media (max-width: 860px) { .method-split { grid-template-columns: 1fr; } }
-  .method-split .method-intro { margin: 0; }
-  .neuro { background: radial-gradient(circle at 50% 45%, rgba(204,167,118,0.10), transparent 70%), var(--card-dark); border: 1px solid var(--border-dark); border-radius: 24px; padding: 18px 18px 14px; }
+  /* ══ SPECIAL CHILD ══ */
+  .q-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 32px; align-items: stretch; }
+  @media (max-width: 960px) { .q-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .q-grid { grid-template-columns: minmax(0, 1fr); } }
+  .q-card { background: var(--card); border-radius: 20px; padding: 22px 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; color: var(--ink); }
+  .callout { max-width: 760px; margin: 0 auto; font-weight: 600; color: var(--ink); border-left: 4px solid var(--gold); padding: 6px 0 6px 20px; }
+
+  /* ══ METHOD ══ */
+  .method-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 32px; align-items: center; margin-bottom: 48px; }
+  @media (max-width: 960px) { .method-top { grid-template-columns: minmax(0, 1fr); } }
+  .video16 { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: var(--shadow-media); }
+  .video16 video { width: 100%; height: 100%; object-fit: cover; }
+  .method-mid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; margin-bottom: 48px; }
+  @media (max-width: 960px) { .method-mid { grid-template-columns: minmax(0, 1fr); } }
+  .method-mid .h3 { color: #fff; margin-bottom: 18px; }
+  .acc { display: flex; flex-direction: column; gap: 10px; }
+  .acc details { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 18px; padding: 0 20px; transition: border-color .2s; }
+  .acc details[open] { border-color: rgba(204,167,118,0.45); }
+  .acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 16px 0; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; line-height: 1.3; }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary::after { content: '+'; margin-left: auto; font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 400; color: var(--gold); transition: transform .3s; }
+  .acc details[open] summary::after { transform: rotate(45deg); }
+  .acc p { color: var(--on-dark); padding: 0 0 18px 58px; }
+  @media (max-width: 600px) { .acc p { padding-left: 0; } }
+  .neuro { background: radial-gradient(circle at 50% 45%, rgba(204,167,118,0.10), transparent 70%), var(--card-dark); border: 1px solid var(--border-dark); border-radius: var(--radius); padding: 18px 18px 16px; }
   .neuro svg { width: 100%; height: auto; display: block; }
-  .neuro__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: var(--w-70); margin-top: 6px; }
+  .neuro__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: var(--f-cap); color: var(--on-dark); margin-top: 6px; }
   .neuro__legend i { display: inline-block; width: 22px; height: 0; border-top: 2px dashed #D86A5F; vertical-align: middle; margin-right: 7px; }
   .neuro__legend i.ok { border-top: 3px solid var(--gold); }
   .neuro .new-path { stroke-dasharray: 8 7; animation: pathFlow 1.6s linear infinite; }
   @keyframes pathFlow { to { stroke-dashoffset: -30; } }
   .neuro .pulse-node { animation: nodePulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-  @keyframes nodePulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.35); opacity: 1; } }
-
-  .focus__head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
-  .focus__head .focus__num { margin: 0; }
+  @keyframes nodePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
   .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-  .card-head .sub-title { margin: 0; }
+  .sec--dark .card .h3 { color: #fff; margin: 0; }
+  .plaques { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; align-items: stretch; }
+  @media (max-width: 760px) { .plaques { grid-template-columns: minmax(0, 1fr); } }
+  .plaque { border-radius: 18px; padding: 24px 22px; text-align: center; background: rgba(255,255,255,0.05); border: 1.5px solid var(--border-dark); display: flex; flex-direction: column; justify-content: center; }
+  .plaque b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-plaque); font-weight: 700; color: var(--gold); line-height: 1.15; margin-bottom: 8px; }
+  .plaque span { font-size: var(--f-sec); color: var(--on-dark); }
 
-  /* learning timeline */
-  .timeline { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; position: relative; counter-reset: step; }
-  .timeline::before { content: ''; position: absolute; top: 31px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
-  .timeline li { position: relative; text-align: center; font-size: 15px; line-height: 1.55; color: var(--ink-soft); counter-increment: step; }
-  .timeline__dot { position: relative; width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 6px var(--light-bg), 0 10px 24px -8px rgba(15,23,42,0.5); }
+  /* ══ GALLERY ══ */
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .gallery button { border: none; padding: 0; background: none; cursor: zoom-in; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+  .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 25%; filter: var(--photo-filter); transition: transform .4s; }
+  .gallery button:hover img { transform: scale(1.04); }
+  @media (max-width: 760px) {
+    .gallery { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -24px; padding: 4px 24px 12px; scrollbar-width: none; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery button { flex: 0 0 calc((100% - 12px) / 1.2); scroll-snap-align: start; }
+  }
+
+  /* ══ SPEAKERS ══ */
+  .speaker { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
+  .speaker__photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: var(--photo-filter); }
+  .speaker__body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .speaker__body { padding: 24px 20px 26px; } }
+  .speaker__name { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .speaker__role { font-size: var(--f-sec); font-weight: 600; color: var(--gold); margin-bottom: 20px; }
+  .sp-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .sp-stat { background: rgba(204,167,118,0.08); border: 1px solid rgba(204,167,118,0.25); border-radius: 16px; padding: 14px; }
+  .sp-stat--full { grid-column: 1 / -1; }
+  .sp-stat b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-plaque); font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 6px; }
+  .sp-stat span { display: block; font-size: var(--f-cap); color: var(--on-dark); line-height: 1.4; }
+
+  /* ══ LEARNING ══ */
+  .timeline { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 16px; position: relative; }
+  .timeline::before { content: ''; position: absolute; top: 31px; left: 32px; right: 32px; height: 2px; background: linear-gradient(90deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+  .timeline li { position: relative; font-size: var(--f-step); color: var(--ink-soft); counter-increment: step; }
+  .timeline__dot { position: relative; width: 64px; height: 64px; margin-bottom: 16px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 6px var(--light-bg); }
   .timeline__dot svg { width: 26px; height: 26px; fill: none; stroke: var(--gold); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-  .timeline__dot::after { content: counter(step); position: absolute; top: -4px; right: -4px; width: 22px; height: 22px; border-radius: 50%; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .timeline li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
-  @media (max-width: 900px) {
-    .timeline { grid-template-columns: 1fr; gap: 0; }
-    .timeline::before { top: 0; bottom: 0; left: 31px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
-    .timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; text-align: left; padding-bottom: 22px; align-items: start; }
+  .timeline__dot::after { content: counter(step); position: absolute; top: -4px; right: -4px; width: 22px; height: 22px; border-radius: 50%; background: var(--grad-btn); color: var(--ink); font-size: var(--f-cap); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  .timeline { counter-reset: step; }
+  .timeline li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  @media (max-width: 1100px) { .timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; } .timeline::before { display: none; } }
+  @media (max-width: 700px) {
+    .timeline { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .timeline::before { display: block; top: 0; bottom: 0; left: 31px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+    .timeline li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-bottom: 22px; }
     .timeline__dot { margin: 0; }
   }
 
-  /* speaker numbers */
-  .sp-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
-  .sp-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  @media (max-width: 480px) { .sp-stats--3 { grid-template-columns: 1fr 1fr; } }
-  .sp-stat { background: rgba(204,167,118,0.08); border: 1px solid rgba(204,167,118,0.25); border-radius: 16px; padding: 14px 14px 12px; }
-  .sp-stat b { display: block; font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 800; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
-  .sp-stat span { font-size: 13px; color: var(--w-70); line-height: 1.4; display: block; }
-
-  /* changes with icons */
-  .changes__n.ico { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); border: none; }
-  .changes__n.ico svg { stroke: var(--ink); width: 24px; height: 24px; }
-
-  /* photo marquee */
-  .marquee { overflow: hidden; padding: 6px 0 46px; -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
-  .marquee__track { display: flex; gap: 14px; width: max-content; animation: marquee 50s linear infinite; }
-  .marquee:hover .marquee__track { animation-play-state: paused; }
-  .marquee img { width: 220px; height: 220px; object-fit: cover; border-radius: 20px; flex-shrink: 0; }
-  @media (max-width: 600px) { .marquee img { width: 150px; height: 150px; } }
-  @keyframes marquee { to { transform: translateX(-50%); } }
-
-  /* program day icon */
+  /* ══ PROGRAM ══ */
+  .day-card { border-radius: var(--radius); padding: 30px; background: var(--card-dark); border: 1px solid var(--border-dark); display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .day-card { padding: 24px 20px; } }
   .day-card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
-  .day-card__top .day-card__num { margin: 0; }
-  .day-card__big { font-family: 'Unbounded', sans-serif; font-size: 54px; font-weight: 800; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(204,167,118,0.55); }
+  .day-card__num { font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; white-space: nowrap; }
+  .day-card__big { font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; line-height: 1; background: var(--grad-btn); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .day-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+  .day-list li { position: relative; padding-left: 22px; color: var(--on-dark); }
+  .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .day-result { margin-top: auto; border-left: 3px solid var(--gold); background: rgba(204,167,118,0.08); border-radius: 0 14px 14px 0; padding: 16px 18px; color: var(--on-dark); }
+  .day-result strong { color: var(--gold); }
+  .program-cta { margin-top: 32px; }
+
+  /* ══ CONTRA ══ */
+  .contra__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-top: 12px; }
+  @media (max-width: 640px) { .contra__list { grid-template-columns: 1fr; } }
+  .contra__list li { position: relative; padding: 14px 16px 14px 46px; background: #FBF5F4; border-radius: 12px; color: var(--ink-soft); }
+  .contra__list li::before { content: '✕'; position: absolute; left: 14px; top: 15px; width: 20px; height: 20px; border-radius: 50%; background: #B9483E; color: #fff; font-size: var(--f-cap); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+
+  /* ══ CHANGES ══ */
+  .changes { list-style: none; display: grid; gap: 14px; }
+  .changes li { display: grid; grid-template-columns: 52px minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark); border-radius: 20px; padding: 22px 26px; }
+  .changes .ico { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); border: none; }
+  .changes .ico svg { stroke: var(--ink); width: 24px; height: 24px; }
+  .changes h3 { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; line-height: 1.35; }
+  .changes p { color: var(--on-dark); }
+  @media (max-width: 760px) { .changes li { grid-template-columns: 52px minmax(0, 1fr); gap: 10px 16px; align-items: start; padding: 20px; } .changes p { grid-column: 2; } }
 
   /* ══ CASES ══ */
-  .cases { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 22px; }
-  @media (max-width: 860px) { .cases { grid-template-columns: minmax(0, 1fr); } }
-  .case { background: var(--card); border-radius: 26px; padding: 30px; box-shadow: 0 4px 28px rgba(20,25,60,0.08); }
+  .case { background: var(--card); border-radius: 26px; padding: 30px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
   @media (max-width: 600px) { .case { padding: 24px 20px; } }
-  .case--wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 30px; align-items: center; }
+  .case--wide { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 30px; align-items: center; margin-bottom: 24px; }
   @media (max-width: 860px) { .case--wide { grid-template-columns: minmax(0, 1fr); } }
-  .case--video { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .case--video .case__tag { align-self: flex-start; }
-  .case--video .video-frame { width: 100%; max-width: 300px; }
-  .case__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .case__photos figure { position: relative; margin: 0; }
-  .case__photos img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 18px; cursor: zoom-in; }
-  .case__photos figcaption { position: absolute; left: 10px; bottom: 10px; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: rgba(15,23,42,0.78); border-radius: 999px; padding: 6px 12px; }
-  .case__photos figure:last-child figcaption { background: var(--grad-btn); color: var(--ink); }
-  .case__tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6A3A; background: rgba(204,167,118,0.16); border-radius: 999px; padding: 6px 14px; margin-bottom: 14px; }
-  .case__title { font-family: 'Unbounded', sans-serif; font-size: clamp(19px, 2.3vw, 23px); font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 18px; }
+  .case__photos { display: grid; gap: 12px; }
+  .case__photos button { position: relative; border: none; padding: 0; background: none; cursor: zoom-in; border-radius: 18px; overflow: hidden; }
+  .case__photos img { width: 100%; aspect-ratio: 692/263; object-fit: cover; }
+  .case__photos span { position: absolute; left: 12px; top: 12px; font-size: var(--f-cap); font-weight: 600; color: #fff; background: rgba(15,23,42,0.8); border-radius: 999px; padding: 5px 12px; }
+  .case__photos button:last-child span { background: var(--grad-btn); color: var(--ink); }
+  .case__tag { align-self: flex-start; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-ink); background: rgba(204,167,118,0.16); border-radius: 999px; padding: 6px 14px; margin-bottom: 14px; }
+  .case__title { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 18px; }
   .case__facts { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
-  .case__facts li { background: var(--light-bg); border-radius: 14px; padding: 12px; text-align: center; }
-  .case__facts b { display: block; font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 800; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
-  .case__facts span { font-size: 12.5px; color: var(--ink-mute); line-height: 1.35; display: block; }
-  .case__step { position: relative; padding-left: 18px; border-left: 2px solid rgba(15,23,42,0.12); margin-bottom: 14px; }
+  .case__facts li { background: var(--light-bg); border-radius: 14px; padding: 14px 10px; text-align: center; }
+  .case__facts b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; color: var(--ink); line-height: 1.05; margin-bottom: 6px; }
+  @media (max-width: 600px) { .case__facts b { font-size: 32px; } }
+  .case__facts span { display: block; font-size: var(--f-cap); color: var(--ink-mute); line-height: 1.35; }
+  .case__step { padding-left: 18px; border-left: 2px solid rgba(15,23,42,0.12); margin-bottom: 14px; }
   .case__step:last-child { margin-bottom: 0; }
-  .case__step b { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
-  .case__step p { font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+  .case__step b { display: block; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
+  .case__step p { color: var(--ink-soft); }
   .case__step--result { border-left-color: var(--gold); background: rgba(204,167,118,0.10); border-radius: 0 14px 14px 0; padding: 12px 16px 12px 18px; }
-  .case__step--result b { color: #8A6A3A; }
+  .case__step--result b { color: var(--gold-ink); }
   .case__step--result p { color: var(--ink); font-weight: 600; }
+  .case--video { align-items: center; justify-content: center; }
+  .case--video .case__tag { align-self: flex-start; }
+  .video916 { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9/16; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: var(--shadow-media); }
+  .video916 video { width: 100%; height: 100%; object-fit: cover; }
+  .cases-row { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+  .case--video .video916 { flex: 1; max-height: 560px; width: auto; }
+  @media (max-width: 860px) { .cases-row { grid-template-columns: minmax(0, 1fr); } .case--video .video916 { flex: none; width: 100%; max-width: 300px; max-height: none; } }
+
+  /* ══ REVIEWS ══ */
+  .vreviews { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .vreview { width: 300px; max-width: 100%; }
+  .vreview .video916 { max-width: none; }
+  .vreview figcaption { margin-top: 12px; text-align: center; }
+  .vreview figcaption b { display: block; color: #fff; }
+  .vreview figcaption span { font-size: var(--f-sec); color: var(--on-dark); }
+  .rv { position: relative; }
+  .rv__track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 3); gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  .rv__track::-webkit-scrollbar { display: none; }
+  @media (max-width: 960px) { .rv__track { grid-auto-columns: calc((100% - 24px) / 2); } }
+  @media (max-width: 640px) { .rv__track { grid-auto-columns: 86%; gap: 14px; } }
+  .rcard { scroll-snap-align: start; background: var(--card); color: var(--ink); border-radius: var(--radius); padding: 26px 24px; display: flex; flex-direction: column; }
+  .rcard__quote { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); margin-bottom: 14px; }
+  .rcard__quote::before { content: '«'; color: var(--gold-ink); }
+  .rcard__quote::after { content: '»'; color: var(--gold-ink); }
+  .rcard__text { color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+  .rcard.is-open .rcard__text { -webkit-line-clamp: unset; display: block; }
+  .rcard__more { align-self: flex-start; margin-top: 8px; background: none; border: none; padding: 0; color: var(--gold-ink); font-size: var(--f-sec); font-weight: 600; cursor: pointer; }
+  .rcard__foot { margin-top: auto; padding-top: 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; border-top: 1px solid var(--line); }
+  .rcard__more + .rcard__foot, .rcard__more[hidden] + .rcard__foot { margin-top: auto; }
+  .rcard__text-wrap + .rcard__more { margin-bottom: 18px; }
+  .rcard__name b { display: block; }
+  .rcard__name span { font-size: var(--f-cap); color: var(--ink-mute); }
+  .rcard__orig { flex-shrink: 0; background: var(--light-bg); border: none; border-radius: 999px; padding: 8px 14px; font-size: var(--f-cap); font-weight: 600; color: var(--ink); cursor: pointer; }
+  .rcard__text-wrap { margin-bottom: 4px; }
+  .rv__btn { position: absolute; top: 50%; z-index: 2; width: 48px; height: 48px; margin-top: -24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(15,23,42,0.85); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .rv__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .rv__btn--prev { left: -18px; } .rv__btn--next { right: -18px; }
+  .rv__btn[hidden] { display: none; }
+  @media (max-width: 640px) { .rv__btn { display: none; } }
+
+  /* ══ SUPPORT ══ */
+  .support { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+  @media (max-width: 960px) { .support { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .support li { background: var(--card); border-radius: 20px; padding: 22px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .support .ico { margin-bottom: 14px; }
+  .support b { display: block; font-size: var(--f-body); font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 6px; white-space: nowrap; }
+  .support span { font-size: var(--f-sec); color: var(--ink-soft); }
+
+  /* ══ TARIFFS ══ */
+  .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  @media (max-width: 760px) { .price-grid { grid-template-columns: minmax(0, 1fr); } }
+  .price-card { position: relative; background: var(--card); color: var(--ink); border-radius: 26px; padding: 36px 32px; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .price-card { padding: 30px 22px; } }
+  .price-card--best { box-shadow: 0 0 0 3px var(--gold), 0 24px 50px -20px rgba(204,167,118,0.5); }
+  .price-card__ribbon { position: absolute; top: -14px; right: 26px; background: var(--grad-btn); color: var(--ink); font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.04em; padding: 6px 16px; border-radius: 999px; }
+  .price-card__label { font-size: var(--f-sec); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 8px; }
+  .price-card__price { font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; margin-bottom: 24px; }
+  .price-card__feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+  .price-card__feats li { display: flex; gap: 10px; color: var(--ink-soft); }
+  .price-card__feats li::before { content: '✓'; color: var(--gold-ink); font-weight: 600; flex-shrink: 0; }
+  .price-card .btn { width: 100%; margin-top: auto; }
+
+  /* ══ FAQ ══ */
+  .faq { display: flex; flex-direction: column; gap: 14px; max-width: 860px; margin: 0 auto; }
+  .faq details { border-radius: 16px; padding: 0 24px; background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 0; font-size: 18px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; color: var(--gold-ink); flex-shrink: 0; transition: transform .3s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq__a { color: var(--ink-soft); padding-bottom: 20px; }
+
+  /* ══ FORMS ══ */
+  .lead { display: grid; gap: 12px; }
+  .lead--row { grid-template-columns: 1fr 1fr auto; align-items: start; }
+  .lead--grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px) { .lead--row, .lead--grid { grid-template-columns: minmax(0, 1fr); } }
+  .lead input, .lead select { width: 100%; height: 56px; font: inherit; padding: 0 20px; border-radius: 14px; border: 1.5px solid rgba(15,23,42,0.14); background: #fff; color: var(--ink); outline: none; appearance: none; -webkit-appearance: none; }
+  .lead select { background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%230F172A' stroke-width='2'/%3E%3C/svg%3E") right 16px center/18px no-repeat; padding-right: 44px; }
+  .lead select:invalid { color: #6B7280; }
+  .lead input:focus, .lead select:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(204,167,118,0.22); }
+  .lead .btn { width: 100%; }
+  .lead__full { grid-column: 1 / -1; }
+  .consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: var(--f-cap); line-height: 1.45; cursor: pointer; }
+  .consent input { width: 18px; height: 18px; padding: 0; margin-top: 1px; flex-shrink: 0; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--ink); }
+  .consent a { text-decoration: underline; }
+  .sec--dark2 .consent { color: var(--on-dark); }
+  .sec--dark2 .consent input { accent-color: var(--gold); }
+  .lead-done { display: none; text-align: center; font-weight: 600; padding: 18px; border-radius: 14px; }
+  .lead.is-sent { display: none; }
+  .lead.is-sent + .lead-done { display: block; }
+  .sec--dark2 .lead-done { background: rgba(204,167,118,0.12); color: #fff; border: 1px solid rgba(204,167,118,0.35); }
+  .ask { max-width: 860px; margin: 0 auto; }
+
+  /* ══ FINAL CTA ══ */
+  #signup { padding-bottom: 56px; }
+  .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 28px; padding: 54px 48px; text-align: center; max-width: 960px; margin: 0 auto; }
+  @media (max-width: 600px) { .cta-final { padding: 36px 20px; border-radius: 22px; } }
+  .cta-final__title { font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 700; color: var(--ink); max-width: 720px; margin: 0 auto 16px; line-height: 1.25; text-wrap: balance; }
+  @media (max-width: 600px) { .cta-final__title { font-size: var(--f-h2); } }
+  .cta-final__text { color: rgba(15,23,42,0.85); max-width: 560px; margin: 0 auto 18px; }
+  .cta-final__date { display: inline-block; font-size: var(--f-sec); font-weight: 600; color: var(--ink); background: rgba(255,255,255,0.5); border-radius: 999px; padding: 9px 20px; margin-bottom: 28px; }
+  .cta-final .lead { max-width: 680px; margin: 0 auto; text-align: left; }
+  .cta-final .lead input, .cta-final .lead select { border-color: rgba(15,23,42,0.08); }
+  .cta-final .consent { color: rgba(15,23,42,0.85); }
+  .cta-final__note { font-size: var(--f-sec); color: rgba(15,23,42,0.8); margin-top: 18px; }
+  .cta-final .lead-done { background: rgba(255,255,255,0.6); color: var(--ink); }
+
+  /* ══ FOOTER ══ */
+  .page-foot { background: var(--bg-dark2); padding: 40px 0 34px; text-align: center; color: var(--on-dark); font-size: var(--f-sec); }
+  .page-foot a { color: #fff; text-decoration: none; }
+  .page-foot a:hover { color: var(--gold); }
+
+  /* ══ LIGHTBOX ══ */
+  .lb { position: fixed; inset: 0; z-index: 9999; background: rgba(5,10,25,0.92); display: none; align-items: center; justify-content: center; padding: 56px 24px; }
+  .lb.is-open { display: flex; }
+  .lb img { max-width: 100%; max-height: 100%; border-radius: 14px; }
+  .lb__btn { position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(15,23,42,0.85); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .lb__close { top: 14px; right: 14px; }
+  .lb__prev { left: 14px; top: 50%; margin-top: -24px; }
+  .lb__next { right: 14px; top: 50%; margin-top: -24px; }
+  .lb__btn[hidden] { display: none; }
+
+  /* ══ STICKY CTA ══ */
+  .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
+  .sticky-cta .btn { width: 100%; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
+  @media (max-width: 760px) { .sticky-cta.is-visible { display: block; } }
+
+  /* ══ MOTION ══ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in-view { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+  }
 </style>
-<script src="/utm.js?v=1"></script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -514,11 +481,11 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <path d="M-40,262.3 L0,265.1 L40,266.3 L80,265.0 L120,260.9 L160,254.3 L200,246.4 L240,238.7 L280,233.0 L320,231.3 L360,235.0 L400,245.2 L440,262.0 L480,284.9 L520,312.4 L560,342.5 L600,372.5 L640,400.0 L680,422.3 L720,437.5 L760,444.5 L800,442.6 L840,432.6 L880,415.8 L920,394.1 L960,370.0 L1000,345.8 L1040,323.7 L1080,305.4 L1120,291.8 L1160,283.1 L1200,278.8 L1240,277.6 L1280,278.1 L1320,278.5 L1360,277.3 L1400,273.4 L1440,266.5 L1480,256.8 L1520,245.3" stroke-opacity="0.060"/>
     </g>
   </svg>
-  <div class="wrap hero__grid">
-    <div>
-      <div class="hero__badge"><span>Авторский семинар для телесно ориентированных специалистов</span><b>19–20 декабря · офлайн и онлайн</b></div>
-      <h1 class="hero__title">Биостимуляция нейрогенеза</h1>
-      <h2 class="hero__h2">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__badge">Авторский семинар · 19–20 декабря · офлайн и онлайн</div>
+      <h1 class="hero__title">Био&shy;стимуляция нейрогенеза</h1>
+      <h2 class="hero__offer">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
       <p class="hero__sub">За 2 дня вы разберётесь, что происходит с нервной системой особенного ребёнка, освоите безопасный алгоритм сеанса и отработаете каждый этап руками.</p>
       <ul class="hero__chips">
         <li>80% практики</li>
@@ -533,19 +500,18 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <a href="#program" class="btn btn-ghost">Смотреть программу</a>
       </div>
     </div>
-    <div class="hero__media">
-      <img src="photos/neurogenez/hero-team.png" srcset="photos/neurogenez/hero-team-800.png 800w, photos/neurogenez/hero-team.png 1300w" sizes="(max-width: 900px) 100vw, 740px" alt="Евгений Вишняков и Олег Агапэ с ребёнком" fetchpriority="high">
-    </div>
+  </div>
+  <div class="hero__media">
+    <img src="photos/neurogenez/hero-team.png" srcset="photos/neurogenez/hero-team-800.png 800w, photos/neurogenez/hero-team.png 1671w" sizes="(max-width: 900px) 100vw, 900px" width="1671" height="941" alt="Евгений Вишняков и Олег Агапэ с ребёнком" fetchpriority="high">
   </div>
 </section>
 
 <!-- ══ 2. ДЛЯ КОГО ══ -->
 <section class="sec sec--light" id="for">
-  <span class="blob" style="width:420px;height:420px;top:-120px;right:-120px;"></span>
   <div class="wrap reveal">
-    <div class="two-col">
+    <div class="grid grid--2">
       <div class="card">
-        <h2 class="sub-title">Для кого семинар</h2>
+        <h2 class="h3">Для кого семинар</h2>
         <ul class="ilist">
           <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><span>Остеопаты и специалисты остеокоррекции, в том числе студенты и выпускники МИОТ</span></li>
           <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span>Массажисты, реабилитологи, специалисты ЛФК</span></li>
@@ -554,7 +520,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         </ul>
       </div>
       <div class="card">
-        <h2 class="sub-title">С какими детьми вы сможете работать</h2>
+        <h2 class="h3">С какими детьми вы сможете работать</h2>
         <div class="diag-grid">
           <div class="diag"><small>ДЦП</small>Детский церебральный паралич</div>
           <div class="diag"><small>РАС</small>Расстройства аутистического спектра</div>
@@ -568,9 +534,8 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 
 <!-- ══ 3. СЕМЬЯ ══ -->
 <section class="sec sec--dark2">
-  <span class="blob" style="width:420px;height:420px;bottom:-140px;left:-120px;"></span>
   <div class="wrap reveal family">
-    <img src="photos/neurogenez/work-8.jpg" alt="Евгений Вишняков с ребёнком после сеанса">
+    <img class="family__photo" src="photos/neurogenez/family.jpg" alt="Евгений Вишняков с ребёнком после сеанса" loading="lazy">
     <div>
       <h2 class="sec__title">За каждым диагнозом стоит семья, которая не сдаётся</h2>
       <div class="card">
@@ -587,10 +552,10 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
     <h2 class="sec__title">Особенный ребёнок на приёме. Что дальше?</h2>
     <p class="sec__sub">Когда на приём приводят ребёнка с тяжёлым неврологическим диагнозом, даже опытный специалист часто сталкивается с вопросами, на которые нет готовых ответов:</p>
     <div class="q-grid">
-      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>С чего начать работу и как не навредить?</span></div>
-      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span><span>Как выстроить сеанс, если каждый случай кажется уникальным?</span></div>
-      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>Каких изменений реально ожидать и как говорить об этом с родителями?</span></div>
-      <div class="q-card q-card--ico"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></svg></span><span>К кому обратиться, если что-то идёт не по плану?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>С чего начать работу и как не навредить?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span><span>Как выстроить сеанс, если каждый случай кажется уникальным?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>Каких изменений реально ожидать и как говорить об этом с родителями?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></svg></span><span>К кому обратиться, если что-то идёт не по плану?</span></div>
     </div>
     <p class="callout">Без чёткой системы такие дети часто остаются за рамками практики, хотя именно им помощь нужна больше всего.</p>
   </div>
@@ -598,14 +563,41 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 
 <!-- ══ 5. МЕТОД ══ -->
 <section class="sec sec--dark" id="method">
-  <span class="blob" style="width:520px;height:520px;top:-160px;right:-160px;"></span>
   <div class="wrap reveal">
     <span class="eyebrow">О методе</span>
     <h2 class="sec__title">Как работает метод «Биостимуляция нейрогенеза»</h2>
-    <div class="method-split">
-    <div class="card method-intro">
-      <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
+    <div class="method-top">
+      <div class="card">
+        <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
+      </div>
+      <!-- Видео о методе: файл пришлют, пока заглушка с постером -->
+      <div class="video16">
+        <video src="photos/neurogenez/method-video.mp4" poster="photos/neurogenez/method-video-poster.jpg" controls preload="none" playsinline></video>
+      </div>
     </div>
+
+    <div class="method-mid">
+      <div>
+        <h3 class="h3">На что направлено воздействие</h3>
+        <div class="acc">
+          <details open>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.6 3 5.8V18h8v-3.2c1.6-1.2 3-3.2 3-5.8a7 7 0 0 0-7-7z"/><path d="M10 22h4"/><path d="M12 6v6M9.5 9h5"/></svg></span>Краниосакральная система</summary>
+            <p>Мягкая работа с костями черепа, оболочками головного и спинного мозга и крестцом снимает напряжения, которые ограничивают подвижность этих структур и мешают нервной системе работать полноценно.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>Циркуляция жидкостей</summary>
+            <p>Техники улучшают движение ликвора, венозный и лимфатический отток, а значит, питание и очищение нервной ткани.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l3-7 4 14 3-9 2 2h5"/></svg></span>Вегетативная нервная система</summary>
+            <p>Восстановление баланса между симпатическим и парасимпатическим отделами выводит организм из состояния постоянного напряжения и включает процессы восстановления.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>Патологические цепочки</summary>
+            <p>Работа с ключевыми зонами напряжения разрывает цепочки дисфункций, которые закрепляют нарушения и мешают развитию ребёнка.</p>
+          </details>
+        </div>
+      </div>
       <div class="neuro">
         <svg viewBox="0 0 400 300" role="img" aria-label="Схема нейропластичности: сигнал обходит повреждённый путь по новому">
           <defs>
@@ -628,67 +620,35 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <h3 class="sub-title" style="text-align:center;">На что направлено воздействие</h3>
-    <div class="focus-grid">
-      <div class="focus">
-        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.6 3 5.8V18h8v-3.2c1.6-1.2 3-3.2 3-5.8a7 7 0 0 0-7-7z"/><path d="M10 22h4"/><path d="M12 6v6M9.5 9h5"/></svg></span><div class="focus__num">01</div></div>
-        <h4>Краниосакральная система.</h4>
-        <p>Мягкая работа с костями черепа, оболочками головного и спинного мозга и крестцом снимает напряжения, которые ограничивают подвижность этих структур и мешают нервной системе работать полноценно.</p>
-      </div>
-      <div class="focus">
-        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span><div class="focus__num">02</div></div>
-        <h4>Циркуляция жидкостей.</h4>
-        <p>Техники улучшают движение ликвора, венозный и лимфатический отток, а значит, питание и очищение нервной ткани.</p>
-      </div>
-      <div class="focus">
-        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l3-7 4 14 3-9 2 2h5"/></svg></span><div class="focus__num">03</div></div>
-        <h4>Вегетативная нервная система.</h4>
-        <p>Восстановление баланса между симпатическим и парасимпатическим отделами выводит организм из состояния постоянного напряжения и включает процессы восстановления.</p>
-      </div>
-      <div class="focus">
-        <div class="focus__head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><div class="focus__num">04</div></div>
-        <h4>Патологические цепочки.</h4>
-        <p>Работа с ключевыми зонами напряжения разрывает цепочки дисфункций, которые закрепляют нарушения и мешают развитию ребёнка.</p>
-      </div>
-    </div>
-
-    <div class="two-col">
+    <div class="grid grid--2">
       <div class="card">
-        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><h3 class="sub-title">Почему важна регулярность</h3></div>
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><h3 class="h3">Почему важна регулярность</h3></div>
         <p>Изменения после стимуляции отмечаются практически у всех детей, но скорость у каждого своя. Кому-то достаточно нескольких сеансов, а кому-то нужна системная работа курсами. Поэтому на семинаре мы разбираем не только технику, но и то, как выстроить план работы с ребёнком на длительный срок.</p>
       </div>
       <div class="card">
-        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 3v12"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><h3 class="sub-title">Почему один алгоритм подходит разным детям</h3></div>
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 3v12"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><h3 class="h3">Почему один алгоритм подходит разным детям</h3></div>
         <p>При тяжёлых состояниях у детей в первую очередь страдает центральная нервная система, а нарушения развиваются по сходным цепочкам. Поэтому алгоритм общий, а специалист адаптирует его под конкретного ребёнка.</p>
       </div>
     </div>
-    <div class="stat-tiles">
-      <div class="stat-tile"><div class="stat-tile__num">10 лет</div><div class="stat-tile__label">клинической практики по протоколу</div></div>
-      <div class="stat-tile"><div class="stat-tile__num">Системный подход:</div><div class="stat-tile__label">устойчивая динамика при регулярной работе</div></div>
-      <div class="stat-tile"><div class="stat-tile__num">Международный запрос:</div><div class="stat-tile__label">к Евгению на реабилитацию приезжают семьи из Чехии и Израиля</div></div>
+    <div class="plaques">
+      <div class="plaque"><b>10 лет</b><span>клинической практики по протоколу</span></div>
+      <div class="plaque"><b>Системный подход</b><span>устойчивая динамика при регулярной работе</span></div>
+      <div class="plaque"><b>Международный запрос</b><span>к Евгению на реабилитацию приезжают семьи из Чехии и Израиля</span></div>
     </div>
   </div>
 </section>
 
 <!-- ══ 6. КАК ВЫГЛЯДИТ РАБОТА ══ -->
-<section class="sec sec--light">
+<section class="sec sec--light" id="work">
   <div class="wrap reveal">
     <h2 class="sec__title">Посмотрите, как выглядит работа по методу</h2>
-    <!-- TODO: сюда встанет фрагмент из видеометодички. Когда будет файл — замените блок ниже на:
-         <div class="video-frame"><video src="photos/neurogenez/metodichka.mp4" controls playsinline preload="metadata" poster="photos/neurogenez/work-2.jpg"></video></div> -->
-    <div class="video-frame video-frame--wait">
-      <img src="photos/neurogenez/work-2.jpg" alt="Фрагмент сеанса по методу «Биостимуляция нейрогенеза»">
-    </div>
-    <p class="video-caption">Фрагмент из видеометодички</p>
-    <div class="gallery" data-lightbox>
-      <img src="photos/neurogenez/work-3.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-4.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-5.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-6.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-7.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-1.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-2.jpg" alt="Работа с ребёнком по методу">
-      <img src="photos/neurogenez/work-8.jpg" alt="Работа с ребёнком по методу">
+    <div class="gallery" data-gallery>
+      <button type="button"><img src="photos/neurogenez/gallery-1.jpg" alt="Евгений Вишняков работает с ребёнком в жёлтой кофте" style="object-position: center 40%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-2.jpg" alt="Работа с головой ребёнка в кресле" style="object-position: center 12%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-3.jpg" alt="Мягкая работа с головой ребёнка" style="object-position: center 5%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-4.jpg" alt="Работа с ребёнком на кушетке"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-5.jpg" alt="Евгений Вишняков на сеансе с малышом" style="object-position: center 8%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-6.jpg" alt="Работа с ребёнком в жёлтой кофте лёжа" style="object-position: center 45%;"></button>
     </div>
   </div>
 </section>
@@ -697,9 +657,10 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 <section class="sec sec--dark2" id="speakers">
   <div class="wrap reveal">
     <h2 class="sec__title">Ведущие семинара</h2>
-    <div class="speakers">
+    <div class="grid grid--2">
       <article class="speaker">
-        <div class="speaker__photo"><img src="photos/evgeniy-vishnyakov.jpeg" alt="Евгений Вишняков" style="object-position: center 75%;"></div>
+        <!-- Фото заменят на новое; пока селфи в том же кадре 4:5 -->
+        <div class="speaker__photo"><img src="photos/evgeniy-vishnyakov.jpeg" alt="Евгений Вишняков" style="object-position: 58% 60%;" loading="lazy"></div>
         <div class="speaker__body">
           <h3 class="speaker__name">Евгений Вишняков</h3>
           <p class="speaker__role">Остеопат, реабилитолог, автор метода «Биостимуляция нейрогенеза», преподаватель и наставник МИОТ</p>
@@ -715,14 +676,14 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         </div>
       </article>
       <article class="speaker">
-        <div class="speaker__photo"><img src="photos/oleg-agape-square.jpg" alt="Олег Агапэ"></div>
+        <div class="speaker__photo"><img src="photos/oleg-agape-square.jpg" alt="Олег Агапэ" style="object-position: 50% 30%;" loading="lazy"></div>
         <div class="speaker__body">
           <h3 class="speaker__name">Олег Агапэ</h3>
           <p class="speaker__role">Врач-остеопат, анатом, основатель Международного института остеопатических технологий (МИОТ)</p>
-          <div class="sp-stats sp-stats--3">
+          <div class="sp-stats">
             <div class="sp-stat"><b>14+ лет</b><span>медицинского опыта</span></div>
             <div class="sp-stat"><b>7000+</b><span>пациентов в России и на Бали</span></div>
-            <div class="sp-stat"><b>500+</b><span>дипломированных специалистов подготовил</span></div>
+            <div class="sp-stat sp-stat--full"><b>500+</b><span>дипломированных специалистов подготовил</span></div>
           </div>
           <ul class="dash">
             <li>Один из ведущих специалистов по анатомическим диссекциям в России</li>
@@ -735,25 +696,24 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 </section>
 
 <!-- ══ 8. КАК ПРОХОДИТ ОБУЧЕНИЕ ══ -->
-<section id="learning" class="sec sec--light">
+<section class="sec sec--light" id="learning">
   <div class="wrap reveal">
     <h2 class="sec__title">Как проходит обучение</h2>
     <ol class="timeline">
-      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/></svg></span><div><strong>Теория.</strong> Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</div></li>
-      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>Демонстрация.</strong> Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</div></li>
-      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><div><strong>Практика.</strong> Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</div></li>
-      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><strong>Разбор.</strong> Отвечаем на вопросы и разбираем случаи из вашей практики.</div></li>
-      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Закрепление.</strong> После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span><div><strong>Теория</strong>Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>Демонстрация</strong>Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><div><strong>Практика</strong>Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><strong>Разбор</strong>Отвечаем на вопросы и разбираем случаи из вашей практики.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Закрепление</strong>После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</div></li>
     </ol>
   </div>
 </section>
 
 <!-- ══ 9. ПРОГРАММА ══ -->
 <section class="sec sec--dark" id="program">
-  <span class="blob" style="width:480px;height:480px;bottom:-160px;right:-140px;"></span>
   <div class="wrap reveal">
     <h2 class="sec__title">Программа</h2>
-    <div class="day-grid">
+    <div class="grid grid--2">
       <div class="day-card">
         <div class="day-card__top"><span class="day-card__num">День 1 · 19 декабря</span><span class="day-card__big" aria-hidden="true">01</span></div>
         <ul class="day-list">
@@ -775,7 +735,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <div class="day-result"><strong>Результат дня:</strong> вы знаете протокол целиком, отработали его руками и готовы применять в практике.</div>
       </div>
     </div>
-    <div class="btn-row"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
+    <div class="btn-row btn-row--center program-cta"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
   </div>
 </section>
 
@@ -783,32 +743,30 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 <section class="sec sec--light">
   <div class="wrap reveal">
     <h2 class="sec__title">Противопоказания</h2>
-    <div class="card contra">
+    <div class="card">
       <p>Работа с особенными детьми требует особой ответственности. Поэтому на семинаре отдельно разбираем состояния, при которых протокол не применяется:</p>
       <ul class="contra__list">
-        <li>онкологические заболевания</li>
-        <li>нарушения свёртываемости и системные заболевания крови</li>
-        <li>острые инфекционные и воспалительные процессы</li>
-        <li>тяжёлые психические расстройства</li>
-        <li>гидроцефалия</li>
-        <li class="wide">эпилептические энцефалопатии, в том числе синдромы Веста, Леннокса — Гасто и Отахары</li>
+        <li>Онкологические заболевания</li>
+        <li>Нарушения свёртываемости и системные заболевания крови</li>
+        <li>Острые инфекционные и воспалительные процессы</li>
+        <li>Тяжёлые психические расстройства</li>
+        <li>Гидроцефалия</li>
+        <li>Эпилептические энцефалопатии, в том числе синдромы Веста, Леннокса — Гасто и Отахары</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ══ 11. ЧТО ИЗМЕНИТСЯ ══ -->
-<section id="changes" class="sec sec--dark2" style="padding-top:46px;">
-  <span class="blob" style="width:440px;height:440px;top:-120px;left:-140px;"></span>
-  <div class="marquee" aria-hidden="true"><div class="marquee__track"><img src="photos/neurogenez/work-1.jpg" alt=""><img src="photos/neurogenez/work-3.jpg" alt=""><img src="photos/neurogenez/work-5.jpg" alt=""><img src="photos/neurogenez/work-7.jpg" alt=""><img src="photos/neurogenez/work-2.jpg" alt=""><img src="photos/neurogenez/work-4.jpg" alt=""><img src="photos/neurogenez/work-6.jpg" alt=""><img src="photos/neurogenez/work-8.jpg" alt=""><img src="photos/neurogenez/work-1.jpg" alt=""><img src="photos/neurogenez/work-3.jpg" alt=""><img src="photos/neurogenez/work-5.jpg" alt=""><img src="photos/neurogenez/work-7.jpg" alt=""><img src="photos/neurogenez/work-2.jpg" alt=""><img src="photos/neurogenez/work-4.jpg" alt=""><img src="photos/neurogenez/work-6.jpg" alt=""><img src="photos/neurogenez/work-8.jpg" alt=""></div></div>
+<section class="sec sec--dark2" id="changes">
   <div class="wrap reveal">
     <h2 class="sec__title">Что изменится в вашей практике</h2>
     <ul class="changes">
-      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg></span><div><h4>Вы перестанете отказывать сложным детям.</h4><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></div></li>
-      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><div><h4>Вы будете видеть динамику и сможете показать её родителям.</h4><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></div></li>
-      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><div><h4>Вы будете делать работу, которой гордитесь.</h4><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></div></li>
-      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><div><h4>Вы займёте редкую нишу.</h4><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></div></li>
-      <li><span class="changes__n ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Ваша практика будет расти естественно.</h4><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></div></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg></span><h3>Вы перестанете отказывать сложным детям</h3><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><h3>Вы будете видеть динамику и сможете показать её родителям</h3><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><h3>Вы будете делать работу, которой гордитесь</h3><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h3>Вы займёте редкую нишу</h3><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Ваша практика будет расти естественно</h3><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></li>
     </ul>
   </div>
 </section>
@@ -817,39 +775,37 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 <section class="sec sec--light" id="results">
   <div class="wrap reveal">
     <h2 class="sec__title">Результаты работы по методу</h2>
-    <!-- Кейсы со слов Евгения Вишнякова. -->
-    <div class="cases">
-      <article class="case case--wide">
-        <div class="case__photos" data-lightbox>
-          <figure><img src="photos/neurogenez/case-scoliosis-before.jpg" alt="Спина девочки до сеанса: асимметрия 3°"></figure>
-          <figure><img src="photos/neurogenez/case-scoliosis-after.jpg" alt="Спина девочки после сеанса: асимметрия 1°"></figure>
-        </div>
-        <div class="case__body">
-          <span class="case__tag">Кейс · 1 сеанс</span>
-          <h3 class="case__title">Асимметрия спины после пневмонии</h3>
-          <div class="case__step"><b>С чем пришли</b><p>Мама с дочкой пришла в панике: девочке поставили сколиоз и сказали, что ребёнка нужно оперировать.</p></div>
-          <div class="case__step"><b>Что показала диагностика</b><p>Сильное напряжение в области левого лёгкого и серповидной связки селезёнки, напряжена сама селезёнка. По анамнезу год назад девочка тяжело болела пневмонией: большое поражение лёгких, была на кислороде.</p></div>
-          <div class="case__step case__step--result"><b>Результат</b><p>После того как этот сегмент расслабили и проработали все дисфункции, спина стала ровной: асимметрия ушла за один сеанс.</p></div>
-        </div>
-      </article>
-
+    <!-- Кейсы со слов Евгения Вишнякова. Фото ребёнка публикуются только с согласия родителей. -->
+    <article class="case case--wide">
+      <div class="case__photos" data-gallery>
+        <button type="button"><img src="photos/neurogenez/case-back-before.jpg" alt="Спина девочки до сеанса" loading="lazy"><span>До · 3°</span></button>
+        <button type="button"><img src="photos/neurogenez/case-back-after.jpg" alt="Спина девочки после сеанса" loading="lazy"><span>После · 1°</span></button>
+      </div>
+      <div>
+        <span class="case__tag">Кейс · 1 сеанс</span>
+        <h3 class="case__title">Асимметрия спины после пневмонии</h3>
+        <div class="case__step"><b>С чем пришли</b><p>Мама с дочкой пришла в панике: девочке поставили сколиоз и сказали, что ребёнка нужно оперировать.</p></div>
+        <div class="case__step"><b>Что показала диагностика</b><p>Сильное напряжение в области левого лёгкого и серповидной связки селезёнки, напряжена сама селезёнка. По анамнезу год назад девочка тяжело болела пневмонией: большое поражение лёгких, была на кислороде.</p></div>
+        <div class="case__step case__step--result"><b>Результат</b><p>После того как этот сегмент расслабили и проработали все дисфункции, спина стала ровной: асимметрия ушла за один сеанс.</p></div>
+      </div>
+    </article>
+    <div class="grid cases-row">
       <article class="case">
         <span class="case__tag">Кейс · РАС</span>
         <h3 class="case__title">Первые слова прямо в кабинете</h3>
         <ul class="case__facts">
           <li><b>5 лет</b><span>возраст</span></li>
-          <li><b>4-й</b><span>сеанс — первые слова</span></li>
+          <li><b>4-й</b><span>сеанс, на котором появились первые слова</span></li>
           <li><b>70</b><span>стимуляций сейчас</span></li>
         </ul>
         <div class="case__step"><b>С чем пришли</b><p>Мальчик с аутизмом не разговаривал, не смотрел в глаза и не отвечал, даже когда его просили помахать рукой. Мама — врач — устала: много денег уходило на реабилитацию, логопедов и дефектологов, а результата не было.</p></div>
         <div class="case__step"><b>Что произошло</b><p>Евгений посоветовал маме не бросать: динамика может стоять на месте, а потом резко пойти вперёд. В конце того же сеанса он помахал мальчику и сказал «пока» — и тот впервые помахал в ответ и сказал «пока». Мама ещё около двух часов не могла уехать из центра: плакала.</p></div>
         <div class="case__step case__step--result"><b>Сейчас</b><p>Ребёнок отлично разговаривает.</p></div>
       </article>
-
       <article class="case case--video">
         <span class="case__tag">Видео</span>
-        <div class="video-frame" style="margin:0;">
-          <video src="photos/neurogenez/result-walk.mp4" poster="photos/neurogenez/result-walk-poster.jpg" controls playsinline preload="metadata"></video>
+        <div class="video916">
+          <video src="photos/neurogenez/result-walk.mp4" poster="photos/neurogenez/result-walk-poster.jpg" controls preload="none" playsinline></video>
         </div>
       </article>
     </div>
@@ -860,21 +816,52 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 <section class="sec sec--dark" id="reviews">
   <div class="wrap reveal">
     <h2 class="sec__title">Отзывы</h2>
-    <!-- Место для отзывов родителей и специалистов. -->
-  </div>
-  <div class="reviews-scroll reveal">
-    <div class="reviews-track" data-lightbox>
-      <div class="reviews-video"><video src="photos/neurogenez/review-video.mp4" poster="photos/neurogenez/review-video-poster.jpg" controls playsinline preload="none"></video></div>
-      <img class="reviews-shot" src="photos/neurogenez/review-2.jpg" alt="Отзыв мамы Марка, часть 1">
-      <img class="reviews-shot" src="photos/neurogenez/review-3.jpg" alt="Отзыв мамы Марка, часть 2">
-      <img class="reviews-shot" src="photos/neurogenez/review-4.jpg" alt="Отзыв мамы Марка, часть 3">
-      <img class="reviews-shot" src="photos/neurogenez/review-5.jpg" alt="Отзыв Виктории, часть 1">
-      <img class="reviews-shot" src="photos/neurogenez/review-6.jpg" alt="Отзыв Виктории, часть 2">
-      <img class="reviews-shot" src="photos/neurogenez/review-1.jpg" alt="Отзыв Юлии">
-      <img class="reviews-shot" src="photos/neurogenez/review-7.jpg" alt="Публикация мамы Марка">
+    <div class="vreviews">
+      <figure class="vreview">
+        <div class="video916"><video src="photos/neurogenez/review-video.mp4" poster="photos/neurogenez/review-video-poster.jpg" controls preload="none" playsinline></video></div>
+        <figcaption><b>Видеоотзыв</b><span>Клиентка Евгения Вишнякова</span></figcaption>
+      </figure>
+      <!-- Второй видеоотзыв: файл пришлют, пока заглушка с постером -->
+      <figure class="vreview">
+        <div class="video916"><video src="photos/neurogenez/review-video-2.mp4" poster="photos/neurogenez/review-video-2-poster.jpg" controls preload="none" playsinline></video></div>
+        <figcaption><b>Видеоотзыв</b></figcaption>
+      </figure>
+    </div>
+
+    <div class="rv">
+      <button class="rv__btn rv__btn--prev" type="button" aria-label="Предыдущие отзывы"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="rv__track">
+        <article class="rcard">
+          <p class="rcard__quote">Верю и рекомендую всем!!!</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Добрый день! Хотим оставить честный отзыв о наших занятиях остеопатией с Евгением Вишняковым. Остеопатией с Евгением Марк занимается уже более шести лет! Перед началом каждого сеанса Евгений сначала проводит диагностику, а затем начинает работать с найденными проблемами. Наша основная проблема это голова, зрительный нерв, ЖКТ, таз, лимфа, ноги. Любой сбой в работе одного из элементов приводит к расстройству в функционировании всей системы. Задачей врача-остеопата является выявление и устранение нарушений этого баланса, для восстановления гармоничных отношений между органами. Я вижу очень большие изменения у Марка. Женя работает так же над развитием эмоционалки. Через эмоции развиваются и умственные способности!!! И это факт!!! Благодаря работе Евгения, Марк выражает свои эмоции очень бурно. Будь то плач или смех. Марк смеётся, заливисто и с гоготом! Это для ребенка с поражением ЦНС — это тоже навык и большой успех. Марк понимает интонацию с которой к нему обращаются, может в ответ улыбнуться, вслушивается. Это тоже все работа Остеопата! Обычно после остеопатии Марк становится спокойным, и сон становится более долгим и крепким. Марк очень хорошо реагирует на данный метод воздействия на организм. Меня часто спрашивают, верю ли я в остеопатии? Верю и рекомендую всем!!! Конечно, все зависит от самого специалиста. Но нам в этом плане повезло! Евгений Вишняков лучший специалист в остеопатии!!!</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Рая, мама Марка</b><span>Порок развития головного мозга, микроцефалия, ДЦП</span></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-2-crop.jpg,photos/neurogenez/review-3-crop.jpg,photos/neurogenez/review-4-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+        <article class="rcard">
+          <p class="rcard__quote">Чудо произошло с первого приема, после золотых рук Евгения, почти месяц без приступов</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Первый раз мы приехали на прием к остеопату Евгению в сентябре 24 года, нам очень рекомендовали Евгения как опытного специалиста. Мы в этом убедились после первого приема. У моего ребенка ВПР головного мозга, эпилепсия, дцп. Очень частые были приступы, плюс все время плакал практически всегда болит живот. Чудо произошло с первого приема, после золотых рук Евгения, почти месяц без приступов, боли стали меньше в животе. И мы по мере возможности привозим Егора к Евгению на прием. Два года Евгений работает с Егором, результат виден, Егор стал более контактным, может даже выражать звуковые свои эмоции. Стал активнее, приступы уменьшились, живот налаживается. Я очень благодарна Евгению, просто специалист от бога, контакт с Егором всегда отличный. Наша семья Рада, что у нас есть такой специалист действительно профессионал своего дела. Умный, красивый, талантливый и хороший человек! Спасибо вам Евгений за вашу работу!</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Виктория, мама Егора</b><span>ВПР головного мозга, эпилепсия, ДЦП</span></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-5-crop.jpg,photos/neurogenez/review-6-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+        <article class="rcard">
+          <p class="rcard__quote">Мы ему с вами координацию прям на ура выставили, прыгает на одной ноге теперь!!</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Добрый день, у нас всё отлично, прям результативно, мы ему с вами координацию прям на ура выставили, прыгает на одной ноге теперь!! Речь лучше и поведение. … прям ваша стимуляция была бы нам прям очень в ёлочку. … но к вам нам надо ооочень.</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Юлия</b></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-1-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+      </div>
+      <button class="rv__btn rv__btn--next" type="button" aria-label="Следующие отзывы"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
-  <p class="scroll-hint">← листайте →</p>
 </section>
 
 <!-- ══ 14. ПОДДЕРЖКА ══ -->
@@ -882,21 +869,22 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   <div class="wrap reveal">
     <h2 class="sec__title">Поддержка после обучения</h2>
     <ul class="support">
-      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><strong>Чат с ведущими:</strong> вопросы и разбор случаев из вашей практики</li>
-      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><strong>Сообщество коллег,</strong> которые работают по одному протоколу</li>
-      <li><span class="support__ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg></span><strong>Записи всех занятий</strong> с доступом на 6 месяцев</li>
-      <li><span class="support__ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M10 7l4 3-4 3z"/></svg></span><strong>Видеометодичка</strong> с пошаговым разбором протокола</li>
-      <li><span class="support__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span><strong>Сертификат</strong> участника семинара</li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><b>Чат с ведущими</b><span>Вопросы и разбор случаев из вашей практики</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>Сообщество коллег</b><span>Коллеги, которые работают по одному протоколу</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg></span><b>Записи всех занятий</b><span>С доступом на 6 месяцев</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M10 7l4 3-4 3z"/></svg></span><b>Видеометодичка</b><span>С пошаговым разбором протокола</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span><b>Сертификат</b><span>Участника семинара</span></li>
     </ul>
   </div>
 </section>
 
 <!-- ══ 15. СТОИМОСТЬ ══ -->
-<section class="sec sec--light" id="tariffs" style="padding-top:0;">
+<section class="sec sec--dark" id="tariffs">
   <div class="wrap reveal">
     <h2 class="sec__title">Стоимость участия</h2>
     <div class="price-grid">
       <div class="price-card price-card--best">
+        <span class="price-card__ribbon">Рекомендуем</span>
         <div class="price-card__label">Офлайн</div>
         <div class="price-card__price">55 000 ₽</div>
         <ul class="price-card__feats">
@@ -908,7 +896,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#signup" class="btn btn-dark" data-format="Офлайн · 55 000 ₽">Участвовать офлайн</a>
+        <a href="#signup" class="btn btn-primary" data-format="Офлайн · 55 000 ₽">Участвовать офлайн</a>
       </div>
       <div class="price-card">
         <div class="price-card__label">Онлайн</div>
@@ -922,29 +910,13 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#signup" class="btn btn-primary" data-format="Онлайн · 45 000 ₽">Участвовать онлайн</a>
+        <a href="#signup" class="btn btn-dark" data-format="Онлайн · 45 000 ₽">Участвовать онлайн</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 16. ОСТАЛИСЬ ВОПРОСЫ ══ -->
-<section class="sec sec--dark2" id="ask">
-  <span class="blob" style="width:420px;height:420px;top:-140px;right:-120px;"></span>
-  <div class="wrap reveal ask">
-    <h2 class="sec__title">Остались вопросы?</h2>
-    <p class="sec__sub">Оставьте заявку, и специалист отдела заботы свяжется с вами и ответит на все вопросы о семинаре.</p>
-    <form class="lead lead--row" data-lead="question">
-      <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
-      <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
-      <button type="submit" class="btn btn-primary">Задать вопрос</button>
-      <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
-    </form>
-    <div class="lead-done">Спасибо! Специалист отдела заботы скоро свяжется с вами.</div>
-  </div>
-</section>
-
-<!-- ══ 17. FAQ ══ -->
+<!-- ══ 16. FAQ ══ -->
 <section class="sec sec--light" id="faq">
   <div class="wrap reveal">
     <h2 class="sec__title">Частые вопросы</h2>
@@ -969,11 +941,26 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ══ 17. ОСТАЛИСЬ ВОПРОСЫ ══ -->
+<section class="sec sec--dark2" id="ask">
+  <div class="wrap reveal ask">
+    <h2 class="sec__title">Остались вопросы?</h2>
+    <p class="sec__sub">Оставьте заявку, и специалист отдела заботы свяжется с вами и ответит на все вопросы о семинаре.</p>
+    <form class="lead lead--row" data-lead="question">
+      <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
+      <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
+      <button type="submit" class="btn btn-primary">Задать вопрос</button>
+      <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
+    </form>
+    <div class="lead-done">Спасибо! Специалист отдела заботы скоро свяжется с вами.</div>
+  </div>
+</section>
+
 <!-- ══ 18. ФИНАЛЬНЫЙ CTA ══ -->
-<section class="sec sec--light" id="signup" style="padding-top:0;">
+<section class="sec sec--light" id="signup">
   <div class="wrap reveal">
     <div class="cta-final">
-      <h2 class="cta-final__title">Научитесь помогать особенным детям системно и безопасно</h2>
+      <h2 class="cta-final__title">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
       <p class="cta-final__text">Каждый шаг ребёнка вперёд меняет жизнь целой семьи. Станьте специалистом, который помогает его сделать.</p>
       <div class="cta-final__date">19–20 декабря · офлайн и онлайн</div>
       <form class="lead lead--grid" data-lead="signup">
@@ -1002,13 +989,18 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 </footer>
 
 <div class="sticky-cta"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
-<div class="lb" role="dialog" aria-modal="true"><button class="lb__close" aria-label="Закрыть">✕</button><img alt=""></div>
+<div class="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <button class="lb__btn lb__close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb__btn lb__prev" type="button" aria-label="Предыдущее"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img alt="">
+  <button class="lb__btn lb__next" type="button" aria-label="Следующее"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
 
 <script>
   // Появление блоков при скролле
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+  }, { rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Кнопки тарифов подставляют формат в форму записи
@@ -1019,29 +1011,73 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 
   // Заявки. TODO: подключить отправку (виджет GetCourse / CRM) — сейчас форма только показывает «Спасибо».
   document.querySelectorAll('form[data-lead]').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      form.classList.add('is-sent');
-    });
+    form.addEventListener('submit', (e) => { e.preventDefault(); form.classList.add('is-sent'); });
   });
 
-  // Просмотр фото и отзывов на весь экран
+  // Лайтбокс: галереи и оригиналы отзывов
   const lb = document.querySelector('.lb'), lbImg = lb.querySelector('img');
-  document.querySelectorAll('[data-lightbox] img').forEach(img => {
-    img.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('is-open'); });
-  });
-  lb.addEventListener('click', () => lb.classList.remove('is-open'));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('is-open'); });
-
-  // Липкая кнопка на мобильных — после первого экрана и не поверх формы записи
-  const sticky = document.querySelector('.sticky-cta'), signup = document.getElementById('signup');
-  const onScroll = () => {
-    const past = window.scrollY > window.innerHeight * 0.8;
-    const r = signup.getBoundingClientRect();
-    const atForm = r.top < window.innerHeight && r.bottom > 0;
-    sticky.classList.toggle('is-visible', past && !atForm);
+  const lbPrev = lb.querySelector('.lb__prev'), lbNext = lb.querySelector('.lb__next');
+  let lbList = [], lbIdx = 0;
+  const lbShow = () => {
+    lbImg.src = lbList[lbIdx].src; lbImg.alt = lbList[lbIdx].alt || '';
+    lbPrev.hidden = lbNext.hidden = lbList.length < 2;
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
+  const lbOpen = (list, i) => { lbList = list; lbIdx = i; lbShow(); lb.classList.add('is-open'); };
+  const lbClose = () => lb.classList.remove('is-open');
+  const lbStep = (d) => { lbIdx = (lbIdx + d + lbList.length) % lbList.length; lbShow(); };
+  document.querySelectorAll('[data-gallery]').forEach(g => {
+    const imgs = [...g.querySelectorAll('img')].map(i => ({ src: i.currentSrc || i.src, alt: i.alt }));
+    g.querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => lbOpen(imgs, i)));
+  });
+  document.querySelectorAll('[data-shots]').forEach(b => {
+    const shots = b.dataset.shots.split(',').map(src => ({ src, alt: 'Скриншот отзыва' }));
+    b.addEventListener('click', () => lbOpen(shots, 0));
+  });
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('.lb__close')) lbClose(); });
+  lbPrev.addEventListener('click', () => lbStep(-1));
+  lbNext.addEventListener('click', () => lbStep(1));
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbStep(-1);
+    if (e.key === 'ArrowRight') lbStep(1);
+  });
+
+  // Отзывы: «Читать полностью» только там, где текст обрезан
+  document.querySelectorAll('.rcard').forEach(card => {
+    const text = card.querySelector('.rcard__text'), more = card.querySelector('.rcard__more');
+    const check = () => { if (!card.classList.contains('is-open')) more.hidden = text.scrollHeight <= text.clientHeight + 2; };
+    more.addEventListener('click', () => {
+      const open = card.classList.toggle('is-open');
+      more.textContent = open ? 'Свернуть' : 'Читать полностью';
+    });
+    check(); window.addEventListener('resize', check);
+  });
+
+  // Карусель отзывов: стрелки
+  const track = document.querySelector('.rv__track');
+  const rvPrev = document.querySelector('.rv__btn--prev'), rvNext = document.querySelector('.rv__btn--next');
+  const rvStep = () => track.querySelector('.rcard').offsetWidth + 24;
+  const rvUpdate = () => {
+    rvPrev.hidden = track.scrollLeft <= 2;
+    rvNext.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  };
+  rvPrev.addEventListener('click', () => track.scrollBy({ left: -rvStep(), behavior: 'smooth' }));
+  rvNext.addEventListener('click', () => track.scrollBy({ left: rvStep(), behavior: 'smooth' }));
+  track.addEventListener('scroll', rvUpdate, { passive: true });
+  window.addEventListener('resize', rvUpdate); rvUpdate();
+
+  // Липкая кнопка на мобильных: после первого экрана и не поверх тарифов и форм
+  const sticky = document.querySelector('.sticky-cta');
+  const hideZones = new Set();
+  let pastHero = false;
+  const stickyUpdate = () => sticky.classList.toggle('is-visible', pastHero && hideZones.size === 0);
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; stickyUpdate(); }).observe(document.querySelector('.hero'));
+  const zoneIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { e.isIntersecting ? hideZones.add(e.target) : hideZones.delete(e.target); });
+    stickyUpdate();
+  });
+  ['tariffs', 'ask', 'signup'].forEach(id => zoneIo.observe(document.getElementById(id)));
 </script>
 </body>
 </html>
