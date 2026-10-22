@@ -162,6 +162,7 @@
   /* ══ METHOD ══ */
   .method-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 32px; align-items: center; margin-bottom: 48px; }
   @media (max-width: 960px) { .method-top { grid-template-columns: minmax(0, 1fr); } }
+  .method-top--solo { grid-template-columns: minmax(0, 1fr); }
   .video16 { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: var(--shadow-media); }
   .video16 video { width: 100%; height: 100%; object-fit: cover; }
   .method-mid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; margin-bottom: 48px; }
@@ -562,14 +563,15 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   <div class="wrap reveal">
     <span class="eyebrow">О методе</span>
     <h2 class="sec__title">Как работает метод «Биостимуляция нейрогенеза»</h2>
-    <div class="method-top">
+    <div class="method-top method-top--solo">
       <div class="card">
         <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
       </div>
-      <!-- Видео о методе: файл пришлют, пока заглушка с постером -->
+      <!-- Видео о методе (фрагмент из видеометодички): когда будет файл, раскомментировать блок и убрать класс method-top--solo
       <div class="video16">
         <video src="photos/neurogenez/method-video.mp4" poster="photos/neurogenez/method-video-poster.jpg" controls preload="none" playsinline></video>
       </div>
+      -->
     </div>
 
     <div class="method-mid">
@@ -817,11 +819,12 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <div class="video916"><video src="photos/neurogenez/review-video.mp4" poster="photos/neurogenez/review-video-poster.jpg" controls preload="none" playsinline></video></div>
         <figcaption><b>Видеоотзыв</b><span>Клиентка Евгения Вишнякова</span></figcaption>
       </figure>
-      <!-- Второй видеоотзыв: файл пришлют, пока заглушка с постером -->
+      <!-- Второй видеоотзыв: когда будет файл, раскомментировать
       <figure class="vreview">
         <div class="video916"><video src="photos/neurogenez/review-video-2.mp4" poster="photos/neurogenez/review-video-2-poster.jpg" controls preload="none" playsinline></video></div>
         <figcaption><b>Видеоотзыв</b></figcaption>
       </figure>
+      -->
     </div>
 
     <div class="rv">
