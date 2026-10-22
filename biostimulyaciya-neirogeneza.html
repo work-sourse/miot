@@ -387,11 +387,6 @@
   @media (max-width: 600px) { .cta-final__title { font-size: var(--f-h2); } }
   .cta-final__text { color: rgba(15,23,42,0.85); max-width: 560px; margin: 0 auto 18px; }
   .cta-final__date { display: inline-block; font-size: var(--f-sec); font-weight: 600; color: var(--ink); background: rgba(255,255,255,0.5); border-radius: 999px; padding: 9px 20px; margin-bottom: 28px; }
-  .cta-final .lead { max-width: 680px; margin: 0 auto; text-align: left; }
-  .cta-final .lead input, .cta-final .lead select { border-color: rgba(15,23,42,0.08); }
-  .cta-final .consent { color: rgba(15,23,42,0.85); }
-  .cta-final__note { font-size: var(--f-sec); color: rgba(15,23,42,0.8); margin-top: 18px; }
-  .cta-final .lead-done { background: rgba(255,255,255,0.6); color: var(--ink); }
 
   /* ══ FOOTER ══ */
   .page-foot { background: var(--bg-dark2); padding: 40px 0 34px; text-align: center; color: var(--on-dark); font-size: var(--f-sec); }
@@ -497,7 +492,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       </ul>
       <p class="hero__lead"><strong>Ведущие:</strong> Евгений Вишняков и Олег Агапэ</p>
       <div class="btn-row">
-        <a href="#signup" class="btn btn-primary">Записаться на семинар</a>
+        <a href="#tariffs" class="btn btn-primary">Записаться на семинар</a>
         <a href="#program" class="btn btn-ghost">Смотреть программу</a>
       </div>
     </div>
@@ -736,7 +731,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <div class="day-result"><strong>Результат дня:</strong> вы знаете протокол целиком, отработали его руками и готовы применять в практике.</div>
       </div>
     </div>
-    <div class="btn-row btn-row--center program-cta"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
+    <div class="btn-row btn-row--center program-cta"><a href="#tariffs" class="btn btn-primary">Записаться на семинар</a></div>
   </div>
 </section>
 
@@ -897,7 +892,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#signup" class="btn btn-primary" data-format="Офлайн · 55 000 ₽">Участвовать офлайн</a>
+        <a href="#ask" class="btn btn-primary">Участвовать офлайн</a>
       </div>
       <div class="price-card">
         <div class="price-card__label">Онлайн</div>
@@ -911,7 +906,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#signup" class="btn btn-dark" data-format="Онлайн · 45 000 ₽">Участвовать онлайн</a>
+        <a href="#ask" class="btn btn-dark">Участвовать онлайн</a>
       </div>
     </div>
   </div>
@@ -964,20 +959,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       <h2 class="cta-final__title">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
       <p class="cta-final__text">Каждый шаг ребёнка вперёд меняет жизнь целой семьи. Станьте специалистом, который помогает его сделать.</p>
       <div class="cta-final__date">19–20 декабря · офлайн и онлайн</div>
-      <form class="lead lead--grid" data-lead="signup">
-        <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
-        <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
-        <input type="text" name="specialty" placeholder="Специальность" required>
-        <select name="format" required>
-          <option value="" disabled selected>Формат участия</option>
-          <option>Офлайн · 55 000 ₽</option>
-          <option>Онлайн · 45 000 ₽</option>
-        </select>
-        <button type="submit" class="btn btn-dark lead__full">Записаться на семинар</button>
-        <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
-      </form>
-      <div class="lead-done">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
-      <p class="cta-final__note">Мы свяжемся с вами, ответим на вопросы и пришлём ссылку на оплату.</p>
+      <div class="btn-row btn-row--center"><a href="#tariffs" class="btn btn-dark">Записаться на семинар</a></div>
     </div>
   </div>
 </section>
@@ -989,7 +971,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   </div>
 </footer>
 
-<div class="sticky-cta"><a href="#signup" class="btn btn-primary">Записаться на семинар</a></div>
+<div class="sticky-cta"><a href="#tariffs" class="btn btn-primary">Записаться на семинар</a></div>
 <div class="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото">
   <button class="lb__btn lb__close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <button class="lb__btn lb__prev" type="button" aria-label="Предыдущее"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -1003,12 +985,6 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Кнопки тарифов подставляют формат в форму записи
-  const formatSelect = document.querySelector('[data-lead="signup"] select[name="format"]');
-  document.querySelectorAll('[data-format]').forEach(btn => {
-    btn.addEventListener('click', () => { formatSelect.value = btn.dataset.format; });
-  });
 
   // Заявки. TODO: подключить отправку (виджет GetCourse / CRM) — сейчас форма только показывает «Спасибо».
   document.querySelectorAll('form[data-lead]').forEach(form => {
