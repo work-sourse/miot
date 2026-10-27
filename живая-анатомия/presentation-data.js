@@ -17,18 +17,12 @@ function pairSlides(p){
       {t:'p', v:'Пишите варианты в чат 👇'},
       {t:'shot', src:real, label:p.guessLabel||'Фото с диссекции'},
     ]},
-    // 2. атлас — картинка из атласа крупно
+    // 2. атлас крупно + пояснение
     {sec:S, nav:'Атлас · '+p.nav, blocks:[
       {t:'badge', v:'В АТЛАСЕ'},
       {t:'h1', v:p.title},
       {t:'shot', src:atlas, label:p.labelA||'Картинка из атласа'},
       {t:'p', v:p.atlas},
-    ]},
-    // 3. реальность — снова диссекция крупно + пояснение
-    {sec:S, nav:'Реальность · '+p.nav, blocks:[
-      {t:'badge', v:'В РЕАЛЬНОСТИ'},
-      {t:'h1', v:p.title},
-      realBlock,
       {t:'p', v:p.real},
     ]},
   ];
