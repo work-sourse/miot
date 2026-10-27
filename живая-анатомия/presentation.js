@@ -70,7 +70,7 @@ function renderBlock(b){
       }).join('')+'</div>';
 
     case 'groups':
-      var groupsCls = 'groups-row' + (b.arrow ? ' with-arrow' : '');
+      var groupsCls = 'groups-row' + (b.arrow ? ' with-arrow' : '') + (b.cols2 ? ' cols2' : '');
       var groupBlocks = b.v.map(function(g, gi){
         var sub = g.sub ? '<ul class="items" style="margin:0">'
           +g.sub.map(function(s){return '<li>'+md(s)+'</li>';}).join('')+'</ul>' : '';
