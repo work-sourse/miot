@@ -272,6 +272,7 @@ var current = 1;
 function fitContent(slide){
   var sc = slide.querySelector('.scroll-content');
   if(!sc) return;
+  if(slide.classList.contains('fill-slide')){ sc.style.transform=''; sc.style.width=''; return; }
   sc.style.transform = '';
   sc.style.transformOrigin = 'top left';
   sc.style.width = '';

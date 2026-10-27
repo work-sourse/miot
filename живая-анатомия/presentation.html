@@ -430,12 +430,16 @@ strong{color:var(--ink);font-weight:700}
 .slide.surf-b .cmp-cell.h.win,.slide.surf-c .cmp-cell.h.win{background:var(--orange-mid)}
 
 
-/* ── Список на весь слайд (программа) ── */
+/* ── Список на весь слайд (программа): размеры считаются от ширины сцены, чтобы на любом экране было одинаково ── */
+.stage{container-type:inline-size}
 .slide.fill-slide .scroll-content{display:flex;flex-direction:column}
-.slide.fill-slide .num-list{flex:1;gap:10px;margin-bottom:6px}
-.slide.fill-slide .num-item{flex:1;align-items:center;padding:4px 16px;min-height:0}
-.slide.fill-slide .num-text{font-size:clamp(16px,2.05vw,28px);line-height:1.22;padding-top:0;font-weight:600}
-.slide.fill-slide .num-circle{width:clamp(28px,3.3vw,44px);height:clamp(28px,3.3vw,44px);font-size:clamp(14px,1.7vw,22px)}
+.slide.fill-slide .num-list{flex:1;gap:1.3cqw;margin-bottom:.6cqw}
+.slide.fill-slide h1{font-size:5.3cqw;margin-bottom:1cqw}
+.slide.fill-slide .divider{margin:0 0 1.6cqw}
+.slide.fill-slide .small{font-size:1.9cqw}
+.slide.fill-slide .num-item{flex:1;align-items:center;padding:1.2cqw 3cqw 1.2cqw 2.2cqw;gap:2.2cqw;border-radius:3.6cqw}
+.slide.fill-slide .num-text{font-size:2.4cqw;line-height:1.22;padding-top:0;font-weight:600}
+.slide.fill-slide .num-circle{width:4.3cqw;height:4.3cqw;font-size:2cqw;flex-shrink:0}
 /* ── Текст жирнее, фото крупнее (спикер) ── */
 .slide.bold-text p,.slide.bold-text li{font-weight:600;color:var(--ink)}
 .slide.bold-text .photocols-img{max-height:72vh}
