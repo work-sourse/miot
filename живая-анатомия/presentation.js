@@ -225,6 +225,8 @@ function renderSlide(s, idx){
   else if(idx%2===1) cls+=' surf-b';
   if(s.center) cls+=' center-slide';
   if(s.bigText) cls+=' big-text';
+  if(s.fillSlide) cls+=' fill-slide';
+  if(s.boldText) cls+=' bold-text';
 
   var head = '<div class="hd">'
     +'<div class="hd-num">'+(idx+1)+'</div>'

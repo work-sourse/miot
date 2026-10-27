@@ -423,6 +423,17 @@ strong{color:var(--ink);font-weight:700}
 .slide.surf-b .cmp-cell.h,.slide.surf-c .cmp-cell.h{background:transparent}
 .slide.surf-b .cmp-cell.h.win,.slide.surf-c .cmp-cell.h.win{background:var(--orange-mid)}
 
+
+/* ── Список на весь слайд (программа) ── */
+.slide.fill-slide .scroll-content{display:flex;flex-direction:column}
+.slide.fill-slide .num-list{flex:1;gap:10px;margin-bottom:6px}
+.slide.fill-slide .num-item{flex:1;align-items:center;padding:4px 16px;min-height:0}
+.slide.fill-slide .num-text{font-size:clamp(16px,2.05vw,28px);line-height:1.22;padding-top:0;font-weight:600}
+.slide.fill-slide .num-circle{width:clamp(28px,3.3vw,44px);height:clamp(28px,3.3vw,44px);font-size:clamp(14px,1.7vw,22px)}
+/* ── Текст жирнее, фото крупнее (спикер) ── */
+.slide.bold-text p,.slide.bold-text li{font-weight:600;color:var(--ink)}
+.slide.bold-text .photocols-img{max-height:72vh}
+
 /* ── Фото ── */
 .photo-row{display:flex;gap:12px;justify-content:center;align-items:center;margin:10px 0}
 .slide-photo{width:100%;max-height:46vh;object-fit:cover;border-radius:var(--r-md);flex:1;min-width:0}

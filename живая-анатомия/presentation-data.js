@@ -59,7 +59,7 @@ const SLIDES = [
   ]},
 ]},
 
-{sec:'Старт', nav:'Программа вебинара', blocks:[
+{sec:'Старт', nav:'Программа вебинара', fillSlide:true, blocks:[
   {t:'h1', v:'Программа вебинара (1,5 часа)'},
   {t:'numbered', v:[
     'Почему хороший специалист может годами не попадать в причину',
@@ -74,8 +74,8 @@ const SLIDES = [
   {t:'small', v:'Как вам программа? Напишите в комментах!'},
 ]},
 
-{sec:'Старт', nav:'Олег Агапэ', blocks:[
-  {t:'photocols', photo:'photos/oleg.png', photoW:'36%', imgContain:true, photoRight:true,
+{sec:'Старт', nav:'Олег Агапэ', boldText:true, blocks:[
+  {t:'photocols', photo:'photos/oleg-cutout.png', photoW:'46%', imgContain:true, photoRight:true,
     tag:'СПИКЕР',
     h:'~~Олег Агапэ~~',
     p:'Врач-остеопат, преподаватель и методолог МИОТ',
