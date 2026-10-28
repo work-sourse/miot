@@ -245,6 +245,8 @@
   .about-layout .card { flex: 1 1 460px; max-width: 640px; margin: 0; }
   .about-img { flex: 0 1 260px; max-width: 260px; width: 100%; height: auto; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.38)); }
   @media (max-width: 780px) { .about-layout { flex-direction: column-reverse; } .about-img { max-width: 200px; } }
+  .about-img--box { flex-basis: 340px; max-width: 340px; }
+  @media (max-width: 780px) { .about-img--box { max-width: 250px; } }
   .day-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .day-list li { position: relative; padding-left: 20px; font-size: 15.5px; line-height: 1.5; }
   .sec--dark .day-list li, .sec--dark2 .day-list li { color: var(--w-70); }
@@ -290,6 +292,19 @@
   .price-card__feats li { display: flex; gap: 10px; font-size: 15.5px; color: var(--ink-soft); line-height: 1.5; }
   .price-card__feats li::before { content: '✓'; color: var(--violet); font-weight: 800; flex-shrink: 0; }
   .price-card .btn { width: 100%; }
+  .price-card { display: flex; flex-direction: column; }
+  .price-card__feats { flex: 1; }
+  .price-card__old { text-decoration: line-through; color: var(--ink-mute); font-size: 0.5em; font-weight: 600; margin-right: 10px; vertical-align: middle; }
+  .price-card__img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 16px; margin-bottom: 20px; }
+  .price-card__imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; aspect-ratio: 5 / 4; margin-bottom: 20px; }
+  .price-card__imgs img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .tariff-block { margin-top: 76px; }
+  .tariff-block .sec__title { font-size: clamp(24px, 3.2vw, 34px); }
+  .price-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .price-grid--3 .price-card { padding: 30px 26px; }
+  .price-grid--3 .price-card__price { font-size: clamp(28px, 3.4vw, 38px); white-space: nowrap; }
+  .price-grid--3 .price-card__old { display: block; margin: 0 0 2px; font-size: 0.45em; }
+  @media (max-width: 960px) { .price-grid--3 { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
 
   /* ══ ORGANIZER ══ */
   .organizer-photo { width: 152px; height: 152px; border-radius: 50%; overflow: hidden; margin: 0 auto 22px; border: 3px solid rgba(204,167,118,0.4); box-shadow: 0 16px 34px -12px rgba(0,0,0,0.55); }
@@ -395,6 +410,8 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       <a href="#program">Программа</a>
       <a href="#format">Формат</a>
       <a href="#tariffs">Тарифы</a>
+      <a href="#records">Записи</a>
+      <a href="#func-anatomy">Функц. анатомия</a>
       <a href="#faq">Вопросы</a>
     </nav>
   </div>
@@ -465,7 +482,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <li><span class="bicon">✓</span><span><strong>Возможность пальпации</strong> на каждом этапе диссекции</span></li>
         <li><span class="bicon">✓</span><span><strong>Свежезамороженный материал</strong> без фиксации — естественное состояние тканей</span></li>
         <li><span class="bicon">✓</span><span><strong>Трансляция во всех деталях</strong> в режиме реального времени для участников онлайн</span></li>
-        <li><span class="bicon">✓</span><span><strong>Видеозапись</strong> семинара после окончания курса</span></li>
+        <li><span class="bicon">✓</span><span><strong>Запись на год</strong> — можно вернуться к нужной зоне перед сложным клиентом</span></li>
         <li><span class="bicon">✓</span><span><strong>Удостоверение гос. образца</strong> о повышении квалификации по итогам курса, а также сертификат от МИОТ</span></li>
       </ul>
     </div>
@@ -562,14 +579,14 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
 
     <div class="price-grid reveal-stagger">
       <div class="price-card">
-        <div class="price-card__label">Онлайн</div>
+        <div class="price-card__label">Онлайн «Я только посмотреть»</div>
         <div class="price-card__price">50 000 ₽</div>
-        <div class="price-card__note">Прямой эфир диссекции с лучшего ракурса, без выезда в Москву.</div>
+        <div class="price-card__note">Трансляция с лучшего ракурса, все слои крупным планом. Вопросы — в чат.</div>
         <ul class="price-card__feats">
-          <li>Прямой эфир с диссекции обоих дней</li>
+          <li>Прямая трансляция обоих дней</li>
           <li>Теоретическая лекция перед семинаром</li>
-          <li>Видеозапись семинара после курса</li>
-          <li>Сертификат от МИОТ</li>
+          <li>Запись на год</li>
+          <li>Сертификат МИОТ</li>
         </ul>
         <button onclick="gcOpen('gcModalPayOnline')" class="btn btn-primary" style="width:100%;">Оплатить участие</button>
         <button onclick="gcOpen('gcModalOnline')" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);width:100%;margin-top:10px;">Забронировать «Онлайн»</button>
@@ -577,19 +594,105 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       <div class="price-card price-card--best">
         <span class="dot-trace"></span>
         <div class="price-card__ribbon">Личное присутствие</div>
-        <div class="price-card__label">Очно</div>
+        <div class="price-card__label">Очно «Смотрю и трогаю»</div>
         <div class="price-card__price">80 000 ₽</div>
         <div class="price-card__note">Личное присутствие в зале, пальпация на каждом этапе диссекции.</div>
         <ul class="price-card__feats">
-          <li>Личное присутствие на диссекции 16–17 декабря</li>
-          <li>Возможность пальпации и вопросов на каждом этапе</li>
+          <li>Личное участие 16–17 декабря</li>
+          <li>Пальпация и вопросы на каждом этапе</li>
           <li>Теоретическая лекция перед семинаром</li>
-          <li>Видеозапись семинара после курса</li>
-          <li>Сертификат от МИОТ, удостоверение гос. образца о повышении квалификации</li>
+          <li>Запись на год</li>
+          <li>Удостоверение гос. образца и сертификат МИОТ</li>
         </ul>
         <button onclick="gcOpen('gcModalPayOchno')" class="btn btn-primary" style="width:100%;">Оплатить участие</button>
         <button onclick="gcOpen('gcModalOchno')" class="btn btn-ghost" style="background:var(--light-bg);color:var(--ink);width:100%;margin-top:10px;">Забронировать «Очно»</button>
       </div>
+    </div>
+
+    <div class="tariff-block" id="records">
+      <span class="eyebrow">Если в декабре не получается</span>
+      <h3 class="sec__title">Записи прошлых диссекций</h3>
+      <p class="sec__sub">Можно взять записи двух прошлых диссекций отдельным пакетом. Доступ на год: смотрите в своём темпе и возвращайтесь к нужной зоне перед сложным клиентом.</p>
+
+      <div class="price-grid price-grid--3 reveal-stagger">
+        <div class="price-card">
+          <img class="price-card__img" src="photos/record-pelvis.webp" alt="Анатомия таза: мышцы, связки, сосуды и нервы тазового дна" loading="lazy">
+          <div class="price-card__label">Запись диссекции</div>
+          <div class="price-card__price">25 000 ₽</div>
+          <div class="price-card__note"><strong>Тазовое дно, ТБС, поясница.</strong> Как всё это связано между собой на реальном препарате.</div>
+          <ul class="price-card__feats">
+            <li>Мышцы и связки тазового дна</li>
+            <li>Тазобедренный сустав и крестцово-подвздошное сочленение</li>
+            <li>Органы малого таза и их взаимосвязи</li>
+            <li>Доступ на год</li>
+          </ul>
+          <button onclick="gcOpen('gcModalPelvis')" class="btn btn-primary">Получить запись</button>
+        </div>
+
+        <div class="price-card">
+          <img class="price-card__img" src="photos/record-abdomen.webp" alt="Анатомия груди и живота: лёгкие, сердце, печень, желудок, кишечник" loading="lazy">
+          <div class="price-card__label">Запись диссекции</div>
+          <div class="price-card__price">25 000 ₽</div>
+          <div class="price-card__note"><strong>Грудная и брюшная полость.</strong> Как лежат и как связаны внутренние органы.</div>
+          <ul class="price-card__feats">
+            <li>Топография и взаимосвязи внутренних органов</li>
+            <li>Диафрагма, плевра и брюшина</li>
+            <li>Спайки на реальных препаратах</li>
+            <li>Доступ на год</li>
+          </ul>
+          <button onclick="gcOpen('gcModalThorax')" class="btn btn-primary">Получить запись</button>
+        </div>
+
+        <div class="price-card price-card--best">
+          <span class="dot-trace"></span>
+          <div class="price-card__ribbon">Выгоднее на 5 000 ₽</div>
+          <div class="price-card__imgs">
+            <img src="photos/record-pelvis.webp" alt="Анатомия таза" loading="lazy">
+            <img src="photos/record-abdomen.webp" alt="Анатомия груди и живота" loading="lazy">
+          </div>
+          <div class="price-card__label">Пакет «Две записи»</div>
+          <div class="price-card__price"><span class="price-card__old">50 000 ₽</span> 45 000 ₽</div>
+          <div class="price-card__note">Обе диссекции сразу: таз и внутренние органы — две зоны по цене почти одной.</div>
+          <ul class="price-card__feats">
+            <li>«Тазовое дно, ТБС, поясница»</li>
+            <li>«Грудная и брюшная полость»</li>
+            <li>Доступ на год к обеим записям</li>
+            <li>Смотрите в своём темпе, в любое время</li>
+          </ul>
+          <button onclick="gcOpen('gcModalRecords')" class="btn btn-primary">Получить обе записи</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7.5. ФУНКЦИОНАЛЬНАЯ АНАТОМИЯ ══ -->
+<section class="sec sec--dark" id="func-anatomy">
+  <span class="blob blob--gold" style="width:420px;height:420px;top:-80px;left:-120px;"></span>
+  <div class="wrap reveal">
+    <span class="eyebrow">Если диссекция вам пока не подходит</span>
+    <h2 class="sec__title">Курс «Функциональная анатомия»</h2>
+    <p class="sec__sub">С нуля до профи: анатомия человека от макушки до кончиков пальцев за 2 месяца. Без зубрёжки и сухой теории.</p>
+    <div class="about-layout">
+      <div class="card" style="max-width:640px;">
+        <p>Понимаю, что диссекция подходит не всем. Кому-то пока страшно, кому-то нужны другие зоны тела, а кто-то хочет сначала выстроить базу. <strong>Для вас есть другой путь.</strong></p>
+        <p>Одна из лучших программ нашего института. В ноябре мы запускаем её <strong>обновлённую версию</strong>: исправили неточности и опечатки прошлой и сделали её ещё качественнее и удобнее.</p>
+        <ul class="blist" style="margin:22px 0;">
+          <li><span class="bicon">✓</span><span><strong>Всё тело</strong> от кончиков пальцев до макушки, а не только голову и шею</span></li>
+          <li><span class="bicon">✓</span><span>Каркас, мышцы, фасции, сосуды и нервы каждой зоны и то, как они связаны между собой</span></li>
+          <li><span class="bicon">✓</span><span><strong>Все системы организма:</strong> дыхательную, пищеварительную, лимфатическую, нервную и другие</span></li>
+          <li><span class="bicon">✓</span><span><strong>Пальпацию:</strong> как находить эти структуры руками на себе и на клиенте</span></li>
+        </ul>
+        <div class="dissect-highlight">
+          <div class="dissect-highlight__title">Предзапись на обновлённый курс</div>
+          <p>Оставьте заявку — мы внесём вас в список предзаписи, и вы первыми узнаете <strong>дату старта и условия раннего бронирования</strong>. Это база, на которой строится вся дальнейшая практика.</p>
+        </div>
+        <div class="btn-row" style="margin-top:26px;justify-content:flex-start;">
+          <button onclick="gcOpen('gcModalFuncAnat')" class="btn btn-primary">Оставить заявку на предзапись</button>
+          <a href="https://agape-course.com/anatom" target="_blank" rel="noopener" class="btn btn-ghost">Подробнее о курсе</a>
+        </div>
+      </div>
+      <img class="about-img about-img--box" src="photos/functional-anatomy-box.webp" alt="Курс «Функциональная анатомия» — коробка курса" loading="lazy">
     </div>
   </div>
 </section>
@@ -648,7 +751,15 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       </details>
       <details>
         <summary>Сколько стоит участие?</summary>
-        <div class="faq__a">Онлайн — 50 000 ₽, очно — 80 000 ₽. Оба тарифа включают оба дня диссекции — шею 16 декабря и голову с мозгом 17 декабря.</div>
+        <div class="faq__a">Онлайн — 50 000 ₽, очно — 80 000 ₽. Оба тарифа включают оба дня диссекции — шею 16 декабря и голову с мозгом 17 декабря. Записи прошлых диссекций: 25 000 ₽ за одну, 45 000 ₽ за обе.</div>
+      </details>
+      <details>
+        <summary>Что делать, если в декабре не получается?</summary>
+        <div class="faq__a">Можно взять записи двух прошлых диссекций: «Тазовое дно, ТБС, поясница» и «Грудная и брюшная полость». Доступ на год — смотрите в своём темпе и возвращайтесь к нужной зоне перед сложным клиентом. Обе записи — 45 000 ₽, одна — 25 000 ₽. Оставьте заявку в блоке «Записи прошлых диссекций», и менеджер отдела заботы свяжется с вами.</div>
+      </details>
+      <details>
+        <summary>Диссекция мне пока не подходит. Что есть ещё?</summary>
+        <div class="faq__a">Курс «Функциональная анатомия» — вся анатомия тела от макушки до кончиков пальцев, без зубрёжки. В ноябре мы запускаем обновлённую версию. Оставьте заявку на предзапись, и вы первыми узнаете дату старта и условия раннего бронирования.</div>
       </details>
       <details>
         <summary>Чем отличается материал от фиксированного?</summary>
@@ -664,7 +775,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       </details>
       <details>
         <summary>Карта зарубежного банка не проходит. Что делать?</summary>
-        <div class="faq__a">Напишите нам через форму обратной связи ниже — подскажем актуальный способ оплаты.</div>
+        <div class="faq__a">Напишите нам на <a href="mailto:info@dr-agape.ru" style="color:var(--gold);">info@dr-agape.ru</a> — подскажем актуальный способ оплаты.</div>
       </details>
     </div>
   </div>
@@ -728,6 +839,54 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
     <div class="gc-modal__title">Оплата участия · Очно — 80 000 ₽</div>
     <div class="gc-modal__body">
       <script id="3b6cd4d42f26c39182ebfc7525c13695ee4a7ce0" src="https://online.agape-course.ru/pl/lite/widget/script?id=1659365"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalPelvis" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Запись диссекции · 25 000 ₽</div>
+    <div class="gc-modal__title">Тазовое дно, ТБС, поясница</div>
+    <div class="gc-modal__body">
+      <script id="1b22239d4161ddbd7fd428d0cc81903fd6c610ad" src="https://online.agape-course.ru/pl/lite/widget/script?id=1624620" onload="typeof startWidget1b22239d4161ddbd7fd428d0cc81903fd6c610ad==='function'&&startWidget1b22239d4161ddbd7fd428d0cc81903fd6c610ad()"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalThorax" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Запись диссекции · 25 000 ₽</div>
+    <div class="gc-modal__title">Грудная и брюшная полость</div>
+    <div class="gc-modal__body">
+      <script id="9461942b4e616fe408c629aab2a1e7982630a310" src="https://online.agape-course.ru/pl/lite/widget/script?id=1624618" onload="typeof startWidget9461942b4e616fe408c629aab2a1e7982630a310==='function'&&startWidget9461942b4e616fe408c629aab2a1e7982630a310()"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalRecords" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Пакет «Две записи» · 45 000 ₽</div>
+    <div class="gc-modal__title">Тазовое дно, ТБС, поясница + Грудная и брюшная полость</div>
+    <div class="gc-modal__body">
+      <script id="192311feff08a36091d1c1e14ac8078eef7fde95" src="https://online.agape-course.ru/pl/lite/widget/script?id=1624601" onload="typeof startWidget192311feff08a36091d1c1e14ac8078eef7fde95==='function'&&startWidget192311feff08a36091d1c1e14ac8078eef7fde95()"></script>
+    </div>
+  </div>
+</div>
+
+<div id="gcModalFuncAnat" class="gc-modal" role="dialog" aria-modal="true">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" onclick="gcCloseAll()">✕</button>
+    <div class="gc-modal__subtitle">Предзапись на обновлённый курс</div>
+    <div class="gc-modal__title">Курс «Функциональная анатомия»</div>
+    <div class="gc-modal__body">
+      <script id="01b6f72fef0961fd75dc92693adc3eb096899009" src="https://online.agape-course.ru/pl/lite/widget/script?id=1625094" onload="typeof startWidget01b6f72fef0961fd75dc92693adc3eb096899009==='function'&&startWidget01b6f72fef0961fd75dc92693adc3eb096899009()"></script>
     </div>
   </div>
 </div>
