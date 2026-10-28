@@ -294,6 +294,9 @@
   .price-card .btn { width: 100%; }
   .price-card { display: flex; flex-direction: column; }
   .price-card__feats { flex: 1; }
+  .promo-note { display: flex; justify-content: center; margin: -12px auto 34px; }
+  .promo-note span { display: inline-flex; align-items: center; gap: 8px; font-family: 'Unbounded', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; color: var(--ink); background: rgba(204,167,118,0.2); border: 1px solid rgba(204,167,118,0.55); border-radius: 999px; padding: 10px 22px; text-align: center; }
+  .price-card__tag { font-size: 12.5px; font-weight: 700; color: #8A6A3A; margin: -2px 0 12px; }
   .price-card__old { text-decoration: line-through; color: var(--ink-mute); font-size: 0.5em; font-weight: 600; margin-right: 10px; vertical-align: middle; }
   .price-card__img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; border-radius: 16px; margin-bottom: 20px; }
   .price-card__imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; aspect-ratio: 5 / 4; margin-bottom: 20px; }
@@ -576,11 +579,13 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
     <span class="eyebrow">16–17 декабря</span>
     <h2 class="sec__title">Тарифы</h2>
     <p class="sec__sub">Выберите формат участия — очно в зале с возможностью пальпации или онлайн в прямом эфире.</p>
+    <div class="promo-note"><span>🎁 Цены 50 000 ₽ и 70 000 ₽ — для участников вебинара</span></div>
 
     <div class="price-grid reveal-stagger">
       <div class="price-card">
         <div class="price-card__label">Онлайн «Я только посмотреть»</div>
         <div class="price-card__price">50 000 ₽</div>
+        <div class="price-card__tag">Цена для участников вебинара</div>
         <div class="price-card__note">Трансляция с лучшего ракурса, все слои крупным планом. Вопросы — в чат.</div>
         <ul class="price-card__feats">
           <li>Прямая трансляция обоих дней</li>
@@ -596,6 +601,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         <div class="price-card__ribbon">Личное присутствие</div>
         <div class="price-card__label">Очно «Смотрю и трогаю»</div>
         <div class="price-card__price">70 000 ₽</div>
+        <div class="price-card__tag">Цена для участников вебинара</div>
         <div class="price-card__note">Личное присутствие в зале, пальпация на каждом этапе диссекции.</div>
         <ul class="price-card__feats">
           <li>Личное участие 16–17 декабря</li>
@@ -751,7 +757,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
       </details>
       <details>
         <summary>Сколько стоит участие?</summary>
-        <div class="faq__a">Онлайн — 50 000 ₽, очно — 70 000 ₽. Оба тарифа включают оба дня диссекции — шею 16 декабря и голову с мозгом 17 декабря. Записи прошлых диссекций: 25 000 ₽ за одну, 45 000 ₽ за обе.</div>
+        <div class="faq__a">Онлайн — 50 000 ₽, очно — 70 000 ₽ (цены для участников вебинара). Оба тарифа включают оба дня диссекции — шею 16 декабря и голову с мозгом 17 декабря. Записи прошлых диссекций: 25 000 ₽ за одну, 45 000 ₽ за обе.</div>
       </details>
       <details>
         <summary>Что делать, если в декабре не получается?</summary>
