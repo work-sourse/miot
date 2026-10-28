@@ -4,7 +4,35 @@
    достаточно положить файл с этим именем в photos/ (или photos/pairs/). */
 
 // ── «Представление / Реальность»: пары «угадайте» → «атлас vs диссекция» ──
+// ── Новая рубрика «Представление / Реальность»: из вебинара «Веб реальная анатомия» ──
+// Слайд 1: «Как вы думаете, что это?» + материал (фото или видео). Слайд 2: только картинка из атласа, без подписей.
+var SHOW_OLD_PAIRS = false;   // true — вернуть прежние пары (желчный пузырь, дура, кисть…)
+function rubricPair(k, nav, video){
+  var S = 'Представление и реальность', R = 'photos/rubric/'+k;
+  return [
+    {sec:S, nav:'Угадайте · '+nav, center:true, blocks:[
+      {t:'h1', v:'Как вы думаете, что это?'},
+      video ? {t:'video', src:R+'-real.mp4', poster:R+'-poster.jpg'}
+            : {t:'shot', src:R+'-real.jpg', big:true, contain:true},
+    ]},
+    {sec:S, nav:'Атлас · '+nav, center:true, blocks:[
+      {t:'shot', src:R+'-atlas.jpg', big:true, contain:true},
+    ]},
+  ];
+}
+var RUBRIC_PAIRS = [].concat(
+  rubricPair('01-neck','Шейный отдел',true),
+  rubricPair('02-heart','Сердце',true),
+  rubricPair('03-abdomen','Брюшная полость'),
+  rubricPair('04-neck-fascia','Шея · фасции'),
+  rubricPair('05-leg','Нога'),
+  rubricPair('06-neck-glands','Шея · щитовидная железа'),
+  rubricPair('07-neck-muscles','Шея · мышцы'),
+  rubricPair('08-face','Лицо и нижняя челюсть')
+);
+
 function pairSlides(p){
+  if(!SHOW_OLD_PAIRS) return [];
   var k = p.key, S = 'Представление и реальность';
   var real = 'photos/pairs/'+k+'-real.jpg', atlas = 'photos/pairs/'+k+'-atlas.jpg';
   var realBlock = p.real2
@@ -327,6 +355,8 @@ const SLIDES = [
   {t:'h1', v:'Рубрика «Представление / Реальность»'},
   {t:'p', v:'Сначала фото с диссекции: вы угадываете, что это. Потом сравним с тем, как это рисуют в атласе'},
 ]},
+
+...RUBRIC_PAIRS,
 
 ...pairSlides({key:'01-gallbladder', nav:'Желчный пузырь', title:'Желчный пузырь',
   atlas:'Ярко-зелёный мешочек, который аккуратно висит под печенью',

@@ -191,7 +191,10 @@ function renderBlock(b){
       }).join('')+'</div>';
 
     case 'shot':
-      return '<div class="shot">'+slot(b.src, b.label, b.contain?'contain':'')+'</div>';
+      return '<div class="shot'+(b.big?' big':'')+'">'+slot(b.src, b.label, b.contain?'contain':'')+'</div>';
+
+    case 'video':
+      return '<div class="shot big"><video src="'+b.src+'" poster="'+(b.poster||'')+'" autoplay muted loop playsinline controls preload="auto"></video></div>';
 
     case 'pair':
       return '<div class="pair'+(b.real2?' three':'')+'">'
