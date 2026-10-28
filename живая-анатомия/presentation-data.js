@@ -15,7 +15,7 @@ function pairSlides(p){
     {sec:S, nav:'Угадайте · '+p.nav, center:true, blocks:[
       {t:'h1', v:'Угадайте, что это? 🤔'},
       {t:'p', v:'Пишите варианты в чат 👇'},
-      {t:'shot', src:real, label:p.guessLabel||'Фото с диссекции'},
+      {t:'shot', src:(p.real2 ? 'photos/pairs/'+k+'-real2.jpg' : real), label:p.guessLabel||'Фото с диссекции'},
     ]},
     // 2. атлас крупно + пояснение
     {sec:S, nav:'Атлас · '+p.nav, fillText:true, atlasSlide:true, blocks:[
