@@ -461,6 +461,15 @@ strong{color:var(--ink);font-weight:700}
 .slide.fill-text .result-block{padding:1.6cqw 2.4cqw;margin-top:1.2cqw}
 .slide.fill-text .result-block p{font-size:calc(2.8cqw*var(--k,1)) !important}
 .slide.fill-text .badge{font-size:calc(1.4cqw*var(--k,1))}
+/* атлас: картинка крупно слева, текст компактнее */
+.slide.fill-text.atlas h1{font-size:calc(3.8cqw*var(--k,1)) !important}
+.slide.fill-text.atlas p,.slide.fill-text.atlas .quote-block p{font-size:calc(2.2cqw*var(--k,1)) !important}
+.slide.fill-text.atlas .photocols-img{border-radius:var(--r-md);background:#fff}
+/* отзывы: скриншот крупно, текст мельче */
+.slide.review .photocols-img{width:62% !important;max-height:70vh}
+.slide.review .photocols-list h1{font-size:clamp(18px,2vw,26px) !important}
+.slide.review .photocols-list .quote-block p{font-size:clamp(13px,1.35vw,17px) !important}
+.slide.review .photocols-list .badge{font-size:10px}
 .slide.bold-text p,.slide.bold-text li{font-weight:600;color:var(--ink)}
 .slide.bold-text .photocols-img{max-height:72vh}
 

@@ -227,6 +227,8 @@ function renderSlide(s, idx){
   if(s.bigText) cls+=' big-text';
   if(s.fillSlide) cls+=' fill-slide';
   if(s.fillText) cls+=' fill-slide fill-text';
+  if(s.atlasSlide) cls+=' atlas';
+  if(s.review) cls+=' review';
   if(s.boldText) cls+=' bold-text';
 
   var head = '<div class="hd">'
