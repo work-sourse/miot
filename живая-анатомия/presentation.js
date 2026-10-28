@@ -226,6 +226,7 @@ function renderSlide(s, idx){
   if(s.center) cls+=' center-slide';
   if(s.bigText) cls+=' big-text';
   if(s.fillSlide) cls+=' fill-slide';
+  if(s.fillText) cls+=' fill-slide fill-text';
   if(s.boldText) cls+=' bold-text';
 
   var head = '<div class="hd">'
@@ -272,6 +273,12 @@ var current = 1;
 function fitContent(slide){
   var sc = slide.querySelector('.scroll-content');
   if(!sc) return;
+  if(slide.classList.contains('fill-text')){
+    sc.style.transform=''; sc.style.width='';
+    var k=1; slide.style.setProperty('--k',1);
+    while(k>0.5 && sc.scrollHeight > sc.clientHeight+2){ k-=0.04; slide.style.setProperty('--k',k.toFixed(2)); }
+    return;
+  }
   if(slide.classList.contains('fill-slide')){ sc.style.transform=''; sc.style.width=''; return; }
   sc.style.transform = '';
   sc.style.transformOrigin = 'top left';
