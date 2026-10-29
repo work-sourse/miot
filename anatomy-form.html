@@ -65,6 +65,30 @@
       margin-bottom: 28px;
       line-height: 1.5;
     }
+    .banner {
+      background: var(--bg); border-radius: 16px;
+      padding: 22px 18px 20px; margin-bottom: 24px; text-align: center;
+    }
+    .banner__badge {
+      display: inline-block; background: linear-gradient(135deg,#1a3a6b,#2E5F9E); color: #fff;
+      border-radius: 12px; padding: 6px 14px; margin-bottom: 14px;
+      font-family: 'Unbounded', sans-serif; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .banner__title {
+      font-family: 'Unbounded', sans-serif; font-size: clamp(13px, 3.6vw, 17px); font-weight: 800;
+      color: var(--ink); line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .banner__title em { font-style: normal; color: var(--warm); }
+    .banner__label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px; }
+    .banner__timer { display: flex; justify-content: center; align-items: flex-start; gap: 6px; }
+    .banner__cell {
+      background: var(--card); border: 1.5px solid rgba(46,95,158,0.22); border-radius: 10px;
+      padding: 8px 10px; min-width: 58px; box-shadow: 0 2px 8px rgba(46,95,158,0.07);
+    }
+    .banner__num { font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 800; color: var(--warm); line-height: 1; }
+    .banner__unit { font-size: 8px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 3px; }
+    .banner__sep { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 800; color: rgba(46,95,158,0.25); padding-top: 6px; }
     .form-wrap { text-align: left; }
     .page-foot {
       margin-top: 24px;
@@ -101,12 +125,44 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   <div class="card">
     <div class="card__title">ЖИВАЯ АНАТОМИЯ</div>
     <p class="card__sub">Заполните форму, чтобы получить доступ к записи</p>
+    <div class="banner">
+      <div class="banner__badge">Запись эфира · Олег Агапэ</div>
+      <div class="banner__title">«<em>ЖИВАЯ АНАТОМИЯ:</em> что на самом деле находится под вашими руками» ✅</div>
+      <div class="banner__label">Запись доступна ещё</div>
+      <div class="banner__timer">
+        <div class="banner__cell"><div class="banner__num" id="b-h">48</div><div class="banner__unit">часов</div></div>
+        <div class="banner__sep">:</div>
+        <div class="banner__cell"><div class="banner__num" id="b-m">00</div><div class="banner__unit">минут</div></div>
+        <div class="banner__sep">:</div>
+        <div class="banner__cell"><div class="banner__num" id="b-s">00</div><div class="banner__unit">секунд</div></div>
+      </div>
+    </div>
     <div class="form-wrap">
       <script id="6da2909eaff57e2eb3689f2b6b09a421924c38e8" src="https://online.agape-course.ru/pl/lite/widget/script?id=1675801" onload="typeof startWidget6da2909eaff57e2eb3689f2b6b09a421924c38e8==='function'&&startWidget6da2909eaff57e2eb3689f2b6b09a421924c38e8()"></script>
     </div>
   </div>
 
   <p class="page-foot">© 2026 Олег Агапэ · <a href="https://dr-agape.ru">dr-agape.ru</a></p>
+
+  <script>
+    // Тот же таймер, что и на странице записи — значения совпадают
+    (function() {
+      var KEY = 'anatomy_record_end';
+      var end = localStorage.getItem(KEY);
+      if (!end || Date.now() > +end) {
+        end = Date.now() + 48 * 3600 * 1000;
+        localStorage.setItem(KEY, end);
+      }
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var left = Math.max(0, end - Date.now());
+        document.getElementById('b-h').textContent = pad(Math.floor(left / 3600000));
+        document.getElementById('b-m').textContent = pad(Math.floor((left % 3600000) / 60000));
+        document.getElementById('b-s').textContent = pad(Math.floor((left % 60000) / 1000));
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+  </script>
 
 </body>
 </html>
