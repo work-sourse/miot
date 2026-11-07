@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Биостимуляция нейрогенеза — семинар МИОТ, 19–20 декабря</title>
+<meta name="description" content="Авторский семинар для телесно ориентированных специалистов: как помогать детям с ДЦП, РАС и поражениями ЦНС. 19–20 декабря, офлайн и онлайн. Ведущие — Евгений Вишняков и Олег Агапэ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    /* шкала шрифтов */
+    --f-h1: 54px; --f-h2: 40px; --f-h3: 20px; --f-num: 40px;
+    --f-offer: 24px; --f-plaque: 26px;
+    --f-body: 16px; --f-step: 15px; --f-sec: 14px; --f-cap: 13px;
+    --lh: 1.55;
+
+    --bg-dark:  #0F172A;
+    --bg-dark2: #16213F;
+    --card-dark: #1B2947;
+    --border-dark: rgba(255,255,255,0.12);
+    --gold: #CCA776;
+    --gold-ink: #8A6A3A;
+    --grad-title: linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
+    --grad-btn: linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
+    --on-dark: rgba(255,255,255,0.8);
+    --on-dark-strong: #fff;
+
+    --light-bg: #F0F4F8;
+    --light-alt: #E9EDF5;
+    --card: #FFFFFF;
+    --ink: #0F172A;
+    --ink-soft: #3C4A5E;
+    --ink-mute: #5A6275;
+    --line: rgba(15,23,42,0.10);
+
+    --radius: 24px;
+    --shadow: 0 4px 28px rgba(20,25,60,0.08);
+    --shadow-media: 0 22px 44px -20px rgba(15,23,42,0.55);
+    --photo-filter: saturate(.9) contrast(1.05) brightness(1.02);
+    --sec-pad: 88px;
+  }
+  @media (max-width: 600px) {
+    :root { --f-h1: 32px; --f-h2: 26px; --f-h3: 18px; --f-offer: 20px; --sec-pad: 56px; }
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; font-size: var(--f-body); line-height: var(--lh); font-weight: 400; background: var(--bg-dark); color: #fff; -webkit-font-smoothing: antialiased; }
+  img, video { max-width: 100%; display: block; }
+  a { color: inherit; }
+  button { font: inherit; }
+  strong, b { font-weight: 600; }
+  .wrap { max-width: 1148px; margin: 0 auto; padding: 0 24px; }
+
+  /* ══ SECTIONS ══ */
+  .sec { padding-block: var(--sec-pad); position: relative; overflow: hidden; }
+  .sec--dark { background: var(--bg-dark); color: #fff; }
+  .sec--dark2 { background: var(--bg-dark2); color: #fff; }
+  .sec--light { background: var(--light-bg); color: var(--ink); }
+  .sec > .wrap { position: relative; z-index: 1; }
+  .eyebrow { display: block; text-align: center; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; color: var(--gold); }
+  .sec--light .eyebrow { color: var(--gold-ink); }
+  .sec__title { font-family: 'Unbounded', sans-serif; font-size: var(--f-h2); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; text-align: center; max-width: 900px; margin: 0 auto 40px; text-wrap: balance; }
+  .sec__title:has(+ .sec__sub) { margin-bottom: 16px; }
+  .sec__sub { text-align: center; max-width: 720px; margin: 0 auto 40px; font-size: var(--f-body); }
+  .sec--dark .sec__sub, .sec--dark2 .sec__sub { color: var(--on-dark); }
+  .sec--light .sec__sub { color: var(--ink-soft); }
+  .h3 { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; line-height: 1.3; }
+
+  /* ══ BUTTONS ══ */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-row--center { justify-content: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 30px; border: none; border-radius: 999px; font-family: 'Inter', sans-serif; font-size: var(--f-body); font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--grad-btn); color: var(--ink); box-shadow: 0 10px 28px -10px rgba(204,167,118,0.6); }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.45); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #1E293B; }
+
+  /* ══ CARDS ══ */
+  .card { border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .card { padding: 24px 20px; } }
+  .sec--light .card { background: var(--card); box-shadow: var(--shadow); }
+  .sec--dark .card, .sec--dark2 .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  .card p { margin-bottom: 14px; }
+  .card p:last-child { margin-bottom: 0; }
+  .sec--light .card p { color: var(--ink-soft); }
+  .sec--dark .card p, .sec--dark2 .card p { color: var(--on-dark); }
+  .grid { display: grid; gap: 24px; align-items: stretch; }
+  .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 860px) { .grid--2, .grid--3 { grid-template-columns: minmax(0, 1fr); } }
+
+  .ico { flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(204,167,118,0.16); }
+  .ico svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-ink); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .sec--dark .ico, .sec--dark2 .ico { background: rgba(204,167,118,0.13); border: 1px solid rgba(204,167,118,0.28); }
+  .sec--dark .ico svg, .sec--dark2 .ico svg { stroke: var(--gold); }
+
+  .dash { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .dash li { position: relative; padding-left: 28px; }
+  .dash li::before { content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--grad-btn); box-shadow: inset 0 0 0 5px var(--card-dark); }
+  .sec--dark2 .dash li, .sec--dark .dash li { color: var(--on-dark); }
+
+  /* ══ HERO ══ */
+  .hero { position: relative; overflow: hidden; padding-top: var(--sec-pad); }
+  .hero::before { content: ''; position: absolute; top: -220px; left: 30%; width: 900px; height: 520px; background: radial-gradient(closest-side, rgba(204,167,118,0.24), transparent 70%); pointer-events: none; }
+  .hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .hero__waves-a { animation: waveDrift 18s ease-in-out infinite alternate; }
+  .hero__waves-b { animation: waveDrift 24s ease-in-out infinite alternate-reverse; }
+  @keyframes waveDrift { from { transform: translate(-30px, 0); } to { transform: translate(30px, -18px); } }
+  .hero__inner { position: relative; z-index: 2; max-width: 560px; padding-bottom: var(--sec-pad); }
+  .hero__badge { display: inline-block; white-space: nowrap; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.32); border-radius: 999px; padding: 9px 18px; margin-bottom: 24px; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: 46px; font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; hyphens: manual; }
+  .hero__offer { font-family: 'Unbounded', sans-serif; font-size: var(--f-offer); font-weight: 600; line-height: 1.3; color: #fff; margin-bottom: 16px; text-wrap: balance; }
+  .hero__sub { color: var(--on-dark); margin-bottom: 20px; }
+  .hero__chips { list-style: none; display: flex; flex-wrap: nowrap; gap: 6px; margin-bottom: 20px; }
+  .hero__chips li { white-space: nowrap; font-size: var(--f-cap); font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 6px 10px; }
+  .hero__lead { color: var(--on-dark); margin-bottom: 26px; }
+  .hero__lead strong { color: #fff; }
+  .hero__media { position: absolute; z-index: 1; right: -60px; bottom: 0; width: min(900px, calc(100vw - max(24px, (100vw - 1100px) / 2) - 630px)); }
+  .hero__media::before { content: ''; position: absolute; left: 8%; right: 8%; top: 14%; bottom: 0; background: radial-gradient(closest-side, rgba(204,167,118,0.34), transparent 75%); filter: blur(10px); z-index: -1; }
+  .hero__media img { width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent); mask-image: linear-gradient(to bottom, #000 80%, transparent); }
+  @media (max-width: 900px) {
+    .hero__inner { max-width: none; padding-bottom: 8px; }
+    .hero__media { position: relative; right: auto; width: 100%; max-width: 620px; margin: 0 auto; }
+    .hero__title { font-size: var(--f-h1); }
+  }
+  @media (max-width: 600px) {
+    .hero__badge { white-space: normal; }
+    .hero__chips { flex-wrap: wrap; }
+    .hero .btn-row { flex-direction: column; }
+    .hero .btn { width: 100%; }
+  }
+
+  /* ══ FOR ══ */
+  .ilist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .ilist li { display: flex; align-items: center; gap: 16px; color: var(--ink-soft); }
+  .card .h3 { margin-bottom: 20px; }
+  .sec--light .card .h3 { color: var(--ink); }
+  .diag-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; flex: 1; }
+  @media (max-width: 480px) { .diag-grid { grid-template-columns: minmax(0, 1fr); } }
+  .diag { border-radius: 16px; padding: 18px; color: var(--ink); background: linear-gradient(135deg, rgba(204,167,118,0.18), rgba(204,167,118,0.05)); border: 1px solid rgba(204,167,118,0.35); }
+  .diag small { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--gold-ink); margin-bottom: 6px; }
+
+  /* ══ FAMILY ══ */
+  .family { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .family { grid-template-columns: minmax(0, 1fr); } }
+  .family__photo { width: 100%; height: auto; aspect-ratio: 907/1084; object-fit: cover; object-position: center top; border-radius: var(--radius); box-shadow: var(--shadow-media); filter: var(--photo-filter); }
+  @media (max-width: 860px) { .family__photo { max-width: 420px; margin: 0 auto; } }
+  .family .sec__title { font-size: 32px; text-align: left; margin: 0 0 24px; }
+  @media (max-width: 600px) { .family .sec__title { font-size: var(--f-h2); } }
+
+  /* ══ SPECIAL CHILD ══ */
+  .q-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 32px; align-items: stretch; }
+  @media (max-width: 960px) { .q-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .q-grid { grid-template-columns: minmax(0, 1fr); } }
+  .q-card { background: var(--card); border-radius: 20px; padding: 22px 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; color: var(--ink); }
+  .callout { max-width: 760px; margin: 0 auto; font-weight: 600; color: var(--ink); border-left: 4px solid var(--gold); padding: 6px 0 6px 20px; }
+
+  /* ══ METHOD ══ */
+  .method-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 32px; align-items: center; margin-bottom: 48px; }
+  @media (max-width: 960px) { .method-top { grid-template-columns: minmax(0, 1fr); } }
+  .method-top--solo { grid-template-columns: minmax(0, 1fr); }
+  .video16 { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: var(--shadow-media); }
+  .video16 video { width: 100%; height: 100%; object-fit: cover; }
+  .video16--work { margin-bottom: 0; }
+  .method-mid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; margin-bottom: 48px; }
+  @media (max-width: 960px) { .method-mid { grid-template-columns: minmax(0, 1fr); } }
+  .method-mid .h3 { color: #fff; margin-bottom: 18px; }
+  .acc { display: flex; flex-direction: column; gap: 10px; }
+  .acc details { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 18px; padding: 0 20px; transition: border-color .2s; }
+  .acc details[open] { border-color: rgba(204,167,118,0.45); }
+  .acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 16px 0; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; line-height: 1.3; }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary::after { content: '+'; margin-left: auto; font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 400; color: var(--gold); transition: transform .3s; }
+  .acc details[open] summary::after { transform: rotate(45deg); }
+  .acc p { color: var(--on-dark); padding: 0 0 18px 58px; }
+  @media (max-width: 600px) { .acc p { padding-left: 0; } }
+  .neuro { background: radial-gradient(circle at 50% 45%, rgba(204,167,118,0.10), transparent 70%), var(--card-dark); border: 1px solid var(--border-dark); border-radius: var(--radius); padding: 18px 18px 16px; }
+  .neuro svg { width: 100%; height: auto; display: block; }
+  .neuro__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: var(--f-cap); color: var(--on-dark); margin-top: 6px; }
+  .neuro__legend i { display: inline-block; width: 22px; height: 0; border-top: 2px dashed #D86A5F; vertical-align: middle; margin-right: 7px; }
+  .neuro__legend i.ok { border-top: 3px solid var(--gold); }
+  .neuro .new-path { stroke-dasharray: 8 7; animation: pathFlow 1.6s linear infinite; }
+  @keyframes pathFlow { to { stroke-dashoffset: -30; } }
+  .neuro .pulse-node { animation: nodePulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes nodePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .sec--dark .card .h3 { color: #fff; margin: 0; }
+  .plaques { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; align-items: stretch; }
+  @media (max-width: 760px) { .plaques { grid-template-columns: minmax(0, 1fr); } }
+  .plaque { border-radius: 18px; padding: 24px 22px; text-align: center; background: rgba(255,255,255,0.05); border: 1.5px solid var(--border-dark); display: flex; flex-direction: column; justify-content: center; }
+  .plaque b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-plaque); font-weight: 700; color: var(--gold); line-height: 1.15; margin-bottom: 8px; }
+  .plaque span { font-size: var(--f-sec); color: var(--on-dark); }
+
+  /* ══ GALLERY ══ */
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .gallery button { border: none; padding: 0; background: none; cursor: zoom-in; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+  .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 25%; filter: var(--photo-filter); transition: transform .4s; }
+  .gallery button:hover img { transform: scale(1.04); }
+  @media (max-width: 760px) {
+    .gallery { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -24px; padding: 4px 24px 12px; scrollbar-width: none; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery button { flex: 0 0 calc((100% - 12px) / 1.2); scroll-snap-align: start; }
+  }
+
+  /* ══ SPEAKERS ══ */
+  .speaker { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
+  .speaker__photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: var(--photo-filter); }
+  .speaker__body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .speaker__body { padding: 24px 20px 26px; } }
+  .speaker__name { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .speaker__role { font-size: var(--f-sec); font-weight: 600; color: var(--gold); margin-bottom: 20px; }
+  .sp-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .sp-stat { background: rgba(204,167,118,0.08); border: 1px solid rgba(204,167,118,0.25); border-radius: 16px; padding: 14px; }
+  .sp-stat--full { grid-column: 1 / -1; }
+  .sp-stat b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-plaque); font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 6px; }
+  .sp-stat span { display: block; font-size: var(--f-cap); color: var(--on-dark); line-height: 1.4; }
+
+  /* ══ LEARNING ══ */
+  .timeline { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 16px; position: relative; }
+  .timeline::before { content: ''; position: absolute; top: 31px; left: 32px; right: 32px; height: 2px; background: linear-gradient(90deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+  .timeline li { position: relative; font-size: var(--f-step); color: var(--ink-soft); counter-increment: step; }
+  .timeline__dot { position: relative; width: 64px; height: 64px; margin-bottom: 16px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 6px var(--light-bg); }
+  .timeline__dot svg { width: 26px; height: 26px; fill: none; stroke: var(--gold); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .timeline__dot::after { content: counter(step); position: absolute; top: -4px; right: -4px; width: 22px; height: 22px; border-radius: 50%; background: var(--grad-btn); color: var(--ink); font-size: var(--f-cap); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  .timeline { counter-reset: step; }
+  .timeline li strong { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  @media (max-width: 1100px) { .timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; } .timeline::before { display: none; } }
+  @media (max-width: 700px) {
+    .timeline { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .timeline::before { display: block; top: 0; bottom: 0; left: 31px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, rgba(204,167,118,0.15), var(--gold), rgba(204,167,118,0.15)); }
+    .timeline li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-bottom: 22px; }
+    .timeline__dot { margin: 0; }
+  }
+
+  /* ══ PROGRAM ══ */
+  .day-card { border-radius: var(--radius); padding: 30px; background: var(--card-dark); border: 1px solid var(--border-dark); display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .day-card { padding: 24px 20px; } }
+  .day-card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+  .day-card__num { font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.1); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 8px 16px; white-space: nowrap; }
+  .day-card__big { font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; line-height: 1; background: var(--grad-btn); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .day-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+  .day-list li { position: relative; padding-left: 22px; color: var(--on-dark); }
+  .day-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .day-result { margin-top: auto; border-left: 3px solid var(--gold); background: rgba(204,167,118,0.08); border-radius: 0 14px 14px 0; padding: 16px 18px; color: var(--on-dark); }
+  .day-result strong { color: var(--gold); }
+  .program-cta { margin-top: 32px; }
+
+  /* ══ CONTRA ══ */
+  .contra__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-top: 12px; }
+  @media (max-width: 640px) { .contra__list { grid-template-columns: 1fr; } }
+  .contra__list li { position: relative; padding: 14px 16px 14px 46px; background: #FBF5F4; border-radius: 12px; color: var(--ink-soft); }
+  .contra__list li::before { content: '✕'; position: absolute; left: 14px; top: 15px; width: 20px; height: 20px; border-radius: 50%; background: #B9483E; color: #fff; font-size: var(--f-cap); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+
+  /* ══ CHANGES ══ */
+  .changes { list-style: none; display: grid; gap: 14px; }
+  .changes li { display: grid; grid-template-columns: 52px minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark); border-radius: 20px; padding: 22px 26px; }
+  .changes .ico { width: 52px; height: 52px; border-radius: 16px; background: var(--grad-btn); border: none; }
+  .changes .ico svg { stroke: var(--ink); width: 24px; height: 24px; }
+  .changes h3 { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: #fff; line-height: 1.35; }
+  .changes p { color: var(--on-dark); }
+  @media (max-width: 760px) { .changes li { grid-template-columns: 52px minmax(0, 1fr); gap: 10px 16px; align-items: start; padding: 20px; } .changes p { grid-column: 2; } }
+
+  /* ══ CASES ══ */
+  .case { background: var(--card); border-radius: 26px; padding: 30px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .case { padding: 24px 20px; } }
+  .case--wide { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 30px; align-items: center; margin-bottom: 24px; }
+  @media (max-width: 860px) { .case--wide { grid-template-columns: minmax(0, 1fr); } }
+  .case__photos { display: grid; gap: 12px; }
+  .case__photos button { position: relative; border: none; padding: 0; background: none; cursor: zoom-in; border-radius: 18px; overflow: hidden; }
+  .case__photos img { width: 100%; aspect-ratio: 692/263; object-fit: cover; }
+  .case__photos span { position: absolute; left: 12px; top: 12px; font-size: var(--f-cap); font-weight: 600; color: #fff; background: rgba(15,23,42,0.8); border-radius: 999px; padding: 5px 12px; }
+  .case__photos button:last-child span { background: var(--grad-btn); color: var(--ink); }
+  .case__tag { align-self: flex-start; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-ink); background: rgba(204,167,118,0.16); border-radius: 999px; padding: 6px 14px; margin-bottom: 14px; }
+  .case__title { font-family: 'Unbounded', sans-serif; font-size: var(--f-h3); font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 18px; }
+  .case__facts { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .case__facts li { background: var(--light-bg); border-radius: 14px; padding: 14px 10px; text-align: center; }
+  .case__facts b { display: block; font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; color: var(--ink); line-height: 1.05; margin-bottom: 6px; }
+  @media (max-width: 600px) { .case__facts b { font-size: 32px; } }
+  .case__facts span { display: block; font-size: var(--f-cap); color: var(--ink-mute); line-height: 1.35; }
+  .case__step { padding-left: 18px; border-left: 2px solid rgba(15,23,42,0.12); margin-bottom: 14px; }
+  .case__step:last-child { margin-bottom: 0; }
+  .case__step b { display: block; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
+  .case__step p { color: var(--ink-soft); }
+  .case__step--result { border-left-color: var(--gold); background: rgba(204,167,118,0.10); border-radius: 0 14px 14px 0; padding: 12px 16px 12px 18px; }
+  .case__step--result b { color: var(--gold-ink); }
+  .case__step--result p { color: var(--ink); font-weight: 600; }
+  .case--video { align-items: center; justify-content: center; }
+  .case--video .case__tag { align-self: flex-start; }
+  .video916 { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9/16; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: var(--shadow-media); }
+  .video916 video { width: 100%; height: 100%; object-fit: cover; }
+  .cases-row { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+  .case--video .video916 { flex: 1; max-height: 560px; width: auto; }
+  @media (max-width: 860px) { .cases-row { grid-template-columns: minmax(0, 1fr); } .case--video .video916 { flex: none; width: 100%; max-width: 300px; max-height: none; } }
+
+  /* ══ REVIEWS ══ */
+  .vreviews { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .vreview { width: 300px; max-width: 100%; }
+  .vreview .video916 { max-width: none; }
+  .vreview figcaption { margin-top: 12px; text-align: center; }
+  .vreview figcaption b { display: block; color: #fff; }
+  .vreview figcaption span { font-size: var(--f-sec); color: var(--on-dark); }
+  .rv { position: relative; }
+  .rv__track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 3); gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  .rv__track::-webkit-scrollbar { display: none; }
+  @media (max-width: 960px) { .rv__track { grid-auto-columns: calc((100% - 24px) / 2); } }
+  @media (max-width: 640px) { .rv__track { grid-auto-columns: 86%; gap: 14px; } }
+  .rcard { scroll-snap-align: start; background: var(--card); color: var(--ink); border-radius: var(--radius); padding: 26px 24px; display: flex; flex-direction: column; }
+  .rcard__quote { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); margin-bottom: 14px; }
+  .rcard__quote::before { content: '«'; color: var(--gold-ink); }
+  .rcard__quote::after { content: '»'; color: var(--gold-ink); }
+  .rcard__text { color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+  .rcard.is-open .rcard__text { -webkit-line-clamp: unset; display: block; }
+  .rcard__more { align-self: flex-start; margin-top: 8px; background: none; border: none; padding: 0; color: var(--gold-ink); font-size: var(--f-sec); font-weight: 600; cursor: pointer; }
+  .rcard__foot { margin-top: auto; padding-top: 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; border-top: 1px solid var(--line); }
+  .rcard__more + .rcard__foot, .rcard__more[hidden] + .rcard__foot { margin-top: auto; }
+  .rcard__text-wrap + .rcard__more { margin-bottom: 18px; }
+  .rcard__name b { display: block; }
+  .rcard__name span { font-size: var(--f-cap); color: var(--ink-mute); }
+  .rcard__orig { flex-shrink: 0; background: var(--light-bg); border: none; border-radius: 999px; padding: 8px 14px; font-size: var(--f-cap); font-weight: 600; color: var(--ink); cursor: pointer; }
+  .rcard__text-wrap { margin-bottom: 4px; }
+  .rv__btn { position: absolute; top: 50%; z-index: 2; width: 48px; height: 48px; margin-top: -24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(15,23,42,0.85); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .rv__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .rv__btn--prev { left: -18px; } .rv__btn--next { right: -18px; }
+  .rv__btn[hidden] { display: none; }
+  @media (max-width: 640px) { .rv__btn { display: none; } }
+
+  /* ══ SUPPORT ══ */
+  .support { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+  @media (max-width: 960px) { .support { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .support li { background: var(--card); border-radius: 20px; padding: 22px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .support .ico { margin-bottom: 14px; }
+  .support b { display: block; font-size: var(--f-body); font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 6px; white-space: nowrap; }
+  .support span { font-size: var(--f-sec); color: var(--ink-soft); }
+
+  /* ══ TARIFFS ══ */
+  .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  @media (max-width: 760px) { .price-grid { grid-template-columns: minmax(0, 1fr); } }
+  .price-card { position: relative; background: var(--card); color: var(--ink); border-radius: 26px; padding: 36px 32px; display: flex; flex-direction: column; }
+  @media (max-width: 600px) { .price-card { padding: 30px 22px; } }
+  .price-card--best { box-shadow: 0 0 0 3px var(--gold), 0 24px 50px -20px rgba(204,167,118,0.5); }
+  .price-card__ribbon { position: absolute; top: -14px; right: 26px; background: var(--grad-btn); color: var(--ink); font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.04em; padding: 6px 16px; border-radius: 999px; }
+  .price-card__label { font-size: var(--f-sec); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 8px; }
+  .price-card__price { font-family: 'Unbounded', sans-serif; font-size: var(--f-num); font-weight: 700; margin-bottom: 24px; }
+  .price-card__feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+  .price-card__feats li { display: flex; gap: 10px; color: var(--ink-soft); }
+  .price-card__feats li::before { content: '✓'; color: var(--gold-ink); font-weight: 600; flex-shrink: 0; }
+  .price-card .btn { width: 100%; margin-top: auto; }
+
+  /* ══ FAQ ══ */
+  .faq { display: flex; flex-direction: column; gap: 14px; max-width: 860px; margin: 0 auto; }
+  .faq details { border-radius: 16px; padding: 0 24px; background: var(--card); box-shadow: 0 3px 16px rgba(20,25,60,0.06); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 0; font-size: 18px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; color: var(--gold-ink); flex-shrink: 0; transition: transform .3s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq__a { color: var(--ink-soft); padding-bottom: 20px; }
+
+
+  /* ══ WIDGET MODALS (GetCourse) ══ */
+  .gc-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+  .gc-modal.is-open { display: flex; }
+  .gc-modal__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+  .gc-modal__box { position: relative; z-index: 1; background: #fff; color: var(--ink); border-radius: 16px; padding: 32px 28px; width: 90%; max-width: 480px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .gc-modal__close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--ink-mute); line-height: 1; }
+  .gc-modal__title { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; color: var(--ink); }
+
+  /* ══ FORMS ══ */
+  .lead { display: grid; gap: 12px; }
+  .lead--row { grid-template-columns: 1fr 1fr auto; align-items: start; }
+  .lead--grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px) { .lead--row, .lead--grid { grid-template-columns: minmax(0, 1fr); } }
+  .lead input, .lead select { width: 100%; height: 56px; font: inherit; padding: 0 20px; border-radius: 14px; border: 1.5px solid rgba(15,23,42,0.14); background: #fff; color: var(--ink); outline: none; appearance: none; -webkit-appearance: none; }
+  .lead select { background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%230F172A' stroke-width='2'/%3E%3C/svg%3E") right 16px center/18px no-repeat; padding-right: 44px; }
+  .lead select:invalid { color: #6B7280; }
+  .lead input:focus, .lead select:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(204,167,118,0.22); }
+  .lead .btn { width: 100%; }
+  .lead__full { grid-column: 1 / -1; }
+  .consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: var(--f-cap); line-height: 1.45; cursor: pointer; }
+  .consent input { width: 18px; height: 18px; padding: 0; margin-top: 1px; flex-shrink: 0; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--ink); }
+  .consent a { text-decoration: underline; }
+  .sec--dark2 .consent { color: var(--on-dark); }
+  .sec--dark2 .consent input { accent-color: var(--gold); }
+  .lead-done { display: none; text-align: center; font-weight: 600; padding: 18px; border-radius: 14px; }
+  .lead.is-sent { display: none; }
+  .lead.is-sent + .lead-done { display: block; }
+  .sec--dark2 .lead-done { background: rgba(204,167,118,0.12); color: #fff; border: 1px solid rgba(204,167,118,0.35); }
+  .ask { max-width: 860px; margin: 0 auto; }
+  .ask__cta { display: flex; justify-content: center; }
+
+  /* ══ FINAL CTA ══ */
+  #signup { padding-bottom: 56px; }
+  .cta-final { position: relative; overflow: hidden; background: var(--grad-btn); border-radius: 28px; padding: 54px 48px; text-align: center; max-width: 960px; margin: 0 auto; }
+  @media (max-width: 600px) { .cta-final { padding: 36px 20px; border-radius: 22px; } }
+  .cta-final__title { font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 700; color: var(--ink); max-width: 720px; margin: 0 auto 16px; line-height: 1.25; text-wrap: balance; }
+  @media (max-width: 600px) { .cta-final__title { font-size: var(--f-h2); } }
+  .cta-final__text { color: rgba(15,23,42,0.85); max-width: 560px; margin: 0 auto 18px; }
+  .cta-final__date { display: inline-block; font-size: var(--f-sec); font-weight: 600; color: var(--ink); background: rgba(255,255,255,0.5); border-radius: 999px; padding: 9px 20px; margin-bottom: 28px; }
+
+  /* ══ FOOTER ══ */
+  .page-foot { background: var(--bg-dark2); padding: 40px 0 34px; text-align: center; color: var(--on-dark); font-size: var(--f-sec); }
+  .page-foot a { color: #fff; text-decoration: none; }
+  .page-foot a:hover { color: var(--gold); }
+
+  /* ══ LIGHTBOX ══ */
+  .lb { position: fixed; inset: 0; z-index: 9999; background: rgba(5,10,25,0.92); display: none; align-items: center; justify-content: center; padding: 56px 24px; }
+  .lb.is-open { display: flex; }
+  .lb img { max-width: 100%; max-height: 100%; border-radius: 14px; }
+  .lb__btn { position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(15,23,42,0.85); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .lb__close { top: 14px; right: 14px; }
+  .lb__prev { left: 14px; top: 50%; margin-top: -24px; }
+  .lb__next { right: 14px; top: 50%; margin-top: -24px; }
+  .lb__btn[hidden] { display: none; }
+
+  /* ══ STICKY CTA ══ */
+  .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
+  .sticky-cta .btn { width: 100%; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5); }
+  @media (max-width: 760px) { .sticky-cta.is-visible { display: block; } }
+
+  /* ══ MOTION ══ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in-view { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+<script src="/utm.js?v=1"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1591788022721183');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<!-- ══ 1. HERO ══ -->
+<section class="hero sec--dark">
+  <svg class="hero__waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="waveGold" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#CCA776" stop-opacity="0"/>
+        <stop offset=".35" stop-color="#E9D3A1"/>
+        <stop offset=".75" stop-color="#CCA776"/>
+        <stop offset="1" stop-color="#CCA776" stop-opacity=".2"/>
+      </linearGradient>
+    </defs>
+    <g class="hero__waves-a" fill="none" stroke="url(#waveGold)" stroke-width="1.2">
+        <path d="M-40,431.4 L0,470.0 L40,508.6 L80,542.2 L120,566.6 L160,579.4 L200,580.2 L240,570.5 L280,553.7 L320,533.5 L360,514.1 L400,498.4 L440,488.1 L480,482.8 L520,480.8 L560,479.4 L600,475.3 L640,466.3 L680,451.0 L720,430.0 L760,405.5 L800,381.4 L840,361.7 L880,350.7 L920,351.3 L960,364.6 L1000,389.7 L1040,423.8 L1080,462.3 L1120,500.1 L1160,532.4 L1200,555.5 L1240,567.5 L1280,568.4 L1320,560.4 L1360,546.6 L1400,531.0 L1440,517.1 L1480,507.1 L1520,502.0" stroke-opacity="0.100"/>
+        <path d="M-40,469.5 L0,510.1 L40,547.4 L80,576.8 L120,594.9 L160,600.3 L200,594.0 L240,578.7 L280,558.1 L320,536.7 L360,518.1 L400,504.5 L440,496.6 L480,493.2 L520,491.8 L560,489.1 L600,482.4 L640,469.6 L680,450.6 L720,427.0 L760,402.0 L800,379.8 L840,364.8 L880,360.6 L920,369.3 L960,390.8 L1000,422.9 L1040,461.6 L1080,501.7 L1120,538.0 L1160,566.0 L1200,583.0 L1240,588.3 L1280,583.0 L1320,570.2 L1360,553.8 L1400,537.7 L1440,524.9 L1480,517.0 L1520,513.7" stroke-opacity="0.125"/>
+        <path d="M-40,510.1 L0,550.6 L40,584.6 L80,608.1 L120,618.8 L160,616.6 L200,603.7 L240,583.6 L280,560.7 L320,539.3 L360,522.4 L400,511.4 L440,505.9 L480,503.8 L520,502.0 L560,497.3 L600,487.2 L640,470.6 L680,448.4 L720,423.3 L760,399.2 L800,380.7 L840,371.9 L880,375.7 L920,392.9 L960,422.2 L1000,460.1 L1040,501.7 L1080,541.4 L1120,574.3 L1160,596.6 L1200,606.7 L1240,605.0 L1280,594.1 L1320,577.6 L1360,559.8 L1400,544.2 L1440,533.3 L1480,527.5 L1520,525.8" stroke-opacity="0.150"/>
+        <path d="M-40,551.8 L0,590.2 L40,619.1 L80,635.4 L120,638.0 L160,628.3 L200,609.5 L240,586.0 L280,562.2 L320,542.0 L360,527.6 L400,519.4 L440,515.9 L480,514.3 L520,511.2 L560,503.5 L600,489.6 L640,469.5 L680,445.0 L720,419.7 L760,398.2 L800,385.1 L840,383.9 L880,396.4 L920,422.1 L960,458.3 L1000,500.4 L1040,542.9 L1080,580.2 L1120,607.9 L1160,623.3 L1200,626.0 L1240,617.8 L1280,602.1 L1320,583.1 L1360,565.0 L1400,551.0 L1440,542.3 L1480,538.7 L1520,537.8" stroke-opacity="0.175"/>
+        <path d="M-40,593.5 L0,627.6 L40,649.7 L80,657.7 L120,652.2 L160,635.7 L200,612.2 L240,586.6 L280,563.3 L320,545.2 L360,533.8 L400,528.2 L440,526.1 L480,524.0 L520,518.6 L560,507.5 L600,489.8 L640,466.6 L680,441.0 L720,417.4 L760,400.3 L800,394.2 L840,401.6 L880,423.0 L920,456.6 L960,498.3 L1000,542.6 L1040,583.9 L1080,616.9 L1120,637.9 L1160,645.6 L1200,641.0 L1240,626.9 L1280,607.5 L1320,587.4 L1360,570.2 L1400,558.4 L1440,552.2 L1480,550.1 L1520,549.2" stroke-opacity="0.200"/>
+        <path d="M-40,633.6 L0,661.5 L40,675.5 L80,674.9 L120,661.6 L160,639.1 L200,612.5 L240,586.3 L280,564.6 L320,549.6 L360,541.2 L400,537.7 L440,536.0 L480,532.5 L520,524.1 L560,509.2 L600,488.0 L640,462.8 L680,437.7 L720,417.4 L760,406.6 L800,408.7 L840,425.2 L880,455.3 L920,495.5 L960,540.9 L1000,585.4 L1040,623.3 L1080,650.1 L1120,663.4 L1160,663.2 L1200,651.7 L1240,632.8 L1280,611.2 L1320,591.2 L1360,575.9 L1400,566.6 L1440,562.6 L1480,561.4 L1520,559.5" stroke-opacity="0.100"/>
+        <path d="M-40,670.8 L0,691.0 L40,696.0 L80,686.8 L120,666.4 L160,639.5 L200,611.1 L240,585.9 L280,566.9 L320,555.2 L360,549.6 L400,547.6 L440,545.3 L480,539.4 L520,527.3 L560,508.6 L600,484.7 L640,459.0 L680,436.1 L720,421.0 L760,417.8 L800,429.1 L840,454.9 L880,492.7 L920,538.1 L960,585.0 L1000,627.3 L1040,659.9 L1080,679.1 L1120,684.1 L1160,676.1 L1200,658.6 L1240,636.3 L1280,613.8 L1320,595.2 L1360,582.4 L1400,575.8 L1440,573.4 L1480,572.1 L1520,568.0" stroke-opacity="0.125"/>
+        <path d="M-40,703.9 L0,715.1 L40,710.9 L80,693.5 L120,667.3 L160,637.5 L200,609.1 L240,586.1 L280,570.5 L320,562.2 L360,558.9 L400,557.2 L440,553.3 L480,544.2 L520,528.3 L560,506.3 L600,480.8 L640,456.1 L680,437.3 L720,429.2 L760,435.0 L800,455.8 L840,490.3 L880,534.5 L920,582.9 L960,629.0 L1000,667.0 L1040,692.5 L1080,703.2 L1120,699.6 L1160,684.6 L1200,662.4 L1240,638.1 L1280,616.2 L1320,599.8 L1360,590.0 L1400,585.6 L1440,584.1 L1480,581.5 L1520,574.3" stroke-opacity="0.150"/>
+        <path d="M-40,731.9 L0,733.4 L40,720.1 L80,695.7 L120,665.2 L160,634.2 L200,607.3 L240,587.5 L280,575.7 L320,570.3 L360,568.4 L400,566.0 L440,559.6 L480,546.8 L520,527.3 L560,502.8 L600,477.2 L640,455.5 L680,442.7 L720,443.0 L760,458.4 L800,488.7 L840,530.7 L880,579.5 L920,628.6 L960,671.6 L1000,703.2 L1040,720.2 L1080,721.9 L1120,710.2 L1160,689.1 L1200,663.7 L1240,639.0 L1280,618.9 L1320,605.4 L1360,598.5 L1400,595.8 L1440,594.1 L1480,589.2 L1520,578.1" stroke-opacity="0.175"/>
+        <path d="M-40,754.0 L0,745.7 L40,724.1 L80,694.0 L120,661.0 L160,630.5 L200,606.4 L240,590.5 L280,582.3 L320,579.3 L360,577.7 L400,573.6 L440,563.9 L480,547.3 L520,524.6 L560,499.0 L600,475.2 L640,458.3 L680,453.2 L720,462.9 L760,488.3 L800,527.2 L840,575.2 L880,626.3 L920,673.6 L960,711.2 L1000,734.7 L1040,742.4 L1080,735.1 L1120,716.2 L1160,690.6 L1200,663.6 L1240,639.9 L1280,622.5 L1320,612.2 L1360,607.8 L1400,605.9 L1440,602.8 L1480,594.6 L1520,578.9" stroke-opacity="0.200"/>
+        <path d="M-40,769.7 L0,752.0 L40,723.4 L80,689.4 L120,655.8 L160,627.4 L200,607.1 L240,595.3 L280,590.3 L320,588.7 L360,586.3 L400,579.5 L440,566.0 L480,545.8 L520,521.1 L560,496.0 L600,475.8 L640,465.7 L680,469.7 L720,489.5 L760,524.3 L800,570.5 L840,622.5 L880,673.3 L920,716.4 L960,746.6 L1000,760.7 L1040,758.8 L1080,743.1 L1120,718.3 L1160,689.8 L1200,662.9 L1240,641.4 L1280,627.3 L1320,620.2 L1360,617.4 L1400,615.3 L1440,609.6 L1480,597.3 L1520,577.0" stroke-opacity="0.100"/>
+        <path d="M-40,779.1 L0,753.1 L40,719.0 L80,683.0 L120,650.6 L160,625.5 L200,609.6 L240,601.7 L280,599.2 L320,597.8 L360,593.6 L400,583.4 L440,566.1 L480,543.1 L520,517.7 L560,495.0 L600,480.4 L640,478.7 L680,492.7 L720,522.6 L760,565.9 L800,617.6 L840,670.9 L880,719.0 L920,755.6 L960,776.6 L1000,780.8 L1040,769.4 L1080,746.5 L1120,717.4 L1160,687.7 L1200,662.3 L1240,644.1 L1280,633.5 L1320,629.0 L1360,627.0 L1400,623.3 L1440,614.2 L1480,597.3 L1520,572.6" stroke-opacity="0.125"/>
+        <path d="M-40,782.4 L0,749.5 L40,711.9 L80,675.9 L120,646.2 L160,625.5 L200,614.1 L240,609.6 L280,608.5 L320,606.2 L360,599.1 L400,585.1 L440,564.5 L480,539.8 L520,515.5 L560,497.2 L600,490.1 L640,498.0 L680,522.4 L720,561.8 L760,612.0 L800,666.8 L840,719.0 L880,761.7 L920,789.8 L960,800.6 L1000,794.6 L1040,774.7 L1080,746.0 L1120,714.4 L1160,685.3 L1200,662.7 L1240,648.2 L1280,641.0 L1320,638.2 L1360,635.8 L1400,629.4 L1440,616.1 L1480,594.6 L1520,566.2" stroke-opacity="0.150"/>
+        <path d="M-40,780.3 L0,742.3 L40,703.4 L80,669.2 L120,643.5 L160,627.7 L200,620.5 L240,618.6 L280,617.6 L320,613.3 L360,602.7 L400,585.0 L440,561.8 L480,537.0 L520,515.8 L560,503.9 L600,505.8 L640,524.2 L680,558.8 L720,606.4 L760,661.4 L800,716.7 L840,764.9 L880,800.0 L920,818.0 L960,818.2 L1000,802.5 L1040,775.3 L1080,742.7 L1120,710.4 L1160,683.4 L1200,664.5 L1240,653.9 L1280,649.4 L1320,647.3 L1360,643.2 L1400,633.2 L1440,615.2 L1480,589.5 L1520,558.8" stroke-opacity="0.175"/>
+    </g>
+    <g class="hero__waves-b" fill="none" stroke="url(#waveGold)" stroke-width="1">
+        <path d="M-40,203.5 L0,188.7 L40,175.8 L80,165.4 L120,158.0 L160,153.6 L200,151.6 L240,151.2 L280,151.1 L320,150.5 L360,148.4 L400,144.3 L440,138.1 L480,130.3 L520,121.7 L560,113.4 L600,106.7 L640,103.1 L680,103.5 L720,108.6 L760,118.6 L800,133.1 L840,151.2 L880,171.4 L920,192.2 L960,211.7 L1000,228.3 L1040,240.6 L1080,247.9 L1120,249.6 L1160,246.2 L1200,238.4 L1240,227.5 L1280,214.9 L1320,202.0 L1360,190.1 L1400,180.3 L1440,173.1 L1480,168.5 L1520,166.0" stroke-opacity="0.060"/>
+        <path d="M-40,206.2 L0,192.0 L40,180.8 L80,172.8 L120,168.0 L160,165.9 L200,165.5 L240,165.7 L280,165.3 L320,163.4 L360,159.4 L400,153.3 L440,145.4 L480,136.7 L520,128.3 L560,121.6 L600,118.1 L640,118.8 L680,124.5 L720,135.4 L760,151.0 L800,170.3 L840,191.9 L880,213.9 L920,234.6 L960,252.1 L1000,265.0 L1040,272.3 L1080,273.8 L1120,269.8 L1160,261.1 L1200,249.0 L1240,235.0 L1280,220.9 L1320,207.9 L1360,197.1 L1400,189.1 L1440,184.0 L1480,181.2 L1520,180.1" stroke-opacity="0.080"/>
+        <path d="M-40,208.0 L0,195.8 L40,187.2 L80,182.1 L120,179.9 L160,179.6 L200,180.0 L240,179.9 L280,178.3 L320,174.5 L360,168.5 L400,160.6 L440,151.8 L480,143.4 L520,136.8 L560,133.4 L600,134.5 L640,140.8 L680,152.5 L720,169.2 L760,189.7 L800,212.6 L840,235.9 L880,257.7 L920,276.0 L960,289.4 L1000,296.8 L1040,298.0 L1080,293.3 L1120,283.6 L1160,270.3 L1200,255.0 L1240,239.5 L1280,225.3 L1320,213.5 L1360,204.7 L1400,199.1 L1440,196.1 L1480,194.9 L1520,194.2" stroke-opacity="0.100"/>
+        <path d="M-40,210.5 L0,201.3 L40,195.8 L80,193.6 L120,193.5 L160,194.2 L200,194.4 L240,193.1 L280,189.6 L320,183.7 L360,175.9 L400,167.1 L440,158.7 L480,152.1 L520,148.9 L560,150.4 L600,157.4 L640,169.9 L680,187.7 L720,209.5 L760,233.6 L800,258.2 L840,281.0 L880,300.1 L920,313.9 L960,321.4 L1000,322.2 L1040,316.8 L1080,306.0 L1120,291.4 L1160,274.8 L1200,257.9 L1240,242.5 L1280,229.6 L1320,220.1 L1360,213.9 L1400,210.7 L1440,209.4 L1480,208.8 L1520,207.8" stroke-opacity="0.120"/>
+        <path d="M-40,215.0 L0,209.3 L40,207.0 L80,207.1 L120,208.1 L160,208.7 L200,207.8 L240,204.6 L280,199.0 L320,191.3 L360,182.6 L400,174.2 L440,167.7 L480,164.8 L520,166.7 L560,174.3 L600,187.7 L640,206.5 L680,229.5 L720,254.9 L760,280.6 L800,304.5 L840,324.3 L880,338.5 L920,346.0 L960,346.4 L1000,340.2 L1040,328.3 L1080,312.4 L1120,294.3 L1160,276.1 L1200,259.3 L1240,245.4 L1280,235.1 L1320,228.4 L1360,224.9 L1400,223.6 L1440,223.2 L1480,222.3 L1520,219.7" stroke-opacity="0.060"/>
+        <path d="M-40,222.5 L0,220.2 L40,220.5 L80,221.9 L120,223.0 L160,222.5 L200,219.7 L240,214.3 L280,206.8 L320,198.2 L360,189.9 L400,183.6 L440,181.0 L480,183.3 L520,191.5 L560,205.8 L600,225.6 L640,249.8 L680,276.4 L720,303.3 L760,328.1 L800,348.7 L840,363.2 L880,370.6 L920,370.6 L960,363.5 L1000,350.4 L1040,333.1 L1080,313.6 L1120,293.9 L1160,275.9 L1200,260.9 L1240,249.8 L1280,242.6 L1320,238.8 L1360,237.5 L1400,237.3 L1440,236.6 L1480,234.3 L1520,229.5" stroke-opacity="0.080"/>
+        <path d="M-40,233.1 L0,233.6 L40,235.5 L80,237.1 L120,237.1 L160,234.8 L200,229.7 L240,222.5 L280,214.1 L320,205.9 L360,199.8 L400,197.4 L440,200.2 L480,209.1 L520,224.2 L560,245.1 L600,270.4 L640,298.2 L680,326.2 L720,351.9 L760,373.1 L800,388.0 L840,395.3 L880,394.7 L920,386.7 L960,372.4 L1000,353.7 L1040,332.7 L1080,311.5 L1120,292.1 L1160,276.1 L1200,264.1 L1240,256.4 L1280,252.5 L1320,251.2 L1360,251.1 L1400,250.7 L1440,248.7 L1480,244.2 L1520,236.7" stroke-opacity="0.100"/>
+        <path d="M-40,246.6 L0,248.9 L40,251.1 L80,251.7 L120,249.9 L160,245.3 L200,238.3 L240,230.1 L280,222.2 L320,216.3 L360,214.2 L400,217.4 L440,227.0 L480,243.0 L520,264.8 L560,291.3 L600,320.2 L640,349.3 L680,375.9 L720,397.7 L760,412.7 L800,419.9 L840,418.7 L880,409.7 L920,394.2 L960,374.0 L1000,351.5 L1040,328.8 L1080,308.1 L1120,290.9 L1160,278.1 L1200,269.9 L1240,265.8 L1280,264.5 L1320,264.7 L1360,264.7 L1400,263.1 L1440,258.8 L1480,251.6 L1520,241.7" stroke-opacity="0.120"/>
+        <path d="M-40,262.3 L0,265.1 L40,266.3 L80,265.0 L120,260.9 L160,254.3 L200,246.4 L240,238.7 L280,233.0 L320,231.3 L360,235.0 L400,245.2 L440,262.0 L480,284.9 L520,312.4 L560,342.5 L600,372.5 L640,400.0 L680,422.3 L720,437.5 L760,444.5 L800,442.6 L840,432.6 L880,415.8 L920,394.1 L960,370.0 L1000,345.8 L1040,323.7 L1080,305.4 L1120,291.8 L1160,283.1 L1200,278.8 L1240,277.6 L1280,278.1 L1320,278.5 L1360,277.3 L1400,273.4 L1440,266.5 L1480,256.8 L1520,245.3" stroke-opacity="0.060"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__badge">Авторский семинар · 19–20 декабря · офлайн и онлайн</div>
+      <h1 class="hero__title">Био&shy;стимуляция нейрогенеза</h1>
+      <h2 class="hero__offer">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
+      <p class="hero__sub">За 2 дня вы разберётесь, что происходит с нервной системой особенного ребёнка, освоите безопасный алгоритм сеанса и отработаете каждый этап руками.</p>
+      <ul class="hero__chips">
+        <li>80% практики</li>
+        <li>Видеометодичка</li>
+        <li>Запись на 6 месяцев</li>
+        <li>Чат с поддержкой</li>
+        <li>Сертификат</li>
+      </ul>
+      <p class="hero__lead"><strong>Ведущие:</strong> Евгений Вишняков и Олег Агапэ</p>
+      <div class="btn-row">
+        <a href="#tariffs" class="btn btn-primary">Записаться на семинар</a>
+        <a href="#program" class="btn btn-ghost">Смотреть программу</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__media">
+    <img src="photos/neurogenez/hero-cover.png" srcset="photos/neurogenez/hero-cover-800.png 800w, photos/neurogenez/hero-cover.png 1670w" sizes="(max-width: 900px) 100vw, 900px" width="1670" height="942" alt="Евгений Вишняков и Олег Агапэ с ребёнком" fetchpriority="high">
+  </div>
+</section>
+
+<!-- ══ 2. ДЛЯ КОГО ══ -->
+<section class="sec sec--light" id="for">
+  <div class="wrap reveal">
+    <div class="grid grid--2">
+      <div class="card">
+        <h2 class="h3">Для кого семинар</h2>
+        <ul class="ilist">
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><span>Остеопаты и специалисты остеокоррекции, в том числе студенты и выпускники МИОТ</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span>Массажисты, реабилитологи, специалисты ЛФК</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><span>Специалисты, которые работают с детьми и хотят уверенно вести детей с неврологическими диагнозами</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span>Те, кто хочет развивать в практике востребованное и социально значимое направление</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="h3">С какими детьми вы сможете работать</h2>
+        <div class="diag-grid">
+          <div class="diag"><small>ДЦП</small>Детский церебральный паралич</div>
+          <div class="diag"><small>РАС</small>Расстройства аутистического спектра</div>
+          <div class="diag"><small>ЦНС</small>Тяжёлые поражения центральной нервной системы</div>
+          <div class="diag"><small>ВПР</small>Врождённые заболевания нервной системы</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. СЕМЬЯ ══ -->
+<section class="sec sec--dark2">
+  <div class="wrap reveal family">
+    <img class="family__photo" src="photos/neurogenez/family.jpg?v=2" width="907" height="1084" alt="Евгений Вишняков с ребёнком после сеанса" loading="lazy">
+    <div>
+      <h2 class="sec__title">За каждым диагнозом стоит семья, которая не сдаётся</h2>
+      <div class="card">
+        <p>Родители особенных детей годами ищут помощь. Они пробуют новые методики, возят ребёнка от специалиста к специалисту и радуются каждому, даже самому маленькому шагу вперёд. Всё, чего они хотят, — чтобы у их ребёнка была обычная, полноценная жизнь.</p>
+        <p>Когда вы становитесь специалистом, который помогает сделать этот шаг, вы видите, как ваша работа меняет жизнь целой семьи. И понимаете, что выбрали своё дело не зря.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. ОСОБЕННЫЙ РЕБЁНОК НА ПРИЁМЕ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Особенный ребёнок на приёме. Что дальше?</h2>
+    <p class="sec__sub">Когда на приём приводят ребёнка с тяжёлым неврологическим диагнозом, даже опытный специалист часто сталкивается с вопросами, на которые нет готовых ответов:</p>
+    <div class="q-grid">
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>С чего начать работу и как не навредить?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span><span>Как выстроить сеанс, если каждый случай кажется уникальным?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>Каких изменений реально ожидать и как говорить об этом с родителями?</span></div>
+      <div class="q-card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></svg></span><span>К кому обратиться, если что-то идёт не по плану?</span></div>
+    </div>
+    <p class="callout">Без чёткой системы такие дети часто остаются за рамками практики, хотя именно им помощь нужна больше всего.</p>
+  </div>
+</section>
+
+<!-- ══ 5. МЕТОД ══ -->
+<section class="sec sec--dark" id="method">
+  <div class="wrap reveal">
+    <span class="eyebrow">О методе</span>
+    <h2 class="sec__title">Как работает метод «Биостимуляция нейрогенеза»</h2>
+    <div class="method-top method-top--solo">
+      <div class="card">
+        <p>Биостимуляция нейрогенеза — это комплекс остеопатических техник, направленных на запуск и ускорение формирования новых нервных клеток и синаптических связей в головном мозге. Метод опирается на нейропластичность: способность нервной системы выстраивать новые пути передачи сигналов, даже когда часть из них повреждена. Задача специалиста — создать в теле условия, при которых этот ресурс включается.</p>
+      </div>
+      <!-- Видео о методе (фрагмент из видеометодички): когда будет файл, раскомментировать блок и убрать класс method-top--solo
+      <div class="video16">
+        <video src="photos/neurogenez/method-video.mp4" poster="photos/neurogenez/method-video-poster.jpg" controls preload="none" playsinline></video>
+      </div>
+      -->
+    </div>
+
+    <div class="method-mid">
+      <div>
+        <h3 class="h3">На что направлено воздействие</h3>
+        <div class="acc">
+          <details open>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.6 3 5.8V18h8v-3.2c1.6-1.2 3-3.2 3-5.8a7 7 0 0 0-7-7z"/><path d="M10 22h4"/><path d="M12 6v6M9.5 9h5"/></svg></span>Краниосакральная система</summary>
+            <p>Мягкая работа с костями черепа, оболочками головного и спинного мозга и крестцом снимает напряжения, которые ограничивают подвижность этих структур и мешают нервной системе работать полноценно.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>Циркуляция жидкостей</summary>
+            <p>Техники улучшают движение ликвора, венозный и лимфатический отток, а значит, питание и очищение нервной ткани.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l3-7 4 14 3-9 2 2h5"/></svg></span>Вегетативная нервная система</summary>
+            <p>Восстановление баланса между симпатическим и парасимпатическим отделами выводит организм из состояния постоянного напряжения и включает процессы восстановления.</p>
+          </details>
+          <details>
+            <summary><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>Патологические цепочки</summary>
+            <p>Работа с ключевыми зонами напряжения разрывает цепочки дисфункций, которые закрепляют нарушения и мешают развитию ребёнка.</p>
+          </details>
+        </div>
+      </div>
+      <div class="neuro">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Схема нейропластичности: сигнал обходит повреждённый путь по новому">
+          <defs>
+            <radialGradient id="nodeG"><stop offset="0" stop-color="#FFF6E6"/><stop offset="1" stop-color="#CCA776"/></radialGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,0.16)" stroke-width="1.5" fill="none">
+            <path d="M50 150 L120 90 M50 150 L120 210 M120 90 L200 70 M120 210 L200 230 M200 70 L280 90 M200 230 L280 210 M280 90 L350 150 M280 210 L350 150 M120 90 L120 210 M280 90 L280 210 M200 70 L200 230"/>
+          </g>
+          <path d="M120 150 L280 150" stroke="#D86A5F" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>
+          <g stroke="#D86A5F" stroke-width="3" stroke-linecap="round"><path d="M190 140 l20 20 M210 140 l-20 20"/></g>
+          <path class="new-path" d="M50 150 C 90 150, 100 105, 120 90 S 170 60, 200 70 S 255 70, 280 90 S 330 130, 350 150" stroke="#E9D3A1" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <g fill="#22314F" stroke="rgba(255,255,255,0.35)" stroke-width="1.5">
+            <circle cx="120" cy="150" r="7"/><circle cx="280" cy="150" r="7"/><circle cx="120" cy="210" r="9"/><circle cx="200" cy="230" r="9"/><circle cx="280" cy="210" r="9"/>
+          </g>
+          <g fill="url(#nodeG)">
+            <circle class="pulse-node" cx="50" cy="150" r="12"/><circle cx="120" cy="90" r="9"/><circle cx="200" cy="70" r="9"/><circle cx="280" cy="90" r="9"/><circle class="pulse-node" cx="350" cy="150" r="12"/>
+          </g>
+        </svg>
+        <div class="neuro__legend"><span><i></i>повреждённый путь</span><span><i class="ok"></i>новый путь передачи сигнала</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid--2">
+      <div class="card">
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><h3 class="h3">Почему важна регулярность</h3></div>
+        <p>Изменения после стимуляции отмечаются практически у всех детей, но скорость у каждого своя. Кому-то достаточно нескольких сеансов, а кому-то нужна системная работа курсами. Поэтому на семинаре мы разбираем не только технику, но и то, как выстроить план работы с ребёнком на длительный срок.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 3v12"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><h3 class="h3">Почему один алгоритм подходит разным детям</h3></div>
+        <p>При тяжёлых состояниях у детей в первую очередь страдает центральная нервная система, а нарушения развиваются по сходным цепочкам. Поэтому алгоритм общий, а специалист адаптирует его под конкретного ребёнка.</p>
+      </div>
+    </div>
+    <div class="plaques">
+      <div class="plaque"><b>10 лет</b><span>клинической практики по протоколу</span></div>
+      <div class="plaque"><b>Системный подход</b><span>устойчивая динамика при регулярной работе</span></div>
+      <div class="plaque"><b>Международный запрос</b><span>к Евгению на реабилитацию приезжают семьи из Чехии и Израиля</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. КАК ВЫГЛЯДИТ РАБОТА ══ -->
+<section class="sec sec--light" id="work">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Посмотрите, как выглядит работа по методу</h2>
+    <div class="video16 video16--work">
+      <video src="photos/neurogenez/method-video.mp4" poster="photos/neurogenez/method-video-poster.jpg" controls preload="none" playsinline></video>
+    </div>
+    <div class="gallery" data-gallery style="margin-top:32px;">
+      <button type="button"><img src="photos/neurogenez/gallery-1.jpg" alt="Евгений Вишняков работает с ребёнком в жёлтой кофте" style="object-position: center 40%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-2.jpg" alt="Работа с головой ребёнка в кресле" style="object-position: center 12%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-3.jpg" alt="Мягкая работа с головой ребёнка" style="object-position: center 5%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-4.jpg" alt="Работа с ребёнком на кушетке"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-5.jpg" alt="Евгений Вишняков на сеансе с малышом" style="object-position: center 8%;"></button>
+      <button type="button"><img src="photos/neurogenez/gallery-6.jpg" alt="Работа с ребёнком в жёлтой кофте лёжа" style="object-position: center 45%;"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. ВЕДУЩИЕ ══ -->
+<section class="sec sec--dark2" id="speakers">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Ведущие семинара</h2>
+    <div class="grid grid--2">
+      <article class="speaker">
+        <!-- Фото заменят на новое; пока селфи в том же кадре 4:5 -->
+        <div class="speaker__photo"><img src="photos/evgeniy-vishnyakov.jpeg" alt="Евгений Вишняков" style="object-position: 58% 60%;" loading="lazy"></div>
+        <div class="speaker__body">
+          <h3 class="speaker__name">Евгений Вишняков</h3>
+          <p class="speaker__role">Остеопат, реабилитолог, автор метода «Биостимуляция нейрогенеза», преподаватель и наставник МИОТ</p>
+          <div class="sp-stats">
+            <div class="sp-stat"><b>20 лет</b><span>работы с детьми с особенностями развития и поражениями ЦНС</span></div>
+            <div class="sp-stat"><b>10 лет</b><span>практики по авторскому протоколу</span></div>
+          </div>
+          <ul class="dash">
+            <li>Сотрудничает с благотворительной организацией «Дети-Ангелы»</li>
+            <li>Руководит центром реабилитации в Электростали и проводит выездные реабилитационные курсы</li>
+            <li>Медицинское образование, специализации по массажу и ЛФК, остеопатическая подготовка, участие в анатомических диссекциях</li>
+          </ul>
+        </div>
+      </article>
+      <article class="speaker">
+        <div class="speaker__photo"><img src="photos/oleg-agape-square.jpg" alt="Олег Агапэ" style="object-position: 50% 30%;" loading="lazy"></div>
+        <div class="speaker__body">
+          <h3 class="speaker__name">Олег Агапэ</h3>
+          <p class="speaker__role">Врач-остеопат, анатом, основатель Международного института остеопатических технологий (МИОТ)</p>
+          <div class="sp-stats">
+            <div class="sp-stat"><b>14+ лет</b><span>медицинского опыта</span></div>
+            <div class="sp-stat"><b>7000+</b><span>пациентов в России и на Бали</span></div>
+            <div class="sp-stat sp-stat--full"><b>500+</b><span>дипломированных специалистов подготовил</span></div>
+          </div>
+          <ul class="dash">
+            <li>Один из ведущих специалистов по анатомическим диссекциям в России</li>
+            <li>Остеопатическое образование в Европе</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. КАК ПРОХОДИТ ОБУЧЕНИЕ ══ -->
+<section class="sec sec--light" id="learning">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Как проходит обучение</h2>
+    <ol class="timeline">
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span><div><strong>Теория</strong>Разбираем, что происходит с нервной системой особенного ребёнка и почему нарушения развиваются именно так.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>Демонстрация</strong>Ведущие показывают каждый этап протокола и объясняют логику каждого действия.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0"/></svg></span><div><strong>Практика</strong>Вы сразу отрабатываете этап в парах, ведущие корректируют положение рук и технику.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><strong>Разбор</strong>Отвечаем на вопросы и разбираем случаи из вашей практики.</div></li>
+      <li><span class="timeline__dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Закрепление</strong>После семинара у вас остаются записи занятий, видеометодичка и чат с ведущими.</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ 9. ПРОГРАММА ══ -->
+<section class="sec sec--dark" id="program">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Программа</h2>
+    <div class="grid grid--2">
+      <div class="day-card">
+        <div class="day-card__top"><span class="day-card__num">День 1 · 19 декабря</span><span class="day-card__big" aria-hidden="true">01</span></div>
+        <ul class="day-list">
+          <li>Знакомство и вводная практика</li>
+          <li>Патологии центральной нервной системы и врождённые заболевания у детей</li>
+          <li>Патологические цепочки: как формируются нарушения</li>
+          <li>Противопоказания и безопасность работы</li>
+        </ul>
+        <div class="day-result"><strong>Результат дня:</strong> вы понимаете, как формируются нарушения у особенных детей, и умеете определять, когда работать нельзя.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-card__top"><span class="day-card__num">День 2 · 20 декабря</span><span class="day-card__big" aria-hidden="true">02</span></div>
+        <ul class="day-list">
+          <li>Построение сеанса и общение с родителями</li>
+          <li>Протокол «Биостимуляция нейрогенеза»: пошаговый разбор</li>
+          <li>Отработка техники в парах под контролем ведущих</li>
+          <li>Вручение сертификатов</li>
+        </ul>
+        <div class="day-result"><strong>Результат дня:</strong> вы знаете протокол целиком, отработали его руками и готовы применять в практике.</div>
+      </div>
+    </div>
+    <div class="btn-row btn-row--center program-cta"><a href="#tariffs" class="btn btn-primary">Записаться на семинар</a></div>
+  </div>
+</section>
+
+<!-- ══ 10. ПРОТИВОПОКАЗАНИЯ ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Противопоказания</h2>
+    <div class="card">
+      <p>Работа с особенными детьми требует особой ответственности. Поэтому на семинаре отдельно разбираем состояния, при которых протокол не применяется:</p>
+      <ul class="contra__list">
+        <li>Онкологические заболевания</li>
+        <li>Нарушения свёртываемости и системные заболевания крови</li>
+        <li>Острые инфекционные и воспалительные процессы</li>
+        <li>Тяжёлые психические расстройства</li>
+        <li>Гидроцефалия</li>
+        <li>Эпилептические энцефалопатии, в том числе синдромы Веста, Леннокса — Гасто и Отахары</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. ЧТО ИЗМЕНИТСЯ ══ -->
+<section class="sec sec--dark2" id="changes">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Что изменится в вашей практике</h2>
+    <ul class="changes">
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg></span><h3>Вы перестанете отказывать сложным детям</h3><p>Ребёнок с ДЦП или аутизмом на приёме больше не вызывает растерянности: вы знаете, с чего начать и где граница безопасной работы.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><h3>Вы будете видеть динамику и сможете показать её родителям</h3><p>Изменения видны от сеанса к сеансу, и вы можете честно говорить с семьёй о прогнозе.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><h3>Вы будете делать работу, которой гордитесь</h3><p>За каждым сеансом стоит реальная помощь ребёнку и его семье.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h3>Вы займёте редкую нишу</h3><p>Специалистов, которые умеют системно работать с такими детьми, мало, а семьи ищут их годами.</p></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Ваша практика будет расти естественно</h3><p>Семьи ценят специалистов, которым доверяют, остаются с ними надолго и рекомендуют их другим родителям.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 12. РЕЗУЛЬТАТЫ ══ -->
+<section class="sec sec--light" id="results">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Результаты работы по методу</h2>
+    <!-- Кейсы со слов Евгения Вишнякова. Фото ребёнка публикуются только с согласия родителей. -->
+    <article class="case case--wide">
+      <div class="case__photos" data-gallery>
+        <button type="button"><img src="photos/neurogenez/case-back-before.jpg" alt="Спина девочки до сеанса" loading="lazy"><span>До · 3°</span></button>
+        <button type="button"><img src="photos/neurogenez/case-back-after.jpg" alt="Спина девочки после сеанса" loading="lazy"><span>После · 1°</span></button>
+      </div>
+      <div>
+        <span class="case__tag">Кейс · 1 сеанс</span>
+        <h3 class="case__title">Асимметрия спины после пневмонии</h3>
+        <div class="case__step"><b>С чем пришли</b><p>Мама с дочкой пришла в панике: девочке поставили сколиоз и сказали, что ребёнка нужно оперировать.</p></div>
+        <div class="case__step"><b>Что показала диагностика</b><p>Сильное напряжение в области левого лёгкого и серповидной связки селезёнки, напряжена сама селезёнка. По анамнезу год назад девочка тяжело болела пневмонией: большое поражение лёгких, была на кислороде.</p></div>
+        <div class="case__step case__step--result"><b>Результат</b><p>После того как этот сегмент расслабили и проработали все дисфункции, спина стала ровной: асимметрия ушла за один сеанс.</p></div>
+      </div>
+    </article>
+    <div class="grid cases-row">
+      <article class="case">
+        <span class="case__tag">Кейс · РАС</span>
+        <h3 class="case__title">Первые слова прямо в кабинете</h3>
+        <ul class="case__facts">
+          <li><b>5 лет</b><span>возраст</span></li>
+          <li><b>4-й</b><span>сеанс, на котором появились первые слова</span></li>
+          <li><b>70</b><span>стимуляций сейчас</span></li>
+        </ul>
+        <div class="case__step"><b>С чем пришли</b><p>Мальчик с аутизмом не разговаривал, не смотрел в глаза и не отвечал, даже когда его просили помахать рукой. Мама — врач — устала: много денег уходило на реабилитацию, логопедов и дефектологов, а результата не было.</p></div>
+        <div class="case__step"><b>Что произошло</b><p>Евгений посоветовал маме не бросать: динамика может стоять на месте, а потом резко пойти вперёд. В конце того же сеанса он помахал мальчику и сказал «пока» — и тот впервые помахал в ответ и сказал «пока». Мама ещё около двух часов не могла уехать из центра: плакала.</p></div>
+        <div class="case__step case__step--result"><b>Сейчас</b><p>Ребёнок отлично разговаривает.</p></div>
+      </article>
+      <article class="case case--video">
+        <span class="case__tag">Видео</span>
+        <div class="video916">
+          <video src="photos/neurogenez/result-walk.mp4" poster="photos/neurogenez/result-walk-poster.jpg" controls preload="none" playsinline></video>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 13. ОТЗЫВЫ ══ -->
+<section class="sec sec--dark" id="reviews">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Отзывы</h2>
+    <div class="vreviews">
+      <figure class="vreview">
+        <div class="video916"><video src="photos/neurogenez/review-video.mp4" poster="photos/neurogenez/review-video-poster.jpg" controls preload="none" playsinline></video></div>
+        <figcaption><b>Видеоотзыв</b><span>Клиентка Евгения Вишнякова</span></figcaption>
+      </figure>
+      <!-- Второй видеоотзыв: когда будет файл, раскомментировать
+      <figure class="vreview">
+        <div class="video916"><video src="photos/neurogenez/review-video-2.mp4" poster="photos/neurogenez/review-video-2-poster.jpg" controls preload="none" playsinline></video></div>
+        <figcaption><b>Видеоотзыв</b></figcaption>
+      </figure>
+      -->
+    </div>
+
+    <div class="rv">
+      <button class="rv__btn rv__btn--prev" type="button" aria-label="Предыдущие отзывы"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="rv__track">
+        <article class="rcard">
+          <p class="rcard__quote">Верю и рекомендую всем!!!</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Добрый день! Хотим оставить честный отзыв о наших занятиях остеопатией с Евгением Вишняковым. Остеопатией с Евгением Марк занимается уже более шести лет! Перед началом каждого сеанса Евгений сначала проводит диагностику, а затем начинает работать с найденными проблемами. Наша основная проблема это голова, зрительный нерв, ЖКТ, таз, лимфа, ноги. Любой сбой в работе одного из элементов приводит к расстройству в функционировании всей системы. Задачей врача-остеопата является выявление и устранение нарушений этого баланса, для восстановления гармоничных отношений между органами. Я вижу очень большие изменения у Марка. Женя работает так же над развитием эмоционалки. Через эмоции развиваются и умственные способности!!! И это факт!!! Благодаря работе Евгения, Марк выражает свои эмоции очень бурно. Будь то плач или смех. Марк смеётся, заливисто и с гоготом! Это для ребенка с поражением ЦНС — это тоже навык и большой успех. Марк понимает интонацию с которой к нему обращаются, может в ответ улыбнуться, вслушивается. Это тоже все работа Остеопата! Обычно после остеопатии Марк становится спокойным, и сон становится более долгим и крепким. Марк очень хорошо реагирует на данный метод воздействия на организм. Меня часто спрашивают, верю ли я в остеопатии? Верю и рекомендую всем!!! Конечно, все зависит от самого специалиста. Но нам в этом плане повезло! Евгений Вишняков лучший специалист в остеопатии!!!</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Рая, мама Марка</b><span>Порок развития головного мозга, микроцефалия, ДЦП</span></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-2-crop.jpg,photos/neurogenez/review-3-crop.jpg,photos/neurogenez/review-4-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+        <article class="rcard">
+          <p class="rcard__quote">Чудо произошло с первого приема, после золотых рук Евгения, почти месяц без приступов</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Первый раз мы приехали на прием к остеопату Евгению в сентябре 24 года, нам очень рекомендовали Евгения как опытного специалиста. Мы в этом убедились после первого приема. У моего ребенка ВПР головного мозга, эпилепсия, дцп. Очень частые были приступы, плюс все время плакал практически всегда болит живот. Чудо произошло с первого приема, после золотых рук Евгения, почти месяц без приступов, боли стали меньше в животе. И мы по мере возможности привозим Егора к Евгению на прием. Два года Евгений работает с Егором, результат виден, Егор стал более контактным, может даже выражать звуковые свои эмоции. Стал активнее, приступы уменьшились, живот налаживается. Я очень благодарна Евгению, просто специалист от бога, контакт с Егором всегда отличный. Наша семья Рада, что у нас есть такой специалист действительно профессионал своего дела. Умный, красивый, талантливый и хороший человек! Спасибо вам Евгений за вашу работу!</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Виктория, мама Егора</b><span>ВПР головного мозга, эпилепсия, ДЦП</span></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-5-crop.jpg,photos/neurogenez/review-6-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+        <article class="rcard">
+          <p class="rcard__quote">Мы ему с вами координацию прям на ура выставили, прыгает на одной ноге теперь!!</p>
+          <div class="rcard__text-wrap"><p class="rcard__text">Добрый день, у нас всё отлично, прям результативно, мы ему с вами координацию прям на ура выставили, прыгает на одной ноге теперь!! Речь лучше и поведение. … прям ваша стимуляция была бы нам прям очень в ёлочку. … но к вам нам надо ооочень.</p></div>
+          <button class="rcard__more" type="button">Читать полностью</button>
+          <div class="rcard__foot">
+            <div class="rcard__name"><b>Юлия</b></div>
+            <button class="rcard__orig" type="button" data-shots="photos/neurogenez/review-1-crop.jpg">Смотреть оригинал</button>
+          </div>
+        </article>
+      </div>
+      <button class="rv__btn rv__btn--next" type="button" aria-label="Следующие отзывы"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 14. ПОДДЕРЖКА ══ -->
+<section class="sec sec--light">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Поддержка после обучения</h2>
+    <ul class="support">
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><b>Чат с ведущими</b><span>Вопросы и разбор случаев из вашей практики</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>Сообщество коллег</b><span>Коллеги, которые работают по одному протоколу</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg></span><b>Записи всех занятий</b><span>С доступом на 6 месяцев</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M10 7l4 3-4 3z"/></svg></span><b>Видеометодичка</b><span>С пошаговым разбором протокола</span></li>
+      <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span><b>Сертификат</b><span>Участника семинара</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 15. СТОИМОСТЬ ══ -->
+<section class="sec sec--dark" id="tariffs">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Стоимость участия</h2>
+    <div class="price-grid">
+      <div class="price-card price-card--best">
+        <span class="price-card__ribbon">Рекомендуем</span>
+        <div class="price-card__label">Офлайн</div>
+        <ul class="price-card__feats">
+          <li>Два дня обучения в зале вместе с ведущими</li>
+          <li>Отработка техники в парах с личной корректировкой от ведущих</li>
+          <li>Ответы на вопросы вживую</li>
+          <li>Записи всех занятий с доступом на 6 месяцев</li>
+          <li>Видеометодичка по протоколу</li>
+          <li>Чат с ведущими после семинара</li>
+          <li>Сертификат</li>
+        </ul>
+        <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalQuestion')">Оставить заявку</button>
+      </div>
+      <div class="price-card">
+        <div class="price-card__label">Онлайн</div>
+        <ul class="price-card__feats">
+          <li>Качественная прямая трансляция обоих дней</li>
+          <li>Вопросы ведущим в прямом эфире</li>
+          <li>Практика вместе с группой: вы выполняете те же упражнения, что и участники в зале</li>
+          <li>Записи всех занятий с доступом на 6 месяцев</li>
+          <li>Видеометодичка по протоколу</li>
+          <li>Чат с ведущими после семинара</li>
+          <li>Сертификат</li>
+        </ul>
+        <button type="button" class="btn btn-dark" onclick="gcOpen('gcModalQuestion')">Оставить заявку</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 16. FAQ ══ -->
+<section class="sec sec--light" id="faq">
+  <div class="wrap reveal">
+    <h2 class="sec__title">Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Подойдёт ли семинар, если я ещё не работал с особенными детьми?</summary>
+        <div class="faq__a">Да. Протокол даёт понятную последовательность действий, а противопоказаниям и безопасности на семинаре отведено отдельное время. После обучения вы сможете пересматривать записи и задавать вопросы в чате с ведущими.</div>
+      </details>
+      <details>
+        <summary>Хватит ли двух дней, чтобы освоить метод?</summary>
+        <div class="faq__a">Да. Вы осваиваете не десятки разрозненных техник, а один алгоритм. Записи на 6 месяцев, видеометодичка и чат с ведущими помогут закрепить навык уже в работе.</div>
+      </details>
+      <details>
+        <summary>Чем онлайн-участие отличается от очного?</summary>
+        <div class="faq__a">Онлайн вы видите всё в качественной трансляции, задаёте вопросы в прямом эфире и выполняете те же упражнения, что и участники в зале. Очно ведущие могут лично поправить положение рук.</div>
+      </details>
+      <details>
+        <summary>Выдаётся ли документ по итогам?</summary>
+        <div class="faq__a">Да, все участники получают сертификат.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 17. ОСТАЛИСЬ ВОПРОСЫ ══ -->
+<section class="sec sec--dark2" id="ask">
+  <div class="wrap reveal ask">
+    <h2 class="sec__title">Остались вопросы?</h2>
+    <p class="sec__sub">Оставьте заявку, и специалист отдела заботы свяжется с вами и ответит на все вопросы о семинаре.</p>
+    <div class="ask__cta"><button type="button" class="btn btn-primary" onclick="gcOpen('gcModalQuestion')">Оставить заявку</button></div>
+  </div>
+</section>
+
+<!-- ══ 18. ФИНАЛЬНЫЙ CTA ══ -->
+<section class="sec sec--light" id="signup">
+  <div class="wrap reveal">
+    <div class="cta-final">
+      <h2 class="cta-final__title">Научитесь помогать детям с ДЦП, РАС и поражениями ЦНС</h2>
+      <p class="cta-final__text">Каждый шаг ребёнка вперёд меняет жизнь целой семьи. Станьте специалистом, который помогает его сделать.</p>
+      <div class="cta-final__date">19–20 декабря · офлайн и онлайн</div>
+      <div class="btn-row btn-row--center"><a href="#tariffs" class="btn btn-dark">Записаться на семинар</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="page-foot">
+  <div class="wrap">
+    <p>© МИОТ — Международный институт остеопатических технологий · <a href="policy.html">Политика конфиденциальности</a> · <a href="offer.html">Договор оферты</a></p>
+  </div>
+</footer>
+
+<div id="gcModalQuestion" class="gc-modal" role="dialog" aria-modal="true" aria-label="Оставить заявку">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" type="button" onclick="gcCloseAll()" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Оставить заявку</div>
+    <script id="ba3eab2692355081d9c7e9312a8927259bfacf92" src="https://online.agape-course.ru/pl/lite/widget/script?id=1680028"></script>
+  </div>
+</div>
+
+<div class="sticky-cta"><a href="#tariffs" class="btn btn-primary">Записаться на семинар</a></div>
+<div class="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <button class="lb__btn lb__close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb__btn lb__prev" type="button" aria-label="Предыдущее"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img alt="">
+  <button class="lb__btn lb__next" type="button" aria-label="Следующее"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<script>
+  // Появление блоков при скролле
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Окна с виджетами GetCourse (онлайн, офлайн, вопрос/заявка)
+  function gcOpen(id) { const m = document.getElementById(id); if (!m) return; m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+  function gcCloseAll() { document.querySelectorAll('.gc-modal.is-open').forEach(m => m.classList.remove('is-open')); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') gcCloseAll(); });
+
+  // Лайтбокс: галереи и оригиналы отзывов
+  const lb = document.querySelector('.lb'), lbImg = lb.querySelector('img');
+  const lbPrev = lb.querySelector('.lb__prev'), lbNext = lb.querySelector('.lb__next');
+  let lbList = [], lbIdx = 0;
+  const lbShow = () => {
+    lbImg.src = lbList[lbIdx].src; lbImg.alt = lbList[lbIdx].alt || '';
+    lbPrev.hidden = lbNext.hidden = lbList.length < 2;
+  };
+  const lbOpen = (list, i) => { lbList = list; lbIdx = i; lbShow(); lb.classList.add('is-open'); };
+  const lbClose = () => lb.classList.remove('is-open');
+  const lbStep = (d) => { lbIdx = (lbIdx + d + lbList.length) % lbList.length; lbShow(); };
+  document.querySelectorAll('[data-gallery]').forEach(g => {
+    const imgs = [...g.querySelectorAll('img')].map(i => ({ src: i.currentSrc || i.src, alt: i.alt }));
+    g.querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => lbOpen(imgs, i)));
+  });
+  document.querySelectorAll('[data-shots]').forEach(b => {
+    const shots = b.dataset.shots.split(',').map(src => ({ src, alt: 'Скриншот отзыва' }));
+    b.addEventListener('click', () => lbOpen(shots, 0));
+  });
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('.lb__close')) lbClose(); });
+  lbPrev.addEventListener('click', () => lbStep(-1));
+  lbNext.addEventListener('click', () => lbStep(1));
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbStep(-1);
+    if (e.key === 'ArrowRight') lbStep(1);
+  });
+
+  // Отзывы: «Читать полностью» только там, где текст обрезан
+  document.querySelectorAll('.rcard').forEach(card => {
+    const text = card.querySelector('.rcard__text'), more = card.querySelector('.rcard__more');
+    const check = () => { if (!card.classList.contains('is-open')) more.hidden = text.scrollHeight <= text.clientHeight + 2; };
+    more.addEventListener('click', () => {
+      const open = card.classList.toggle('is-open');
+      more.textContent = open ? 'Свернуть' : 'Читать полностью';
+    });
+    check(); window.addEventListener('resize', check);
+  });
+
+  // Карусель отзывов: стрелки
+  const track = document.querySelector('.rv__track');
+  const rvPrev = document.querySelector('.rv__btn--prev'), rvNext = document.querySelector('.rv__btn--next');
+  const rvStep = () => track.querySelector('.rcard').offsetWidth + 24;
+  const rvUpdate = () => {
+    rvPrev.hidden = track.scrollLeft <= 2;
+    rvNext.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  };
+  rvPrev.addEventListener('click', () => track.scrollBy({ left: -rvStep(), behavior: 'smooth' }));
+  rvNext.addEventListener('click', () => track.scrollBy({ left: rvStep(), behavior: 'smooth' }));
+  track.addEventListener('scroll', rvUpdate, { passive: true });
+  window.addEventListener('resize', rvUpdate); rvUpdate();
+
+  // Липкая кнопка на мобильных: после первого экрана и не поверх тарифов и форм
+  const sticky = document.querySelector('.sticky-cta');
+  const hideZones = new Set();
+  let pastHero = false;
+  const stickyUpdate = () => sticky.classList.toggle('is-visible', pastHero && hideZones.size === 0);
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; stickyUpdate(); }).observe(document.querySelector('.hero'));
+  const zoneIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { e.isIntersecting ? hideZones.add(e.target) : hideZones.delete(e.target); });
+    stickyUpdate();
+  });
+  ['tariffs', 'ask', 'signup'].forEach(id => zoneIo.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
