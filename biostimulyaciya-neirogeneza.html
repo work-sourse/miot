@@ -359,6 +359,15 @@
   .faq details[open] summary::after { transform: rotate(45deg); }
   .faq__a { color: var(--ink-soft); padding-bottom: 20px; }
 
+
+  /* ══ WIDGET MODALS (GetCourse) ══ */
+  .gc-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+  .gc-modal.is-open { display: flex; }
+  .gc-modal__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+  .gc-modal__box { position: relative; z-index: 1; background: #fff; color: var(--ink); border-radius: 16px; padding: 32px 28px; width: 90%; max-width: 480px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .gc-modal__close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--ink-mute); line-height: 1; }
+  .gc-modal__title { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; color: var(--ink); }
+
   /* ══ FORMS ══ */
   .lead { display: grid; gap: 12px; }
   .lead--row { grid-template-columns: 1fr 1fr auto; align-items: start; }
@@ -380,6 +389,7 @@
   .lead.is-sent + .lead-done { display: block; }
   .sec--dark2 .lead-done { background: rgba(204,167,118,0.12); color: #fff; border: 1px solid rgba(204,167,118,0.35); }
   .ask { max-width: 860px; margin: 0 auto; }
+  .ask__cta { display: flex; justify-content: center; }
 
   /* ══ FINAL CTA ══ */
   #signup { padding-bottom: 56px; }
@@ -899,7 +909,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#ask" class="btn btn-primary">Участвовать офлайн</a>
+        <button type="button" class="btn btn-primary" onclick="gcOpen('gcModalOffline')">Участвовать офлайн</button>
       </div>
       <div class="price-card">
         <div class="price-card__label">Онлайн</div>
@@ -913,7 +923,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
           <li>Чат с ведущими после семинара</li>
           <li>Сертификат</li>
         </ul>
-        <a href="#ask" class="btn btn-dark">Участвовать онлайн</a>
+        <button type="button" class="btn btn-dark" onclick="gcOpen('gcModalOnline')">Участвовать онлайн</button>
       </div>
     </div>
   </div>
@@ -949,13 +959,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   <div class="wrap reveal ask">
     <h2 class="sec__title">Остались вопросы?</h2>
     <p class="sec__sub">Оставьте заявку, и специалист отдела заботы свяжется с вами и ответит на все вопросы о семинаре.</p>
-    <form class="lead lead--row" data-lead="question">
-      <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
-      <input type="tel" name="phone" placeholder="Телефон" autocomplete="tel" required>
-      <button type="submit" class="btn btn-primary">Задать вопрос</button>
-      <label class="consent"><input type="checkbox" required><span>Даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="policy.html" target="_blank">политику конфиденциальности</a></span></label>
-    </form>
-    <div class="lead-done">Спасибо! Специалист отдела заботы скоро свяжется с вами.</div>
+    <div class="ask__cta"><button type="button" class="btn btn-primary" onclick="gcOpen('gcModalQuestion')">Задать вопрос</button></div>
   </div>
 </section>
 
@@ -978,6 +982,31 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   </div>
 </footer>
 
+<div id="gcModalOnline" class="gc-modal" role="dialog" aria-modal="true" aria-label="Онлайн — 45 000 ₽">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" type="button" onclick="gcCloseAll()" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Онлайн — 45 000 ₽</div>
+    <script id="f79813f00d96c2589f33c09be7b89eb65a19b622" src="https://online.agape-course.ru/pl/lite/widget/script?id=1680026"></script>
+  </div>
+</div>
+<div id="gcModalOffline" class="gc-modal" role="dialog" aria-modal="true" aria-label="Офлайн — 55 000 ₽">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" type="button" onclick="gcCloseAll()" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Офлайн — 55 000 ₽</div>
+    <script id="a5553e7958987667005ec5607c1270e7820f088f" src="https://online.agape-course.ru/pl/lite/widget/script?id=1680027"></script>
+  </div>
+</div>
+<div id="gcModalQuestion" class="gc-modal" role="dialog" aria-modal="true" aria-label="Остались вопросы?">
+  <div class="gc-modal__overlay" onclick="gcCloseAll()"></div>
+  <div class="gc-modal__box">
+    <button class="gc-modal__close" type="button" onclick="gcCloseAll()" aria-label="Закрыть">✕</button>
+    <div class="gc-modal__title">Остались вопросы?</div>
+    <script id="ba3eab2692355081d9c7e9312a8927259bfacf92" src="https://online.agape-course.ru/pl/lite/widget/script?id=1680028"></script>
+  </div>
+</div>
+
 <div class="sticky-cta"><a href="#tariffs" class="btn btn-primary">Записаться на семинар</a></div>
 <div class="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото">
   <button class="lb__btn lb__close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -993,10 +1022,10 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
   }, { rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Заявки. TODO: подключить отправку (виджет GetCourse / CRM) — сейчас форма только показывает «Спасибо».
-  document.querySelectorAll('form[data-lead]').forEach(form => {
-    form.addEventListener('submit', (e) => { e.preventDefault(); form.classList.add('is-sent'); });
-  });
+  // Окна с виджетами GetCourse (онлайн, офлайн, вопрос/заявка)
+  function gcOpen(id) { const m = document.getElementById(id); if (!m) return; m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+  function gcCloseAll() { document.querySelectorAll('.gc-modal.is-open').forEach(m => m.classList.remove('is-open')); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') gcCloseAll(); });
 
   // Лайтбокс: галереи и оригиналы отзывов
   const lb = document.querySelector('.lb'), lbImg = lb.querySelector('img');
