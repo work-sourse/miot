@@ -208,6 +208,8 @@
 
   /* ══ SPEAKERS ══ */
   .speaker { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
+  .speaker__role-tag { align-self: flex-start; margin: 0 0 12px 0; font-size: var(--f-cap); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(204,167,118,0.12); border: 1px solid rgba(204,167,118,0.3); border-radius: 999px; padding: 6px 14px; }
+  .speaker__note { margin-top: 18px; padding: 12px 16px; border-left: 3px solid var(--gold); background: rgba(204,167,118,0.08); border-radius: 0 12px 12px 0; font-size: var(--f-sec); color: var(--on-dark); line-height: 1.5; }
   .speaker__photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: var(--photo-filter); }
   .speaker__body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; }
   @media (max-width: 600px) { .speaker__body { padding: 24px 20px 26px; } }
@@ -672,6 +674,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
     <div class="grid grid--2">
       <article class="speaker">
         <!-- Фото заменят на новое; пока селфи в том же кадре 4:5 -->
+        <div class="speaker__role-tag">Ведущий</div>
         <div class="speaker__photo"><img src="photos/evgeniy-vishnyakov.jpeg" alt="Евгений Вишняков" style="object-position: 58% 60%;" loading="lazy"></div>
         <div class="speaker__body">
           <h3 class="speaker__name">Евгений Вишняков</h3>
@@ -688,6 +691,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
         </div>
       </article>
       <article class="speaker">
+        <div class="speaker__role-tag">Научный руководитель</div>
         <div class="speaker__photo"><img src="photos/oleg-agape-square.jpg" alt="Олег Агапэ" style="object-position: 50% 30%;" loading="lazy"></div>
         <div class="speaker__body">
           <h3 class="speaker__name">Олег Агапэ</h3>
@@ -701,6 +705,7 @@ src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"
             <li>Один из ведущих специалистов по анатомическим диссекциям в России</li>
             <li>Остеопатическое образование в Европе</li>
           </ul>
+          <p class="speaker__note">Лично присутствует на семинаре, работает с участниками на практике и поправляет технику</p>
         </div>
       </article>
     </div>
