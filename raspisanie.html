@@ -128,6 +128,9 @@
   .btn:hover { transform: translateY(-2px); }
   .btn--ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.22); box-shadow: none; }
   .modal__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .modal__chats { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border-dark); }
+  .modal__chats-label { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .modal__chats .btn { flex: 1; min-width: 130px; }
 
   @media (max-width: 640px) {
     .hero { padding: 40px 0 28px; }
@@ -374,6 +377,16 @@ const WD       = ['вс','пн','вт','ср','чт','пт','сб'];
 const d = s => { const [y,m,dd] = s.split('-').map(Number); return new Date(y, m-1, dd); };
 const today = new Date(); today.setHours(0,0,0,0);
 
+/* Чаты участников: какие мероприятия получают какие ссылки */
+const CHATS = {
+  osteo7: { max: 'https://max.ru/join/8_locq8WO1pn4NjrliazzT38wh3FsVglPxBF4a1J-_I', tg: 'https://t.me/+-0Bz-58KsaEyOWNi' },
+  bio:    { max: 'https://max.ru/join/C8uhLdrMEpe4FYoABy5ABcyHC0Arrxwdzck44Q0Nplg', tg: 'https://t.me/+6sXujfrfSKU0OWUy' },
+};
+EVENTS.forEach(e => {
+  if (e.type === 'course' && e.stream === '7 поток') e.chats = CHATS.osteo7;
+  if (e.type === 'bio') e.chats = CHATS.bio;
+});
+
 EVENTS.forEach((e, i) => {
   e.id = i; e.s = d(e.start); e.e = d(e.end || e.start);
   e.past = e.e < today; e.now = e.s <= today && e.e >= today;
@@ -464,6 +477,12 @@ function openEvent(id) {
     h += `<div class="modal__actions"><a class="btn" href="${encodeURI(e.url)}" target="_blank" rel="noopener">${esc(e.urlLabel || 'Открыть сайт')} →</a></div>`;
   } else {
     h += `<p class="modal__note">Отдельного сайта у мероприятия пока нет.</p>`;
+  }
+  if (e.chats) {
+    h += `<div class="modal__chats"><span class="modal__chats-label">Чат участников</span><div class="modal__actions">
+      <a class="btn btn--ghost" href="${e.chats.max}" target="_blank" rel="noopener">MAX</a>
+      <a class="btn btn--ghost" href="${e.chats.tg}" target="_blank" rel="noopener">Telegram</a>
+    </div></div>`;
   }
   document.getElementById('modalBody').innerHTML = h;
   dlg.showModal();
