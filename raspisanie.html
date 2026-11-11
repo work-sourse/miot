@@ -131,6 +131,8 @@
   .modal__chats { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border-dark); }
   .modal__chats-label { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .modal__chats .btn { flex: 1; min-width: 130px; }
+  .modal__chats-group { display: block; font-size: 14px; font-weight: 600; color: var(--w-70); margin: 14px 0 8px; }
+  .modal__chats-label + .modal__chats-group { margin-top: 0; }
 
   @media (max-width: 640px) {
     .hero { padding: 40px 0 28px; }
@@ -377,14 +379,20 @@ const WD       = ['вс','пн','вт','ср','чт','пт','сб'];
 const d = s => { const [y,m,dd] = s.split('-').map(Number); return new Date(y, m-1, dd); };
 const today = new Date(); today.setHours(0,0,0,0);
 
-/* Чаты участников: какие мероприятия получают какие ссылки */
+/* Чаты участников: какие мероприятия получают какие ссылки.
+   Каждый чат: { label (необязательно — подпись группы), max, tg } */
 const CHATS = {
-  osteo7: { max: 'https://max.ru/join/8_locq8WO1pn4NjrliazzT38wh3FsVglPxBF4a1J-_I', tg: 'https://t.me/+-0Bz-58KsaEyOWNi' },
-  bio:    { max: 'https://max.ru/join/C8uhLdrMEpe4FYoABy5ABcyHC0Arrxwdzck44Q0Nplg', tg: 'https://t.me/+6sXujfrfSKU0OWUy' },
+  osteo7:  [{ max: 'https://max.ru/join/8_locq8WO1pn4NjrliazzT38wh3FsVglPxBF4a1J-_I', tg: 'https://t.me/+-0Bz-58KsaEyOWNi' }],
+  bio:     [{ max: 'https://max.ru/join/C8uhLdrMEpe4FYoABy5ABcyHC0Arrxwdzck44Q0Nplg', tg: 'https://t.me/+6sXujfrfSKU0OWUy' }],
+  secrets: [
+    { label: 'Тариф «Базовый»',      max: 'https://max.ru/join/UPuUtgAD5_uihNbzFgPN-1JT14L9U7by7IusxpbsTuI', tg: 'https://t.me/+LWUr3zN_lsAzN2Fi' },
+    { label: 'Тариф «Премиум» (VIP)', max: 'https://max.ru/join/oNvaTL48Dy1vmXYn3pTmG3vQiZHiJdff7QYaCFkmUck', tg: 'https://t.me/+Tnk6HZLxHLQ2NDA6' },
+  ],
 };
 EVENTS.forEach(e => {
   if (e.type === 'course' && e.stream === '7 поток') e.chats = CHATS.osteo7;
   if (e.type === 'bio') e.chats = CHATS.bio;
+  if (e.url === 'secrety-masterov.html') e.chats = CHATS.secrets;
 });
 
 EVENTS.forEach((e, i) => {
@@ -479,10 +487,15 @@ function openEvent(id) {
     h += `<p class="modal__note">Отдельного сайта у мероприятия пока нет.</p>`;
   }
   if (e.chats) {
-    h += `<div class="modal__chats"><span class="modal__chats-label">Чат участников</span><div class="modal__actions">
-      <a class="btn btn--ghost" href="${e.chats.max}" target="_blank" rel="noopener">MAX</a>
-      <a class="btn btn--ghost" href="${e.chats.tg}" target="_blank" rel="noopener">Telegram</a>
-    </div></div>`;
+    h += `<div class="modal__chats"><span class="modal__chats-label">${e.chats.length > 1 ? 'Чаты участников' : 'Чат участников'}</span>`;
+    e.chats.forEach(c => {
+      if (c.label) h += `<span class="modal__chats-group">${esc(c.label)}</span>`;
+      h += `<div class="modal__actions">
+        <a class="btn btn--ghost" href="${c.max}" target="_blank" rel="noopener">MAX</a>
+        <a class="btn btn--ghost" href="${c.tg}" target="_blank" rel="noopener">Telegram</a>
+      </div>`;
+    });
+    h += `</div>`;
   }
   document.getElementById('modalBody').innerHTML = h;
   dlg.showModal();
