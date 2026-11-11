@@ -131,6 +131,8 @@
   .modal__chats { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border-dark); }
   .modal__chats-label { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .modal__chats .btn { flex: 1; min-width: 130px; }
+  .btn--sheet { white-space: normal; text-align: center; }
+  .btn--sheet svg { flex-shrink: 0; color: var(--t-master); }
   .modal__chats-group { display: block; font-size: 14px; font-weight: 600; color: var(--w-70); margin: 14px 0 8px; }
   .modal__chats-label + .modal__chats-group { margin-top: 0; }
 
@@ -389,9 +391,14 @@ const CHATS = {
     { label: 'Тариф «Премиум» (VIP)', max: 'https://max.ru/join/oNvaTL48Dy1vmXYn3pTmG3vQiZHiJdff7QYaCFkmUck', tg: 'https://t.me/+Tnk6HZLxHLQ2NDA6' },
   ],
 };
+/* Таблицы со списками участников */
+const SHEETS = {
+  osteo7: { label: 'Список студентов 7 потока', url: 'https://docs.google.com/spreadsheets/d/12EnoqvJPbd84TCsRwJYTGgVLBicEG2UWrvx38g45RKk/edit?gid=0#gid=0' },
+  bio:    { label: 'Список участников «Биодинамики»', url: 'https://docs.google.com/spreadsheets/d/12BKyKfP1RixJ4MU8dPLqUAHYBG30tsSdx5MhLsY65j8/edit?gid=1834231459#gid=1834231459' },
+};
 EVENTS.forEach(e => {
-  if (e.type === 'course' && e.stream === '7 поток') e.chats = CHATS.osteo7;
-  if (e.type === 'bio') e.chats = CHATS.bio;
+  if (e.type === 'course' && e.stream === '7 поток') { e.chats = CHATS.osteo7; e.sheet = SHEETS.osteo7; }
+  if (e.type === 'bio') { e.chats = CHATS.bio; e.sheet = SHEETS.bio; }
   if (e.url === 'secrety-masterov.html') e.chats = CHATS.secrets;
 });
 
@@ -485,6 +492,11 @@ function openEvent(id) {
     h += `<div class="modal__actions"><a class="btn" href="${encodeURI(e.url)}" target="_blank" rel="noopener">${esc(e.urlLabel || 'Открыть сайт')} →</a></div>`;
   } else {
     h += `<p class="modal__note">Отдельного сайта у мероприятия пока нет.</p>`;
+  }
+  if (e.sheet) {
+    h += `<div class="modal__chats"><span class="modal__chats-label">Участники</span><div class="modal__actions">
+      <a class="btn btn--ghost btn--sheet" href="${e.sheet.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>${esc(e.sheet.label)}</a>
+    </div></div>`;
   }
   if (e.chats) {
     h += `<div class="modal__chats"><span class="modal__chats-label">${e.chats.length > 1 ? 'Чаты участников' : 'Чат участников'}</span>`;
