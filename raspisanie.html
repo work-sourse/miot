@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Расписание мероприятий · МИОТ (для сотрудников)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-dark:      #0F172A;
+    --bg-dark2:     #16213F;
+    --card-dark:    #1B2947;
+    --card-dark2:   #22314F;
+    --border-dark:  rgba(255,255,255,0.10);
+    --grad-title:   linear-gradient(37deg, #FFF6E6 0%, #E9D3A1 55%, #CCA776 100%);
+    --grad-card:    linear-gradient(135deg, #1B2947 0%, #35507E 100%);
+    --grad-btn:     linear-gradient(135deg, #E3C48D 0%, #B8894F 100%);
+    --gold:         #CCA776;
+    --w-70:         rgba(255,255,255,0.72);
+    --w-50:         rgba(255,255,255,0.52);
+    --ink:          #0F172A;
+    /* event-type accents */
+    --t-course:     #CCA776;
+    --t-bio:        #8FB8E8;
+    --t-online:     #A99BFF;
+    --t-special:    #E8A27C;
+    --t-master:     #7FD1B0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.5; background: var(--bg-dark); color: #fff; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+
+  /* ══ HEADER ══ */
+  .top { border-bottom: 1px solid var(--border-dark); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .logo { font-family: 'Unbounded', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; line-height: 1.25; color: var(--w-70); text-decoration: none; }
+  .internal { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(204,167,118,0.35); background: rgba(204,167,118,0.08); border-radius: 999px; padding: 6px 14px; white-space: nowrap; }
+
+  /* ══ HERO ══ */
+  .hero { position: relative; overflow: hidden; text-align: center; padding: 56px 0 40px; }
+  .hero::before { content: ''; position: absolute; width: 620px; height: 620px; left: 50%; top: -360px; transform: translateX(-50%); background: radial-gradient(circle, rgba(204,167,118,0.22) 0%, rgba(204,167,118,0) 65%); pointer-events: none; }
+  .eyebrow { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .hero__title { font-family: 'Unbounded', sans-serif; font-size: clamp(30px, 6vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-wrap: balance; margin-bottom: 16px; position: relative; }
+  .hero__sub { color: var(--w-70); max-width: 560px; margin: 0 auto; text-wrap: balance; position: relative; }
+
+  /* ══ NEXT EVENT ══ */
+  .next { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; width: 100%; text-align: left; background: var(--grad-card); border: 1px solid rgba(204,167,118,0.35); border-radius: 24px; padding: 24px 26px; margin: 8px 0 36px; cursor: pointer; box-shadow: 0 24px 50px -24px rgba(0,0,0,0.6); transition: transform .2s, box-shadow .2s; }
+  .next:hover { transform: translateY(-2px); box-shadow: 0 28px 56px -22px rgba(204,167,118,0.35); }
+  .next__label { position: absolute; top: -12px; left: 24px; background: var(--grad-btn); color: var(--ink); font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
+  .next__date { font-family: 'Unbounded', sans-serif; font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1; background: var(--grad-title); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap; }
+  .next__date small { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px; }
+  .next__title { font-family: 'Unbounded', sans-serif; font-size: clamp(16px, 2.2vw, 21px); font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+  .next__meta { color: var(--w-70); font-size: 14.5px; }
+  .next__title, .next__meta, .ev__title { display: block; }
+  .next__count { font-size: 13.5px; color: var(--gold); font-weight: 600; white-space: nowrap; }
+
+  /* ══ FILTERS ══ */
+  .filters { position: sticky; top: 0; z-index: 5; background: rgba(15,23,42,0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 12px 0; margin-bottom: 8px; border-bottom: 1px solid var(--border-dark); }
+  .filters__row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; align-items: center; }
+  .filters__row::-webkit-scrollbar { display: none; }
+  .chip { flex-shrink: 0; border: 1px solid var(--border-dark); background: rgba(255,255,255,0.04); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--w-70); transition: background .2s, color .2s, border-color .2s; display: inline-flex; align-items: center; gap: 8px; }
+  .chip:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+  .chip[aria-pressed="true"] { background: var(--grad-btn); color: var(--ink); border-color: transparent; }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .chip[aria-pressed="true"] .dot { background: var(--ink); }
+  .toggle-past { margin-left: auto; flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--w-50); cursor: pointer; padding-left: 8px; white-space: nowrap; }
+  .toggle-past input { accent-color: var(--gold); width: 16px; height: 16px; }
+
+  /* ══ TIMELINE ══ */
+  .year { font-family: 'Unbounded', sans-serif; font-size: clamp(36px, 7vw, 64px); font-weight: 800; letter-spacing: -0.03em; color: rgba(255,255,255,0.06); margin: 36px 0 -8px; line-height: 1; }
+  .month { margin-top: 28px; }
+  .month__name { font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+  .month__name::after { content: ''; flex: 1; height: 1px; background: var(--border-dark); }
+  .list { display: grid; gap: 10px; }
+
+  .ev { --c: var(--gold); display: grid; grid-template-columns: 96px 1fr auto; gap: 18px; align-items: center; width: 100%; text-align: left; background: var(--card-dark); border: 1px solid var(--border-dark); border-left: 3px solid var(--c); border-radius: 18px; padding: 16px 20px 16px 18px; cursor: pointer; transition: transform .18s, background .18s, border-color .18s; }
+  .ev:hover { transform: translateX(3px); background: var(--card-dark2); }
+  .ev:focus-visible, .next:focus-visible, .chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .ev__date { font-family: 'Unbounded', sans-serif; line-height: 1.05; }
+  .ev__days { display: block; font-size: 20px; font-weight: 700; white-space: nowrap; }
+  .ev__mon { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-50); margin-top: 4px; }
+  .ev__wd { display: block; font-family: 'Inter', sans-serif; font-size: 12px; color: var(--w-50); margin-top: 2px; }
+  .ev__title { font-family: 'Unbounded', sans-serif; font-size: 15.5px; font-weight: 600; line-height: 1.35; margin-bottom: 7px; text-wrap: pretty; }
+  .ev__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); color: var(--w-70); white-space: nowrap; }
+  .tag--type { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+  .ev__go { display: flex; align-items: center; gap: 10px; color: var(--w-50); font-size: 13px; }
+  .ev__go svg { width: 18px; height: 18px; transition: transform .2s; }
+  .ev:hover .ev__go svg { transform: translateX(3px); color: var(--gold); }
+  .site-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(204,167,118,0.18); }
+  .ev.is-past { opacity: 0.45; }
+  .ev.is-past .ev__days { text-decoration: line-through; text-decoration-thickness: 1px; }
+  .ev.is-now { border-color: rgba(204,167,118,0.5); box-shadow: 0 0 0 1px rgba(204,167,118,0.3) inset; }
+
+  .t-course  { --c: var(--t-course); }
+  .t-bio     { --c: var(--t-bio); }
+  .t-online  { --c: var(--t-online); }
+  .t-special { --c: var(--t-special); }
+  .t-master  { --c: var(--t-master); }
+
+  .empty { color: var(--w-50); text-align: center; padding: 40px 0; display: none; }
+  .legend { color: var(--w-50); font-size: 13px; display: flex; align-items: center; gap: 8px; margin: 40px 0 0; }
+  footer { color: var(--w-50); font-size: 13px; text-align: center; padding: 48px 0 40px; }
+
+  /* ══ MODAL ══ */
+  dialog { border: none; padding: 0; background: transparent; color: #fff; max-width: 620px; width: calc(100% - 32px); margin: auto; }
+  dialog::backdrop { background: rgba(5,9,20,0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .modal { --c: var(--gold); position: relative; background: var(--bg-dark2); border: 1px solid var(--border-dark); border-top: 3px solid var(--c); border-radius: 24px; padding: 30px 28px 28px; max-height: calc(100vh - 48px); overflow-y: auto; }
+  dialog[open] .modal { animation: pop .25s cubic-bezier(.2,.8,.3,1.2); }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+  .modal__close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-dark); background: rgba(255,255,255,0.05); cursor: pointer; font-size: 20px; line-height: 1; color: var(--w-70); }
+  .modal__close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+  .modal__date { display: inline-block; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600; color: var(--gold); background: rgba(204,167,118,0.10); border: 1px solid rgba(204,167,118,0.30); border-radius: 999px; padding: 7px 16px; margin-bottom: 16px; }
+  .modal__title { font-family: 'Unbounded', sans-serif; font-size: clamp(20px, 3.4vw, 26px); font-weight: 700; line-height: 1.22; letter-spacing: -0.01em; margin-bottom: 12px; padding-right: 36px; text-wrap: balance; }
+  .modal .ev__tags { margin-bottom: 18px; }
+  .modal__lead { color: var(--w-70); margin-bottom: 18px; }
+  .modal__facts { list-style: none; display: grid; gap: 10px; margin-bottom: 22px; }
+  .modal__facts li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+  .modal__facts li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--c); margin-top: 8px; }
+  .modal__note { font-size: 13.5px; color: var(--w-50); background: rgba(255,255,255,0.04); border: 1px dashed var(--border-dark); border-radius: 14px; padding: 12px 14px; margin-bottom: 18px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15.5px; border-radius: 999px; padding: 15px 28px; text-decoration: none; background: var(--grad-btn); color: var(--ink); box-shadow: 0 10px 24px -10px rgba(204,167,118,0.6); transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.22); box-shadow: none; }
+  .modal__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 0 28px; }
+    .next { grid-template-columns: 1fr; gap: 10px; padding: 26px 20px 20px; }
+    .ev { grid-template-columns: 74px 1fr; gap: 14px; padding: 14px 14px 14px 14px; }
+    .ev__go { display: none; }
+    .ev__days { font-size: 16px; }
+    .ev__title { font-size: 14.5px; }
+    .toggle-past { font-size: 12.5px; }
+    dialog { width: 100%; max-width: none; margin: auto 0 0; }
+    .modal { border-radius: 24px 24px 0 0; padding: 26px 20px 28px; max-height: 88vh; }
+    .btn { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">МЕЖДУНАРОДНЫЙ<br>ИНСТИТУТ<br>ОСТЕОПАТИЧЕСКИХ<br>ТЕХНОЛОГИЙ</a>
+    <span class="internal">Для сотрудников</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Сезон 2026 – 2027</span>
+    <h1 class="hero__title">Расписание мероприятий</h1>
+    <p class="hero__sub">Семинары, конференции и мастерские МИОТ. Нажмите на мероприятие — откроется краткая справка и ссылка на сайт.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div id="next"></div>
+
+  <div class="filters">
+    <div class="filters__row" id="filters">
+      <button class="chip" data-f="all" aria-pressed="true">Все</button>
+      <button class="chip t-course" data-f="course" aria-pressed="false"><span class="dot"></span>Остеокоррекция</button>
+      <button class="chip t-bio" data-f="bio" aria-pressed="false"><span class="dot"></span>Биодинамика</button>
+      <button class="chip t-special" data-f="special" aria-pressed="false"><span class="dot"></span>Семинары</button>
+      <button class="chip t-online" data-f="online" aria-pressed="false"><span class="dot"></span>Онлайн</button>
+      <button class="chip t-master" data-f="master" aria-pressed="false"><span class="dot"></span>Мастерские</button>
+      <label class="toggle-past"><input type="checkbox" id="showPast" checked> Прошедшие</label>
+    </div>
+  </div>
+
+  <div id="timeline"></div>
+  <p class="empty" id="empty">По этому фильтру мероприятий нет.</p>
+
+  <p class="legend"><span class="site-dot"></span> — у мероприятия есть свой сайт</p>
+</main>
+
+<footer>МИОТ · внутренняя страница, не для публикации</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="modal" id="modal">
+    <button class="modal__close" type="button" aria-label="Закрыть" data-close>×</button>
+    <div id="modalBody"></div>
+  </div>
+</dialog>
+
+<script>
+/* ════════════════════════════════════════════════
+   ДАННЫЕ. Чтобы поменять расписание — правьте этот список.
+   type: course | bio | special | online | master
+   start / end — ГГГГ-ММ-ДД; url — ссылка на сайт (если есть)
+   ════════════════════════════════════════════════ */
+const TYPES = {
+  course:  { label: 'Остеокоррекция',  cls: 't-course'  },
+  bio:     { label: 'Биодинамика',     cls: 't-bio'     },
+  special: { label: 'Семинар',         cls: 't-special' },
+  online:  { label: 'Онлайн',          cls: 't-online'  },
+  master:  { label: 'Мастерская',      cls: 't-master'  },
+};
+
+const OSTEO_URL = 'osteocorrection.html';
+const BIO_URL   = 'биодинамика/biodynamic.html';
+
+const EVENTS = [
+  /* ── 2026 ── */
+  { start: '2026-10-16', end: '2026-10-18', type: 'bio', format: 'Офлайн + онлайн',
+    title: 'Биодинамика висцеральных органов',
+    sub: 'Модуль II программы «Биодинамика: от техники к состоянию»',
+    lead: 'Внутренние органы — самый отзывчивый маркер состояния. Модуль о том, как работать с органами через слушание, а не давление.',
+    facts: ['Восприятие ритмов и движений органов', 'Влияние состояния оператора на висцеральный ответ', 'Работа с органами через слушание, а не давление', 'Результат: появляется глубина там, где раньше была только техника'],
+    url: BIO_URL, urlLabel: 'Сайт программы «Биодинамика»' },
+
+  { start: '2026-10-30', end: '2026-11-01', type: 'course', stream: '7 поток',
+    title: 'Биомеханические технологии',
+    sub: 'Модуль 3 курса «Специалист остеокоррекции»',
+    lead: 'Модуль полугодового курса Олега Агапэ: принципы, диагностика и техники работы с биомеханикой тела.',
+    facts: ['Принципы, диагностика, техники', 'Интенсив «Биомеханическая самокоррекция и коррекция осанки»', 'Практика с куратором', 'Разбор клинических случаев Олега и студентов', 'Вебинар с юристом'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2026-11-06', end: '2026-11-08', type: 'online', format: 'Онлайн',
+    title: 'Конференция «Секреты Мастеров»',
+    sub: 'Онлайн-конференция для специалистов, работающих с телом и психикой',
+    lead: 'Практикующие мастера показывают приёмы, которыми пользуются в работе каждый день. Третий день — демонстрация на анатомическом материале и мастер-класс Олега Агапэ.',
+    facts: ['3 дня, 10+ мастеров, ≈15 часов программы', 'Бесплатно — прямой эфир 6–7 ноября, без записи', 'Базовый тариф — эфир + запись, материалы спикеров и запись «Секретов ЖКТ»', 'Премиум — всё из «Базового» + 3-й день (8 ноября): демонстрация на анатомическом материале и МК Олега Агапэ'],
+    url: 'secrety-masterov.html', urlLabel: 'Сайт конференции' },
+
+  { start: '2026-11-13', end: '2026-11-15', type: 'bio', format: 'Офлайн + онлайн',
+    title: 'Биодинамика систем регуляции',
+    sub: 'Модуль III программы «Биодинамика: от техники к состоянию»',
+    lead: 'Биодинамика нервной и эндокринной систем — ключевой уровень для работы с хроникой.',
+    facts: ['Работа с вегетативной нервной системой через присутствие', 'Как состояние оператора влияет на регуляцию пациента', 'Переход от «работы с симптомом» к «включению саморегуляции»', 'Результат: работа не с жалобой, а с системой'],
+    url: BIO_URL, urlLabel: 'Сайт программы «Биодинамика»' },
+
+  { start: '2026-12-04', end: '2026-12-06', type: 'course', stream: '7 поток',
+    title: 'Краниосакральные технологии',
+    sub: 'Модуль 4 курса «Специалист остеокоррекции»',
+    lead: 'Модуль полугодового курса Олега Агапэ: принципы, диагностика и техники краниосакральной работы.',
+    facts: ['Принципы, диагностика, техники', 'Интенсив «Краниосакральная самокоррекция»', 'Практика с куратором', 'Разбор клинических случаев Олега и студентов', 'Вебинар «Психоэмоциональное освобождение в мануальной работе»'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2026-12-11', end: '2026-12-13', type: 'bio', format: 'Офлайн + онлайн',
+    title: 'Биодинамика внешнего контура',
+    sub: 'Модуль IV программы «Биодинамика: от техники к состоянию»',
+    lead: 'Биодинамика поля и расширенного взаимодействия — уровень, где остеопатия выходит за пределы тела.',
+    facts: ['Расширение восприятия за пределы локального контакта', 'Работа с вниманием и намерением как инструментом', 'Влияние «внешнего контура» на процессы внутри тела', 'Результат: системное видение и воздействие на всех уровнях'],
+    url: BIO_URL, urlLabel: 'Сайт программы «Биодинамика»' },
+
+  { start: '2026-12-16', end: '2026-12-17', type: 'special', format: 'Очно + онлайн-трансляция',
+    title: 'Диссекция «Голова — Шея — Мозг»',
+    sub: 'Диссекционный кадавер-курс Олега Агапэ',
+    lead: 'Послойная диссекция головы, шеи и мозга — от кожи до кости, с пальпацией на каждом этапе.',
+    facts: ['Свежий биоматериал без фиксации формалином — ткани в естественном состоянии', 'Мимическая и жевательная мускулатура, сосуды и нервы лица, слои скальпа', 'Фасции и мышцы шеи, гортань, щитовидная железа, магистральные сосуды, черепные нервы', 'Для специалистов естественного омоложения, косметологов и телесных специалистов', 'Ведущий — врач-остеопат Олег Агапэ'],
+    url: 'dissection-golova-sheya-mozg.html', urlLabel: 'Сайт диссекции' },
+
+  { start: '2026-12-19', end: '2026-12-20', type: 'special', format: 'Офлайн + онлайн',
+    title: 'Семинар по работе с особенными детьми',
+    sub: '«Биостимуляция нейрогенеза» — авторский семинар',
+    lead: 'Как помогать детям с ДЦП, РАС и поражениями ЦНС: что происходит с нервной системой особенного ребёнка, безопасный алгоритм сеанса и отработка каждого этапа руками.',
+    facts: ['ДЦП, РАС, тяжёлые поражения ЦНС, врождённые заболевания нервной системы', '80% практики, видеометодичка, сертификат', 'Запись на 6 месяцев и чат с поддержкой', 'Ведущий — Евгений Вишняков, научный руководитель — Олег Агапэ'],
+    url: 'biostimulyaciya-neirogeneza.html', urlLabel: 'Сайт семинара' },
+
+  /* ── 2027 ── */
+  { start: '2027-01-28', type: 'online', format: 'Вебинар',
+    title: 'Вебинар «Точки роста успешного специалиста в 2027 г.»',
+    lead: 'Вебинар о том, куда расти телесному специалисту в 2027 году: практика, позиционирование и доход.' },
+
+  { start: '2027-01-30', end: '2027-01-31', type: 'course', stream: '7 поток',
+    title: 'Экзамен и интеграция',
+    sub: 'Финал курса «Специалист остеокоррекции»',
+    lead: 'Итоговая аттестация 7 потока и интеграция пройденных модулей.',
+    facts: ['Проверка: понимание анатомии, правила безопасности, владение техниками', 'Демонстрационный сеанс', 'После экзамена — удостоверение повышения квалификации и диплом профпереподготовки с ОКВЭДом «Специалист по остеокоррекции»'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-02-07', type: 'special', format: 'Мастер-класс',
+    title: 'Мастер-класс «5 ключевых диафрагм тела»',
+    lead: 'Однодневный мастер-класс о пяти ключевых диафрагмах тела: их роли, диагностике и работе с ними.' },
+
+  { start: '2027-02-19', end: '2027-02-21', type: 'course', stream: '8 поток',
+    title: 'Базовые остеопатические технологии',
+    sub: 'Модуль 1 курса «Специалист остеокоррекции» · старт 8 потока',
+    lead: 'Фундамент, который нужен каждому специалисту — новичку или опытному телеснику. После семинара появляется твёрдая база для работы с клиентами.',
+    facts: ['Безопасность и эффективность', 'Диагностика', 'Принципы', 'Как найти первопричину дисфункции, а не работать с симптоматикой'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-02-22', type: 'master', time: '10:00–18:00',
+    title: 'Головные боли и мигрени',
+    sub: 'Остеопатический и клинический подход',
+    lead: 'Однодневная мастерская: остеопатический и клинический взгляд на головные боли и мигрени.' },
+
+  { start: '2027-03-19', end: '2027-03-21', type: 'course', stream: '8 поток',
+    title: 'Висцеральные остеопатические технологии',
+    sub: 'Модуль 2 курса «Специалист остеокоррекции»',
+    lead: 'Модуль полугодового курса Олега Агапэ: принципы, диагностика и техники висцеральной работы.',
+    facts: ['Принципы, диагностика, техники', 'Интенсив «Висцеральная самокоррекция»', 'Практика с куратором', 'Разбор клинических случаев Олега и студентов', 'Вебинар «Правила безопасной коммуникации с клиентом / пациентом»'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-03-22', type: 'master', time: '10:00–18:00',
+    title: 'ОстеоУрология',
+    sub: 'Остеопатический подход в урологии',
+    lead: 'Однодневная мастерская об остеопатическом подходе в урологии.' },
+
+  { start: '2027-04-09', end: '2027-04-11', type: 'special',
+    title: 'Остеопатический массаж',
+    lead: 'Трёхдневный семинар по остеопатическому массажу.' },
+
+  { start: '2027-04-16', end: '2027-04-18', type: 'course', stream: '8 поток',
+    title: 'Биомеханические технологии',
+    sub: 'Модуль 3 курса «Специалист остеокоррекции»',
+    lead: 'Модуль полугодового курса Олега Агапэ: принципы, диагностика и техники работы с биомеханикой тела.',
+    facts: ['Принципы, диагностика, техники', 'Интенсив «Биомеханическая самокоррекция и коррекция осанки»', 'Практика с куратором', 'Разбор клинических случаев Олега и студентов', 'Вебинар с юристом'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-04-19', type: 'master', time: '10:00–18:00',
+    title: 'Остеогинекология',
+    sub: 'Остеопатический подход в гинекологии',
+    lead: 'Однодневная мастерская об остеопатическом подходе в гинекологии.',
+    url: 'osteogynecology/index.html', urlLabel: 'Запись эфира по теме', urlNote: 'Отдельного сайта у мастерской нет — по ссылке запись эфира Олега Агапэ «Остеогинекология».' },
+
+  { start: '2027-05-14', end: '2027-05-16', type: 'course', stream: '8 поток',
+    title: 'Краниосакральные технологии',
+    sub: 'Модуль 4 курса «Специалист остеокоррекции»',
+    lead: 'Модуль полугодового курса Олега Агапэ: принципы, диагностика и техники краниосакральной работы.',
+    facts: ['Принципы, диагностика, техники', 'Интенсив «Краниосакральная самокоррекция»', 'Практика с куратором', 'Разбор клинических случаев Олега и студентов', 'Вебинар «Психоэмоциональное освобождение в мануальной работе»'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-05-17', type: 'master', time: '10:00–18:00',
+    title: 'Панические атаки и тревога',
+    sub: 'Остеопатический подход',
+    lead: 'Однодневная мастерская: остеопатический подход при панических атаках и тревоге.' },
+
+  { start: '2027-06-12', end: '2027-06-13', type: 'course', stream: '8 поток',
+    title: 'Экзамен и интеграция',
+    sub: 'Финал курса «Специалист остеокоррекции»',
+    lead: 'Итоговая аттестация 8 потока и интеграция пройденных модулей.',
+    facts: ['Проверка: понимание анатомии, правила безопасности, владение техниками', 'Демонстрационный сеанс', 'После экзамена — удостоверение повышения квалификации и диплом профпереподготовки с ОКВЭДом «Специалист по остеокоррекции»'],
+    url: OSTEO_URL, urlLabel: 'Сайт курса «Специалист остеокоррекции»' },
+
+  { start: '2027-06-25', end: '2027-06-27', type: 'special',
+    title: 'Остеогинекология и остеоурология',
+    lead: 'Трёхдневный семинар об остеопатическом подходе в гинекологии и урологии.',
+    url: 'osteogynecology/index.html', urlLabel: 'Запись эфира по теме', urlNote: 'Отдельного сайта у семинара пока нет — по ссылке запись эфира Олега Агапэ «Остеогинекология: почему женщинам годами не могут помочь».' },
+
+  { start: '2027-06-28', type: 'master', time: '10:00–18:00',
+    title: 'ОстеоСтоматология',
+    sub: 'Остеопатический подход в стоматологии',
+    lead: 'Однодневная мастерская об остеопатическом подходе в стоматологии.' },
+
+  { start: '2027-07-23', end: '2027-07-25', type: 'special', format: 'Москва',
+    title: 'Психосоматические технологии',
+    sub: 'Семинар по психосоматике',
+    lead: 'Семинар для специалистов, которые хотят точно распознавать, где в теле зафиксированы психоэмоциональные блоки, — чтобы находить истинную причину симптома и устранять её через тело.',
+    facts: ['3 полных дня практики и диагностики через тело', 'Остеопатия и восточная медицина в единой системе', 'В 2026 году вели Олег Агапэ и Артём Тен, группа до 20 человек'],
+    url: 'психосоматика/psycho.html', urlLabel: 'Сайт семинара (выпуск 2026)', urlNote: 'Сайт сделан под семинар 24–26 июля 2026 — даты и состав ведущих на 2027 год нужно уточнить.' },
+
+  { start: '2027-07-26', type: 'master', time: '10:00–18:00',
+    title: 'Головокружение и шум в ушах',
+    sub: 'Остеопатический подход',
+    lead: 'Однодневная мастерская: остеопатический подход при головокружении и шуме в ушах.' },
+];
+
+/* ════════════════ RENDER ════════════════ */
+const MONTHS   = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MONTHS_G = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const MON_S    = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+const WD       = ['вс','пн','вт','ср','чт','пт','сб'];
+
+const d = s => { const [y,m,dd] = s.split('-').map(Number); return new Date(y, m-1, dd); };
+const today = new Date(); today.setHours(0,0,0,0);
+
+EVENTS.forEach((e, i) => {
+  e.id = i; e.s = d(e.start); e.e = d(e.end || e.start);
+  e.past = e.e < today; e.now = e.s <= today && e.e >= today;
+});
+EVENTS.sort((a,b) => a.s - b.s);
+
+function daysLabel(e) {
+  if (+e.s === +e.e) return String(e.s.getDate());
+  return e.s.getDate() + '–' + e.e.getDate();
+}
+function monLabel(e) {
+  return e.s.getMonth() === e.e.getMonth() ? MON_S[e.s.getMonth()] : MON_S[e.s.getMonth()] + ' – ' + MON_S[e.e.getMonth()];
+}
+function fullDate(e) {
+  const s = e.s, en = e.e, y = en.getFullYear();
+  if (+s === +en) return `${s.getDate()} ${MONTHS_G[s.getMonth()]} ${y} · ${WD[s.getDay()]}`;
+  if (s.getMonth() === en.getMonth()) return `${s.getDate()}–${en.getDate()} ${MONTHS_G[s.getMonth()]} ${y}`;
+  return `${s.getDate()} ${MONTHS_G[s.getMonth()]} – ${en.getDate()} ${MONTHS_G[en.getMonth()]} ${y}`;
+}
+function wdLabel(e) {
+  return +e.s === +e.e ? WD[e.s.getDay()] : WD[e.s.getDay()] + '–' + WD[e.e.getDay()];
+}
+function nDays(e) { return Math.round((e.e - e.s) / 864e5) + 1; }
+function plural(n, a, b, c) { const m10 = n % 10, m100 = n % 100; return m10 === 1 && m100 !== 11 ? a : m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20) ? b : c; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function tags(e) {
+  const t = TYPES[e.type];
+  let h = `<span class="tag tag--type">${t.label}</span>`;
+  if (e.stream) h += `<span class="tag">${e.stream}</span>`;
+  if (e.time)   h += `<span class="tag">${e.time}</span>`;
+  if (e.format) h += `<span class="tag">${esc(e.format)}</span>`;
+  if (e.now)    h += `<span class="tag" style="color:var(--gold)">идёт сейчас</span>`;
+  return h;
+}
+
+let filter = 'all';
+const showPast = document.getElementById('showPast');
+
+function render() {
+  const list = EVENTS.filter(e => (filter === 'all' || e.type === filter) && (showPast.checked || !e.past));
+  let html = '', curY = null, curM = null;
+  list.forEach(e => {
+    const y = e.s.getFullYear(), m = e.s.getMonth();
+    if (y !== curY) { if (curM !== null) html += '</div></div>'; html += `<div class="year">${y}</div>`; curY = y; curM = null; }
+    if (m !== curM) { if (curM !== null) html += '</div></div>'; html += `<div class="month"><div class="month__name">${MONTHS[m]}</div><div class="list">`; curM = m; }
+    html += `
+      <button class="ev ${TYPES[e.type].cls}${e.past ? ' is-past' : ''}${e.now ? ' is-now' : ''}" data-id="${e.id}">
+        <span class="ev__date"><span class="ev__days">${daysLabel(e)}</span><span class="ev__mon">${monLabel(e)}</span><span class="ev__wd">${wdLabel(e)}</span></span>
+        <span><span class="ev__title">${esc(e.title)}</span><span class="ev__tags">${tags(e)}</span></span>
+        <span class="ev__go">${e.url ? '<span class="site-dot" title="Есть сайт"></span>' : ''}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </button>`;
+  });
+  if (curM !== null) html += '</div></div>';
+  document.getElementById('timeline').innerHTML = html;
+  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+}
+
+function renderNext() {
+  const n = EVENTS.find(e => !e.past);
+  if (!n) return;
+  const diff = Math.round((n.s - today) / 864e5);
+  const when = n.now ? 'идёт сейчас' : diff === 0 ? 'сегодня' : diff === 1 ? 'завтра' : `через ${diff} ${plural(diff,'день','дня','дней')}`;
+  document.getElementById('next').innerHTML = `
+    <button class="next ${TYPES[n.type].cls}" data-id="${n.id}">
+      <span class="next__label">Ближайшее</span>
+      <span class="next__date">${daysLabel(n)}<small>${MONTHS_G[n.s.getMonth()]}</small></span>
+      <span><span class="next__title">${esc(n.title)}</span><span class="next__meta">${TYPES[n.type].label}${n.stream ? ' · ' + n.stream : ''}${n.format ? ' · ' + esc(n.format) : ''}</span></span>
+      <span class="next__count">${when}</span>
+    </button>`;
+}
+
+/* ── modal ── */
+const dlg = document.getElementById('dlg');
+function openEvent(id) {
+  const e = EVENTS.find(x => x.id === id);
+  const modal = document.getElementById('modal');
+  modal.className = 'modal ' + TYPES[e.type].cls;
+  const len = nDays(e);
+  let h = `<span class="modal__date">${fullDate(e)}${len > 1 ? ' · ' + len + ' ' + plural(len,'день','дня','дней') : ''}</span>
+    <h2 class="modal__title" id="dlgTitle">${esc(e.title)}</h2>
+    <div class="ev__tags">${tags(e)}</div>`;
+  if (e.sub)  h += `<p class="modal__lead"><b style="color:#fff">${esc(e.sub)}</b><br>${esc(e.lead || '')}</p>`;
+  else if (e.lead) h += `<p class="modal__lead">${esc(e.lead)}</p>`;
+  if (e.facts) h += `<ul class="modal__facts">${e.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>`;
+  if (e.urlNote) h += `<p class="modal__note">${esc(e.urlNote)}</p>`;
+  if (e.url) {
+    h += `<div class="modal__actions"><a class="btn" href="${encodeURI(e.url)}" target="_blank" rel="noopener">${esc(e.urlLabel || 'Открыть сайт')} →</a></div>`;
+  } else {
+    h += `<p class="modal__note">Отдельного сайта у мероприятия пока нет.</p>`;
+  }
+  document.getElementById('modalBody').innerHTML = h;
+  dlg.showModal();
+}
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-id]');
+  if (b) { openEvent(Number(b.dataset.id)); return; }
+  if (ev.target.closest('[data-close]') || ev.target === dlg) dlg.close();
+});
+
+/* ── filters ── */
+document.getElementById('filters').addEventListener('click', ev => {
+  const c = ev.target.closest('.chip'); if (!c) return;
+  filter = c.dataset.f;
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c ? 'true' : 'false'));
+  render();
+});
+showPast.addEventListener('change', render);
+
+renderNext();
+render();
+</script>
+</body>
+</html>
