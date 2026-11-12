@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Функциональная анатомия 2.0 · МИОТ</title>
+  <meta name="description" content="Функциональная анатомия 2.0 — обновлённая программа обучения от Олега Агапэ: 4 модуля, клинические взаимосвязи, пальпация, кадаверный материал. Ближайший поток — ноябрь 2026. Предварительная запись.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f9fc;
+      --bg-2: #eaf2f8;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --ink-2: #1e293b;
+      --muted: #5f6f84;
+      --line: #d9e5ef;
+      --cyan: #0891b2;
+      --cyan-2: #06b6d4;
+      --cyan-soft: #e0f6fb;
+      --glow: rgba(6, 182, 212, 0.35);
+      --gold: #cca776;
+      --gold-soft: #f6efe4;
+      --font-head: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 28px;
+      --container: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    @media (max-width: 560px) { .container { padding: 0 16px; } }
+
+    /* ── Cyber background: grid + soft glows ── */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(8, 145, 178, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(8, 145, 178, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 30%, transparent 80%);
+    }
+    main, header, footer, .marquee { position: relative; z-index: 1; }
+
+    /* ── Marquee ── */
+    .marquee {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      height: 38px; background: var(--ink); overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .marquee__track { display: flex; white-space: nowrap; animation: marquee 26s linear infinite; }
+    .marquee__item {
+      display: inline-flex; align-items: center; gap: 10px; padding: 0 2rem;
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.04em; color: #e2e8f0; text-transform: uppercase;
+    }
+    .marquee__item b { color: var(--cyan-2); font-weight: 600; }
+    .marquee__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-2); box-shadow: 0 0 8px var(--cyan-2); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 38px; left: 0; right: 0; z-index: 1000;
+      background: rgba(245, 249, 252, 0.78);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(8, 145, 178, 0.12);
+      padding: 0.9rem 0;
+    }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .logo { display: flex; align-items: center; gap: 14px; }
+    .logo img { height: 48px; width: auto; }
+    .logo__text {
+      font-family: var(--font-head); font-weight: 700; font-size: 0.66rem;
+      line-height: 1.2; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink);
+    }
+    .nav { display: flex; align-items: center; gap: 1.6rem; }
+    .nav a:not(.btn) { font-size: 0.85rem; font-weight: 500; color: var(--ink-2); transition: color .2s; }
+    .nav a:not(.btn):hover { color: var(--cyan); }
+    @media (max-width: 900px) { .nav a:not(.btn) { display: none; } }
+    @media (max-width: 480px) { .logo__text { display: none; } .logo img { height: 42px; } }
+
+    /* ── Buttons ── */
+    .btn {
+      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 1.05rem 2rem; border: none; border-radius: 999px; cursor: pointer;
+      font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em;
+      text-align: center; transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--ink) 0%, #12324a 55%, var(--cyan) 130%);
+      box-shadow: 0 10px 30px -10px rgba(8, 145, 178, 0.55), inset 0 0 0 1px rgba(103, 232, 249, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 38px -10px rgba(8, 145, 178, 0.7), inset 0 0 0 1px rgba(103, 232, 249, 0.6); }
+    .btn-primary .btn__arrow {
+      display: inline-flex; width: 26px; height: 26px; border-radius: 50%;
+      align-items: center; justify-content: center; background: var(--cyan-2); color: var(--ink);
+      font-size: 0.85rem; box-shadow: 0 0 12px var(--glow);
+    }
+    .btn-sm { padding: 0.65rem 1.3rem; font-size: 0.82rem; }
+    @media (max-width: 560px) { .btn { width: 100%; padding: 1rem 1.2rem; font-size: 0.9rem; } .header .btn { width: auto; } }
+
+    /* ── Common ── */
+    .section { padding: 100px 0; }
+    .section--alt { background: linear-gradient(180deg, rgba(234, 242, 248, 0.85), rgba(234, 242, 248, 0.5)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    @media (max-width: 768px) { .section { padding: 70px 0; } }
+    .tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan);
+      background: var(--cyan-soft); border: 1px solid rgba(8, 145, 178, 0.2);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.3rem;
+    }
+    .tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-2); box-shadow: 0 0 8px var(--cyan-2); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: 0.35; } }
+    .h2 {
+      font-family: var(--font-head); font-weight: 800; color: var(--ink);
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: 1.2rem; text-wrap: balance;
+    }
+    .h2 span { background: linear-gradient(90deg, var(--cyan), var(--cyan-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { font-size: 1.08rem; color: var(--muted); max-width: 720px; }
+    .section-head { margin-bottom: 3rem; }
+    .section-head--center { text-align: center; }
+    .section-head--center .lead { margin: 0 auto; }
+
+    /* HUD corner brackets */
+    .hud { position: relative; }
+    .hud::before, .hud::after {
+      content: ""; position: absolute; width: 16px; height: 16px; pointer-events: none;
+      border-color: var(--cyan-2); border-style: solid; opacity: 0.7; transition: opacity .25s, width .25s, height .25s;
+    }
+    .hud::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-top-left-radius: 6px; }
+    .hud::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-bottom-right-radius: 6px; }
+    .hud:hover::before, .hud:hover::after { opacity: 1; width: 26px; height: 26px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee__track, .scan-ring, .scan-line, .tag::before { animation: none !important; }
+    }
+
+    /* ── Hero ── */
+    .hero { padding: 190px 0 90px; overflow: hidden; }
+    .hero__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.5rem; align-items: center; }
+    .hero__version {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1.4rem;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em;
+    }
+    .hero__version code {
+      font-family: var(--font-mono); font-weight: 600; color: var(--ink); background: var(--surface);
+      border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px;
+    }
+    .hero__version .old { text-decoration: line-through; color: #94a3b8; }
+    .hero__version .new { color: #fff; background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 14px var(--glow); }
+    .hero__title {
+      font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(1.6rem, 5.4vw, 4.4rem); line-height: 1.04; overflow-wrap: anywhere; letter-spacing: -0.03em;
+      color: var(--ink); margin-bottom: 1.4rem;
+    }
+    .hero__title .v {
+      display: inline-block; position: relative;
+      background: linear-gradient(100deg, var(--cyan) 10%, var(--cyan-2) 60%, #67e8f9 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 0 18px rgba(6, 182, 212, 0.35));
+    }
+    .hero__sub { font-family: var(--font-head); font-size: 1.2rem; font-weight: 600; color: var(--ink-2); margin-bottom: 0.9rem; }
+    .hero__text { font-size: 1.05rem; color: var(--muted); max-width: 580px; margin-bottom: 2rem; }
+    .hero__chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.2rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+      font-size: 0.86rem; font-weight: 500; color: var(--ink-2);
+      box-shadow: 0 2px 10px -6px rgba(15, 23, 42, 0.2);
+    }
+    .chip i { width: 7px; height: 7px; border-radius: 2px; background: var(--cyan-2); transform: rotate(45deg); }
+    .hero__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.8rem; max-width: 560px; }
+    .stat { border-left: 2px solid var(--cyan-2); padding-left: 14px; }
+    .stat b { display: block; font-family: var(--font-head); font-size: 1.7rem; font-weight: 800; color: var(--ink); line-height: 1.1; }
+    .stat span { font-size: 0.8rem; color: var(--muted); line-height: 1.35; display: block; margin-top: 4px; }
+
+    .hero__visual { position: relative; aspect-ratio: 1 / 1.08; max-width: 520px; margin-left: auto; width: 100%; }
+    .scan {
+      position: absolute; inset: 6% 0 0; border-radius: 50%;
+      background: radial-gradient(circle at 50% 45%, #ffffff 0%, #e6f7fb 45%, rgba(224, 246, 251, 0) 72%);
+    }
+    .scan-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(8, 145, 178, 0.28); }
+    .scan-ring--1 { inset: 8% 4% 2%; border-style: dashed; animation: spin 60s linear infinite; }
+    .scan-ring--2 { inset: 16% 12% 10%; border-color: rgba(6, 182, 212, 0.45); animation: spin 40s linear infinite reverse; }
+    .scan-ring--2::before {
+      content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--cyan-2); box-shadow: 0 0 14px var(--cyan-2);
+    }
+    .scan-ring--3 { inset: 2% -2% -4%; border-color: rgba(204, 167, 118, 0.35); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero__photo {
+      position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+      width: 82%; z-index: 2;
+      -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+    }
+    .scan-line {
+      position: absolute; left: 6%; right: 6%; height: 2px; z-index: 3; top: 20%;
+      background: linear-gradient(90deg, transparent, var(--cyan-2), transparent);
+      box-shadow: 0 0 16px 2px var(--glow); opacity: 0.75;
+      animation: scanY 5.5s ease-in-out infinite;
+    }
+    @keyframes scanY { 0%, 100% { top: 14%; } 50% { top: 82%; } }
+    .hud-label {
+      position: absolute; z-index: 4; display: flex; flex-direction: column; gap: 2px;
+      background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(8, 145, 178, 0.25); border-radius: 12px; padding: 9px 14px;
+      box-shadow: 0 12px 30px -14px rgba(8, 145, 178, 0.45);
+    }
+    .hud-label small { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); }
+    .hud-label strong { font-family: var(--font-head); font-size: 0.86rem; font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .hud-label--1 { top: 18%; left: -4%; }
+    .hud-label--2 { top: 44%; right: -6%; }
+    .hud-label--3 { bottom: 30%; left: -6%; }
+    .hero__name {
+      position: absolute; z-index: 5; bottom: 18px; right: 4%;
+      background: var(--ink); color: #fff; border-radius: 14px; padding: 10px 16px;
+      box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.6), inset 0 0 0 1px rgba(103, 232, 249, 0.3);
+    }
+    .hero__name strong { display: block; font-family: var(--font-head); font-size: 0.95rem; }
+    .hero__name span { font-family: var(--font-mono); font-size: 0.68rem; color: var(--cyan-2); letter-spacing: 0.06em; }
+
+    @media (max-width: 960px) {
+      .hero { padding: 160px 0 70px; }
+      .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero__title { font-size: clamp(1.6rem, 8vw, 3.4rem); }
+      .hero__visual { margin: 0 auto; max-width: 420px; order: -1; }
+      .hud-label--1 { left: 0; } .hud-label--2 { right: 0; } .hud-label--3 { left: 0; }
+    }
+    @media (max-width: 560px) {
+      .marquee { height: 34px; } .header { top: 34px; }
+      .hero { padding: 140px 0 60px; }
+      .hero__visual { max-width: 330px; }
+      .hud-label { padding: 7px 10px; } .hud-label strong { font-size: 0.76rem; }
+      .hero__stats { gap: 0.7rem; } .stat { padding-left: 10px; } .stat b { font-size: 1.35rem; } .stat span { font-size: 0.72rem; }
+    }
+
+    /* Callout strip */
+    .callout {
+      margin-top: 2.6rem; display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+      padding: 1.2rem 1.4rem; box-shadow: 0 18px 40px -26px rgba(15, 23, 42, 0.35);
+    }
+    .callout__badge {
+      flex-shrink: 0; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      color: var(--ink); background: var(--gold-soft); border: 1px solid rgba(204, 167, 118, 0.5);
+      padding: 6px 12px; border-radius: 8px; text-transform: uppercase;
+    }
+    .callout p { flex: 1 1 260px; margin: 0; font-size: 0.95rem; color: var(--muted); }
+    .callout p b { color: var(--ink); font-family: var(--font-head); }
+
+    /* ── What is ── */
+    .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: start; }
+    .about__text p { color: var(--muted); font-size: 1.04rem; margin-bottom: 1.1rem; }
+    .about__text p strong { color: var(--ink); font-weight: 600; }
+    .about__accent {
+      margin-top: 1.6rem; padding: 1.3rem 1.5rem; border-radius: var(--r-md);
+      background: linear-gradient(135deg, var(--ink), #12324a); color: #fff;
+      font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; line-height: 1.35;
+      box-shadow: 0 20px 40px -24px rgba(15, 23, 42, 0.7), inset 0 0 0 1px rgba(103, 232, 249, 0.25);
+    }
+    .about__accent span { color: var(--cyan-2); }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .pillar {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+      padding: 1.5rem 1.3rem; transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .pillar:hover { transform: translateY(-4px); border-color: rgba(6, 182, 212, 0.5); box-shadow: 0 20px 36px -24px rgba(8, 145, 178, 0.55); }
+    .pillar__ico {
+      width: 46px; height: 46px; border-radius: 12px; margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--cyan-soft); color: var(--cyan); border: 1px solid rgba(8, 145, 178, 0.2);
+    }
+    .pillar__ico svg { width: 24px; height: 24px; }
+    .pillar h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .pillar p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    .pillar--wide { grid-column: 1 / -1; display: flex; gap: 1rem; align-items: center; background: var(--cyan-soft); border-color: rgba(8, 145, 178, 0.25); }
+    .pillar--wide .pillar__ico { margin: 0; background: var(--surface); flex-shrink: 0; }
+    @media (max-width: 960px) { .about { grid-template-columns: 1fr; gap: 2.5rem; } }
+    @media (max-width: 480px) { .pillars { grid-template-columns: 1fr; } }
+
+    /* ── Changes 1.0 → 2.0 ── */
+    .compare-legend { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.4rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .compare-legend span { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+    .compare-legend i { width: 22px; height: 6px; border-radius: 3px; background: #cbd5e1; }
+    .compare-legend .is-new i { background: linear-gradient(90deg, var(--cyan), var(--cyan-2)); box-shadow: 0 0 8px var(--glow); }
+    .compare-legend .is-new { color: var(--cyan); }
+
+    .changes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+    .change {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+      padding: 1.6rem 1.6rem 1.5rem; display: flex; flex-direction: column;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .change:hover { transform: translateY(-4px); border-color: rgba(6, 182, 212, 0.45); box-shadow: 0 22px 44px -28px rgba(8, 145, 178, 0.6); }
+    .change__head { display: flex; align-items: center; gap: 14px; margin-bottom: 1.2rem; }
+    .change__num {
+      flex-shrink: 0; font-family: var(--font-mono); font-weight: 600; font-size: 0.82rem; color: var(--cyan);
+      width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      background: var(--cyan-soft); border: 1px solid rgba(8, 145, 178, 0.25);
+    }
+    .change__title { font-family: var(--font-head); font-weight: 800; font-size: 1.02rem; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.25; }
+    .row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; padding: 0.85rem 0; }
+    .row + .row { border-top: 1px dashed var(--line); }
+    .row__label {
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 0; border-radius: 6px; text-align: center; margin-top: 1px;
+    }
+    .row--old .row__label { color: #64748b; background: #f1f5f9; }
+    .row--old p { color: #7c8a9c; font-size: 0.92rem; line-height: 1.55; }
+    .row--new .row__label { color: #fff; background: linear-gradient(135deg, var(--cyan), var(--cyan-2)); box-shadow: 0 0 10px var(--glow); }
+    .row--new p { color: var(--ink); font-size: 0.96rem; font-weight: 500; line-height: 1.55; }
+    .change--featured { grid-column: 1 / -1; background: linear-gradient(135deg, #ffffff 0%, #effafd 100%); border-color: rgba(6, 182, 212, 0.35); }
+    .change--featured .module-bars { display: flex; gap: 8px; margin-top: 0.7rem; flex-wrap: wrap; }
+    .module-bar {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+      padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(8, 145, 178, 0.35); color: var(--cyan); background: #fff;
+    }
+    .module-bar--intro { background: var(--ink); color: var(--cyan-2); border-color: var(--ink); }
+    @media (max-width: 820px) { .changes { grid-template-columns: 1fr; } }
+    @media (max-width: 420px) { .row { grid-template-columns: 1fr; gap: 6px; } .row__label { justify-self: start; padding: 4px 10px; } }
+
+    .manifest {
+      margin-top: 3rem; border-radius: var(--r-lg); padding: 2.8rem;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.35), transparent 45%),
+        linear-gradient(135deg, #0f172a 0%, #12324a 100%);
+      color: #fff; display: grid; grid-template-columns: 1.4fr auto; gap: 2rem; align-items: center;
+      box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.7), inset 0 0 0 1px rgba(103, 232, 249, 0.2);
+      overflow: hidden; position: relative;
+    }
+    .manifest::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(103, 232, 249, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(103, 232, 249, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(90deg, transparent, #000 70%);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 70%);
+    }
+    .manifest > * { position: relative; z-index: 1; }
+    .manifest h3 { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.3rem, 2.4vw, 1.8rem); line-height: 1.2; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .manifest h3 span { color: var(--cyan-2); }
+    .manifest p { color: #cbd5e1; font-size: 1rem; margin: 0; max-width: 640px; }
+    .manifest .btn-primary { background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-2) 100%); color: var(--ink); box-shadow: 0 0 30px -4px var(--glow); }
+    .manifest .btn-primary .btn__arrow { background: var(--ink); color: var(--cyan-2); }
+    @media (max-width: 860px) { .manifest { grid-template-columns: 1fr; padding: 2rem 1.5rem; } }
+
+    /* ── Audience ── */
+    .aud { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.2rem; }
+    .aud-card {
+      grid-column: span 2; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+      padding: 1.7rem 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .aud-card:nth-child(4), .aud-card:nth-child(5) { grid-column: span 3; }
+    .aud-card:hover { transform: translateY(-4px); border-color: rgba(6, 182, 212, 0.45); box-shadow: 0 22px 44px -28px rgba(8, 145, 178, 0.6); }
+    .aud-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
+    .aud-card__id { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.1em; }
+    .aud-card__ico { width: 44px; height: 44px; border-radius: 12px; background: var(--ink); color: var(--cyan-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.3); }
+    .aud-card__ico svg { width: 22px; height: 22px; }
+    .aud-card h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; line-height: 1.3; margin-bottom: 0.55rem; }
+    .aud-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.55; }
+    @media (max-width: 960px) { .aud { grid-template-columns: 1fr 1fr; } .aud-card, .aud-card:nth-child(4) { grid-column: span 1; } .aud-card:nth-child(5) { grid-column: 1 / -1; } }
+    @media (max-width: 600px) { .aud { grid-template-columns: 1fr; } .aud-card:nth-child(5) { grid-column: span 1; } }
+
+    /* ── Form ── */
+    .enroll { display: grid; grid-template-columns: 1fr; max-width: 760px; }
+    .enroll__date {
+      display: inline-flex; align-items: baseline; gap: 10px; margin-bottom: 1.2rem;
+      font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .enroll__date b { font-family: var(--font-head); font-size: 1rem; letter-spacing: 0; color: var(--ink); text-transform: none; }
+    .enroll__perks { list-style: none; margin-top: 1.6rem; display: grid; gap: 0.8rem; }
+    .enroll__perks li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.98rem; color: var(--ink-2); }
+    .enroll__perks li::before {
+      content: ""; flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; border-radius: 6px;
+      background: var(--cyan-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230891b2' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 13px no-repeat;
+      border: 1px solid rgba(8, 145, 178, 0.3);
+    }
+    .form-card {
+      background: var(--surface); border: 1px solid rgba(8, 145, 178, 0.25); border-radius: var(--r-lg);
+      padding: 2.2rem; box-shadow: 0 30px 60px -30px rgba(8, 145, 178, 0.45);
+    }
+    .form-card__title { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.3rem; }
+    .form-card__hint { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.6rem; }
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+    .field input {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--ink);
+      padding: 0.9rem 1rem; border-radius: 12px; border: 1px solid var(--line); background: var(--bg);
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .field input:focus { outline: none; border-color: var(--cyan-2); background: #fff; box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15); }
+    .field input.is-error { border-color: #e11d48; box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1); }
+    .form-card .btn { width: 100%; margin-top: 0.4rem; }
+    .form-legal { margin-top: 1rem; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .form-legal a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+    .form-note { margin-top: 1rem; font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+    .form-important {
+      margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 12px; background: var(--gold-soft);
+      border: 1px solid rgba(204, 167, 118, 0.45); font-size: 0.88rem; color: var(--ink-2);
+    }
+    .form-important b { font-family: var(--font-head); }
+    .form-success { display: none; text-align: center; padding: 2rem 0.5rem; }
+    .form-success__ico { width: 64px; height: 64px; margin: 0 auto 1rem; border-radius: 50%; background: var(--cyan-soft); color: var(--cyan); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.08); }
+    .form-success h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .form-success p { color: var(--muted); }
+    .form-card.is-sent form { display: none; }
+    .form-card.is-sent .form-success { display: block; }
+    @media (max-width: 960px) { .enroll { grid-template-columns: 1fr; gap: 2.2rem; } }
+    @media (max-width: 560px) { .form-card { padding: 1.5rem 1.2rem; } }
+
+    /* ── Final CTA ── */
+    .final {
+      text-align: center; border-radius: var(--r-lg); padding: 4rem 2rem; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 50% 0%, rgba(6, 182, 212, 0.18), transparent 60%), var(--surface);
+      border: 1px solid var(--line);
+    }
+    .final .h2 { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .final .lead { margin: 0 auto 1rem; }
+    .final .lead + .lead { margin-bottom: 2.2rem; }
+    .final .lead b { color: var(--ink); }
+    @media (max-width: 560px) { .final { padding: 2.6rem 1.2rem; } }
+
+    /* ── Footer ── */
+    .footer { background: var(--ink); color: #cbd5e1; padding: 3.5rem 0 2rem; margin-top: 100px; }
+    .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; }
+    .footer__brand { display: flex; align-items: center; gap: 14px; }
+    .footer__brand img { width: 50px; height: 50px; }
+    .footer__brand .logo__text { color: #fff; }
+    .footer h4 { font-family: var(--font-head); color: #fff; font-size: 0.95rem; margin-bottom: 0.9rem; }
+    .footer__nav a { display: block; font-size: 0.88rem; margin-bottom: 0.45rem; color: #cbd5e1; transition: color .2s; }
+    .footer__nav a:hover { color: var(--cyan-2); }
+    .footer__bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; }
+    .footer__bottom p { color: #94a3b8; }
+    .footer__legal { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .footer__legal a { color: #94a3b8; } .footer__legal a:hover { color: var(--cyan-2); }
+    @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; } }
+  </style>
+  <script src="/utm.js?v=1"></script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1591788022721183');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1591788022721183&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item"><i class="marquee__dot"></i> Ближайший поток — <b>ноябрь 2026</b></span>
+    <span class="marquee__item"><i class="marquee__dot"></i> Предзапись на <b>выгодных условиях</b></span>
+    <span class="marquee__item"><i class="marquee__dot"></i> Старт всего <b>2 раза в год</b></span>
+    <span class="marquee__item"><i class="marquee__dot"></i> Ближайший поток — <b>ноябрь 2026</b></span>
+    <span class="marquee__item"><i class="marquee__dot"></i> Предзапись на <b>выгодных условиях</b></span>
+    <span class="marquee__item"><i class="marquee__dot"></i> Старт всего <b>2 раза в год</b></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header__inner">
+    <a href="../index.html" class="logo">
+      <img src="img/logo.png" alt="МИОТ логотип">
+      <span class="logo__text">Международный<br>институт<br>остеопатических<br>технологий</span>
+    </a>
+    <nav class="nav">
+      <a href="#about">О курсе</a>
+      <a href="#changes">Что нового</a>
+      <a href="#audience">Кому подойдёт</a>
+      <a href="#enroll" class="btn btn-primary btn-sm">Предзапись</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="reveal">
+        <div class="hero__version"><code class="old">v1.0</code> → <code class="new">v2.0</code> обновлённая программа</div>
+        <h1 class="hero__title">Функциональная анатомия <span class="v">2.0</span></h1>
+        <p class="hero__sub">Обновлённая программа обучения от Олега Агапэ</p>
+        <p class="hero__text">Ещё больше анатомии, клинических взаимосвязей, пальпации и практики!</p>
+        <div class="hero__chips">
+          <span class="chip"><i></i>4 модуля обучения</span>
+          <span class="chip"><i></i>Пальпация и самопальпация</span>
+          <span class="chip"><i></i>Кадаверный материал</span>
+        </div>
+        <a href="#enroll" class="btn btn-primary">Записаться на Функциональную анатомию 2.0 <span class="btn__arrow">→</span></a>
+        <div class="hero__stats">
+          <div class="stat"><b>4</b><span>модуля вместо 2</span></div>
+          <div class="stat"><b>2 раза</b><span>в год старт обучения</span></div>
+          <div class="stat"><b>Ноябрь</b><span>2026 — ближайший поток</span></div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal d1" aria-hidden="false">
+        <div class="scan"></div>
+        <div class="scan-ring scan-ring--3"></div>
+        <div class="scan-ring scan-ring--1"></div>
+        <div class="scan-ring scan-ring--2"></div>
+        <img class="hero__photo" src="img/oleg.png" alt="Олег Агапэ — автор курса «Функциональная анатомия 2.0»">
+        <div class="scan-line"></div>
+        <div class="hud-label hud-label--1"><small>// модуль 00</small><strong>Вводный модуль</strong></div>
+        <div class="hud-label hud-label--2"><small>// практика</small><strong>Пальпация</strong></div>
+        <div class="hud-label hud-label--3"><small>// клиника</small><strong>Взаимосвязи систем</strong></div>
+        <div class="hero__name"><strong>Олег Агапэ</strong><span>автор курса · анатом · остеопат</span></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="callout reveal">
+        <span class="callout__badge">Обновление курса</span>
+        <p>Мы полностью обновили наш уже известный курс «Функциональная анатомия», расширили программу, добавили новые уроки, практические материалы и дополнительные возможности для изучения человеческого тела. Теперь это не просто изучение анатомических структур, а <b>полноценная система</b>, которая помогает понять, как устроено тело, как взаимодействуют его системы и как применять эти знания на практике.</p>
+      </div>
+      <div class="callout reveal">
+        <span class="callout__badge">Обучение стартует всего 2 раза в год!</span>
+        <p>Уже сейчас вы можете оставить предварительную заявку и получить возможность присоединиться к обучению <b>на более выгодных условиях</b>, чем после официального открытия продаж.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is -->
+  <section class="section section--alt" id="about">
+    <div class="container about">
+      <div class="about__text reveal">
+        <span class="tag">О программе</span>
+        <h2 class="h2">Что такое Функциональная анатомия <span>2.0</span>?</h2>
+        <p>Это <strong>обновлённая образовательная программа МИОТ</strong>, созданная для глубокого и системного изучения анатомии человека.</p>
+        <p>Мы убеждены, что анатомию недостаточно просто знать по учебникам. Важно понимать, как анатомические структуры взаимодействуют друг с другом, как они участвуют в движении и почему изменения в одной области могут отражаться на работе других систем организма.</p>
+        <p>Вы будете не просто изучать кости, мышцы, фасции и другие структуры, а постепенно формировать <strong>целостное представление о человеческом теле</strong>.</p>
+        <div class="about__accent">И самое главное — <span>учиться применять</span> полученные знания.</div>
+      </div>
+
+      <div class="reveal d1">
+        <p class="lead" style="margin-bottom:1.3rem;">Поэтому в основе нашего обучения не механическое заучивание терминов, а понимание анатомии через:</p>
+        <div class="pillars">
+          <div class="pillar hud">
+            <div class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <h3>Практику</h3>
+            <p>Знания, которые сразу переносятся в работу с телом.</p>
+          </div>
+          <div class="pillar hud">
+            <div class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h3>Наблюдение</h3>
+            <p>Реальные структуры, их расположение и движение.</p>
+          </div>
+          <div class="pillar hud">
+            <div class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+            <h3>Пальпацию</h3>
+            <p>Изучение анатомии через собственные ощущения.</p>
+          </div>
+          <div class="pillar hud">
+            <div class="pillar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.2 7.3l3.4 8.4M16.8 7.3l-3.4 8.4M7.5 6h9"/></svg></div>
+            <h3>Клинические взаимосвязи</h3>
+            <p>Как изменения в одной области влияют на другие.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Changes -->
+  <section class="section" id="changes">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="tag">Changelog · 1.0 → 2.0</span>
+        <h2 class="h2">Что изменилось в Функциональной анатомии <span>2.0</span>?</h2>
+        <p class="lead">Мы сохранили основу нашего курса, но значительно расширили его содержание.</p>
+        <div class="compare-legend"><span><i></i>Было</span><span class="is-new"><i></i>Стало</span></div>
+      </div>
+
+      <div class="changes">
+        <article class="change change--featured hud reveal">
+          <div class="change__head"><span class="change__num">01</span><h3 class="change__title">Структура обучения</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>2 основных модуля.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span>
+            <div>
+              <p>3 основных модуля и полноценный вводный модуль. Всего 4 модуля обучения.</p>
+              <div class="module-bars"><span class="module-bar module-bar--intro">00 · Вводный</span><span class="module-bar">01 · Модуль</span><span class="module-bar">02 · Модуль</span><span class="module-bar">03 · Модуль</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="change hud reveal">
+          <div class="change__head"><span class="change__num">02</span><h3 class="change__title">Вводная часть</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Краткое введение перед изучением основной программы.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Полноценный вводный модуль с анатомической базой, философией курса, дополнительными материалами, практикой и подготовкой к дальнейшему изучению.</p></div>
+        </article>
+
+        <article class="change hud reveal d1">
+          <div class="change__head"><span class="change__num">03</span><h3 class="change__title">Видеоуроки</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Основная библиотека уроков по функциональной анатомии.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Расширенная программа с новыми видеоуроками, которые дополнительно записал Олег Агапэ.</p></div>
+        </article>
+
+        <article class="change hud reveal">
+          <div class="change__head"><span class="change__num">04</span><h3 class="change__title">Клинические взаимосвязи</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Изучение анатомических структур и их функций.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Больше внимания клиническим взаимосвязям, прикладной анатомии и пониманию того, как различные структуры организма влияют друг на друга.</p></div>
+        </article>
+
+        <article class="change hud reveal d1">
+          <div class="change__head"><span class="change__num">05</span><h3 class="change__title">Практическая часть</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Практические элементы в рамках основной программы.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Дополнительные материалы по пальпации и самопальпации, позволяющие изучать анатомию через собственные ощущения и непосредственную работу с телом.</p></div>
+        </article>
+
+        <article class="change hud reveal">
+          <div class="change__head"><span class="change__num">06</span><h3 class="change__title">Изучение реальной анатомии</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Изучение анатомии по учебным материалам курса.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Дополнительные видеофрагменты с кадаверным материалом. В тематических блоках можно увидеть реальные анатомические структуры и лучше понять их расположение и взаимосвязи.</p></div>
+        </article>
+
+        <article class="change hud reveal d1">
+          <div class="change__head"><span class="change__num">07</span><h3 class="change__title">Дополнительные материалы</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Материалы основной образовательной программы.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Больше учебных материалов, дополнительные вебинары и расширенное содержание модулей.</p></div>
+        </article>
+
+        <article class="change change--featured hud reveal">
+          <div class="change__head"><span class="change__num">08</span><h3 class="change__title">Визуал и проверка знаний</h3></div>
+          <div class="row row--old"><span class="row__label">Было</span><p>Визуальные материалы и тестирование в первоначальной версии курса.</p></div>
+          <div class="row row--new"><span class="row__label">Стало</span><p>Обновлённый визуальный материал, больше учебного контента и тестов для закрепления знаний.</p></div>
+        </article>
+      </div>
+
+      <div class="manifest reveal">
+        <div>
+          <h3>Функциональная анатомия <span>2.0</span> — это не просто новые уроки!</h3>
+          <p>Мы переработали сам подход к обучению, чтобы вы могли последовательно переходить от базовых анатомических знаний к пониманию клинических взаимосвязей и практической работе с телом.</p>
+        </div>
+        <a href="#enroll" class="btn btn-primary">Хочу на обновлённый курс <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience -->
+  <section class="section section--alt" id="audience">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="tag">Для кого</span>
+        <h2 class="h2">Кому подойдёт <span>обучение?</span></h2>
+      </div>
+      <div class="aud">
+        <div class="aud-card hud reveal">
+          <div class="aud-card__top"><div class="aud-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M8 5c0 2 8 2 8 4s-8 2-8 4 8 2 8 4-8 2-8 4"/></svg></div><span class="aud-card__id">ID·01</span></div>
+          <h3>Остеопатам и специалистам остеокоррекции</h3>
+          <p>Чтобы углубить анатомические знания и лучше понимать взаимосвязи структур организма.</p>
+        </div>
+        <div class="aud-card hud reveal d1">
+          <div class="aud-card__top"><div class="aud-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div><span class="aud-card__id">ID·02</span></div>
+          <h3>Массажистам и телесным практикам</h3>
+          <p>Чтобы увереннее ориентироваться в анатомии и осознаннее работать с тканями.</p>
+        </div>
+        <div class="aud-card hud reveal d2">
+          <div class="aud-card__top"><div class="aud-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M4 22l4-7 3 2v5M15 22l-2-6 2-4-3-3-3 4H5"/><path d="M15 12l3 2 3-1"/></svg></div><span class="aud-card__id">ID·03</span></div>
+          <h3>Реабилитологам и специалистам по движению</h3>
+          <p>Чтобы систематизировать знания о строении и функциях тела.</p>
+        </div>
+        <div class="aud-card hud reveal">
+          <div class="aud-card__top"><div class="aud-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><span class="aud-card__id">ID·04</span></div>
+          <h3>Студентам и начинающим специалистам</h3>
+          <p>Чтобы сформировать прочную анатомическую базу для дальнейшего профессионального развития.</p>
+        </div>
+        <div class="aud-card hud reveal d1">
+          <div class="aud-card__top"><div class="aud-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/><path d="M3 12h4l2-3 3 6 2-3h7"/></svg></div><span class="aud-card__id">ID·05</span></div>
+          <h3>Всем, кто хочет лучше понимать собственное тело</h3>
+          <p>Чтобы разобраться в его устройстве, движениях и взаимосвязях различных систем.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enroll -->
+  <section class="section" id="enroll">
+    <div class="container enroll">
+      <div class="reveal">
+        <span class="tag">Предварительная запись</span>
+        <h2 class="h2">Ближайший поток — <span>в ноябре 2026 года!</span></h2>
+        <p class="lead">Получите возможность присоединиться к обновлённой «Функциональной анатомии 2.0» на специальных условиях до официального открытия продаж.</p>
+        <ul class="enroll__perks">
+          <li>Специальные условия до официального открытия продаж</li>
+          <li>Служба заботы расскажет подробности и ответит на вопросы</li>
+          <li>Предварительная запись бесплатная и ни к чему не обязывает</li>
+        </ul>
+      </div>
+
+      <!-- Форма предзаписи: сюда встанет GetCourse-виджет -->
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section>
+    <div class="container">
+      <div class="final hud reveal">
+        <span class="tag">Не откладывайте</span>
+        <h2 class="h2">Не откладывайте изучение анатомии <span>на потом!</span></h2>
+        <p class="lead">Человеческое тело — сложная взаимосвязанная система. И чем глубже вы понимаете её устройство, тем осознаннее можете подходить к работе с ней.</p>
+        <p class="lead">Присоединяйтесь к обновлённой программе <b>«Функциональная анатомия 2.0»</b> и выходите на новый уровень анатомических знаний вместе с МИОТ!</p>
+        <a href="#enroll" class="btn btn-primary">Оставить предварительную заявку <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="img/logo.png" alt="МИОТ логотип">
+        <div class="logo__text">Международный<br>институт<br>остеопатических<br>технологий</div>
+      </div>
+      <div class="footer__nav">
+        <h4>Обучение</h4>
+        <a href="../index.html">Все курсы</a>
+        <a href="../dissection/">Диссекционные классы</a>
+        <a href="../anatomy.html">Анатомия</a>
+      </div>
+      <div class="footer__nav">
+        <h4>Контакты</h4>
+        <a href="mailto:info@dr-agape.ru">info@dr-agape.ru</a>
+        <a href="../about.html">О нас</a>
+        <a href="../contacts.html">Контакты</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>
+        <p>© 2026 МИОТ. Все права защищены.</p>
+        <p style="margin-top:6px;">ИП Петров Олег Вячеславович · ИНН 330510600108 · ОГРН 322332800019880</p>
+      </div>
+      <div class="footer__legal">
+        <a href="../policy.html">Политика конфиденциальности</a>
+        <a href="../offer.html">Договор оферта</a>
+        <a href="../soglasie.html">Согласие на обработку данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Reveal on scroll */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-visible'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
+</script>
+</body>
+</html>
