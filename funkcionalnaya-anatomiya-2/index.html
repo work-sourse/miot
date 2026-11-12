@@ -220,7 +220,7 @@
       mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
     }
     .scan-line {
-      position: absolute; left: 6%; right: 6%; height: 2px; z-index: 3; top: 20%;
+      position: absolute; left: 6%; right: 6%; height: 2px; z-index: 1; top: 20%;
       background: linear-gradient(90deg, transparent, var(--cyan-2), transparent);
       box-shadow: 0 0 16px 2px var(--glow); opacity: 0.75;
       animation: scanY 5.5s ease-in-out infinite;
@@ -652,6 +652,12 @@
     .gc-form__note { margin-top: 0.8rem; font-size: 0.92rem; line-height: 1.5; color: var(--ink-2); }
     .gc-form__note a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
     .gc-form__important { margin-top: 0.9rem; padding: 0.8rem 1rem; border-radius: 12px; background: var(--cyan-soft); font-size: 0.98rem; color: var(--ink); }
+    /* form: one clean card, widget fills it */
+    .gc-form { padding: 1.6rem 1rem 1.3rem; }
+    .gc-form__head { position: relative; z-index: 2; padding: 0 0.6rem; font-size: 1.2rem; font-weight: 800; margin-bottom: 0; }
+    .gc-form__frame { margin-top: -30px; }
+    .gc-form__note, .gc-form__important { margin-left: 0.6rem; margin-right: 0.6rem; }
+    @media (max-width: 560px) { .gc-form { padding: 1.3rem 0.4rem 1.1rem; } .gc-form__head { font-size: 1.1rem; } }
   </style>
   <script src="/utm.js?v=1"></script>
   <!-- Meta Pixel Code -->
@@ -709,6 +715,8 @@
       </div>
 
       <div class="hero__visual reveal d1" aria-hidden="false">
+        <div class="scan"></div>
+        <div class="scan-line"></div>
         <div class="scan-ring scan-ring--3"></div>
         <div class="scan-ring scan-ring--1"></div>
         <div class="scan-ring scan-ring--2"></div>
@@ -912,6 +920,8 @@
       </div>
 
       <div class="hero__visual enroll-oleg reveal d1">
+        <div class="scan"></div>
+        <div class="scan-line"></div>
         <div class="scan-ring scan-ring--3"></div>
         <div class="scan-ring scan-ring--1"></div>
         <div class="scan-ring scan-ring--2"></div>
