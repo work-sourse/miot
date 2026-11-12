@@ -658,6 +658,11 @@
     .gc-form__frame { margin-top: -30px; }
     .gc-form__note, .gc-form__important { margin-left: 0.6rem; margin-right: 0.6rem; }
     @media (max-width: 560px) { .gc-form { padding: 1.3rem 0.4rem 1.1rem; } .gc-form__head { font-size: 1.1rem; } }
+    .gc-form__call { display: flex; align-items: center; gap: 14px; margin: 1rem 0.6rem 0; padding: 0.9rem 1rem; border-radius: 14px; border: 1px solid rgba(8, 145, 178, 0.3); background: #fff; color: var(--ink-2); font-size: 0.95rem; transition: border-color .2s, box-shadow .2s; }
+    .gc-form__call:hover { border-color: var(--cyan-2); box-shadow: 0 10px 24px -14px rgba(8, 145, 178, 0.6); }
+    .gc-form__call-ico { flex: 0 0 auto; display: inline-flex; width: 42px; height: 42px; border-radius: 50%; align-items: center; justify-content: center; background: var(--ink); color: var(--cyan-2); }
+    .gc-form__call-ico svg { width: 20px; height: 20px; }
+    .gc-form__call b { display: block; font-family: var(--font-head); font-size: 1.15rem; font-weight: 800; color: var(--ink); white-space: nowrap; }
   </style>
   <script src="/utm.js?v=1"></script>
   <!-- Meta Pixel Code -->
@@ -916,6 +921,7 @@
           <p class="gc-form__note">Нажимая на кнопку, вы соглашаетесь на обработку персональных данных в соответствии с <a href="../policy.html">политикой конфиденциальности</a>.</p>
           <p class="gc-form__note">После отправки заявки наша служба заботы свяжется с вами, расскажет подробности обучения и ответит на вопросы.</p>
           <p class="gc-form__important"><b>ВАЖНО:</b> предварительная запись бесплатная и ни к чему вас не обязывает.</p>
+          <a class="gc-form__call" href="tel:+79604787810"><span class="gc-form__call-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span>Есть вопросы — позвоните нам<b>+7 960 478-78-10</b></span></a>
         </div>
       </div>
 
@@ -961,6 +967,7 @@
       </div>
       <div class="footer__nav">
         <h4>Контакты</h4>
+        <a href="tel:+79604787810">+7 960 478-78-10</a>
         <a href="mailto:info@dr-agape.ru">info@dr-agape.ru</a>
         <a href="../about.html">О нас</a>
         <a href="../contacts.html">Контакты</a>
