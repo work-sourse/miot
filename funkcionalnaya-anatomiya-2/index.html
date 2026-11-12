@@ -357,8 +357,8 @@
       .cmp tbody th { padding: 1.1rem 1.2rem 0.6rem; display: flex; align-items: center; }
       .cmp td { padding: 0.7rem 1.2rem 1rem; }
       .cmp td::before {
-        content: attr(data-label); display: table; margin-bottom: 8px; padding: 3px 10px; border-radius: 6px;
-        font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+        content: attr(data-label); display: block; width: fit-content; margin-bottom: 10px; padding: 6px 14px; border-radius: 8px; line-height: 1.3;
+        font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
       }
       .cmp__old::before { color: #64748b; background: #f1f5f9; }
       .cmp__new { border-left: 0; border-top: 1px dashed var(--line); }
@@ -580,6 +580,8 @@
     .enroll { grid-template-columns: 1.1fr 0.9fr !important; max-width: none !important; gap: 3rem; align-items: center; }
     .enroll-viz { position: relative; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: #000; aspect-ratio: 1 / 0.92; box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.7); }
     .enroll-viz img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+    .enroll-oleg { max-width: 460px; }
+    .enroll-oleg .enroll-viz__status { top: 10%; left: 0; }
     .enroll-viz__status {
       position: absolute; top: 16px; left: 16px; z-index: 3; display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
@@ -592,7 +594,7 @@
     }
     .enroll-viz__date small { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); }
     .enroll-viz__date b { font-family: var(--font-head); font-size: 1.3rem; font-weight: 900; color: var(--ink); }
-    @media (max-width: 960px) { .enroll { grid-template-columns: 1fr !important; } .enroll-viz { max-width: 520px; width: 100%; } }
+    @media (max-width: 960px) { .enroll { grid-template-columns: 1fr !important; } .enroll-oleg { order: 0; margin: 0 auto; max-width: 380px; } }
   </style>
   <script src="/utm.js?v=1"></script>
   <!-- Meta Pixel Code -->
@@ -897,12 +899,17 @@
       </div>
 
       <!-- Форма предзаписи: сюда встанет GetCourse-виджет -->
-      <figure class="enroll-viz hud reveal d1">
-        <img src="img/neck.jpg" alt="Анатомическая иллюстрация шеи: мышцы, сосуды и нервы" loading="lazy">
-        <div class="scan-line scan-line--soft"></div>
+      <div class="hero__visual enroll-oleg reveal d1">
+        <div class="scan"></div>
+        <div class="scan-ring scan-ring--3"></div>
+        <div class="scan-ring scan-ring--1"></div>
+        <div class="scan-ring scan-ring--2"></div>
+        <img class="hero__photo" src="img/oleg.png" alt="Олег Агапэ — автор курса «Функциональная анатомия 2.0»" loading="lazy">
+        <div class="scan-line"></div>
         <div class="enroll-viz__status"><i></i>Предзапись открыта</div>
-        <div class="enroll-viz__date"><small>// старт потока</small><b>Ноябрь 2026</b></div>
-      </figure>
+        <div class="hud-label hud-label--2"><small>// старт потока</small><strong>Ноябрь 2026</strong></div>
+        <div class="hero__name"><strong>Олег Агапэ</strong><span>автор курса · анатом · остеопат</span></div>
+      </div>
     </div>
   </section>
 
