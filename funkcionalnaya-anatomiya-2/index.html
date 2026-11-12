@@ -479,6 +479,7 @@
     .footer__legal { display: flex; gap: 1.2rem; flex-wrap: wrap; }
     .footer__legal a { color: #94a3b8; } .footer__legal a:hover { color: var(--cyan-2); }
     @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { .hero__chips { display: none; } }
 
     /* ── Visuals ── */
     .viz-motion {
@@ -655,7 +656,6 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="reveal">
-        <div class="hero__version"><code class="old">v1.0</code> → <code class="new">v2.0</code> обновлённая программа</div>
         <h1 class="hero__title">Функциональная анатомия <span class="v">2.0</span></h1>
         <p class="hero__sub">Обновлённая программа обучения от Олега Агапэ</p>
         <p class="hero__text">Ещё больше анатомии, клинических взаимосвязей, пальпации и практики!</p>
@@ -679,9 +679,6 @@
         <div class="scan-ring scan-ring--2"></div>
         <img class="hero__photo" src="img/oleg.png" alt="Олег Агапэ — автор курса «Функциональная анатомия 2.0»">
         <div class="scan-line"></div>
-        <div class="hud-label hud-label--1"><small>// модуль 00</small><strong>Вводный модуль</strong></div>
-        <div class="hud-label hud-label--2"><small>// практика</small><strong>Пальпация</strong></div>
-        <div class="hud-label hud-label--3"><small>// клиника</small><strong>Взаимосвязи систем</strong></div>
         <div class="hero__name"><strong>Олег Агапэ</strong><span>автор курса · анатом · остеопат</span></div>
       </div>
     </div>
