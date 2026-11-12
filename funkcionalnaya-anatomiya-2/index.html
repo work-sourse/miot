@@ -581,6 +581,10 @@
     .enroll-viz { position: relative; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: #000; aspect-ratio: 1 / 0.92; box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.7); }
     .enroll-viz img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
     .enroll-oleg { max-width: 460px; }
+    .gc-form { margin-top: 1.8rem; padding: 1.4rem 1.4rem 1rem; background: #fff; border: 1px solid rgba(8, 145, 178, 0.22); border-radius: var(--r-lg); box-shadow: 0 24px 50px -30px rgba(8, 145, 178, 0.45); }
+    .gc-form__head { display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); }
+    .gc-form__head i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; }
+    .gc-form iframe { width: 100% !important; border: 0; }
     .enroll-oleg .enroll-viz__status { top: 10%; left: 0; }
     .enroll-viz__status {
       position: absolute; top: 16px; left: 16px; z-index: 3; display: inline-flex; align-items: center; gap: 8px;
@@ -896,9 +900,12 @@
           <li>Служба заботы расскажет подробности и ответит на вопросы</li>
           <li>Предварительная запись бесплатная и ни к чему не обязывает</li>
         </ul>
+        <div class="gc-form" id="form">
+          <div class="gc-form__head"><i></i>Форма предзаписи</div>
+          <script id="ea75898673bc5eea6bfb91a472d7909989f544fb" src="https://online.agape-course.ru/pl/lite/widget/script?id=1683245"></script>
+        </div>
       </div>
 
-      <!-- Форма предзаписи: сюда встанет GetCourse-виджет -->
       <div class="hero__visual enroll-oleg reveal d1">
         <div class="scan"></div>
         <div class="scan-ring scan-ring--3"></div>
