@@ -98,6 +98,7 @@ function menuHtml(query='') {
 
 function fitContent(slide) {
   const content=slide.querySelector('.scroll-content');
+  if(slide.classList.contains('source-slide')) {content.style.setProperty('--fit','1');slide.dataset.fit='1.000';return;}
   let k=1;content.style.setProperty('--fit','1');
   for(let i=0;i<20&&content.scrollHeight>content.clientHeight+2;i++) {
     k=Math.max(.45,k-.035);content.style.setProperty('--fit',k.toFixed(3));
