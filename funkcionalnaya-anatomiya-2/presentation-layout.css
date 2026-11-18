@@ -331,3 +331,10 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
  .slide.source-slide .source-tariffs,.slide.source-slide .source-offer{grid-template-columns:1fr}
  .slide.source-slide .source-art{height:30cqw}
 }
+
+@media(max-width:600px){
+ .slide .cover-author{font-size:16px!important}
+ .slide.source-slide .source-tariff h2,.slide.source-slide .source-offer-plan h2{font-size:max(18px,3.4cqw)}
+ .slide.source-slide .signal-label,.slide.source-slide .source-offer-plan s{font-size:max(16px,3.2cqw)}
+ .slide.source-slide .source-offer-plan strong{font-size:max(24px,6.1cqw)}
+}
