@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Презентация вебинара Олега Агапэ «Функциональная анатомия 2.0». Международный институт остеопатических технологий.">
+  <meta name="color-scheme" content="light">
+  <title>Функциональная анатомия 2.0 · МИОТ</title>
+  <link rel="stylesheet" href="presentation.css">
+  <link rel="stylesheet" href="presentation-layout.css">
+</head>
+<body>
+  <main class="left-panel" aria-label="Презентация вебинара">
+    <div class="stage" id="stage" aria-roledescription="карусель"></div>
+    <nav class="nav" aria-label="Управление презентацией">
+      <button class="nav-btn" id="prev" aria-label="Предыдущий слайд" title="Предыдущий слайд (←)">←</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Оглавление" aria-expanded="false" aria-controls="menuPanel" title="Оглавление (M)">☰</button>
+      <span class="nav-counter" id="counter" aria-live="polite" aria-atomic="true">0 / 113</span>
+      <button class="nav-btn" id="next" aria-label="Следующий слайд" title="Следующий слайд (→)">→</button>
+      <span class="nav-separator" aria-hidden="true"></span>
+      <button class="nav-btn utility" id="notesToggle" aria-label="Полный текст слайда" aria-controls="notesPanel" aria-expanded="false" title="Полный текст слайда (T)">Т</button>
+      <button class="nav-btn utility" id="fullscreen" aria-label="Полный экран" title="Полный экран (F)">⛶</button>
+    </nav>
+  </main>
+  <div class="menu-backdrop" id="menuBackdrop" hidden>
+    <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-labelledby="menuTitle" tabindex="-1">
+      <div class="panel-top"><div><div class="menu-panel-head" id="menuTitle">Функциональная анатомия 2.0</div><p class="panel-sub">Оглавление · <span id="menuCounter">0 / 113</span></p></div><button class="close-panel" id="menuClose" aria-label="Закрыть оглавление">×</button></div>
+      <input id="menuSearch" type="search" placeholder="Номер, название или слово…" aria-label="Поиск по слайдам" autocomplete="off">
+      <div class="menu-panel-list" id="menuList"></div>
+      <p class="menu-empty" id="menuEmpty" hidden>Слайды не найдены</p>
+      <div class="panel-help">← → листать · F полный экран · T текст</div>
+    </div>
+  </div>
+  <div class="notes-backdrop" id="notesBackdrop" hidden>
+    <section id="notesPanel" class="notes-panel" role="dialog" aria-modal="true" aria-labelledby="notesTitle" tabindex="-1">
+      <div class="panel-top"><div><div class="menu-panel-head" id="notesTitle">Полный текст слайда</div><p class="panel-sub" id="notesCounter"></p></div><button class="close-panel" id="notesClose" aria-label="Закрыть текст">×</button></div>
+      <div id="notesText" class="notes-text"></div>
+    </section>
+  </div>
+  <noscript>Для просмотра презентации включите JavaScript в браузере.</noscript>
+  <script src="presentation-data.js"></script>
+  <script src="visual-content.js"></script>
+  <script src="presentation.js"></script>
+</body>
+</html>
