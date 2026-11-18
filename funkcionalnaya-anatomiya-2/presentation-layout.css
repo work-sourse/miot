@@ -311,30 +311,33 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
 /* Единые размеры и верхняя линия текста, без автоматического уменьшения. */
 .slide.source-slide .scroll-content{justify-content:flex-start;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--purple-deep) transparent;overscroll-behavior:contain;padding-right:1cqw}
 .slide.source-slide .source-layout{align-items:start;flex-shrink:0}
-.slide.source-slide .source-title{font-size:4.7cqw;line-height:1.2;margin:0 0 2cqw;letter-spacing:-.08cqw}
-.slide.source-slide .source-line,.slide.source-slide .source-tariff .source-line,.slide.source-slide .source-bonus .source-line{font-size:3.2cqw;line-height:1.4;margin-bottom:1.7cqw}
-.slide.source-slide .source-citation{font-size:2.6cqw;line-height:1.4}
+.slide.source-slide .source-title{font-size:6cqw;line-height:1.18;margin:0 0 2cqw;letter-spacing:-.08cqw}
+.slide.source-slide .source-line,.slide.source-slide .source-tariff .source-line,.slide.source-slide .source-bonus .source-line{font-size:4.2cqw;line-height:1.4;margin-bottom:2cqw}
+.slide.source-slide .source-citation{font-size:3.2cqw;line-height:1.4}
 .slide.source-slide .divider{margin:0 0 2.5cqw}
-.slide.source-slide .source-table th,.slide.source-slide .source-table td{font-size:3cqw;line-height:1.35}
+.slide.source-slide .source-table th,.slide.source-slide .source-table td{font-size:3.8cqw;line-height:1.35}
 .slide.source-slide .source-art{align-self:start}
-.slide.source-slide .source-tariff h2,.slide.source-slide .source-offer-plan h2{font-size:3.4cqw;line-height:1.3}
+.slide.source-slide .source-tariff h2,.slide.source-slide .source-offer-plan h2{font-size:4.4cqw;line-height:1.3}
 .slide.source-slide .source-bonus .source-line:last-child{margin-bottom:0}
 @media print{.slide.source-slide .scroll-content{overflow:visible;scrollbar-gutter:auto}.slide.source-slide{height:auto;min-height:210mm;break-inside:avoid}}
 
 .slide.source-slide .hd{height:4.8cqw;flex:0 0 4.8cqw}
 @media(max-width:600px){
  .slide.source-slide .source-layout{display:block}
- .slide.source-slide .source-title{font-size:max(22px,4.7cqw)}
- .slide.source-slide .source-line,.slide.source-slide .source-tariff .source-line,.slide.source-slide .source-bonus .source-line{font-size:max(16px,3.2cqw)}
- .slide.source-slide .source-citation{font-size:max(14px,2.6cqw)}
- .slide.source-slide .source-table th,.slide.source-slide .source-table td{font-size:max(14px,3cqw)}
+ .slide.source-slide .source-title{font-size:max(28px,6cqw)}
+ .slide.source-slide .source-line,.slide.source-slide .source-tariff .source-line,.slide.source-slide .source-bonus .source-line{font-size:max(20px,4.2cqw)}
+ .slide.source-slide .source-citation{font-size:max(16px,3.2cqw)}
+ .slide.source-slide .source-table th,.slide.source-slide .source-table td{font-size:max(18px,3.8cqw)}
  .slide.source-slide .source-tariffs,.slide.source-slide .source-offer{grid-template-columns:1fr}
  .slide.source-slide .source-art{height:30cqw}
 }
 
 @media(max-width:600px){
  .slide .cover-author{font-size:16px!important}
- .slide.source-slide .source-tariff h2,.slide.source-slide .source-offer-plan h2{font-size:max(18px,3.4cqw)}
- .slide.source-slide .signal-label,.slide.source-slide .source-offer-plan s{font-size:max(16px,3.2cqw)}
+ .slide.source-slide .source-tariff h2,.slide.source-slide .source-offer-plan h2{font-size:max(22px,4.4cqw)}
+ .slide.source-slide .signal-label,.slide.source-slide .source-offer-plan s{font-size:max(20px,4.2cqw)}
  .slide.source-slide .source-offer-plan strong{font-size:max(24px,6.1cqw)}
 }
+
+.slide.source-slide .signal-label{font-size:max(20px,4.2cqw);line-height:1.4}
+.slide.source-slide .source-offer-plan s{font-size:max(20px,4.2cqw)}
