@@ -345,7 +345,10 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
 /* Each source slide is one complete frame. Typography fits its full text. */
 .slide.source-slide .scroll-content{overflow:hidden;padding-right:0;scrollbar-gutter:auto;display:flex;justify-content:flex-start}
 .slide.source-slide.source-compact .source-layout{display:block}
-.slide.source-slide.source-compact .source-layout>.source-art{position:absolute;right:0;bottom:0;width:23cqw;height:23cqw;opacity:.045;pointer-events:none}
+.slide.source-slide.source-compact .source-layout>.source-art{display:none}
+.slide.source-slide.source-long .source-art,
+.slide.source-slide.source-dense .source-art,
+.slide.source-slide.source-compact .source-art{display:none}
 .slide.source-slide .source-title{font-size:calc(6cqw * var(--fit));line-height:1.18;margin:0 0 calc(2cqw * var(--fit))}
 .slide.source-slide .source-line,.slide.source-slide .source-tariff .source-line,.slide.source-slide .source-bonus .source-line{font-size:calc(4.2cqw * var(--fit));line-height:1.36;margin-bottom:calc(2cqw * var(--fit))}
 .slide.source-slide .source-citation{font-size:calc(3.2cqw * var(--fit));line-height:1.35}
@@ -358,4 +361,279 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
 .slide.source-slide .source-bonus figure{height:calc(12cqw * var(--fit))}
 .slide.source-slide .source-tariff{padding:calc(2cqw * var(--fit))}
 .slide.source-slide .divider{margin-bottom:calc(2.5cqw * var(--fit))}
+/* Slide 3: ground the transparent portrait so the torso reads as complete. */
+.slide[data-slide="3"] .source-art{align-self:end}
+.slide[data-slide="14"] .source-layout{display:block}
+.slide[data-slide="14"] .profile-points{display:grid;gap:1.15cqw;max-width:88cqw}
+.slide[data-slide="14"] .source-profile-line{display:grid;grid-template-columns:5.5cqw minmax(0,1fr);gap:1.1cqw;align-items:start;margin:0;padding:1.35cqw 1.7cqw;background:rgba(255,255,255,.62);border-radius:1.6cqw;border-left:.55cqw solid var(--purple)}
+.slide[data-slide="14"] .profile-index{font-size:2.1cqw;line-height:1.45;font-weight:800;color:var(--purple-deep);letter-spacing:.08cqw}
+.slide[data-slide="14"] .source-profile-line strong{color:var(--ink);font-weight:800}
+.slide[data-slide="19"] .source-layout{display:block;position:relative;height:100%}
+.slide[data-slide="19"] .source-art{position:absolute;right:0;bottom:0;width:42cqw;height:42cqw;align-self:auto}
+.slide[data-slide="23"] .source-layout{display:block}
+.slide[data-slide="23"] .recommendation-points{display:grid;gap:2.2cqw;max-width:90cqw}
+.slide[data-slide="23"] .recommendation-points .source-line{margin:0}
+.slide[data-slide="23"] .recommendation-main{padding:2.1cqw 2.5cqw;background:var(--blue);border-radius:2.4cqw;border-left:.7cqw solid var(--purple-deep);color:var(--ink)}
+.slide[data-slide="23"] .recommendation-result{padding-left:2.5cqw;border-left:.45cqw solid var(--orange)}
+.slide[data-slide="23"] .recommendation-points strong{color:var(--ink);font-weight:800}
 @media print{.slide.source-slide{height:210mm;min-height:210mm}.slide.source-slide .scroll-content{overflow:hidden;scrollbar-gutter:auto}}
+
+/* Финальная полировка: спокойная иерархия текста и осмысленные акценты. */
+.slide h1,.slide .source-title{text-wrap:balance}
+.slide .source-line{color:rgba(27,24,48,.74)}
+.slide .source-content strong{font-weight:800;color:var(--ink)}
+.slide .source-bullet{padding-left:2.55cqw}
+.slide .source-marker{font-weight:900}
+
+/* Слайд 14: пять тезисов читаются как единый путь, а не как набор карточек. */
+.slide[data-slide="14"] .profile-points{gap:0;max-width:89cqw}
+.slide[data-slide="14"] .source-profile-line{
+  grid-template-columns:1fr;
+  gap:0;
+  padding:1.25cqw 0 1.45cqw 2.45cqw;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.slide[data-slide="14"] .source-profile-line::before{
+  content:'';
+  position:absolute;
+  left:.35cqw;
+  top:calc(1.25cqw + .58em);
+  width:.85cqw;
+  height:.85cqw;
+  border-radius:50%;
+  background:var(--purple-deep);
+}
+.slide[data-slide="14"] .source-profile-line:last-child{border-bottom:0}
+.slide[data-slide="14"] .profile-index{display:none}
+
+/* Слайд 23: один главный вывод и ясно отделённый результат, без декоративных рельсов. */
+.slide[data-slide="23"] .recommendation-points{gap:2.4cqw;max-width:91cqw}
+.slide[data-slide="23"] .recommendation-main{
+  padding:2.25cqw 2.6cqw;
+  background:var(--blue);
+  border:0;
+  border-radius:2.2cqw;
+  box-shadow:inset 0 0 0 1px rgba(78,111,203,.12);
+}
+.slide[data-slide="23"] .recommendation-result{
+  padding:0;
+  border:0;
+  color:var(--ink2);
+}
+.slide[data-slide="12"] .source-layout{display:block;position:relative;height:100%}
+.slide[data-slide="12"] .source-content{max-width:100%}
+.slide[data-slide="12"] .source-art{position:absolute;right:0;bottom:0;width:34cqw;height:34cqw;align-self:auto}
+.slide[data-slide="32"] .source-title{font-size:calc(5.15cqw * var(--fit));letter-spacing:-.15cqw}
+.slide .source-title,.slide h1{overflow-wrap:normal;word-break:normal;hyphens:none}
+.slide[data-slide="36"] .source-layout{display:block}
+.slide[data-slide="36"] .approach-compare{display:grid;grid-template-columns:1fr 1fr;gap:2.2cqw}
+.slide[data-slide="36"] .approach-column{padding:2.3cqw;border-radius:2.3cqw;background:rgba(255,255,255,.78);border:1px solid rgba(10,75,154,.16)}
+.slide[data-slide="36"] .approach-functional{background:#0A4B9A;border-color:#0A4B9A}
+.slide[data-slide="36"] .approach-column h2{font-size:calc(3.45cqw * var(--fit));line-height:1.18;margin:0 0 1.8cqw;color:#073E83}
+.slide[data-slide="36"] .approach-functional h2,.slide[data-slide="36"] .approach-functional .source-line,.slide[data-slide="36"] .approach-functional .source-marker{color:#fff}
+.slide[data-slide="36"] .approach-column .source-line{font-size:calc(2.6cqw * var(--fit));line-height:1.34;margin-bottom:1.35cqw}
+.slide[data-slide="36"] .approach-column .source-bullet{padding-left:1.7cqw}
+.hand-underline{position:relative;color:#073E83!important;text-decoration:none}
+.hand-underline::after{content:'';position:absolute;left:-.06em;right:-.06em;bottom:-.13em;height:.14em;border-radius:99px;background:#21C6F0;transform:rotate(-1.4deg)}
+.marker-highlight{color:#073E83!important;background:rgba(33,198,240,.28);padding:.03em .1em;border-radius:.12em}
+/* Плотные слайды: подписи к ключевым выводам читаются как маркеры, а не как сплошной текст. */
+.slide.source-long .source-line strong,.slide.source-dense .source-line strong{background:rgba(33,198,240,.25);padding:.03em .1em;border-radius:.12em;color:#073E83!important}
+.slide.cta-slide.source-long .source-line strong,.slide.cta-slide.source-dense .source-line strong{background:rgba(109,225,255,.28);color:#fff!important}
+
+/* ── Cyber medicine visual system ─────────────────────────────────────── */
+:root{
+  --blue:#D9EDFF;
+  --blue-mid:#8EC9FF;
+  --blue-deep:#0A4B9A;
+  --purple:#C9D7FF;
+  --purple-mid:#7B9CF4;
+  --purple-deep:#294AAB;
+  --orange:#A9E8FF;
+  --orange-mid:#55D8FF;
+  --orange-deep:#0076B9;
+  --ink:#061B3F;
+  --ink2:rgba(6,27,63,.76);
+  --ink3:rgba(6,27,63,.52);
+  --paper:#F9FCFF;
+  --paper2:#EAF5FF;
+  --paper3:#DCEEFF;
+  --line:rgba(10,75,154,.16);
+  --shadow:0 18px 46px rgba(0,25,70,.22);
+}
+html,body{
+  background-color:#03183A;
+  background-image:
+    radial-gradient(58% 48% at 88% 8%,rgba(27,125,236,.33),transparent 70%),
+    radial-gradient(42% 36% at 3% 100%,rgba(50,211,255,.16),transparent 74%);
+}
+.slide{
+  box-shadow:var(--shadow);
+  border-radius:3.2cqw;
+}
+.slide:not(.cta-slide)::before{
+  content:'';
+  position:absolute;
+  inset:1.35cqw;
+  border:1px solid rgba(10,75,154,.13);
+  border-radius:2.25cqw;
+  pointer-events:none;
+}
+.slide > *{position:relative;z-index:1}
+.slide > .progress-bar{position:absolute;z-index:2}
+.slide.source-slide .scroll-content{padding-bottom:4.2cqw}
+.slide .source-bonus{grid-template-columns:1fr}
+.slide .hd{margin-bottom:3.8cqw}
+.hd-num{
+  background:#073E83;
+  box-shadow:0 0 0 .34cqw rgba(85,216,255,.24);
+}
+.hd-chip{
+  color:#0A4B9A;
+  border-color:rgba(10,75,154,.22);
+  background:rgba(255,255,255,.52);
+  font-weight:700;
+}
+.brand{color:rgba(6,27,63,.62);letter-spacing:.21cqw}
+.slide .divider{
+  width:8.4cqw;
+  background:#32BFEF;
+  box-shadow:0 0 1.3cqw rgba(50,191,239,.35);
+}
+.progress-bar{background:rgba(6,27,63,.12)}
+.progress-bar i{background:#19BDEB;box-shadow:0 0 .8cqw rgba(25,189,235,.45)}
+.slide .source-title,.slide h1{letter-spacing:-.12cqw}
+.slide .source-line{color:rgba(6,27,63,.78)}
+.slide .source-content strong{color:#073E83}
+.slide .source-marker{color:#00A9D9}
+
+/* Clinical surfaces retain a decisive, dark-blue information hierarchy. */
+.slide .source-table tbody th,
+.slide .source-table td:last-child,
+.slide .source-offer-advanced,
+.slide .source-tariff-advanced{
+  background:#0A4B9A;
+  color:#fff;
+}
+.slide .source-table tbody th *,
+.slide .source-table td:last-child *,
+.slide .source-offer-advanced *,
+.slide .source-tariff-advanced *{color:#fff!important}
+.slide .source-table td{background:rgba(255,255,255,.82)}
+.slide .source-table thead th{color:#073E83}
+.slide .source-bonus:nth-child(1),.slide .source-bonus:nth-child(4){background:#D9EDFF}
+.slide .source-bonus:nth-child(2){background:#C9D7FF}
+.slide .source-bonus:nth-child(3){background:#A9E8FF}
+.slide .source-offer-plan{background:rgba(255,255,255,.82);border-color:rgba(10,75,154,.18)}
+
+/* Accent slides become the dark medical interface mode. */
+.slide.cta-slide{
+  background:#063878;
+  overflow:hidden;
+}
+.slide.cta-slide::after{
+  background:
+    radial-gradient(52cqw 42cqw at 88% 6%,rgba(73,206,255,.33),transparent 65%),
+    radial-gradient(42cqw 40cqw at 5% 96%,rgba(88,113,255,.28),transparent 68%);
+}
+.slide.cta-slide .brand{color:rgba(225,245,255,.78)}
+.slide.cta-slide .hd-chip{background:rgba(255,255,255,.10);border-color:rgba(196,235,255,.4)}
+.slide.cta-slide .hd-num{background:#BDEEFF;color:#063878;box-shadow:0 0 0 .34cqw rgba(189,238,255,.24)}
+.slide.cta-slide .divider{background:#6DE1FF;box-shadow:0 0 1.3cqw rgba(109,225,255,.62)}
+.slide.cta-slide .progress-bar i{background:#6DE1FF}
+
+/* Purposeful emphasis for dense narrative slides. */
+.slide[data-slide="14"] .source-profile-line{border-bottom-color:rgba(10,75,154,.18)}
+.slide[data-slide="14"] .source-profile-line::before{background:#00A9D9;box-shadow:0 0 .7cqw rgba(0,169,217,.38)}
+.slide[data-slide="14"] .source-profile-line strong{color:#073E83}
+.slide[data-slide="14"] .source-art{
+  position:absolute;right:0;bottom:0;width:27cqw;height:27cqw;z-index:0;
+  border-radius:2.2cqw;overflow:hidden;box-shadow:0 12px 28px rgba(6,27,63,.18)
+}
+.slide[data-slide="14"] .source-art img{object-fit:cover;object-position:50% 16%}
+.slide[data-slide="23"] .recommendation-main{
+  background:#0A4B9A;
+  color:#fff;
+  box-shadow:0 12px 26px rgba(10,75,154,.19);
+}
+.slide[data-slide="23"] .recommendation-main strong{color:#fff}
+.slide[data-slide="23"] .recommendation-result strong{color:#073E83}
+
+/* Text-first visualisations. These are compositional aids, not substitute images:
+   every sentence stays in the slide and is easier to scan as a clinical path. */
+.slide.insight-slide .source-layout,
+.slide.case-prompt-slide .source-layout,
+.slide.case-result-slide .source-layout,
+.slide.feedback-slide .source-layout,
+.slide.number-path-slide .source-layout{display:block;position:relative;height:100%}
+.slide.insight-slide .source-content,
+.slide.case-prompt-slide .source-content,
+.slide.case-result-slide .source-content,
+.slide.feedback-slide .source-content,
+.slide.number-path-slide .source-content{max-width:100%}
+.slide.insight-slide .source-title,
+.slide.case-prompt-slide .source-title,
+.slide.case-result-slide .source-title{max-width:86cqw}
+.insight-flow{display:grid;gap:1.8cqw;max-width:83cqw;position:relative}
+.insight-line{position:relative;margin:0!important;padding:1.7cqw 8cqw 1.7cqw 3.3cqw!important;background:rgba(255,255,255,.72);border:1px solid rgba(10,75,154,.14);border-radius:1.8cqw;box-shadow:0 8px 20px rgba(10,75,154,.07)}
+.insight-line::before{content:attr(data-step);position:absolute;left:1.25cqw;top:1.75cqw;font-size:1.65cqw;line-height:1;font-weight:850;color:#0A4B9A;letter-spacing:.04em}
+.insight-line::after{content:'';position:absolute;right:2.2cqw;top:50%;width:3.2cqw;height:3.2cqw;transform:translateY(-50%);border-radius:50%;border:.28cqw solid #21C6F0;box-shadow:0 0 0 .6cqw rgba(33,198,240,.12),0 0 1.4cqw rgba(33,198,240,.32)}
+.cyber-orbit{position:absolute;right:3cqw;bottom:4cqw;width:24cqw;height:24cqw;border:1px solid rgba(10,75,154,.17);border-radius:50%;pointer-events:none;opacity:.9}
+.cyber-orbit::before,.cyber-orbit::after{content:'';position:absolute;border:1px solid rgba(33,198,240,.48);border-radius:50%}
+.cyber-orbit::before{inset:3.5cqw 0;transform:rotate(-28deg)}
+.cyber-orbit::after{inset:0 3.5cqw;transform:rotate(32deg)}
+.cyber-orbit i,.cyber-orbit b,.cyber-orbit em{position:absolute;width:1.8cqw;height:1.8cqw;border-radius:50%;background:#21C6F0;box-shadow:0 0 1.2cqw rgba(33,198,240,.65)}
+.cyber-orbit i{left:2.7cqw;top:8.3cqw}.cyber-orbit b{right:3.8cqw;top:4.5cqw}.cyber-orbit em{right:5.2cqw;bottom:3cqw}
+.slide[data-slide="39"] .insight-flow,.slide[data-slide="40"] .insight-flow,.slide[data-slide="41"] .insight-flow{max-width:66cqw}
+.slide[data-slide="39"] .cyber-orbit,.slide[data-slide="40"] .cyber-orbit,.slide[data-slide="41"] .cyber-orbit{width:31cqw;height:31cqw;bottom:6cqw}
+.slide[data-slide="39"] .source-art,.slide[data-slide="40"] .source-art{
+  position:absolute;right:0;bottom:0;width:30cqw;height:21cqw;z-index:1;
+  border-radius:2.2cqw;overflow:hidden;box-shadow:0 12px 28px rgba(6,27,63,.17)
+}
+.slide[data-slide="39"] .source-art img,.slide[data-slide="40"] .source-art img{object-fit:cover}
+.slide[data-slide="39"] .cyber-orbit,.slide[data-slide="40"] .cyber-orbit{display:none}
+
+/* Case introductions preserve the question as the visual destination. */
+.case-prompt{max-width:84cqw;display:grid;gap:2.7cqw;position:relative;z-index:1}
+.case-context{margin:0!important;max-width:74cqw;padding:2.1cqw 2.5cqw!important;background:rgba(255,255,255,.6);border-radius:2cqw;border:1px solid rgba(10,75,154,.12)}
+.case-question{margin:0!important;max-width:78cqw;padding:2cqw 2.5cqw!important;color:#073E83!important;font-weight:760!important;background:rgba(33,198,240,.17);border-radius:2cqw;box-shadow:inset 0 0 0 1px rgba(33,198,240,.28)}
+.clinical-scan{position:absolute;right:2.5cqw;bottom:5cqw;width:26cqw;height:20cqw;pointer-events:none;opacity:.75}
+.clinical-scan::before{content:'';position:absolute;left:1cqw;right:1cqw;top:50%;height:1px;background:rgba(10,75,154,.28)}
+.clinical-scan i{position:absolute;width:4.3cqw;height:4.3cqw;border:1px solid #21C6F0;border-radius:50%;box-shadow:0 0 1.3cqw rgba(33,198,240,.34)}
+.clinical-scan i:nth-child(1){left:0;top:1cqw}.clinical-scan i:nth-child(2){left:10.5cqw;bottom:1.1cqw}.clinical-scan i:nth-child(3){right:0;top:3cqw}
+.slide[data-slide="45"] .case-prompt,.slide[data-slide="47"] .case-prompt,.slide[data-slide="49"] .case-prompt{max-width:100%}
+.slide[data-slide="45"] .case-context,.slide[data-slide="47"] .case-context,.slide[data-slide="49"] .case-context{max-width:87cqw;padding-right:10cqw!important}
+
+/* Case analyses: clinical evidence, intervention and result are distinct stages. */
+.case-flow{display:grid;gap:1.35cqw;max-width:92cqw;position:relative}
+.case-step{position:relative;padding:1.45cqw 2cqw 1.45cqw 4.1cqw;border-left:.38cqw solid rgba(10,75,154,.26);background:rgba(255,255,255,.56)}
+.case-step::before{content:attr(data-step);position:absolute;left:1.1cqw;top:1.55cqw;width:1.85cqw;height:1.85cqw;display:grid;place-items:center;border-radius:50%;background:#0A4B9A;color:#fff;font-size:1.2cqw;font-weight:850}
+.case-step .source-line{margin:0!important}
+.case-step:last-child{border-color:#21C6F0;background:rgba(33,198,240,.14)}
+.case-step:last-child .source-line{color:#073E83!important;font-weight:760}
+.slide[data-slide="46"] .case-flow,.slide[data-slide="48"] .case-flow{max-width:88cqw}
+
+/* Feedback and benefit slides gain an unobtrusive digital rhythm without added copy. */
+.feedback-field{display:grid;gap:1.65cqw;max-width:82cqw}
+.feedback-field .source-line{margin:0!important;padding:2.1cqw 2.5cqw!important;background:rgba(255,255,255,.66);border-radius:2cqw;border:1px solid rgba(10,75,154,.12)}
+.feedback-pulse{position:absolute;right:4cqw;bottom:8cqw;display:flex;align-items:end;gap:1.2cqw;height:16cqw;pointer-events:none}
+.feedback-pulse i{display:block;width:2.3cqw;border-radius:99px;background:#21C6F0;box-shadow:0 0 1.1cqw rgba(33,198,240,.42)}
+.feedback-pulse i:nth-child(1){height:5cqw}.feedback-pulse i:nth-child(2){height:11cqw;background:#0A4B9A}.feedback-pulse i:nth-child(3){height:8cqw}
+.number-path{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4cqw 2cqw;max-width:92cqw;counter-reset:benefit}
+.number-path-line{position:relative;min-height:8.3cqw;margin:0!important;padding:1.7cqw 1.7cqw 1.7cqw 6.5cqw!important;background:rgba(255,255,255,.66);border:1px solid rgba(10,75,154,.12);border-radius:1.7cqw;color:#073E83!important}
+.number-path-line::before{content:attr(data-step);position:absolute;left:1.7cqw;top:50%;transform:translateY(-50%);font-size:3.2cqw;line-height:1;font-weight:850;color:#21C6F0}
+.number-path-line:nth-child(odd){background:rgba(217,237,255,.86)}
+.slide[data-slide="55"] .number-path-line:last-child{grid-column:1 / -1}
+@media(max-width:600px){
+  .number-path{grid-template-columns:1fr}
+  .slide[data-slide="55"] .number-path-line:last-child{grid-column:auto}
+  .cyber-orbit,.clinical-scan,.feedback-pulse{opacity:.38}
+}
+
+/* Technical details are quiet framing, never competing with the message. */
+.slide .source-art img{filter:saturate(1.06) contrast(1.03)}
+::selection{background:#00A9D9;color:#fff}
+button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3px}

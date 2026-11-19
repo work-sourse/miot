@@ -32,7 +32,7 @@ function exactLines(lines) {
 function exactHeading(title) { return '<h1 class="source-title">'+rich(title)+'</h1>\n<div class="divider" aria-hidden="true"></div>\n'; }
 function visualAsset(key) { return key.startsWith('img/')?key:'img/new/'+key+'.png'; }
 function sourcePicture(s) {
-  const extras={64:{art:'img/presentation/palpation.png'},70:{art:'img/chains.jpg'},82:{art:'img/presentation/body-system.png'}};
+  const extras={};
   const spec=VISUAL_CONTENT[s.n]||extras[s.n];
   return spec?'<figure class="source-art'+(spec.photo?' source-photo':'')+'">'+image(visualAsset(spec.art),s.title)+'</figure>':'';
 }
@@ -44,22 +44,79 @@ function exactTable(s) {
 function exactTariffs(s) {
   const split=s.lines.findIndex(line=>line.startsWith('Продвинутый:'));
   const columns=[s.lines.slice(0,split),s.lines.slice(split)];
-  return exactHeading(s.title)+'<div class="source-tariffs">'+columns.map((lines,i)=>'<section class="source-tariff'+(i?' source-tariff-advanced':'')+'"><h2>'+rich(lines[0])+'</h2>\n'+exactLines(lines.slice(1))+'<figure class="tariff-watermark" aria-hidden="true">'+image(i?'img/cadaver.jpg':'img/new/anatomy-book.png','')+'</figure></section>').join('\n')+'</div>';
+  return exactHeading(s.title)+'<div class="source-tariffs">'+columns.map((lines,i)=>'<section class="source-tariff'+(i?' source-tariff-advanced':'')+'"><h2>'+rich(lines[0])+'</h2>\n'+exactLines(lines.slice(1))+'</section>').join('\n')+'</div>';
 }
 function exactBonuses(s) {
-  const keys=['stomach-model','self-practice','brain-model','self-practice'];
-  return exactHeading(s.title)+'<div class="source-bonuses">'+s.lines.map((line,i)=>'<section class="source-bonus"><figure>'+image('img/new/'+keys[i]+'.png','')+'</figure>'+exactLines([line])+'</section>').join('\n')+'</div>';
+  return exactHeading(s.title)+'<div class="source-bonuses">'+s.lines.map((line)=>'<section class="source-bonus">'+exactLines([line])+'</section>').join('\n')+'</div>';
 }
 function exactSignal(s) {
   return exactHeading(s.title)+'<div class="signal-grid">'+s.lines.map(line=>{const m=line.match(/^(\d+)\s+(.+)$/);return '<div class="signal-row"><strong class="signal-number">'+m[1]+'</strong> <span class="signal-label">'+rich(m[2])+'</span></div>';}).join('\n')+'</div>';
+}
+function exactProfile(s) {
+  const highlights=[
+    'Приглашённый спикер и эксперт',
+    'на месяцы вперёд',
+    'за 2 месяца',
+    'работать эффективнее',
+    'передаю их другим специалистам'
+  ];
+  return exactHeading(s.title)+'<div class="profile-points">'+s.lines.map((line,i)=>{
+    const displayLine=line.startsWith('* ')?line.slice(2):line;
+    const focus=highlights[i];
+    const decorated=focus?escapeHtml(displayLine).replace(escapeHtml(focus),'<strong>'+escapeHtml(focus)+'</strong>'):rich(displayLine);
+    return '<p class="source-line source-profile-line"><span>'+decorated+'</span></p>';
+  }).join('\n')+'</div>';
+}
+function exactRecommendation(s) {
+  const first=escapeHtml(s.lines[0]).replace('фундаментальное знание анатомии','<strong>фундаментальное знание анатомии</strong>');
+  const second=escapeHtml(s.lines[1]).replace('тем быстрее и заметнее вы растёте как специалист!','<strong>тем быстрее и заметнее вы растёте как специалист!</strong>');
+  return exactHeading(s.title)+'<div class="recommendation-points"><p class="source-line recommendation-main">'+first+'</p>\n<p class="source-line recommendation-result">'+second+'</p></div>';
+}
+function exactApproaches(s) {
+  const split=s.lines.indexOf('Классический подход');
+  const groups=[s.lines.slice(0,split),s.lines.slice(split)];
+  return exactHeading(s.title)+'<div class="approach-compare">'+groups.map((group,index)=>'<section class="approach-column approach-'+(index?'classic':'functional')+'"><h2>'+rich(group[0])+'</h2>'+exactLines(group.slice(1))+'</section>').join('')+'</div>';
+}
+function exactTeaching(s) {
+  const lines=[
+    escapeHtml(s.lines[0]).replace('не название, а свойства и взаимосвязи','<strong class="hand-underline">не название, а свойства и взаимосвязи</strong>'),
+    escapeHtml(s.lines[1]).replace('вот принцип обучения','<strong class="marker-highlight">вот принцип обучения</strong>'),
+    escapeHtml(s.lines[2]).replace('рост уровня специалиста','<strong class="marker-highlight">рост уровня специалиста</strong>')
+  ];
+  return exactHeading(s.title)+lines.map(line=>'<p class="source-line">'+line+'</p>').join('');
+}
+/* Visual structures use the original copy verbatim: they only give the narrative
+   a clinical reading path while the new illustration assets are being prepared. */
+function exactInsight(s) {
+  return exactHeading(s.title)+'<div class="insight-flow">'+s.lines.map((line,i)=>
+    '<p class="source-line insight-line" data-step="'+(i+1)+'">'+rich(line)+'</p>'
+  ).join('')+'</div><div class="cyber-orbit" aria-hidden="true"><i></i><b></b><em></em></div>';
+}
+function exactCasePrompt(s) {
+  return exactHeading(s.title)+'<div class="case-prompt">'+s.lines.map((line,i)=>
+    '<p class="source-line '+(i===s.lines.length-1?'case-question':'case-context')+'">'+rich(line)+'</p>'
+  ).join('')+'</div><div class="clinical-scan" aria-hidden="true"><i></i><i></i><i></i></div>';
+}
+function exactCaseResult(s) {
+  return exactHeading(s.title)+'<div class="case-flow">'+s.lines.map((line,i)=>
+    '<section class="case-step" data-step="'+(i+1)+'"><p class="source-line">'+rich(line)+'</p></section>'
+  ).join('')+'</div>';
+}
+function exactNumberPath(s) {
+  return exactHeading(s.title)+'<div class="number-path">'+s.lines.map((line,i)=>
+    '<p class="source-line number-path-line" data-step="'+(i+1)+'">'+rich(line)+'</p>'
+  ).join('')+'</div>';
+}
+function exactFeedback(s) {
+  return exactHeading(s.title)+'<div class="feedback-field">'+s.lines.map(line=>'<p class="source-line">'+rich(line)+'</p>').join('')+'</div><div class="feedback-pulse" aria-hidden="true"><i></i><i></i><i></i></div>';
 }
 function exactOffer(s) {
   return exactHeading(s.title)+'<div class="source-offer">'+s.lines.slice(0,2).map((line,i)=>{const m=line.match(/^(.+): (\d[\d ]+ ₽) (\d[\d ]+ ₽)$/);return '<section class="source-offer-plan'+(i?' source-offer-advanced':'')+'"><h2>'+rich(m[1])+':</h2>\n<s>'+rich(m[2])+'</s> <strong>'+rich(m[3])+'</strong></section>';}).join('\n')+'</div>\n'+exactLines(s.lines.slice(2));
 }
 function bodyFor(s) {
-  if(s.n===0) return '<div class="webinar-cover"><div class="cover-copy"><div class="badge cover-badge">Вебинар</div><h1 class="cover-title">Функциональная<br>анатомия <span class="mark-ring">2.0</span></h1><div class="divider" aria-hidden="true"></div><p class="cover-author">'+escapeHtml(s.lines[0])+'</p></div><figure class="cover-art">'+image('img/presentation/body-system.png','Образная иллюстрация взаимосвязей в теле')+'</figure></div>';
-  let exact= s.n===1?exactSignal(s):s.n===74?exactTable(s):s.n===92?exactTariffs(s):(s.n===94||s.n===110)?exactOffer(s):(s.n===96||s.n===111)?exactBonuses(s):exactHeading(s.title)+exactLines(s.lines);
-  if(s.n===90) exact+='<video class="reviews-video" controls playsinline preload="none" poster="'+assetUrl('img/motion.jpg')+'" aria-label="Отзывы студентов"><source src="https://dr-agape.ru/lectures/cases-video.mp4" type="video/mp4"></video>';
+  if(s.n===0) return '<div class="webinar-cover"><div class="cover-copy"><div class="badge cover-badge">Вебинар</div><h1 class="cover-title">Функциональная<br>анатомия <span class="mark-ring">2.0</span></h1><div class="divider" aria-hidden="true"></div><p class="cover-author">'+escapeHtml(s.lines[0])+'</p></div><figure class="cover-art">'+image('img/cyber/cyber-body-network.png','Образная иллюстрация взаимосвязей в теле')+'</figure></div>';
+  let exact= s.n===1?exactSignal(s):s.n===14?exactProfile(s):s.n===23?exactRecommendation(s):s.n===36?exactApproaches(s):s.n===38?exactTeaching(s):[39,40,41,42,43].includes(s.n)?exactInsight(s):[45,47,49].includes(s.n)?exactCasePrompt(s):[46,48,50].includes(s.n)?exactCaseResult(s):s.n===51?exactInsight(s):s.n===52?exactFeedback(s):[55,56].includes(s.n)?exactNumberPath(s):s.n===74?exactTable(s):s.n===92?exactTariffs(s):(s.n===94||s.n===110)?exactOffer(s):(s.n===96||s.n===111)?exactBonuses(s):exactHeading(s.title)+exactLines(s.lines);
+  if(s.n===90) exact+='<video class="reviews-video" controls playsinline preload="none" aria-label="Отзывы студентов"><source src="https://dr-agape.ru/lectures/cases-video.mp4" type="video/mp4"></video>';
   const content='<div class="source-content" data-exact-copy>'+exact+'</div>';
   return '<div class="source-layout">'+content+sourcePicture(s)+'</div>';
 }
@@ -73,6 +130,11 @@ function renderSlide(s) {
   if(s.n===74)cls.push('source-table-slide');
   if(s.n===92)cls.push('source-tariffs-slide');
   if(s.n===96||s.n===111)cls.push('source-bonuses-slide');
+  if([39,40,41,42,43,51].includes(s.n))cls.push('insight-slide');
+  if([45,47,49].includes(s.n))cls.push('case-prompt-slide');
+  if([46,48,50].includes(s.n))cls.push('case-result-slide');
+  if(s.n===52)cls.push('feedback-slide');
+  if([55,56].includes(s.n))cls.push('number-path-slide');
   if(!sourcePicture(s)&&s.n!==0)cls.push('source-no-art');
   return '<section class="'+cls.filter(Boolean).join(' ')+'" data-slide="'+s.n+'" data-source-text="'+escapeHtml(s.text)+'" aria-roledescription="слайд" aria-label="'+s.n+' из '+LAST_SLIDE+'. '+escapeHtml(s.title)+'" aria-hidden="true" inert>'
     +'<div class="hd"><div class="hd-num">'+s.n+'</div><div class="hd-chip">'+escapeHtml(s.sec)+'</div><div class="brand">МИОТ · Анатомия 2.0</div></div>'

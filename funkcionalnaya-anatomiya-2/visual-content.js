@@ -1,281 +1,269 @@
 /* Только иллюстрации. Весь текст берётся дословно из SLIDES. */
-const VISUAL_CONTENT = {
+const LEGACY_VISUAL_CONTENT = {
   "2": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "3": {
-    "art": "img/oleg.png",
-    "photo": false
+    "art": "img/cyber/cyber-body-network.png"
   },
   "4": {
-    "art": "anatomy-book"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "6": {
-    "art": "anatomy-book"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "7": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "8": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "9": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "10": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "11": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "12": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "13": {
-    "art": "back-practice"
-  },
-  "14": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "15": {
-    "art": "course-gift"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "16": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "17": {
-    "art": "img/chains.jpg"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "18": {
-    "art": "img/presentation/tissue-layers.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
+  },
+  "19": {
+    "art": "img/cyber/cyber-body-network.png"
   },
   "20": {
-    "art": "anatomy-book"
-  },
-  "21": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "22": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "23": {
-    "art": "img/chains.jpg"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "25": {
-    "art": "img/presentation/tissue-layers.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "26": {
-    "art": "knee-case"
+    "art": "img/cyber/cyber-knee.png"
   },
   "27": {
-    "art": "knee-case"
+    "art": "img/cyber/cyber-knee.png"
   },
   "28": {
-    "art": "img/presentation/tissue-layers.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "29": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "30": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "31": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "32": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "33": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "34": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "35": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "37": {
-    "art": "anatomy-book"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "38": {
-    "art": "img/presentation/tissue-layers.png"
-  },
-  "39": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "40": {
-    "art": "img/cadaver.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "41": {
-    "art": "img/students.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-anatomy-atlas.png",
   },
   "42": {
-    "art": "img/cadaver.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "43": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "44": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "45": {
-    "art": "neck-case"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "46": {
-    "art": "neck-case"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "47": {
-    "art": "abdomen-case"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "48": {
-    "art": "abdomen-case"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "49": {
-    "art": "foot-case"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "50": {
-    "art": "foot-case"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "51": {
-    "art": "img/presentation/body-system.png"
-  },
-  "54": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "55": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "56": {
-    "art": "self-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "57": {
-    "art": "img/students.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-anatomy-atlas.png",
   },
   "58": {
-    "art": "img/presentation/nikolay.jpeg",
-    "photo": true
+    "art": "img/cyber/cyber-body-network.png",
   },
   "59": {
-    "art": "img/presentation/vladimir.png",
-    "photo": true
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "60": {
-    "art": "img/presentation/olga-fedotova.png",
-    "photo": true
+    "art": "img/cyber/cyber-fascia-molecule.png",
   },
   "61": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "63": {
-    "art": "course-gift"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "66": {
-    "art": "img/presentation/palpation.png"
-  },
-  "67": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "68": {
-    "art": "online-learning"
-  },
-  "69": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "71": {
-    "art": "img/students.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-anatomy-atlas.png",
   },
   "73": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "74": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "75": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "76": {
-    "art": "anatomy-book"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "77": {
-    "art": "img/chains.jpg"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "78": {
-    "art": "stomach-model"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "79": {
-    "art": "brain-model"
+    "art": "img/cyber/cyber-brain.png"
   },
   "80": {
-    "art": "img/cadaver.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "81": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "83": {
-    "art": "img/presentation/body-system.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "84": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "85": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "86": {
-    "art": "back-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "87": {
-    "art": "img/cadaver.jpg",
-    "photo": true
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "88": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "89": {
-    "art": "certificates"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "93": {
-    "art": "course-gift"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "95": {
-    "art": "course-gift"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "97": {
-    "art": "course-gift"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "98": {
-    "art": "stomach-model"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "99": {
-    "art": "self-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "100": {
-    "art": "brain-model"
+    "art": "img/cyber/cyber-brain.png"
   },
   "101": {
-    "art": "self-practice"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "102": {
-    "art": "img/presentation/palpation.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "104": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "105": {
-    "art": "anatomy-book"
-  },
-  "106": {
-    "art": "img/oleg.png"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "107": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "108": {
-    "art": "online-learning"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   }
+};
+
+/* Один слайд — одна неповторяющаяся иллюстрация. */
+const VISUAL_CONTENT = {
+  "4": {"art":"img/cyber/cyber-anatomy-atlas.png"},
+  "12": {"art":"img/cyber/cyber-palpation.png"},
+  "14": {"art":"img/real/oleg-webinar.jpg","photo":true},
+  "17": {"art":"img/cyber/cyber-spine-pelvis.png"},
+  "18": {"art":"img/cyber/cyber-fascia-molecule.png"},
+  "19": {"art":"img/cyber/cyber-principles-techniques.png"},
+  "26": {"art":"img/cyber/cyber-knee.png"},
+  "39": {"art":"img/real/cadaver-class-team.jpg","photo":true},
+  "40": {"art":"img/real/cadaver-class-demonstration.jpg","photo":true},
+  "58": {"art":"img/presentation/nikolay.jpeg","photo":true},
+  "59": {"art":"img/presentation/vladimir.png","photo":true},
+  "60": {"art":"img/presentation/olga-fedotova.png","photo":true},
+  "79": {"art":"img/cyber/cyber-brain.png"}
 };
