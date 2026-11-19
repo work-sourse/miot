@@ -80,7 +80,7 @@ function renderSlide(s) {
 }
 
 $('stage').innerHTML=SLIDES.map(renderSlide).join('');
-let current=FIRST_SLIDE, lastFocus=null;
+let current=FIRST_SLIDE, currentPart=0, lastFocus=null;
 const slideEls=[...document.querySelectorAll('.slide')];
 const slideElementByNumber=new Map(slideEls.map(el=>[Number(el.dataset.slide),el]));
 
@@ -96,30 +96,90 @@ function menuHtml(query='') {
   $('menuEmpty').hidden=count>0;
 }
 
-function fitContent(slide) {
-  const content=slide.querySelector('.scroll-content');
-  if(slide.classList.contains('source-slide')) {content.style.setProperty('--fit','1');slide.dataset.fit='1.000';return;}
-  let k=1;content.style.setProperty('--fit','1');
-  for(let i=0;i<20&&content.scrollHeight>content.clientHeight+2;i++) {
-    k=Math.max(.45,k-.035);content.style.setProperty('--fit',k.toFixed(3));
+/* Text is paginated into complete frames, never reduced to fit or scrolled. */
+const originalSlideBodies=new Map(slideEls.map(el=>[el.dataset.slide,el.querySelector('.scroll-content').innerHTML]));
+function pageUnits(root) {
+  const units=[];
+  for(const child of root.children) {
+    if(child.matches('.source-tariffs,.source-tariff,.source-bonuses,.source-offer')) units.push(...pageUnits(child));
+    else if(child.matches('table')&&$('stage').clientWidth<480) {
+      for(const cell of child.querySelectorAll('thead th,tbody th,tbody td')) {if(!cell.textContent.trim())continue;const item=document.createElement('p');item.className='source-line';item.innerHTML=cell.innerHTML;units.push(item);}
+    }
+    else if(child.matches('table')) {
+      const rows=[...child.querySelectorAll('tbody tr')];
+      rows.forEach((row,i)=>{const table=child.cloneNode(false);table.append(child.querySelector('colgroup').cloneNode(true));if(i===0)table.append(child.querySelector('thead').cloneNode(true));table.append(document.createTextNode('\n'));const body=document.createElement('tbody');body.append(row.cloneNode(true));table.append(body);units.push(table);});
+    } else if(child.matches('.tariff-watermark')) {
+      child.className='page-course-art';units.push(child.cloneNode(true));
+    } else units.push(child.cloneNode(true));
   }
-  slide.dataset.fit=k.toFixed(3);
+  return units;
+}
+function paginateSlide(slide) {
+  if(!slide.classList.contains('source-slide'))return;
+  const container=slide.querySelector('.scroll-content');
+  container.innerHTML=originalSlideBodies.get(slide.dataset.slide);
+  const source=container.querySelector('.source-content');
+  const art=container.querySelector('.source-layout > .source-art');
+  const units=pageUnits(source);container.replaceChildren();
+  const pages=[];let page,copy;
+  function createPage(){
+    if(page){page.dataset.overflowY=String(page.scrollHeight-page.clientHeight);page.dataset.overflowX=String(page.scrollWidth-page.clientWidth);page.classList.remove('is-current');}
+    page=document.createElement('div');page.className='slide-page is-current';
+    const layout=document.createElement('div');layout.className='source-layout page-layout';
+    copy=document.createElement('div');copy.className='source-content';copy.dataset.exactCopy='';layout.append(copy);
+    if(!pages.length&&art)layout.append(art.cloneNode(true));else layout.classList.add('page-without-art');
+    page.append(layout);container.append(page);pages.push(page);
+  }
+  const fits=()=>page.scrollHeight<=page.clientHeight+1&&page.scrollWidth<=page.clientWidth+1;
+  createPage();
+  while(units.length){
+    let unit=units.shift();copy.append(document.createTextNode('\n'),unit);
+    if(fits())continue;
+    unit.remove();
+    if(copy.children.length){createPage();units.unshift(unit);continue;}
+    // A paragraph longer than one frame is split at a word boundary; every word stays in order.
+    if(unit.matches('p,h1,h2')) {
+      const words=unit.textContent.match(/\S+\s*|\s+/gu)||[];let best=0,lo=1,hi=words.length;
+      const chunk=unit.cloneNode(false);chunk.classList.remove('source-bullet');copy.append(chunk);
+      while(lo<=hi){const mid=Math.floor((lo+hi)/2);chunk.innerHTML=rich(words.slice(0,mid).join(''));if(fits()){best=mid;lo=mid+1;}else hi=mid-1;}
+      if(!best)throw new Error('A single word cannot fit on slide '+slide.dataset.slide);
+      chunk.innerHTML=rich(words.slice(0,best).join(''));
+      if(best<words.length){const rest=unit.cloneNode(false);rest.classList.remove('source-bullet');rest.innerHTML=rich(words.slice(best).join(''));units.unshift(rest);createPage();}
+    } else {
+      // Keep semantic blocks intact, and expose failures to the layout audit.
+      copy.append(unit);page.dataset.layoutError='oversized-block';
+    }
+  }
+  page.dataset.overflowY=String(page.scrollHeight-page.clientHeight);page.dataset.overflowX=String(page.scrollWidth-page.clientWidth);
+  page.dataset.overflowY=String(page.scrollHeight-page.clientHeight);page.dataset.overflowX=String(page.scrollWidth-page.clientWidth);
+  pages.forEach((p,i)=>{p.classList.toggle('is-current',i===0);p.dataset.part=String(i);p.setAttribute('aria-hidden',String(i!==0));p.inert=i!==0;});
+  slide.dataset.parts=String(pages.length);slide.dataset.fit='1.000';
+}
+function paginateAll(){slideEls.forEach(paginateSlide);}
+function fitContent(){ /* Fixed type sizes; content moves to continuation frames. */ }
+function advance(direction){
+ const count=Number(slideElementByNumber.get(current).dataset.parts||1);
+ if(direction>0){if(currentPart+1<count)goTo(current,true,currentPart+1);else goTo(current+1);}
+ else if(currentPart>0)goTo(current,true,currentPart-1);
+ else{const prev=slideElementByNumber.get(current-1);if(prev)goTo(current-1,true,Number(prev.dataset.parts||1)-1);}
 }
 
-function goTo(n,writeUrl=true) {
+function goTo(n,writeUrl=true,part=0) {
   if(!Number.isInteger(n)||!slideElementByNumber.has(n))return;
   const prev=slideElementByNumber.get(current);
   if(prev){prev.classList.remove('active');prev.setAttribute('aria-hidden','true');prev.inert=true;prev.querySelectorAll('video').forEach((v)=>v.pause());}
   current=n;
+  const parts=Number(slideElementByNumber.get(n).dataset.parts||1);currentPart=Math.max(0,Math.min(part,parts-1));
+  slideElementByNumber.get(n).querySelectorAll('.slide-page').forEach((p,i)=>{p.classList.toggle('is-current',i===currentPart);p.setAttribute('aria-hidden',String(i!==currentPart));p.inert=i!==currentPart;});
   const el=slideElementByNumber.get(n);el.classList.add('active');el.setAttribute('aria-hidden','false');el.inert=false;
-  $('prev').disabled=n===FIRST_SLIDE;$('next').disabled=n===LAST_SLIDE;
-  $('counter').textContent=n+' / '+LAST_SLIDE;
-  $('menuCounter').textContent=n+' / '+LAST_SLIDE;
+  $('prev').disabled=n===FIRST_SLIDE&&currentPart===0;$('next').disabled=n===LAST_SLIDE&&currentPart===parts-1;
+  $('counter').textContent=n+(parts>1?' · '+(currentPart+1)+'/'+parts:'')+' / '+LAST_SLIDE;
+  $('menuCounter').textContent=n+(parts>1?' · '+(currentPart+1)+'/'+parts:'')+' / '+LAST_SLIDE;
   document.querySelectorAll('.menu-item').forEach((item)=>{
     const active=Number(item.dataset.go)===n;item.classList.toggle('active',active);
     if(active)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');
   });
-  if(writeUrl)history.replaceState(null,'','#slide='+n);
+  if(writeUrl)history.replaceState(null,'','#slide='+n+(currentPart?'&part='+(currentPart+1):''));
   fitContent(el);
   if(!$('notesBackdrop').hidden)showNotesText();
 }
@@ -155,8 +215,8 @@ async function fullscreen() {
   }catch(_error){/* Встроенный браузер может запретить полноэкранный режим. */}
 }
 
-$('prev').addEventListener('click',()=>goTo(current-1));
-$('next').addEventListener('click',()=>goTo(current+1));
+$('prev').addEventListener('click',()=>advance(-1));
+$('next').addEventListener('click',()=>advance(1));
 $('menuToggle').addEventListener('click',()=>openMenu());
 $('menuClose').addEventListener('click',closeMenu);
 $('menuSearch').addEventListener('input',(e)=>menuHtml(e.target.value));
@@ -181,8 +241,8 @@ document.addEventListener('keydown',(e)=>{
   }
   if(e.altKey||e.metaKey||e.ctrlKey||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return;
   if(e.target.closest('video'))return;
-  if(['ArrowRight','ArrowDown','PageDown'].includes(e.key)||(e.key===' '&&e.target.tagName!=='BUTTON')){e.preventDefault();goTo(current+1);}
-  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();goTo(current-1);}
+  if(['ArrowRight','ArrowDown','PageDown'].includes(e.key)||(e.key===' '&&e.target.tagName!=='BUTTON')){e.preventDefault();advance(1);}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();advance(-1);}
   else if(e.key==='Home'){e.preventDefault();goTo(FIRST_SLIDE);}
   else if(e.key==='End'){e.preventDefault();goTo(LAST_SLIDE);}
   else if(e.key.toLowerCase()==='m'||e.key.toLowerCase()==='ь')openMenu();
@@ -198,15 +258,16 @@ $('stage').addEventListener('touchstart',(e)=>{
 $('stage').addEventListener('touchend',(e)=>{
   if(!touch)return;
   const dx=touch.x-e.changedTouches[0].clientX,dy=touch.y-e.changedTouches[0].clientY;
-  touch=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3)goTo(current+(dx>0?1:-1));
+  touch=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3)advance(dx>0?1:-1);
 },{passive:true});
 
-function readHash(){const m=location.hash.match(/^#(?:slide=)?(\d+)$/);const n=m?Number(m[1]):FIRST_SLIDE;return slideDataByNumber.has(n)?n:FIRST_SLIDE;}
-window.addEventListener('hashchange',()=>goTo(readHash(),false));
+function readHash(){const m=location.hash.match(/^#(?:slide=)?(\d+)(?:&part=\d+)?$/);const n=m?Number(m[1]):FIRST_SLIDE;return slideDataByNumber.has(n)?n:FIRST_SLIDE;}
+function readPartHash(){const m=location.hash.match(/&part=(\d+)/);return m?Math.max(0,Number(m[1])-1):0;}
+window.addEventListener('hashchange',()=>goTo(readHash(),false,readPartHash()));
 let resizeFrame;
-window.addEventListener('resize',()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>slideEls.forEach(fitContent));});
+window.addEventListener('resize',()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{paginateAll();goTo(current,false,currentPart);});});
 window.addEventListener('beforeprint',()=>slideEls.forEach(fitContent));
-document.querySelectorAll('.slide img').forEach((img)=>img.addEventListener('load',()=>fitContent(img.closest('.slide'))));
+
 document.querySelectorAll('video').forEach((v)=>v.addEventListener('error',()=>{v.insertAdjacentHTML('afterend','<p class="small">Видеоотзывы доступны на странице курса МИОТ.</p>');},{once:true}));
-menuHtml();goTo(readHash());
-requestAnimationFrame(()=>slideEls.forEach(fitContent));
+paginateAll();menuHtml();goTo(readHash(),true,readPartHash());
+requestAnimationFrame(()=>{paginateAll();goTo(current,false,currentPart);});

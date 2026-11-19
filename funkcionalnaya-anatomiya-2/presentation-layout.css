@@ -341,3 +341,15 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
 
 .slide.source-slide .signal-label{font-size:max(20px,4.2cqw);line-height:1.4}
 .slide.source-slide .source-offer-plan s{font-size:max(20px,4.2cqw)}
+
+/* Complete continuation frames: no internal slide scrolling. */
+.slide.source-slide .scroll-content{overflow:hidden;padding-right:0;scrollbar-gutter:auto;display:block}
+.slide-page{display:none;width:100%;height:100%;overflow:visible}
+.slide-page.is-current{display:block}
+.page-layout.page-without-art{display:block!important}
+.slide.source-medium .page-layout,.slide.source-long .page-layout,.slide.source-dense .page-layout{display:block}
+.slide.source-medium .page-layout>.source-art{position:absolute;right:0;bottom:0;width:23cqw;height:23cqw;opacity:.055;pointer-events:none}
+.page-course-art{margin:0;display:flex;justify-content:center;height:22cqw}
+.page-course-art img{height:100%;width:100%;object-fit:contain}
+.slide.source-slide .source-table{margin:0;border-spacing:.45cqw}
+@media print{.slide.source-slide{height:auto;min-height:0}.slide.source-slide .scroll-content{overflow:visible}.slide-page,.slide-page[aria-hidden=true]{display:block;height:170mm;break-after:page}.slide-page:last-child{break-after:auto}}
