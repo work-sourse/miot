@@ -254,6 +254,7 @@ const LEGACY_VISUAL_CONTENT = {
 /* Один слайд — одна неповторяющаяся иллюстрация. */
 const VISUAL_CONTENT = {
   "4": {"art":"img/cyber/cyber-anatomy-atlas.png"},
+  "6": {"art":"img/real/oleg-anatomy-event.webp","photo":true},
   "12": {"art":"img/cyber/cyber-palpation.png"},
   "14": {"art":"img/real/oleg-webinar.jpg","photo":true},
   "17": {"art":"img/cyber/cyber-spine-pelvis.png"},
@@ -262,6 +263,7 @@ const VISUAL_CONTENT = {
   "26": {"art":"img/cyber/cyber-knee.png"},
   "39": {"art":"img/real/cadaver-class-team.jpg","photo":true},
   "40": {"art":"img/real/cadaver-class-demonstration.jpg","photo":true},
+  "57": {"art":"img/real/seminar-audience.jpg","photo":true},
   "58": {"art":"img/presentation/nikolay.jpeg","photo":true},
   "59": {"art":"img/presentation/vladimir.png","photo":true},
   "60": {"art":"img/presentation/olga-fedotova.png","photo":true},

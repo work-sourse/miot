@@ -21,6 +21,37 @@ const assetUrl = (src) => typeof EMBEDDED_IMAGES !== 'undefined' ? (EMBEDDED_IMA
 const image = (src,alt) => '<img src="'+assetUrl(src)+'" alt="'+escapeHtml(alt)+'" decoding="async">';
 const result = (text) => '<div class="result-block">'+p(text)+'</div>';
 
+const SLIDE_HIGHLIGHTS={
+  6:['изучать анатомию','глубоко, детально и практично'],
+  14:['Приглашённый спикер и эксперт','на месяцы вперёд','за 2 месяца','работать эффективнее'],
+  23:['фундаментальное знание анатомии','быстрее и заметнее вы растёте как специалист'],
+  38:['не название, а свойства и взаимосвязи','вот принцип обучения','рост уровня специалиста'],
+  39:['хочу знать больше','кадавр-классах'],
+  40:['Более 7 лет','больше 20 диссекций','лидеров по кадавр-классам в СНГ'],
+  41:['Впервые в России','от стопы до черепа','слой за слоем'],
+  42:['действительно непрерывны','Для практики это прорыв','увидели вживую'],
+  43:['вы влияете на всю линию','можно увидеть и потрогать','видео фрагменты с кадаверным материалом'],
+  45:['Как связаны затылок и язык?','С какой зоной вы бы начали работать?'],
+  46:['Все симптомы ушли за 2 сеанса'],
+  47:['курс лекарств не помог','Где ещё искать причину?'],
+  48:['Th8–Th10','боль ушла'],
+  49:['слабость большого пальца','заметного облегчения они не принесли'],
+  50:['причину нужно искать выше','восстановилась практически сразу','онемение ушло'],
+  51:['знание связей, а не названий','функциональная анатомия'],
+  52:['Делитесь обратной связью'],
+  55:['Попадаете в причину','создаёте техники','повышаете чек и заполняете запись'],
+  56:['Лучше понимаете своё тело','эффективные техники','результативнее'],
+  58:['До обучения:','После:','5–10 приёмов в неделю','7 000 ₽'],
+  59:['До обучения:','После:'],
+  60:['До обучения:','После:']
+};
+function highlightSlideCopy(html,n){
+  return (SLIDE_HIGHLIGHTS[n]||[]).reduce((result,phrase)=>{
+    const escaped=escapeHtml(phrase);
+    return result.split(escaped).join('<span class="marker-highlight">'+escaped+'</span>');
+  },html);
+}
+
 
 function exactLines(lines) {
   return lines.map(line=>{
@@ -116,6 +147,7 @@ function exactOffer(s) {
 function bodyFor(s) {
   if(s.n===0) return '<div class="webinar-cover"><div class="cover-copy"><div class="badge cover-badge">Вебинар</div><h1 class="cover-title">Функциональная<br>анатомия <span class="mark-ring">2.0</span></h1><div class="divider" aria-hidden="true"></div><p class="cover-author">'+escapeHtml(s.lines[0])+'</p></div><figure class="cover-art">'+image('img/cyber/cyber-body-network.png','Образная иллюстрация взаимосвязей в теле')+'</figure></div>';
   let exact= s.n===1?exactSignal(s):s.n===14?exactProfile(s):s.n===23?exactRecommendation(s):s.n===36?exactApproaches(s):s.n===38?exactTeaching(s):[39,40,41,42,43].includes(s.n)?exactInsight(s):[45,47,49].includes(s.n)?exactCasePrompt(s):[46,48,50].includes(s.n)?exactCaseResult(s):s.n===51?exactInsight(s):s.n===52?exactFeedback(s):[55,56].includes(s.n)?exactNumberPath(s):s.n===74?exactTable(s):s.n===92?exactTariffs(s):(s.n===94||s.n===110)?exactOffer(s):(s.n===96||s.n===111)?exactBonuses(s):exactHeading(s.title)+exactLines(s.lines);
+  exact=highlightSlideCopy(exact,s.n);
   if(s.n===90) exact+='<video class="reviews-video" controls playsinline preload="none" aria-label="Отзывы студентов"><source src="https://dr-agape.ru/lectures/cases-video.mp4" type="video/mp4"></video>';
   const content='<div class="source-content" data-exact-copy>'+exact+'</div>';
   return '<div class="source-layout">'+content+sourcePicture(s)+'</div>';

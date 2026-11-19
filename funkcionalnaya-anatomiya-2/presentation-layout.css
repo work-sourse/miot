@@ -440,6 +440,22 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outl
 .hand-underline{position:relative;color:#073E83!important;text-decoration:none}
 .hand-underline::after{content:'';position:absolute;left:-.06em;right:-.06em;bottom:-.13em;height:.14em;border-radius:99px;background:#21C6F0;transform:rotate(-1.4deg)}
 .marker-highlight{color:#073E83!important;background:rgba(33,198,240,.28);padding:.03em .1em;border-radius:.12em}
+.slide .source-line .marker-highlight{
+  display:inline;
+  color:#073E83!important;
+  background:linear-gradient(transparent 38%,rgba(33,198,240,.34) 38%,rgba(33,198,240,.34) 88%,transparent 88%);
+  padding:0 .06em;
+  border-radius:0;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.slide.cta-slide .source-line .marker-highlight{color:#fff!important;background:linear-gradient(transparent 38%,rgba(109,225,255,.36) 38%,rgba(109,225,255,.36) 88%,transparent 88%)}
+.slide .source-line>strong:not(.accent-purple){
+  color:#073E83;
+  background:linear-gradient(transparent 40%,rgba(169,232,255,.72) 40%,rgba(169,232,255,.72) 89%,transparent 89%);
+  padding:0 .05em;
+}
+.slide.cta-slide .source-line>strong:not(.accent-purple){color:#fff;background:linear-gradient(transparent 40%,rgba(109,225,255,.34) 40%,rgba(109,225,255,.34) 89%,transparent 89%)}
 /* Плотные слайды: подписи к ключевым выводам читаются как маркеры, а не как сплошной текст. */
 .slide.source-long .source-line strong,.slide.source-dense .source-line strong{background:rgba(33,198,240,.25);padding:.03em .1em;border-radius:.12em;color:#073E83!important}
 .slide.cta-slide.source-long .source-line strong,.slide.cta-slide.source-dense .source-line strong{background:rgba(109,225,255,.28);color:#fff!important}
@@ -554,6 +570,12 @@ html,body{
   border-radius:2.2cqw;overflow:hidden;box-shadow:0 12px 28px rgba(6,27,63,.18)
 }
 .slide[data-slide="14"] .source-art img{object-fit:cover;object-position:50% 16%}
+.slide[data-slide="6"] .source-layout{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:2.6cqw}
+.slide[data-slide="6"] .source-art{height:35cqw;border-radius:2.2cqw;overflow:hidden;box-shadow:0 12px 28px rgba(6,27,63,.18)}
+.slide[data-slide="6"] .source-art img{object-fit:cover;object-position:50% 50%}
+.slide[data-slide="57"] .source-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:3cqw}
+.slide[data-slide="57"] .source-art{height:34cqw;border-radius:2.2cqw;overflow:hidden;box-shadow:0 12px 28px rgba(6,27,63,.18)}
+.slide[data-slide="57"] .source-art img{object-fit:cover}
 .slide[data-slide="23"] .recommendation-main{
   background:#0A4B9A;
   color:#fff;
