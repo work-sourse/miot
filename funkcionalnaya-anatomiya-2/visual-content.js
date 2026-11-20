@@ -274,7 +274,7 @@ const VISUAL_CONTENT = {
   "20": null,
   "35": null,
   "4": {"art":"img/real/oleg-anatomy-event.webp","photo":true},
-  "14": {"art":"img/real/oleg-webinar.jpg","photo":true},
+  "14": {"arts":["img/real/expert-collage.png","img/real/expert-collage.png"],"photo":true},
   "39": {"art":"img/real/cadaver-class-team.jpg","photo":true},
   "40": {"art":"img/real/cadaver-class-demonstration.jpg","photo":true},
   "57": {"art":"img/real/seminar-audience.jpg","photo":true},

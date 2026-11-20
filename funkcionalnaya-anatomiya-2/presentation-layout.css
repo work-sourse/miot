@@ -1318,3 +1318,16 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="113"] .source-title .accent-purple{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
 .slide[data-slide="113"] .plain-emphasis{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
 .slide[data-slide="113"] .welcome-line{font-size:3.35cqw!important;line-height:1.2!important;color:#BDEEFF!important;opacity:1!important}
+
+/* Профиль эксперта: три документальные фотографии из коллажа в отдельной колонке. */
+.slide[data-slide="14"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr)!important;align-items:start!important;gap:2.7cqw!important;height:100%!important}
+.slide[data-slide="14"] .source-content{max-width:100%!important}
+.slide[data-slide="14"] .source-title{max-width:100%!important;font-size:4.7cqw!important;line-height:1.12!important;margin-bottom:1.35cqw!important}
+.slide[data-slide="14"] .profile-points{max-width:100%!important}
+.slide[data-slide="14"] .source-profile-line{padding:.95cqw 0 1.05cqw 2.25cqw!important}
+.slide[data-slide="14"] .source-profile-line span{font-size:2.35cqw!important;line-height:1.24!important}
+.slide[data-slide="14"] .source-art{position:static!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:1.1cqw!important;width:100%!important;height:48cqw!important;margin:8cqw 0 0!important;border-radius:0!important;overflow:visible!important;box-shadow:none!important;z-index:auto!important}
+.slide[data-slide="14"] .source-art img{width:100%!important;height:100%!important;border-radius:1.45cqw!important;object-fit:cover!important;box-shadow:0 10px 22px rgba(6,27,63,.16)!important}
+.slide[data-slide="14"] .source-art img:nth-child(1){object-position:14% 14%!important}
+.slide[data-slide="14"] .source-art img:nth-child(2){object-position:54% 18%!important}
+.slide[data-slide="14"] .source-art img:nth-child(3){object-position:48% 82%!important}
