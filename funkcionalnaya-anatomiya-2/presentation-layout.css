@@ -1331,3 +1331,18 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="14"] .source-art img:nth-child(1){object-position:14% 14%!important}
 .slide[data-slide="14"] .source-art img:nth-child(2){object-position:54% 18%!important}
 .slide[data-slide="14"] .source-art img:nth-child(3){object-position:48% 82%!important}
+
+/* Функциональная анатомия: вопрос и образ тела становятся главным содержанием кадра. */
+.slide[data-slide="34"] .source-title{max-width:93cqw!important;font-size:6.45cqw!important;line-height:1.08!important}
+.slide[data-slide="34"] .source-art{bottom:2.5cqw!important;width:60cqw!important;height:43cqw!important}
+.slide[data-slide="34"].source-compact .source-art{display:flex!important}
+.slide[data-slide="34"] .source-art img{transform:none!important}
+
+/* Медицинский институт: добавляем личные фотографии, не отнимая площадь у истории. */
+.slide[data-slide="37"] .institute-story{grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr)!important;gap:2.6cqw!important}
+.slide[data-slide="37"] .institute-story>.source-line{padding:1.75cqw 2cqw!important;font-size:2.75cqw!important;line-height:1.25!important}
+.slide[data-slide="37"] .institute-photos{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1.1cqw!important}
+.slide[data-slide="37"] .institute-photos figure,.slide[data-slide="37"] .institute-photos figure:last-child{height:14.7cqw!important;margin:0!important;border-radius:1.55cqw!important}
+.slide[data-slide="37"] .institute-photo-school img{object-fit:cover!important}
+.slide[data-slide="37"] .institute-photo-school-1 img{object-position:left center!important}
+.slide[data-slide="37"] .institute-photo-school-2 img{object-position:right center!important}

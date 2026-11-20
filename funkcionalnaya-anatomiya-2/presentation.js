@@ -375,7 +375,8 @@ function exactSpecialConditions(s) {
   return '<h1 class="source-title">Но сегодня<br><span>для участников вебинара</span><br>действуют специальные условия</h1>\n<div class="divider" aria-hidden="true"></div>\n';
 }
 function exactInstitute(s) {
-  return exactHeading(s.title)+'<div class="institute-story"><p class="source-line">'+rich(s.lines[0])+'</p><div class="institute-photos"><figure><img src="'+assetUrl('img/real/medinstitute-auditorium.webp')+'" alt="Олег ведёт лекцию в медицинском институте" decoding="async"></figure><figure><img src="'+assetUrl('img/real/medinstitute-lecture.webp')+'" alt="Лекция Олега в аудитории медицинского института" decoding="async"></figure></div></div>';
+  const schoolPhotos=assetUrl('img/real/medical-school-photo-pair.png');
+  return exactHeading(s.title)+'<div class="institute-story"><p class="source-line">'+rich(s.lines[0])+'</p><div class="institute-photos"><figure><img src="'+assetUrl('img/real/medinstitute-auditorium.webp')+'" alt="Олег ведёт лекцию в медицинском институте" decoding="async"></figure><figure><img src="'+assetUrl('img/real/medinstitute-lecture.webp')+'" alt="Лекция Олега в аудитории медицинского института" decoding="async"></figure><figure class="institute-photo-school institute-photo-school-1"><img src="'+schoolPhotos+'" alt="Олег на занятии в медицинском институте" decoding="async"></figure><figure class="institute-photo-school institute-photo-school-2"><img src="'+schoolPhotos+'" alt="Олег со скелетом на занятии в медицинском институте" decoding="async"></figure></div></div>';
 }
 function exactReminder(s) {
   const start='Кнопка под эфиром. ';
