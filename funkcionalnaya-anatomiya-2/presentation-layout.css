@@ -1346,3 +1346,19 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="37"] .institute-photo-school img{object-fit:cover!important}
 .slide[data-slide="37"] .institute-photo-school-1 img{object-position:left center!important}
 .slide[data-slide="37"] .institute-photo-school-2 img{object-position:right center!important}
+
+/* Путь преподавателя: заголовок спокойнее, а фотография не заходит на текст. */
+.slide[data-slide="39"] .source-layout{display:block!important;position:relative!important;height:100%!important}
+.slide[data-slide="39"] .source-content{max-width:100%!important}
+.slide[data-slide="39"] .source-title{max-width:92cqw!important;font-size:4.15cqw!important;line-height:1.14!important;margin-bottom:1.3cqw!important}
+.slide[data-slide="39"] .insight-flow{max-width:60cqw!important}
+.slide[data-slide="39"] .insight-line{font-size:2.6cqw!important;line-height:1.25!important;padding:1.25cqw 1.55cqw!important}
+.slide[data-slide="39"] .source-art{right:0!important;bottom:2cqw!important;width:28cqw!important;height:20cqw!important;z-index:1!important}
+
+/* Отзывы студентов: четыре скриншота в полноширокой последовательности вместо видеозаглушки. */
+.slide[data-slide="90"] .source-layout{display:block!important;height:100%!important}
+.slide[data-slide="90"] .source-content{max-width:100%!important}
+.slide[data-slide="90"] .source-title{font-size:4.9cqw!important;margin-bottom:1.25cqw!important}
+.review-gallery{display:grid;grid-template-columns:1fr;gap:1.2cqw;max-width:88cqw}
+.review-gallery figure{height:8.1cqw;margin:0;border-radius:1.35cqw;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(6,27,63,.1)}
+.review-gallery img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
