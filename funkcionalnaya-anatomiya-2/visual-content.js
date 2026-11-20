@@ -251,21 +251,36 @@ const LEGACY_VISUAL_CONTENT = {
   }
 };
 
-/* Один слайд — одна неповторяющаяся иллюстрация. */
+/* Cyber-medicine raster imagery returns to support the narrative; documentary photos remain where they carry evidence. */
 const VISUAL_CONTENT = {
-  "4": {"art":"img/cyber/cyber-anatomy-atlas.png"},
-  "6": {"art":"img/real/oleg-anatomy-event.webp","photo":true},
-  "12": {"art":"img/cyber/cyber-palpation.png"},
+  ...LEGACY_VISUAL_CONTENT,
+  "12": {"art":"img/cyber/cyber-palpation-shoulder-v2.png"},
+  "27": {"arts":["img/cyber/medical-cervical.png","img/cyber/medical-pelvis.png","img/cyber/medical-knee.png"]},
+  "30": {"art":"img/cyber/medical-shoulder.png"},
+  "32": {"art":"img/cyber/medical-hand.png"},
+  "35": {"art":"img/cyber/medical-brain.png"},
+  "36": {"art":"img/cyber/medical-heart.png"},
+  "42": {"art":"img/cyber/medical-torso-muscles.png"},
+  "43": {"art":"img/cyber/medical-torso-muscles.png"},
+  "44": {"art":"img/cyber/medical-torso-muscles.png"},
+  "45": {"art":"img/cyber/medical-skull-neck.png"},
+  "46": {"art":"img/cyber/medical-skull-neck.png"},
+  "47": {"art":"img/cyber/medical-spine.png"},
+  "48": {"art":"img/cyber/medical-ribcage.png"},
+  "51": {"art":"img/cyber/medical-nervous-system.png"},
+  "52": {"art":"img/cyber/medical-nervous-system.png"},
+  "17": null,
+  "19": null,
+  "20": null,
+  "35": null,
+  "4": {"art":"img/real/oleg-anatomy-event.webp","photo":true},
   "14": {"art":"img/real/oleg-webinar.jpg","photo":true},
-  "17": {"art":"img/cyber/cyber-spine-pelvis.png"},
-  "18": {"art":"img/cyber/cyber-fascia-molecule.png"},
-  "19": {"art":"img/cyber/cyber-principles-techniques.png"},
-  "26": {"art":"img/cyber/cyber-knee.png"},
   "39": {"art":"img/real/cadaver-class-team.jpg","photo":true},
   "40": {"art":"img/real/cadaver-class-demonstration.jpg","photo":true},
   "57": {"art":"img/real/seminar-audience.jpg","photo":true},
   "58": {"art":"img/presentation/nikolay.jpeg","photo":true},
   "59": {"art":"img/presentation/vladimir.png","photo":true},
   "60": {"art":"img/presentation/olga-fedotova.png","photo":true},
-  "79": {"art":"img/cyber/cyber-brain.png"}
+  "79": {"art":"img/cyber/cyber-brain-interface-v2.png"},
+  "80": {"art":"img/cadaver.jpg","photo":true},
 };
