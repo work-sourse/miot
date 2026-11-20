@@ -1290,3 +1290,31 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 
 .slide[data-slide="94"] .offer-deadline{font-size:3cqw!important;white-space:normal!important}
 .slide[data-slide="94"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+
+/* Финальные бонусы: иллюстрации поддерживают смысл, а не отнимают место у текста. */
+.slide[data-slide="99"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)!important;align-items:center!important;gap:2.6cqw!important;height:100%}
+.slide[data-slide="99"] .source-content{width:100%!important}
+.slide[data-slide="99"] .source-title{max-width:100%!important;font-size:4.8cqw!important;line-height:1.12!important}
+.slide[data-slide="99"] .bonus-detail{padding:2.05cqw!important}
+.slide[data-slide="99"] .bonus-detail-name{font-size:3.45cqw!important;line-height:1.15!important}
+.slide[data-slide="99"] .bonus-detail-copy{padding:1.35cqw 1.5cqw!important;font-size:2.85cqw!important;line-height:1.25!important}
+.slide[data-slide="99"] .source-art{width:100%!important;height:20cqw!important;align-self:center!important}
+.slide[data-slide="99"] .source-art img{object-fit:contain!important}
+
+.slide[data-slide="102"] .source-layout{display:block!important;position:relative!important;height:100%}
+.slide[data-slide="102"] .source-content{width:100%!important;max-width:100%!important}
+.slide[data-slide="102"] .source-title{max-width:94cqw!important;font-size:4.45cqw!important;line-height:1.14!important}
+.slide[data-slide="102"] .source-art{display:flex!important;position:absolute!important;right:0!important;bottom:1.5cqw!important;width:18cqw!important;height:14cqw!important;opacity:.86!important}
+.slide[data-slide="102"] .source-art img{object-fit:contain!important}
+
+/* Условия для вебинара: срок — часть сообщения, он всегда виден. */
+.slide[data-slide="110"] .offer-deadline{display:block!important;font-size:3cqw!important;line-height:1.18!important;white-space:normal!important}
+.slide[data-slide="110"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+
+/* Финальный экран: контрастный текст на тёмном фоне без исчезающих акцентов. */
+.slide[data-slide="113"] .source-layout{display:block!important;height:100%!important}
+.slide[data-slide="113"] .source-content{width:100%!important;max-width:94cqw!important}
+.slide[data-slide="113"] .source-title{max-width:94cqw!important;font-size:4.85cqw!important;line-height:1.14!important;color:#fff!important;opacity:1!important}
+.slide[data-slide="113"] .source-title .accent-purple{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
+.slide[data-slide="113"] .plain-emphasis{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
+.slide[data-slide="113"] .welcome-line{font-size:3.35cqw!important;line-height:1.2!important;color:#BDEEFF!important;opacity:1!important}
