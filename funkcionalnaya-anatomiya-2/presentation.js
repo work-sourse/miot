@@ -88,7 +88,6 @@ const SLIDE_HIGHLIGHTS={
   89:['Сертификаты и реестр МИОТ','переводом на английский'],
   91:['должен стоить'],
   93:['специальные условия'],
-  94:['до 27 ноября'],
   95:['стоимость выросла','сохраняем старую цену','до 27 ноября'],
   97:['Только бонусы стоят 35 000 ₽','почти 80%','только для участников вебинара'],
   98:['Запись конференции «Секреты ЖКТ»','10 спикеров','9 часов','анатомия ЖКТ на реальном материале','дополняет модуль 2 курса'],
@@ -227,7 +226,10 @@ function exactErrorSolution(s) {
   return exactHeading(s.title)+exactLines(s.lines);
 }
 function exactFoundationCare(s) {
-  return exactHeading(s.title.replace(/\s*🙌🏻/u, ''));
+  const title=escapeHtml(s.title.replace(/\s*🙌🏻/u, ''))
+    .replace('мы волшебники', '<span class="foundation-emphasis">мы волшебники</span>')
+    .replace('наша работа помогает людям', '<span class="foundation-emphasis">наша работа помогает людям</span>');
+  return '<h1 class="source-title">'+title+'</h1>\n<div class="divider" aria-hidden="true"></div>\n';
 }
 
 function exactFoundationReflection(s) {
@@ -371,7 +373,7 @@ function exactPriceQuestion(s) {
   return exactHeading(s.title);
 }
 function exactSpecialConditions(s) {
-  return exactHeading(s.title);
+  return '<h1 class="source-title">Но сегодня<br><span>для участников вебинара</span><br>действуют специальные условия</h1>\n<div class="divider" aria-hidden="true"></div>\n';
 }
 function exactInstitute(s) {
   return exactHeading(s.title)+'<div class="institute-story"><p class="source-line">'+rich(s.lines[0])+'</p><div class="institute-photos"><figure><img src="'+assetUrl('img/real/medinstitute-auditorium.webp')+'" alt="Олег ведёт лекцию в медицинском институте" decoding="async"></figure><figure><img src="'+assetUrl('img/real/medinstitute-lecture.webp')+'" alt="Лекция Олега в аудитории медицинского института" decoding="async"></figure></div></div>';

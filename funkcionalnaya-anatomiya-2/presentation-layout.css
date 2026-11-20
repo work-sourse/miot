@@ -1244,3 +1244,49 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="46"] .source-content,.slide[data-slide="48"] .source-content{max-width:70cqw!important}
 .slide[data-slide="46"] .case-flow,.slide[data-slide="48"] .case-flow{max-width:100%!important}
 .slide[data-slide="46"] .source-art,.slide[data-slide="48"] .source-art{position:absolute;right:0;top:1cqw;width:23cqw;height:23cqw;z-index:1}
+
+/* Правки по ТЗ: ключевые фразы и изображения остаются самостоятельными, текст всегда помещается в кадр. */
+.slide[data-slide="12"] .source-layout{align-items:start!important}
+.slide[data-slide="12"] .source-content{padding-top:9cqw}
+.slide[data-slide="12"] .source-art{height:31cqw!important;margin-top:8.5cqw;align-self:start}
+.slide[data-slide="12"] .source-title{max-width:58cqw!important;font-size:4.7cqw!important;line-height:1.15!important}
+.slide[data-slide="12"] .foundation-emphasis{color:#0A4B9A;font-weight:900;text-decoration:underline;text-decoration-color:#21C6F0;text-decoration-thickness:.13em;text-underline-offset:.14em}
+
+.slide[data-slide="29"] .error-example-columns{gap:2.8cqw}
+.slide[data-slide="29"] .error-example-columns>section+section{padding-left:2.8cqw}
+.slide[data-slide="29"] .error-example-line{font-size:2.2cqw!important;line-height:1.27!important;margin-bottom:1.05cqw!important}
+.slide[data-slide="29"] .error-example-line.source-citation{font-size:1.32cqw!important;line-height:1.22!important}
+.slide[data-slide="31"] .evidence-example-columns{gap:2.8cqw}
+.slide[data-slide="31"] .evidence-example-columns>section+section{padding-left:2.8cqw}
+.slide[data-slide="31"] .evidence-example-line{font-size:2.58cqw!important;line-height:1.27!important;margin-bottom:1.05cqw!important}
+.slide[data-slide="31"] .evidence-example-line.source-citation{font-size:1.48cqw!important;line-height:1.22!important}
+
+.slide[data-slide="34"] .source-layout{display:block!important;position:relative;height:100%}
+.slide[data-slide="34"] .source-content{width:100%!important;height:auto!important}
+.slide[data-slide="34"] .source-title{max-width:100%!important;font-size:4.75cqw!important;line-height:1.13!important}
+.slide[data-slide="34"] .source-art{position:absolute!important;top:auto!important;right:auto!important;bottom:1.5cqw!important;left:50%!important;width:27cqw!important;height:21cqw!important;margin:0!important;transform:translateX(-50%)!important}
+
+.slide[data-slide="48"] .source-layout{display:block!important;position:relative;height:100%}
+.slide[data-slide="48"] .source-content{max-width:100%!important}
+.slide[data-slide="48"] .source-title{font-size:4.45cqw!important;line-height:1.1!important;margin-bottom:1cqw!important}
+.slide[data-slide="48"] .divider{margin-bottom:1.2cqw!important}
+.slide[data-slide="48"] .case-flow{max-width:100%!important;gap:.95cqw}
+.slide[data-slide="48"] .case-step{padding:1.05cqw 1.45cqw 1.05cqw 2cqw!important;border-left-width:.3cqw!important}
+.slide[data-slide="48"] .case-step .source-line{font-size:2.68cqw!important;line-height:1.26!important}
+.slide[data-slide="48"] .source-art{display:none!important}
+
+/* Тарифы и спецусловия: крупный, но полностью читаемый текст без скрытых строк. */
+.slide[data-slide="92"] .source-tariff{padding:2.05cqw!important}
+.slide[data-slide="92"] .source-tariff h2{font-size:3.05cqw!important;margin-bottom:1.5cqw!important;padding-bottom:1.2cqw!important}
+.slide[data-slide="92"] .tariff-feature-grid{gap:1cqw 1.35cqw!important}
+.slide[data-slide="92"] .tariff-feature{font-size:1.9cqw!important;line-height:1.18!important}
+
+.slide[data-slide="93"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)!important;align-items:center!important;gap:3cqw!important;height:100%}
+.slide[data-slide="93"] .source-content{width:100%!important}
+.slide[data-slide="93"] .source-title{max-width:100%!important;font-size:4.95cqw!important;line-height:1.13!important;margin-bottom:2.2cqw!important}
+.slide[data-slide="93"] .source-title span{color:#6DE1FF}
+.slide[data-slide="93"] .source-art{display:flex!important;height:30cqw!important;opacity:1!important}
+.slide[data-slide="93"] .source-art img{object-fit:contain!important}
+
+.slide[data-slide="94"] .offer-deadline{font-size:3cqw!important;white-space:normal!important}
+.slide[data-slide="94"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
