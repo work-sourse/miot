@@ -379,7 +379,13 @@ function exactInstitute(s) {
   return exactHeading(s.title)+'<div class="institute-story"><p class="source-line">'+rich(s.lines[0])+'</p><figure class="institute-photos"><img src="'+schoolPhotos+'" alt="Фотографии Олега со времён учёбы в медицинском институте" decoding="async"></figure></div>';
 }
 function exactReviews(s) {
-  const reviews=['review-01.jpeg','review-03.jpeg','review-07.jpeg','review-08.jpeg'];
+  const reviews=[
+    'review-04-clinical.jpeg',
+    'review-04-detail.jpeg',
+    'review-06-insight.jpeg',
+    'review-07-detail.jpeg',
+    'review-08-insight.jpeg'
+  ];
   return exactHeading(s.title)+'<div class="review-gallery">'+reviews.map((name,index)=>'<figure><img src="'+assetUrl('img/reviews/'+name)+'" alt="Отзыв ученика '+(index+1)+'" decoding="async"></figure>').join('')+'</div>';
 }
 function exactReminder(s) {

@@ -1364,7 +1364,7 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 /* Отзывы студентов: четыре скриншота в полноширокой последовательности вместо видеозаглушки. */
 .slide[data-slide="90"] .source-layout{display:block!important;height:100%!important}
 .slide[data-slide="90"] .source-content{max-width:100%!important}
-.slide[data-slide="90"] .source-title{font-size:4.9cqw!important;margin-bottom:1.25cqw!important}
-.review-gallery{display:grid;grid-template-columns:1fr;gap:1.2cqw;max-width:88cqw}
-.review-gallery figure{height:8.1cqw;margin:0;border-radius:1.35cqw;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(6,27,63,.1)}
+.slide[data-slide="90"] .source-title{font-size:4.4cqw!important;margin-bottom:.9cqw!important}
+.review-gallery{display:grid;grid-template-columns:1fr;gap:.8cqw;max-width:94cqw}
+.review-gallery figure{height:10.5cqw;margin:0;border-radius:1.35cqw;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(6,27,63,.1)}
 .review-gallery img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
