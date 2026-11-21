@@ -1,9 +1,12 @@
 /* Функциональная анатомия 2.0. Без внешних библиотек. */
 'use strict';
 
-const FIRST_SLIDE = SLIDES[0].n;
-const LAST_SLIDE = SLIDES[SLIDES.length-1].n;
-const slideDataByNumber = new Map(SLIDES.map(s=>[s.n,s]));
+/* В этой самостоятельной версии оставлен только финальный блок вебинара. */
+const COPY_SLIDES = SLIDES.filter((slide) => slide.n >= 73 && slide.n <= 114);
+const FIRST_SLIDE = COPY_SLIDES[0].n;
+const LAST_SLIDE = COPY_SLIDES[COPY_SLIDES.length-1].n;
+const TOTAL_SLIDES = COPY_SLIDES.length;
+const slideDataByNumber = new Map(COPY_SLIDES.map(s=>[s.n,s]));
 
 const $ = (id) => document.getElementById(id);
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -472,12 +475,13 @@ function renderSlide(s) {
   if(s.n===52)cls.push('feedback-slide');
   if([55,56].includes(s.n))cls.push('number-path-slide');
   if(!sourcePicture(s)&&s.n!==0)cls.push('source-no-art');
-  return '<section class="'+cls.filter(Boolean).join(' ')+'" data-slide="'+s.n+'" data-source-text="'+escapeHtml(s.text)+'" aria-roledescription="слайд" aria-label="'+s.n+' из '+LAST_SLIDE+'. '+escapeHtml(s.title)+'" aria-hidden="true" inert>'
+  const position=s.n-FIRST_SLIDE+1;
+  return '<section class="'+cls.filter(Boolean).join(' ')+'" data-slide="'+s.n+'" data-source-text="'+escapeHtml(s.text)+'" aria-roledescription="слайд" aria-label="слайд '+s.n+', '+position+' из '+TOTAL_SLIDES+'. '+escapeHtml(s.title)+'" aria-hidden="true" inert>'
     +'<div class="hd"><div class="hd-num">'+s.n+'</div><div class="hd-chip">'+escapeHtml(s.sec)+'</div><div class="brand">МИОТ · Анатомия 2.0</div></div>'
-    +'<div class="scroll-content">'+bodyFor(s)+'</div><div class="progress-bar" aria-hidden="true"><i style="width:'+(s.n/LAST_SLIDE*100).toFixed(2)+'%"></i></div></section>';
+    +'<div class="scroll-content">'+bodyFor(s)+'</div><div class="progress-bar" aria-hidden="true"><i style="width:'+(position/TOTAL_SLIDES*100).toFixed(2)+'%"></i></div></section>';
 }
 
-$('stage').innerHTML=SLIDES.map(renderSlide).join('');
+$('stage').innerHTML=COPY_SLIDES.map(renderSlide).join('');
 let current=FIRST_SLIDE, lastFocus=null;
 const slideEls=[...document.querySelectorAll('.slide')];
 const slideElementByNumber=new Map(slideEls.map(el=>[Number(el.dataset.slide),el]));
@@ -485,7 +489,7 @@ const slideElementByNumber=new Map(slideEls.map(el=>[Number(el.dataset.slide),el
 function menuHtml(query='') {
   const q=query.trim().toLocaleLowerCase('ru');
   let prevSec='',count=0;
-  $('menuList').innerHTML=SLIDES.filter((s)=>!q||String(s.n)===q||s.text.toLocaleLowerCase('ru').includes(q)).map((s)=>{
+  $('menuList').innerHTML=COPY_SLIDES.filter((s)=>!q||String(s.n)===q||s.text.toLocaleLowerCase('ru').includes(q)).map((s)=>{
     let str='';
     if(prevSec!==s.sec){str='<div class="menu-sec">'+escapeHtml(s.sec)+'</div>';prevSec=s.sec;}
     count++;
@@ -523,8 +527,9 @@ function goTo(n,writeUrl=true) {
   current=n;
   const el=slideElementByNumber.get(n);el.classList.add('active');el.setAttribute('aria-hidden','false');el.inert=false;
   $('prev').disabled=n===FIRST_SLIDE;$('next').disabled=n===LAST_SLIDE;
-  $('counter').textContent=n+' / '+LAST_SLIDE;
-  $('menuCounter').textContent=n+' / '+LAST_SLIDE;
+  const position=n-FIRST_SLIDE+1;
+  $('counter').textContent=position+' / '+TOTAL_SLIDES;
+  $('menuCounter').textContent=position+' / '+TOTAL_SLIDES;
   document.querySelectorAll('.menu-item').forEach((item)=>{
     const active=Number(item.dataset.go)===n;item.classList.toggle('active',active);
     if(active)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');
@@ -546,7 +551,7 @@ function closeMenu() {
   if(lastFocus&&lastFocus.isConnected)lastFocus.focus();
 }
 function showNotesText() {
-  $('notesCounter').textContent=current+' / '+LAST_SLIDE;
+  $('notesCounter').textContent=(current-FIRST_SLIDE+1)+' / '+TOTAL_SLIDES;
   $('notesText').textContent=slideDataByNumber.get(current).text;
 }
 function openNotes() {

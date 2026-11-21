@@ -1300,6 +1300,23 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
   font-weight:850!important;
 }
 
+/* Финальный приоритет для 113-го: тёмные акценты на синем фоне недопустимы. */
+.slide[data-slide="113"] .source-title,
+.slide[data-slide="113"] .payment-note,
+.slide[data-slide="113"] .payment-option{
+  color:#FFFFFF!important;
+  opacity:1!important;
+}
+.slide[data-slide="113"] .source-title .plain-emphasis,
+.slide[data-slide="113"] .payment-note .plain-emphasis,
+.slide[data-slide="113"] .payment-option .plain-emphasis{
+  color:#BDEEFF!important;
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  font-weight:850!important;
+}
+
 /* Цены — самостоятельные структурные метки тарифа, а не подсветка фрагмента. */
 .slide[data-slide="93"] .source-tariff-advanced .tariff-price{
   display:inline-block!important;
@@ -1316,6 +1333,22 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
   font-size:4.35cqw!important;
   line-height:1.1!important;
   overflow:visible!important;
+}
+
+/* Слайд 113: все слова контрастны на тёмном фоне, включая акцентные фразы. */
+.slide[data-slide="113"] .source-title,
+.slide[data-slide="113"] .payment-note,
+.slide[data-slide="113"] .payment-option{
+  color:#fff!important;
+  opacity:1!important;
+}
+.slide[data-slide="113"] .source-title .plain-emphasis,
+.slide[data-slide="113"] .payment-note .plain-emphasis,
+.slide[data-slide="113"] .payment-option .plain-emphasis{
+  color:#BDEEFF!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  font-weight:850!important;
 }
 
 .slide[data-slide="29"] .error-example-columns{gap:2.8cqw}
