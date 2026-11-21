@@ -1350,7 +1350,15 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="39"] .source-title{max-width:92cqw!important;font-size:4.15cqw!important;line-height:1.14!important;margin-bottom:1.3cqw!important}
 .slide[data-slide="39"] .insight-flow{max-width:60cqw!important}
 .slide[data-slide="39"] .insight-line{font-size:2.6cqw!important;line-height:1.25!important;padding:1.25cqw 1.55cqw!important}
-.slide[data-slide="39"] .source-art{right:0!important;bottom:2cqw!important;width:28cqw!important;height:20cqw!important;z-index:1!important}
+.slide[data-slide="39"] .source-art{right:0!important;bottom:2cqw!important;width:37cqw!important;height:26cqw!important;z-index:1!important}
+
+/* Кейс 1: весь разбор остаётся на одном слайде без обрезки нижнего результата. */
+.slide[data-slide="46"] .source-content{max-width:73cqw!important}
+.slide[data-slide="46"] .source-title{font-size:4.6cqw!important;line-height:1.12!important;margin-bottom:1.1cqw!important}
+.slide[data-slide="46"] .divider{margin-bottom:1.1cqw!important}
+.slide[data-slide="46"] .case-flow{gap:.75cqw!important}
+.slide[data-slide="46"] .case-step{padding:.85cqw 1.25cqw .85cqw 2.25cqw!important}
+.slide[data-slide="46"] .case-step .source-line{font-size:2.25cqw!important;line-height:1.18!important}
 
 /* Отзывы студентов: четыре скриншота в полноширокой последовательности вместо видеозаглушки. */
 .slide[data-slide="90"] .source-layout{display:block!important;height:100%!important}
