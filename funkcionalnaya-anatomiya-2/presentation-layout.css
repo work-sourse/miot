@@ -801,7 +801,7 @@ html,body{
 .number-path-line::before{content:attr(data-step);position:absolute;left:1.7cqw;top:50%;transform:translateY(-50%);font-size:3.2cqw;line-height:1;font-weight:850;color:#21C6F0}
 .number-path-line:nth-child(odd){background:rgba(217,237,255,.86)}
 .slide[data-slide="55"] .number-path-line:last-child{grid-column:1 / -1}
-.slide[data-slide="55"] .plain-emphasis,.slide[data-slide="56"] .plain-emphasis,.slide[data-slide="71"] .plain-emphasis,.slide[data-slide="72"] .plain-emphasis,.slide[data-slide="95"] .plain-emphasis,.slide[data-slide="97"] .plain-emphasis,.slide[data-slide="113"] .plain-emphasis{font-weight:850!important;color:#073E83!important;background:transparent!important;padding:0!important}
+.slide[data-slide="55"] .plain-emphasis,.slide[data-slide="56"] .plain-emphasis,.slide[data-slide="71"] .plain-emphasis,.slide[data-slide="72"] .plain-emphasis,.slide[data-slide="96"] .plain-emphasis,.slide[data-slide="98"] .plain-emphasis,.slide[data-slide="114"] .plain-emphasis{font-weight:850!important;color:#073E83!important;background:transparent!important;padding:0!important}
 @media(max-width:600px){
   .number-path{grid-template-columns:1fr}
   .slide[data-slide="55"] .number-path-line:last-child{grid-column:auto}
@@ -964,37 +964,37 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .key-result .source-line{margin:0!important}.key-result-glyph{position:absolute;right:3cqw;top:50%;transform:translateY(-50%);font-size:7cqw;color:#6DE1FF}
 
 /* Модули программы: один модуль — одна ясная карточка и своя иллюстрация. */
-.slide[data-slide="76"] .source-layout,.slide[data-slide="77"] .source-layout,.slide[data-slide="78"] .source-layout,.slide[data-slide="79"] .source-layout,.slide[data-slide="80"] .source-layout{grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);align-items:center;gap:2.8cqw}
-.slide[data-slide="76"] .source-content,.slide[data-slide="77"] .source-content,.slide[data-slide="78"] .source-content,.slide[data-slide="79"] .source-content,.slide[data-slide="80"] .source-content{max-width:100%}
-.slide[data-slide="76"] .source-art,.slide[data-slide="77"] .source-art,.slide[data-slide="78"] .source-art,.slide[data-slide="79"] .source-art,.slide[data-slide="80"] .source-art{height:33cqw;border-radius:2.3cqw;overflow:hidden;background:rgba(255,255,255,.38);box-shadow:0 12px 28px rgba(6,27,63,.14)}
-.slide[data-slide="76"] .source-art img,.slide[data-slide="77"] .source-art img,.slide[data-slide="78"] .source-art img,.slide[data-slide="79"] .source-art img{object-fit:contain}
-.slide[data-slide="80"] .source-art img{object-fit:cover}
+.slide[data-slide="77"] .source-layout,.slide[data-slide="78"] .source-layout,.slide[data-slide="79"] .source-layout,.slide[data-slide="80"] .source-layout,.slide[data-slide="81"] .source-layout{grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);align-items:center;gap:2.8cqw}
+.slide[data-slide="77"] .source-content,.slide[data-slide="78"] .source-content,.slide[data-slide="79"] .source-content,.slide[data-slide="80"] .source-content,.slide[data-slide="81"] .source-content{max-width:100%}
+.slide[data-slide="77"] .source-art,.slide[data-slide="78"] .source-art,.slide[data-slide="79"] .source-art,.slide[data-slide="80"] .source-art,.slide[data-slide="81"] .source-art{height:33cqw;border-radius:2.3cqw;overflow:hidden;background:rgba(255,255,255,.38);box-shadow:0 12px 28px rgba(6,27,63,.14)}
+.slide[data-slide="77"] .source-art img,.slide[data-slide="78"] .source-art img,.slide[data-slide="79"] .source-art img,.slide[data-slide="80"] .source-art img{object-fit:contain}
+.slide[data-slide="81"] .source-art img{object-fit:cover}
 .program-module{display:grid;gap:1.5cqw;max-width:62cqw}
 .program-module .source-line{margin:0!important;padding:2cqw 2.3cqw!important;border-radius:1.9cqw;background:rgba(255,255,255,.65);border:1px solid rgba(10,75,154,.13)}
 .program-module-label{color:#073E83!important;font-weight:850!important;background:rgba(189,238,255,.78)!important}
 
 /* Формат обучения: преимущества читаются как карта, а не как список. */
-.slide[data-slide="81"] .source-layout{display:block;height:100%}
-.slide[data-slide="81"] .source-content{max-width:100%}
-.slide[data-slide="81"] .source-title{margin-bottom:2.15cqw}
+.slide[data-slide="82"] .source-layout{display:block;height:100%}
+.slide[data-slide="82"] .source-content{max-width:100%}
+.slide[data-slide="82"] .source-title{margin-bottom:2.15cqw}
 .course-format-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2cqw 1.6cqw}
 .course-format-card{position:relative;display:flex;align-items:center;min-height:7cqw;margin:0!important;padding:1.35cqw 1.7cqw 1.35cqw 4cqw!important;border-radius:1.65cqw;background:rgba(255,255,255,.68);border:1px solid rgba(10,75,154,.13)}
 .course-format-card::before{content:'';position:absolute;left:1.5cqw;width:1.3cqw;height:1.3cqw;border-radius:50%;background:#21C6F0;box-shadow:0 0 0 .55cqw rgba(33,198,240,.15)}
 .course-format-card:nth-child(2n){background:rgba(217,237,255,.8)}
 
 /* Результаты обучения: каждый результат — самостоятельный продающий тезис. */
-.slide[data-slide="82"] .source-layout,.slide[data-slide="83"] .source-layout,.slide[data-slide="84"] .source-layout,.slide[data-slide="85"] .source-layout,.slide[data-slide="86"] .source-layout,.slide[data-slide="87"] .source-layout,.slide[data-slide="88"] .source-layout,.slide[data-slide="89"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="82"] .source-content,.slide[data-slide="83"] .source-content,.slide[data-slide="84"] .source-content,.slide[data-slide="85"] .source-content,.slide[data-slide="86"] .source-content,.slide[data-slide="87"] .source-content,.slide[data-slide="88"] .source-content,.slide[data-slide="89"] .source-content{width:min(84cqw,100%)}
+.slide[data-slide="83"] .source-layout,.slide[data-slide="84"] .source-layout,.slide[data-slide="85"] .source-layout,.slide[data-slide="86"] .source-layout,.slide[data-slide="87"] .source-layout,.slide[data-slide="88"] .source-layout,.slide[data-slide="89"] .source-layout,.slide[data-slide="90"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="83"] .source-content,.slide[data-slide="84"] .source-content,.slide[data-slide="85"] .source-content,.slide[data-slide="86"] .source-content,.slide[data-slide="87"] .source-content,.slide[data-slide="88"] .source-content,.slide[data-slide="89"] .source-content,.slide[data-slide="90"] .source-content{width:min(84cqw,100%)}
 .benefit-layout{position:relative;padding:3cqw 4cqw 3cqw 13cqw;border-radius:2.5cqw;background:rgba(255,255,255,.66);border:1px solid rgba(10,75,154,.14);box-shadow:0 14px 30px rgba(10,75,154,.08)}
 .benefit-glyph{position:absolute;left:3cqw;top:50%;transform:translateY(-50%);font-size:6.4cqw;line-height:1;color:#0A4B9A}
 .benefit-name{margin:0 0 1.25cqw!important;font-size:3.75cqw!important;line-height:1.12!important;font-weight:850!important;color:#073E83!important}
 .benefit-copy{margin:0!important}.benefit-copy .marker-highlight{color:#fff!important;background:#063878!important}
 
 /* Вопрос цены и специальные условия: одно сообщение и один визуальный фокус. */
-.slide[data-slide="91"] .source-layout,.slide[data-slide="93"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="91"] .source-content,.slide[data-slide="93"] .source-content{width:min(86cqw,100%);text-align:center}
-.slide[data-slide="91"] .source-title,.slide[data-slide="93"] .source-title{max-width:82cqw;margin-left:auto;margin-right:auto}
-.slide[data-slide="91"] .divider,.slide[data-slide="93"] .divider{margin-left:auto;margin-right:auto}
+.slide[data-slide="92"] .source-layout,.slide[data-slide="94"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="92"] .source-content,.slide[data-slide="94"] .source-content{width:min(86cqw,100%);text-align:center}
+.slide[data-slide="92"] .source-title,.slide[data-slide="94"] .source-title{max-width:82cqw;margin-left:auto;margin-right:auto}
+.slide[data-slide="92"] .divider,.slide[data-slide="94"] .divider{margin-left:auto;margin-right:auto}
 .price-question{position:relative;width:26cqw;height:18cqw;margin:3cqw auto 0}
 .price-question span{position:absolute;left:50%;top:0;transform:translateX(-50%);display:grid;place-items:center;width:11cqw;height:11cqw;border-radius:50%;background:#0A4B9A;color:#fff;font-size:7cqw;font-weight:850;box-shadow:0 0 0 1cqw rgba(189,238,255,.86),0 0 2.2cqw rgba(33,198,240,.42)}
 .price-question i{position:absolute;bottom:0;width:5.5cqw;height:5.5cqw;border-radius:50%;border:.38cqw solid #21C6F0}.price-question i:nth-child(2){left:2cqw}.price-question i:nth-child(3){right:2cqw}
@@ -1002,20 +1002,20 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .conditions-stamp span{font-size:9cqw;line-height:1}
 
 /* Тарифы: цена и состав имеют разные уровни чтения. */
-.slide[data-slide="92"] .source-tariff{padding:1.7cqw!important;border-radius:2.3cqw}
-.slide[data-slide="92"] .source-tariff h2{padding-bottom:1.3cqw;border-bottom:1px solid rgba(10,75,154,.17)}
-.slide[data-slide="92"] .source-tariff .source-line{padding-left:.25cqw!important}
-.slide[data-slide="92"] .source-tariff-advanced h2{border-bottom-color:rgba(255,255,255,.34)}
-.slide[data-slide="92"] .source-tariff h2{display:flex;align-items:center;justify-content:space-between;gap:1cqw}
-.slide[data-slide="92"] .tariff-name{font-weight:850}
-.slide[data-slide="92"] .tariff-price{display:inline-block;padding:.18em .36em;border-radius:.5cqw;background:#BDEEFF;color:#073E83!important;white-space:nowrap}
-.slide[data-slide="92"] .source-tariff-advanced .tariff-price{background:#fff;color:#073E83!important}
+.slide[data-slide="93"] .source-tariff{padding:1.7cqw!important;border-radius:2.3cqw}
+.slide[data-slide="93"] .source-tariff h2{padding-bottom:1.3cqw;border-bottom:1px solid rgba(10,75,154,.17)}
+.slide[data-slide="93"] .source-tariff .source-line{padding-left:.25cqw!important}
+.slide[data-slide="93"] .source-tariff-advanced h2{border-bottom-color:rgba(255,255,255,.34)}
+.slide[data-slide="93"] .source-tariff h2{display:flex;align-items:center;justify-content:space-between;gap:1cqw}
+.slide[data-slide="93"] .tariff-name{font-weight:850}
+.slide[data-slide="93"] .tariff-price{display:inline-block;padding:.18em .36em;border-radius:.5cqw;background:#BDEEFF;color:#073E83!important;white-space:nowrap}
+.slide[data-slide="93"] .source-tariff-advanced .tariff-price{background:#fff;color:#073E83!important}
 
 /* Условия вебинара: сравнение цен и дедлайн читаются с первого взгляда. */
-.slide[data-slide="94"] .source-layout,.slide[data-slide="95"] .source-layout,.slide[data-slide="97"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="94"] .source-content,.slide[data-slide="95"] .source-content,.slide[data-slide="97"] .source-content{width:min(88cqw,100%)}
-.slide[data-slide="94"] .source-title,.slide[data-slide="95"] .source-title,.slide[data-slide="97"] .source-title{text-align:center;margin-left:auto;margin-right:auto;max-width:82cqw}
-.slide[data-slide="94"] .divider,.slide[data-slide="95"] .divider,.slide[data-slide="97"] .divider{margin-left:auto;margin-right:auto}
+.slide[data-slide="95"] .source-layout,.slide[data-slide="96"] .source-layout,.slide[data-slide="98"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="95"] .source-content,.slide[data-slide="96"] .source-content,.slide[data-slide="98"] .source-content{width:min(88cqw,100%)}
+.slide[data-slide="95"] .source-title,.slide[data-slide="96"] .source-title,.slide[data-slide="98"] .source-title{text-align:center;margin-left:auto;margin-right:auto;max-width:82cqw}
+.slide[data-slide="95"] .divider,.slide[data-slide="96"] .divider,.slide[data-slide="98"] .divider{margin-left:auto;margin-right:auto}
 .webinar-offer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2cqw;margin:2.2cqw 0}
 .webinar-offer-plan{padding:2.3cqw 2.6cqw;border-radius:2.3cqw;border:1px solid rgba(10,75,154,.16);background:rgba(255,255,255,.78);box-shadow:0 12px 25px rgba(7,47,110,.08)}
 .webinar-offer-plan-2{background:#0A4B9A;border-color:#0A4B9A}
@@ -1033,7 +1033,7 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .why-now-glyph{position:absolute;right:3.3cqw;top:50%;transform:translateY(-50%);font-size:7cqw;color:#21C6F0}
 
 /* Бонусы: вместо списка — четыре самостоятельных предложения. */
-.slide[data-slide="96"] .source-layout{display:block;height:100%}.slide[data-slide="96"] .source-content{max-width:100%}
+.slide[data-slide="97"] .source-layout{display:block;height:100%}.slide[data-slide="97"] .source-content{max-width:100%}
 .bonus-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.35cqw}
 .bonus-card{position:relative;display:grid;gap:.7cqw;min-height:11.5cqw;padding:1.55cqw 1.7cqw 1.5cqw 5.5cqw;border-radius:1.9cqw;background:rgba(255,255,255,.74);border:1px solid rgba(10,75,154,.14)}
 .bonus-card:nth-child(2){background:#D9EDFF}.bonus-card:nth-child(3){background:#C9D7FF}.bonus-card:nth-child(4){background:#BDEEFF}
@@ -1045,9 +1045,9 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .bonus-value-glyph{position:absolute;right:3.3cqw;top:50%;transform:translateY(-50%);font-size:8cqw;color:#6DE1FF}
 
 /* Каждый бонус получает свой знак и отдельные смысловые блоки. */
-.slide[data-slide="98"] .source-layout,.slide[data-slide="99"] .source-layout,.slide[data-slide="100"] .source-layout,.slide[data-slide="101"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="98"] .source-content,.slide[data-slide="99"] .source-content,.slide[data-slide="100"] .source-content,.slide[data-slide="101"] .source-content{width:min(90cqw,100%)}
-.slide[data-slide="98"] .source-title,.slide[data-slide="99"] .source-title,.slide[data-slide="100"] .source-title,.slide[data-slide="101"] .source-title{font-size:4.65cqw!important;margin-bottom:1.25cqw!important}
+.slide[data-slide="99"] .source-layout,.slide[data-slide="100"] .source-layout,.slide[data-slide="101"] .source-layout,.slide[data-slide="102"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="99"] .source-content,.slide[data-slide="100"] .source-content,.slide[data-slide="101"] .source-content,.slide[data-slide="102"] .source-content{width:min(90cqw,100%)}
+.slide[data-slide="99"] .source-title,.slide[data-slide="100"] .source-title,.slide[data-slide="101"] .source-title,.slide[data-slide="102"] .source-title{font-size:4.65cqw!important;margin-bottom:1.25cqw!important}
 .bonus-detail{position:relative;padding:2cqw 2cqw 2cqw 9.5cqw;border-radius:2.3cqw;background:rgba(255,255,255,.68);border:1px solid rgba(10,75,154,.14)}
 .bonus-detail-glyph{position:absolute;left:2.2cqw;top:3.1cqw;font-size:4.9cqw;line-height:1;color:#0A4B9A}
 .bonus-detail-name{margin:0 0 1.45cqw!important;padding-bottom:1.2cqw;border-bottom:1px solid rgba(10,75,154,.16);font-size:3.2cqw!important;line-height:1.15!important;font-weight:850!important;color:#073E83!important}
@@ -1055,13 +1055,13 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .bonus-detail-copy{margin:0!important;padding:1.15cqw 1.35cqw!important;border-radius:1.25cqw;background:rgba(217,237,255,.76);font-size:2.35cqw!important;line-height:1.26!important}
 .bonus-detail-copy:nth-child(2n){background:rgba(189,238,255,.64)}
 .bonus-detail-copy .marker-highlight{color:#fff!important;background:#063878!important}
-.slide[data-slide="101"] .bonus-detail-points{grid-template-columns:repeat(2,minmax(0,1fr))}
-.slide[data-slide="101"] .bonus-detail-copy:first-child{grid-column:1/-1;font-weight:760!important;color:#073E83!important}
+.slide[data-slide="102"] .bonus-detail-points{grid-template-columns:repeat(2,minmax(0,1fr))}
+.slide[data-slide="102"] .bonus-detail-copy:first-child{grid-column:1/-1;font-weight:760!important;color:#073E83!important}
 
 /* Финальное приглашение: практическая польза, способы оплаты и приветствие. */
-.slide[data-slide="102"] .source-layout,.slide[data-slide="103"] .source-layout,.slide[data-slide="112"] .source-layout,.slide[data-slide="113"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="102"] .source-content,.slide[data-slide="103"] .source-content,.slide[data-slide="112"] .source-content,.slide[data-slide="113"] .source-content{width:min(88cqw,100%)}
-.slide[data-slide="102"] .source-title{font-size:4.75cqw!important;max-width:78cqw}
+.slide[data-slide="103"] .source-layout,.slide[data-slide="104"] .source-layout,.slide[data-slide="113"] .source-layout,.slide[data-slide="114"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="103"] .source-content,.slide[data-slide="104"] .source-content,.slide[data-slide="113"] .source-content,.slide[data-slide="114"] .source-content{width:min(88cqw,100%)}
+.slide[data-slide="103"] .source-title{font-size:4.75cqw!important;max-width:78cqw}
 .bonus-conclusion{position:relative;width:43cqw;height:20cqw;margin:2.5cqw auto 0;border-radius:50%;border:1px solid rgba(33,198,240,.46)}
 .bonus-conclusion::before,.bonus-conclusion::after{content:'';position:absolute;inset:3cqw;border:1px solid rgba(10,75,154,.18);border-radius:50%;transform:rotate(28deg)}
 .bonus-conclusion::after{inset:5.9cqw;transform:rotate(-28deg)}
@@ -1075,21 +1075,21 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .payment-option span{font-size:2.6cqw;line-height:1;color:#6DE1FF}
 .payment-option-2{background:rgba(109,225,255,.17)}
 .welcome-line{display:inline-block!important;margin:2.5cqw 0 0!important;padding:1.1cqw 1.55cqw!important;border-radius:99px;background:rgba(109,225,255,.16);border:1px solid rgba(189,238,255,.42);font-size:3.25cqw!important;font-weight:800!important;color:#fff!important;box-shadow:0 8px 20px rgba(0,16,61,.18)}
-.slide[data-slide="113"] .source-title{max-width:83cqw}.slide[data-slide="113"] .marker-highlight{color:#fff!important;background:rgba(109,225,255,.28)!important}
+.slide[data-slide="114"] .source-title{max-width:83cqw}.slide[data-slide="114"] .marker-highlight{color:#fff!important;background:rgba(109,225,255,.28)!important}
 
 /* Повторные условия и бонусы сохраняют ту же визуальную систему. */
-.slide[data-slide="110"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
-.slide[data-slide="110"] .source-content{width:min(88cqw,100%)}
-.slide[data-slide="110"] .source-title{text-align:center;margin-left:auto;margin-right:auto;max-width:82cqw}
-.slide[data-slide="110"] .divider{margin-left:auto;margin-right:auto}
-.slide[data-slide="111"] .source-layout{display:block;height:100%}.slide[data-slide="111"] .source-content{max-width:100%}
+.slide[data-slide="111"] .source-layout{display:flex;align-items:center;justify-content:center;height:100%}
+.slide[data-slide="111"] .source-content{width:min(88cqw,100%)}
+.slide[data-slide="111"] .source-title{text-align:center;margin-left:auto;margin-right:auto;max-width:82cqw}
+.slide[data-slide="111"] .divider{margin-left:auto;margin-right:auto}
+.slide[data-slide="112"] .source-layout{display:block;height:100%}.slide[data-slide="112"] .source-content{max-width:100%}
 
 /* Акценты: цельная синяя типографическая подложка, как в согласованном референсе. */
 .slide .marker-highlight,
 .slide .source-line .marker-highlight,
 .slide .source-title .marker-highlight,
 .slide h1 .marker-highlight,
-.slide[data-slide="113"] .marker-highlight,
+.slide[data-slide="114"] .marker-highlight,
 .benefit-copy .marker-highlight,
 .bonus-detail-copy .marker-highlight,
 .approach-question .marker-highlight{
@@ -1137,9 +1137,9 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .program-module .program-module-label{margin:0 0 1.45cqw!important;padding:0 0 1.15cqw!important;border-bottom:1px solid rgba(10,75,154,.18)!important;color:#073E83!important;font-weight:850!important}
 
 /* Слайд 81: чистые информационные карточки, без точек и наложений. */
-.slide[data-slide="81"] .source-layout{display:block;height:100%}
-.slide[data-slide="81"] .source-content{max-width:100%}
-.slide[data-slide="81"] .source-title{margin-bottom:1.35cqw!important}
+.slide[data-slide="82"] .source-layout{display:block;height:100%}
+.slide[data-slide="82"] .source-content{max-width:100%}
+.slide[data-slide="82"] .source-title{margin-bottom:1.35cqw!important}
 .course-format-grid{gap:1.1cqw!important}
 .course-format-card{display:block!important;min-height:0!important;margin:0!important;padding:1.35cqw 1.55cqw!important;border-radius:1.35cqw!important;font-size:2.15cqw!important;line-height:1.2!important}
 .course-format-card::before{display:none!important}
@@ -1173,40 +1173,40 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .payment-option{padding-top:1.75cqw!important}
 
 /* Заключительный блок: крупная типографика без технических плашек. */
-.slide[data-slide="81"] .course-format-card{padding:1.55cqw 1.75cqw!important;font-size:2.45cqw!important;line-height:1.22!important}
+.slide[data-slide="82"] .course-format-card{padding:1.55cqw 1.75cqw!important;font-size:2.45cqw!important;line-height:1.22!important}
 
 /* Тарифы: полный состав помещается на слайде, каждая опция читается как отдельный пункт. */
-.slide[data-slide="92"] .source-layout{display:block;height:100%}
-.slide[data-slide="92"] .source-content{max-width:100%}
-.slide[data-slide="92"] .source-title{font-size:4.7cqw!important;line-height:1.08!important;margin-bottom:1.2cqw!important}
-.slide[data-slide="92"] .divider{margin-bottom:1.25cqw!important}
-.slide[data-slide="92"] .source-tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6cqw}
-.slide[data-slide="92"] .source-tariff{display:block!important;min-width:0;padding:1.85cqw!important;border-radius:2cqw!important}
-.slide[data-slide="92"] .source-tariff h2{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1cqw!important;margin:0 0 1.35cqw!important;padding:0 0 1.1cqw!important;font-size:2.85cqw!important;line-height:1!important}
-.slide[data-slide="92"] .tariff-price{padding:.26em .42em!important;font-size:.9em!important}
-.slide[data-slide="92"] .tariff-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8cqw 1.25cqw}
-.slide[data-slide="92"] .tariff-feature{min-width:0;margin:0!important;padding-left:.9cqw!important;border-left:.22cqw solid rgba(10,75,154,.23)!important;color:#405779!important;font-size:1.5cqw!important;line-height:1.18!important}
-.slide[data-slide="92"] .source-tariff-advanced .tariff-feature{border-left-color:rgba(189,238,255,.46)!important;color:#fff!important}
+.slide[data-slide="93"] .source-layout{display:block;height:100%}
+.slide[data-slide="93"] .source-content{max-width:100%}
+.slide[data-slide="93"] .source-title{font-size:4.7cqw!important;line-height:1.08!important;margin-bottom:1.2cqw!important}
+.slide[data-slide="93"] .divider{margin-bottom:1.25cqw!important}
+.slide[data-slide="93"] .source-tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6cqw}
+.slide[data-slide="93"] .source-tariff{display:block!important;min-width:0;padding:1.85cqw!important;border-radius:2cqw!important}
+.slide[data-slide="93"] .source-tariff h2{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1cqw!important;margin:0 0 1.35cqw!important;padding:0 0 1.1cqw!important;font-size:2.85cqw!important;line-height:1!important}
+.slide[data-slide="93"] .tariff-price{padding:.26em .42em!important;font-size:.9em!important}
+.slide[data-slide="93"] .tariff-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8cqw 1.25cqw}
+.slide[data-slide="93"] .tariff-feature{min-width:0;margin:0!important;padding-left:.9cqw!important;border-left:.22cqw solid rgba(10,75,154,.23)!important;color:#405779!important;font-size:1.5cqw!important;line-height:1.18!important}
+.slide[data-slide="93"] .source-tariff-advanced .tariff-feature{border-left-color:rgba(189,238,255,.46)!important;color:#fff!important}
 
 /* Слайд с ценой: второй абзац остаётся акцентным, но без голубого прямоугольника. */
-.slide[data-slide="95"] .why-now-save{padding:0!important;border-radius:0!important;background:transparent!important;color:#073E83!important}
+.slide[data-slide="96"] .why-now-save{padding:0!important;border-radius:0!important;background:transparent!important;color:#073E83!important}
 
 /* Бонусы: оставляем свободное поле, но используем его для читаемого кегля. */
-.slide[data-slide="96"] .source-title,.slide[data-slide="111"] .source-title{font-size:4.9cqw!important;margin-bottom:1.6cqw!important}
-.slide[data-slide="96"] .bonus-card-grid,.slide[data-slide="111"] .bonus-card-grid{gap:1.6cqw!important}
-.slide[data-slide="96"] .bonus-card,.slide[data-slide="111"] .bonus-card{min-height:14.2cqw!important;padding:1.85cqw 2cqw!important;gap:1cqw!important}
-.slide[data-slide="96"] .bonus-card p,.slide[data-slide="111"] .bonus-card p{font-size:2.85cqw!important;line-height:1.16!important}
-.slide[data-slide="96"] .bonus-card strong,.slide[data-slide="111"] .bonus-card strong{font-size:2.6cqw!important;padding:.42cqw .78cqw!important}
+.slide[data-slide="97"] .source-title,.slide[data-slide="112"] .source-title{font-size:4.9cqw!important;margin-bottom:1.6cqw!important}
+.slide[data-slide="97"] .bonus-card-grid,.slide[data-slide="112"] .bonus-card-grid{gap:1.6cqw!important}
+.slide[data-slide="97"] .bonus-card,.slide[data-slide="112"] .bonus-card{min-height:14.2cqw!important;padding:1.85cqw 2cqw!important;gap:1cqw!important}
+.slide[data-slide="97"] .bonus-card p,.slide[data-slide="112"] .bonus-card p{font-size:2.85cqw!important;line-height:1.16!important}
+.slide[data-slide="97"] .bonus-card strong,.slide[data-slide="112"] .bonus-card strong{font-size:2.6cqw!important;padding:.42cqw .78cqw!important}
 
 /* Ценность бонусов: только типографика, без синей подложки за текстом. */
-.slide[data-slide="97"] .bonus-value{padding:0!important;border-radius:0!important;background:transparent!important;color:#073E83!important;box-shadow:none!important}
-.slide[data-slide="97"] .bonus-value .source-line{color:#405779!important}
-.slide[data-slide="97"] .bonus-value .source-line:first-of-type{font-size:3.9cqw!important;color:#073E83!important}
-.slide[data-slide="97"] .bonus-value .source-line:last-of-type{margin-top:1.5cqw!important;color:#405779!important}
+.slide[data-slide="98"] .bonus-value{padding:0!important;border-radius:0!important;background:transparent!important;color:#073E83!important;box-shadow:none!important}
+.slide[data-slide="98"] .bonus-value .source-line{color:#405779!important}
+.slide[data-slide="98"] .bonus-value .source-line:first-of-type{font-size:3.9cqw!important;color:#073E83!important}
+.slide[data-slide="98"] .bonus-value .source-line:last-of-type{margin-top:1.5cqw!important;color:#405779!important}
 
 /* Финальный экран: приветствие остаётся крупным текстом, без капсулы и эмодзи. */
-.slide[data-slide="113"] .welcome-line{display:block!important;margin:2.5cqw 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:3.8cqw!important;line-height:1.2!important;font-weight:850!important;color:#BDEEFF!important}
-.slide[data-slide="113"] .marker-highlight{background:transparent!important;box-shadow:none!important;color:#BDEEFF!important;padding:0!important}
+.slide[data-slide="114"] .welcome-line{display:block!important;margin:2.5cqw 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:3.8cqw!important;line-height:1.2!important;font-weight:850!important;color:#BDEEFF!important}
+.slide[data-slide="114"] .marker-highlight{background:transparent!important;box-shadow:none!important;color:#BDEEFF!important;padding:0!important}
 
 /* Тематические PNG из ТЗ: только в свободных зонах, отдельными от текста. */
 .source-art-multi{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35cqw}
@@ -1276,48 +1276,48 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="48"] .source-art{display:none!important}
 
 /* Тарифы и спецусловия: крупный, но полностью читаемый текст без скрытых строк. */
-.slide[data-slide="92"] .source-tariff{padding:2.05cqw!important}
-.slide[data-slide="92"] .source-tariff h2{font-size:3.05cqw!important;margin-bottom:1.5cqw!important;padding-bottom:1.2cqw!important}
-.slide[data-slide="92"] .tariff-feature-grid{gap:1cqw 1.35cqw!important}
-.slide[data-slide="92"] .tariff-feature{font-size:1.9cqw!important;line-height:1.18!important}
+.slide[data-slide="93"] .source-tariff{padding:2.05cqw!important}
+.slide[data-slide="93"] .source-tariff h2{font-size:3.05cqw!important;margin-bottom:1.5cqw!important;padding-bottom:1.2cqw!important}
+.slide[data-slide="93"] .tariff-feature-grid{gap:1cqw 1.35cqw!important}
+.slide[data-slide="93"] .tariff-feature{font-size:1.9cqw!important;line-height:1.18!important}
 
-.slide[data-slide="93"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)!important;align-items:center!important;gap:3cqw!important;height:100%}
-.slide[data-slide="93"] .source-content{width:100%!important}
-.slide[data-slide="93"] .source-title{max-width:100%!important;font-size:4.95cqw!important;line-height:1.13!important;margin-bottom:2.2cqw!important}
-.slide[data-slide="93"] .source-title span{color:#6DE1FF}
-.slide[data-slide="93"] .source-art{display:flex!important;height:30cqw!important;opacity:1!important}
-.slide[data-slide="93"] .source-art img{object-fit:contain!important}
+.slide[data-slide="94"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)!important;align-items:center!important;gap:3cqw!important;height:100%}
+.slide[data-slide="94"] .source-content{width:100%!important}
+.slide[data-slide="94"] .source-title{max-width:100%!important;font-size:4.95cqw!important;line-height:1.13!important;margin-bottom:2.2cqw!important}
+.slide[data-slide="94"] .source-title span{color:#6DE1FF}
+.slide[data-slide="94"] .source-art{display:flex!important;height:30cqw!important;opacity:1!important}
+.slide[data-slide="94"] .source-art img{object-fit:contain!important}
 
-.slide[data-slide="94"] .offer-deadline{font-size:3cqw!important;white-space:normal!important}
-.slide[data-slide="94"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+.slide[data-slide="95"] .offer-deadline{font-size:3cqw!important;white-space:normal!important}
+.slide[data-slide="95"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
 
 /* Финальные бонусы: иллюстрации поддерживают смысл, а не отнимают место у текста. */
-.slide[data-slide="99"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)!important;align-items:center!important;gap:2.6cqw!important;height:100%}
-.slide[data-slide="99"] .source-content{width:100%!important}
-.slide[data-slide="99"] .source-title{max-width:100%!important;font-size:4.8cqw!important;line-height:1.12!important}
-.slide[data-slide="99"] .bonus-detail{padding:2.05cqw!important}
-.slide[data-slide="99"] .bonus-detail-name{font-size:3.45cqw!important;line-height:1.15!important}
-.slide[data-slide="99"] .bonus-detail-copy{padding:1.35cqw 1.5cqw!important;font-size:2.85cqw!important;line-height:1.25!important}
-.slide[data-slide="99"] .source-art{width:100%!important;height:20cqw!important;align-self:center!important}
-.slide[data-slide="99"] .source-art img{object-fit:contain!important}
+.slide[data-slide="100"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)!important;align-items:center!important;gap:2.6cqw!important;height:100%}
+.slide[data-slide="100"] .source-content{width:100%!important}
+.slide[data-slide="100"] .source-title{max-width:100%!important;font-size:4.8cqw!important;line-height:1.12!important}
+.slide[data-slide="100"] .bonus-detail{padding:2.05cqw!important}
+.slide[data-slide="100"] .bonus-detail-name{font-size:3.45cqw!important;line-height:1.15!important}
+.slide[data-slide="100"] .bonus-detail-copy{padding:1.35cqw 1.5cqw!important;font-size:2.85cqw!important;line-height:1.25!important}
+.slide[data-slide="100"] .source-art{width:100%!important;height:20cqw!important;align-self:center!important}
+.slide[data-slide="100"] .source-art img{object-fit:contain!important}
 
-.slide[data-slide="102"] .source-layout{display:block!important;position:relative!important;height:100%}
-.slide[data-slide="102"] .source-content{width:100%!important;max-width:100%!important}
-.slide[data-slide="102"] .source-title{max-width:94cqw!important;font-size:4.45cqw!important;line-height:1.14!important}
-.slide[data-slide="102"] .source-art{display:flex!important;position:absolute!important;right:0!important;bottom:1.5cqw!important;width:18cqw!important;height:14cqw!important;opacity:.86!important}
-.slide[data-slide="102"] .source-art img{object-fit:contain!important}
+.slide[data-slide="103"] .source-layout{display:block!important;position:relative!important;height:100%}
+.slide[data-slide="103"] .source-content{width:100%!important;max-width:100%!important}
+.slide[data-slide="103"] .source-title{max-width:94cqw!important;font-size:4.45cqw!important;line-height:1.14!important}
+.slide[data-slide="103"] .source-art{display:flex!important;position:absolute!important;right:0!important;bottom:1.5cqw!important;width:18cqw!important;height:14cqw!important;opacity:.86!important}
+.slide[data-slide="103"] .source-art img{object-fit:contain!important}
 
 /* Условия для вебинара: срок — часть сообщения, он всегда виден. */
-.slide[data-slide="110"] .offer-deadline{display:block!important;font-size:3cqw!important;line-height:1.18!important;white-space:normal!important}
-.slide[data-slide="110"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+.slide[data-slide="111"] .offer-deadline{display:block!important;font-size:3cqw!important;line-height:1.18!important;white-space:normal!important}
+.slide[data-slide="111"] .offer-deadline .marker-highlight{display:inline!important;color:#073E83!important;background:transparent!important;box-shadow:none!important;padding:0!important}
 
 /* Финальный экран: контрастный текст на тёмном фоне без исчезающих акцентов. */
-.slide[data-slide="113"] .source-layout{display:block!important;height:100%!important}
-.slide[data-slide="113"] .source-content{width:100%!important;max-width:94cqw!important}
-.slide[data-slide="113"] .source-title{max-width:94cqw!important;font-size:4.85cqw!important;line-height:1.14!important;color:#fff!important;opacity:1!important}
-.slide[data-slide="113"] .source-title .accent-purple{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
-.slide[data-slide="113"] .plain-emphasis{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
-.slide[data-slide="113"] .welcome-line{font-size:3.35cqw!important;line-height:1.2!important;color:#BDEEFF!important;opacity:1!important}
+.slide[data-slide="114"] .source-layout{display:block!important;height:100%!important}
+.slide[data-slide="114"] .source-content{width:100%!important;max-width:94cqw!important}
+.slide[data-slide="114"] .source-title{max-width:94cqw!important;font-size:4.85cqw!important;line-height:1.14!important;color:#fff!important;opacity:1!important}
+.slide[data-slide="114"] .source-title .accent-purple{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
+.slide[data-slide="114"] .plain-emphasis{color:#6DE1FF!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
+.slide[data-slide="114"] .welcome-line{font-size:3.35cqw!important;line-height:1.2!important;color:#BDEEFF!important;opacity:1!important}
 
 /* Профиль эксперта: три документальные фотографии из коллажа в отдельной колонке. */
 .slide[data-slide="14"] .source-layout{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr)!important;align-items:start!important;gap:2.7cqw!important;height:100%!important}
@@ -1362,9 +1362,24 @@ button:focus-visible,input:focus-visible{outline-color:#21C6F0;outline-offset:3p
 .slide[data-slide="46"] .case-step .source-line{font-size:3.35cqw!important;line-height:1.23!important}
 
 /* Отзывы студентов: четыре скриншота в полноширокой последовательности вместо видеозаглушки. */
-.slide[data-slide="90"] .source-layout{display:block!important;height:100%!important}
-.slide[data-slide="90"] .source-content{max-width:100%!important}
-.slide[data-slide="90"] .source-title{font-size:4.4cqw!important;margin-bottom:.9cqw!important}
+.slide[data-slide="91"] .source-layout{display:block!important;height:100%!important}
+.slide[data-slide="91"] .source-content{max-width:100%!important}
+.slide[data-slide="91"] .source-title{font-size:4.4cqw!important;margin-bottom:.9cqw!important}
 .review-gallery{display:grid;grid-template-columns:1fr;gap:.8cqw;max-width:94cqw}
 .review-gallery figure{height:10.5cqw;margin:0;border-radius:1.35cqw;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(6,27,63,.1)}
 .review-gallery img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
+
+/* Обновлённая программа: эфиры и фрагмент урока. */
+.slide[data-slide="75"] .source-layout,.slide[data-slide="76"] .source-layout{display:block!important;height:100%!important}
+.slide[data-slide="75"] .source-content,.slide[data-slide="76"] .source-content{max-width:100%!important}
+.slide[data-slide="75"] .source-title{font-size:4.75cqw!important;line-height:1.1!important;margin-bottom:1.4cqw!important}
+.slide[data-slide="75"] .divider{margin-bottom:2.25cqw!important}
+.live-lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.55cqw;margin-top:4.2cqw}
+.live-lesson-card{min-width:0;min-height:33cqw;padding:3.1cqw 1.8cqw;border-radius:2.4cqw;background:rgba(255,255,255,.73);border:1px solid rgba(10,75,154,.15);box-shadow:0 1.1cqw 2.6cqw rgba(6,27,63,.08)}
+.live-lesson-card h2{font-size:3.3cqw!important;line-height:1.15!important;margin:0 0 1.5cqw!important;color:#073E83!important}
+.live-lesson-card .source-line{font-size:2.65cqw!important;line-height:1.32!important;margin:0!important;color:#405779!important}
+.slide[data-slide="76"] .source-title{font-size:4.95cqw!important;line-height:1.1!important;margin-bottom:1.25cqw!important}
+.slide[data-slide="76"] .divider{margin-bottom:1.6cqw!important}
+.updated-lesson-video{display:flex;flex-direction:column;gap:1.35cqw}
+.updated-lesson-video .source-line{font-size:2.75cqw!important;line-height:1.3!important;margin:0!important;color:#405779!important}
+.updated-lesson-video video{display:block;width:100%;max-height:49cqw;aspect-ratio:16/9;object-fit:contain;border-radius:2.8cqw;background:#06132B;box-shadow:0 1.4cqw 3cqw rgba(6,27,63,.16)}

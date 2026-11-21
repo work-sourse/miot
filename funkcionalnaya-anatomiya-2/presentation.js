@@ -72,37 +72,37 @@ const SLIDE_HIGHLIGHTS={
   66:['связи в теле','небольшое воздействие','заметный результат','материалы по пальпации и самопальпации','на себе','с клиентами'],
   72:['набор техник','по протоколу','Результат держится пару дней','строение тела','Находит причину','создаёт технику','проверяет результат','К кому из них пойдут клиенты? И кем хотите быть вы?'],
   73:['ваш ключ','чувствуют и ценят клиенты','реальным решением'],
-  76:['Модуль 0. Вводный','первая практика','с нуля'],
-  77:['8 регионам','полную картину','взаимосвязей'],
-  78:['практики саморегуляции','где искать причину дисфункции'],
-  79:['Нервная, иммунная и эндокринная системы','организм целостно'],
-  80:['библиотека диссекций','кадавр-семинаров'],
-  81:['Видеоуроки','Пальпация и самопальпация','3D-визуализация','Личный куратор','2 месяца'],
-  82:['Системное понимание тела','единое целое'],
-  83:['Умение находить причину','источник проблемы'],
-  84:['Пальпаторные навыки','на себе и на клиенте'],
-  85:['Свои техники','под конкретного человека'],
-  86:['Уверенность в работе','страх навредить'],
-  87:['Реальную анатомию','настоящем теле'],
-  88:['Поддержку куратора','на протяжении всего обучения'],
-  89:['Сертификаты и реестр МИОТ','переводом на английский'],
-  91:['должен стоить'],
-  93:['специальные условия'],
-  95:['стоимость выросла','сохраняем старую цену','до 27 ноября'],
-  97:['Только бонусы стоят 35 000 ₽','почти 80%','только для участников вебинара'],
-  98:['Запись конференции «Секреты ЖКТ»','10 спикеров','9 часов','анатомия ЖКТ на реальном материале','дополняет модуль 2 курса'],
-  99:['Интенсив «Остео Детокс»','активации всех систем детоксикации','самостоятельно','рекомендации по самокоррекции клиентам'],
-  100:['Интенсив «Краниосакральная самокоррекция»','нервной системой','головную боль','красоту и молодость лица','расширяет арсенал техник и способов диагностики'],
-  101:['Интенсив «Тазовая диафрагма»','гармонизацию тонуса тазовой диафрагмы','гармонизацию тонуса брюшной стенки','восстановление нормальной осанки','нормализацию внутрибрюшного давления'],
-  102:['применить и на себе','в работе с подопечными'],
-  103:['Внесите предоплату','сохранить за собой условия','удобным для вас способом','от 2 000 ₽ в месяц'],
-  104:['Программа обновлена','Для тех, кто уже проходил Функциональную анатомию','особые условия','базовый тариф за 20 000 ₽','продвинутый за 40 000 ₽','Оставьте заявку по кнопке под эфиром'],
-  105:['однозначно потянете','полноценный вводный модуль','начинает с нуля','вы ясно поняли'],
-  106:['новую глубину','расширяю инструменты воздействия','Курс практически ориентирован','Клинические взаимосвязи и кадаверный материал','даже опытному специалисту'],
-  107:['2 месяца','в своём темпе','9 месяцев на базовом тарифе','год на продвинутом','куратор с медицинским образованием'],
-  108:['из любой точки мира','оплата для РФ','рассрочка','предоплата','оплата из-за рубежа','обучающей платформе GetCourse'],
-  112:['Внесите предоплату','сохранить за собой условия','удобным для вас способом','от 2 000 ₽ в месяц'],
-  113:['реальную анатомию','не представление о ней','Welcome на обучение, кудесники']
+  77:['Модуль 0. Вводный','первая практика','с нуля'],
+  78:['8 регионам','полную картину','взаимосвязей'],
+  79:['практики саморегуляции','где искать причину дисфункции'],
+  80:['Нервная, иммунная и эндокринная системы','организм целостно'],
+  81:['библиотека диссекций','кадавр-семинаров'],
+  82:['Видеоуроки','Пальпация и самопальпация','3D-визуализация','Личный куратор','2 месяца'],
+  83:['Системное понимание тела','единое целое'],
+  84:['Умение находить причину','источник проблемы'],
+  85:['Пальпаторные навыки','на себе и на клиенте'],
+  86:['Свои техники','под конкретного человека'],
+  87:['Уверенность в работе','страх навредить'],
+  88:['Реальную анатомию','настоящем теле'],
+  89:['Поддержку куратора','на протяжении всего обучения'],
+  90:['Сертификаты и реестр МИОТ','переводом на английский'],
+  92:['должен стоить'],
+  94:['специальные условия'],
+  96:['стоимость выросла','сохраняем старую цену','до 27 ноября'],
+  98:['Только бонусы стоят 35 000 ₽','почти 80%','только для участников вебинара'],
+  99:['Запись конференции «Секреты ЖКТ»','10 спикеров','9 часов','анатомия ЖКТ на реальном материале','дополняет модуль 2 курса'],
+  100:['Интенсив «Остео Детокс»','активации всех систем детоксикации','самостоятельно','рекомендации по самокоррекции клиентам'],
+  101:['Интенсив «Краниосакральная самокоррекция»','нервной системой','головную боль','красоту и молодость лица','расширяет арсенал техник и способов диагностики'],
+  102:['Интенсив «Тазовая диафрагма»','гармонизацию тонуса тазовой диафрагмы','гармонизацию тонуса брюшной стенки','восстановление нормальной осанки','нормализацию внутрибрюшного давления'],
+  103:['применить и на себе','в работе с подопечными'],
+  104:['Внесите предоплату','сохранить за собой условия','удобным для вас способом','от 2 000 ₽ в месяц'],
+  105:['Программа обновлена','Для тех, кто уже проходил Функциональную анатомию','особые условия','базовый тариф за 20 000 ₽','продвинутый за 40 000 ₽','Оставьте заявку по кнопке под эфиром'],
+  106:['однозначно потянете','полноценный вводный модуль','начинает с нуля','вы ясно поняли'],
+  107:['новую глубину','расширяю инструменты воздействия','Курс практически ориентирован','Клинические взаимосвязи и кадаверный материал','даже опытному специалисту'],
+  108:['2 месяца','в своём темпе','9 месяцев на базовом тарифе','год на продвинутом','куратор с медицинским образованием'],
+  109:['из любой точки мира','оплата для РФ','рассрочка','предоплата','оплата из-за рубежа','обучающей платформе GetCourse'],
+  113:['Внесите предоплату','сохранить за собой условия','удобным для вас способом','от 2 000 ₽ в месяц'],
+  114:['реальную анатомию','не представление о ней','Welcome на обучение, кудесники']
 };
 const SLIDE_UNDERLINES={
   13:['профессиональные страхи','выгорание','нехватку клиентов и денег','ощущение, что я что-то упускаю','мне чего-то не хватает как специалисту']
@@ -362,6 +362,18 @@ function exactProgramModule(s) {
   const [label='',copy='']=s.lines;
   return exactHeading(s.title)+'<div class="program-module"><p class="source-line program-module-label">'+rich(label)+'</p><p class="source-line">'+rich(copy)+'</p></div>';
 }
+function exactLiveLessonList(s) {
+  const cards=[];
+  for(let i=0;i<s.lines.length;i+=2) {
+    const [title='',details='']=s.lines.slice(i,i+2);
+    cards.push('<section class="live-lesson-card"><h2>'+rich(title)+'</h2><p class="source-line">'+rich(details).replace(/\n/g,'<br>')+'</p></section>');
+  }
+  return exactHeading(s.title)+'<div class="live-lesson-grid">'+cards.join('')+'</div>';
+}
+function exactUpdatedLessonVideo(s) {
+  const src=assetUrl('media/updated-functional-anatomy-lesson-web.mp4');
+  return exactHeading(s.title)+'<div class="updated-lesson-video"><p class="source-line">'+rich(s.lines[0])+'</p><video controls playsinline preload="metadata" aria-label="Фрагмент обновлённого урока"><source src="'+src+'" type="video/mp4">Ваш браузер не поддерживает воспроизведение видео.</video></div>';
+}
 function exactCourseFormat(s) {
   return exactHeading(s.title)+'<div class="course-format-grid">'+s.lines.map((line,i)=>'<p class="source-line course-format-card course-format-card-'+(i+1)+'">'+rich((line||'').replace(/^\*\s*/,''))+'</p>').join('')+'</div>';
 }
@@ -434,12 +446,12 @@ function exactWelcome(s) {
 }
 function bodyFor(s) {
   if(s.n===0) return '<div class="webinar-cover"><div class="cover-copy"><div class="badge cover-badge">Вебинар</div><h1 class="cover-title">Функциональная<br>анатомия <span class="mark-ring">2.0</span></h1><div class="divider" aria-hidden="true"></div><p class="cover-author">'+escapeHtml(s.lines[0])+'</p></div><figure class="cover-art">'+image('img/cyber/cyber-medical-cutout-v3.png','Кибер-медицинская анатомическая визуализация')+'</figure></div>';
-  let exact= s.n===1?exactSignal(s):s.n===12?exactFoundationCare(s):s.n===21?exactFoundationReflection(s):s.n===14?exactProfile(s):s.n===19?exactDisciplines(s):s.n===23?exactRecommendation(s):s.n===26?exactErrorFirst(s):s.n===27?exactLongErrorExample(s):s.n===29?exactLongErrorExample(s):s.n===31?exactEvidenceExample(s):s.n===32?exactErrorSolution(s):s.n===33?exactSystemOffer(s):s.n===34?exactFunctionalQuestion(s):s.n===35?exactApplication(s):s.n===36?exactApproaches(s):s.n===37?exactInstitute(s):s.n===38?exactTeaching(s):[39,40,41,42,43].includes(s.n)?exactInsight(s):[45,47,49].includes(s.n)?exactCasePrompt(s):[46,48,50].includes(s.n)?exactCaseResult(s):s.n===51?exactInsight(s):s.n===52?exactFeedback(s):s.n===54?exactReminder(s):[55,56].includes(s.n)?exactNumberPath(s):[58,59,60].includes(s.n)?exactStudentResult(s):s.n===61?exactIncomeImpact(s):s.n===62?exactIncomeResults(s):s.n===63?exactStudentCta(s):s.n===66?exactFunctionalResult(s):s.n===68?exactCareCta(s):s.n===69?exactQuestionBubble(s):s.n===71?exactAudience(s):s.n===72?exactApproachContrast(s):s.n===73?exactKeyResult(s):s.n===74?exactProgramComparison(s):[76,77,78,79,80].includes(s.n)?exactProgramModule(s):s.n===81?exactCourseFormat(s):[82,83,84,85,86,87,88,89].includes(s.n)?exactBenefit(s):s.n===90?exactReviews(s):s.n===91?exactPriceQuestion(s):s.n===93?exactSpecialConditions(s):[94,110].includes(s.n)?exactWebinarOffer(s):s.n===95?exactWhyNow(s):[96,111].includes(s.n)?exactBonusCards(s):s.n===97?exactBonusValue(s):[98,99,100,101].includes(s.n)?exactBonusDetail(s):s.n===102?exactBonusConclusion(s):[103,112].includes(s.n)?exactPaymentOptions(s):s.n===113?exactWelcome(s):s.n===92?exactTariffs(s):exactHeading(s.title)+exactLines(s.lines);
+  let exact= s.n===1?exactSignal(s):s.n===12?exactFoundationCare(s):s.n===21?exactFoundationReflection(s):s.n===14?exactProfile(s):s.n===19?exactDisciplines(s):s.n===23?exactRecommendation(s):s.n===26?exactErrorFirst(s):s.n===27?exactLongErrorExample(s):s.n===29?exactLongErrorExample(s):s.n===31?exactEvidenceExample(s):s.n===32?exactErrorSolution(s):s.n===33?exactSystemOffer(s):s.n===34?exactFunctionalQuestion(s):s.n===35?exactApplication(s):s.n===36?exactApproaches(s):s.n===37?exactInstitute(s):s.n===38?exactTeaching(s):[39,40,41,42,43].includes(s.n)?exactInsight(s):[45,47,49].includes(s.n)?exactCasePrompt(s):[46,48,50].includes(s.n)?exactCaseResult(s):s.n===51?exactInsight(s):s.n===52?exactFeedback(s):s.n===54?exactReminder(s):[55,56].includes(s.n)?exactNumberPath(s):[58,59,60].includes(s.n)?exactStudentResult(s):s.n===61?exactIncomeImpact(s):s.n===62?exactIncomeResults(s):s.n===63?exactStudentCta(s):s.n===66?exactFunctionalResult(s):s.n===68?exactCareCta(s):s.n===69?exactQuestionBubble(s):s.n===71?exactAudience(s):s.n===72?exactApproachContrast(s):s.n===73?exactKeyResult(s):s.n===74?exactProgramComparison(s):s.n===75?exactLiveLessonList(s):s.n===76?exactUpdatedLessonVideo(s):[77,78,79,80,81].includes(s.n)?exactProgramModule(s):s.n===82?exactCourseFormat(s):[83,84,85,86,87,88,89,90].includes(s.n)?exactBenefit(s):s.n===91?exactReviews(s):s.n===92?exactPriceQuestion(s):s.n===94?exactSpecialConditions(s):[95,111].includes(s.n)?exactWebinarOffer(s):s.n===96?exactWhyNow(s):[97,112].includes(s.n)?exactBonusCards(s):s.n===98?exactBonusValue(s):[99,100,101,102].includes(s.n)?exactBonusDetail(s):s.n===103?exactBonusConclusion(s):[104,113].includes(s.n)?exactPaymentOptions(s):s.n===114?exactWelcome(s):s.n===93?exactTariffs(s):exactHeading(s.title)+exactLines(s.lines);
   exact=highlightSlideCopy(underlineSlideCopy(exact,s.n),s.n);
   const content='<div class="source-content" data-exact-copy>'+exact+'</div>';
   return '<div class="source-layout">'+content+sourcePicture(s)+'</div>';
 }
-const gradient=new Set([0,6,15,24,32,33,54,63,67,68,70,73,93,103,112,113]);
+const gradient=new Set([0,6,15,24,32,33,54,63,67,68,70,73,94,104,113,114]);
 function renderSlide(s) {
   const cls=['slide',s.n%3===0?'surf-c':s.n%2===0?'surf-b':''];
   if(s.n===0)cls.push('webinar-cover-slide');else cls.push('source-slide');
@@ -447,8 +459,8 @@ function renderSlide(s) {
   if(s.title.length>95)cls.push('source-long-title');
   if(s.text.length>1000)cls.push('source-dense');else if(s.text.length>650)cls.push('source-long');else if(s.text.length>380)cls.push('source-medium');
   if(s.n===74)cls.push('source-table-slide');
-  if(s.n===92)cls.push('source-tariffs-slide');
-  if(s.n===96||s.n===111)cls.push('source-bonuses-slide');
+  if(s.n===93)cls.push('source-tariffs-slide');
+  if(s.n===97||s.n===112)cls.push('source-bonuses-slide');
   if([39,40,41,42,43,51].includes(s.n))cls.push('insight-slide');
   if([45,47,49].includes(s.n))cls.push('case-prompt-slide');
   if([46,48,50].includes(s.n))cls.push('case-result-slide');

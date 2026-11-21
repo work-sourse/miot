@@ -174,29 +174,26 @@ const LEGACY_VISUAL_CONTENT = {
   "75": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   },
-  "76": {
-    "art": "img/cyber/cyber-anatomy-atlas.png"
-  },
   "77": {
-    "art": "img/cyber/cyber-spine-pelvis.png"
+    "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "78": {
-    "art": "img/cyber/cyber-fascia-molecule.png"
+    "art": "img/cyber/cyber-spine-pelvis.png"
   },
   "79": {
-    "art": "img/cyber/cyber-brain.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "80": {
-    "art": "img/cyber/cyber-spine-pelvis.png",
+    "art": "img/cyber/cyber-brain.png"
   },
   "81": {
+    "art": "img/cyber/cyber-spine-pelvis.png",
+  },
+  "82": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   },
-  "83": {
-    "art": "img/cyber/cyber-body-network.png"
-  },
   "84": {
-    "art": "img/cyber/cyber-palpation.png"
+    "art": "img/cyber/cyber-body-network.png"
   },
   "85": {
     "art": "img/cyber/cyber-palpation.png"
@@ -205,48 +202,51 @@ const LEGACY_VISUAL_CONTENT = {
     "art": "img/cyber/cyber-palpation.png"
   },
   "87": {
-    "art": "img/cyber/cyber-spine-pelvis.png",
+    "art": "img/cyber/cyber-palpation.png"
   },
   "88": {
-    "art": "img/cyber/cyber-anatomy-atlas.png"
+    "art": "img/cyber/cyber-spine-pelvis.png",
   },
   "89": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   },
-  "93": {
+  "90": {
+    "art": "img/cyber/cyber-anatomy-atlas.png"
+  },
+  "94": {
     "art": "img/cyber/cyber-fascia-molecule.png"
   },
-  "95": {
-    "art": "img/cyber/cyber-fascia-molecule.png"
-  },
-  "97": {
+  "96": {
     "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "98": {
     "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "99": {
-    "art": "img/cyber/cyber-palpation.png"
+    "art": "img/cyber/cyber-fascia-molecule.png"
   },
   "100": {
-    "art": "img/cyber/cyber-brain.png"
+    "art": "img/cyber/cyber-palpation.png"
   },
   "101": {
-    "art": "img/cyber/cyber-palpation.png"
+    "art": "img/cyber/cyber-brain.png"
   },
   "102": {
     "art": "img/cyber/cyber-palpation.png"
   },
-  "104": {
-    "art": "img/cyber/cyber-anatomy-atlas.png"
+  "103": {
+    "art": "img/cyber/cyber-palpation.png"
   },
   "105": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   },
-  "107": {
+  "106": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   },
   "108": {
+    "art": "img/cyber/cyber-anatomy-atlas.png"
+  },
+  "109": {
     "art": "img/cyber/cyber-anatomy-atlas.png"
   }
 };
@@ -281,6 +281,8 @@ const VISUAL_CONTENT = {
   "58": {"art":"img/presentation/nikolay.jpeg","photo":true},
   "59": {"art":"img/presentation/vladimir.png","photo":true},
   "60": {"art":"img/presentation/olga-fedotova.png","photo":true},
-  "79": {"art":"img/cyber/cyber-brain-interface-v2.png"},
-  "80": {"art":"img/cadaver.jpg","photo":true},
+  "75": null,
+  "76": null,
+  "80": {"art":"img/cyber/cyber-brain-interface-v2.png"},
+  "81": {"art":"img/cadaver.jpg","photo":true},
 };
