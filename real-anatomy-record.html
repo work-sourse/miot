@@ -53,14 +53,14 @@
       <div class="wrap">
         <div class="hero-main">
           <div class="hero-meta">
-            <span class="status" id="record-status"><span class="status-dot" aria-hidden="true"></span><span id="record-status-text">Запись скоро появится</span></span>
+            <span class="status" id="record-status"><span class="status-dot" aria-hidden="true"></span><span id="record-status-text">ЗАПИСЬ ДОСТУПНА</span></span>
             <span>Эфир Олега Агапэ</span>
           </div>
           <h1 id="hero-title">Реальная<span>анатомия</span></h1>
           <p class="hero-subtitle">Почему техники перестают работать и как понимание анатомии помогает находить причины дисфункций</p>
           <div class="hero-bottom">
             <div class="timer-wrap">
-              <span class="timer-label" id="timer-label">Доступ к записи — 48 часов</span>
+              <span class="timer-label" id="timer-label">Запись доступна ещё</span>
               <div class="timer" role="timer" aria-label="48 часов 00 минут 00 секунд" id="countdown">
                 <div class="time-unit"><b id="hours">48</b><span>часов</span></div><span class="time-separator" aria-hidden="true">:</span>
                 <div class="time-unit"><b id="minutes">00</b><span>минут</span></div><span class="time-separator" aria-hidden="true">:</span>
@@ -88,7 +88,7 @@
       <div class="wrap">
         <div class="section-top">
           <h2 class="section-title" id="video-heading">Смотреть запись эфира</h2>
-          <p class="section-meta" id="video-status-note">Запись скоро появится на этой странице</p>
+          <p class="section-meta" id="video-status-note">48 часов доступа с первого открытия записи</p>
         </div>
         <div class="video-shell" id="video-shell">
           <div class="video-poster" id="video-poster">
@@ -97,7 +97,7 @@
               <div class="poster-eyebrow">Запись эфира · Олег Агапэ</div>
               <div class="poster-title" aria-hidden="true">Реальная<span>анатомия</span></div>
               <p class="poster-sub">От понимания устройства тела — к поиску причин дисфункций</p>
-              <button class="poster-play" type="button" id="play-recording"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 2.5v15L17 10z"/></svg><span id="play-label">Запись скоро появится</span></button>
+              <button class="poster-play" type="button" id="play-recording"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 2.5v15L17 10z"/></svg><span id="play-label">Смотреть запись эфира</span></button>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@
        Формы GetCourse загружаются один раз при первом открытии каждого попапа. */
     const LANDING_CONFIG = {
       recordingVersion: 'real-anatomy-november-2026',
-      video: { type: 'embed', url: '' },
+      video: { type: 'mp4', url: 'https://fs.getcourse.ru/fileservice/file/download/a/202733/sc/391/h/dde70f8c65c89f972ae4ea135d32adbb.mp4' },
       curriculumUrl: 'https://dr-agape.ru/funkcionalnaya-anatomiya-2/',
       careUrl: 'https://t.me/TatyBondar',
       offerEndsAt: '2026-11-28T00:00:00+05:00'
@@ -417,6 +417,7 @@
         if (recordingExpired) return;
         const player = document.createElement(config.video.type === 'mp4' ? 'video' : 'iframe');
         player.id = 'record-player';
+        player.setAttribute('aria-label', 'Запись эфира «Реальная анатомия»');
         if (player.tagName === 'VIDEO') {
           player.controls = true; player.playsInline = true; player.preload = 'metadata';
           player.poster = 'real-anatomy-assets/anatomy-cover.webp'; player.src = videoUrl;
