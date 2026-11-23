@@ -25,6 +25,12 @@ def replace_once(html, old, new):
 
 def build():
     html = SOURCE.read_text(encoding="utf-8")
+    for marker in ("STAFF_LOGIN", "STAFF_LOGIN_FORM"):
+        start = f"<!-- {marker}_START -->"
+        end = f"<!-- {marker}_END -->"
+        if html.count(start) != 1 or html.count(end) != 1:
+            raise ValueError(f"Missing or duplicate staff login marker: {marker}")
+        html = html[:html.index(start)] + html[html.index(end) + len(end):].lstrip('\n')
     html = replace_once(html, "(для сотрудников)</title>", "(для учеников)</title>")
     html = replace_once(html, ">Для сотрудников</span>", ">Для учеников</span>")
     html = replace_once(
