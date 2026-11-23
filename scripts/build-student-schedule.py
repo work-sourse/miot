@@ -8,6 +8,82 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "raspisanie.html"
 OUTPUT = ROOT / "raspisanie-studentam.html"
 
+STUDENT_STYLES = '''
+  .student-tabs { display:flex; gap:8px; border-bottom:1px solid var(--border-dark); margin:0 0 32px; }
+  .student-tab { padding:14px 18px; border:0; border-bottom:3px solid transparent; background:transparent; color:var(--w-70); cursor:pointer; font-weight:700; }
+  .student-tab[aria-selected="true"] { color:var(--gold); border-bottom-color:var(--gold); }
+  .student-tab:focus-visible, .self-course__link:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+  .self-intro { color:var(--w-70); margin:8px 0 26px; max-width:650px; }
+  .self-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .self-course { display:flex; flex-direction:column; align-items:flex-start; gap:12px; padding:24px; border:1px solid var(--border-dark); border-radius:18px; background:var(--card-dark); }
+  .self-course h3 { font-family:'Unbounded',sans-serif; font-size:17px; line-height:1.4; }
+  .self-course p { color:var(--w-70); margin:0; flex:1; }
+  .self-course__meta { display:flex; flex-wrap:wrap; gap:7px; }
+  .self-course__link { display:inline-flex; justify-content:center; align-items:center; min-height:44px; padding:10px 20px; color:var(--ink); border-radius:999px; background:var(--grad-btn); text-decoration:none; font-weight:700; }
+  .self-course__link:hover { filter:brightness(1.1); }
+  @media (max-width:640px) { .self-grid { grid-template-columns:1fr; } .self-course { padding:20px; } .self-course__link { width:100%; } }
+'''
+
+STUDENT_TABS = '''  <div class="student-tabs" role="tablist" aria-label="Разделы страницы">
+    <button class="student-tab" id="student-tab-schedule" role="tab" aria-selected="true" aria-controls="student-panel-schedule" tabindex="0">Расписание</button>
+    <button class="student-tab" id="student-tab-self" role="tab" aria-selected="false" aria-controls="student-panel-self" tabindex="-1">Для себя</button>
+  </div>
+'''
+
+SELF_PANEL = '''  <section id="student-panel-self" role="tabpanel" aria-labelledby="student-tab-self" hidden>
+    <h2>Программы для себя</h2>
+    <p class="self-intro">Онлайн-программы для самостоятельной работы с телом и заботы о себе и близких.</p>
+    <div class="self-grid">
+      <article class="self-course">
+        <div class="self-course__meta"><span class="tag">Онлайн</span><span class="tag">8 модулей</span></div>
+        <h3>Сам себе остеопат</h3>
+        <p>Программа самокоррекции в формате «повторяй за мной»: дыхание, диафрагмы, ЖКТ и мышечные цепи.</p>
+        <a class="self-course__link" href="self-osteopath.html" target="_blank" rel="noopener noreferrer">Подробнее о курсе</a>
+      </article>
+      <article class="self-course">
+        <div class="self-course__meta"><span class="tag">Онлайн</span><span class="tag">4 недели</span></div>
+        <h3>ОстеоРодитель</h3>
+        <p>Остеопатические техники для родителей и детей от 0 до 7 лет. 15 уроков по 20 минут.</p>
+        <a class="self-course__link" href="parents.html" target="_blank" rel="noopener noreferrer">Подробнее о курсе</a>
+      </article>
+      <article class="self-course">
+        <div class="self-course__meta"><span class="tag">Онлайн</span><span class="tag">21 день</span></div>
+        <h3>ОстеоЭстетика для себя</h3>
+        <p>Утренние тренировки с упражнениями для тела и лица.</p>
+        <a class="self-course__link" href="estetika.html" target="_blank" rel="noopener noreferrer">Подробнее о курсе</a>
+      </article>
+      <article class="self-course">
+        <div class="self-course__meta"><span class="tag">Онлайн</span><span class="tag">Семинар</span></div>
+        <h3>Психосоматика</h3>
+        <p>Программа о взаимосвязи тела и эмоций и работе с психоэмоциональными блоками через тело.</p>
+        <a class="self-course__link" href="психосоматика/psycho-preview.html" target="_blank" rel="noopener noreferrer">Подробнее о курсе</a>
+      </article>
+    </div>
+  </section>
+'''
+
+STUDENT_TABS_SCRIPT = '''
+const studentTabs = [...document.querySelectorAll('.student-tab')];
+function selectStudentTab(tab, focus = false) {
+  studentTabs.forEach(item => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+  });
+  if (focus) tab.focus();
+}
+studentTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectStudentTab(tab));
+  tab.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? studentTabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + studentTabs.length) % studentTabs.length;
+    selectStudentTab(studentTabs[next], true);
+  });
+});
+'''
+
 
 def remove_between(html, start, end):
     if html.count(start) != 1:
@@ -59,6 +135,12 @@ def build():
         line for line in html.splitlines()
         if not line.lstrip().startswith(removed_styles)
     ) + "\n"
+
+    html = replace_once(html, '</style>\n</head>', STUDENT_STYLES + '</style>\n</head>')
+    html = replace_once(html, '<main class="wrap">\n', '<main class="wrap">\n' + STUDENT_TABS)
+    html = replace_once(html, '<section aria-label="Расписание мероприятий">', '<section id="student-panel-schedule" role="tabpanel" aria-labelledby="student-tab-schedule">')
+    html = replace_once(html, '\n</main>', '\n' + SELF_PANEL + '\n</main>')
+    html = replace_once(html, '\nrenderNext();\nrender();', '\n' + STUDENT_TABS_SCRIPT + '\nrenderNext();\nrender();')
 
     forbidden = (
         "t.me/", "telegram.me/", "max.ru/join/", "docs.google.com/spreadsheets/",
