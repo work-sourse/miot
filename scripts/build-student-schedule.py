@@ -160,6 +160,10 @@ def build():
     OUTPUT.write_text(html, encoding="utf-8")
     print(f"Built {OUTPUT.name}; staff links and data removed.")
 
+    # Keep the referral copy in sync whenever the student page is rebuilt.
+    import runpy
+    runpy.run_path(str(Path(__file__).with_name("build-renata-schedule.py")), run_name="__main__")
+
 
 if __name__ == "__main__":
     build()
