@@ -11,7 +11,7 @@ OUTPUT = ROOT / "raspisanie-studentam.html"
 STUDENT_STYLES = '''
   .student-tabs { display:flex; gap:8px; border-bottom:1px solid var(--border-dark); margin:0 0 32px; }
   .student-tab { padding:14px 18px; border:0; border-bottom:3px solid transparent; background:transparent; color:var(--w-70); cursor:pointer; font-weight:700; }
-  .student-tab[aria-selected="true"] { color:var(--gold); border-bottom-color:var(--gold); }
+  .student-tab[aria-pressed="true"] { color:var(--gold); border-bottom-color:var(--gold); }
   .student-tab:focus-visible, .self-course__link:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
   .self-intro { color:var(--w-70); margin:8px 0 26px; max-width:650px; }
   .self-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
@@ -24,14 +24,15 @@ STUDENT_STYLES = '''
   @media (max-width:640px) { .self-grid { grid-template-columns:1fr; } .self-course { padding:20px; } .self-course__link { width:100%; } }
 '''
 
-STUDENT_TABS = '''  <div class="student-tabs" role="tablist" aria-label="Разделы страницы">
-    <button class="student-tab" id="student-tab-schedule" role="tab" aria-selected="true" aria-controls="student-panel-schedule" tabindex="0">Расписание</button>
-    <button class="student-tab" id="student-tab-self" role="tab" aria-selected="false" aria-controls="student-panel-self" tabindex="-1">Для себя</button>
+STUDENT_TABS = '''  <div class="student-tabs" role="group" aria-label="Направления обучения">
+    <button class="student-tab" data-view="all" aria-pressed="true" aria-controls="student-panel-schedule student-panel-self">Все</button>
+    <button class="student-tab" data-view="specialists" aria-pressed="false" aria-controls="student-panel-schedule student-panel-self">Для специалистов</button>
+    <button class="student-tab" data-view="self" aria-pressed="false" aria-controls="student-panel-schedule student-panel-self">Для себя</button>
   </div>
 '''
 
-SELF_PANEL = '''  <section id="student-panel-self" role="tabpanel" aria-labelledby="student-tab-self" hidden>
-    <h2>Программы для себя</h2>
+SELF_PANEL = '''  <section id="student-panel-self" aria-labelledby="student-self-heading">
+    <h2 id="student-self-heading">Программы для себя</h2>
     <p class="self-intro">Онлайн-программы для самостоятельной работы с телом и заботы о себе и близких.</p>
     <div class="self-grid">
       <article class="self-course">
@@ -65,16 +66,17 @@ SELF_PANEL = '''  <section id="student-panel-self" role="tabpanel" aria-labelled
 STUDENT_TABS_SCRIPT = '''
 const studentTabs = [...document.querySelectorAll('.student-tab')];
 function selectStudentTab(tab, focus = false) {
+  const view = tab.dataset.view;
   studentTabs.forEach(item => {
     const selected = item === tab;
-    item.setAttribute('aria-selected', String(selected));
-    item.tabIndex = selected ? 0 : -1;
-    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+    item.setAttribute('aria-pressed', String(selected));
   });
+  document.getElementById('student-panel-schedule').hidden = view === 'self';
+  document.getElementById('student-panel-self').hidden = view === 'specialists';
   if (focus) tab.focus();
 }
 studentTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => selectStudentTab(tab));
+  tab.addEventListener('click', () => selectStudentTab(tab.dataset.view !== 'all' && tab.getAttribute('aria-pressed') === 'true' ? studentTabs[0] : tab));
   tab.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
@@ -138,7 +140,8 @@ def build():
 
     html = replace_once(html, '</style>\n</head>', STUDENT_STYLES + '</style>\n</head>')
     html = replace_once(html, '<main class="wrap">\n', '<main class="wrap">\n' + STUDENT_TABS)
-    html = replace_once(html, '<section aria-label="Расписание мероприятий">', '<section id="student-panel-schedule" role="tabpanel" aria-labelledby="student-tab-schedule">')
+    html = replace_once(html, '<section aria-label="Расписание мероприятий">', '<section id="student-panel-schedule" aria-label="Расписание мероприятий для специалистов">')
+    html = replace_once(html, "  filter = c.dataset.f;\n  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c ? 'true' : 'false'));", "  filter = c.dataset.f !== 'all' && filter === c.dataset.f ? 'all' : c.dataset.f;\n  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.f === filter ? 'true' : 'false'));")
     html = replace_once(html, '\n</main>', '\n' + SELF_PANEL + '\n</main>')
     html = replace_once(html, '\nrenderNext();\nrender();', '\n' + STUDENT_TABS_SCRIPT + '\nrenderNext();\nrender();')
 
